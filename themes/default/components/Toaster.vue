@@ -1,0 +1,133 @@
+<template>
+  <section v-if="commonStore.toastMessages.length" class="global-toaster justify-content-end">
+    <div class="inner-contents">
+      <template v-for="(message, index) in commonStore.toastMessages" :key="index">
+        <p
+          class="alert"
+          :class="[
+            message.type == 'success'
+              ? 'alert-success'
+              : message.type == 'error'
+              ? 'alert-danger'
+              : message.type == 'warning'
+              ? 'alert-warning'
+              : '',
+            'animation_' + animation,
+          ]"
+        >
+          <span class="message"> {{ message.message }} </span>
+          <button
+            @click="commonStore.closeToaster(index)"
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </p>
+      </template>
+    </div>
+  </section>
+</template>
+
+<script setup>
+import { useCommonStore } from '~/store/Common';
+const commonStore = useCommonStore();
+defineProps({
+  animation: {
+    default: "left", // accepts = 'none' | 'left' | 'right' | 'top' | 'bottom'
+    required: false,
+    type: String,
+  },
+});
+</script>
+
+<style scoped>
+.global-toaster {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  padding: 15px;
+  pointer-events: none;
+}
+.global-toaster .inner-contents {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  text-align: right;
+  direction: rtl;
+}
+.global-toaster .inner-contents p {
+  pointer-events: all;
+  text-align: right;
+  width: max-content;
+  direction: ltr;
+}
+.global-toaster .btn-close {
+  padding: 0 0 0px 10px;
+  width: 20px;
+  height: 12px;
+}
+.btn-close:focus {
+  box-shadow: none !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Animation classes                             */
+/* -------------------------------------------------------------------------- */
+.animation_left {
+  animation: mymove_left 0.5s ease-in-out;
+}
+.animation_right {
+  animation: mymove_right 0.5s ease-in-out;
+}
+.animation_top {
+  animation: mymove_top 0.5s ease-in-out;
+}
+.animation_bottom {
+  animation: mymove_bottom 0.5s ease-in-out;
+}
+@keyframes mymove_left {
+  from {
+    right: 100px;
+    opacity: 0;
+  }
+  to {
+    right: 0px;
+    opacity: 1;
+  }
+}
+@keyframes mymove_right {
+  from {
+    right: -100px;
+    opacity: 0;
+  }
+  to {
+    right: 0px;
+    opacity: 1;
+  }
+}
+@keyframes mymove_top {
+  from {
+    bottom: 100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+@keyframes mymove_bottom {
+  from {
+    top: 100px;
+    opacity: 0;
+  }
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+</style>

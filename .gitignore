@@ -1,0 +1,19 @@
+node_modules
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.env
+dist
+.vscode
+
+# ignoring folder for converting android app
+db.json
+android
+ios
+.vscode/*
+test.js
+
+package-lock.json
+yarn-lock.json
