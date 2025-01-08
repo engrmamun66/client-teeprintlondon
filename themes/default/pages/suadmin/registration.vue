@@ -292,25 +292,33 @@ const { validateForm, isValid } = useValidateForm();
 let passwordNotMatchedError = ref(null);
 let showPassword = ref(false);
 let registrationFormData = ref({
-        institute_name: null,
-        first_name: null,
-        last_name: null,
-        email: null,
-        password: null,
-        password_confirmation: null,
-        phone: null,
-        institute_address: null
-    })
-  const validationRules = {
-    first_name: { required: true },
-    last_name: { required: true },
-    institute_name: { required: true }, 
-    institute_address: { required: true },
-    email: { required: true },
-    password: { required: true },
-    password_confirmation: { required: true, match: 'password' },
-    phone: { required: true }
-  };
+    institute_name: null,
+    first_name: null,
+    last_name: null,
+    email: null,
+    password: null,
+    password_confirmation: null,
+    phone: null,
+    institute_address: null
+})
+const validationRules = {
+  first_name: { required: true },
+  last_name: { required: true },
+  institute_name: { required: true }, 
+  institute_address: { required: true },
+  email: { required: true },
+  password: { required: true },
+  password_confirmation: { required: true, match: 'password' },
+  phone: { required: true }
+};
+
+definePageMeta({
+  keepalive: false,
+  middleware: ["auth"],
+  key: (route) => route.fullPath,
+  layout: "auth",
+  name: 'registration',
+});
 useHead({
   titleTemplate: "%s | Registration",
 });

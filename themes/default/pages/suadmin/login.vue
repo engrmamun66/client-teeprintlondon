@@ -120,6 +120,7 @@ definePageMeta({
   middleware: ["auth"],
   key: (route) => route.fullPath,
   layout: "auth",
+  name: 'login',
 });
 useHead({
   titleTemplate: "%s | Login",
