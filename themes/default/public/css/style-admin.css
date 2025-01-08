@@ -2071,7 +2071,7 @@ body.bl .leap-admin-main-wrapper .form-group label {
 }
 
 .leap-admin-main-wrapper .form-control {
-    background-color: var(--bgcolor-navyblue-light-1);
+    background-color: var(--bgcolor-lightgray);
     width: 100%;
     height: 40px;
     color: var(--fontcolor-tertiary);
@@ -2108,14 +2108,14 @@ body.bl .leap-admin-main-wrapper .form-control {
 .leap-admin-main-wrapper .form-control:hover,
 .leap-admin-main-wrapper .form-control:focus,
 .leap-admin-main-wrapper .form-control:active {
-    background-color: var(--bgcolor-navyblue-light-1);
+    background-color: var(--bgcolor-lightgray);
     color: var(--fontcolor-tertiary);
     border: 1px solid var(--linecolor-navyblue-light-1);
     outline: 0;
 }
 
 input:-internal-autofill-selected {
-    background-color: var(--bgcolor-navyblue-light-1);
+    background-color: var(--bgcolor-lightgray);
 }
 
 input::placeholder {
