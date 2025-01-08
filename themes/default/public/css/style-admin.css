@@ -737,6 +737,7 @@ Sidebar css
     border-right: 1px solid var(--linecolor-black);
     z-index: 9;
     transition: all 0.3s;
+    box-shadow: 4px 0px 10px #00000012;
 }
 
 .leap-admin-main-wrapper .leap-admin-sidebar.active {
