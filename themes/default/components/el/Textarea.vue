@@ -1,7 +1,7 @@
 <template>
     <div v-bind="$attrs">
         <div class="form-group">
-            <label v-if="label"> {{ label }} </label>
+            <label v-if="label"> {{ label }} </label>            
             <slot v-if="useSlot" />
             <textarea class="form-control form-control-solid" 
                 :rows="rows"
@@ -12,7 +12,7 @@
                 :disabled="disabled" :type="type" :value="modelValue" 
                 @keydown="$emit('keydown', $event, $event.target.value)" 
             >
-            </textarea>
+            </textarea> 
         </div>
     </div>
 </template>
@@ -52,20 +52,6 @@ let props = defineProps({
         default:'',
         required: false,
     },
-    col:{
-        type: String,
-        default:'',
-        required: false, 
-    },
-    v:{
-        default:'',
-        required: false, 
-    },
-    e:{
-        default:'',
-        required: false,
-    },
-
 })
 
 const myEmit = defineEmits(['update:modelValue', 'blur', 'keydown', 'focus', 'focusout'])

@@ -1,23 +1,9 @@
 <script setup>
-/**
- * ===== Use Example =======
-  <el-radio class="col-md-3 col-6" name="is_trucked" :value="0" label="Track quantity only" v-model="payload.is_tracked" ></el-radio>
-  <el-radio class="col-md-3 col-6" name="is_trucked" :value="1" label="Track specific assets " v-model="payload.is_tracked" ></el-radio>
- */
 let props = defineProps({
   modelValue: {
     default: false,
   },
-  name: {
-    default: "radio_item",
-    required: true,
-  },
-  value: {
-    default: "",
-    required: true,
-  },
   label: {
-    type: String,
     default: "",
     required: false,
   },
@@ -33,8 +19,20 @@ let props = defineProps({
     default: 'dark',
     required: false,
   },
+  checkboxClass: {
+    default: '',
+    required: false,
+  },
   skipAutoMargin: {
     default: false,
+    required: false,
+  },
+  lightBorder: {
+    default: false,
+    required: false,
+  },
+ isChecked: {
+    default: undefined,
     required: false,
   },
 });
@@ -45,9 +43,9 @@ const myEmit = defineEmits([
   "click",
 ]);
 
-if(!globalThis.__radioId) globalThis.__radioId = 0;
-globalThis.__radioId += 1
-const uniqueId = `radio_unique_${globalThis.__radioId + 1}`;
+if(!globalThis.__cehckboxId) globalThis.__cehckboxId = 0;
+globalThis.__cehckboxId += 1
+const uniqueId = `checkbox_unique_${globalThis.__cehckboxId + 1}`;
 
 onMounted(()=> {
   myEmit('update:modelValue', Boolean(props.modelValue));
@@ -59,14 +57,15 @@ onMounted(()=> {
     <div v-bind="$attrs">
         <div class="form-check mb-2" :class="{'ps-0': showEffect, 'mt-md-4': !skipAutoMargin}" >
             <template v-if="!showEffect" >
-              <input class="form-check-input" type="radio" :value="value" :id="uniqueId"
-              :checked="modelValue == value" 
+              <input class="form-check-input cp" :class="{[checkboxClass]: checkboxClass}" type="checkbox" :value="uniqueId" :id="uniqueId" 
+              :checked="isChecked ?? modelValue" 
               :disabled="disabled" 
-              :name="name" 
-              ref="inputField"            
+              ref="inputField"  
+              :style="lightBorder ? `border-color: #666666 !important;` : ''"          
               @change="({target})=>{
-                  $emit('click', target.value);
-                  $emit('update:modelValue', target.value);
+                  $emit('click', target.checked);
+                  $emit('change', target.checked);
+                  $emit('update:modelValue', target.checked);
               }" 
               >
               <label v-if="label" class="form-check-label cp m-0 ms-2 " :for="uniqueId" 
@@ -77,8 +76,8 @@ onMounted(()=> {
             </template>
             <template v-else >
               <div class="d-flex">
-                <ShimmerEffect :bg="effectBg" width="22px" height="20px" radius="50%" class="me-1" style="margin-top: 2px;" ></ShimmerEffect>
-                <ShimmerEffect :bg="effectBg" width="100%" height="20px" radius="3px" style="margin-top: 2px;" ></ShimmerEffect>
+                <ShimmerEffect :bg="effectBg" width="22px" height="20px" radius="3px" class="me-1" style="margin-top: 2px;" :class="{[checkboxClass]: checkboxClass}" ></ShimmerEffect>
+                <ShimmerEffect v-if="label" :bg="effectBg" width="100%" height="20px" radius="3px" style="margin-top: 2px;" ></ShimmerEffect>
               </div>
             </template>
         </div>

@@ -1,17 +1,23 @@
 <!--
-<el-DropFile
-:multiple="true"
-:showDetails="true"
-maxFileMBsize="5"
-accepts="jpg,jpeg,png,pdf"
-@files-before-upload="(files)=>log('files-before-upload')"
-@uploaded="(file)=>log(file.name)"
-@uploaded-all="log('Uploaded all')"
-@file-removed="false" />
+	<el-DropFile
+	v-model="myfiles"
+	v-model:db_uploaded_files="save_files_of_id"
+	:multiple="true"
+	:showDetails="true"
+	maxFileMBsize="5"
+	accepts="jpg,jpeg,png,pdf"
+	customAcceptText="Image/PDF"
+	@files-before-upload="(files)=>log('files-before-upload')"
+	@uploaded-once="(file)=>log(file.name)"
+	@uploaded-all="log('Uploaded all')"
+	@file-removed="false"
+	note="false"
+	@note-changed="false"
+	 />
 -->
 <template>
     <div v-bind="$attrs">
-		<label class="ms-1 mb-3" v-if="label" for="">{{ label }}</label>
+		<label v-if="label" for="">{{ label }}</label>
         <div :style="'height:' + height + ';--upload-icon:url('+ uploadIcon +')'" class="card justify-content-center align-items-center position-relative p-2 mb-3 text-center border-dashed uploader-icon"
         :class="{'drop-zone-over': isDragovering, 'progress': isUploading() || showProgress, 'upoadedFiles': upoadedFiles.length, 'uploader-icon': !isUploading()}"
         @dragover="isDragovering=true;showProgress=true"
@@ -24,33 +30,35 @@ accepts="jpg,jpeg,png,pdf"
 				<!-- =============== -->
 				<!-- FOR SINGLE FILE -->
 				<!-- =============== -->
-				<span @click="removeFileAll()" class="delete"><i class="lar la-times-circle"></i></span>
+				<span v-if="!isUploading()" @click="removeFileAll()" class="delete"><i class="lar la-times-circle"></i></span>
 				<template v-if="!multiple">  
 					<!-- <span v-if="isUploading()" class="loader"></span> -->
 					<template v-if="upoadedFiles[0]?.type.startsWith('image/') && !isDragovering">
 						<img :src="upoadedFiles[0]?.base64 || ''" :class="{removingFile: upoadedFiles[0].isRemoving}" style="height:calc(100% - 30px);border-radius:4px;margin-bottom:1rem" />
 					</template>
-					<!-- <template v-else-if="upoadedFiles[0]?.type.startsWith('video/')">
+					<template v-else-if="upoadedFiles[0]?.type.startsWith('video/')">
 						<video :class="{removingFile: upoadedFiles[0].isRemoving}" class="video-js" controls preload="auto" :poster="poster" data-setup='' :loop="false">
 						<source :src="upoadedFiles[0]?.base64 || ''" :type="'video/mp4'">
 						</video>
 					</template>
 					<template v-else-if="upoadedFiles[0]?.type.startsWith('application/pdf')">
 						<iframe :src="upoadedFiles[0]?.base64 || ''"></iframe>
-					</template> -->
+					</template> 
 					<template v-else>
 						<h1 v-if="upoadedFiles[0].is_uploading" style="line-height: 50px;">{{ getPercent(upoadedFiles[0], 0) }}</h1>
 						<li v-else class="file-icon" :filetype="upoadedFiles[0]?.name.split('.').at(-1).slice(0,4)"></li>
 						<a href="#" class="text-hover-primary fs-6 fw-bold mb-2 mt-2"> 1 {{ upoadedFiles[0]?.name.split('.').at(-1) }} File Uploaded</a>
 					</template>
-					<p class="file-title text-center" style="text-center">{{ H.getExcerpt(upoadedFiles[0]?.name || '', 26) }} ({{ upoadedFiles[0].size_mb }} MB)</p>
+					<p class="file-title text-center" style="text-center">{{ getExcerpt(upoadedFiles[0]?.name || '', 26) }} ({{ upoadedFiles[0].size_mb }} MB)</p>
 				</template>
 				<!-- =============== -->
 				<!-- FOR Multiple FILE -->
 				<!-- =============== -->
 				<template v-else>
-					<h1 style="line-height: 50px;">{{ getPercent_allFiles(0) }}</h1>
-					<a v-if="!isUploading()" class="text-hover-primary fs-6 fw-bold mb-2"> Uploaded {{ upoadedFiles.length }} files</a>
+					<!-- <h1 style="line-height: 50px;">{{ getPercent_allFiles(0) }}</h1> -->
+					<h1 v-if="getPercent_allFiles(0).indexOf('100') == -1" style="line-height:50px;">{{ getPercent_allFiles(0) }}</h1>
+					<h4 v-else style="line-height: 50px;">Add More</h4>
+					<a v-if="!isUploading()" class="text-hover-primary fs-6 fw-bold mb-2"> Pending to upload {{ upoadedFiles.length }} files</a>
 					<h5 v-if="isUploading()" class="text-hover-primary fw-bold mb-2">Uploading {{ countUploadedFiles() }} of {{ upoadedFiles.length }} </h5>
 					<p class="text-hover-primary fs-7 fw-bold mb-2"> Total Files size {{ totalFileSize() }} MB </p>
 				</template>
@@ -62,45 +70,94 @@ accepts="jpg,jpeg,png,pdf"
 					</template>
 					<template v-else>
 						<a href="#" class="text-hover-primary fs-6 fw-bold mt-5">File Upload (Max {{ maxFileMBsize }} MB)</a>
-						<div class="fw-semibold text-gray-400">Drag and drop {{ multiple ? 'Files' : 'Single File' }} {{ ['*', '', null].includes(accepts) ? '( Any file )' : 'here ( '+ accepts.replaceAll(',', ', ') +' )' }} </div>
+						<div class="fw-semibold text-gray-400">Drag and drop {{ multiple ? 'Files' : 'Single File' }} {{ ['*', '', null].includes(accepts) ? '( Any file )' : 'here ( '+ 
+						(customAcceptText ? customAcceptText : accepts.replaceAll(',', ', '))
+						 +' )' }} </div>
 					</template>
 				</template>
 			</template>
 			 
         </div>
 	</div>
+	
 
-	<div v-if="upoadedFiles.length && showDetails" v-bind="$attrs" class="mb-3">
+	<div v-if="(upoadedFiles?.length || db_uploaded_files?.length) && showDetails" v-bind="$attrs" class="mb-3">
 		<div class="row">
 			<div class="col-12">
 				<!-- Each File -->
 				<template v-if="Object.keys(removedFiles).length">
 					<div class="each-file p-2 px-3 mb-1 radius-5 d-flex justify-content-between align-items-center text-center" style="background-color: #0000001a;border: 1px dashed #535353;">
-	
-							<small class="text-warning">
-								Automatically removed {{ countRemovedFile() }} {{ countRemovedFile() > 1 ? 'Files' : 'File' }} ( {{ removedFilesAsString() }} )
-							</small>
-							<i-las t="close" @click="removedFiles={}" />
+						<small class="text-warning">
+							Automatically removed {{ countRemovedFile() }} {{ countRemovedFile() > 1 ? 'Files' : 'File' }} ( {{ removedFilesAsString() }} )
+						</small>
+						<i-las t="close" @click="removedFiles={}" />
 					</div>
 				</template>
-				<template v-for="(file, index) in upoadedFiles" :key="index">
-					<div :class="{removingFile: upoadedFiles[index].isRemoving}" class="each-file p-2 px-3 mb-1 radius-5 d-flex justify-content-between align-items-center" style="background-color: #0000001a;border: 1px dashed #535353;">
+				<!-- ============================================== -->
+				<!-- =============Displaying Saved Files========== -->
+				<!-- ============================================== -->
+				<template v-for="(file, index) in db_uploaded_files" :key="index">
+					<div class="each-file p-2 px-3 mb-1 radius-5 d-flex justify-content-between align-items-center" style="background-color: #0000001a;border: 1px dashed #535353;">
 						<div class="left me-3" style="width: 50px;">
-							<!-- File Icon -->
-							<li class="file-icon" :class="{'zoom-in-zoom-out': !file.extension_matched}" :filetype="upoadedFiles[index]?.name.split('.').at(-1).slice(0,4)"></li>
+							<!-- File Display Or Show Icon -->
+							<template v-if="['jpg', 'jpeg', 'png'].includes($lower(file.url.split('.').at(-1)))">
+								<img :src="file?.url" alt="" class="radius-4" style="width:60px;" />
+							</template>
+							<template v-else>
+								<li class="file-icon" :filetype="file?.url?.split('.')?.at(-1).slice(0,4)"></li>
+							</template>
 						</div>
 						<div class="right w-100">
 							<div class="d-flex justify-content-between">
-								<!-- File Name  -->
+								<!-- File Name  -->						
 								<!-- visible only md -->
-								<p class="filename fs-5 d-none d-md-block" :class="{'text-danger': !file.extension_matched}"> {{ H.getExcerpt(file.name, 30) }} </p>
+								<p class="filename fs-5 d-none d-md-block"> {{ getExcerpt(file.name, 26, '') }} </p>
 								<!-- visible only sm -->
-								<p class="filename fs-5 d-md-none d-sm-block" :class="{'text-danger': !file.extension_matched}"> {{ H.getExcerpt(file.name, 12) }} </p>
+								<p class="filename fs-5 d-md-none d-sm-block"> {{ getExcerpt(file.name, 12, '') }} </p>
+
 								<div class="d-flex justify-content-between">
 									<!-- File Size -->
-									<p>{{ file.size_mb }} MB</p>
+										<i-las @click="downloadFile(file)" t="download" class="ps-2 fs-4" />
 									<!-- Trash Icon -->
-									<i-las @click="removeFile(index)" t="trash" class="ps-2 fs-4" />
+									<i-las @click="$emit('file-delete', {index, file})" t="trash" class="ps-2 fs-4" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+
+				<!-- ============================================== -->
+				<!-- =============Displaying base64 Files========== -->
+				<!-- ============================================== -->
+				<template v-for="(file, index) in upoadedFiles" :key="index">
+					<div :class="{removingFile: upoadedFiles[index].isRemoving}" class="each-file p-2 px-3 mb-1 radius-5 d-flex justify-content-between align-items-center" style="background-color: #0000001a;border: 1px dashed #535353;">
+						<div class="left me-3" style="width: 50px;">
+							<!-- File Display Or Show Icon -->
+							<template v-if="['jpg', 'jpeg', 'png'].includes($lower(upoadedFiles[index]?.name.split('.')?.at(-1)))">
+								<img :src="upoadedFiles[index]?.base64" alt="" class="radius-4" style="width:60px;" />
+							</template>
+							<template v-else>
+								<li class="file-icon" :class="{'zoom-in-zoom-out': !file.extension_matched}" :filetype="upoadedFiles[index]?.name.split('.').at(-1).slice(0,4)"></li>
+							</template>
+						</div>
+						<div class="right w-100">
+							<div class="d-flex justify-content-between">
+								<!-- File Name  -->							
+								<!-- visible only md -->
+								<p class="filename fs-5 d-none d-md-block" :class="{'text-danger': !file.extension_matched}"> {{ getExcerpt(file.name, 26, '') }} </p>
+								<!-- visible only sm -->
+								<p class="filename fs-5 d-md-none d-sm-block" :class="{'text-danger': !file.extension_matched}"> {{ getExcerpt(file.name, 12, '') }} </p>
+						
+								<div class="d-flex justify-content-between align-items-center">
+									<input v-if="note" placeholder="Type a note" class="form-control me-2" style="max-width:300px!important" 
+									:value="file.note" @input="file.note=$event.target.value;$emit('update:modelValue', getUploadedFiles());$emit('note-changed', getUploadedFiles())"
+									/>
+									<div class="d-flex justify-content-between align-items-center">
+										<!-- File Size -->
+										<p class="size-08">{{ file.size_mb }} MB</p>
+										<!-- Trash Icon -->
+										<i-las @click="removeFile(index)" t="trash" class="ps-2 fs-4" />
+									</div>
 								</div>
 							</div>
 							<small v-if="!file.extension_matched" class="text-warning">File type not matched or contain ( {{ accepts.replaceAll(',', ' | ') }} )</small>
@@ -120,10 +177,16 @@ accepts="jpg,jpeg,png,pdf"
 </template>
 
 <script setup>
+import axios from "axios"
 let props = defineProps({
 	modelValue: {
 		default: [],
-		type: [Array],
+		type: [Array, Object],
+		required: false,
+	},
+	db_uploaded_files: {
+		default: [],
+		type: [Array, Object],
 		required: false,
 	},
 	label: {
@@ -134,8 +197,17 @@ let props = defineProps({
 		default: false,
 		required: false,
 	},
+	useFreedom: {
+		default: true,
+		type: Boolean,
+		required: false,
+	},
 	accepts: {
 		default: 'jpg,jpeg,png,pdf', // * | '' | 'jpg,jpeg,png,pdf'
+		required: false,
+	},
+	customAcceptText: {
+		default: '', 
 		required: false,
 	},
 	showDetails: {
@@ -158,13 +230,23 @@ let props = defineProps({
 		default: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg',
 		required: false,
 	},
+	note: {
+		default: false,
+		required: false,
+	},
+	takeLocation: {
+		default: false,
+		required: false,
+	},
 })
 const myEmit = defineEmits([
 	"update:modelValue", 
 	"files-before-upload", 
-	"uploaded", 
+	"uploaded-once", 
 	"uploaded-all", 
-	"file-removed"
+	"file-removed",
+	"file-delete",
+	"note-changed",
 	]);
 
 // Drop Events
@@ -174,6 +256,7 @@ let isDragovering = ref(false);
 let showProgress = ref(false);
 let error = ref('');
 let removedFiles = ref({});
+let location = ref({latitude: null, longitude: null});
 let pHeight = props.height
 
 /* -------------------------------------------------------------------------- */
@@ -211,7 +294,6 @@ function extensionMatched(file){
 	let accepts = props.accepts.replace('*', '').split(',')
 	if(!accepts.length) return true
 	return accepts.includes(extension?.toLowerCase())
-
 }
 async function auto_remove_files(){
 	try {
@@ -223,8 +305,9 @@ async function auto_remove_files(){
 				upoadedFiles.value[index].isRemoving = true
 				setTimeout(() => {
 					upoadedFiles.value.splice(index, 1)
-					removeFileFromFileList(index)
+					removeFiles_all_FromRawFileList()
 					myEmit("file-removed");
+					myEmit('update:modelValue', getUploadedFiles())
 				}, 300);
 			}
 		}
@@ -248,28 +331,52 @@ function removedFilesAsString(){
 
 /* -------------------------- End Helper Functions -------------------------- */
 
-function dropped(e) {
+async function getCurrentLocation(e) {
+  if (navigator.geolocation) {
+		await navigator.geolocation.getCurrentPosition(showPosition);
+	} else {
+		console.log("Geolocation is not supported by this browser.");
+	}
+
+	function showPosition(position) {
+		location.value.latitude = position.coords.latitude;
+		location.value.longitude = position.coords.longitude;
+		upoadedFiles.value?.forEach(file => {
+			file.location = H.clone(location.value);
+		})
+		myEmit('update:modelValue', getUploadedFiles())
+	}
+}
+
+ function dropped(e) {
   if (e.dataTransfer.files.length) {
     let files = e.dataTransfer.files;
-    inputElement.value.files = files
+    inputElement.value.files = files;	
     fileChanged(e);
   }
 }
 
-function fileChanged(e) {
+async function fileChanged(e) {
+	if(props.takeLocation){
+		await getCurrentLocation()
+	}
   let files = inputElement.value.files;
   var filesTotal = files.length;
-  upoadedFiles.value = [];  
-  for (var i = 0; i < filesTotal; ++i) {
-    upoadedFiles.value[i] = {
+  if(!props.useFreedom) upoadedFiles.value = [];
+	let uploaded_len = upoadedFiles.value?.length
+
+  for (var i = 0; i < (filesTotal); ++i) {
+	let new__index = !props.useFreedom ? i : (i + uploaded_len)
+    upoadedFiles.value[new__index] = {
       name: files[i].name,
       base64: e.target.result,
-      file: e.target.files[0],
       type: files[i].type,
       size: files[i].size,
       size_mb: byteToMB(files[i].size).toFixed(2),
       is_uploading: true,
       extension_matched: extensionMatched(files[i]),
+	  note: null,
+	  location: location.value,
 	  progress: {
 		loaded: null,
 		total: null,
@@ -284,14 +391,14 @@ function fileChanged(e) {
 	  /* -------------------------------------------------------------------------- */	  
       reader.addEventListener("load", async function (e) {
 		try {
-			upoadedFiles.value[i].base64 = e.target.result;
-			upoadedFiles.value[i].is_uploading = false;
-
-			myEmit('uploaded', upoadedFiles.value[i])
+			upoadedFiles.value[new__index].base64 = e.target.result;
+			upoadedFiles.value[new__index].is_uploading = false;
+			myEmit('uploaded-once', upoadedFiles.value[new__index])
 			if(!isUploading()) {
 				setTimeout(async() => {
 					await auto_remove_files()
 				}, 2000);
+				myEmit('uploaded-all', getUploadedFiles())
 				myEmit('update:modelValue', getUploadedFiles())
 			}
 		} catch (error) {
@@ -299,33 +406,33 @@ function fileChanged(e) {
 		}
       });
       reader.addEventListener("loadstart", function (e) {
-		upoadedFiles.value[i].is_uploading = true
+		upoadedFiles.value[new__index].is_uploading = true
       });
       reader.addEventListener("loadend", function (e) {
-		upoadedFiles.value[i].is_uploading = false
+		upoadedFiles.value[new__index].is_uploading = false
 		myEmit('update:modelValue', getUploadedFiles())
       });
       reader.addEventListener("abort", function (e) {
-	
+		console.log('abort');
       });
       reader.addEventListener("progress", function (e) {
         try {
 			if(e.lengthComputable){
-				upoadedFiles.value[i].progress.loaded = e.loaded
-				upoadedFiles.value[i].progress.total = e.total
+				upoadedFiles.value[new__index].progress.loaded = e.loaded
+				upoadedFiles.value[new__index].progress.total = e.total
 				let percent = (e.loaded * 100 / e.total) 
-				upoadedFiles.value[i].progress.percent = percent
+				upoadedFiles.value[new__index].progress.percent = percent
 
 			}
 		} catch (error) {}
       });
       reader.addEventListener("error", function (e) {
-		console.log('e.target.error', e.target.error);
+
         error.value = e.target.error
 		isDragovering.value = false
 		showProgress.value = false
 		upoadedFiles.value = []
-		removeFileFromFileList(false)
+		removeFiles_all_FromRawFileList()
       });
     }
     reader.readAsDataURL(files[i]);
@@ -334,16 +441,23 @@ function fileChanged(e) {
   if(filesTotal) myEmit('files-before-upload', upoadedFiles.value)
 }
 
-let removeFileFromFileList = (index) => {
-  const dt = new DataTransfer();
-  const input = inputElement.value;
-  const { files } = input;
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
-    // removing the file
-    if (index !== i) dt.items.add(file);
+let removeFiles_all_FromRawFileList = () => {
+  try {
+	const dt = new DataTransfer();
+	const input = inputElement.value;
+	const { files } = input;
+	for (let i = 0; i < 1000; i++) {
+		const file = files[i];
+		try {
+			// removing the file
+			dt.items.add(file);
+		} catch (error) {
+		}
+	}
+	input.files = dt.files; // Assign the updates list
+  } catch (error) {
+	console.warn('File Removing failed');
   }
-  input.files = dt.files; // Assign the updates list
 }
 
 function removeFile(index=0) {
@@ -351,8 +465,9 @@ function removeFile(index=0) {
 		upoadedFiles.value[index].isRemoving = true
 		setTimeout(() => {
 			upoadedFiles.value.splice(index, 1)
-			removeFileFromFileList(index)
+			removeFiles_all_FromRawFileList()
 			myEmit("file-removed");
+			myEmit('update:modelValue', getUploadedFiles())
 		}, 300);
 	} catch (error) {
 		
@@ -364,17 +479,33 @@ function removeFileAll() {
 			upoadedFiles.value[index].isRemoving = true
 			setTimeout(() => {
 				upoadedFiles.value.splice(index, 1)
-				removeFileFromFileList(index)
+				removeFiles_all_FromRawFileList()
 				myEmit("file-removed");
+				myEmit('update:modelValue', getUploadedFiles())
 			}, 300);
 		}
+		inputElement.value.value = null
 	} catch (error) {
 		
 	}
 }
-defineExpose({
-	removeFileAll
-})
+
+function downloadFile(document){
+    axios({
+		url: document.url, // File URL Goes Here
+		method: 'GET',
+		responseType: 'blob',
+	}).then((res) => {
+		var FILE = window.URL.createObjectURL(new Blob([res.data]));
+		var docUrl = window.document.createElement('a');
+		docUrl.href = FILE;
+		docUrl.setAttribute('download', document.name );
+		window.document.body.appendChild(docUrl);
+		docUrl.click();
+		window.document.body.removeChild(docUrl);
+		window.open(document.url, "_blank")
+	});
+}
 </script>
 
 <style scoped>
@@ -541,6 +672,7 @@ iframe{
 }
 .each-file .filename {
 	word-break: break-all;
+	font-size: 17px !important;
 }
 @media screen and (max-width: 700px) {	
 	.each-file .filename {
@@ -590,7 +722,7 @@ iframe{
     position: absolute;
     left: 0;
     top: 7px;
-    width: 50px;
+    width: 60px;
     height: 64px;
     background-color: #cccccc;
     -moz-border-radius: 6px;
@@ -608,7 +740,7 @@ iframe{
     content: "";
     position: absolute;
     top: 7px;
-    left: 30px;
+    left: 40px;
     overflow: hidden;
     width: 0;
     height: 0;

@@ -1,6 +1,7 @@
 <template>
   <div v-bind="$attrs">
     <label v-if="label" for="formFileLg" class="form-label">{{ label }}</label>
+
     <div v-if="mode=='default'" class="form-group input-preview">
       <input :disabled="disabled" type="file" id="file_34ffdcd" :accept="accept" @change="fileChanged" />
       <span v-if="modelValue" @click="removeFile()" class="close">
@@ -11,7 +12,7 @@
       <div v-if="modelValue">
         <div class="d-flex justify-content-between w-100 position-relative mt-2">
           <span class="filename">{{ fileName }}</span>
-          <span style="width: 3rem;"> <p class="highlight">{{ fileSize }}</p> </span>
+          <!-- <span style="width: 3rem;"> <p class="highlight">{{ fileSize }}</p> </span> -->
         </div>
       </div>
     </div>
@@ -116,7 +117,7 @@ img {
   opacity: 0;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 200px !important;
   left: 0;
   top: 0;
 }
@@ -134,7 +135,10 @@ img {
   border-radius: 50%;
 }
 .filename{
+   position: absolute;
   color: #787878;
+  top: 38%;
+  left: 35%;
 }
 .input-preview .close i {
   font-size: 1.5rem;
@@ -144,8 +148,8 @@ img {
 .input-preview {
   border: dashed rgb(96 95 95) 1px;
   border-radius: 0.5em;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 200px!important;
   min-height: 2.5rem;
   position: relative;
   transition: ease-in-out 750ms;

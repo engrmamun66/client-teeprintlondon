@@ -8,6 +8,8 @@
         <button @click="Toaster.success('Allah Mohmmad')" >TOaser</button>
 
         <btnLoader :show="!H.isPendingAnyApi('dfdf')"></btnLoader>
+
+        <el-BaseInput></el-BaseInput>
   </div>
 </template>
 

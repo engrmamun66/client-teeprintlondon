@@ -1,33 +1,36 @@
 <template>
-  <div v-bind="$attrs">
-    <div class="form-group">
-      <label v-if="label" class="pb-1"> {{ label }} </label>
-      <div class="switch switch-btn b2">
-        <input
-          :disabled="disabled"
-          @change="toggleStatus"
-          type="checkbox"
-          :checked="statusBoolean"
-          class="checkbox"
-        />
-        <div class="knobs">
-          <span>&nbsp;NO</span>
+  <div v-bind="$attrs" :style="`
+    --sw-height: ${sw.height};
+    --sw-width: ${sw.width};
+    --sw-boxWidth: ${sw.boxWidth};
+    --sw-boxHeight: ${sw.boxHeight};
+    --sw-left: ${sw.left};
+  `" >
+    <div :class="{'switch-flexar': inline, 'grayscale': disabled}" :style="` --s-yes:'${yes}'; --s-no:'${no};'`">
+        <label v-if="label" class="main-label" >{{label}}</label>
+        <div class="switch-area" :class="{['-size-' + size]: true}" >
+          <label class="switch" :class="{['-size-' + size]: true}" > 
+            <input type="checkbox" :disabled="disabled" :v-model="modelValue" :checked="is_checked" class="switch-input" :class="{['-size-' + size]: true}" @change="(e)=>{
+              $emit('update:modelValue', emtiableValue(e.target.checked));
+              $emit('change', emtiableValue(e.target.checked));
+            }" >
+            <span class="switch-label" :data-on="yes" :data-off="no" :class="{['-size-' + size]: true, 'bothVisible': bothVisible}"></span>
+            <span class="switch-handle" :class="{['-size-' + size]: true, 'bothVisible': bothVisible}"></span>
+          </label>
         </div>
-        <div class="layer"></div>
-      </div>
     </div>
   </div>
 </template>
 
+
 <script setup>
 let props = defineProps({
   modelValue: {
-    type: [Boolean, Number], // Accepts Boolean and 0/1
-    default: false,
+    default: 0,
     required: false,
-  },
+  },  
   label: {
-    default: false,
+    default: '',
     required: false,
   },
   disabled: {
@@ -35,147 +38,269 @@ let props = defineProps({
     default: false,
     required: false,
   },
-  options: {
+  yes: { // -----------important
+    type: String,
+    default: 'Yes',
     required: false,
-    default: () => ({}),
   },
-});
-
-let emit = defineEmits(['update:modelValue', 'change']);
-let options = ref(
-  Object.assign(
-    {
-      bg: '#0e0e0e',
-    },
-    props.options
-  )
-);
-
-// Computed property to handle modelValue as boolean
-let statusBoolean = computed({
-  get: () => Boolean(props.modelValue), // Convert 0/1 to boolean
-  set: (value) => {
-    emit('update:modelValue', value); // Emit the new value (true/false)
+  no: { // -----------important
+    type: String,
+    default: 'No',
+    required: false,
   },
-});
+  yesNoValue: { // -----------important
+    default: [1, 0],
+    required: false,
+  },
+  size: {
+    type: String,
+    default: 'md', // md | lg | sm
+    required: false,
+  },
+  inline: {
+    default: false,
+    required: false,
+  },
+  attr: {
+    default: {},
+    required: false,
+  },
+  bothVisible: {
+    default: false,
+    required: false,
+  },  
+})
+let emit = defineEmits([ 'update:modelValue', 'change'])
 
-// Method to toggle status
-function toggleStatus(event) {
-  let newValue = event.target.checked; // Extract only the boolean value
-  statusBoolean.value = newValue; // Update the status
-  emit('change', newValue); // Emit the new value explicitly (true/false)
+function changed(status) {
+  emit('change', status)
+
 }
+
+
+
+const emtiableValue = (isChecked)=>{
+  let [yesValue, noValue] = props.yesNoValue;
+  if(props.bothVisible){
+    if(isChecked) return noValue;
+    else return yesValue;
+  } else {
+    if(isChecked) return yesValue;
+    else return noValue;
+  }
+}
+
+const is_checked = computed(() => {
+  let [yesValue, noValue] = props.yesNoValue;
+  if(props.bothVisible){
+    return noValue == props.modelValue;
+  } else {
+    return yesValue == props.modelValue;
+  }
+})
+
+let sw = computed(() => {
+  let { size } = props;
+  switch (size) {
+    case 'md':
+      return {
+        height: '36px',
+        width: '76px',
+        boxWidth: '30px',
+        boxHeight: '30px',
+        left: '42px',
+        ...props.attr
+      }
+      break;
+    case 'lg':
+      return {
+        height: '36px',
+        width: '136px',
+        boxWidth: '60px',
+        boxHeight: '30px',
+        left: '72px',
+        ...props.attr
+      }
+      break;
+    case 'sm':
+      return {
+        height: '26px',
+        width: '56px',
+        boxWidth: '20px',
+        boxHeight: '20px',
+        left: '32px',
+        ...props.attr
+      }
+      break;
+    case 'xsm':
+      return {
+        height: '24px',
+        width: '50px',
+        boxWidth: '17px',
+        boxHeight: '18px',
+        left: '30px',
+        ...props.attr
+      }
+      break;
+  }
+})
+
 </script>
 
 
-
 <style scoped>
-.picker{
-    color: #0e0e0e;
-    color: #141414;
+@media (min-width: 500px) {
+  .switch-flexar{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 22px;
+  }
+  .switch-flexar label.main-label{
+    margin-right: 10px;
+    margin-bottom: 0;
+    min-width: max-content;
+  }
+  
 }
-.knobs,
-.layer {
+.switch-area{
+  width: 100%;
+}
+
+.switch {
+  display: block;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: var(--sw-width);
+  height: var(--sw-height);
+  padding: 1px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.switch-input {
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-}
-
-.switch-btn {
-  position: relative;
-  top: 50%;
-  width: 74px;
-  height: 36px;
-  overflow: hidden;
-}
-
-.switch.r,
-.switch.r .layer {
-  border-radius: 100px;
-}
-
-.switch.b2 {
-  border-radius: 3px;
-}
-
-.checkbox {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
   opacity: 0;
-  cursor: pointer;
-  z-index: 3;
+}
+.switch-label {
+  position: relative;
+  display: block;
+  height: inherit;
+  font-size: 10px;
+  /* text-transform: uppercase; */
+  background: #0c0c0c;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+  -webkit-transition: 0.15s ease-out;
+  -moz-transition: 0.15s ease-out;
+  -o-transition: 0.15s ease-out;
+  transition: 0.15s ease-out;
+  -webkit-transition-property: opacity background;
+  -moz-transition-property: opacity background;
+  -o-transition-property: opacity background;
+  transition-property: opacity background;
+}
+.switch-label:before, .switch-label:after {
+  position: absolute;
+  top: 50%;
+  margin-top: -.5em;
+  line-height: 1;
+  -webkit-transition: inherit;
+  -moz-transition: inherit;
+  -o-transition: inherit;
+  transition: inherit;
+}
+.switch-label:before {
+  content: attr(data-off);
+  right: 12px;
+  color: #f7f7f7;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+  font-weight: 400;
+  font-size: 12px;
 }
 
-.knobs {
-  z-index: 2;
+.switch-label.-size-sm:before {
+  right: 5px;
+  font-size: 11px;
+}
+.switch-label.-size-xsm:before {
+  right: 5px;
+  font-size: 9px;
 }
 
-.layer {
-  width: 100%;
-  background-color: v-bind(options.bg);
-  transition: 0.7s ease all;
-  z-index: 1;
+.switch-label:after {
+  content: attr(data-on);
+  font-weight: 400;
+  left: 10px;
+  color: f7f7f7;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  font-size: 13px;
 }
 
-/* Button 10 */
-.switch .knobs:before,
-.switch .knobs:after,
-.switch .knobs span {
+.switch-label.-size-sm:after {
+  left: 5px;
+  font-size: 11px;
+}
+.switch-label.-size-xsm:after {
+  left: 5px;
+  font-size: 9px;
+}
+.switch-input:checked ~ .switch-label {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+}
+.switch-input:checked ~ .switch-label:before {
+  opacity: 0;
+}
+.switch-input:checked ~ .switch-label:after {
+  opacity: 1;
+}
+
+.switch-label.bothVisible:before {
+  opacity: 1 !important;
+  z-index: 99999;
+}
+.switch-label.bothVisible:after {
+  opacity: 1 !important;
+  z-index: 99998;
+}
+
+.switch-handle {
   position: absolute;
   top: 4px;
-  width: 20px;
-  height: 10px;
-  font-size: 10px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 1;
-  padding: 9px 4px;
-  border-radius: 2px;
-  transition: 0.7s ease all;
-}
-
-.switch .knobs:before {
-    content: "";
-    left: 4px;
-    background-color: rgb(223, 41, 41);
-    width: 28px;
-    height: 28px;
-}
-
-.switch .knobs:after {
-  content: "Yes";
-  right: 10px;
-  color: #4e4e4e;
-}
-
-.switch .knobs span {
-  display: inline-block;
   left: 4px;
-  color: #fff;
-  z-index: 1;
+  width: var(--sw-boxWidth);
+  height: var(--sw-boxHeight);
+  background-color: #db2f04;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  transition: left 0.15s ease-out;
+  -webkit-transition: left 0.15s ease-out;
+  -moz-transition: left 0.15s ease-out;
+  -o-transition: left 0.15s ease-out;
+  -webkit-transition: left 0.15s ease-out;
+  -moz-transition: left 0.15s ease-out;
+  -o-transition: left 0.15s ease-out;
 }
 
-.switch .checkbox:checked + .knobs span {
-  color: #4e4e4e;
+.switch-input:checked ~ .switch-handle {
+  left: var(--sw-left);
+  background-color: var(--bg-primary);
+  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+} 
+
+.switch-green > .switch-input:checked ~ .switch-label {
+  background: var(--bg-primary);
 }
 
-.switch .checkbox:checked + .knobs:before {
-    left: 42px;
-    background-color: var(--bgcolor-secondary);
-    width: 28px;
-    height: 28px;
+.switch-handle.bothVisible {
+  background-color: var(--bg-cool-green) !important;
 }
 
-.switch .checkbox:checked + .knobs:after {
-  color: #fff;
-}
-
-.switch .checkbox:checked ~ .layer {
-  background-color: v-bind(options.bg);
-}
 </style>

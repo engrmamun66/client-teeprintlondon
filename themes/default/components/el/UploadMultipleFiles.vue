@@ -1,6 +1,7 @@
 <template>
   <div v-bind="$attrs">
     <label v-if="label" for="formFileLg" class="form-label">{{ label }}</label>
+    <span v-if="label" v-html="H.getRedStar()"></span>
     <div class="form-group input-preview">
       <input :disabled="disabled" :multiple="multiple" type="file" id="files_3454454" :accept="accept" @change="fileChanged" />
       <span v-if="!modelValue.length && !savedFiles.length" class="filename"> Select Files (max 5mb/file) </span>
@@ -69,19 +70,6 @@ let props = defineProps({
     default: "",
     required: false,
   },
-  col: {
-    type: String,
-    default: "",
-    required: true,
-  },
-  v:{
-      type: Object,
-      required: true, //validator
-  },
-  e:{
-      type: Object,
-      required: true, //errors
-  },
 });
 
 let base64 = ref("");
@@ -123,7 +111,6 @@ function removeFile(index) {
     props.modelValue.splice(index, 1)
   }, 800);
 }
-
 
 let getExcerpt = (text, maxlen=20) => {
   if(text.length > maxlen){
