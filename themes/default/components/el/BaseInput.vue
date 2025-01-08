@@ -100,11 +100,11 @@
       </div>
     </div>
     <template v-if="addressSearchFromGoogle">
-      <GoogleAddressPicker
+      <!-- <GoogleAddressPicker
         ref="pickerAddress"
         :countryCode="countryCode"
         @changeAddress="changeAddress"
-      ></GoogleAddressPicker>
+      ></GoogleAddressPicker> -->
     </template>
   </div>
 </template>

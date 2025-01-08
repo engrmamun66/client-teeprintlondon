@@ -13,4 +13,7 @@ export default {
   async create(payload = {}) {
     return await ApiAuth().post(`${prefix}`, payload, { formData: true });
   },
+  async getCategories(config = {}) {
+    return await ApiAuth().get(`${prefix}`, config );
+  },
 };

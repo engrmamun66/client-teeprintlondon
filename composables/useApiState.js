@@ -19,6 +19,8 @@ function createApiHandler({accessToken}) {
         baseURL: useRuntimeConfig()?.public?.['API_BASE_URL'],
         timeout: 0
     }
+
+    console.log({options})
     
     if (accessToken){
         authorization: "Bearer" + " " +  useCookie('access_token').value || ''
@@ -75,6 +77,7 @@ function Api() {
     return createApiHandler({accessToken: false})
 }
 function ApiAuth({accessToken=true}={}) {
+    console.log("=================================================>>>>>Mamun Vai")
     return createApiHandler({accessToken: true})
 }
 

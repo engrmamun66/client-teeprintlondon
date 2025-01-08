@@ -8,12 +8,12 @@
     />
     <admin-card :showHeader="true" :title="'Category List'">
       <template v-slot:header-buttons>
-        <Button
+        <button
           class="btn btn-success m-3"
           @click="showCategoryModal = !showCategoryModal"
         >
-          <i-las t="plus" /> Category
-        </Button>
+          <i-las t="plus" /> Add Category
+        </button>
       </template>
 
       <div class="row">
@@ -25,30 +25,35 @@
         >
           <thead>
             <tr>
-              <th>ইনস্টিটিউটের নাম <i-las t="sort-asc" /></th>
-              <th>ইমেইল</th>
-              <th>মোবাইল</th>
-              <th>এ্যাকশন</th>
+              <th>Category Name <i-las t="sort-asc" /></th>
+              <th>Image</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="odd">
+            <tr
+              class="odd"
+              v-for="(category, index) in Categorystore.categoryList"
+            >
               <td>
                 <div class="px-2">
-                  <span>Test</span>
+                  <span>{{ category?.name }}</span>
                 </div>
               </td>
               <td>
                 <div class="px-2">
                   <p>
-                    <span>jhfdhfdf</span>
+                    <span>{{ category?.image }}</span>
                   </p>
                 </div>
               </td>
               <td>
                 <div class="px-2">
                   <p>
-                    <span>dfdkjfjk</span>
+                    <span>{{
+                      category?.status == 1 ? "Active" : "Inactive"
+                    }}</span>
                   </p>
                 </div>
               </td>
@@ -83,7 +88,6 @@
                       <el-BaseInput
                         type="text"
                         label="Name"
-                        col="father_occupation"
                         v-model="categoryattribute.name"
                       />
                     </div>
@@ -124,18 +128,23 @@
                     style="min-width: 200px"
                     label=""
                   >
-                    <div class="form-group text-muted">
-                      <label> Sub Caategory</label>
+                    <div
+                      class="form-group text-muted"
+                      v-if="categoryattribute.is_parent == 0"
+                    >
+                      <label>Parent Category</label>
                       <span class="text-danger p-1">*</span>
                       <select
                         class="form-control"
-                        v-model="categoryattribute.sub_category_id"
+                        v-model="categoryattribute.parent_id"
                       >
-                        <option value="" class="text-muted">
+                        <option :value="null" class="text-muted">
                           -Please Select-
                         </option>
                         <option
-                          v-for="(item, index) in Sub_category"
+                          v-for="(
+                            item, index
+                          ) in Categorystore.parentcategorylists"
                           :key="index"
                           :value="item.id"
                         >
@@ -155,7 +164,7 @@
                     <div style="display: flex; gap: 1rem; align-items: center">
                       <p class="mt-3">Status</p>
                       <el-Radio
-                        name="is_tracked"
+                        name="status"
                         :value="1"
                         label="Active"
                         v-model="categoryattribute.status"
@@ -163,7 +172,7 @@
                         Active
                       </el-Radio>
                       <el-Radio
-                        name="is_tracked"
+                        name="status"
                         :value="0"
                         label="Inactive"
                         v-model="categoryattribute.status"
@@ -180,7 +189,7 @@
           </div>
 
           <div class="col-12">
-            <RedactorEditor v-model="categoryattribute.description"/>
+            <RedactorEditor v-model="categoryattribute.description" />
           </div>
           <div class="col-6 mt-3">
             <div class="form-group">
@@ -192,7 +201,6 @@
                     {{
                       categoryattribute.image.name || categoryattribute.image
                     }}
-                   
                   </p>
                 </div>
               </div>
@@ -215,9 +223,6 @@
             </div>
           </div> -->
           <div class="ionic-card-footer justify-content-end">
-            <button type="button" class="leap-btn leap-cancel-btn m-1">
-              Cancel
-            </button>
             <button
               type="button"
               class="leap-btn leap-submit-btn me-2 m-1"
@@ -229,6 +234,9 @@
                 color="black"
               /> -->
             </button>
+            <button type="button" class="leap-btn leap-cancel-btn m-1">
+              Cancel
+            </button>
           </div>
         </div>
       </template>
@@ -237,7 +245,8 @@
 </template>
 
 <script setup>
-import { useCategorystore } from "~/store/Category";
+// import { useCategorystore } from "~/store/Category";
+import { useCategorystore } from "../../../../../store/Category"
 const Categorystore = useCategorystore();
 
 let editMode = ref(false);
@@ -258,7 +267,7 @@ let Sub_category = [
 
 function isparent() {
   setTimeout(() => {
-    console.log("adkcbakdcbkadbc", categoryattribute.value.is_parent);
+    // console.log("adkcbakdcbkadbc", categoryattribute.value.is_parent);
     if (categoryattribute.value.is_parent == 0) {
       Categorystore.getParentcategorylist();
     }
@@ -269,6 +278,10 @@ function handleSubmit() {
   // console.log( categoryattribute.value.image )
   Categorystore.create(categoryattribute.value);
 }
+
+onMounted(() => {
+  Categorystore.getCategories();
+});
 </script>
 <style scoped>
 fieldset {

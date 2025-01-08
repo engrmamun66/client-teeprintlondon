@@ -27,7 +27,7 @@
                         class="form-control"
                         placeholder="ই-মেইল"
                       />
-                      <span
+                      <!-- <span
                         v-if="
                           authStore.loginFormError.type == 422 &&
                           Object.keys(authStore.loginFormError.messages).length
@@ -41,7 +41,7 @@
                             ? authStore.loginFormError.messages.email.join(", ")
                             : ""
                         }}
-                      </span>
+                      </span> -->
                     </div>
                     <div class="form-group">
                       <label>Password</label>
@@ -51,7 +51,7 @@
                         class="form-control"
                         placeholder="পাসওয়ার্ড"
                       />
-                      <span
+                      <!-- <span
                         v-if="
                           authStore.loginFormError.type == 422 &&
                           Object.keys(authStore.loginFormError.messages).length
@@ -67,7 +67,7 @@
                               )
                             : ""
                         }}
-                      </span>
+                      </span> -->
                     </div>
                     <!-- <p
                       v-if="
@@ -113,7 +113,7 @@
 import { useAuthStore } from "~/store/Auth";
 const authStore = useAuthStore();
 const userData = ref({ email: null, password: null });
-import { useValidateForm } from "@/composables/useValidateForm";
+// import { useValidateForm } from "@/composables/useValidateForm";
 const { validateForm, isValid } = useValidateForm();
 definePageMeta({
   keepalive: false,
@@ -131,16 +131,17 @@ const validationRules = {
   password: { required: true },
 };
 const submitLoginForm = async () => {
-  await validateForm(
-    userData.value,
-    validationRules,
-    authStore.loginFormError.messages
-  );
-  if (isValid(authStore.loginFormError.messages)) {
-    await authStore.login(userData.value);
-  } else {
-    authStore.loginFormError.type = 422;
-  }
+  // await validateForm(
+  //   userData.value,
+  //   validationRules,
+  //   authStore.loginFormError.messages
+  // );
+  await authStore.login(userData.value);
+  // if (isValid(authStore.loginFormError.messages)) {
+  //   await authStore.login(userData.value);
+  // } else {
+  //   authStore.loginFormError.type = 422;
+  // }
 };
 onMounted(() => {});
 </script>
