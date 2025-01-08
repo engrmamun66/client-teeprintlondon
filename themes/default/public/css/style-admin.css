@@ -29,10 +29,10 @@ body.bl{
 :root {
     --bgcolor-primary: #05c361;
     --bgcolor-secondary: #0d9d59;
-    --bgcolor-tertiary: #1e1e2d;
+    --bgcolor-tertiary: #f0f0f0;
     --bgcolor-navyblue-light: #2e2e3c4d;
     --bgcolor-navyblue-light-1: #242433;
-    --bgcolor-navyblue-light-2: #1B1B29;
+    --bgcolor-lightgray: #1B1B29;
     --bgcolor-white: #ffffff;
     --bgcolor-black: #000000;
     --bgcolor-lightgray: #F5F5F5;
@@ -45,7 +45,7 @@ body.bl{
 
     --fontcolor-primary: #05c361;
     --fontcolor-secondary: #1e1e2d;
-    --fontcolor-tertiary: #adadaf;
+    --fontcolor-tertiary: #333333;
     --fontcolor-white: #ffffff;
     --fontcolor-darkwhite-1: #f2f3f8;
     --fontcolor-darkwhite-2: #eeeeee;
@@ -66,7 +66,7 @@ body.bl{
     --linecolor-navyblue-light: #2d2d3c;
     --linecolor-navyblue-light-1: #2a2a3a;
     --linecolor-navyblue-light-3: #2c2c2c;
-    --linecolor-black: #242433;
+    --linecolor-black: #d4d4d4;
     --linecolor-white: #ffffff;
     --linecolor-lightgray: #eeeeee;
     --linecolor-lightgray-1: #f2f3f8;
@@ -291,17 +291,17 @@ select {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #242433;
+    background: #dfdfdf;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #000000;
+    background: #c7c7c7;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #000000;
+    background: #c7c7c7;
 }
 
 hr {
@@ -642,7 +642,7 @@ all admin css
 ==========================*/
 .leap-admin-body {
     /* background-color: var(--bgcolor-lightgray); */
-    background-color: var(--bgcolor-navyblue-light-1);
+    background-color: var(--bgcolor-white);
 }
 
 .leap-admin-main-wrapper {
@@ -872,7 +872,7 @@ Accoridion menu css
 }
 
 .leap-admin-main-wrapper .leap-admin-accordion li a:hover {
-    background-color: var(--bgcolor-navyblue-light-2);
+    background-color: var(--bgcolor-lightgray);
 }
 
 .leap-admin-main-wrapper .leap-admin-accordion li a {
@@ -987,7 +987,7 @@ Accoridion menu css
 }
 
 .leap-admin-accordion li a.active {
-    background-color: var(--bgcolor-navyblue-light-2) !important;
+    background-color: var(--bgcolor-lightgray) !important;
 }
 
 
@@ -995,15 +995,15 @@ Accoridion menu css
 Accordion sub menu css 
 ===============================*/
 .leap-admin-main-wrapper .accord-submenu {
-    background-color: var(--bgcolor-navyblue-light-2);
+    background-color: var(--bgcolor-lightgray);
     font-size: 14px;
     display: none;
-    border-top: 1px solid var(--bgcolor-navyblue-light-2);
+    border-top: 1px solid var(--bgcolor-lightgray);
     transition: .3s;
 }
 
 .leap-admin-main-wrapper .accord-submenu li {
-    border-bottom: 1px solid var(--bgcolor-navyblue-light-2);
+    border-bottom: 1px solid var(--bgcolor-lightgray);
 }
 
 .leap-admin-main-wrapper .accord-submenu li a {
@@ -1045,10 +1045,13 @@ Admin Content css
 
 .leap-admin-main-wrapper #leap-admin-main-container {
     width: 100%;
-    margin-left: 280px;
+    /* margin-left: 280px; */
     margin-top: 70px;
     padding: 0 30px;
     transition: all 0.3s;
+}
+:has(.leap-admin-sidebar.active) .leap-admin-main-wrapper #leap-admin-main-container { 
+    margin-left: 280px; 
 }
 
 .leap-admin-main-wrapper #leap-admin-main-container.margin_left {
@@ -4114,7 +4117,7 @@ profile modal css
 }
 
 .profile-modal-leftside {
-    background-color: var(--bgcolor-navyblue-light-2);
+    background-color: var(--bgcolor-lightgray);
     border: 1px solid var(--linecolor-navyblue-light-1);
     height: calc(100%);
 }
@@ -4144,7 +4147,7 @@ profile modal css
 }
 
 .profile-modal-rightside {
-    background-color: var(--bgcolor-navyblue-light-2);
+    background-color: var(--bgcolor-lightgray);
     border: 1px solid var(--linecolor-navyblue-light-1);
     padding: 10px;
     height: calc(100%);
