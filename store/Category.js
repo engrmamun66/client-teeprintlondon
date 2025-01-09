@@ -6,7 +6,7 @@ export const useCategorystore = defineStore("category", () => {
   let parentcategorylist = ref([]);
   let categoryList = ref([]);
   let categoryattribute = ref({
-    id:null,
+    id: null,
     name: null,
     is_parent: 1,
     parent_id: null,
@@ -18,12 +18,11 @@ export const useCategorystore = defineStore("category", () => {
   async function getParentcategorylist() {
     try {
       let response = await Category.parentcategorylist();
-      console.log("adokcbakdcb",response.data.data);
-        if (response.status == 200 ) {
-          console.log("adokcbakdcb",response.data.data);
-          parentcategorylist.value = response.data.data
-
-        }
+      console.log("adokcbakdcb", response.data.data);
+      if (response.status == 200) {
+        console.log("adokcbakdcb", response.data.data);
+        parentcategorylist.value = response.data.data;
+      }
     } catch (error) {
       //   if (error.response.status == 401) {
       //     registrationFormError.value.type = 401;
@@ -99,12 +98,11 @@ export const useCategorystore = defineStore("category", () => {
       let response = await Category.showCategory(id);
 
       if (response.status == 201 || 200) {
-        category.value = response.data.data
-        categoryattribute.value.name = category.value.name
+        category.value = response.data.data;
+        categoryattribute.value.name = category.value.name;
 
-        showCategoryModal.value = true
+        showCategoryModal.value = true;
         console.log("=======>>>>>>>>>>>>>>", response.data.data);
-        
       }
     } catch (error) {
       //   if (error.response.status == 401) {
@@ -128,7 +126,7 @@ export const useCategorystore = defineStore("category", () => {
     parentcategorylist,
     category,
     categoryattribute,
-    showCategoryModal
+    showCategoryModal,
   };
 });
 
