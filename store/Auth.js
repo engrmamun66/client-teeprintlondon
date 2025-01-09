@@ -15,11 +15,11 @@ export const useAuthStore = defineStore("auth", () => {
         try {
             loading.value = true;
             let response = await Auth.login(payload);
-            if (response.status == 200) {
-                localStorage.setItem('access_token', response?.data?.data?.access_token);
+            if (response.status == 200) { 
+                useCookie('access_token').value = response?.data?.data?.access_token 
                 localStorage.setItem('user', JSON.stringify(response?.data?.data?.user));
                 console.log(response.data.data.user)
-                navigateTo('/');
+                navigateTo({name: 'dashboard'});
             }
         } catch (err) {
             loading.value = false;
@@ -31,7 +31,7 @@ export const useAuthStore = defineStore("auth", () => {
                 loginFormError.value.type = 422;
                 loginFormError.value.messages = err.response?.data.errors;
             }
-            console.log("loginFormError.value.message", loginFormError.value.messages);
+            console.log("loginFormError.value.message", err);
         }
     }
 
@@ -40,7 +40,7 @@ export const useAuthStore = defineStore("auth", () => {
             let response = await Auth.register(payload);
             if (response.status == 201) {
                 commonStore.toaster('success', 'Registration successful');
-                navigateTo('/login');
+                navigateTo({name: 'login'});
             }
         } catch (error) {
             if (error.response.status == 401) {
@@ -60,8 +60,8 @@ export const useAuthStore = defineStore("auth", () => {
             if (response.status == 200) {
                 loading.value = false;
                 setTimeout(() => {
-                    localStorage.removeItem("access_token");
-                    this.router.push({ name: 'Login' });
+                    localStorage.removeItem("access_token"); 
+                    navigateTo({name: 'login'});
                 }, 500);
             }
         } catch (error) {

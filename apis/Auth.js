@@ -12,10 +12,10 @@ export const AuthEndpoints = {
 
 export default {
     async login(payload = {}, config = {}){
-        return await ApiAuth(false).post(`${prefix}/login`, payload, config)
+        return await ApiAuth().post(`${prefix}/login`, payload, config)
     },
     async register(payload = {}, config = {}) {
-        return await ApiAuth(false).post(`${prefix}/register`, payload, config)
+        return await ApiAuth().post(`${prefix}/register`, payload, config)
     },
     async logout(payload={}, config={}){
         return await ApiAuth().post(`${prefix}/logout`, payload, config)

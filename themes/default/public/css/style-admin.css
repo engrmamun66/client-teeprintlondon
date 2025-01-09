@@ -2925,7 +2925,6 @@ Login and Register css
 ==============================*/
 .login-register {
     background-color: var(--bgcolor-tertiary);
-    /* background-image: url("../img/login-bg.png"); */
     position: relative;
     background-position: center center;
     background-repeat: no-repeat;
