@@ -23,7 +23,13 @@ function createApiHandler({accessToken}) {
         } 
         
         if (accessToken){
-            authorization: "Bearer" + " " +  useCookie('access_token').value || ''
+            // authorization: "Bearer" + " " +  useCookie('access_token').value || ''
+
+            options['headers'] = {                
+                   authorization: "Bearer" + " " +  useCookie('access_token').value || ''
+
+            }
+
         }
     
         let api = axios.create(options)

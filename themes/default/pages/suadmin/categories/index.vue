@@ -10,7 +10,9 @@
       <template v-slot:header-buttons>
         <button
           class="btn btn-success m-3"
-          @click="showCategoryModal = !showCategoryModal"
+          @click="
+            Categorystore.showCategoryModal = !Categorystore.showCategoryModal
+          "
         >
           <i-las t="plus" /> Add Category
         </button>
@@ -59,19 +61,52 @@
               </td>
               <td>
                 <ul class="d-flex justify-content-evenly td-actions">
-                  <li>
-                    <i-las t="home" />
+                  <li class="d-flex justify-content-evenly">
+                    <p tooltip="Delete" flow="up">
+                      <i-las
+                        t="trash"
+                        class="size-sm cp"
+                        @click="
+                          showConfirmation = true;
+                          categoryId = category.id;
+                        "
+                      />
+                    </p>
+                    <p tooltip="Edit" flow="up">
+                      <i-las
+                        t="edit"
+                        class="size-sm cp"
+                        @click="Categorystore.showCategory(category.id)"
+                      />
+                    </p>
                   </li>
                 </ul>
               </td>
             </tr>
           </tbody>
         </table>
+
+        <Modal-Confirm
+          v-if="showConfirmation"
+          v-model="showConfirmation"
+          :skipAutoClose="false"
+          @yes="
+            async () => {
+              let isDeleted = await Categorystore.deleteCategory(categoryId);
+              if (isDeleted) {
+                showConfirmation = false;
+                categoryId = null;
+              }
+            }
+          "
+        >
+          <template v-if="showConfirmation"> Are you sure? </template>
+        </Modal-Confirm>
       </div>
     </admin-card>
 
     <modal-global
-      v-model="showCategoryModal"
+      v-model="Categorystore.showCategoryModal"
       :footer="false"
       title=" Add Category"
     >
@@ -88,7 +123,7 @@
                       <el-BaseInput
                         type="text"
                         label="Name"
-                        v-model="categoryattribute.name"
+                        v-model="Categorystore.categoryattribute.name"
                       />
                     </div>
                   </div>
@@ -102,24 +137,32 @@
                         style="display: flex; gap: 1rem; align-items: center"
                       >
                         <p class="mt-3">Is Parent</p>
-                        <el-Radio
-                          name="is_tracked"
-                          :value="1"
-                          label="Yes"
-                          @click="isparent()"
-                          v-model="categoryattribute.is_parent"
-                        >
-                          Yes
-                        </el-Radio>
-                        <el-Radio
-                          name="is_tracked"
-                          :value="0"
-                          label="No"
-                          v-model="categoryattribute.is_parent"
-                          @click="isparent()"
-                        >
-                          No
-                        </el-Radio>
+                        <div>
+                          <label>
+                            <input
+                              type="radio"
+                              name="is_parent1"
+                              :value="1"
+                              v-model="
+                                Categorystore.categoryattribute.is_parent
+                              "
+                              @click="isparent()"
+                            />
+                            Yes 
+                          </label>
+                          <label>
+                            <input
+                              type="radio"
+                              name="is_parent2"
+                              :value="0"
+                              v-model="
+                                Categorystore.categoryattribute.is_parent
+                              "
+                              @click="isparent()"
+                            />
+                            No 
+                          </label>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -130,13 +173,15 @@
                   >
                     <div
                       class="form-group text-muted"
-                      v-if="categoryattribute.is_parent == 0"
+                      v-if="
+                        Categorystore.categoryattribute?.is_parent === 0
+                      "
                     >
                       <label>Parent Category</label>
                       <span class="text-danger p-1">*</span>
                       <select
                         class="form-control"
-                        v-model="categoryattribute.parent_id"
+                        v-model="Categorystore.categoryattribute.parent_id"
                       >
                         <option :value="null" class="text-muted">
                           -Please Select-
@@ -144,7 +189,7 @@
                         <option
                           v-for="(
                             item, index
-                          ) in Categorystore.parentcategorylists"
+                          ) in Categorystore.parentcategorylist"
                           :key="index"
                           :value="item.id"
                         >
@@ -167,7 +212,7 @@
                         name="status"
                         :value="1"
                         label="Active"
-                        v-model="categoryattribute.status"
+                        v-model="Categorystore.categoryattribute.status"
                       >
                         Active
                       </el-Radio>
@@ -175,12 +220,12 @@
                         name="status"
                         :value="0"
                         label="Inactive"
-                        v-model="categoryattribute.status"
+                        v-model="Categorystore.categoryattribute.status"
                       >
                         Inactive
                       </el-Radio>
 
-                      <!-- <pre>{{ categoryattribute.status }}</pre> -->
+                      <!-- <pre>{{ Categorystore.categoryattribute.status }}</pre> -->
                     </div>
                   </div>
                 </div>
@@ -189,17 +234,22 @@
           </div>
 
           <div class="col-12">
-            <RedactorEditor v-model="categoryattribute.description" />
+            <RedactorEditor
+              v-model="Categorystore.categoryattribute.description"
+            />
           </div>
           <div class="col-6 mt-3">
             <div class="form-group">
               <div class="date-box">
                 <div class="date-box-input">
-                  <el-DropImage v-model="categoryattribute.image" />
-                  <p v-if="categoryattribute.image">
+                  <el-DropImage
+                    v-model="Categorystore.categoryattribute.image"
+                  />
+                  <p v-if="Categorystore.categoryattribute.image">
                     Uploaded Image URL:
                     {{
-                      categoryattribute.image.name || categoryattribute.image
+                      Categorystore.categoryattribute.image.name ||
+                      Categorystore.categoryattribute.image
                     }}
                   </p>
                 </div>
@@ -246,19 +296,12 @@
 
 <script setup>
 // import { useCategorystore } from "~/store/Category";
-import { useCategorystore } from "../../../../../store/Category"
+import { useCategorystore } from "../../../../../store/Category";
 const Categorystore = useCategorystore();
-
+let showConfirmation = ref(false);
 let editMode = ref(false);
-let showCategoryModal = ref(true);
-let categoryattribute = ref({
-  name: null,
-  is_parent: 1,
-  parent_id: null,
-  image: null,
-  description: null,
-  status: 1,
-});
+
+let categoryId = ref(null);
 
 let Sub_category = [
   { id: 1, name: "Sub Product 1" },
@@ -267,16 +310,24 @@ let Sub_category = [
 
 function isparent() {
   setTimeout(() => {
-    // console.log("adkcbakdcbkadbc", categoryattribute.value.is_parent);
-    if (categoryattribute.value.is_parent == 0) {
+    if (Categorystore.categoryattribute?.is_parent == 0) {
+      console.log("adlkvcnladkjnc", Categorystore.categoryattribute?.is_parent);
       Categorystore.getParentcategorylist();
     }
   }, 100);
 }
 
 function handleSubmit() {
-  // console.log( categoryattribute.value.image )
-  Categorystore.create(categoryattribute.value);
+  // console.log( Categorystore.categoryattribute.image )
+  Categorystore.categoryattribute.status = Categorystore.categoryattribute
+    .status
+    ? 1
+    : 0;
+  Categorystore.categoryattribute.is_parent = Categorystore.categoryattribute
+    .is_parent
+    ? 1
+    : 0;
+  Categorystore.create(Categorystore.categoryattribute);
 }
 
 onMounted(() => {
