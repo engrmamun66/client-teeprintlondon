@@ -11,13 +11,27 @@ export const useCategorystore = defineStore("category", () => {
     is_parent: 1,
     parent_id: null,
     image: null,
+    image_url: null,
     description: null,
     status: 1,
   });
+
   let showCategoryModal = ref(false);
+  function resetCategoryAttribute() {
+    categoryattribute.value = {
+      id: null,
+      name: null,
+      is_parent: 1,
+      parent_id: null,
+      image: null,
+      image_url: null,
+      description: null,
+      status: 1,
+    };
+  }
   async function getParentcategorylist() {
     try {
-      let response = await Category.parentcategorylist();
+      let response = await Category.parentCategoryList();
       console.log("adokcbakdcb", response.data.data);
       if (response.status == 200) {
         console.log("adokcbakdcb", response.data.data);
@@ -37,10 +51,13 @@ export const useCategorystore = defineStore("category", () => {
   async function create(payload = {}) {
     try {
       let response = await Category.create(payload);
-      console.log(response.data);
-      //   if (response.status == 201) {
-      //     navigateTo("/login");
-      //   }
+      // console.log(response.data);
+      if (response.data.success) {
+        await getCategories();
+        showCategoryModal.value = false;
+        resetCategoryAttribute();
+        Toaster.success("Category Created");
+      }
     } catch (error) {
       //   if (error.response.status == 401) {
       //     registrationFormError.value.type = 401;
@@ -78,6 +95,7 @@ export const useCategorystore = defineStore("category", () => {
       if (response.status == 201 || 200) {
         // console.log(response.data.data.data);
         getCategories();
+        Toaster.success("Category Deleted");
         return true;
       }
     } catch (error) {
@@ -97,10 +115,21 @@ export const useCategorystore = defineStore("category", () => {
     try {
       let response = await Category.showCategory(id);
 
-      if (response.status == 201 || 200) {
+      if (response.status == 200) {
         category.value = response.data.data;
         categoryattribute.value.name = category.value.name;
+        categoryattribute.value.status = category.value.status;
 
+        categoryattribute.value.image_url = category.value.image_url;
+        categoryattribute.value.description = category.value.description;
+        categoryattribute.value.id = category.value.id;
+
+        // console.log("adkcbkadcbkadcbkjadbc", categoryattribute.value.description)
+        if (category.value.parent_id) {
+          categoryattribute.value.parent_id = category.value.parent_id;
+          console.log("akdcnbkadbckjadbckbadckbadc", category.value.parent_id);
+          categoryattribute.value.is_parent = 0;
+        }
         showCategoryModal.value = true;
         console.log("=======>>>>>>>>>>>>>>", response.data.data);
       }
@@ -116,12 +145,39 @@ export const useCategorystore = defineStore("category", () => {
     }
   }
 
+  async function update(id, payload = {}) {
+    try {
+      payload = {
+        ...payload,
+        _method: "PUT",
+      };
+      let response = await Category.update(id, payload);
+      console.log(response.data);
+      if (response.status == 200) {
+        await getCategories();
+        showCategoryModal.value = false;
+        resetCategoryAttribute();
+        Toaster.success("Category Updated");
+      }
+    } catch (error) {
+      //   if (error.response.status == 401) {
+      //     registrationFormError.value.type = 401;
+      //     registrationFormError.value.message = error.response.data.error;
+      //   } else {
+      //     registrationFormError.value.type = 422;
+      //     registrationFormError.value.messages = error.response.data.errors;
+      //   }
+    }
+  }
+
   return {
     getParentcategorylist,
     create,
     getCategories,
     deleteCategory,
     showCategory,
+    update,
+    resetCategoryAttribute,
     categoryList,
     parentcategorylist,
     category,

@@ -8,12 +8,7 @@
     />
     <admin-card :showHeader="true" :title="'Category List'">
       <template v-slot:header-buttons>
-        <button
-          class="btn btn-success m-3"
-          @click="
-            Categorystore.showCategoryModal = !Categorystore.showCategoryModal
-          "
-        >
+        <button class="btn btn-success m-3" @click="OpenModal()">
           <i-las t="plus" /> Add Category
         </button>
       </template>
@@ -45,9 +40,15 @@
               </td>
               <td>
                 <div class="px-2">
-                  <p>
-                    <span>{{ category?.image }}</span>
-                  </p>
+                  <img
+                    :src="
+                      category?.image_url
+                        ? category?.image_url
+                        : '/img/noimage.jpg'
+                    "
+                    alt="Category Image"
+                    class="w-16 h-16 object-cover rounded"
+                  />
                 </div>
               </td>
               <td>
@@ -76,7 +77,7 @@
                       <i-las
                         t="edit"
                         class="size-sm cp"
-                        @click="Categorystore.showCategory(category.id)"
+                        @click="showCategory(category.id)"
                       />
                     </p>
                   </li>
@@ -108,7 +109,7 @@
     <modal-global
       v-model="Categorystore.showCategoryModal"
       :footer="false"
-      title=" Add Category"
+      :title="editMode ? 'Update Category' : 'Add Category'"
     >
       <template #modalbody>
         <div class="row">
@@ -146,9 +147,8 @@
                               v-model="
                                 Categorystore.categoryattribute.is_parent
                               "
-                              @click="isparent()"
                             />
-                            Yes 
+                            Yes
                           </label>
                           <label>
                             <input
@@ -158,9 +158,8 @@
                               v-model="
                                 Categorystore.categoryattribute.is_parent
                               "
-                              @click="isparent()"
                             />
-                            No 
+                            No
                           </label>
                         </div>
                       </div>
@@ -173,9 +172,7 @@
                   >
                     <div
                       class="form-group text-muted"
-                      v-if="
-                        Categorystore.categoryattribute?.is_parent === 0
-                      "
+                      v-if="Categorystore.categoryattribute?.is_parent === 0"
                     >
                       <label>Parent Category</label>
                       <span class="text-danger p-1">*</span>
@@ -236,6 +233,7 @@
           <div class="col-12">
             <RedactorEditor
               v-model="Categorystore.categoryattribute.description"
+              ref="editor"
             />
           </div>
           <div class="col-6 mt-3">
@@ -244,12 +242,15 @@
                 <div class="date-box-input">
                   <el-DropImage
                     v-model="Categorystore.categoryattribute.image"
+                    v-model:img_url="Categorystore.categoryattribute.image_url"
+                    v-model:clear="clearImage"
                   />
                   <p v-if="Categorystore.categoryattribute.image">
-                    Uploaded Image URL:
+                    Uploaded Image Name:
                     {{
+                      (clearImage,
                       Categorystore.categoryattribute.image.name ||
-                      Categorystore.categoryattribute.image
+                        Categorystore.categoryattribute.image)
                     }}
                   </p>
                 </div>
@@ -279,10 +280,10 @@
               @click="handleSubmit"
             >
               Save
-              <!-- <BtnLoader
-                :show="H.isPendingAnyApi('Order:changeRentalDuration')"
+              <BtnLoader
+                :show="H.isPendingAnyApi('Category:create|Category:update')"
                 color="black"
-              /> -->
+              />
             </button>
             <button type="button" class="leap-btn leap-cancel-btn m-1">
               Cancel
@@ -300,38 +301,51 @@ import { useCategorystore } from "../../../../../store/Category";
 const Categorystore = useCategorystore();
 let showConfirmation = ref(false);
 let editMode = ref(false);
-
 let categoryId = ref(null);
-
+let editor = ref(null);
+let clearImage = ref(false);
 let Sub_category = [
   { id: 1, name: "Sub Product 1" },
   { id: 2, name: "Sub Product 2" },
 ];
 
-function isparent() {
-  setTimeout(() => {
-    if (Categorystore.categoryattribute?.is_parent == 0) {
-      console.log("adlkvcnladkjnc", Categorystore.categoryattribute?.is_parent);
-      Categorystore.getParentcategorylist();
-    }
-  }, 100);
+async function showCategory(id) {
+  await Categorystore.showCategory(id);
+
+  editor.value.setContent(Categorystore.categoryattribute.description);
+  // Categorystore.categoryattribute.image = "http://127.0.0.1:8000/storage/category/677f86019fd80.png"
+  editMode.value = true;
 }
 
 function handleSubmit() {
   // console.log( Categorystore.categoryattribute.image )
-  Categorystore.categoryattribute.status = Categorystore.categoryattribute
-    .status
-    ? 1
-    : 0;
-  Categorystore.categoryattribute.is_parent = Categorystore.categoryattribute
-    .is_parent
-    ? 1
-    : 0;
-  Categorystore.create(Categorystore.categoryattribute);
+  Categorystore.categoryattribute.status = Categorystore.categoryattribute.status? 1: 0;
+  Categorystore.categoryattribute.is_parent = Categorystore.categoryattribute.is_parent? 1: 0;
+  if (Categorystore.categoryattribute.is_parent == 0) {
+    if (Categorystore.categoryattribute.is_parent == null) {
+      Toaster.error("Please Select Parent Category");
+    }
+  }
+  if (editMode.value) {
+    Categorystore.update(
+      Categorystore.categoryattribute.id,
+      Categorystore.categoryattribute
+    );
+  } else {
+    Categorystore.create(Categorystore.categoryattribute);
+  }
 }
 
-onMounted(() => {
-  Categorystore.getCategories();
+function OpenModal() {
+  Categorystore.resetCategoryAttribute();
+  clearImage.value = true;
+  editMode.value = false;
+  Categorystore.showCategoryModal = !Categorystore.showCategoryModal;
+}
+
+onMounted(async () => {
+  await Categorystore.getCategories();
+  Categorystore.getParentcategorylist();
 });
 </script>
 <style scoped>

@@ -1,5 +1,6 @@
 import { AuthEndpoints } from './Auth';
 import { FrontendEndpoints } from './Frontend'; 
+import { CategoryEndpoints } from './Category'; 
 
 
 /**
@@ -10,7 +11,7 @@ import { FrontendEndpoints } from './Frontend';
 export const AllDeveloperDefinedEndPoints = {
     Auth: {...AuthEndpoints},
     Frontend: {...FrontendEndpoints},
-
+    Category: {...CategoryEndpoints},
 }
 
 /**

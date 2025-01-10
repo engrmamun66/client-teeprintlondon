@@ -1,39 +1,24 @@
 <script setup>
-import { ref, watch, defineEmits, defineProps, computed } from "vue";
+import { ref, watch, defineEmits, defineProps } from "vue";
 
-// Define props
+// Props for receiving the image URL
 const props = defineProps({
   img_url: {
     type: String,
     default: null,
   },
-  clear: {
-    type: Boolean,
-    default: false,
-  },
 });
 
-// Define emits
-const emit = defineEmits(["update:modelValue", "update:clear"]);
-
-// Reactive references
-const imageUrl = ref(props.img_url);
+const imageUrl = ref(props.img_url); // Initialize with the passed img_url prop
 const imageFile = ref(null);
 
-// Watch for changes in img_url to update imageUrl
+const emit = defineEmits(["update:modelValue"]); // Define emit event
+
+// Watch for changes to the img_url prop and update the imageUrl ref
 watch(() => props.img_url, (newVal) => {
   imageUrl.value = newVal;
 });
 
-// Watch for the clear prop to reset the component if true
-watch(() => props.clear, (newClear) => {
-  if (newClear) {
-    resetComponent();
-    emit("update:clear", false); // Notify parent to reset the clear prop
-  }
-});
-
-// Handle image upload
 function handleImageUpload(event) {
   const file = event.target.files[0];
   if (file) {
@@ -41,33 +26,20 @@ function handleImageUpload(event) {
       URL.revokeObjectURL(imageUrl.value);
     }
     imageUrl.value = URL.createObjectURL(file);
-    imageFile.value = file;
-    emit("update:modelValue", file);
+    imageFile.value = file; // Store the file
+    emit("update:modelValue", file); // Emit the file to parent
   }
 }
 
-// Remove the image
 function removeImage() {
   if (imageUrl.value) {
     URL.revokeObjectURL(imageUrl.value);
   }
   imageUrl.value = null;
   imageFile.value = null;
-  emit("update:modelValue", null);
-}
-
-// Reset the component
-function resetComponent() {
-  if (imageUrl.value) {
-    URL.revokeObjectURL(imageUrl.value);
-  }
-  imageUrl.value = null;
-  imageFile.value = null;
-  emit("update:modelValue", null);
+  emit("update:modelValue", null); // Emit null to parent
 }
 </script>
-
-
 
 <template>
   <div class="image-upload-preview">
