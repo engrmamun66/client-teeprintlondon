@@ -7,13 +7,36 @@
   
           <button @click="Toaster.success('Allah Mohmmad')" >TOaser</button>
   
-          <btnLoader :show="!H.isPendingAnyApi('dfdf')"></btnLoader>
-  
           <el-BaseInput></el-BaseInput>
+
+          <br>
+
+
+          <el-BaseSelectMultiple label="Multi Selector" v-model="selectedItem" :data="data"></el-BaseSelectMultiple>
     </div>
   </template>
   
   <script setup>
+
+let selectedItem = ref(null)
+let data = ref([
+      {
+            id: 1,
+            name: 'Product - 1',
+      },
+      {
+            id: 2,
+            name: 'Product - 2',
+      },
+      {
+            id: 3,
+            name: 'Product - 3',
+      },
+      {
+            id: 4,
+            name: 'Product - 4',
+      },
+])
   
   </script>
   <style scoped>

@@ -33,6 +33,40 @@ export const H = {
           : "") + path
       );
   },
+  delay: function (callback, time = 0, ...args) {
+    setTimeout(() => {
+      callback(...args);
+    }, time);
+  },
+  clone: function (data, { remove = [], add = {}, only = [] } = {}) {
+    data = JSON.parse(JSON.stringify(data));
+
+    if (data && typeof data === "object" && Array.isArray(data) === false) {
+      // Delete keys
+      if (remove?.length && Array.isArray(remove)) {
+        remove.forEach((key) => {
+          if (data.hasOwnProperty(key)) {
+            delete data[key];
+          }
+        });
+      }
+
+      // keep only
+      if (only?.length && Array.isArray(only)) {
+        const new_data = {};
+        only.forEach((key) => {
+          if (data.hasOwnProperty(key)) {
+            new_data[key] = data[key];
+          }
+        });
+        data = new_data;
+      }
+
+      return { ...data, ...add };
+    } else {
+      return data;
+    }
+  },
 
 };
 
