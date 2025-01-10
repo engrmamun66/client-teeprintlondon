@@ -338,6 +338,7 @@ function handleSubmit() {
 
 function OpenModal() {
   Categorystore.resetCategoryAttribute();
+  editor.value.setContent("")
   clearImage.value = true;
   editMode.value = false;
   Categorystore.showCategoryModal = !Categorystore.showCategoryModal;
