@@ -14,7 +14,7 @@ export default defineNuxtConfig({
 
   components: {
     dirs: [
-      `~/themes/${THEME}/components`,
+      `~/components`,
     ],
   },
 
