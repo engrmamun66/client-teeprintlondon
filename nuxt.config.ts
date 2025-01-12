@@ -5,11 +5,11 @@ const THEME = process.env.THEME ? process.env.THEME : "default";
 export default defineNuxtConfig({
   dir: {
     middleware: `middlewares`,
-    pages: `themes/${THEME}/pages`,
-    assets: `themes/${THEME}/assets`,
-    public: `themes/${THEME}/public`,
-    layouts: `themes/${THEME}/layouts`,
-    static: `themes/${THEME}/static`,
+    pages: `pages`,
+    assets: `assets`,
+    public: `public`,
+    layouts: `layouts`,
+    static: `static`,
   },
 
   components: {
