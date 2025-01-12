@@ -297,7 +297,7 @@
 
 <script setup>
 // import { useCategorystore } from "~/store/Category";
-import { useCategorystore } from "../../../../../store/Category";
+import { useCategorystore } from "~/store/Category";
 const Categorystore = useCategorystore();
 let showConfirmation = ref(false);
 let editMode = ref(false);
