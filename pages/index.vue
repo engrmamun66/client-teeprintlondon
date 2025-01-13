@@ -169,15 +169,8 @@
                                 <img src="/img/Home/Leonardo_Phoenix_10_A_few_vibrant_tshirts_with_diverse_colors_0.jpg" alt="" />
                                 <h5 class="pt-4">Get High Quality T shirt Print – Permanent & Washable</h5>
                                 <p>
-                                    Printed artwork on custom T-shirts may fade over time, 
-                                    especially after repeated washes, but the longevity of 
-                                    the design depends on several factors such as the printing method, 
-                                    high-quality inks, fabric type, and proper garment care. At Tee Print 
-                                    London, we specialize in high-quality custom T-shirt printing using 
-                                    durable inks and premium fabrics to ensure your designs stay vibrant 
-                                    longer. By following our recommended T-shirt care instructions, such 
-                                    as washing inside out with cold water, you can minimize fading and 
-                                    preserve the quality of your custom printed T-shirts for as long as possible.
+                                    Printed artwork on custom T-shirts can fade over time, especially with frequent washing, but the longevity of the design is influenced by factors like the printing method, ink quality, fabric type, and how the garment is cared for. At Tee Print London, we use advanced printing techniques, durable inks, and premium fabrics to ensure that your custom designs remain vibrant and long-lasting. To help maintain the quality of your printed T-shirts, we recommend washing them inside out with cold water, avoiding harsh detergents, and air drying. By following these simple care instructions, you can minimize fading and keep your custom T-shirts looking fresh for a longer time.
+                                    roper garment care is key to extending the life of your printed T-shirts. For example, washing your T-shirts inside out in cold water, avoiding harsh detergents
                                 </p>
                             </div>
                         </div>

@@ -33,7 +33,7 @@
                            <div class="teeprint-row teeprint-align-center">
                                <div class="teeprint-column-6">
                                    <h5 class="teeprint-sl-subtitle">Fast, Reliable, and Always On Time</h5>
-                                   <h1 class="teeprint-sl-maintitle">Same Day T-shirt Printing in London</h1>
+                                   <h1 class="teeprint-sl-maintitle">Same Day Hoodie Printing in London</h1>
                                    <p class="teeprint-sl-short-des">
                                        Tee Print London provides the most affordable same 
                                        day T-shirt printing services across London and the 
@@ -58,7 +58,7 @@
                            <div class="teeprint-row teeprint-align-center">
                                <div class="teeprint-column-6">
                                    <h5 class="teeprint-sl-subtitle">Fast, Reliable, and Always On Time</h5>
-                                   <h1 class="teeprint-sl-maintitle">Same Day T-shirt Printing in London</h1>
+                                   <h1 class="teeprint-sl-maintitle">Same Day Cap Printing in London</h1>
                                    <p class="teeprint-sl-short-des">
                                        Tee Print London provides the most affordable same 
                                        day T-shirt printing services across London and the 
