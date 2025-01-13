@@ -84,6 +84,9 @@
                                         <i class="bx bx-shopping-bag"></i>
                                     </a>
                                 </li> -->
+                                <li>
+                                    <a href="#" class="p-1 text-white size-1p4"> <i class="bx bx-shopping-bag fs-3"></i> </a>
+                                </li>
                             </ul>
 
                             <!-- Main menu  -->
