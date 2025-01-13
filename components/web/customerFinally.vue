@@ -15,23 +15,14 @@
                     </div>
                 </div>
                 <div class="row customer-finally-row mt-5">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-6">
-                        <div class="teeprintservice-box">
-                            <div class="teeprintservice-box-inner">
-                                <div class="teeprint-service-img">
-                                    <img src="/img/24-7-Open-150x150.png.webp" class="img-fluid">
-                                </div>
-                                <h5>We are Open 24/7 Including Bank Holidays</h5>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="col-lg-3 col-md-3 col-sm-6 col-6">
                         <div class="teeprintservice-box">
                             <div class="teeprintservice-box-inner">
                                 <div class="teeprint-service-img">
                                     <img src="/img/Own-Wirehouse-150x150.png.webp" class="img-fluid">
                                 </div>
-                                <h5>Garments Printed In London by Own Production House</h5>
+                                <h5>Custom Garments Printed Locally in Our London Facility</h5>
                             </div>
                         </div>
                     </div>
@@ -41,7 +32,17 @@
                                 <div class="teeprint-service-img">
                                     <img src="/img/Fastest-Turnaround-150x150.png.webp" class="img-fluid">
                                 </div>
-                                <h5>Fastest Turnaround, Same Day Delivery & Free Collection</h5>
+                                <h5>Fast Service, Same-Day Delivery, and Free Pickup Options</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+                        <div class="teeprintservice-box">
+                            <div class="teeprintservice-box-inner">
+                                <div class="teeprint-service-img">
+                                    <img src="/img/24-7-Open-150x150.png.webp" class="img-fluid">
+                                </div>
+                                <h5>Operating Nonstop, Bank Holidays Included</h5>
                             </div>
                         </div>
                     </div>
@@ -51,7 +52,7 @@
                                 <div class="teeprint-service-img">
                                     <img src="/img/Quality-150x150.png.webp" class="img-fluid">
                                 </div>
-                                <h5>High-Quality Print & Fabric that look great and last long</h5>
+                                <h5>High-Quality Prints and Fabrics Built for Style and Longevity</h5>
                             </div>
                         </div>
                     </div>
@@ -62,7 +63,7 @@
                                     <img src="/img/Refund-Policy-150x150.png.webp" class="img-fluid">
                                 </div>
                                 <h5>
-                                    Our Easy Refund Policy Gives You Peace of Mind
+                                    Hassle-Free Refund Policy for Your Peace of Mind
                                 </h5>
                             </div>
                         </div>
