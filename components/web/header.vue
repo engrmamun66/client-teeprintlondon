@@ -230,7 +230,11 @@
                         </div>
                     </div>
                     <div class="quote-btn-area">
-                        <a href="#" class="teeprint-button teeprint-theme-btn quote-btn">Instant Quote <i class="la la-arrow-right ml-2"></i></a>
+                        <a href="#" class="teeprint-button teeprint-theme-btn quote-btn bx bx-tada">
+                            <span class="">
+                                Instant Quote 
+                            </span>
+                            <i class="la la-arrow-right ml-2"></i></a>
                         <a href="#" class="p-1 text-white size-1p4"> <i class="bx bx-shopping-bag fs-3"></i> </a>
                     </div>
                 </div>

@@ -1031,11 +1031,11 @@ Header css
 
 .teeprint-nav-manu ul li .teeprint-submenu {
   position: absolute;
-   top: 100%;
-   left: 0;
-   width: 100%;
-   perspective: 1000px;
-   z-index: -1;
+  top: 100%;
+  left: 0;
+  width: calc(100% + 190px);
+  perspective: 1000px;
+  z-index: -1;
   background: var(--bgcolor-primary);
   animation: growDown 300ms ease-in-out forwards;
   transform-origin: top center;
