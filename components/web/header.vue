@@ -99,20 +99,22 @@
                                         <a href="#">Popular Products <i class="lni lni-chevron-down"></i></a>
                                         <div class="teeprint-submenu">
                                             <ul>
-                                                <li><a href="#">Sub Menu</a></li>
                                                 <li>
-                                                    <a href="#">Sub Menu <i class="lni lni-chevron-right"></i></a>
-                                                    <div class="teeprint-sub-submenu">
-                                                        <ul>
-                                                            <li><a href="#">Sub Menu</a></li>
-                                                            <li><a href="#">Sub Menu</a></li>
-                                                            <li><a href="#">Sub Menu</a></li>
-                                                            <li><a href="#">Sub Menu</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li><a href="#">Sub Menu</a></li>
-                                                <li><a href="#">Sub Menu</a></li>
+                                                      <a href="#">T-Shirt <i class="lni lni-chevron-right"></i></a>
+                                                        <div class="teeprint-sub-submenu">
+                                                            <ul>
+                                                                <li><a href="#">Custom T-Shirts</a></li>
+                                                                <li><a href="#">Printed T-Shirts</a></li>
+                                                                <li><a href="#">Bulk T-Shirt Orders</a></li>
+                                                               
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+
+                                                <li><a href="#">Hoodie</a></li>
+
+                                                <li><a href="#">Tote Bag</a></li>
+                                                <li><a href="#">Sports</a></li>
                                             </ul>
                                         </div>
                                     </li>
@@ -120,10 +122,17 @@
                                         <a href="#">Same Day Items<i class="lni lni-chevron-down"></i></a>
                                         <div class="teeprint-submenu">
                                             <ul>
-                                                <li><a href="#">Sub Menu</a></li>
-                                                <li><a href="#">Sub Menu</a></li>
-                                                <li><a href="#">Sub Menu</a></li>
-                                                <li><a href="#">Sub Menu</a></li>
+                                                <li><a href="#">Same Day Garment Printing</a></li>
+                                                        <li><a href="#">Same Day Hoodie Printing</a></li>
+                                                        <li><a href="#">Same Day Tote Bag Printing</a></li>
+                                                        <li><a href="#">Same Day Cap Printing</a></li>
+                                                        <li><a href="#">Same Day Document Printing London</a></li>
+                                                        <li><a href="#">Same Day Business Card Printing London</a></li>
+                                                        <li><a href="#">Same Day Flyer Leaflet Printing London</a></li>
+                                                        <li><a href="#">Same Day Poster Printing London</a></li>
+                                                        <li><a href="#">Same Day Booklet Brochure Printing London</a></li>
+                                                        <li><a href="#">Same Day Banner Printing London</a></li>
+                                                        <li><a href="#">Same Day Sticker Printing London</a></li>
                                             </ul>
                                         </div>
                                     </li>

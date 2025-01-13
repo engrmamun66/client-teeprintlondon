@@ -112,7 +112,7 @@
                                 <span class="line-decoration"></span> Discounted & Cheap
                             </h4>
                             <h2 class="section-heading-title-big">
-                                T-Shirt printing for Local Charity London
+                                Durable and Washable Custom T-Shirts – Designed Your Way
                             </h2>
                         </div>
                     </div>
