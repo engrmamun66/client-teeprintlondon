@@ -44,7 +44,7 @@
                                    <button class="teeprint-button teeprint-theme-btn teeprint-sl-button">Get A Free Quote<i class="la la-arrow-right"></i></button>
                                </div>
                                <div class="teeprint-column-6">
-                                   <img src="/img/Cap/Leonardo_Kino_XL_a_cap_image_written_teeprintlondon_on_that_ca_3adcfaadcadc.jpg" alt="slider img" />
+                                   <img src="/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_2.jpg" alt="slider img" />
                                </div>
                            </div>
                        </div>
