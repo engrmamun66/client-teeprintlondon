@@ -8,7 +8,17 @@
 
     
 
-
+   <section class="teeprint-makes-section">
+    <div class="container">
+      <h2 class="text-center m-2">Our Printing Environment</h2>
+      <iframe width="100%" height="654" 
+      src="https://www.youtube.com/embed/pN2yLAtMDjg" 
+      title="Amazing Graphic T-Shirt Mass Production Process. One-stop Clothing Manufacturing Factory" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    </section>
 
     
 
