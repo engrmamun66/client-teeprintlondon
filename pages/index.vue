@@ -52,7 +52,7 @@
                     London to meet your urgent t-shirt printing needs.
                   </web-postCard>
       
-                  <web-postCard :right="true" title="Order Any Quantity You Need">
+                  <web-postCard :right="true" title="Order Any Quantity You Need" image-url="/img/Home/Leonardo_Phoenix_10_A_highquality_crisp_image_of_a_crisp_white_1.jpg">
                     We understand that every customer has unique needs, 
                     which is why we proudly offer no minimum order quantity 
                     on all our custom t-shirt printing services. Whether you 
@@ -69,32 +69,77 @@
         </div>
     </section>
 
-    <section>
-        <div>
-            <div>
-                <p>Same Day Banner Print</p>
-                <img src="/img/Banner/Leonardo_Phoenix_10_a_vibrant_and_eyecatching_business_banner_0.jpg" style="width: 200px; height:200px"/>
+    <section class="container">
+        <div class="row">
+
+          
+          <div class="col-md-4 col-6 mb-4 cp">
+            <div class="card">
+              <img class="card-img-top" src="/img/Banner/Leonardo_Phoenix_10_a_vibrant_and_eyecatching_business_banner_0.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Same Day Banner Print</h5>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
             </div>
-            <div>
-                <p>Same Day Flyer Leaflet Print</p>
-                <img src="/img/Flyer and Leaflet/1985.jpg" style="width: 200px; height:200px"/>
+          </div>
+
+
+          <div class="col-md-4 col-6 mb-4 cp">
+            <div class="card">
+              <img class="card-img-top" src="/img/Flyer and Leaflet/1985.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Same Day Flyer Leaflet Print</h5>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
             </div>
-            <div>
-                <p>Same Day Poster Print</p>
-                <img src="/img/Poster Print/Leonardo_Phoenix_10_a_vibrant_and_appetizing_business_poster_f_1.jpg" style="width: 200px; height:200px"/>
+          </div>
+
+          <div class="col-md-4 col-6 mb-4 cp">
+            <div class="card">
+              <img class="card-img-top" src="/img/Poster Print/Leonardo_Phoenix_10_a_vibrant_and_appetizing_business_poster_f_1.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Same Day Poster Print</h5>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
             </div>
-            <div>
-                <p>Same Day Business Card Print</p>
-                <img src="/img/Business card/5073120.jpg" style="width: 200px; height:200px"/>
+          </div>
+
+          <div class="col-md-4 col-6 mb-4 cp">
+            <div class="card">
+              <img class="card-img-top" src="/img/Business card/5073120.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Same Day Business Card Print</h5>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
             </div>
-            <div>
-                <p>Same Day Brochure Booklet Print</p>
-                <img src="/img/Booklet and brochure/Leonardo_Phoenix_10_a_stunning_professionallydesigned_booklet_1.jpg" style="width: 200px; height:200px"/>
+          </div>
+          <div class="col-md-4 col-6 mb-4 cp">
+            <div class="card">
+              <img class="card-img-top" src="/img/Booklet and brochure/Leonardo_Phoenix_10_a_stunning_professionallydesigned_booklet_1.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Same Day Brochure Booklet Print</h5>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
             </div>
-            <div>
-                <p>Same Day Document Print</p>
-                <img src="/img/Document/Leonardo_Phoenix_10_A_sleek_modern_office_desk_with_a_crisp_wh_2.jpg" style="width: 200px; height:200px"/>
+          </div>
+          <div class="col-md-4 col-6 mb-4 cp">
+            <div class="card">
+              <img class="card-img-top" src="/img/Document/Leonardo_Phoenix_10_A_sleek_modern_office_desk_with_a_crisp_wh_2.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Same Day Document Print</h5>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
             </div>
+          </div>
+
+    
+            
         </div>
     </section>
 

@@ -1886,6 +1886,8 @@ about us css
   position: absolute;
   left: 0;
   top: 0;
+  border-radius: 20px;
+  box-shadow: 63px 58px 14px #00000042;
 }
 .teeprint-makes-section .teeprint-makes-box .teeprint-makes-box-image .teeprint-makes-image img {
   display: block;
@@ -1897,6 +1899,8 @@ about us css
   position: relative;
   z-index: 1;
   transition: all ease-in-out 0.5s;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.37);
 }
 .teeprint-makes-section .teeprint-makes-box.teeprint-makes-box-rightside .teeprint-makes-content {
   padding-left: 0;

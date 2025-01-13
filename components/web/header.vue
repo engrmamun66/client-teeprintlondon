@@ -31,11 +31,22 @@
                     <div class="teeprint-header-usercart">
                         <div class="teeprint-desktop-contact-bar">
                             <div class="teeprint-icon">
+                                <i class="las la-envelope"></i>
+                            </div>
+                            <div class="teeprint-text-body">
+                                <span class="teeprint-title">Email Us</span>
+                                <a href="mailto:contact@teeprint.com" class="teeprint-number">contact@teeprint.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="teeprint-header-usercart">
+                        <div class="teeprint-desktop-contact-bar">
+                            <div class="teeprint-icon">
                                 <i class="lni lni-phone"></i>
                             </div>
                             <div class="teeprint-text-body">
                                 <span class="teeprint-title">Call Us Now</span>
-                                <span class="teeprint-number">+123 5678 890</span>
+                                <a href="tel:+123 5678 890" class="teeprint-number">+123 5678 890</a>
                             </div>
                         </div>
                     </div>
