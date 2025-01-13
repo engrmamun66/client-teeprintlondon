@@ -30,36 +30,47 @@
           <span class="tooltip__text tooltip__text--right"> Dashboard </span>
         </nuxt-link>
       </li>
-      <li v-if="authStore?.switchedToInstituteDashboard==false">
-          <a @click="activeMenu('institutes')" 
-            class="collaps-togglelink menu-tooltip" :class="{active: isCurrent('institutes')}">
-            <i-las t="male" /><span class="menu-text">Institute</span>
-            <span class="menu-plusminus-icon"><i class="lni" :class="[state.isCollapseMenu && state.menu == 'institutes' ? 'lni-chevron-down' : 'lni-chevron-right']"></i></span>
-            <span class="tooltip__text tooltip__text--right"> Institute </span>
-          </a>
-          <ul class="accord-submenu" :class="{'--animate-show': isCurrent('institutes')}" :style=" isCurrent('institutes') ? 'display: block' : ''">
-            <li @click="activeSubMenu('institutes', 'list')">
-              <nuxt-link :to="'/institutes'" class="leftsidebar-link" :class="{'active': isCurrent('institutes', 'list')}">
-                <i-las t="list" />
-                <span class="menu-text">Institutes</span>
-                <span class="tooltip__text tooltip__text--right"> Institutes</span>
-              </nuxt-link>
-            </li>
-          </ul>
+      <li>
+        <nuxt-link @click="activeMenu('categories')" :to="'/suadmin/categories'" class="leftsidebar-link menu-tooltip">
+          <i class="las la-home"></i>
+          <span class="menu-text">Categories</span>
+          <span class="tooltip__text tooltip__text--right"> Categories </span>
+        </nuxt-link>
       </li>
       <li>
-          <a @click="activeMenu('students')" 
-            class="collaps-togglelink menu-tooltip" :class="{active: isCurrent('students')}">
-            <i-las t="male" /><span class="menu-text">Students</span>
-            <span class="menu-plusminus-icon"><i class="lni" :class="[state.isCollapseMenu && state.menu == 'students' ? 'lni-chevron-down' : 'lni-chevron-right']"></i></span>
-            <span class="tooltip__text tooltip__text--right"> Students </span>
+        <nuxt-link @click="activeMenu('brands')" :to="'/suadmin/brands'" class="leftsidebar-link menu-tooltip">
+          <i class="las la-home"></i>
+          <span class="menu-text">Brands</span>
+          <span class="tooltip__text tooltip__text--right"> Brands </span>
+        </nuxt-link>
+      </li>
+      <li>
+          <a @click="activeMenu('settings')" 
+            class="collaps-togglelink menu-tooltip" :class="{active: isCurrent('settings')}">
+            <i-las t="male" /><span class="menu-text">Settings</span>
+            <span class="menu-plusminus-icon"><i class="lni" :class="[state.isCollapseMenu && state.menu == 'settings' ? 'lni-chevron-down' : 'lni-chevron-right']"></i></span>
+            <span class="tooltip__text tooltip__text--right"> Settings </span>
           </a>
-          <ul class="accord-submenu" :class="{'--animate-show': isCurrent('students')}" :style="isCurrent('students') ? 'display: block' : ''">
-            <li @click="activeSubMenu('students', 'list')">
-              <nuxt-link :to="'/students'" class="leftsidebar-link" :class="{'active': isCurrent('students', 'list')}">
+          <ul class="accord-submenu" :class="{'--animate-show': isCurrent('settings')}" :style="isCurrent('settings') ? 'display: block' : ''">
+            <li @click="activeSubMenu('settings', 'colors')">
+              <nuxt-link :to="'/suadmin/settings/colors'" class="leftsidebar-link" :class="{'active': isCurrent('settings', 'colors')}">
                 <i-las t="list" />
-                <span class="menu-text">All students</span>
-                <span class="tooltip__text tooltip__text--right"> > All students </span>
+                <span class="menu-text">Colors</span>
+                <span class="tooltip__text tooltip__text--right">Colors </span>
+              </nuxt-link>
+            </li>
+            <li @click="activeSubMenu('settings', 'sizes')">
+              <nuxt-link :to="'/suadmin/settings/sizes'" class="leftsidebar-link" :class="{'active': isCurrent('settings', 'sizes')}">
+                <i-las t="list" />
+                <span class="menu-text">Sizes</span>
+                <span class="tooltip__text tooltip__text--right"> Sizes </span>
+              </nuxt-link>
+            </li>
+            <li @click="activeSubMenu('settings', 'discounts')">
+              <nuxt-link :to="'/suadmin/settings/discounts'" class="leftsidebar-link" :class="{'active': isCurrent('settings', 'discounts')}">
+                <i-las t="list" />
+                <span class="menu-text">Discounts</span>
+                <span class="tooltip__text tooltip__text--right"> Discounts </span>
               </nuxt-link>
             </li>
           </ul>
