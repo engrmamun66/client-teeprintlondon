@@ -32,7 +32,7 @@
                             <span class="line-decoration"></span> How Tee Print
                         </h4>
                         <h2 class="section-heading-title-big">
-                            London Makes A Difference
+                            Revolutionizes Printing Services in London
                         </h2>
                     </div>
                 </div>
