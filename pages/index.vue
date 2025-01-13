@@ -495,7 +495,7 @@ Visit Design in London to explore our premium design services and elevate your b
                       <iframe
                           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1981.2238941316784!2d-0.063695!3d51.5145948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603e63fbc2617%3A0x74202ec123e41897!2sTee%20Print%20London!5e0!3m2!1sen!2suk!4v1694444089240!5m2!1sen!2suk"
                           height="200"
-                          style="border:0;width: 100%;"
+                          style="border:0;width: 100%;border-radius: 10px;"
                           allowfullscreen=""
                           loading="lazy"
                           referrerpolicy="no-referrer-when-downgrade"
