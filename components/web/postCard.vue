@@ -39,7 +39,7 @@ let props = defineProps({
         required: false,
     },
     imageUrl: {
-        default: '/img/Banner/Leonardo_Kino_XL_a_beautiful_Banner_in_university_1.jpg',
+        default: '/img/Home/247.jpg',
         required: false,
     },
     right: {

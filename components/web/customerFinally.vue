@@ -9,7 +9,7 @@
                                 <span class="line-decoration"></span> T-Shirt Printing
                             </h4>
                             <h2 class="section-heading-title-big">
-                                you can finally on customer
+                                Reliable Custom T-Shirt Printing You Can Trust
                             </h2>
                         </div>
                     </div>

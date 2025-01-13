@@ -39,7 +39,7 @@
             </div>
             <div class="row">
 
-                  <web-postCard :right="false" title="24-Hour Custom T-Shirt Printing with Same-Day Delivery in London">
+                  <web-postCard :right="false" title="Same-Day Delivery for Custom T-Shirt Printing in London, Available 24/7">
                     Need custom t-shirts in a hurry for your campaign, event, 
                     or festival? Tee Print London is your go-to for fast, reliable 
                     solutions. We offer same day t-shirt printing with delivery 
@@ -52,7 +52,7 @@
                     London to meet your urgent t-shirt printing needs.
                   </web-postCard>
       
-                  <web-postCard :right="true" title="No Minimum Order Quantity">
+                  <web-postCard :right="true" title="Order Any Quantity You Need">
                     We understand that every customer has unique needs, 
                     which is why we proudly offer no minimum order quantity 
                     on all our custom t-shirt printing services. Whether you 
@@ -89,7 +89,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="teeprint-info-box">
                             <div class="teeprint-info-box-inner">
-                                <img src="https://teeprint.london/wp-content/uploads/2024/08/Washable-High-Quality-T-shirt-.png" alt="" />
+                                <img src="/img/Home/Leonardo_Phoenix_10_A_few_vibrant_tshirts_with_diverse_colors_0.jpg" alt="" />
                                 <h5 class="pt-4">Get High Quality T shirt Print – Permanent & Washable</h5>
                                 <p>
                                     Printed artwork on custom T-shirts may fade over time, 
@@ -108,7 +108,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="teeprint-info-box renty-information-middle">
                             <div class="teeprint-info-box-inner">
-                                <img src="https://teeprint.london/wp-content/uploads/2024/08/A-Photo-of-Custom-T-Shirt-Printing.png">
+                                <img src="/img/Home/WhatsApp Image 2025-01-03 at 22.03.42_74ce6356.jpg">
                                 <h5 class="pt-4">You Can Provide Your Own Design or We Customize T shirts For You  </h5>
                                 <p>
                                     There’s no fixed rule when it comes to printing your custom t shirts from our t-shirt print shop. We allow our customers to provide their own logo, photo, design, artwork, and pattern, however they want before we print them on your t shirt. You have your full liberty to personalize your t shirts according to your convenience and we are always ready to accept your orders at any given moment.
@@ -153,7 +153,7 @@ If you have t-shirt design ideas but need some help to bring it to reality then 
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="teeprint-homewhychoose-img">
-                        <img src="https://teeprint.london/wp-content/uploads/2024/06/Hero-Section-Image-1-Tee-Print-London-600x600.png.webp" alt="about iamge" />
+                        <img src="/img/Home/Flux_Dev_A_vibrant_and_modern_illustration_featuring_a_casual__2.jpeg" alt="about iamge" />
                     </div>
                 </div>
             </div>
@@ -184,7 +184,7 @@ Visit Design in London to explore our premium design services and elevate your b
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="teeprint-about-img">
-                        <img src="https://teeprint.london/wp-content/uploads/elementor/thumbs/Design-Agency-qzi5ugzseaem0lxnzh8fjocsn85tgyqkw8idub2zkw.png" alt="about iamge" />
+                        <img src="/img/Home/personalized-t-shirt.jpg" alt="about iamge" />
                     </div>
                 </div>
             </div>
