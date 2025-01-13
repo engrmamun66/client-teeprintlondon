@@ -353,10 +353,31 @@ body {
   margin-left: 4px;
 }
 
- .teeprint-button.teeprint-theme-btn {
+.teeprint-button.teeprint-theme-btn {
   background-color: var(--bgcolor-primary);
+  color: var(--fontcolor-white); 
+}
+.teeprint-button.teeprint-theme-btn:not(:hover) {
+  animation: zoomInOut 2s infinite ease-in-out;
+}
+
+.teeprint-button.teeprint-theme-btn:hover {
   color: var(--fontcolor-white);
-  transition: all 0.7s;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+.teeprint-button.teeprint-theme-btn:hover *{
+  color: var(--fontcolor-white); 
+}
+
+
+@keyframes zoomInOut {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
 }
 
  .teeprint-button.teeprint-outline-btn {
@@ -1313,11 +1334,9 @@ Header css
   border-radius: 100px;
   color: var(--fontcolor-primary);
 }
-.teeprint-button.teeprint-theme-btn:hover {
-  color: var(--fontcolor-white);
-  padding-left: 35px;
-  padding-right: 35px;
-}
+
+
+
 @media (min-width: 992px) {
   .teeprint-header .teeprint-menu-header .teeprint-menu .teeprint-nav-manu {
     display: inline-block !important;
