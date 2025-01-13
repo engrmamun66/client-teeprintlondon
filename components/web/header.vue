@@ -230,7 +230,7 @@
                         </div>
                     </div>
                     <div class="quote-btn-area">
-                        <a href="#" class="teeprint-button teeprint-theme-btn quote-btn bx bx-tada">
+                        <a href="#" class="teeprint-button teeprint-theme-btn quote-btn">
                             <span class="">
                                 Instant Quote 
                             </span>

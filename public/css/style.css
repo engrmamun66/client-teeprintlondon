@@ -356,6 +356,7 @@ body {
  .teeprint-button.teeprint-theme-btn {
   background-color: var(--bgcolor-primary);
   color: var(--fontcolor-white);
+  transition: all 0.7s;
 }
 
  .teeprint-button.teeprint-outline-btn {
@@ -1314,6 +1315,8 @@ Header css
 }
 .teeprint-button.teeprint-theme-btn:hover {
   color: var(--fontcolor-white);
+  padding-left: 35px;
+  padding-right: 35px;
 }
 @media (min-width: 992px) {
   .teeprint-header .teeprint-menu-header .teeprint-menu .teeprint-nav-manu {
