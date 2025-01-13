@@ -8,7 +8,7 @@
                             <div class="teeprint-logo-area-inner">
                                 <div class="teeprint-logo-area-middle">
                                     <a href="#">
-                                        <img src="/img/logo.jpg" alt="logo image" />
+                                        <img src="/img/logo1.jpg" alt="logo image" />
                                     </a>
                                 </div>
                             </div>
