@@ -716,12 +716,24 @@ h2.section-heading-title-big {
   padding-top: 10px;
   font-size: 18px;
 }
+@media (max-width: 767px) {
+  h4.section-heading-title-small {
+      font-size: 16px;
+  }
+  h2.section-heading-title-big {
+    font-size: 30px;
+  }
+  .section-paragraph {
+    font-size: 15px;
+  }  
+}
+
 
 /*=============================== 
 Header css  
 =================================*/
 .teeprint-header .teeprint-middle-header {
-  background-color: #f2f3f8;
+  background-color: var(--bgcolor-white);
   width: 100%;
   height: 100px;
   position: relative;
@@ -852,9 +864,9 @@ Header css
 }
 
 .teeprint-header .teeprint-menu-header {
-  background-color: var(--bgcolor-white);
+  background-color: var(--bgcolor-primary);
   width: 100%;
-  height: 70px;
+  height: 60px;
   z-index: 99;
   transition: all 0.4s ease-in-out;
   box-shadow: 0px 0px 10px var(--linecolor-light-gray);
@@ -887,21 +899,21 @@ Header css
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  height: 70px;
+  height: 60px;
 }
 .teeprint-nav-manu ul li {
   display: inline-block;
   position: relative;
-  margin-right: 35px;
+  margin-right: 5px;
 }
 .teeprint-nav-manu ul li a {
-  padding: 0;
+  padding: 0 15px;
   display: block;
-  font-size: 16px;
-  color: var(--fontcolor-primary);
+  font-size: 15px;
+  color: var(--fontcolor-white);
   letter-spacing: .5px;
-  font-weight: 500;
-  line-height: 70px;
+  font-weight: 400;
+  line-height: 60px;
   transition: all 0.4s ease-in-out;
 }
 .teeprint-nav-manu ul li a i {
@@ -925,7 +937,7 @@ Header css
   line-height: 18px;
 }
 
-.teeprint-nav-manu ul li a:after {
+/* .teeprint-nav-manu ul li a:after {
   content: "";
   width: 100%;
   height: 2px;
@@ -940,16 +952,19 @@ Header css
   transition: .3s;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
+} */
+
+.teeprint-nav-manu ul li a:hover, 
+.teeprint-nav-manu ul li a.teeprint-active-menu {
+  background-color: var(--bgcolor-secondary);
+  color: var(--fontcolor-white);
 }
 
-.teeprint-nav-manu ul li a:hover, .teeprint-nav-manu ul li a.teeprint-active-menu {
-  color: var(--fontcolor-secondary);
-}
-
-.teeprint-nav-manu ul li a:hover:after, .teeprint-nav-manu ul li a.teeprint-active-menu:after {
+/* .teeprint-nav-manu ul li a:hover:after, 
+.teeprint-nav-manu ul li a.teeprint-active-menu:after {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
-}
+} */
 
 .teeprint-nav-manu ul li:last-child a {
   padding-right: 0;
@@ -1016,25 +1031,32 @@ Header css
 
 .teeprint-nav-manu ul li .teeprint-submenu {
   position: absolute;
-  min-width: 230px;
-  height: auto;
-  padding: 5px 0px;
-  background: var(--bgcolor-white);
-  -webkit-transform: perspective(600px) rotateX(-90deg);
-    transform: perspective(600px) rotateX(-90deg);
-  -webkit-transform-origin: 0 0 0;
-  transform-origin: 0 0 0;
-  left: -200px;
-  right: auto;
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: .5s;
-  transition: .5s;
-  z-index: 99;
-  top: 100%;
-  text-align: left;
-  box-shadow: 0px 0px 10px var(--linecolor-light-gray);
+   top: 100%;
+   left: 0;
+   width: 100%;
+   perspective: 1000px;
+   z-index: -1;
+  background: var(--bgcolor-primary);
+  animation: growDown 300ms ease-in-out forwards;
+  transform-origin: top center;
+  display: none;
 }
+.teeprint-nav-manu ul li:hover .teeprint-submenu {
+  display: block;
+  z-index: 99;
+}
+@keyframes growDown {
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
 .teeprint-nav-manu ul li .teeprint-submenu.teeprint-sub-largemenu {
   min-width: 1000px;
   padding: 15px 15px 0;
@@ -1052,26 +1074,54 @@ Header css
 }
 
 .teeprint-nav-manu ul li .teeprint-submenu ul li a {
-  display: block;
-  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
   font-size: 14px;
   line-height: 20px;
-  border-bottom: 1px solid var(--linecolor-light-gray);
-  color: #777;
+  color: var(--bgcolor-white);
+}
+
+.teeprint-nav-manu ul li .teeprint-submenu ul li a i {
+  font-size: 10px;
 }
 
 .teeprint-nav-manu ul li .teeprint-submenu ul li a:hover {
-  color: var(--fontcolor-secondary);
+  color: var(--fontcolor-white);
 }
 
 .teeprint-nav-manu ul li .teeprint-submenu ul li:last-child a {
   border-bottom: none;
 }
 
-.teeprint-nav-manu ul li:hover .teeprint-submenu {
-  visibility: visible;
-  opacity: 1;
-  transform: perspective(600px) rotateX(0);
+.teeprint-submenu ul li .teeprint-sub-submenu {
+  position: absolute;
+   top: 0;
+   left: 100%;
+   width: 100%;
+   perspective: 1000px;
+   z-index: -1;
+  background: var(--bgcolor-primary);
+  animation: growDown 300ms ease-in-out forwards;
+  transform-origin: top center;
+  display: none;
+  border-left: 1px solid #222;
+}
+.teeprint-submenu ul li:hover .teeprint-sub-submenu {
+  display: block;
+  z-index: 99;
+}
+@keyframes growDown {
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }
 .teeprint-submenu-grid {
   display: flex;
@@ -1255,8 +1305,15 @@ Header css
 .quote-btn-area {
   display: flex;
 }
+.teeprint-mobile-device li a.quote-btn,
 .quote-btn-area .quote-btn {
+  background-color: var(--bgcolor-white);
+  padding: 11px 23px;
   border-radius: 100px;
+  color: var(--fontcolor-primary);
+}
+.teeprint-button.teeprint-theme-btn:hover {
+  color: var(--fontcolor-white);
 }
 @media (min-width: 992px) {
   .teeprint-header .teeprint-menu-header .teeprint-menu .teeprint-nav-manu {
@@ -1275,7 +1332,7 @@ Header css
     position: fixed;
     height: 70px;
     top: 0;
-    background-color: var(--fontcolor-secondary);
+    background-color: var(--fontcolor-primary);
   }
   .teeprint-header .teeprint-menu-header .container {
     background-color: transparent;
@@ -1388,6 +1445,27 @@ Header css
   .teeprint-nav-manu ul li a {
     line-height: 37px;
     padding: 0 20px;
+  }
+  .teeprint-menu {
+    padding-right: 0px;
+  }
+  .teeprint-menu .teeprint-mobile-device li a .quote-btn,
+  .quote-btn-area .quote-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+  .teeprint-mobile-device li a.quote-btn {
+    display: flex;
+    align-items: center;
+      background-color: var(--bgcolor-white) !important;
+      padding: 9px 15px;
+      font-size: 14px;
+      border-radius: 100px !important;
+      color: var(--fontcolor-primary) !important;
+      margin-right: 0;
+    }
+  .quote-btn-area {
+    display: none;
   }
 }
 
@@ -1561,11 +1639,15 @@ Slider css
     height: auto;
   }
   .teeprint-owl-intro-slide .teeprint-owl-intro-slide-overley {
-    padding: 50px 0;
+    padding: 25px 0;
   }
-  .teeprint-owl-intro-slide .col-md-6 {
+  .teeprint-owl-intro-slide .teeprint-row {
+    justify-content: center;
+  }
+  .teeprint-owl-intro-slide .teeprint-column-6 {
     flex: 0 0 100%;
     max-width: 100%;
+    text-align: center;
   }
   .teeprint-owl-intro-slide .teeprint-sl-subtitle {
     font-size: 15px;
@@ -1591,13 +1673,17 @@ Slider css
     padding-bottom: 10px;
   }
   .teeprint-owl-intro-slide .teeprint-sl-subtitle {
-    font-size: 14px;
+    font-size: 13px;
   }
   .teeprint-owl-intro-slide .teeprint-sl-maintitle {
-    font-size: 25px;
+    font-size: 23px;
+  }
+  .teeprint-owl-intro-slide .teeprint-sl-short-des {
+    font-size: 14px;
+    line-height: 20px;
   }
   .teeprint-owl-intro-slide .teeprint-sl-button {
-    padding: 13px 25px;
+    padding: 10px 22px;
   }
   .teeprint-owl-intro-slide img {
     display: none;
@@ -1643,6 +1729,15 @@ Trusted css
 .trusted-logo .owl-dots {
   display: none;
 }
+@media (max-width: 767px) {
+  .trusted-logo {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .trusted-logo .owl-nav {
+    display: none;
+  }
+}
 
 
 /*==================== 
@@ -1656,10 +1751,6 @@ medfirst servics css
 .teeprint-customer-finally .container {
   padding-left: 80px;
   padding-right: 80px;
-}
-.customer-finally-row .col-lg-3 {
-  flex: 0 0 auto;
-  width: 20%;
 }
 .teeprintservice-box {
   background-color: var(--bgcolor-white);
@@ -1695,6 +1786,12 @@ medfirst servics css
   color: var(--fontcolor-secondary);
   line-height: 1.2;
   font-weight: 400;
+}
+@media (min-width:768px) {
+  .customer-finally-row .col-lg-3 {
+    flex: 0 0 auto;
+    width: 20%;
+  }
 }
 @media (max-width:1199px) {
   .teeprint-service-img {
@@ -2293,7 +2390,6 @@ client review css
 
 .teeprint-client-section {
   position: relative;
-  background-color: #F6F6F6;
   padding: 90px 0;
 }
 .teeprint-client-section .row {
@@ -2413,7 +2509,17 @@ client review css
   width: 8px;
   height: 8px;
 }
-
+@media (max-width: 767px) {
+  .teeprint-client-section {
+    padding: 30px 0;
+  }
+  .teeprint-client-section .section-main-heading {
+    margin-bottom: 30px;
+  }
+  .section-main-heading.text-right {
+    text-align: center !important;
+  }
+}
 
 
 /*======================= 
@@ -3125,7 +3231,11 @@ questions css
 
 .teeprint-questions {
   position: relative;
-  padding: 150px 0 60px;
+  padding: 90px 0 60px;
+  border-top: 1px solid var(--linecolor-light-gray);
+}
+.teeprint-questions .section-main-heading {
+  margin-bottom: 50px;
 }
 .teeprint-questions-box {
   position: relative;
@@ -3178,6 +3288,9 @@ questions css
   .teeprint-questions-box {
     min-height: 230px;
   }
+  .teeprint-questions-box-no h3 {
+    font-size: 50px;
+  }
   .teeprint-questions-box p {
     font-size: 16px;
   }
@@ -3194,6 +3307,16 @@ questions css
     min-height: 160px;
     padding: 10px;
   }
+  .teeprint-questions-box-content {
+    padding-left: 20px;
+}
+  .teeprint-questions-box-no h3 {
+    font-size: 25px;
+  }
+  .teeprint-questions-box h5 {
+    font-size: 18px;
+    line-height: 22px;
+  }
   .teeprint-questions-box-iconimg {
     width: 50px;
     height: 50px;
@@ -3203,6 +3326,7 @@ questions css
   }
   .teeprint-questions-box p {
     font-size: 14px;
+    line-height: 20px;
   }
 }
 input[type=text] {
