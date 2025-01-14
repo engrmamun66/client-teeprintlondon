@@ -444,7 +444,7 @@ Visit Design in London to explore our premium design services and elevate your b
                             <h4>Get in touch</h4>
                             <ul>
                                 <li>27A Poplar St East Rutherford,NJ 07073 </li>
-                                <li><i class="la la-envelope"></i> <b>info@email.com</b></li>
+                                <li><i class="la la-envelope"></i> <b>info@teeprint.com</b></li>
                                 <li><i class="la la-phone"></i> <b>00 123 456 99</b></li>
                             </ul>
                         </div>
