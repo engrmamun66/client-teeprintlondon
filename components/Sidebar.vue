@@ -59,13 +59,13 @@
                 <span class="tooltip__text tooltip__text--right">Colors </span>
               </nuxt-link>
             </li>
-            <li @click="activeSubMenu('settings', 'sizes')">
+            <!-- <li @click="activeSubMenu('settings', 'sizes')">
               <nuxt-link :to="'/suadmin/settings/sizes'" class="leftsidebar-link" :class="{'active': isCurrent('settings', 'sizes')}">
                 <i-las t="list" />
                 <span class="menu-text">Sizes</span>
                 <span class="tooltip__text tooltip__text--right"> Sizes </span>
               </nuxt-link>
-            </li>
+            </li> -->
             <li @click="activeSubMenu('settings', 'discounts')">
               <nuxt-link :to="'/suadmin/settings/discounts'" class="leftsidebar-link" :class="{'active': isCurrent('settings', 'discounts')}">
                 <i-las t="list" />
