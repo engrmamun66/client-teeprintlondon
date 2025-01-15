@@ -129,7 +129,7 @@
           </div>
           <div class="col-md-4 col-6 mb-4 cp">
             <div class="card">
-              <img class="card-img-top" src="/img/Document/Leonardo_Phoenix_10_A_sleek_modern_office_desk_with_a_crisp_wh_2.jpg" alt="Card image cap">
+              <img class="card-img-top" src="/img/Home/Leonardo_Phoenix_10_A_sleek_modern_digital_printer_approximate_0.jpg" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Same Day Document Print</h5>
                 <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
@@ -137,6 +137,39 @@
               </div>
             </div>
           </div>
+
+          <div class="col-md-4 col-6 mb-4 cp">
+            <div class="card">
+              <img class="card-img-top" src="/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_3.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Same Day Hoodie Print</h5>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-6 mb-4 cp">
+            <div class="card">
+              <img class="card-img-top" src="/img/Tote bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Same Day Tote Bag Print</h5>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-6 mb-4 cp">
+            <div class="card">
+              <img class="card-img-top" src="/img/Sweatshirt/Leonardo_Phoenix_10_a_casual_relaxedfit_light_blue_sweatshirt_2.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Same Day Sweatshirt Print</h5>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
+            </div>
+          </div>
+
+          
 
     
             
