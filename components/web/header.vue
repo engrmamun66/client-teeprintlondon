@@ -8,7 +8,7 @@
                             <div class="teeprint-logo-area-inner">
                                 <div class="teeprint-logo-area-middle">
                                     <a href="#">
-                                        <img src="/img/logo1.jpg" alt="logo image" />
+                                        <img src="/img/logo2.png" alt="logo image" style="height: 4.5rem;" />
                                     </a>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="teeprint-text-body">
                                 <span class="teeprint-title">Call Us Now</span>
-                                <a href="tel:+123 5678 890" class="teeprint-number">+123 5678 890</a>
+                                <a href="tel:+123 5678 890" class="teeprint-number">+44 7888 185120</a>
                             </div>
                         </div>
                     </div>
