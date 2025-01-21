@@ -3394,3 +3394,202 @@ input[type=text] {
 h3.teeprint-plan-pricing {
   font-size: 52px;
 }
+
+
+
+/*=========================== 
+Innerpage banner css  
+=============================*/
+
+.teeprint-innerpage-banner {
+  background-color: #f8f8f8;
+  height: 100px;
+}
+.teeprint-innerpage-overlay {
+  height: 100%;
+}
+.teeprint-innerpage-overlay .container {
+  height: 100%;
+}
+.teeprint-innerpage-overlay .container .container-inner {
+  height: 100%;
+}
+.container-inner-overlay {
+  height: 100%;
+}
+.teeprint-innerpage-overlay .container .row {
+  height: 100%;
+}
+.teeprint-innerpage-body {
+  display: flex;
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+.teeprint-innerpage-body-inner {
+  width: 100%;
+}
+.teeprint-innerpage-banner h4 {
+  font-size: 22px;
+  padding-bottom: 0;
+  color: var(--fontcolor-secondary);
+  font-weight: 600;
+}
+.teeprint-innerpage-banner ul li {
+  position: relative;
+  float: left;
+  padding: 0 15px;
+  color: #888;
+  font-size: 14px;
+  font-weight: 400;
+}
+.teeprint-innerpage-banner ul li:before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 0;
+  height: 10px;
+  width: 1px;
+  background-color: #bbb;
+}
+.teeprint-innerpage-banner ul li:last-child:before {
+  display: none;
+}
+.teeprint-innerpage-banner ul li a {
+  color: #888;
+  font-size: 14px;
+  font-weight: 400;
+}
+.teeprint-innerpage-banner ul li:first-child {
+  padding-left: 0;
+}
+
+
+
+/*=========================== 
+Contact us css  
+=============================*/
+
+.contact {
+  padding: 50px 0;
+}
+.contact-infoinquery {
+  background-color: #fff;
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 30px;
+  border: 1px solid #f2f3f8;
+  padding: 15px 15px 15px 30px;
+  box-shadow: 0px 0px 2px #eee;
+}
+.contact-circle {
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  background-color: var(--bgcolor-secondary);
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50px;
+  margin-bottom: 15px;
+}
+.contact-leftside {
+  background-color: #FAFAFA;
+  padding: 15px;
+}
+.contact-info {
+  margin-bottom: 20px;
+}
+.contact-circle i {
+  font-size: 20px;
+  color: #eee;
+}
+.contact-info h5 {
+  padding-bottom: 10px;
+  color: #000;
+}
+.contact-info span {
+  color: #555;
+  font-weight: 400;
+  display: block;
+  line-height: 20px;
+  font-size: 15px;
+}
+.branch-address {
+  margin-top: 15px;
+}
+.branch-address h6 {
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.contact-form .form-control {
+  border: 1px solid #eee;
+}
+.form-control:focus,
+.form-control:hover,
+.form-control:active {
+  border: 1px solid #555;
+  box-shadow: none;
+}
+.contact-form form {
+  padding: 0 50px;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.contact-form input {
+  height: 45px;
+}
+.contact-form .form-control {
+  border: 1px solid #eee;
+}
+.contact-form .form-control:focus {
+  border: 1px solid #555;
+}
+.contact-form textarea {
+  resize: none;
+  padding: 20px 15px 22px;
+  min-height: 150px;
+}
+.contact-linbar {
+  width: 150px;
+  height: 2px;
+  background-color: #666;
+  margin: auto;
+  margin-bottom: 40px;
+}
+.map iframe {
+  width: 100%;
+  height: 500px;
+  border: 10px solid #fafafa !important;
+}
+.query-submit-btn {
+  padding: 11px 28px;
+  border-radius: 4px;
+}
+@media (max-width: 991px) {
+  .map {
+      margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-info {
+      margin-bottom: 30px;
+  }
+  .map iframe {
+      height: 400px;
+  }
+}
+
+@media (max-width: 575px) {
+  .map iframe {
+      height: 250px;
+  }
+  .contact-form form {
+      padding: 0;
+  }
+  .contact-infoinquery {
+      padding: 0 15px 15px;
+  }
+}

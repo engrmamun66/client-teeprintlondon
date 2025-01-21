@@ -1,6 +1,8 @@
 <template> 
     <div>
+      <web-header></web-header>
       <slot></slot>
+      <web-footerArea></web-footerArea>
     </div>
 </template>
 
