@@ -13,6 +13,8 @@
 <script setup>
 defineProps(['error'])
 const eeee = ref('Hello')
+
+navigateTo('/')
 // console.log(error);
 useHead({
     title: eeee,

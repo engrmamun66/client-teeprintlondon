@@ -1,7 +1,20 @@
+
+<script setup>
+
+definePageMeta({
+  titleTemplate: '% :: Home',
+  name: 'home',
+  layout: 'web',
+})
+
+ 
+</script>
+
+
 <template>
   <div> 
 
-   <web-slider></web-slider>
+   <web-slider ></web-slider>
    <web-trusted></web-trusted>
    <web-customerFinally></web-customerFinally>
 
@@ -69,6 +82,19 @@
     </section>
 
     <section class="container">
+
+        <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="section-main-heading text-center">
+                            <h4 class="section-heading-title-small">
+                                <span class="line-decoration"></span> Other Items
+                            </h4>
+                            <h2 class="section-heading-title-big">
+                                with Guaranteed Same-Day Printing and Delivery in London & Next Day for UK
+                            </h2>
+                        </div>
+                    </div>
+                </div>
         <div class="row">
 
           
@@ -248,7 +274,7 @@ If you have t-shirt design ideas but need some help to bring it to reality then 
                             cover hoodies, sweatshirts, and tote bags, meeting all 
                             your needs efficiently.
                         </p>
-                        <a class="teeprint-button teeprint-theme-btn" href="#">
+                        <a class="teeprint-button teeprint-theme-btn zoomInOut" href="#">
                             Get A Free Quote <i class="la la-arrow-right ml-1"></i>
                         </a>
                     </div>
@@ -279,7 +305,7 @@ If you have t-shirt design ideas but need some help to bring it to reality then 
 Visit Design in London to explore our premium design services and elevate your brand!
                             </p>
                         </div>
-                        <a class="teeprint-button teeprint-theme-btn" href="/Products-list">
+                        <a class="teeprint-button teeprint-theme-btn zoomInOut" href="/Products-list">
                             Get My Design Done <i class="la la-arrow-right ml-1"></i>
                         </a>
                     </div>
@@ -470,14 +496,7 @@ Visit Design in London to explore our premium design services and elevate your b
   </div>
 </template>
 
-<script setup>
 
-definePageMeta({
-  titleTemplate: '% :: Home',
-  name: 'home',
-  layout: 'web',
-})
-</script>
 
 
 <style scoped>

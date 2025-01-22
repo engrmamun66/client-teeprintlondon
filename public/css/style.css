@@ -357,7 +357,7 @@ body {
   background-color: var(--bgcolor-primary);
   color: var(--fontcolor-white); 
 }
-.teeprint-button.teeprint-theme-btn:not(:hover) {
+.zoomInOut:not(:hover) {
   animation: zoomInOut 2s infinite ease-in-out;
 }
 
@@ -529,10 +529,9 @@ input[type=radio] {
   margin-top: -6px;
   width: 5px;
   height: 10px;
-  border-width: 0 2px 2px 0;
+  border-width: 0 2px 2px 0 !important;
   transform: rotate(45deg);
 }
-
 .teeprint-checkbox > span:after,
 .teeprint-checkbox > span:after {
   border: solid #7281a4;
@@ -2555,69 +2554,6 @@ client review css
 
 
 /*======================= 
-Product css  
-=========================*/
-.teeprint-featured-product-section {
-  padding: 80px 0 80px;
-  background-color: #F7F7F7;
-}
-.teeprint-product {
-  position: relative;
-}
-.teeprint-product-inner {
-  display: block;
-  margin-bottom: 20px;
-  cursor: pointer;
-  border: 1px solid #f2f3f8;
-  transition: all .5s;
-}
-.teeprint-product-inner:hover {
-  box-shadow: none;
-}
-.teeprint-product-image {
-  overflow: hidden;
-  position: relative;
-}
-.teeprint-product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: all ease-in-out .5s;
-  padding-left: 0;
-  padding-right: 0;
-}
-.teeprint-product-inner:hover .teeprint-product-image img {
-  transform: scale(1.1);
-  opacity: .6;
-}
-.teeprint-product-body {
-  position: relative;
-  padding: 20px 15px;
-  text-align: center;
-  background-color: #9a8f4d;
-}
-.teeprint-product-body .teeprint-product-title {
-  font-size: 16px;
-  font-weight: 500;
-  color: #fff;
-}
-
-@media (max-width: 1199px) {
-  .teeprint-featured-product-section {
-    padding: 50px 0;
-  }
-}
-@media (max-width: 575px) {
-  .teeprint-featured-product-section {
-    padding: 30px 0 15px;
-  }
-  .teeprint-product-body .teeprint-product-title {
-    font-size: 15px;
-  }
-}
-
-
-/*======================= 
 teeprint-service info 
 =========================*/
 .teeprint-service-info {
@@ -3607,3 +3543,408 @@ Contact us css
       padding: 0 15px 15px;
   }
 }
+
+
+
+/*=========================== 
+Product list css  
+===========================*/
+.teeprint-list-product {
+  background-color: #f2f3f8;
+  padding: 100px 0 50px;
+  position: relative;
+}
+.productlist-leftside {
+  width: 25%;
+}
+.teeprint-category-menu {
+  background-color: #fff;
+  position: relative;
+  width: 100%;
+  border: 1px solid #f2f3f8;
+  margin-bottom: 20px;
+}
+.teeprint-categorymenu-title {
+  /* background-color: #f2f3f8; */
+  height: 55px;
+  padding-left: 15px;
+}
+.teeprint-categorymenu-title h5 {
+  line-height: 55px;
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.teeprint-category-menulist {
+  z-index: 99;
+  width: 100%;
+}
+.teeprint-category-menulist ul {
+  width: 100%;
+  position: relative;
+}
+.teeprint-category-menulist ul li {
+  display: block;
+  position: relative;
+}
+.teeprint-category-menulist ul li a {
+  font-size: 14px;
+  padding: 12px 15px;
+  display: block;
+  color: #666;
+  border-bottom: 1px solid #f2f3f8;
+  font-weight: 400;
+}
+.teeprint-category-menulist ul li a:hover {
+  background-color: var(--bgcolor-secondary);
+  color: #fff;
+}
+.teeprint-category-menulist ul li a i {
+  float: right;
+  padding-top: 8px;
+  font-size: 8px;
+  font-weight: bold;
+}
+.teeprint-category-menulist ul li:last-child a {
+  border-bottom: none;
+}
+.teeprint-category-menulist ul li .rentmu-category-sub {
+  display: none;
+  position: absolute;
+  height: auto;
+  min-width: 700px;
+  min-height: 250px;
+  padding: 20px 10px;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  left: 100%;
+  top: 0px;
+  background-color: #fff;
+  box-shadow: 0 0 3px #eee;
+}
+.teeprint-category-menulist ul li .rentmu-category-sub:after {
+  content: " ";
+  position: absolute;
+  left: -10px;
+  top: 14px;
+  border-top: 10px solid transparent;
+  border-right: 10px solid #fff;
+  border-left: none;
+  border-bottom: 10px solid transparent;
+}
+.teeprint-category-menulist ul li:hover .rentmu-category-sub {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+  z-index: 99;
+}
+.teeprint-category-menulist ul li:hover .rentmu-category-sub .col {
+  width: 33.1%;
+  float: left;
+}
+.teeprint-category-menulist ul li:hover .rentmu-category-sub .col h3 {
+  font-size: 16px;
+  padding-bottom: 15px;
+  font-weight: 600;
+  color: #333;
+}
+.teeprint-category-menulist ul li:hover .rentmu-category-sub .col ul li a {
+  font-size: 15px;
+  display: block;
+  padding: 5px 0;
+  color: #555;
+  border-bottom: none;
+}
+.teeprint-category-menulist ul li:hover .rentmu-category-sub .col ul li a:hover {
+  color: #E70E2D;
+  background-color: transparent;
+}
+.brand-list {
+  padding: 15px;
+}
+.teeprint-category-menu label {
+  font-size: 14px !important;
+  color: #666 !important;
+  font-weight: 400;
+}
+.orderby {
+  width: 200px;
+}
+.teeprint-list-product .productlist-rightside {
+  width: 75%;
+}
+
+
+
+@media (max-width: 1199px) {
+  .teeprint-categorymenu-title {
+    height: 45px;
+  }
+  .teeprint-categorymenu-title h5 {
+    font-size: 16px;
+    line-height: 45px;
+  }
+  .teeprint-category-menulist ul li a {
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .teeprint-categorymenu-title {
+    height: 45px;
+  }
+  .teeprint-categorymenu-title h5 {
+    font-size: 16px;
+    line-height: 45px;
+  }
+}
+
+.productlist-rightside .productlist-itemrow {
+  margin-left: 0;
+  margin-right: 0;
+  border-left: 1px solid #eee;
+  border-top: 1px solid #eee;
+}  
+.productlist-rightside .productlist-itemrow .col-lg-4 {
+  padding-left: 0;
+  padding-right: 0;
+}  
+.teeprint-product {
+  position: relative;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 0px;
+}  
+.teeprint-product-inner {
+  background-color: #fff;
+  cursor: pointer;
+  transition: all .5s;
+}
+.teeprint-product-inner:hover {
+  /* box-shadow: 0px 0px 10px 3px #eee; */
+}
+.teeprint-product-image {
+  overflow: hidden;
+  position: relative;
+  padding: 15px;
+  padding-bottom: 0;
+}
+.teeprint-product-image img {
+  transition: all ease-in-out .5s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.teeprint-product-inner .teeprint-product-overlow {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  text-align: center;
+  transition: all ease-in-out .5s;
+  z-index: 0;
+}
+.teeprint-product-inner:hover .teeprint-product-overlow {
+  opacity: unset;
+}
+.teeprint-addcart-btn,
+.teeprint-view-btn {
+  position: relative;
+  margin: 0 auto;
+  width: 45px;
+  height: 45px;
+  border-radius: 100px;
+  padding: 12px 0;
+  text-align: center;
+  background-color: var(--bgcolor-secondary);
+  color: var(--fontcolor-white);
+  transition: all ease-in-out .3s;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.teeprint-addcart-btn i,
+.teeprint-view-btn i {
+  font-size: 20px;
+}
+.teeprint-addcart-btn:hover,
+.teeprint-view-btn:hover {
+  background-color: var(--bgcolor-primary);
+  color: var(--fontcolor-white);
+}
+.teeprint-product-inner:hover .teeprint-product-image img {
+  transform: scale(1.1);
+}
+.teeprint-product-inner:hover {
+  opacity: 6;
+  top: 0;
+}
+.teeprint-product-body {
+  position: relative;
+  padding: 20px 15px 15px;
+  min-height: 77px;
+  text-align: center;
+}
+.teeprint-product-body .teeprint-product-title {
+  font-size: 15px;
+  padding-bottom: 10px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.teeprint-enginelist-title .teeprint-smalltitle {
+  color: #555;
+  letter-spacing: 1px;
+}
+.teeprint-enginelist-title .teeprint-section-title {
+  color: #000;
+  font-size: 45px;
+}
+.teeprint-list-product .productlist-rightside.productlist-engine {
+  width: 100%;
+}
+.productlist-rightside.productlist-engine .teeprint-product {
+  border: 1px solid #ddd;
+  margin-bottom: 30px;
+}
+.productlist-rightside.productlist-engine .teeprint-product:hover .teeprint-product-inner{
+  box-shadow: none;
+}
+.productlist-engine .teeprint-product-body {
+  padding: 20px 15px 20px;
+}
+.productlist-engine .teeprint-product-body .teeprint-product-title {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 35px;
+}
+.teeprint-pricing-features ul li {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 0;
+  border-top: 1px solid #e5e5e5;
+}
+.teeprint-pricing-features ul li:last-child {
+  border-bottom: 1px solid #e5e5e5;
+}
+.engine-viewmore-btn {
+  padding: 10px 28px;
+  margin-top: 30px;
+}
+.page-link {
+  color: var(--fontcolor-secondary);
+}
+.active>.page-link, 
+.page-link.active {
+  background-color: var(--bgcolor-secondary);
+  border: 1px solid var(--linecolor-secondary);
+}
+.page-link:focus {
+  box-shadow: none;
+}
+.productlist-rightside.productlist-parts {
+  width: 100%;
+}
+.productlist-parts .teeprint-product {
+  border: 1px solid #eee;
+  margin-bottom: 20px;
+}
+.productlist-parts .teeprint-product-inner {
+  background-color: var(--bgcolor-secondary);
+}
+.parts-btn {
+  background-color: var(--bgcolor-white);
+  color: var(--bgcolor-secondary);
+  font-size: 15px;
+  text-transform: unset;
+  padding: 8px 20px;
+}
+.teeprint-button.parts-btn::before {
+  background-color: var(--bgcolor-primary);
+}
+
+@media (max-width: 1199px) {
+  .productlist-leftside {
+      width: 33%;
+  }
+  .teeprint-list-product .productlist-rightside {
+      width: 67%;
+  }
+  .teeprint-categorymenu-title {
+    height: 45px;
+  }
+  .teeprint-categorymenu-title h5 {
+    font-size: 16px;
+    line-height: 45px;
+  }
+  .teeprint-category-menulist ul li a {
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 991px) {
+  .productlist-leftside {
+      width: 40%;
+  }
+  .teeprint-list-product .productlist-rightside {
+      width: 60%;
+  }
+  .teeprint-package-details-wrapper {
+      padding-top: 100px;
+  }
+  .teeprint-product-inner .teeprint-product-leftside {
+      flex: 0 0 100%;
+      max-width: 100%;
+  }
+  .teeprint-product-view-image img.teeprint-product-viewimage-active {
+      height: auto;
+      max-height: unset;
+  }
+  .teeprint-product-rightside {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding-top: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .productlist-leftside {
+      width: 100%;
+  }
+  .teeprint-list-product .productlist-rightside {
+      width: 100%;
+  }
+  .teeprint-product-title {
+      font-size: 25px;
+  }
+}
+
+@media (max-width:767px) {
+  .teeprint-enginelist-title .teeprint-section-title {
+      font-size: 25px;
+      line-height: 25px;
+  }
+  .productlist-engine .teeprint-product-body .teeprint-product-title {
+      font-size: 20px;
+  }
+  .parts-btn {
+      font-size: 14px;
+      padding: 8px 9px;
+  }
+  .teeprint-product {
+      min-height: 210px;
+  }
+  .teeprint-product-body .teeprint-product-title {
+      font-size: 14px;
+      line-height: 16px;
+  }
+}
+
+/*--- /.price-range-slider ---*/
