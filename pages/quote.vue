@@ -16,18 +16,18 @@
                                         </div>
                                         <div class="branch-address">
                                             <h6>Branch</h6>
-                                            <span>4000 Highland Rd, Highland Charter Township, MI 48357, United States</span>
+                                            <span>126 Commercial Road, E1 1NL</span>
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-center contact-info">
                                         <div class="contact-circle"><i class="la la-envelope-open"></i></div>
                                         <h5>Email</h5>
-                                        <span>info@gmail.com</span>
+                                        <span>contact@gmail.com</span>
                                     </div>
                                     <div class="col-md-12 text-center contact-info">
                                         <div class="contact-circle"><i class="la la-phone"></i></div>
                                         <h5>Phone</h5>
-                                        <span>+009959845894</span>
+                                        <span>+44 7888 185120</span>
                                     </div>
                                 </div>
                             </div>
@@ -89,6 +89,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label>Requirements</label>
                                         <textarea class="form-control" rows="3" placeholder="Write your requirements E.g. product type, quantity, size, artwork placement area etc."></textarea>
                                     </div>
                                     <div class="form-group text-right">
