@@ -69,6 +69,19 @@
     </section>
 
     <section class="container">
+
+        <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="section-main-heading text-center">
+                            <h4 class="section-heading-title-small">
+                                <span class="line-decoration"></span> Other Items
+                            </h4>
+                            <h2 class="section-heading-title-big">
+                                with Guaranteed Same-Day Printing and Delivery in London & Next Day for UK
+                            </h2>
+                        </div>
+                    </div>
+                </div>
         <div class="row">
 
           

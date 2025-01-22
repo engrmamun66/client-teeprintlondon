@@ -190,11 +190,18 @@ async function showColor(id) {
 }
 
 function handleSubmit() {
-  colorStore.colorAttribute.status = colorStore.colorAttribute.status ? 1 : 0;
-  if (editMode.value) {
-    colorStore.update(colorStore.colorAttribute.id, colorStore.colorAttribute);
+  if (!colorStore.colorAttribute.name) {
+    Toaster.error("Please add color name");
   } else {
-    colorStore.create(colorStore.colorAttribute);
+    colorStore.colorAttribute.status = colorStore.colorAttribute.status ? 1 : 0;
+    if (editMode.value) {
+      colorStore.update(
+        colorStore.colorAttribute.id,
+        colorStore.colorAttribute
+      );
+    } else {
+      colorStore.create(colorStore.colorAttribute);
+    }
   }
 }
 
