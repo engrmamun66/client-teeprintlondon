@@ -39,21 +39,29 @@
                                 <form>
                                     <div class="row">
                                         <div class="col-md-12 mb-2">
-                                            <label class="teeprint-radio">
-                                                <input type="radio" name="delivery_type" />
-                                                Same Day Delivery
-                                                <span></span>
-                                            </label>
-                                            <label class="teeprint-radio">
-                                                <input type="radio" name="delivery_type" />
-                                                Next Day Delivery
-                                                <span></span>
-                                            </label>
-                                            <label class="teeprint-radio">
-                                                <input type="radio" name="delivery_type" />
-                                                Standard Delivery (3-7 Days)
-                                                <span></span>
-                                            </label>
+                                            <div class="teeprint-radio-inline">
+                                                <div class="teeprint-radio-box">
+                                                    <label class="teeprint-radio">
+                                                        <input type="radio" name="delivery_type" />
+                                                        Same Day Delivery
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                                <div class="teeprint-radio-box">
+                                                    <label class="teeprint-radio">
+                                                        <input type="radio" name="delivery_type" />
+                                                        Next Day Delivery
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                                <div class="teeprint-radio-box">
+                                                    <label class="teeprint-radio">
+                                                        <input type="radio" name="delivery_type" />
+                                                        Standard Delivery (3-7 Days)
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">

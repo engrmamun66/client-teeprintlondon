@@ -445,11 +445,11 @@ body {
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
 }
 
- .teeprint-checkbox-inline .teeprint-checkbox,
- .teeprint-checkbox-inline .teeprint-radio,
- .teeprint-radio-inline .teeprint-checkbox,
- .teeprint-radio-inline .teeprint-radio {
-  display: inline-block;
+.teeprint-checkbox,
+.teeprint-radio,
+.teeprint-checkbox,
+.teeprint-radio {
+  display: block;
   position: relative;
   padding-left: 25px;
   margin-bottom: 10px;
@@ -458,65 +458,71 @@ body {
   -webkit-transition: all .3s;
   transition: all .3s;
   padding-right: 10px;
-  color: var(--fontcolor-white);
+  color: var(--fontcolor-primary);
+}
+.teeprint-checkbox-inline .teeprint-checkbox,
+.teeprint-radio-inline .teeprint-radio,
+.teeprint-checkbox-inline .teeprint-checkbox,
+.teeprint-radio-inline .teeprint-radio {
+  display: inline-block;
 }
 
- .teeprint-checkbox-inline .teeprint-checkbox > input,
- .teeprint-checkbox-inline .teeprint-radio > input,
- .teeprint-radio-inline .teeprint-checkbox > input,
- .teeprint-radio-inline .teeprint-radio > input {
+.teeprint-checkbox > input,
+.teeprint-radio > input,
+.teeprint-checkbox > input,
+.teeprint-radio > input {
   position: absolute;
   z-index: -1;
   opacity: 0;
   filter: alpha(opacity=0);
 }
 
- .teeprint-checkbox-inline input[type=checkbox],
- .teeprint-checkbox-inline input[type=radio],
- .teeprint-radio-inline input[type=checkbox],
- .teeprint-radio-inline input[type=radio] {
+input[type=checkbox],
+input[type=radio],
+input[type=checkbox],
+input[type=radio] {
   box-sizing: border-box;
   padding: 0;
 }
 
- .teeprint-checkbox-inline .teeprint-checkbox > span,
- .teeprint-checkbox-inline .teeprint-radio > span,
- .teeprint-radio-inline .teeprint-checkbox > span,
- .teeprint-radio-inline .teeprint-radio > span {
+.teeprint-checkbox > span,
+.teeprint-radio > span,
+.teeprint-checkbox > span,
+.teeprint-radio > span {
   border-radius: 3px;
   background: 0 0;
   position: absolute;
-  top: 1px;
+  top: 3px;
   left: 0;
   height: 18px;
   width: 18px;
 }
 
- .teeprint-checkbox-inline .teeprint-radio > span,
- .teeprint-checkbox-inline .teeprint-checkbox > span,
- .teeprint-radio-inline .teeprint-radio > span,
- .teeprint-radio-inline .teeprint-checkbox > span {
+.teeprint-radio > span,
+.teeprint-checkbox > span,
+.teeprint-radio > span,
+.teeprint-checkbox > span {
   border: 1px solid var(--linecolor-light-gray);
 }
 
- .teeprint-checkbox-inline .teeprint-radio > input:checked ~ span,
- .teeprint-checkbox-inline .teeprint-checkbox > input:checked ~ span,
- .teeprint-radio-inline .teeprint-radio > input:checked ~ span,
- .teeprint-radio-inline .teeprint-checkbox > input:checked ~ span {
+.teeprint-radio > input:checked ~ span,
+.teeprint-checkbox > input:checked ~ span,
+.teeprint-radio > input:checked ~ span,
+.teeprint-checkbox > input:checked ~ span {
   border: 1px solid var(--linecolor-gray);
 }
 
- .teeprint-checkbox-inline .teeprint-radio > span:after,
- .teeprint-checkbox-inline .teeprint-checkbox > span:after,
- .teeprint-radio-inline .teeprint-radio > span:after,
- .teeprint-radio-inline .teeprint-checkbox > span:after {
+.teeprint-radio > span:after,
+.teeprint-checkbox > span:after,
+.teeprint-radio > span:after,
+.teeprint-checkbox > span:after {
   content: '';
   position: absolute;
   display: none;
 }
 
- .teeprint-checkbox-inline .teeprint-checkbox > span:after,
- .teeprint-radio-inline .teeprint-checkbox > span:after {
+.teeprint-checkbox > span:after,
+.teeprint-checkbox > span:after {
   top: 50%;
   left: 50%;
   margin-left: -2px;
@@ -527,24 +533,24 @@ body {
   transform: rotate(45deg);
 }
 
- .teeprint-checkbox-inline .teeprint-checkbox > span:after,
- .teeprint-radio-inline .teeprint-checkbox > span:after {
+.teeprint-checkbox > span:after,
+.teeprint-checkbox > span:after {
   border: solid #7281a4;
 }
 
- .teeprint-checkbox-inline .teeprint-radio > span,
- .teeprint-radio-inline .teeprint-radio > span {
+.teeprint-radio > span,
+.teeprint-radio > span {
   border-radius: 50%;
 }
 
- .teeprint-checkbox-inline .teeprint-radio > span:after,
- .teeprint-radio-inline .teeprint-radio > span:after {
+.teeprint-radio > span:after,
+.teeprint-radio > span:after {
   border: solid #7281a4;
   background: #7281a4;
 }
 
- .teeprint-checkbox-inline .teeprint-radio > span:after,
- .teeprint-radio-inline .teeprint-radio > span:after {
+.teeprint-radio > span:after,
+.teeprint-radio > span:after {
   top: 50%;
   left: 50%;
   margin-left: -3px;
@@ -554,10 +560,10 @@ body {
   border-radius: 100%;
 }
 
- .teeprint-checkbox-inline .teeprint-checkbox > input:checked ~ span:after,
- .teeprint-checkbox-inline .teeprint-radio > input:checked ~ span:after,
- .teeprint-radio-inline .teeprint-checkbox > input:checked ~ span:after,
- .teeprint-radio-inline .teeprint-radio > input:checked ~ span:after {
+.teeprint-checkbox > input:checked ~ span:after,
+.teeprint-radio > input:checked ~ span:after,
+.teeprint-checkbox > input:checked ~ span:after,
+.teeprint-radio > input:checked ~ span:after {
   display: block;
 }
 
@@ -3355,9 +3361,6 @@ questions css
     line-height: 20px;
   }
 }
-input[type=text] {
-  display: none;
-}
 
 
 
@@ -3566,6 +3569,17 @@ Contact us css
 .query-submit-btn {
   padding: 11px 28px;
   border-radius: 4px;
+}
+.teeprint-radio-box {
+  display: inline-block;
+  background-color: #eee;
+  padding: 5px 12px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+}
+.teeprint-radio-box label {
+  margin-bottom: 0;
 }
 @media (max-width: 991px) {
   .map {
