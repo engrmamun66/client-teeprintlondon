@@ -3,7 +3,7 @@ import { useCommonStore } from "~/store/Common";
 import Color from "../apis/Color.js";
 
 export const useColorStore = defineStore("color", () => {
-  let brandList = ref([]);
+  let colorList = ref([]);
   let colorAttribute = ref({
     id: null,
     name: null,
@@ -42,7 +42,7 @@ export const useColorStore = defineStore("color", () => {
     try {
       let response = await Color.list();
       if (response.status == 200) {
-        brandList.value = response.data.data.data;
+        colorList.value = response.data.data.data;
       }
     } catch (error) {}
   }
@@ -100,7 +100,7 @@ export const useColorStore = defineStore("color", () => {
         await getColorList();
         showModal.value = false;
         resetBrandAttribute();
-        Toaster.success("Category updated successfully");
+        Toaster.success("Color updated successfully");
       }
     } catch (error) {
       if (error.response.status == 422) {
@@ -118,7 +118,7 @@ export const useColorStore = defineStore("color", () => {
     update,
     resetBrandAttribute,
     color,
-    brandList,
+    colorList,
     colorAttribute,
     showModal,
   };

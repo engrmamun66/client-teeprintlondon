@@ -30,7 +30,7 @@
           <tbody>
             <tr
               class="odd"
-              v-for="(brand, index) in colorStore.brandList"
+              v-for="(brand, index) in colorStore.colorList"
               :key="index"
             >
               <td>
@@ -156,7 +156,7 @@
             >
               Save
               <BtnLoader
-                :show="H.isPendingAnyApi('Brand:create|Brand:update')"
+                :show="H.isPendingAnyApi('Color:create|Color:update')"
                 color="black"
               />
             </button>

@@ -1,6 +1,6 @@
 const prefix = "colors";
 
-export const BrandEndpoints = {
+export const ColorEndpoints = {
   create: `${prefix}`,
   getBrandList: `${prefix}`,
   deleteBrand: `${prefix}/\\d+`,
