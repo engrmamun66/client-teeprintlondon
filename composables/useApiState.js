@@ -86,7 +86,6 @@ function Api() {
     return createApiHandler({accessToken: false})
 }
 function ApiAuth({accessToken=true}={}) {
-    console.log("=================================================>>>>>Mamun Vai")
     return createApiHandler({accessToken: true})
 }
 
