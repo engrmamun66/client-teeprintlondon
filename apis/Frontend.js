@@ -3,13 +3,13 @@ const prefix = "";
 
 
 export const FrontendEndpoints = {
-   
+  submitQuote: '/quotations',
 }
 
 
 export default {
-  async test(config=null) {
-    return await Api().get(`/test`, config);
+  async submitQuote(payload, config={}) {
+    return await Api().post(`/quotations`, payload, config);
   }, 
 
 };

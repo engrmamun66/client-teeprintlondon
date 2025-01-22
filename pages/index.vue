@@ -248,7 +248,7 @@ If you have t-shirt design ideas but need some help to bring it to reality then 
                             cover hoodies, sweatshirts, and tote bags, meeting all 
                             your needs efficiently.
                         </p>
-                        <a class="teeprint-button teeprint-theme-btn" href="#">
+                        <a class="teeprint-button teeprint-theme-btn zoomInOut" href="#">
                             Get A Free Quote <i class="la la-arrow-right ml-1"></i>
                         </a>
                     </div>
@@ -279,7 +279,7 @@ If you have t-shirt design ideas but need some help to bring it to reality then 
 Visit Design in London to explore our premium design services and elevate your brand!
                             </p>
                         </div>
-                        <a class="teeprint-button teeprint-theme-btn" href="/Products-list">
+                        <a class="teeprint-button teeprint-theme-btn zoomInOut" href="/Products-list">
                             Get My Design Done <i class="la la-arrow-right ml-1"></i>
                         </a>
                     </div>

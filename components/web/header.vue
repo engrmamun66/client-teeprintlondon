@@ -78,7 +78,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="teeprint-button teeprint-theme-btn quote-btn">Instant Quote <i class="la la-arrow-right ml-2"></i></a>
+                                    <a href="#" class="teeprint-button teeprint-theme-btn quote-btn zoomInOut">Instant Quote <i class="la la-arrow-right ml-2"></i></a>
                                 </li>
                                 <!-- <li>
                                     <a class="teeprint-search-bar">

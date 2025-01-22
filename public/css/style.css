@@ -357,7 +357,7 @@ body {
   background-color: var(--bgcolor-primary);
   color: var(--fontcolor-white); 
 }
-.teeprint-button.teeprint-theme-btn:not(:hover) {
+.zoomInOut:not(:hover) {
   animation: zoomInOut 2s infinite ease-in-out;
 }
 
