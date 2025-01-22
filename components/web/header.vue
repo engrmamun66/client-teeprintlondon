@@ -1,3 +1,34 @@
+<script setup>
+
+let menus = ref([
+    {
+        title: 'Home',
+        to: {name: 'home'}
+    },
+    {
+        title: 'Popular Products',
+        to: {name: 'shop'}
+    },
+    {
+        title: 'Same Day Items',
+        to: {name: 'shop'}
+    },
+    {
+        title: 'Categories',
+        to: {name: 'shop'}
+    },
+    {
+        title: 'About Us',
+        to: {name: 'quote'}
+    },
+    {
+        title: 'Contact Us',
+        to: {name: 'quote'}
+    },
+])
+
+</script>
+
 <template>
     <header class="teeprint-header-wrap teeprint-header">
         <div class="teeprint-middle-header">
@@ -7,9 +38,9 @@
                         <div class="teeprint-logo-area">
                             <div class="teeprint-logo-area-inner">
                                 <div class="teeprint-logo-area-middle">
-                                    <a href="#">
+                                    <nuxt-link :to="{name: 'home'}">
                                         <img src="/img/logo2.png" alt="logo image" style="height: 4.5rem;" />
-                                    </a>
+                                    </nuxt-link>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +109,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="teeprint-button teeprint-theme-btn quote-btn zoomInOut">Instant Quote <i class="la la-arrow-right ml-2"></i></a>
+                                    <nuxt-link :to="{name: 'quote'}" class="teeprint-button teeprint-theme-btn quote-btn zoomInOut">Instant Quote <i class="la la-arrow-right ml-2"></i></nuxt-link>
                                 </li>
                                 <!-- <li>
                                     <a class="teeprint-search-bar">
@@ -103,11 +134,12 @@
                             <!-- Main menu  -->
                             <nav class="teeprint-nav-manu">
                                 <ul>
+                                    
                                     <li>
-                                        <a href="#" class="teeprint-active-menu">Home</a>
-                                    </li>
+                                        <a href="/" :class="{'teeprint-active-menu': useRoute().name=== 'home'}">Home</a>
+                                    </li> 
                                     <li>
-                                        <a href="#">Popular Products <i class="lni lni-chevron-down"></i></a>
+                                        <nuxt-link :to="{name: 'shop'}">Popular Products <i class="lni lni-chevron-down"></i></nuxt-link>
                                         <div class="teeprint-submenu">
                                             <ul>
                                                 <li>
@@ -130,7 +162,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="#">Same Day Items<i class="lni lni-chevron-down"></i></a>
+                                        <nuxt-link :to="{name: 'shop'}" >Same Day Items<i class="lni lni-chevron-down"></i></nuxt-link>
                                         <div class="teeprint-submenu">
                                             <ul>
                                                 <li><a href="#">Same Day Garment Printing</a></li>
@@ -230,11 +262,12 @@
                         </div>
                     </div>
                     <div class="quote-btn-area">
-                        <a href="#" class="teeprint-button teeprint-theme-btn quote-btn">
+                        <nuxt-link :to="{name: 'quote'}" class="teeprint-button teeprint-theme-btn quote-btn zoomInOut">
                             <span class="">
                                 Instant Quote 
                             </span>
-                            <i class="la la-arrow-right ml-2"></i></a>
+                            <i class="la la-arrow-right ml-2"></i>
+                        </nuxt-link>
                         <a href="#" class="p-1 text-white size-1p4"> <i class="bx bx-shopping-bag fs-3"></i> </a>
                     </div>
                 </div>

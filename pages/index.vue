@@ -1,7 +1,20 @@
+
+<script setup>
+
+definePageMeta({
+  titleTemplate: '% :: Home',
+  name: 'home',
+  layout: 'web',
+})
+
+ 
+</script>
+
+
 <template>
   <div> 
 
-   <web-slider></web-slider>
+   <web-slider ></web-slider>
    <web-trusted></web-trusted>
    <web-customerFinally></web-customerFinally>
 
@@ -483,14 +496,7 @@ Visit Design in London to explore our premium design services and elevate your b
   </div>
 </template>
 
-<script setup>
 
-definePageMeta({
-  titleTemplate: '% :: Home',
-  name: 'home',
-  layout: 'web',
-})
-</script>
 
 
 <style scoped>
