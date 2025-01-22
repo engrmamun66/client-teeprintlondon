@@ -1,4 +1,4 @@
-const prefix = "brands";
+const prefix = "colors";
 
 export const BrandEndpoints = {
   create: `${prefix}`,

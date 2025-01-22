@@ -1,26 +1,20 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
 import { useCommonStore } from "~/store/Common";
-import Color from "../apis/Color";
+import Color from "../apis/Color.js";
 
 export const useColorStore = defineStore("color", () => {
   let brandList = ref([]);
-  let brandAttribute = ref({
+  let colorAttribute = ref({
     id: null,
     name: null,
-    image: null,
-    image_url: null,
-    description: null,
     status: 1,
   });
 
   let showModal = ref(false);
   function resetBrandAttribute() {
-    brandAttribute.value = {
+    colorAttribute.value = {
       id: null,
       name: null,
-      image: null,
-      image_url: null,
-      description: null,
       status: 1,
     };
   }
@@ -28,7 +22,7 @@ export const useColorStore = defineStore("color", () => {
     try {
       let response = await Color.create(payload);
       if (response.data.success) {
-        await getBrandList();
+        await getColorList();
         showModal.value = false;
         resetBrandAttribute();
         Toaster.success("Color created succsfully");
@@ -44,7 +38,7 @@ export const useColorStore = defineStore("color", () => {
     }
   }
 
-  async function getBrandList() {
+  async function getColorList() {
     try {
       let response = await Color.list();
       if (response.status == 200) {
@@ -59,7 +53,7 @@ export const useColorStore = defineStore("color", () => {
 
       if (response.status == 201 || 200) {
         // console.log(response.data.data.data);
-        getBrandList();
+        getColorList();
         Toaster.success("Color deleted successfully");
         return true;
       }
@@ -76,18 +70,18 @@ export const useColorStore = defineStore("color", () => {
   }
 
   let color = ref(null);
-  async function showBrand(id) {
+  async function showColor(id) {
     try {
       let response = await Color.show(id);
 
       if (response.status == 200) {
         Color.value = response.data.data;
-        brandAttribute.value.name = Color.value.name;
-        brandAttribute.value.status = Color.value.status;
+        colorAttribute.value.name = Color.value.name;
+        colorAttribute.value.status = Color.value.status;
 
-        brandAttribute.value.image_url = Color.value.image_url;
-        brandAttribute.value.description = Color.value.description;
-        brandAttribute.value.id = Color.value.id;
+        colorAttribute.value.image_url = Color.value.image_url;
+        colorAttribute.value.description = Color.value.description;
+        colorAttribute.value.id = Color.value.id;
         showModal.value = true;
       }
     } catch (error) {
@@ -103,7 +97,7 @@ export const useColorStore = defineStore("color", () => {
       };
       let response = await Color.update(id, payload);
       if (response.status == 200) {
-        await getBrandList();
+        await getColorList();
         showModal.value = false;
         resetBrandAttribute();
         Toaster.success("Category updated successfully");
@@ -118,14 +112,14 @@ export const useColorStore = defineStore("color", () => {
 
   return {
     create,
-    getBrandList,
+    getColorList,
     deleteBrand,
-    showBrand,
+    showColor,
     update,
     resetBrandAttribute,
     color,
     brandList,
-    brandAttribute,
+    colorAttribute,
     showModal,
   };
 });

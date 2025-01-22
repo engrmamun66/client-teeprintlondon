@@ -23,7 +23,6 @@
           <thead>
             <tr>
               <th>Color Name <i-las t="sort-asc" /></th>
-
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -31,7 +30,7 @@
           <tbody>
             <tr
               class="odd"
-              v-for="(brand, index) in brandStore.brandList"
+              v-for="(brand, index) in colorStore.brandList"
               :key="index"
             >
               <td>
@@ -66,7 +65,7 @@
                       <i-las
                         t="edit"
                         class="size-sm cp"
-                        @click="showBrand(brand.id)"
+                        @click="showColor(brand.id)"
                       />
                     </p>
                   </li>
@@ -82,7 +81,7 @@
           :skipAutoClose="false"
           @yes="
             async () => {
-              let isDeleted = await brandStore.deleteBrand(brandId);
+              let isDeleted = await colorStore.deleteBrand(brandId);
               if (isDeleted) {
                 showConfirmation = false;
                 brandId = null;
@@ -96,7 +95,7 @@
     </admin-card>
 
     <modal-global
-      v-model="brandStore.showModal"
+      v-model="colorStore.showModal"
       :footer="false"
       :title="editMode ? 'Update Color' : 'Add Color'"
     >
@@ -113,7 +112,7 @@
                       <el-BaseInput
                         type="text"
                         label="Color Name"
-                        v-model="brandStore.brandAttribute.name"
+                        v-model="colorStore.colorAttribute.name"
                       />
                     </div>
                   </div>
@@ -128,7 +127,8 @@
                         name="status"
                         :value="1"
                         label="Active"
-                        v-model="brandStore.brandAttribute.status"
+                        v-model="colorStore.colorAttribute.status"
+                        @click="changeColor(1)"
                       >
                         Active
                       </el-Radio>
@@ -136,12 +136,11 @@
                         name="status"
                         :value="0"
                         label="Inactive"
-                        v-model="brandStore.brandAttribute.status"
+                        v-model="colorStore.colorAttribute.status"
+                        @click="changeColor(0)"
                       >
                         Inactive
                       </el-Radio>
-
-                      <!-- <pre>{{ brandStore.brandAttribute.status }}</pre> -->
                     </div>
                   </div>
                 </div>
@@ -149,33 +148,6 @@
             </div>
           </div>
 
-          <!-- <div class="col-12">
-              <RedactorEditor
-                v-model="brandStore.brandAttribute.description"
-                ref="editor"
-              />
-            </div> -->
-          <!-- <div class="col-6 mt-3">
-              <div class="form-group">
-                <div class="date-box">
-                  <div class="date-box-input">
-                    <el-DropImage
-                      v-model="brandStore.brandAttribute.image"
-                      v-model:img_url="brandStore.brandAttribute.image_url"
-                      v-model:clear="clearImage"
-                    />
-                    <p v-if="brandStore.brandAttribute.image">
-                      Uploaded Image Name:
-                      {{
-                        (clearImage,
-                        brandStore.brandAttribute.image.name ||
-                        brandStore.brandAttribute.image)
-                      }}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div> -->
           <div class="ionic-card-footer justify-content-end">
             <button
               type="button"
@@ -188,7 +160,11 @@
                 color="black"
               />
             </button>
-            <button type="button" class="leap-btn leap-cancel-btn m-1" @click="brandStore.showModal = !brandStore.showModal">
+            <button
+              type="button"
+              class="leap-btn leap-cancel-btn m-1"
+              @click="colorStore.showModal = !colorStore.showModal"
+            >
               Cancel
             </button>
           </div>
@@ -199,40 +175,46 @@
 </template>
 
 <script setup>
-import { useBrandStore } from "~/store/Brand";
-const brandStore = useBrandStore();
+import { useColorStore } from "~/store/Color";
+const colorStore = useColorStore();
 let showConfirmation = ref(false);
 let editMode = ref(false);
 let brandId = ref(null);
-let editor = ref(null);
+
 let clearImage = ref(false);
 
-async function showBrand(id) {
-  await brandStore.showBrand(id);
-  editor.value.setContent(brandStore.brandAttribute.description);
+async function showColor(id) {
+  await colorStore.showColor(id);
+
   editMode.value = true;
 }
 
 function handleSubmit() {
-  // console.log( brandStore.brandAttribute.image )
-  brandStore.brandAttribute.status = brandStore.brandAttribute.status ? 1 : 0;
+  colorStore.colorAttribute.status = colorStore.colorAttribute.status ? 1 : 0;
   if (editMode.value) {
-    brandStore.update(brandStore.brandAttribute.id, brandStore.brandAttribute);
+    colorStore.update(colorStore.colorAttribute.id, colorStore.colorAttribute);
   } else {
-    brandStore.create(brandStore.brandAttribute);
+    colorStore.create(colorStore.colorAttribute);
   }
 }
 
+function changeColor(status) {
+  console.log(status);
+  setTimeout(() => {
+    colorStore.colorAttribute.status = status;
+  }, 10);
+}
+
 function OpenModal() {
-  brandStore.resetBrandAttribute();
-  // editor.value.setContent("")
+  colorStore.resetBrandAttribute();
+
   clearImage.value = true;
   editMode.value = false;
-  brandStore.showModal = !brandStore.showModal;
+  colorStore.showModal = !colorStore.showModal;
 }
 
 onMounted(async () => {
-  await brandStore.getBrandList();
+  await colorStore.getColorList();
 });
 </script>
 <style scoped>
@@ -240,6 +222,3 @@ fieldset {
   border: 1px solid #9c9393 !important;
 }
 </style>
-<!-- v-model name and status -->
-<!-- //Nam
-//status   -->
