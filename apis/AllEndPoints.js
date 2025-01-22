@@ -1,7 +1,7 @@
 import { AuthEndpoints } from './Auth';
 import { FrontendEndpoints } from './Frontend'; 
 import { CategoryEndpoints } from './Category'; 
-
+import { ColorEndpoints } from './Color'; 
 
 /**
  * This file will help to show 
@@ -12,6 +12,7 @@ export const AllDeveloperDefinedEndPoints = {
     Auth: {...AuthEndpoints},
     Frontend: {...FrontendEndpoints},
     Category: {...CategoryEndpoints},
+    Color: {... ColorEndpoints}
 }
 
 /**

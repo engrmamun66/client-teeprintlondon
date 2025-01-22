@@ -1,10 +1,10 @@
-const prefix = "colors";
+const prefix = "discount";
 
-export const ColorEndpoints = {
+export const DiscountEndpoints = {
   create: `${prefix}`,
-  getColorList: `${prefix}`,
-  deleteColor: `${prefix}/\\d+`,
-  showColor: `${prefix}/\\d+`,
+  getDiscountList: `${prefix}`,
+  deleteDiscount: `${prefix}/\\d+`,
+  showDiscount: `${prefix}/\\d+`,
   update: `${prefix}/\\d+`
 };
 
