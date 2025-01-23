@@ -150,9 +150,6 @@ definePageMeta({
     justify-content: space-between;
     margin-bottom: 30px; 
   }
-  .promiss-section:hover{
-    zoom: 1.1;
-  }
   .promiss-section img{
     width: 30%;
   }
