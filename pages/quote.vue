@@ -24,15 +24,15 @@ let minDate = ref(moment().subtract(1, 'day').format(FORMATS.DB_DATE))
 watch(()=>payload.type_of_service, (a, b) => { 
 
     if(a == 1){
-        minDate.value = moment().add(-1, 'day').format(FORMATS.DB_DATE)
+        minDate.value = moment().add(0, 'day').format(FORMATS.DB_DATE)
         payload.delivery_date = moment().add(0, 'day').format(FORMATS.DB_DATE)
     }
     else if(a == 2){
-        minDate.value = moment().add(0, 'day').format(FORMATS.DB_DATE)
+        minDate.value = moment().add(1, 'day').format(FORMATS.DB_DATE)
         payload.delivery_date = moment().add(1, 'day').format(FORMATS.DB_DATE)
     }
     else if(a == 3){
-        minDate.value = moment().add(1 + 1, 'day').format(FORMATS.DB_DATE)
+        minDate.value = moment().add(1 + 2, 'day').format(FORMATS.DB_DATE)
         payload.delivery_date = moment().add(3, 'day').format(FORMATS.DB_DATE)
     }
  
