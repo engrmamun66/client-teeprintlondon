@@ -84,7 +84,7 @@
 
       <!-- Right Card: Additional Details -->
       <div class="card additional-details-card">
-        <h3 class="additional-details-heading">Additional Details</h3>
+        <h3 class="additional-details-heading">Uploaded Files</h3>
         <!-- <p>
           Here you can display extra information or actions related to the
           quotation.

@@ -117,7 +117,7 @@
                 <div class="productlist-rightside">
                     <div class="row">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span>Showing 1–16 of 3790 results</span>
+                            <span>Showing 1–16 of 20 results</span>
                             <select name="orderby" class="orderby" aria-label="Shop order">
                                 <option value="popularity">Sort by popularity</option>
                                 <option value="rating">Sort by average rating</option>
