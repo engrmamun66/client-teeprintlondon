@@ -82,12 +82,6 @@
                                             <span></span> 
                                         </label>
                                     </div>
-                                    <div class="teeprint-checkbox-inline">
-                                        <label class="teeprint-checkbox" for="brand3"> 
-                                            <input type="checkbox" id="brand3"> On Sale 
-                                            <span></span> 
-                                        </label>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -285,7 +279,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4">
+                    <!-- <div class="row mt-4">
                         <div class="col-md-12">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
@@ -305,7 +299,7 @@
                                 </ul>
                               </nav>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
