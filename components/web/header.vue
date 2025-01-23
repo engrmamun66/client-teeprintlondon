@@ -139,7 +139,7 @@ let menus = ref([
                                         <a href="/" :class="{'teeprint-active-menu': useRoute().name=== 'home'}">Home</a>
                                     </li> 
                                     <li>
-                                        <nuxt-link :to="{name: 'shop'}">Popular Products <i class="lni lni-chevron-down"></i></nuxt-link>
+                                        <nuxt-link to="/shop">Popular Products <i class="lni lni-chevron-down"></i></nuxt-link>
                                         <div class="teeprint-submenu">
                                             <ul>
                                                 <li>
@@ -162,7 +162,7 @@ let menus = ref([
                                         </div>
                                     </li>
                                     <li>
-                                        <nuxt-link :to="{name: 'shop'}" >Same Day Items<i class="lni lni-chevron-down"></i></nuxt-link>
+                                        <nuxt-link to="/shop" >Same Day Items<i class="lni lni-chevron-down"></i></nuxt-link>
                                         <div class="teeprint-submenu">
                                             <ul>
                                                 <li><a href="#">Same Day Garment Printing</a></li>
