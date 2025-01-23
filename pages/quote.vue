@@ -69,12 +69,10 @@ async function sendQuotation() {
         loading.value = true
 
         FrontendApi.submitQuote(payload).then(respoonse => {
-            if(respoonse.statusText == '"Created"'){
+            if(respoonse.data.success){
+                clearPayload()
                 Toaster.success('Quatation submit successful')
             } 
-            console.log(respoonse.data);
-            clearPayload()
-            Toaster.success('Quatation submit successful')
 
         }).catch((error) => {
             if(error?.response?.data?.message){
