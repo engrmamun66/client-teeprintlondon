@@ -14,7 +14,7 @@
 defineProps(['error'])
 const eeee = ref('Hello')
 
-navigateTo('/')
+// navigateTo('/')
 // console.log(error);
 useHead({
     title: eeee,

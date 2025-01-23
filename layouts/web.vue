@@ -1,6 +1,7 @@
 <template> 
     <div>
       <web-header></web-header>
+      <Toaster></Toaster>
       <slot></slot>
       <web-footerArea></web-footerArea>
     </div>

@@ -1,11 +1,94 @@
 
 <script setup>
+import FrontendApi from "~/apis/Frontend"
   
 definePageMeta({
   titleTemplate: '% :: Home',
   name: 'quote',
   layout: 'web',
 })
+
+let payload = reactive({
+    type_of_service: 1,
+    delivery_date: moment().subtract(1, 'day').format(FORMATS.DB_DATE),
+    full_name: null,
+    email: null,
+    files: [],
+    phone: null,
+    requirements: null,
+})
+
+let showPicker = ref(true)
+let minDate = ref(moment().subtract(1, 'day').format(FORMATS.DB_DATE))
+
+watch(()=>payload.type_of_service, (a, b) => { 
+
+    if(a == 1){
+        minDate.value = moment().add(-1, 'day').format(FORMATS.DB_DATE)
+        payload.delivery_date = moment().add(0, 'day').format(FORMATS.DB_DATE)
+    }
+    else if(a == 2){
+        minDate.value = moment().add(0, 'day').format(FORMATS.DB_DATE)
+        payload.delivery_date = moment().add(1, 'day').format(FORMATS.DB_DATE)
+    }
+    else if(a == 3){
+        minDate.value = moment().add(1 + 1, 'day').format(FORMATS.DB_DATE)
+        payload.delivery_date = moment().add(3, 'day').format(FORMATS.DB_DATE)
+    }
+ 
+
+    
+
+    showPicker.value = false
+    setTimeout(() => {
+        showPicker.value = true
+    },0);
+})
+
+
+let loading = ref(false)
+let showFileUploader = ref(true)
+
+function clearPayload(){
+    payload.type_of_service = 1
+    payload.delivery_date = null
+    payload.full_name = null
+    payload.email = null
+    payload.files = []
+    payload.phone = null
+    payload.requirements = null
+    showFileUploader.value = false
+    H.delay(()=>showFileUploader.value = true)
+}
+async function sendQuotation() {
+    try {
+        
+        if(!payload.full_name) return Toaster.error('Full name is required')
+        if(!payload.email) return Toaster.error('Email is required')
+        if(!payload.phone) return Toaster.error('Phone is required')
+        loading.value = true
+
+        FrontendApi.submitQuote(payload).then(respoonse => {
+            if(respoonse.statusText == '"Created"'){
+                Toaster.success('Quatation submit successful')
+            } 
+            console.log(respoonse.data);
+            clearPayload()
+            Toaster.success('Quatation submit successful')
+
+        }).catch((error) => {
+            if(error?.response?.data?.message){
+                Toaster.error(error.response?.data?.message)
+            }
+        }).finally(()=>{
+            H.delay(()=>loading.value = false, 500)
+        }) 
+    } catch (error) {
+        
+    }
+}
+
+
 </script>
 
 <template>
@@ -43,67 +126,83 @@ definePageMeta({
                             </div>
 
                             <!-- Contact Query -->
-                            <div class="col-lg-9 col-md-8 mt-3 contact-form">
-                                <h3 class="text-center mb-2">3 Min Quote Form</h3>
+                            <div class="col-lg-9 col-md-8 contact-form">
+                                <h3 class="text-center mb-2 mt-3">3 Min Quote Form</h3>
                                 <div class="contact-linbar"></div>
-                                <form>
+                                <form @submit.prevent="sendQuotation" >
                                     <div class="row">
                                         <div class="col-md-12 mb-2">
                                             <div class="teeprint-radio-inline">
                                                 <div class="teeprint-radio-box">
                                                     <label class="teeprint-radio">
-                                                        <input type="radio" name="delivery_type" />
+                                                        <input type="radio" name="delivery_type" value="1" @click="({target})=>payload.type_of_service = target.value" :checked="payload.type_of_service == 1" />
                                                         Same Day Delivery
                                                         <span></span>
                                                     </label>
                                                 </div>
                                                 <div class="teeprint-radio-box">
                                                     <label class="teeprint-radio">
-                                                        <input type="radio" name="delivery_type" />
+                                                        <input type="radio" name="delivery_type" value="2" @click="({target})=>payload.type_of_service = target.value" :checked="payload.type_of_service == 2" />
                                                         Next Day Delivery
                                                         <span></span>
                                                     </label>
                                                 </div>
                                                 <div class="teeprint-radio-box">
                                                     <label class="teeprint-radio">
-                                                        <input type="radio" name="delivery_type" />
+                                                        <input type="radio" name="delivery_type" value="3" @click="({target})=>payload.type_of_service = target.value" :checked="payload.type_of_service == 3" />
                                                         Standard Delivery (3-7 Days)
                                                         <span></span>
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
+                                         
+
+                                        <!-- Fields -->
+                                        <!-- Fields -->
+                                        <!-- Fields -->
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Last Delivery Date</label>
-                                                <input type="date" class="form-control" placeholder="Choose Date">
+                                                <label>Maximum Delivery Date</label>
+                                                <DatePicker v-if="showPicker" v-model="payload.delivery_date" use="single" input-size="bg" @change="log" :min-date="minDate" ></DatePicker>
+                                                <DatePicker v-else v-model="payload.delivery_date" use="single" input-size="bg" @change="log" :min-date="minDate" ></DatePicker> 
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Full Name</label>
-                                                <input type="text" class="form-control" placeholder="Full Name">
+                                                <label>Full Name *</label>
+                                                <input v-model="payload.full_name" type="text" class="form-control" placeholder="Full Name" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Email Address</label>
-                                                <input type="email" class="form-control" placeholder="Email">
+                                                <label>Email Address *</label>
+                                                <input v-model="payload.email" type="email" class="form-control" placeholder="Email" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Phone Number</label>
-                                                <input type="text" class="form-control" placeholder="E.g. +44 07960686747">
+                                                <label>Phone Number *</label>
+                                                <input v-model="payload.phone" type="text" class="form-control" placeholder="E.g. +44 07960686747" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Requirements</label>
-                                        <textarea class="form-control" rows="3" placeholder="Write your requirements E.g. product type, quantity, size, artwork placement area etc."></textarea>
+                                        <textarea v-model="payload.requirements" class="form-control" rows="3" placeholder="Write your requirements E.g. product type, quantity, size, artwork placement area etc."></textarea>
+                                    </div>
+                                    <div class="colmd-6" v-if="showFileUploader">
+                                        <div class="form-group">
+                                            <label for="Upload File">Upload Artwork</label>
+                                            <web-DropFiles                                            
+                                            v-model="payload.files"
+                                            :acceptOnlyImage="false"
+                                            :url="null"
+                                            ></web-DropFiles>
+                                        </div>
                                     </div>
                                     <div class="form-group text-right">
-                                        <button class="teeprint-button teeprint-theme-btn query-submit-btn" type="button">Send Message</button>
+                                        <button @click.prevent.stop="sendQuotation" type="submit" class="teeprint-button teeprint-theme-btn query-submit-btn" >Send Message <BtnLoader v-if="loading" color="white"></BtnLoader> </button>
                                     </div>
                                 </form>
                             </div>
@@ -111,7 +210,13 @@ definePageMeta({
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14598.870478587069!2d90.42758835!3d23.8286384!3m2!1i1024!2i768!4f13.1!4m3!3e6!4m0!4m0!5e0!3m2!1sen!2sbd!4v1541788650678" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1981.2238941316784!2d-0.063695!3d51.5145948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603e63fbc2617%3A0x74202ec123e41897!2sTee%20Print%20London!5e0!3m2!1sen!2suk!4v1694444089240!5m2!1sen!2suk"
+                          height="200"
+                          style="border:0;width: 100%;border-radius: 10px;" 
+                          loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"
+                      ></iframe>
                 </div>
                 <div class="col-lg-12 col-md-12">
                     
@@ -190,6 +295,34 @@ definePageMeta({
         background-color: rgb(241, 241, 241); 
     }
   }
+
+  .bg_animation {
+    --bcolor: #00000015;
+        --bspeed: 7s;
+    }
+    .bg_animation {   
+        background: linear-gradient(to right, transparent 0%, var(--bcolor) 25%, transparent 50%);
+        background-size: 200% 300vh;    
+        animation: shimmerEffect var(--bspeed) linear infinite;  
+    }
+
+@keyframes shimmerEffect {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@-webkit-keyframes shimmerEffect {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
 
 
   </style>

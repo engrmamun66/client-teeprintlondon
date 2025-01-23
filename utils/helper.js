@@ -11,6 +11,7 @@ export const warn = (data) => console.warn(data);
 export const FORMATS = {
   date: "MM-DD-YYYY",
   dateTime: "MM-DD-YYYYY hh:mm A",
+  DB_DATE: "YYYY-MM-DD",
 };
 
 export let moment = momentJs;
