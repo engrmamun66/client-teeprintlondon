@@ -45,7 +45,7 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link @click="activeMenu('quotation')" :to="'/suadmin/quotation'" class="leftsidebar-link menu-tooltip">
+        <nuxt-link @click="activeMenu('quotation')" :to="'/suadmin/quotations'" class="leftsidebar-link menu-tooltip">
           <i class="las la-home"></i>
           <span class="menu-text">Quotation</span>
           <span class="tooltip__text tooltip__text--right"> Brands </span>

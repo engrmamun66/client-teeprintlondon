@@ -14,6 +14,7 @@ export const useQuatationStore = defineStore("quatation", () => {
     requirements: null,
     status: 1,
     reference_id: null,
+    files:[]
   });
 
   let showModal = ref(false);
