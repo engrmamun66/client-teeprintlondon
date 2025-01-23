@@ -168,19 +168,19 @@ async function sendQuotation() {
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Full Name *</label>
+                                                <label>Full Name <span class="required-star">*</span> </label>
                                                 <input v-model="payload.full_name" type="text" class="form-control" placeholder="Full Name" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Email Address *</label>
+                                                <label>Email Address <span class="required-star">*</span></label>
                                                 <input v-model="payload.email" type="email" class="form-control" placeholder="Email" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Phone Number *</label>
+                                                <label>Phone Number <span class="required-star">*</span></label>
                                                 <input v-model="payload.phone" type="text" class="form-control" placeholder="E.g. +44 07960686747" required>
                                             </div>
                                         </div>
@@ -320,6 +320,11 @@ async function sendQuotation() {
     100% {
         background-position: -200% 0;
     }
+}
+
+.required-star {
+  color: red;
+  font-weight: bold; /* Optional: Make it bold for emphasis */
 }
 
 

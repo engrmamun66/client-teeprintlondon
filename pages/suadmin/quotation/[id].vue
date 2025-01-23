@@ -164,25 +164,10 @@ function formatDateTime(isoString) {
 
   return date.toLocaleString("en-US", options);
 }
-function convertDate(inputDate) {
-  // Split the date string into parts (DD-MM-YY)
-  const [day, month, year] = inputDate.split("-").map(Number);
-
-  // Convert the 2-digit year to a 4-digit year
-  const fullYear = year < 50 ? 2000 + year : 1900 + year;
-
-  // Create a new Date object
-  const date = new Date(fullYear, month - 1, day);
-
-  // Format options
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-
-  // Return the formatted date
-  return date.toLocaleDateString("en-US", options);
+function convertDate(dateString) {
+  const date = new Date(dateString);
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return date.toLocaleDateString('en-US', options);
 }
 let fileUrls = ref([])
 onMounted(async () => {
