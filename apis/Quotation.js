@@ -1,10 +1,10 @@
-const prefix = "quatation";
+const prefix = "quotations";
 
-export const ColorEndpoints = {
+export const QuatationEndpoints = {
   create: `${prefix}`,
-  getColorList: `${prefix}`,
-  deleteColor: `${prefix}/\\d+`,
-  showColor: `${prefix}/\\d+`,
+  getQuatationList: `${prefix}`,
+  deleteQuatation: `${prefix}/\\d+`,
+  showQuatation: `${prefix}/\\d+`,
   update: `${prefix}/\\d+`
 };
 

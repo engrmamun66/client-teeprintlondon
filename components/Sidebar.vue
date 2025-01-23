@@ -45,6 +45,13 @@
         </nuxt-link>
       </li>
       <li>
+        <nuxt-link @click="activeMenu('quotation')" :to="'/suadmin/quotation'" class="leftsidebar-link menu-tooltip">
+          <i class="las la-home"></i>
+          <span class="menu-text">Quotation</span>
+          <span class="tooltip__text tooltip__text--right"> Brands </span>
+        </nuxt-link>
+      </li>
+      <li>
           <a @click="activeMenu('settings')" 
             class="collaps-togglelink menu-tooltip" :class="{active: isCurrent('settings')}">
             <i-las t="male" /><span class="menu-text">Settings</span>
