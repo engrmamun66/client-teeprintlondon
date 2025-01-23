@@ -94,19 +94,19 @@
                             <div class="teeprint-category-menulist">
                                 <div class="brand-list">
                                     <label class="teeprint-radio" for="kids"> 
-                                        <input type="radio" id="kids"> Kids
+                                        <input type="radio" id="kids" name="gender"> Kids
                                         <span></span> 
                                     </label>
                                     <label class="teeprint-radio" for="Ladies"> 
-                                        <input type="radio" id="Ladies"> Ladies
+                                        <input type="radio" id="Ladies" name="gender"> Ladies
                                         <span></span> 
                                     </label>
                                     <label class="teeprint-radio" for="Mens"> 
-                                        <input type="radio" id="Mens"> Mens
+                                        <input type="radio" id="Mens" name="gender"> Mens
                                         <span></span> 
                                     </label>
                                     <label class="teeprint-radio" for="Others"> 
-                                        <input type="radio" id="Others"> Others
+                                        <input type="radio" id="Others" name="gender"> Others
                                         <span></span> 
                                     </label>
                                 </div>
