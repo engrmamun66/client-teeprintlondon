@@ -1,4 +1,4 @@
-const prefix = "quatation";
+const prefix = "colors";
 
 export const ColorEndpoints = {
   create: `${prefix}`,
