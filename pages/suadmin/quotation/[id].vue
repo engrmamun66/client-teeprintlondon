@@ -182,9 +182,12 @@ onMounted(async () => {
   );
   quatationStore.quatationAttribute.files.forEach((file)=>{
     fileUrls.value.push(file.file_url)
+    quatationStore.downloadFile(quatationStore.quatationAttribute.files[0].id)
   })
 
 });
+
+
 </script>
 <style>
 fieldset {

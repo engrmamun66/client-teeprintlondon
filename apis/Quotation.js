@@ -26,4 +26,7 @@ export default {
   async update(id, payload = {}) {
     return await ApiAuth().post(`${prefix}/${id}`, payload, { formData: true });
   },
+  async downloadFile(id){
+    return await ApiAuth().get(`${prefix}/files/${id}/download` , {responseType: 'blob'});
+  }
 };

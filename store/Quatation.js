@@ -132,6 +132,30 @@ export const useQuatationStore = defineStore("quatation", () => {
     }
   }
 
+  async function downloadFile(id){
+    let response = await Quatation.downloadFile(id);
+        // Create a temporary URL for the downloaded file
+        const url = window.URL.createObjectURL(new Blob([response.data], { type: response.headers['content-type'] }));
+        const link = document.createElement('a');
+        link.href = url;
+
+        // Extract filename from Content-Disposition header
+        const contentDisposition = response.headers['content-disposition'];
+        const fileName = contentDisposition
+          ? contentDisposition.split('filename=')[1]?.replace(/["']/g, '') // Extract filename
+          : 'downloaded-file'; // Fallback filename
+
+        link.setAttribute('download', fileName);
+        document.body.appendChild(link);
+
+        // Trigger the download
+        link.click();
+
+        // Clean up
+        link.remove();
+        window.URL.revokeObjectURL(url);
+  }
+
   return {
     create,
     getQuatationList,
@@ -139,6 +163,7 @@ export const useQuatationStore = defineStore("quatation", () => {
     showQuatation,
     update,
     resetBrandAttribute,
+    downloadFile,
     color,
     quatationList,
     quatationAttribute,
