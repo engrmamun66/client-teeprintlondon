@@ -113,7 +113,7 @@
           :skipAutoClose="false"
           @yes="
             async () => {
-              let isDeleted = await quatationStore.deleteBrand(brandId);
+              let isDeleted = await quatationStore.deleteQuatation(brandId);
               if (isDeleted) {
                 showConfirmation = false;
                 brandId = null;

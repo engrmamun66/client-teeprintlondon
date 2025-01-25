@@ -29,7 +29,7 @@ export const useQuatationStore = defineStore("quatation", () => {
     try {
       let response = await Quatation.create(payload);
       if (response.data.success) {
-        await getColorList();
+        await getQuatationList();
         showModal.value = false;
         resetBrandAttribute();
         Toaster.success("Quatation created succsfully");
@@ -60,7 +60,7 @@ export const useQuatationStore = defineStore("quatation", () => {
 
       if (response.status == 201 || 200) {
         // console.log(response.data.data.data);
-        getColorList();
+        await getQuatationList()
         Toaster.success("Quatation deleted successfully");
         return true;
       }

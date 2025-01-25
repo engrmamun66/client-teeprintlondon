@@ -90,9 +90,7 @@
           quotation.
         </p> -->
         <div>
-          <el-ShowFiles 
-          :fileUrls="fileUrls"
-          />
+          <el-ShowFiles :fileUrls="fileUrls" />
         </div>
         <!-- Add your content for the right card here -->
       </div>
@@ -166,10 +164,10 @@ function formatDateTime(isoString) {
 }
 function convertDate(dateString) {
   const date = new Date(dateString);
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('en-US', options);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return date.toLocaleDateString("en-US", options);
 }
-let fileUrls = ref([])
+let fileUrls = ref([]);
 onMounted(async () => {
   const id = route.params.id;
   console.log(id); // Output:
@@ -180,14 +178,11 @@ onMounted(async () => {
   quatationStore.quatationAttribute.delivery_date = convertDate(
     quatationStore.quatationAttribute.delivery_date
   );
-  quatationStore.quatationAttribute.files.forEach((file)=>{
-    fileUrls.value.push(file.file_url)
-    quatationStore.downloadFile(quatationStore.quatationAttribute.files[0].id)
-  })
-
+  quatationStore.quatationAttribute.files.forEach((file) => {
+    fileUrls.value.push(file.file_url);
+    quatationStore.downloadFile(quatationStore.quatationAttribute.files[0].id);
+  });
 });
-
-
 </script>
 <style>
 fieldset {
