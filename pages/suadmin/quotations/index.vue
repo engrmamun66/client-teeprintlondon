@@ -121,7 +121,9 @@
             }
           "
         >
-          <template v-if="showConfirmation"> Are you sure? </template>
+          <template v-if="showConfirmation">
+            <p class="modal-message">Are you sure?</p></template
+          >
         </Modal-Confirm>
       </div>
     </admin-card>
@@ -186,5 +188,13 @@ onMounted(async () => {
 <style scoped>
 fieldset {
   border: 1px solid #9c9393 !important;
+}
+.modal-message {
+  color: black;
+  font-family: "Georgia", serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 </style>

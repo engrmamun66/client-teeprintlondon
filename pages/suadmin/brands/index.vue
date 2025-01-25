@@ -101,7 +101,7 @@
             }
           "
         >
-          <template v-if="showConfirmation"> Are you sure? </template>
+          <template v-if="showConfirmation" > <p style="color:black">Are you sure?</p> </template>
         </Modal-Confirm>
       </div>
     </admin-card>
