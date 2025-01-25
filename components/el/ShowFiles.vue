@@ -1,5 +1,6 @@
 <template>
   <div class="file-list">
+    <!-- File Cards -->
     <div class="file-card" v-for="(url, index) in fileUrls" :key="index">
       <!-- Image Files -->
       <div v-if="isImage(url)" class="image-card">
@@ -8,7 +9,7 @@
           <i class="las la-eye eye-icon" @click="openImagePreview(url)"></i>
           <i
             class="las la-download download-icon"
-            @click="downloadFile(url)"
+            @click="handleDownload(index)"
           ></i>
         </div>
       </div>
@@ -23,7 +24,7 @@
       <div
         v-else-if="isDOCX(url)"
         class="docx-card"
-        @click="downloadFile(url, 3000)"
+        @click="handleDownload(index)"
       >
         <i class="las la-file-word word-icon"></i>
         <span class="file-name">{{ getTruncatedName(url) }}</span>
@@ -33,6 +34,9 @@
       <div v-else class="unsupported-card">
         <span class="file-name">Unsupported File</span>
       </div>
+    </div>
+    <div v-for="(id, index) in ids" :key="index">
+      {{ getIds(id) }}
     </div>
 
     <!-- Modal for Image Preview -->
@@ -44,17 +48,27 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { ref } from "vue";
-import { defineProps } from "vue";
+import { defineProps, defineEmits } from "vue";
 
+// Props
 defineProps({
   fileUrls: {
     type: Array,
     required: true,
   },
+  ids: {
+    type: Array,
+    required: true, // Ensure an array of IDs is passed
+  },
 });
 
+// Emits
+const emit = defineEmits(["download"]);
+
+// Helper Functions
 const isImage = (url) => {
   const extension = url.split(".").pop().toLowerCase();
   return ["jpg", "jpeg", "png", "gif", "bmp", "webp"].includes(extension);
@@ -67,47 +81,20 @@ const getTruncatedName = (url, maxLength = 15) => {
   const name = url.split("/").pop();
   return name.length > maxLength ? name.substring(0, maxLength) + "..." : name;
 };
+let duplicateIds = ref([]);
+
+function getIds(id) {
+  duplicateIds.value.push(id);
+}
 
 const openInNewTab = (url) => window.open(url, "_blank");
 
-//   const downloadFile = (url) => {
-//     const link = document.createElement("a");
-//     link.href = url;
-//     link.download = url.split("/").pop();
-//     document.body.appendChild(link);
-//     link.click();
-//     document.body.removeChild(link);
-//   };
+// Emit ID when download icon is clicked
+const handleDownload = (index) => {
+  const fileId = duplicateIds.value[index];
 
-async function downloadFile(url, delay = 2000) {
-  try {
-    // Fetch the file from the URL
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    // Convert the response into a Blob
-    const blob = await response.blob();
-
-    // Create a link element for the download
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob); // Create a Blob URL
-    link.download = url.split("/").pop(); // Extract the file name from the URL
-
-    // Append the link to the document
-    document.body.appendChild(link);
-
-    // Add a delay using setTimeout before triggering the download
-    setTimeout(() => {
-      link.click(); // Trigger the download
-      document.body.removeChild(link); // Remove the link element
-      URL.revokeObjectURL(link.href); // Clean up the Blob URL
-    }, delay); // Delay in milliseconds (default: 2 seconds)
-  } catch (error) {
-    console.error("Error downloading the file:", error);
-  }
-}
+  emit("download", fileId);
+};
 
 // Modal State and Actions
 const showModal = ref(false);
@@ -123,6 +110,7 @@ const closeModal = () => {
   currentImage.value = "";
 };
 </script>
+
 <style scoped>
 .file-list {
   display: flex;

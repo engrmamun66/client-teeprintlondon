@@ -3,7 +3,7 @@
     <LoaderApi v-if="false" />
     <page-content-header
       :title="'Dashboard'"
-      :links="[{ title: 'Quatation', href: '/suadmin/quotation' }]"
+      :links="[{ title: 'Quotation', href: '/suadmin/quotation' }]"
       :buttons="[]"
     />
     <div class="quotation-container">
@@ -85,14 +85,14 @@
       <!-- Right Card: Additional Details -->
       <div class="card additional-details-card">
         <h3 class="additional-details-heading">Uploaded Files</h3>
-        <!-- <p>
-          Here you can display extra information or actions related to the
-          quotation.
-        </p> -->
         <div>
-          <el-ShowFiles :fileUrls="fileUrls" />
+          <el-ShowFiles
+            :fileUrls="fileUrls"
+            :ids="fileIds" 
+            @download="handleFileDownload"
+
+          />
         </div>
-        <!-- Add your content for the right card here -->
       </div>
     </div>
   </div>
@@ -100,57 +100,26 @@
 
 <script setup>
 import { useQuatationStore } from "~/store/Quatation.js";
+import { ref, onMounted } from "vue";
 const quatationStore = useQuatationStore();
-let showConfirmation = ref(false);
+
 let editMode = ref(false);
-let brandId = ref(null);
-let route = useRoute();
 let clearImage = ref(false);
+let fileUrls = ref([]);
+let fileIds = ref([]);
+const route = useRoute();
 
 async function showQuatation(id) {
   await quatationStore.showQuatation(id);
-
   editMode.value = true;
 }
 
-function handleSubmit() {
-  if (!quatationStore.quatationAttribute.name) {
-    Toaster.error("Please add color name");
-  } else {
-    quatationStore.quatationAttribute.status = quatationStore.quatationAttribute
-      .status
-      ? 1
-      : 0;
-    if (editMode.value) {
-      quatationStore.update(
-        quatationStore.quatationAttribute.id,
-        quatationStore.quatationAttribute
-      );
-    } else {
-      quatationStore.create(quatationStore.quatationAttribute);
-    }
-  }
-}
-
-function changeColor(status) {
-  console.log(status);
-  setTimeout(() => {
-    quatationStore.quatationAttribute.status = status;
-  }, 10);
-}
-
-function OpenModal() {
-  quatationStore.resetBrandAttribute();
-
-  clearImage.value = true;
-  editMode.value = false;
-  quatationStore.showModal = !quatationStore.showModal;
+function handleFileDownload(fileId){
+quatationStore.downloadFile(fileId)
 }
 
 function formatDateTime(isoString) {
   const date = new Date(isoString);
-
-  // Format options for the date and time
   const options = {
     year: "numeric",
     month: "long",
@@ -159,18 +128,18 @@ function formatDateTime(isoString) {
     minute: "numeric",
     hour12: true,
   };
-
   return date.toLocaleString("en-US", options);
 }
+
 function convertDate(dateString) {
   const date = new Date(dateString);
   const options = { year: "numeric", month: "long", day: "numeric" };
   return date.toLocaleDateString("en-US", options);
 }
-let fileUrls = ref([]);
+
+
 onMounted(async () => {
   const id = route.params.id;
-  console.log(id); // Output:
   await quatationStore.showQuatation(id);
   quatationStore.quatationAttribute.created_at = formatDateTime(
     quatationStore.quatationAttribute.created_at
@@ -178,12 +147,14 @@ onMounted(async () => {
   quatationStore.quatationAttribute.delivery_date = convertDate(
     quatationStore.quatationAttribute.delivery_date
   );
+
   quatationStore.quatationAttribute.files.forEach((file) => {
     fileUrls.value.push(file.file_url);
-    quatationStore.downloadFile(quatationStore.quatationAttribute.files[0].id);
+    fileIds.value.push(file.id);
   });
 });
 </script>
+
 <style>
 fieldset {
   border: 1px solid #9c9393 !important;

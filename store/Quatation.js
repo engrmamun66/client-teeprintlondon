@@ -59,7 +59,6 @@ export const useQuatationStore = defineStore("quatation", () => {
       let response = await Quatation.delete(id);
 
       if (response.status == 201 || 200) {
-        // console.log(response.data.data.data);
         await getQuatationList()
         Toaster.success("Quatation deleted successfully");
         return true;
@@ -83,7 +82,6 @@ export const useQuatationStore = defineStore("quatation", () => {
 
       if (response.status == 200) {
         Quatation.value = response.data.data;
-        console.log(Quatation.value);
         quatationAttribute.value.id = Quatation.value.id;
         quatationAttribute.value.full_name = Quatation.value.full_name;
         quatationAttribute.value.status = Quatation.value.status;
