@@ -16,7 +16,7 @@
                                        delivery. Our offerings go beyond custom T-shirts to 
                                        include hoodies, tote bags, caps, sportswear, workwear
                                    </p>
-                                   <button class="teeprint-button teeprint-theme-btn teeprint-sl-button">Get A Free Quote<i class="la la-arrow-right"></i></button>
+                                   <button data-navigateto="/quote" class="teeprint-button teeprint-theme-btn teeprint-sl-button">Get A Free Quote<i class="la la-arrow-right"></i></button>
                                </div>
                                <div class="teeprint-column-6">
                                    <img src="/img/Home/Leonardo_Phoenix_10_A_gorgeously_styled_highquality_illustrati_1.jpg" alt="slider img" />
@@ -41,7 +41,7 @@
                                        delivery. Our offerings go beyond custom T-shirts to 
                                        include hoodies, tote bags, caps, sportswear, workwear
                                    </p>
-                                   <button class="teeprint-button teeprint-theme-btn teeprint-sl-button">Get A Free Quote<i class="la la-arrow-right"></i></button>
+                                   <button data-navigateto="/quote" class="teeprint-button teeprint-theme-btn teeprint-sl-button">Get A Free Quote<i class="la la-arrow-right"></i></button>
                                </div>
                                <div class="teeprint-column-6">
                                    <img src="/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_2.jpg" alt="slider img" />
@@ -66,7 +66,7 @@
                                        delivery. Our offerings go beyond custom T-shirts to 
                                        include hoodies, tote bags, caps, sportswear, workwear
                                    </p>
-                                   <button class="teeprint-button teeprint-theme-btn teeprint-sl-button">Get A Free Quote<i class="la la-arrow-right"></i></button>
+                                   <button data-navigateto="/quote" class="teeprint-button teeprint-theme-btn teeprint-sl-button">Get A Free Quote<i class="la la-arrow-right"></i></button>
                                </div>
                                <div class="teeprint-column-6">
                                    <img src="/img/Cap/Leonardo_Kino_XL_a_cap_image_written_teeprintlondon_on_that_ca_0.jpg" alt="slider img" />
@@ -79,3 +79,16 @@
        </div>
    </section>
 </template>
+
+<script setup>
+
+onMounted(()=>{
+    document.addEventListener('click', function(event) {
+        const target = event.target;
+        if (target.hasAttribute('data-navigateto')) {
+            const to = target.getAttribute('data-navigateto');
+            navigateTo(to)
+        }
+    });
+})
+</script>

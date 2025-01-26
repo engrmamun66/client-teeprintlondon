@@ -15,9 +15,9 @@
 <script setup>
 const props = defineProps({
   show: {
-    default: false,
+    default: true,
     type: Boolean,
-    required: true,
+    required: false,
   },
   font_size: {
     default: "10px",

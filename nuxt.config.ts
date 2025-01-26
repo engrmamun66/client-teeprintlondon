@@ -29,5 +29,15 @@ export default defineNuxtConfig({
     layoutTransition: { name: "layout", mode: "out-in" },
   },
 
+  devtools: {
+    viteInspect: true,
+    vscode: {
+      enabled: true,
+      codeServer: "coder-code-server",
+    },
+    assets: {
+      uploadExtensions: "*"
+    }
+  },
   compatibilityDate: "2024-11-25",
 });
