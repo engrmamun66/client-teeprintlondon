@@ -79,6 +79,35 @@
               </select>
             </div>
           </div>
+          <div class="form-group">
+            <label>Admin Notes</label>
+            <textarea
+              class="form-control"
+              v-model="quatationStore.quatationAttribute.note"
+              rows="3"
+              placeholder="Write your requirements E.g. product type, quantity, size, artwork placement area etc."
+            ></textarea>
+          </div>
+          <div class="ionic-card-footer justify-content-end">
+            <button
+              type="button"
+              class="leap-btn leap-submit-btn me-2 m-1"
+              @click="handleSubmit"
+            >
+              Save
+              <BtnLoader
+                :show="H.isPendingAnyApi('Color:create|Color:update')"
+                color="black"
+              />
+            </button>
+            <button
+              type="button"
+              class="leap-btn leap-cancel-btn m-1"
+              @click="colorStore.showModal = !colorStore.showModal"
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
 
@@ -88,9 +117,8 @@
         <div>
           <el-ShowFiles
             :fileUrls="fileUrls"
-            :ids="fileIds" 
+            :ids="fileIds"
             @download="handleFileDownload"
-
           />
         </div>
       </div>
@@ -114,8 +142,8 @@ async function showQuatation(id) {
   editMode.value = true;
 }
 
-function handleFileDownload(fileId){
-quatationStore.downloadFile(fileId)
+function handleFileDownload(fileId) {
+  quatationStore.downloadFile(fileId);
 }
 
 function formatDateTime(isoString) {
@@ -137,6 +165,19 @@ function convertDate(dateString) {
   return date.toLocaleDateString("en-US", options);
 }
 
+async function handleSubmit() {
+  const ids = route.params.id;
+
+  const { note, status } = quatationStore.quatationAttribute;
+
+  let payload = {
+    _method: "PUT",
+    note,
+    status,
+  };
+
+  quatationStore.update(ids, payload);
+}
 
 onMounted(async () => {
   const id = route.params.id;

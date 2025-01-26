@@ -13,6 +13,7 @@ export const useQuatationStore = defineStore("quatation", () => {
     phone: null,
     requirements: null,
     status: 1,
+    note:null,
     reference_id: null,
     files:[]
   });
@@ -92,6 +93,8 @@ export const useQuatationStore = defineStore("quatation", () => {
         quatationAttribute.value.reference_id = Quatation.value.uuid; // Assuming uuid maps to reference_id
         quatationAttribute.value.type_of_service =
           Quatation.value.type_of_service;
+
+        quatationAttribute.value.note = Quatation.value.note
         quatationAttribute.value.created_at = Quatation.value.created_at; // Optional
         quatationAttribute.value.updated_at = Quatation.value.updated_at; // Optional
         quatationAttribute.value.files = Quatation.value.files; // Assuming files need to be copied
@@ -110,11 +113,11 @@ export const useQuatationStore = defineStore("quatation", () => {
 
   async function update(id, payload = {}) {
     try {
-      payload = {
-         status:2,
-        _method: "PUT",
-      };
-      id = 1
+      // payload = {
+      //    status:2,
+      //   _method: "PUT",
+      // };
+      // id = 1
       let response = await Quatation.update(id, payload);
       if (response.status == 200) {
         await getColorList();
