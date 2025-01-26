@@ -119,3 +119,21 @@ $(document).ready(function() {
       owl.trigger('stop.owl.autoplay')
     })
   })
+
+// tab js 
+
+
+$(document).ready(function() {
+    $(".pd-tab_content").hide();
+$(".pd-tab_content:first").show();
+
+$(".pd-tab_tab-head li").click(function() {
+
+  $(".pd-tab_content").hide();
+  var activeTab = $(this).attr("rel"); 
+  $("#"+activeTab).fadeIn();		
+  $(".pd-tab_tab-head li").removeClass("active");
+  $(this).addClass("active");
+});
+});
+
