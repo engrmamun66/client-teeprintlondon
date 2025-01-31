@@ -145,3 +145,9 @@ const submitLoginForm = async () => {
 };
 onMounted(() => {});
 </script>
+
+<style scoped>
+.form-control{
+  color: #333;
+}
+</style>
