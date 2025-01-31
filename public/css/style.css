@@ -1354,8 +1354,22 @@ Header css
   border-radius: 100px;
   color: var(--fontcolor-primary);
 }
-
-
+.shopping-cart-badge {
+  position: absolute;
+    right: -6px;
+    top: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: #000;
+    font-weight: 400;
+    width: 20px;
+    height: 20px;
+}
+.relative {
+  position: relative;
+}
 
 @media (min-width: 992px) {
   .teeprint-header .teeprint-menu-header .teeprint-menu .teeprint-nav-manu {
@@ -3738,14 +3752,9 @@ Product list css
   cursor: pointer;
   transition: all .5s;
 }
-.teeprint-product-inner:hover {
-  /* box-shadow: 0px 0px 10px 3px #eee; */
-}
 .teeprint-product-image {
   overflow: hidden;
   position: relative;
-  padding: 15px;
-  padding-bottom: 0;
 }
 .teeprint-product-image img {
   transition: all ease-in-out .5s;
@@ -4405,15 +4414,26 @@ cart css
 .teeprint-cart-ordertable table {
   background-color: transparent;
 }
-.teeprint-cart-wrapper .teeprint-container .teeprint-row.teeprint-cart-bottom {
+.teeprint-cart-wrapper .teeprint-row.teeprint-cart-bottom {
   padding: 30px 0;
+  justify-content: flex-end;
 }
 .teeprint-row {
   padding: 0;
 }
+.coupon-code-input {
+  width: 300px;
+  border: none;
+}
+.coupon-code-input::placeholder {
+  font-size: 13px;
+}
 .teeprint-apply-coupon-btn {
-  float: right;
-  margin-bottom: 30px;
+  font-size: 13px;
+  border-radius: 5px;
+    margin-bottom: 0;
+    padding: 7px 20px;
+    margin-left: 15px;
 }
 .teeprint-proceed-checkout-btn {
   float: right;
@@ -4422,14 +4442,14 @@ cart css
   padding: 0 15px;
 }
  .teeprint-cart-order-summery h5 {
-  font-size: 20px;
-  color: #555;
-  text-align: center;
+  font-size: 18px;
+  color: #fff;
   border-bottom: 1px solid;
   padding: 15px 10px;
   border-bottom: 1px solid #eee;
-  background-color: #eee;
+  background-color: #000;
   width: 100%;
+  font-weight: 400;
 }
  .teeprint-cart-order-summery table thead tr th h4,
  .teeprint-cart-order-summery table thead tr td h4,
@@ -4438,6 +4458,11 @@ cart css
   font-size: 20px;
   color: #555;
   font-weight: 600;
+}
+.teeprint-proceed-checkout-btn {
+  font-size: 13px;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
 @media (max-width: 767px) {
@@ -4455,5 +4480,386 @@ cart css
    .teeprint-cart-order-summery {
     padding: 0;
     margin-top: 20px;
+  }
+}
+
+
+/*====================== 
+cart popup css  
+=======================*/
+
+.teeprint-cartbar-launcher {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+  cursor: pointer;
+  transform-origin: center;
+  backface-visibility: hidden;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;
+  border-radius: 5px;
+  transition: width 100ms ease-in;
+  transition: all 100ms ease-in;
+  color: #515151;
+  z-index: 99;
+}
+.teeprint-cartbar-launcher i {
+  font-size: 32px;
+}
+.teeprint-cartbar-launcher .shopping-cart-badge {
+  position: absolute;
+    right: 6px;
+    top: 17px;
+    font-size: 12px;
+    background-color: #1391c3;
+    color: #fff;
+}
+.teeprint-cartbar-launcher .teeprint-cartbar-launcher-icon {
+  width: 60px;
+  height: 60px;
+  background: #000000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 60px;
+  font-size: 25px;
+  border-radius: 15px;
+}
+
+.teeprint-cartbar-launcher .teeprint-cartbar-launcher-summary {
+  background: #fbfdfc;
+  width: 255px;
+  height: 60px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 8px 15px;
+  font-size: 13px;
+}
+
+.teeprint-cartbar-launcher .teeprint-cartbar-launcher-summary .teeprint-summary,
+.teeprint-cartbar-launcher .teeprint-cartbar-launcher-summary .teeprint-dates {
+  color: #444;
+}
+
+.teeprint-cartbar-launcher .teeprint-cartbar-launcher-summary .teeprint-summary strong,
+.teeprint-cartbar-launcher .teeprint-cartbar-launcher-summary .teeprint-dates strong {
+  font-weight: 600;
+}
+
+.teeprint-cartbar-launcher .teeprint-cartbar-launcher-summary .teeprint-summary .teeprint-total {
+  float: right;
+}
+
+.teeprint-cartbar-launcher .teeprint-cartbar-launcher-summary hr {
+  border: 0;
+  height: 1px;
+  background: #f0f3f4;
+}
+
+.teeprint-cartsidebar-overlay {
+  position: unset;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: all 0.5s cubic-bezier(0.59, -0.17, 0.3, 1.67);
+  transition: all 0.5s cubic-bezier(0.59, -0.17, 0.3, 1.67);
+}
+
+.teeprint-cartsidebar-overlay.is-open {
+  opacity: unset;
+  pointer-events: unset;
+}
+
+.teeprint-cartsidebar-overlay.is-open .teeprint-cart-sidebar-content {
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+.teeprint-cartsidebar-overlay .teeprint-cart-sidebar-content {
+  -webkit-transform: translate(0px, -50px);
+          transform: translate(0px, -50px);
+  -webkit-transition: all 0.7s cubic-bezier(0.59, -0.17, 0.3, 1.67);
+  transition: all 0.7s cubic-bezier(0.59, -0.17, 0.3, 1.67);
+  position: fixed;
+  padding: 0;
+  width: 340px;
+  height: 100vh;
+  background-color: #eee;
+  color: #231D23;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4);
+  right: 0;
+  bottom: 0;
+  z-index: 9999999999;
+  border-radius: 0;
+}
+
+.teeprint-cartsidebar-overlay .teeprint-cart-sidebar-content .teeprint-cart-modalclose {
+  position: absolute;
+  padding: 10px 15px;
+  font-size: 15px;
+  text-align: center;
+  background: transparent;
+  color: #fff;
+  top: 3px;
+  right: 0;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  z-index: 9;
+}
+
+.teeprint-cartsidebar-overlay .teeprint-cart-sidebar-content .teeprint-cart-modalclose:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.teeprint-cart-sidebar-inner .teeprint-sidebar-head {
+  width: 100%;
+  z-index: 1;
+  background: #000;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-sidebar-head .teeprint-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px 0 15px;
+  z-index: 2;
+  position: relative;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.teeprint-selected-date-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.teeprint-selected-date-inner .teeprint-selected-date-leftside,
+.teeprint-selected-date-inner .teeprint-selected-date-rightside {
+  padding: 0 15px;
+}
+
+.teeprint-selected-date-inner .teeprint-selected-date-leftside p,
+.teeprint-selected-date-inner .teeprint-selected-date-rightside p {
+  color: #fff;
+  font-size: 12px;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines {
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  padding-bottom: 10px;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  z-index: 0;
+  height: 386px;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul {
+  list-style: none;
+  margin: 0;
+  padding: 0px 10px;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item {
+  margin: 10px auto 0 auto;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: #fff;
+  position: relative;
+  z-index: 2;
+  opacity: 1;
+  transform: scale(1);
+  border: 1px solid #eee;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-product-image {
+  height: 60px;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-cart-line {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  color: #515151;
+  width: 200px;
+  font-size: 13px;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-cart-line .teeprint-product-name {
+  font-size: 14px;
+    margin: 3px 0 7px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #000;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-cart-line .teeprint-modal-quantity .teeprint-number-block {
+  float: left;
+  width: 100%;
+  padding: 0;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-cart-line .teeprint-modal-quantity .teeprint-number-block .teeprint-num-in {
+  float: left;
+  width: auto;
+  border: 1px solid #f2f3f8;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-cart-line .teeprint-modal-quantity .teeprint-number-block .teeprint-num-in span {
+  font-size: 20px;
+  width: 30px;
+  height: 26px;
+  text-align: center;
+  display: block;
+  float: left;
+  background-color: #f2f3f8;
+  color: #586c76;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-weight: 400 !important;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-cart-line .teeprint-modal-quantity .teeprint-number-block .teeprint-num-in span:hover {
+  background-color: #f2f3f8;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-cart-line .teeprint-modal-quantity .teeprint-number-block .teeprint-num-in .teeprint-plus {
+  font-size: 16px !important;
+  line-height: 26px;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-cart-line .teeprint-modal-quantity .teeprint-number-block .teeprint-in-num {
+  font-size: 14px;
+  float: left;
+  height: 26px;
+  width: 40px;
+  background-color: #fff;
+  text-align: center;
+  outline: 0;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-cart-line .teeprint-modal-quantity .teeprint-number-block input {
+  border: none;
+  float: left;
+  width: 44px;
+  line-height: 34px;
+  text-align: center;
+  color: #586c76;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-price {
+  position: absolute;
+  right: 10px;
+  top: 46px;
+  font-weight: 500 !important;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-remove-product {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  padding: 7px;
+  cursor: pointer;
+  color: #586c76;
+  width: 25px;
+  display: inline-block;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-remove-product i {
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-summary {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  background: #FFF;
+  bottom: 0;
+  color: #515151;
+  z-index: 3;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-summary .teeprint-detail,
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-summary .teeprint-strong {
+  width: 50%;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 6px;
+}
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-summary .teeprint-detail span,
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-summary .teeprint-strong span {
+  display: block;
+  font-weight: 600;
+}
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-summary .teeprint-strong span.carttotal {
+  font-size: 12px;
+  font-weight: 300;
+} 
+
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-summary .teeprint-checkout-btn {
+  width: 50%;
+  display: block;
+  padding: 12px 20px;
+  border-radius: 0;
+  text-align: center;
+  background-color: var(--bgcolor-primary);
+  color: #fff;
+  text-decoration: none !important;
+}
+
+@media (max-width: 767px) {
+  .teeprint-cartsidebar-overlay .teeprint-cart-sidebar-content {
+    width: 330px;
+    height: 95%;
+  }
+  .teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines {
+    height: 240px;
+  }
+  .teeprint-cart-sidebar-inner .teeprint-cart-sidebar-summary {
+    position: absolute;
+    bottom: 0;
   }
 }

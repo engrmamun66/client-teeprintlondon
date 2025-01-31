@@ -137,3 +137,17 @@ $(".pd-tab_tab-head li").click(function() {
 });
 });
 
+// cart sidebar js 
+$(function() {
+
+    $('.teeprint-cartbar-launcher').click(function() {
+        $('.teeprint-cartsidebar-overlay').addClass('is-open');
+        return false;
+    });
+
+    $('.teeprint-cart-modalclose').click(function() {
+        $('.teeprint-cartsidebar-overlay').removeClass('is-open');
+    });
+
+});
+
