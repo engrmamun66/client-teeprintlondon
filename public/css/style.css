@@ -283,8 +283,8 @@ body {
 
  table thead,
  table tbody {
-  border-left: 1px solid var(--linecolor-gray);
-  border-right: 1px solid var(--linecolor-gray);
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
 }
 
  table thead tr th,
@@ -296,20 +296,26 @@ body {
   letter-spacing: 0.2px;
   color: var(--fontcolor-primary);
   vertical-align: middle;
-  border-bottom: 1px solid var(--linecolor-light-gray);
+  border-bottom: 1px solid #eee;
   min-width: 60px;
   text-align: left;
   padding: 15px 15px;
 }
-
+table thead tr th {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
  table thead tr th img,
  table thead tr td img,
  table tbody tr th img,
  table tbody tr td img {
   width: 50px;
-  border: 4px solid var(--linecolor-light-gray);
 }
-
+.cart-remove {
+  color: rgb(235, 64, 64);
+  font-weight: bold;
+  cursor: pointer;
+}
  table thead tr th,
  table tbody tr th {
   background-color: var(--bgcolor-gray);
@@ -317,7 +323,16 @@ body {
   border-top: none;
   border-bottom: 1px solid var(--linecolor-light-gray);
 }
-
+.teeprint-cart-ordertable table tr th {
+  background-color: #eee;
+}
+.teeprint-cart-ordertable table tr:nth-child(odd) td {
+  background-color: transparent !important;
+  box-shadow: none;
+}
+.teeprint-cart-ordertable table tr:nth-child(even) td {
+  background-color: #eee;
+}
  textarea {
   resize: none;
 }
@@ -3981,12 +3996,15 @@ Product Details css
     display: block;
     width: 100%;
     max-width: 100%;
-    height: 370px;
-    max-height: 370px;
+    height: auto;
+    /* max-height: 550px; */
     margin-left: auto;
     margin-right: auto;
     object-fit: cover;
     transition: all .5s;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 15px;
 }
 .teeprint-product-details-image .teeprint-product-multipleimage {
     display: flex;
@@ -4118,9 +4136,9 @@ Product Details css
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid #eee;
+    border: 1px solid #9e9e9e;
     width: 140px;
-    border-radius: 70px;
+    border-radius: 25px;
     overflow: hidden;
 }
 .teeprint-num-in span {
@@ -4137,12 +4155,12 @@ Product Details css
     font-weight: 400;
 }
 .teeprint-num-in .teeprint-minus {
-    border-right: 1px solid #eee;
+    border-right: none;
 }
 .teeprint-num-in .teeprint-plus {
     font-size: 18px !important;
     line-height: 32px;
-    border-left: 1px solid #eee;
+    border-left: none;
 }
 .teeprint-quantity input {
     background-color: #fff;
@@ -4212,6 +4230,46 @@ Product Details css
 }
 .pd-description {
     padding-top: 100px;
+}
+.select-size h5 {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 10px;
+}
+.select-size {
+  margin-bottom: 20px;
+}
+.select-size ul {
+  display: flex;
+}
+.select-size ul li {
+  width: auto;
+    min-width: 60px;
+    padding: 5px;
+    text-align: center;
+    margin: 0px 10px 5px 0 !important;
+    background-color: #fff;
+    border: 1px solid #9e9e9e;
+    font-size: 14px;
+    cursor: pointer;
+    -webkit-transition: 0.4s ease-in-out;
+    transition: 0.1s ease-in-out;
+    border-radius: 15px;
+}
+.pd-devided {
+  border-color: #000;
+}
+.teeprint-product-details-wrapper table tr th {
+  border-top: 1px solid #eee;
+  background-color: #f2f2f2;
+}
+.teeprint-product-details-wrapper table tr:nth-child(odd) td {
+  background-color: #fff;
+}
+.teeprint-product-details-wrapper table tr:nth-child(even) td {
+  background-color: #f2f2f2;
 }
 .pd-tab {
     display: flex;
@@ -4333,4 +4391,69 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   right: 0;
   top: 0;
   width: auto;
+}
+
+
+
+/*============================ 
+cart css  
+==============================*/
+.teeprint-cart-wrapper {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.teeprint-cart-ordertable table {
+  background-color: transparent;
+}
+.teeprint-cart-wrapper .teeprint-container .teeprint-row.teeprint-cart-bottom {
+  padding: 30px 0;
+}
+.teeprint-row {
+  padding: 0;
+}
+.teeprint-apply-coupon-btn {
+  float: right;
+  margin-bottom: 30px;
+}
+.teeprint-proceed-checkout-btn {
+  float: right;
+}
+ .teeprint-cart-order-summery {
+  padding: 0 15px;
+}
+ .teeprint-cart-order-summery h5 {
+  font-size: 20px;
+  color: #555;
+  text-align: center;
+  border-bottom: 1px solid;
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+  background-color: #eee;
+  width: 100%;
+}
+ .teeprint-cart-order-summery table thead tr th h4,
+ .teeprint-cart-order-summery table thead tr td h4,
+ .teeprint-cart-order-summery table tbody tr th h4,
+ .teeprint-cart-order-summery table tbody tr td h4 {
+  font-size: 20px;
+  color: #555;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .teeprint-cart-ordertable table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+   .teeprint-button {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+   .teeprint-cart-order-summery {
+    padding: 0;
+    margin-top: 20px;
+  }
 }

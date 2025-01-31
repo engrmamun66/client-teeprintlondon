@@ -30,6 +30,27 @@
                                     ৳ 105,000.00
                                 </span>
                             </p>
+                            <div class="select-size">
+                                <h5>Select Size</h5>
+                                <ul>
+                                    <li>M</li>
+                                    <li>L</li>
+                                    <li>XL</li>
+                                    <li>2XL</li>
+                                </ul>
+                            </div>
+                            <div class="teeprint-quantity">
+                                <div class="teeprint-num-in">
+                                    <span class="teeprint-minus dis">-</span>
+                                    <input type="text" class="teeprint-in-num" value="1" readonly="" max="99992" />
+                                    <span class="teeprint-plus">+</span>
+                                </div>
+                            </div>
+                            <div class="product-details-btn">
+                                <a class="teeprint-button teeprint-theme-btn addtocart-btn"><i class="bx bx-shopping-bag"></i> Add to Cart </a>
+                                <a class="teeprint-button detailsquote-btn"> <i class='bx bx-comment'></i> Instant Quote </a>
+                            </div>
+                            <hr class="pd-devided">
                             <span class="product-otherinfo">
                                 Categories:
                                 <samp>Chefswear & Catering, Headwear</samp>
@@ -58,17 +79,42 @@
                                     <li>High-weight, 230 GSM</li>
                                 </ul>
                             </div>
-                            <div class="teeprint-quantity">
-                                <div class="teeprint-num-in">
-                                    <span class="teeprint-minus dis">-</span>
-                                    <input type="text" class="teeprint-in-num" value="1" readonly="" max="99992" />
-                                    <span class="teeprint-plus">+</span>
-                                </div>
-                            </div>
-                            <div class="product-details-btn">
-                                <a class="teeprint-button teeprint-theme-btn addtocart-btn"><i class="bx bx-shopping-bag"></i> Add to Cart </a>
-                                <a class="teeprint-button detailsquote-btn"> <i class='bx bx-comment'></i> Instant Quote </a>
-                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Size</th>
+                                        <th>Chest (Round)</th>
+                                        <th>Length</th>
+                                        <th>Sleeve</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>M</td>
+                                        <td>40.5</td>
+                                        <td>27.75</td>
+                                        <td>24.25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>L</td>
+                                        <td>42.5</td>
+                                        <td>28.05</td>
+                                        <td>24.75</td>
+                                    </tr>
+                                    <tr>
+                                        <td>XL</td>
+                                        <td>44.5</td>
+                                        <td>29.25</td>
+                                        <td>25.25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2XL</td>
+                                        <td>46.5</td>
+                                        <td>30</td>
+                                        <td>25.75</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -131,7 +177,7 @@
                                                         <div class="teeprint-product-overlow">
                                                             <div class="teeprint-product-overlow-inner">
                                                                 <a href="#" class="teeprint-view-btn" title="Hello from speech bubble!">
-                                                                    <i class="bx bx-search-alt"></i>
+                                                                    <i class="las la-eye"></i>
                                                                 </a>
                                                                 <a href="#" class="teeprint-addcart-btn">
                                                                     <i class="bx bx-cart"></i>
@@ -156,7 +202,7 @@
                                                         <div class="teeprint-product-overlow">
                                                             <div class="teeprint-product-overlow-inner">
                                                                 <a href="#" class="teeprint-view-btn" title="Hello from speech bubble!">
-                                                                    <i class="bx bx-search-alt"></i>
+                                                                    <i class="las la-eye"></i>
                                                                 </a>
                                                                 <a href="#" class="teeprint-addcart-btn">
                                                                     <i class="bx bx-cart"></i>
@@ -181,7 +227,7 @@
                                                         <div class="teeprint-product-overlow">
                                                             <div class="teeprint-product-overlow-inner">
                                                                 <a href="#" class="teeprint-view-btn" title="Hello from speech bubble!">
-                                                                    <i class="bx bx-search-alt"></i>
+                                                                    <i class="las la-eye"></i>
                                                                 </a>
                                                                 <a href="#" class="teeprint-addcart-btn">
                                                                     <i class="bx bx-cart"></i>
@@ -206,7 +252,7 @@
                                                         <div class="teeprint-product-overlow">
                                                             <div class="teeprint-product-overlow-inner">
                                                                 <a href="#" class="teeprint-view-btn" title="Hello from speech bubble!">
-                                                                    <i class="bx bx-search-alt"></i>
+                                                                    <i class="las la-eye"></i>
                                                                 </a>
                                                                 <a href="#" class="teeprint-addcart-btn">
                                                                     <i class="bx bx-cart"></i>
