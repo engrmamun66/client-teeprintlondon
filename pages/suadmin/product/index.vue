@@ -186,6 +186,7 @@
   const bulkPrice = ref(null);
   const bulkQuantity = ref(null);
   const uploadedImages = ref([]);
+  const editor = ref();
   
   const toggleSizeSelection = (sizeName) => {
     if (selectedSizes.value.includes(sizeName)) {
