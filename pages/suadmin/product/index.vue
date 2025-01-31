@@ -27,13 +27,8 @@
             </div>
   
             <div class="form-group">
-              <label>Long Description</label>
-              <textarea
-                class="form-control"
-                v-model="product.longDescription"
-                rows="5"
-                placeholder="Long description of the product"
-              ></textarea>
+              <label>Long Description</label>              
+              <RedactorEditor v-model="product.longDescription" ref="editor" class="mt-4" ></RedactorEditor>
             </div>
   
             <div class="form-group">
@@ -191,6 +186,7 @@
   const bulkPrice = ref(null);
   const bulkQuantity = ref(null);
   const uploadedImages = ref([]);
+  const editor = ref();
   
   const toggleSizeSelection = (sizeName) => {
     if (selectedSizes.value.includes(sizeName)) {

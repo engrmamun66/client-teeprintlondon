@@ -6,49 +6,67 @@
       accept="image/*,application/pdf,.doc,.docx,.ai,.eps"
       class="cp" 
       @change="onChangeFile"
+      :multiple="multiple"
     />
     <span class="filename fs-13 cp">Upload your file</span>
     <i class="bx bx-upload fs-16"></i>
   </div>
 
-  <div v-if="previewFile" class="ionic-img-uploadshow">
+  <div v-if="selectedFiles?.length" class="ionic-img-uploadshow">
     <ul>
-      <li class="mb-2">
-        <div class="preview-frame">
-          <!-- Image Preview -->
-          <template v-if="isImage(previewFile)">
-            <img
-              :src="getUrl(previewFile)"
-              class="img-fluid"
-              alt="Uploaded Image"
-              @click="openImagePreview"
-            />
-          </template>
-          <!-- PDF Preview -->
-          <template v-else>
-            <div class="pdf-preview">
-              <i class="bx bxs-file-pdf pdf-icon"></i>
-              <a
-                :href="getUrl(previewFile)"
-                target="_blank"
-                class="pdf-name"
-                :title="getFileName(previewFile.name || previewFile)"
-              >
-                {{ truncateName(getFileName(previewFile.name || previewFile)) }}
-              </a>
-            </div>
-          </template>
-        </div>
-        <i class="la la-close" @click="clearPreview"></i>
-      </li>
+      <template v-for="(file, i) in selectedFiles">
+        <li class="mb-2">
+          <div class="preview-frame">
+            <!-- Image Preview -->
+            <template v-if="isImage(file)">
+              <img
+                :src="getUrl(file)"
+                class="img-fluid"
+                alt="Uploaded Image"
+                @click="openImagePreview(file)"
+              />
+            </template>
+            <!-- PDF Preview -->
+            <template v-else>
+              <div class="pdf-preview">
+                <i class="bx bxs-file-pdf pdf-icon" style="font-size: 46px;"></i>
+                <a
+                  :href="getUrl(file)"
+                  target="_blank"
+                  class="pdf-name"
+                  :title="getFileName(file.name || file)"
+                >
+                  {{ truncateName(getFileName(file.name || file)) }}
+                </a>
+              </div>
+            </template>
+          </div>
+          <i class="la la-close" @click="clearPreview(i)"></i>
+        </li>
+      </template>
     </ul>
   </div>
 
   <!-- Enlarged Image Modal -->
-  <div v-if="showImageModal" class="image-modal">
+  <div v-if="showImageModal && showImageModal_file" class="image-modal">
     <div class="image-modal-frame">
       <i class="la la-close close-icon" @click.stop="closeImagePreview"></i>
-      <img :src="getUrl(previewFile)" alt="Enlarged Preview" class="image-modal-image" />
+      <template v-if="isImage(showImageModal_file)">
+        <img :src="getUrl(showImageModal_file)" alt="Enlarged Preview" class="image-modal-image" />
+      </template>
+      <template v-else>
+        <div class="pdf-preview" @click="log(showImageModal_file)">
+            <i class="bx bxs-file-pdf pdf-icon"></i>
+            <a
+              :href="getUrl(showImageModal_file)"
+              target="_blank"
+              class="pdf-name"
+              :title="getFileName(showImageModal_file.name)"
+            >
+              {{ truncateName(getFileName(showImageModal_file.name)) }}
+            </a>
+          </div>
+        </template>
     </div>
   </div>
 </template>
@@ -73,6 +91,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  multiple: {
+    type: Boolean,
+    default: true,
+  },
 });
 
  
@@ -80,7 +102,9 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue", "uploadFile", "removeFile"]);
 
 const previewFile = ref(null);
+const selectedFiles = ref([]);
 const showImageModal = ref(false);
+const showImageModal_file = ref(false);
 
 watch(
   () => props.url,
@@ -93,28 +117,18 @@ watch(
 );
 
 const onChangeFile = (event) => {
-  const selectedFiles = Array.from(event.target.files);
-  if (selectedFiles.length > 0) {
-    const newFile = selectedFiles[0];
-    previewFile.value = newFile;
-    emit("update:modelValue", [newFile]);
-    emit("uploadFile", [newFile]);
-  }
-  event.target.value = ""; // Reset input value
+  const allFiles = Array.from(event.target.files);
+  selectedFiles.value = allFiles   
+  emit("update:modelValue", allFiles?.length ? allFiles : []);
+  emit("uploadFile", allFiles);
+  event.target.value = ""; 
 };
 
-const clearPreview = () => {
-  // Clears the preview file
-  previewFile.value = null;
-
-  // Ensures the image modal is closed
+const clearPreview = (i) => {
+  let removedFile = selectedFiles.value.splice(i, 1)
   showImageModal.value = false;
-
-  // Updates the v-model binding to null
-  emit("update:modelValue", null);
-
-  // Emits the custom 'removeFile' event for external handling
-  emit("removeFile", null);
+  emit("update:modelValue", selectedFiles.value);
+  emit("removeFile", removedFile);
 };
 
 const getUrl = (file) => {
@@ -125,23 +139,26 @@ const getUrl = (file) => {
   }
 };
 
-const getFileName = (fileUrl) => {
+const getFileName = (fileUrl) => { 
   return fileUrl.split("/").pop();
 };
 
 const isImage = (file) => {
-  if (typeof file === "string") {
-    return !file.toLowerCase().endsWith(".pdf");
-  }
-  return file.type?.startsWith("image/");
+    try {
+      return file.type.startsWith('image/')
+    } catch (error) {
+      console.log('sss', file);
+      return false
+    } 
 };
 
 const truncateName = (name) => {
   return name.length > 20 ? name.slice(0, 17) + "..." : name;
 };
 
-const openImagePreview = () => {
+const openImagePreview = (file) => {
   showImageModal.value = true;
+  showImageModal_file.value = file;
 };
 
 const closeImagePreview = () => {

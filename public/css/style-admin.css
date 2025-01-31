@@ -107,7 +107,6 @@ h5 {
     line-height: 25px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    color: var(--fontcolor-darkwhite-1);
 }
 
 p {
@@ -214,8 +213,7 @@ table {
 }
 
 table tr th {
-    padding: 15px 18px !important;
-    background-color: var(--bgcolor-navyblue-light-1) !important;
+    padding: 15px 18px !important; 
 }
 
 table tr td {
@@ -224,8 +222,7 @@ table tr td {
 
 table tr th,
 table tr td {
-    font-family: var(--fontfamily-primary);
-    color: var(--fontcolor-tertiary);
+    font-family: var(--fontfamily-primary); 
     font-size: 14px;
     font-weight: 500;
     vertical-align: middle;
@@ -2010,25 +2007,7 @@ Admin table css
 }
 
 table thead tr {
-    background: #00000021 !important;
-}
-
-table tbody tr td,
-table tbody tr td a,
-table tbody tr td p,
-table tbody tr td span {
-    color: var(--fontcolor-tertiary) !important;
-}
-
-table tbody tr:hover td,
-table tbody tr:hover td a,
-table tbody tr:hover td p,
-table tbody tr:hover td span {
-    color: var(--fontcolor-tertiary) !important;
-}
-
-table thead th {
-    color: var(--linecolor-tertiary) !important;
+    background: #b3b3b321 !important;
 }
 
 table tbody tr.selected {

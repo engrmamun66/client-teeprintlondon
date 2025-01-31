@@ -10,7 +10,6 @@
     keepalive: false,
     middleware: ["auth"],
     key: (route) => route.fullPath,
-    layout: "auth",
     name: 'dashboard',
   });
   useHead({

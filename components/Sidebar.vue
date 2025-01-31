@@ -24,7 +24,7 @@
 
     <ul id="leap-admin-accordion" class="leap-admin-accordion">
       <li>
-        <nuxt-link @click="activeMenu('dashboard')" :to="'/'" class="leftsidebar-link menu-tooltip">
+        <nuxt-link @click="activeMenu('dashboard')" :to="'/suadmin'" class="leftsidebar-link menu-tooltip">
           <i class="las la-home"></i>
           <span class="menu-text">Dashboard</span>
           <span class="tooltip__text tooltip__text--right"> Dashboard </span>
