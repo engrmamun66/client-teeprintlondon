@@ -21,7 +21,7 @@ let myEmit = defineEmits(['update:modelValue', 'change'])
 let show = ref(true);
 let editor = ref(null);
 const config = {
-    theme: 'dark',
+    theme: 'light',
     minHeight: '220px',
 }
 
