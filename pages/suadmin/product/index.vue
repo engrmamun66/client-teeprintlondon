@@ -1,233 +1,271 @@
 <template>
-    <div class="position-relative">
-      <page-content-header :title="'Product Details'" :links="[]" :buttons="[]" />
-      <div class="cards-container">
-        <!-- Product Details Card -->
-        <div class="card product-details-card">
-          <h3 class="product-details-heading" style="color: black">
-            Product Details
-          </h3>
-          <form>
-            <el-BaseInput type="text" label="Name" v-model="product.name" />
-  
-            <el-BaseInput
-              type="text"
-              label="Base Price"
-              v-model="product.price"
-            />
-  
-            <div class="form-group">
-              <label>Short Description</label>
-              <textarea
-                class="form-control"
-                v-model="product.shortDescription"
-                rows="3"
-                placeholder="Short description of the product"
-              ></textarea>
-            </div>
-  
-            <div class="form-group">
-              <label>Long Description</label>              
-              <RedactorEditor v-model="product.longDescription" ref="editor" class="mt-4" ></RedactorEditor>
-            </div>
-  
-            <div class="form-group">
-              <label class="form-label">Color</label>
-              <select class="form-control" v-model="product.color">
-                <option disabled :value="null">- Select Color -</option>
-                <option value="Red">Red</option>
-                <option value="Blue">Blue</option>
-                <option value="Green">Green</option>
-                <option value="Black">Black</option>
-              </select>
-            </div>
-  
-            <div class="bulk-update-section">
-              <h3 class="additional-details-heading" style="color: black">
-                Select Sizes
-              </h3>
-              <div class="size-selection">
-                <div
-                  v-for="size in product.sizes"
-                  :key="size.name"
-                  @click="toggleSizeSelection(size.name)"
-                  :class="{ selected: selectedSizes.includes(size.name) }"
-                  class="size-card"
-                >
-                  {{ size.name }}
-                </div>
-              </div>
-  
-              <h3 class="additional-details-heading mt-2" style="color: black">
-                Bulk Update Sizes
-              </h3>
-              <div class="form-group">
-                <label>Set Price for Selected Sizes:</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  v-model="bulkPrice"
-                  min="0"
-                  placeholder="Enter price"
-                />
-              </div>
-  
-              <div class="form-group">
-                <label>Set Quantity for Selected Sizes:</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  v-model="bulkQuantity"
-                  min="0"
-                  placeholder="Enter quantity"
-                />
-              </div>
-  
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="applyBulkUpdate"
+  <div class="position-relative">
+    <page-content-header :title="'Product Details'" :links="[]" :buttons="[]" />
+    <div class="cards-container">
+      <!-- Product Details Card -->
+      <div class="card product-details-card">
+        <h3 class="product-details-heading" style="color: black">
+          Product Details
+        </h3>
+        <form>
+          <el-BaseInput type="text" label="Name" v-model="product.name" />
+
+          <el-BaseInput
+            type="text"
+            label="Base Price"
+            v-model="product.price"
+          />
+
+          <!-- Brand Dropdown -->
+          <div class="form-group">
+            <label class="form-label">Brand</label>
+            <select class="form-control" v-model="product.brand">
+              <option disabled :value="null">- Select Brand -</option>
+              <option value="Nike">Nike</option>
+              <option value="Adidas">Adidas</option>
+              <option value="Puma">Puma</option>
+              <option value="Under Armour">Under Armour</option>
+            </select>
+          </div>
+
+          <!-- Gender Dropdown -->
+          <div class="form-group">
+            <label class="form-label">Gender</label>
+            <select class="form-control" v-model="product.gender">
+              <option disabled :value="null">- Select Gender -</option>
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+              <option value="Unisex">Unisex</option>
+            </select>
+          </div>
+
+          <!-- Category Dropdown -->
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select class="form-control" v-model="product.category">
+              <option disabled :value="null">- Select Category -</option>
+              <option value="T-Shirts">T-Shirts</option>
+              <option value="Jeans">Jeans</option>
+              <option value="Shoes">Shoes</option>
+              <option value="Accessories">Accessories</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Short Description</label>
+            <textarea
+              class="form-control"
+              v-model="product.shortDescription"
+              rows="3"
+              placeholder="Short description of the product"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Long Description</label>
+            <RedactorEditor v-model="product.longDescription" ref="editor" class="mt-4"></RedactorEditor>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Color</label>
+            <select class="form-control" v-model="product.color">
+              <option disabled :value="null">- Select Color -</option>
+              <option value="Red">Red</option>
+              <option value="Blue">Blue</option>
+              <option value="Green">Green</option>
+              <option value="Black">Black</option>
+            </select>
+          </div>
+
+          <div class="bulk-update-section">
+            <h3 class="additional-details-heading" style="color: black">
+              Select Sizes
+            </h3>
+            <div class="size-selection">
+              <div
+                v-for="size in product.sizes"
+                :key="size.name"
+                @click="toggleSizeSelection(size.name)"
+                :class="{ selected: selectedSizes.includes(size.name) }"
+                class="size-card"
               >
-                Apply to Selected Sizes
+                {{ size.name }}
+              </div>
+            </div>
+
+            <h3 class="additional-details-heading mt-2" style="color: black">
+              Bulk Update Sizes
+            </h3>
+            <div class="form-group">
+              <label>Set Price for Selected Sizes:</label>
+              <input
+                type="number"
+                class="form-control"
+                v-model="bulkPrice"
+                min="0"
+                placeholder="Enter price"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Set Quantity for Selected Sizes:</label>
+              <input
+                type="number"
+                class="form-control"
+                v-model="bulkQuantity"
+                min="0"
+                placeholder="Enter quantity"
+              />
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="applyBulkUpdate"
+            >
+              Apply to Selected Sizes
+            </button>
+          </div>
+
+          <h3 class="additional-details-heading" style="color: black">
+            Sizes and Pricing
+          </h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Price ($)</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="size in product.sizes" :key="size.name">
+                <td>{{ size.name }}</td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control"
+                    v-model="size.price"
+                    min="0"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control"
+                    v-model="size.quantity"
+                    min="0"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+
+      <!-- Image Upload Card -->
+      <div class="card product-details-card">
+        <h3 class="product-details-heading" style="color: black">
+          Image Upload
+        </h3>
+        <div class="image-upload-section">
+          <input
+            type="file"
+            multiple
+            accept="image/*"
+            @change="handleImageUpload"
+            class="file-input"
+          />
+          <div v-if="uploadedImages.length" class="image-preview-grid">
+            <div
+              v-for="(image, index) in uploadedImages"
+              :key="index"
+              class="image-preview"
+            >
+              <img :src="image" alt="Uploaded Image" />
+              <button @click="removeImage(index)" class="remove-image-btn">
+                ✖
               </button>
             </div>
-  
-            <h3 class="additional-details-heading" style="color: black">
-              Sizes and Pricing
-            </h3>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Size</th>
-                  <th>Price ($)</th>
-                  <th>Quantity</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="size in product.sizes" :key="size.name">
-                  <td>{{ size.name }}</td>
-                  <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      v-model="size.price"
-                      min="0"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      v-model="size.quantity"
-                      min="0"
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
-        </div>
-  
-        <!-- Image Upload Card -->
-        <div class="card product-details-card">
-          <h3 class="product-details-heading" style="color: black">
-            Image Upload
-          </h3>
-          <div class="image-upload-section">
-            <input
-              type="file"
-              multiple
-              accept="image/*"
-              @change="handleImageUpload"
-              class="file-input"
-            />
-            <div v-if="uploadedImages.length" class="image-preview-grid">
-              <div
-                v-for="(image, index) in uploadedImages"
-                :key="index"
-                class="image-preview"
-              >
-                <img :src="image" alt="Uploaded Image" />
-                <button @click="removeImage(index)" class="remove-image-btn">
-                  ✖
-                </button>
-              </div>
-            </div>
-            <p v-else class="no-images-text">No images uploaded yet.</p>
           </div>
+          <p v-else class="no-images-text">No images uploaded yet.</p>
         </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
-  <script setup>
-  import { ref } from "vue";
-  
-  // Use ref for the product object
-  const product = ref({
-    name: "Classic T-Shirt",
-    price: 25,
-    shortDescription: "A comfortable and stylish classic t-shirt.",
-    longDescription:
-      "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
-    color: "Blue",
-    sizes: [
-      { name: "XS", price: 20, quantity: 10 },
-      { name: "S", price: 22, quantity: 10 },
-      { name: "M", price: 25, quantity: 10 },
-      { name: "L", price: 28, quantity: 10 },
-      { name: "XL", price: 30, quantity: 10 },
-      { name: "XXL", price: 32, quantity: 10 },
-      { name: "XXXL", price: 35, quantity: 10 },
-    ],
+<script setup>
+import { ref } from "vue";
+
+// Use ref for the product object
+const product = ref({
+  name: "Classic T-Shirt",
+  price: 25,
+  brand: null, // New property
+  gender: null, // New property
+  category: null, // New property
+  shortDescription: "A comfortable and stylish classic t-shirt.",
+  longDescription:
+    "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
+  color: "Blue",
+  sizes: [
+    { name: "XS", price: 20, quantity: 10 },
+    { name: "S", price: 22, quantity: 10 },
+    { name: "M", price: 25, quantity: 10 },
+    { name: "L", price: 28, quantity: 10 },
+    { name: "XL", price: 30, quantity: 10 },
+    { name: "XXL", price: 32, quantity: 10 },
+    { name: "XXXL", price: 35, quantity: 10 },
+  ],
+});
+
+const selectedSizes = ref([]);
+const bulkPrice = ref(null);
+const bulkQuantity = ref(null);
+const uploadedImages = ref([]);
+const editor = ref();
+
+const toggleSizeSelection = (sizeName) => {
+  if (selectedSizes.value.includes(sizeName)) {
+    selectedSizes.value = selectedSizes.value.filter(
+      (size) => size !== sizeName
+    );
+  } else {
+    selectedSizes.value.push(sizeName);
+  }
+};
+
+const applyBulkUpdate = () => {
+  product.value.sizes.forEach((size) => {
+    if (selectedSizes.value.includes(size.name)) {
+      if (bulkPrice.value !== null) size.price = bulkPrice.value;
+      if (bulkQuantity.value !== null) size.quantity = bulkQuantity.value;
+    }
   });
-  
-  const selectedSizes = ref([]);
-  const bulkPrice = ref(null);
-  const bulkQuantity = ref(null);
-  const uploadedImages = ref([]);
-  const editor = ref();
-  
-  const toggleSizeSelection = (sizeName) => {
-    if (selectedSizes.value.includes(sizeName)) {
-      selectedSizes.value = selectedSizes.value.filter(
-        (size) => size !== sizeName
-      );
-    } else {
-      selectedSizes.value.push(sizeName);
-    }
-  };
-  
-  const applyBulkUpdate = () => {
-    product.value.sizes.forEach((size) => {
-      if (selectedSizes.value.includes(size.name)) {
-        if (bulkPrice.value !== null) size.price = bulkPrice.value;
-        if (bulkQuantity.value !== null) size.quantity = bulkQuantity.value;
-      }
-    });
-  
-    // Clear bulk inputs and unselect all sizes
-    bulkPrice.value = null;
-    bulkQuantity.value = null;
-    selectedSizes.value = [];
-    Toaster.success("Price or Quantity updated");
-  };
-  
-  const handleImageUpload = (event) => {
-    const files = event.target.files;
-    for (const file of files) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        uploadedImages.value.push(e.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-  
-  const removeImage = (index) => {
-    uploadedImages.value.splice(index, 1);
-  };
-  </script>
+
+  // Clear bulk inputs and unselect all sizes
+  bulkPrice.value = null;
+  bulkQuantity.value = null;
+  selectedSizes.value = [];
+  Toaster.success("Price or Quantity updated");
+};
+
+const handleImageUpload = (event) => {
+  const files = event.target.files;
+  for (const file of files) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      uploadedImages.value.push(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  }
+};
+
+const removeImage = (index) => {
+  uploadedImages.value.splice(index, 1);
+};
+</script>
   
   <style scoped>
   .cards-container {
