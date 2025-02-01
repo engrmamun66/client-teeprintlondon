@@ -252,12 +252,12 @@ const product = ref({
   subcategory_id: null,
   genders: [],
   images: [],
-  thumbnail_image: [],
+  thumbnail_image: null,
   short_description: "A comfortable and stylish classic t-shirt.",
   long_description:
     "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
   colors: [],
-  sku: "eakadcff342ad3124sdcadc55524dhcb4sdgasdfadc6cadccb",
+  sku: "eakadcff342ad3124sdcadc55524dhcb4s6546453dgasdfadc6cadccb",
   sizes: [
     { id: 1, name: "XS", price: 20, quantity: 10 },
     { id: 2, name: "S", price: 22, quantity: 10 },
@@ -291,6 +291,7 @@ async function handleSubmit() {
   // console.log("selectedGender", selectedColor.value);
 
   // Map selected genders and colors to their IDs
+  product.value.thumbnail_image = product.value.thumbnail_image[0]
   product.value.genders = selectedGender.value.map((gender) => gender.id);
   product.value.colors = selectedColor.value.map((color) => color.id);
 
