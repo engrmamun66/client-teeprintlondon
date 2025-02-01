@@ -210,27 +210,22 @@
           <h3 class="product-details-heading" style="color: black">
             Image Upload
           </h3>
-          <div class="image-upload-section">
-            <input
-              type="file"
-              multiple
-              accept="image/*"
-              @change="handleImageUpload"
-              class="file-input"
-            />
-            <div v-if="uploadedImages.length" class="image-preview-grid">
-              <div
-                v-for="(image, index) in uploadedImages"
-                :key="index"
-                class="image-preview"
-              >
-                <img :src="image" alt="Uploaded Image" />
-                <button @click="removeImage(index)" class="remove-image-btn">
-                  ✖
-                </button>
-              </div>
-            </div>
-            <p v-else class="no-images-text">No images uploaded yet.</p>
+          <div class="form-group">
+            <label for="Upload File">Upload your thumbnail image</label>
+            <Admin-DropFiles
+              v-model="product.thumbnail_image"
+              :acceptOnlyImage="true"
+              :url="null"
+              :singleImage="true"
+            ></Admin-DropFiles>
+          </div>
+          <div class="form-group">
+            <label for="Upload File">Upload product image</label>
+            <Admin-DropFiles
+              v-model="product.images"
+              :acceptOnlyImage="true"
+              :url="null"
+            ></Admin-DropFiles>
           </div>
         </div>
       </div>
@@ -256,11 +251,13 @@ const product = ref({
   category_id: null, // New property
   subcategory_id: null,
   genders: [],
+  images: [],
+  thumbnail_image: [],
   short_description: "A comfortable and stylish classic t-shirt.",
   long_description:
     "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
   colors: [],
-  sku: "eakadcff34255524dhcb4sdgasdfadc6cadccb",
+  sku: "eakadcff342ad3124sdcadc55524dhcb4sdgasdfadc6cadccb",
   sizes: [
     { id: 1, name: "XS", price: 20, quantity: 10 },
     { id: 2, name: "S", price: 22, quantity: 10 },
