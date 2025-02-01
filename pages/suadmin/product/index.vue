@@ -13,11 +13,11 @@
             Product Details
           </h3>
           <form @submit.prevent>
-            <el-BaseInput type="text" label="Name" v-model="product.name" />
+            <el-BaseInput type="text" label="Name" v-model="productStore.product.name" />
             <!-- Brand Dropdown -->
             <div class="form-group">
               <label class="form-label">Brand</label>
-              <select class="form-control" v-model="product.brand_id">
+              <select class="form-control" v-model="productStore.product.brand_id">
                 <option disabled :value="null">- Select Brand -</option>
                 <option
                   v-for="brand in brandStore.brandList"
@@ -33,8 +33,8 @@
             <div class="form-group">
               <el-BaseSelectMultiple
                 label="Gender"
-                v-model="selectedGender"
-                :data="productStore.genderList"
+                v-model="productStore.selectedGender"
+                :data="productStore.genderList "
               ></el-BaseSelectMultiple>
             </div>
 
@@ -43,7 +43,7 @@
               <label class="form-label">Category</label>
               <select
                 class="form-control"
-                v-model="product.category_id"
+                v-model="productStore.product.category_id"
                 @change="checkSubCategory"
               >
                 <option disabled :value="null">- Select Category -</option>
@@ -60,7 +60,7 @@
             <!-- Category Dropdown -->
             <div class="form-group" v-if="showSubCategory">
               <label class="form-label">Sub Category</label>
-              <select class="form-control" v-model="product.subcategory_id">
+              <select class="form-control" v-model="productStore.product.subcategory_id">
                 <option disabled :value="null">- Select Sub Category -</option>
                 <option
                   v-for="category in categoryStore.category.children"
@@ -75,8 +75,8 @@
             <div class="form-group">
               <el-BaseSelectMultiple
                 label="Color"
-                v-model="selectedColor"
-                :data="colorStore.colorList"
+                v-model="productStore.selectedColor"
+                :data="productStore.colorList"
               ></el-BaseSelectMultiple>
             </div>
 
@@ -84,7 +84,7 @@
               <label>Short Description</label>
               <textarea
                 class="form-control"
-                v-model="product.short_description"
+                v-model="productStore.product.short_description"
                 rows="3"
                 placeholder="Short description of the product"
               ></textarea>
@@ -95,7 +95,7 @@
               <div>
                 <!-- Wrap RedactorEditor in a single root element -->
                 <RedactorEditor
-                  v-model="product.long_description"
+                  v-model="productStore.product.long_description"
                   ref="editor"
                   class="mt-4"
                 ></RedactorEditor>
@@ -108,7 +108,7 @@
               </h3>
               <div class="size-selection">
                 <div
-                  v-for="size in product.sizes"
+                  v-for="size in productStore.product.sizes"
                   :key="size.name"
                   @click="toggleSizeSelection(size.name)"
                   :class="{ selected: selectedSizes.includes(size.name) }"
@@ -164,13 +164,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="size in product.sizes" :key="size.name">
+                <tr v-for="size in productStore.product.sizes" :key="size.name">
                   <td>{{ size.name }}</td>
                   <td>
                     <input
                       type="number"
                       class="form-control"
-                      v-model="size.price"
+                      v-model="size.unit_price"
                       min="0"
                     />
                   </td>
@@ -211,20 +211,17 @@
             Image Upload
           </h3>
           <div class="form-group">
-            <label for="Upload File">Upload your thumbnail image</label>
+            <label for="Upload File">Upload your thumbnail image{{ productStore.product.thumbnail_image }}</label>
             <Admin-DropFiles
-              v-model="product.thumbnail_image"
-              :acceptOnlyImage="true"
-              :url="null"
+              v-model="productStore.product.thumbnail_image"
               :singleImage="true"
             ></Admin-DropFiles>
           </div>
           <div class="form-group">
             <label for="Upload File">Upload product image</label>
             <Admin-DropFiles
-              v-model="product.images"
-              :acceptOnlyImage="true"
-              :url="null"
+              v-model="productStore.product.images"
+              @removeFile="handleFileRemoval"
             ></Admin-DropFiles>
           </div>
         </div>
@@ -244,33 +241,7 @@ const brandStore = useBrandStore();
 const productStore = useProductStore();
 const categoryStore = useCategorystore();
 // Use ref for the product object
-const product = ref({
-  name: "Classic T-Shirt",
-  price: 25,
-  brand_id: null, // New property
-  category_id: null, // New property
-  subcategory_id: null,
-  genders: [],
-  images: [],
-  thumbnail_image: null,
-  short_description: "A comfortable and stylish classic t-shirt.",
-  long_description:
-    "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
-  colors: [],
-  sku: "eakadcff342ad3124sdcadc55524dhcb4s6546453dgasdfadc6cadccb",
-  sizes: [
-    { id: 1, name: "XS", price: 20, quantity: 10 },
-    { id: 2, name: "S", price: 22, quantity: 10 },
-    { id: 3, name: "M", price: 25, quantity: 10 },
-    { id: 4, name: "L", price: 28, quantity: 10 },
-    { id: 5, name: "XL", price: 30, quantity: 10 },
-    { id: 6, name: "XXL", price: 32, quantity: 10 },
-    { id: 7, name: "XXXL", price: 35, quantity: 10 },
-  ],
-});
 
-let selectedGender = ref(null);
-let selectedColor = ref(null);
 
 const selectedSizes = ref([]);
 const bulkPrice = ref(null);
@@ -282,33 +253,40 @@ onMounted(async () => {
   await productStore.getGenders();
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
-  await colorStore.getColorList();
+  await productStore.getColorList();
+  await productStore.showProduct(17)
+  // productStore.selectedGender = productStore.product.genders
 });
 
 let showSubCategory = ref(false);
+
+const handleFileRemoval = (removedFile) => {
+  console.log("Removed File:", removedFile);
+  // Handle the removed file as needed, e.g., updating the uploadedFiles list
+};
 
 async function handleSubmit() {
   // console.log("selectedGender", selectedColor.value);
 
   // Map selected genders and colors to their IDs
-  product.value.thumbnail_image = product.value.thumbnail_image[0]
-  product.value.genders = selectedGender.value.map((gender) => gender.id);
-  product.value.colors = selectedColor.value.map((color) => color.id);
+  productStore.product.thumbnail_image = productStore.product.thumbnail_image[0];
+  productStore.product.genders = productStore.selectedGender.map((gender) => gender.id);
+  productStore.product.colors = productStore.selectedColor.map((color) => color.id);
 
   // Create the payload
   const productPayload = {
-    ...product.value,
-    sizes: JSON.stringify(product.value.sizes), // Custom serialization for sizes
-    genders: JSON.stringify(product.value.genders), // Stringify genders
-    colors: JSON.stringify(product.value.colors), // Stringify colors
+    ...productStore.product,
+    sizes: JSON.stringify(productStore.product.sizes), // Custom serialization for sizes
+    genders: JSON.stringify(productStore.product.genders), // Stringify genders
+    colors: JSON.stringify(productStore.product.colors), // Stringify colors
   };
 
   // Submit the payload
   await productStore.create(productPayload);
 }
 async function checkSubCategory() {
-  // console.log("+====", product.value.category);
-  await categoryStore.showCategory(product.value.category_id);
+  // console.log("+====", productStore.product.category);
+  await categoryStore.showCategory(productStore.product.category_id);
   console.log("*(*(*(*)))", categoryStore.category.children?.length);
   if (categoryStore.category.children?.length != 0) {
     showSubCategory.value = true;
@@ -328,9 +306,9 @@ const toggleSizeSelection = (sizeName) => {
 };
 
 const applyBulkUpdate = () => {
-  product.value.sizes.forEach((size) => {
+  productStore.product.sizes.forEach((size) => {
     if (selectedSizes.value.includes(size.name)) {
-      if (bulkPrice.value !== null) size.price = bulkPrice.value;
+      if (bulkPrice.value !== null) size.unit_price = bulkPrice.value;
       if (bulkQuantity.value !== null) size.quantity = bulkQuantity.value;
     }
   });
