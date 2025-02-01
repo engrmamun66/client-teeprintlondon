@@ -23,7 +23,6 @@
           <thead>
             <tr>
               <th>Name <i-las t="sort-asc" /></th>
-              <th>Image</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -31,26 +30,15 @@
           <tbody>
             <tr
               class="odd"
-              v-for="(brand, index) in brandStore.brandList" :key="index"
+              v-for="(brand, index) in brandStore.brandList"
+              :key="index"
             >
               <td>
                 <div class="px-2">
                   <span>{{ brand?.name }}</span>
                 </div>
               </td>
-              <td>
-                <div class="px-2">
-                  <img
-                    :src="
-                      brand?.image_url
-                        ? brand?.image_url
-                        : '/img/noimage.jpg'
-                    "
-                    alt="Brand Image"
-                    class="w-16 h-16 object-cover rounded"
-                  />
-                </div>
-              </td>
+
               <td>
                 <div class="px-2">
                   <p>
@@ -101,7 +89,9 @@
             }
           "
         >
-          <template v-if="showConfirmation" > <p style="color:black">Are you sure?</p> </template>
+          <template v-if="showConfirmation">
+            <p style="color: black">Are you sure?</p>
+          </template>
         </Modal-Confirm>
       </div>
     </admin-card>
@@ -140,6 +130,7 @@
                         :value="1"
                         label="Active"
                         v-model="brandStore.brandAttribute.status"
+                        @click="changeBrand(1)"
                       >
                         Active
                       </el-Radio>
@@ -148,11 +139,10 @@
                         :value="0"
                         label="Inactive"
                         v-model="brandStore.brandAttribute.status"
+                        @click="changeBrand(0)"
                       >
                         Inactive
                       </el-Radio>
-
-                      <!-- <pre>{{ brandStore.brandAttribute.status }}</pre> -->
                     </div>
                   </div>
                 </div>
@@ -160,33 +150,6 @@
             </div>
           </div>
 
-          <div class="col-12">
-            <RedactorEditor
-              v-model="brandStore.brandAttribute.description"
-              ref="editor"
-            />
-          </div>
-          <div class="col-6 mt-3">
-            <div class="form-group">
-              <div class="date-box">
-                <div class="date-box-input">
-                  <el-DropImage
-                    v-model="brandStore.brandAttribute.image"
-                    v-model:img_url="brandStore.brandAttribute.image_url"
-                    v-model:clear="clearImage"
-                  />
-                  <p v-if="brandStore.brandAttribute.image">
-                    Uploaded Image Name:
-                    {{
-                      (clearImage,
-                      brandStore.brandAttribute.image.name ||
-                      brandStore.brandAttribute.image)
-                    }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="ionic-card-footer justify-content-end">
             <button
               type="button"
@@ -220,26 +183,30 @@ let clearImage = ref(false);
 
 async function showBrand(id) {
   await brandStore.showBrand(id);
-  editor.value.setContent(brandStore.brandAttribute.description);
+  // editor.value.setContent(brandStore.brandAttribute.description);
   editMode.value = true;
 }
 
 function handleSubmit() {
   // console.log( brandStore.brandAttribute.image )
-  brandStore.brandAttribute.status = brandStore.brandAttribute.status ? 1: 0;
+  brandStore.brandAttribute.status = brandStore.brandAttribute.status ? 1 : 0;
   if (editMode.value) {
-    brandStore.update(
-      brandStore.brandAttribute.id,
-      brandStore.brandAttribute
-    );
+    brandStore.update(brandStore.brandAttribute.id, brandStore.brandAttribute);
   } else {
     brandStore.create(brandStore.brandAttribute);
   }
 }
 
+function changeBrand(status) {
+  console.log(status);
+  setTimeout(() => {
+    brandStore.brandAttribute.status = status;
+  }, 10);
+}
+
 function OpenModal() {
   brandStore.resetBrandAttribute();
-  editor.value.setContent("")
+  // editor.value.setContent("")
   clearImage.value = true;
   editMode.value = false;
   brandStore.showModal = !brandStore.showModal;

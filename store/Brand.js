@@ -48,7 +48,7 @@ export const useBrandStore = defineStore("brand", () => {
     try {
       let response = await Brand.list();
       if (response.status == 200) {
-         brandList.value = response.data.data.data;
+         brandList.value = response.data.data;
       }
     } catch (error) {
      

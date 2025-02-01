@@ -42,7 +42,7 @@ export const useColorStore = defineStore("color", () => {
     try {
       let response = await Color.list();
       if (response.status == 200) {
-        colorList.value = response.data.data.data;
+        colorList.value = response.data.data;
       }
     } catch (error) {}
   }

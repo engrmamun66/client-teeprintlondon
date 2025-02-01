@@ -7,14 +7,10 @@
         <h3 class="product-details-heading" style="color: black">
           Product Details
         </h3>
-        <form>
+        <form @submit.prevent>
           <el-BaseInput type="text" label="Name" v-model="product.name" />
 
-          <el-BaseInput
-            type="text"
-            label="Base Price"
-            v-model="product.price"
-          />
+
 
           <!-- Brand Dropdown -->
           <div class="form-group">
@@ -63,19 +59,18 @@
 
           <div class="form-group">
             <label>Long Description</label>
-            <RedactorEditor v-model="product.longDescription" ref="editor" class="mt-4"></RedactorEditor>
+            <RedactorEditor
+              v-model="product.longDescription"
+              ref="editor"
+              class="mt-4"
+            ></RedactorEditor>
           </div>
 
-          <div class="form-group">
-            <label class="form-label">Color</label>
-            <select class="form-control" v-model="product.color">
-              <option disabled :value="null">- Select Color -</option>
-              <option value="Red">Red</option>
-              <option value="Blue">Blue</option>
-              <option value="Green">Green</option>
-              <option value="Black">Black</option>
-            </select>
-          </div>
+          <el-BaseSelectMultiple
+            label="Multi Selector"
+            v-model="selectedItem"
+            :data="data"
+          ></el-BaseSelectMultiple>
 
           <div class="bulk-update-section">
             <h3 class="additional-details-heading" style="color: black">
@@ -194,7 +189,7 @@
     </div>
   </div>
 </template>
-  
+
 <script setup>
 import { ref } from "vue";
 
@@ -219,6 +214,26 @@ const product = ref({
     { name: "XXXL", price: 35, quantity: 10 },
   ],
 });
+
+let selectedItem = ref(null);
+let data = ref([
+  {
+    id: 1,
+    name: "Product - 1",
+  },
+  {
+    id: 2,
+    name: "Product - 2",
+  },
+  {
+    id: 3,
+    name: "Product - 3",
+  },
+  {
+    id: 4,
+    name: "Product - 4",
+  },
+]);
 
 const selectedSizes = ref([]);
 const bulkPrice = ref(null);
@@ -266,136 +281,136 @@ const removeImage = (index) => {
   uploadedImages.value.splice(index, 1);
 };
 </script>
-  
-  <style scoped>
-  .cards-container {
-    display: flex;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
-  }
-  
-  .card {
-    flex: 1;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-  }
-  
-  .product-details-heading,
-  .additional-details-heading {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-control {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  .table th,
-  .table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .bulk-update-section {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  .size-selection {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .size-card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 40px;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: white;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .size-card.selected {
-    background-color: black;
-    color: white;
-    border-color: black;
-  }
-  
-  .image-upload-section {
-    margin-top: 20px;
-  }
-  
-  .file-input {
-    margin-bottom: 20px;
-  }
-  
-  .image-preview-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 10px;
-  }
-  
-  .image-preview {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  
-  .image-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .remove-image-btn {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    background: red;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .no-images-text {
-    color: #888;
-    font-style: italic;
-  }
-  </style>
+
+<style scoped>
+.cards-container {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.product-details-heading,
+.additional-details-heading {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.bulk-update-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.size-selection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.size-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 40px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: white;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.size-card.selected {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+.image-upload-section {
+  margin-top: 20px;
+}
+
+.file-input {
+  margin-bottom: 20px;
+}
+
+.image-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.image-preview {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-images-text {
+  color: #888;
+  font-style: italic;
+}
+</style>
