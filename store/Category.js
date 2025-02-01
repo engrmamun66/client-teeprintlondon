@@ -32,9 +32,9 @@ export const useCategorystore = defineStore("category", () => {
   async function getParentcategorylist() {
     try {
       let response = await Category.parentCategoryList();
-      console.log("adokcbakdcb", response.data.data);
+
       if (response.status == 200) {
-        console.log("adokcbakdcb", response.data.data);
+
         parentcategorylist.value = response.data.data;
       }
     } catch (error) {
@@ -119,7 +119,6 @@ export const useCategorystore = defineStore("category", () => {
         category.value = response.data.data;
         categoryattribute.value.name = category.value.name;
         categoryattribute.value.status = category.value.status;
-
         categoryattribute.value.image_url = category.value.image_url;
         categoryattribute.value.description = category.value.description;
         categoryattribute.value.id = category.value.id;
@@ -127,11 +126,11 @@ export const useCategorystore = defineStore("category", () => {
         // console.log("adkcbkadcbkadcbkjadbc", categoryattribute.value.description)
         if (category.value.parent_id) {
           categoryattribute.value.parent_id = category.value.parent_id;
-          console.log("akdcnbkadbckjadbckbadckbadc", category.value.parent_id);
+          // console.log("akdcnbkadbckjadbckbadckbadc", category.value.parent_id);
           categoryattribute.value.is_parent = 0;
         }
         showCategoryModal.value = true;
-        console.log("=======>>>>>>>>>>>>>>", response.data.data);
+        // console.log("=======>>>>>>>>>>>>>>", response.data.data);
       }
     } catch (error) {
       //   if (error.response.status == 401) {

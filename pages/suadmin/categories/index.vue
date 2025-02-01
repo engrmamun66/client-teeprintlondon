@@ -1,11 +1,8 @@
 <template>
-  <div class="position-relative">
+  <div>
+    <div class="position-relative">
     <LoaderApi v-if="false" />
-    <page-content-header
-      :title="'Dashboard'"
-      :links="[{ title: 'Categories', href: '/categories' }]"
-      :buttons="[]"
-    />
+    <page-content-header :title="'Categories'" :links="[]" :buttons="[]" />
     <admin-card :showHeader="true" :title="'Category List'">
       <template v-slot:header-buttons>
         <button class="btn btn-success m-3" @click="OpenModal()">
@@ -23,7 +20,6 @@
           <thead>
             <tr>
               <th>Category Name <i-las t="sort-asc" /></th>
-              <th>Image</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -38,19 +34,7 @@
                   <span>{{ category?.name }}</span>
                 </div>
               </td>
-              <td>
-                <div class="px-2">
-                  <img
-                    :src="
-                      category?.image_url
-                        ? category?.image_url
-                        : '/img/noimage.jpg'
-                    "
-                    alt="Category Image"
-                    class="w-16 h-16 object-cover rounded"
-                  />
-                </div>
-              </td>
+
               <td>
                 <div class="px-2">
                   <p>
@@ -229,50 +213,6 @@
               </div>
             </div>
           </div>
-
-          <div class="col-12">
-            <RedactorEditor
-              v-model="Categorystore.categoryattribute.description"
-              ref="editor"
-            />
-          </div>
-          <div class="col-6 mt-3">
-            <div class="form-group">
-              <div class="date-box">
-                <div class="date-box-input">
-                  <el-DropImage
-                    v-model="Categorystore.categoryattribute.image"
-                    v-model:img_url="Categorystore.categoryattribute.image_url"
-                    v-model:clear="clearImage"
-                  />
-                  <p v-if="Categorystore.categoryattribute.image">
-                    Uploaded Image Name:
-                    {{
-                      (clearImage,
-                      Categorystore.categoryattribute.image.name ||
-                        Categorystore.categoryattribute.image)
-                    }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Return -->
-
-          <!-- <div class="col-6">
-            <div class="form-group">
-              <div class="time-box">
-                <div class="time-box-input">
-                  <el-BaseInput
-                    type="text"
-                    label="পিতার পেশা"
-                    col="father_occupation"
-                  />
-                </div>
-              </div>
-            </div>
-          </div> -->
           <div class="ionic-card-footer justify-content-end">
             <button
               type="button"
@@ -293,6 +233,8 @@
       </template>
     </modal-global>
   </div>
+  </div>
+
 </template>
 
 <script setup>
@@ -312,15 +254,21 @@ let Sub_category = [
 async function showCategory(id) {
   await Categorystore.showCategory(id);
 
-  editor.value.setContent(Categorystore.categoryattribute.description);
+  // editor.value.setContent(Categorystore.categoryattribute.description);
   // Categorystore.categoryattribute.image = "http://127.0.0.1:8000/storage/category/677f86019fd80.png"
   editMode.value = true;
 }
 
 function handleSubmit() {
   // console.log( Categorystore.categoryattribute.image )
-  Categorystore.categoryattribute.status = Categorystore.categoryattribute.status? 1: 0;
-  Categorystore.categoryattribute.is_parent = Categorystore.categoryattribute.is_parent? 1: 0;
+  Categorystore.categoryattribute.status = Categorystore.categoryattribute
+    .status
+    ? 1
+    : 0;
+  Categorystore.categoryattribute.is_parent = Categorystore.categoryattribute
+    .is_parent
+    ? 1
+    : 0;
   if (Categorystore.categoryattribute.is_parent == 0) {
     if (Categorystore.categoryattribute.is_parent == null) {
       Toaster.error("Please Select Parent Category");
@@ -338,7 +286,7 @@ function handleSubmit() {
 
 function OpenModal() {
   Categorystore.resetCategoryAttribute();
-  editor.value.setContent("")
+  // editor.value.setContent("");
   clearImage.value = true;
   editMode.value = false;
   Categorystore.showCategoryModal = !Categorystore.showCategoryModal;

@@ -33,7 +33,7 @@
             <div class="form-group">
               <el-BaseSelectMultiple
                 label="Gender"
-                v-model="selectedGender"
+                v-model="selectedItem"
                 :data="productStore.genderList"
               ></el-BaseSelectMultiple>
             </div>
@@ -70,14 +70,6 @@
                   {{ category.name }}
                 </option>
               </select>
-            </div>
-            <!-- Color Dropdown -->
-            <div class="form-group">
-              <el-BaseSelectMultiple
-                label="Color"
-                v-model="selectedColor"
-                :data="colorStore.colorList"
-              ></el-BaseSelectMultiple>
             </div>
 
             <div class="form-group">
@@ -243,8 +235,6 @@ import { ref } from "vue";
 import { useProductStore } from "~/store/Product";
 import { useCategorystore } from "~/store/Category";
 import { useBrandStore } from "~/store/Brand";
-import { useColorStore } from "~/store/Color";
-const colorStore = useColorStore();
 const brandStore = useBrandStore();
 const productStore = useProductStore();
 const categoryStore = useCategorystore();
@@ -253,14 +243,14 @@ const product = ref({
   name: "Classic T-Shirt",
   price: 25,
   brand_id: null, // New property
+  gender: null, // New property
   category_id: null, // New property
   subcategory_id: null,
-  genders: [],
   short_description: "A comfortable and stylish classic t-shirt.",
   long_description:
     "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
-  colors: [],
-  sku: "eakadcff34255524dhcb4sdgasdfadc6cadccb",
+  color: "2",
+  sku:"eakdhcbadcb",
   sizes: [
     { id: 1, name: "XS", price: 20, quantity: 10 },
     { id: 2, name: "S", price: 22, quantity: 10 },
@@ -272,8 +262,7 @@ const product = ref({
   ],
 });
 
-let selectedGender = ref(null);
-let selectedColor = ref(null);
+let selectedItem = ref(null);
 
 const selectedSizes = ref([]);
 const bulkPrice = ref(null);
@@ -285,29 +274,16 @@ onMounted(async () => {
   await productStore.getGenders();
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
-  await colorStore.getColorList();
 });
 
 let showSubCategory = ref(false);
 
 async function handleSubmit() {
-  // console.log("selectedGender", selectedColor.value);
-
-  // Map selected genders and colors to their IDs
-  product.value.genders = selectedGender.value.map((gender) => gender.id);
-  product.value.colors = selectedColor.value.map((color) => color.id);
-
-  // Create the payload
-  const productPayload = {
-    ...product.value,
-    sizes: JSON.stringify(product.value.sizes), // Custom serialization for sizes
-    genders: JSON.stringify(product.value.genders), // Stringify genders
-    colors: JSON.stringify(product.value.colors), // Stringify colors
-  };
-
-  // Submit the payload
-  await productStore.create(productPayload);
+  product.value.sizes = JSON.stringify(product.value.sizes);
+  // console.log("=====", product.value);
+  await productStore.create(product.value);
 }
+
 async function checkSubCategory() {
   // console.log("+====", product.value.category);
   await categoryStore.showCategory(product.value.category_id);
