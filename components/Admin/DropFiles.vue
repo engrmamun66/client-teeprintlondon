@@ -4,7 +4,7 @@
       type="file"
       id="file_34ffdcd"
       accept="image/*"
-      class="cp" 
+      class="cp"
       @change="onChangeFile"
       :multiple="!singleImage"
     />
@@ -25,19 +25,6 @@
                 @click="openImagePreview(file)"
               />
             </template>
-            <template v-else>
-              <div class="pdf-preview">
-                <i class="bx bxs-file-pdf pdf-icon" style="font-size: 46px;"></i>
-                <a
-                  :href="getUrl(file)"
-                  target="_blank"
-                  class="pdf-name"
-                  :title="getFileName(file.name || file)"
-                >
-                  {{ truncateName(getFileName(file.name || file)) }}
-                </a>
-              </div>
-            </template>
           </div>
           <i class="la la-close" @click="clearPreview(i)"></i>
         </li>
@@ -48,22 +35,11 @@
   <div v-if="showImageModal && showImageModalFile" class="image-modal">
     <div class="image-modal-frame">
       <i class="la la-close close-icon" @click.stop="closeImagePreview"></i>
-      <template v-if="isImage(showImageModalFile)">
-        <img :src="getUrl(showImageModalFile)" alt="Enlarged Preview" class="image-modal-image" />
-      </template>
-      <template v-else>
-        <div class="pdf-preview">
-          <i class="bx bxs-file-pdf pdf-icon"></i>
-          <a
-            :href="getUrl(showImageModalFile)"
-            target="_blank"
-            class="pdf-name"
-            :title="getFileName(showImageModalFile.name)"
-          >
-            {{ truncateName(getFileName(showImageModalFile.name)) }}
-          </a>
-        </div>
-      </template>
+      <img
+        :src="getUrl(showImageModalFile)"
+        alt="Enlarged Preview"
+        class="image-modal-image"
+      />
     </div>
   </div>
 </template>
@@ -73,7 +49,7 @@ import { ref, watch } from "vue";
 
 const props = defineProps({
   modelValue: {
-    type: Array,
+    type: [Array, String],
     default: () => [],
   },
   singleImage: {
@@ -83,23 +59,33 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["update:modelValue", "uploadFile", "removeFile"]);
-
 const selectedFiles = ref([]);
 const showImageModal = ref(false);
 const showImageModalFile = ref(null);
 
-watch(() => props.modelValue, (newValue) => {
-  selectedFiles.value = newValue;
-}, { immediate: true });
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    selectedFiles.value = Array.isArray(newValue) ? newValue : [newValue];
+  },
+  { immediate: true }
+);
 
 const onChangeFile = (event) => {
   const files = Array.from(event.target.files);
-  selectedFiles.value = props.singleImage ? [files[0]] : files;
+  
+  if (props.singleImage) {
+    // If singleImage is true, replace the existing file with the new one
+    selectedFiles.value = [files[0]];
+  } else {
+    // If singleImage is false, append the new files to the existing ones
+    selectedFiles.value = [...selectedFiles.value, ...files];
+  }
+  
   emit("update:modelValue", selectedFiles.value);
   emit("uploadFile", selectedFiles.value);
-  event.target.value = "";
+  event.target.value = ""; // Clear the input to allow re-uploading the same file
 };
-
 const clearPreview = (i) => {
   const removedFile = selectedFiles.value.splice(i, 1);
   emit("update:modelValue", selectedFiles.value);
@@ -107,24 +93,19 @@ const clearPreview = (i) => {
 };
 
 const getUrl = (file) => {
-  try {
-    return typeof file === "string" ? file : URL.createObjectURL(file);
-  } catch {
-    return "";
-  }
+  if (typeof file === "string") return file;
+  if (file?.image_url) return file.image_url;
+  if (file instanceof File) return URL.createObjectURL(file);
+  return "";
 };
-
-const getFileName = (fileUrl) => fileUrl.split("/").pop();
 
 const isImage = (file) => {
-  try {
-    return file.type.startsWith('image/');
-  } catch {
-    return false;
-  }
+  return (
+    typeof file === "string" ||
+    file?.image_url ||
+    (file instanceof File && file.type.startsWith("image/"))
+  );
 };
-
-const truncateName = (name) => name.length > 20 ? name.slice(0, 17) + "..." : name;
 
 const openImagePreview = (file) => {
   showImageModal.value = true;
@@ -145,14 +126,14 @@ const closeImagePreview = () => {
   width: 100%;
   height: 52px;
   border: 1px dashed rgb(222, 222, 222);
-  border-radius: .5em;
+  border-radius: 0.5em;
   min-height: 2.5rem;
   overflow: hidden;
   padding: 8px 15px;
-  transition: .75s ease-in-out;
+  transition: 0.75s ease-in-out;
 }
 
-.ionic-img-upload input[type=file] {
+.ionic-img-upload input[type="file"] {
   height: 100%;
   left: 0;
   opacity: 0;

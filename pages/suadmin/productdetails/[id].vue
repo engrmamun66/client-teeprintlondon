@@ -255,7 +255,7 @@ const brandStore = useBrandStore();
 const productStore = useProductStore();
 const categoryStore = useCategorystore();
 // Use ref for the product object
-
+const route = useRoute();
 const selectedSizes = ref([]);
 const bulkPrice = ref(null);
 const bulkQuantity = ref(null);
@@ -263,11 +263,13 @@ const uploadedImages = ref([]);
 const editor = ref();
 
 onMounted(async () => {
+  const id = route.params.id;
   await productStore.getGenders();
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
   await productStore.getColorList();
-  // await productStore.showProduct(16);
+  await productStore.showProduct(id);
+
   // productStore.selectedGender = productStore.product.genders
 });
 
@@ -279,11 +281,28 @@ const handleFileRemoval = (removedFile) => {
 };
 
 async function handleSubmit() {
-  // console.log("selectedGender", selectedColor.value);
+  let uploadedFiles = ref([]);
+  productStore.product.images.forEach((image) => {
+    if (image instanceof File) {
+      console.log("This is a File object:", image);
+      uploadedFiles.value.push(image);
+    }
+  });
 
-  // Map selected genders and colors to their IDs
-  productStore.product.thumbnail_image =
-    productStore.product.thumbnail_image[0];
+  if (uploadedFiles.value.length != 0) {
+    productStore.product.images.length = 0;
+    productStore.product.images = [...uploadedFiles.value];
+    uploadedFiles.value.length = 0;
+  } else {
+    productStore.product.images.length = 0;
+  }
+  if (typeof productStore.product.thumbnail_image == "string") {
+    productStore.product.thumbnail_image = "";
+  } else {
+    productStore.product.thumbnail_image =
+      productStore.product.thumbnail_image[0];
+  }
+
   productStore.product.genders = productStore.selectedGender.map(
     (gender) => gender.id
   );
@@ -291,17 +310,35 @@ async function handleSubmit() {
     (color) => color.id
   );
 
-  // Create the payload
-  const productPayload = {
-    ...productStore.product,
-    sizes: JSON.stringify(productStore.product.sizes), // Custom serialization for sizes
-    genders: JSON.stringify(productStore.product.genders), // Stringify genders
-    colors: JSON.stringify(productStore.product.colors), // Stringify colors
-  };
+  if (productStore.product.subcategory_id  != null) {
+    console.log("========&*&",productStore.product.subcategory_id )
+    productStore.product.category_id = productStore.product.subcategory_id;
+    const { subcategory_id, ...products } = productStore.product;
+    // Create the payload
+    const productPayload = {
+      ...products,
+      sizes: JSON.stringify(productStore.product.sizes), // Custom serialization for sizes
+      genders: JSON.stringify(productStore.product.genders), // Stringify genders
+      colors: JSON.stringify(productStore.product.colors), // Stringify colors
+    };
 
-  // Submit the payload
-  await productStore.create(productPayload);
+    // Submit the payload
+    await productStore.create(productPayload);
+  } else {
+    const productPayload = {
+      ...productStore.product,
+      sizes: JSON.stringify(productStore.product.sizes), // Custom serialization for sizes
+      genders: JSON.stringify(productStore.product.genders), // Stringify genders
+      colors: JSON.stringify(productStore.product.colors), // Stringify colors
+    };
+
+    // Submit the payload
+    await productStore.create(productPayload);
+  }
+
+  // Create the payload
 }
+
 async function checkSubCategory() {
   // console.log("+====", productStore.product.category);
   await categoryStore.showCategory(productStore.product.category_id);
