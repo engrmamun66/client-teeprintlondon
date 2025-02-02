@@ -11,7 +11,7 @@ export const useProductStore = defineStore("product", () => {
   });
   let selectedGender = ref(null);
   let selectedColor = ref(null);
-
+  let showSubCategory = ref(false);
   const product = ref({
     name: "Classic T-Shirt",
     price: 25,
@@ -107,15 +107,12 @@ export const useProductStore = defineStore("product", () => {
     }
   }
 
-  let color = ref(null);
   function mapProductFromResponse(response) {
     return {
       id: response.data.data.id,
       name: response.data.data.name,
       price: 25, // Default or fetch from response
       brand_id: response.data.data.brand_id,
-      category_id: response.data.data.category_id,
-      subcategory_id: null,
       genders: response.data.data.genders,
       images: response.data.data.images,
       thumbnail_image: response.data.data.thumbnail_image_url,
@@ -127,15 +124,24 @@ export const useProductStore = defineStore("product", () => {
         const updatedSize = response.data.data.sizes.find(
           (s) => s.id === size.id
         );
+
         return updatedSize ? { ...size, ...updatedSize } : size;
       }),
+      category_id:
+        response.data.data.category.parent != null
+          ? response.data.data.category.parent.id
+          : response.data.data.category.id,
+      subcategory_id:
+        response.data.data.category.parent != null
+          ? response.data.data.category.id
+          : null,
     };
   }
 
   async function showProduct(id) {
     try {
       let response = await Product.show(id);
-      console.log("==========>>>>>>", response.data.data);
+      // console.log("==========>>>>>>", response.data.data);
 
       if (response.status === 200) {
         product.value = mapProductFromResponse(response); // Use the helper function
@@ -157,17 +163,25 @@ export const useProductStore = defineStore("product", () => {
     }
   }
 
+  async function deleteImage(id) {
+    try {
+      let response = await Product.deleteImage(id);
+      if (response.status == 200) {
+        Toaster.success("Image Deleted");
+      }
+    } catch (error) {}
+  }
+
   async function update(id, payload = {}) {
     try {
       payload = {
         ...payload,
         _method: "PUT",
       };
-      let response = await Color.update(id, payload);
+      let response = await Product.update(id, payload);
       if (response.status == 200) {
-        await getColorList();
         showModal.value = false;
-        resetBrandAttribute();
+        await showProduct(id);
         Toaster.success("Color updated successfully");
       }
     } catch (error) {
@@ -178,6 +192,16 @@ export const useProductStore = defineStore("product", () => {
     }
   }
 
+  async function getColorList() {
+    try {
+      let response = await Product.list();
+      if (response.status == 200) {
+        // colorList.value = response.data.data;
+        console.log("_+_+_+_+_+_+_+_+_", response.data.data)
+      }
+    } catch (error) {}
+  }
+
   return {
     create,
     getColorList,
@@ -186,7 +210,7 @@ export const useProductStore = defineStore("product", () => {
     update,
     resetBrandAttribute,
     getGenders,
-    color,
+    deleteImage,
     genderList,
     colorAttribute,
     showModal,
@@ -194,6 +218,7 @@ export const useProductStore = defineStore("product", () => {
     selectedGender,
     selectedColor,
     colorList,
+    showSubCategory,
   };
 });
 

@@ -20,6 +20,9 @@ export default {
   async delete(id) {
     return await ApiAuth().delete(`${prefix}/${id}`);
   },
+  async deleteImage(id) {
+    return await ApiAuth().get(`${prefix}/image/${id}/delete`);
+  },
   async show(id) {
     return await ApiAuth().get(`${prefix}/${id}`);
   },

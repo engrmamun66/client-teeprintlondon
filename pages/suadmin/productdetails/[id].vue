@@ -47,7 +47,7 @@
 
             <!-- Category Dropdown -->
             <div class="form-group">
-              <label class="form-label">Category</label>
+              <label class="form-label">Category </label>
               <select
                 class="form-control"
                 v-model="productStore.product.category_id"
@@ -65,7 +65,7 @@
             </div>
 
             <!-- Category Dropdown -->
-            <div class="form-group" v-if="showSubCategory">
+            <div class="form-group" v-if="productStore.showSubCategory">
               <label class="form-label">Sub Category</label>
               <select
                 class="form-control"
@@ -221,11 +221,7 @@
             Image Upload
           </h3>
           <div class="form-group">
-            <label for="Upload File"
-              >Upload your thumbnail image{{
-                productStore.product.thumbnail_image
-              }}</label
-            >
+            <label for="Upload File">Upload your thumbnail image</label>
             <Admin-DropFiles
               v-model="productStore.product.thumbnail_image"
               :singleImage="true"
@@ -261,22 +257,30 @@ const bulkPrice = ref(null);
 const bulkQuantity = ref(null);
 const uploadedImages = ref([]);
 const editor = ref();
-
+const id = route.params.id;
 onMounted(async () => {
-  const id = route.params.id;
   await productStore.getGenders();
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
   await productStore.getColorList();
   await productStore.showProduct(id);
 
+  if (productStore.product.subcategory_id) {
+    checkSubCategory();
+  }
+
   // productStore.selectedGender = productStore.product.genders
 });
 
-let showSubCategory = ref(false);
-
 const handleFileRemoval = (removedFile) => {
-  console.log("Removed File:", removedFile);
+  // console.log("Removed File:", removedFile[0].id);
+  // console.log("Removed File:", removedFile[0]);
+  if (removedFile[0] instanceof File) {
+    // console.log("This is a File object:", removedFile[0]);
+  } else {
+    console.log("This is a regular object:", removedFile[0]);
+    productStore.deleteImage(removedFile[0].id);
+  }
   // Handle the removed file as needed, e.g., updating the uploadedFiles list
 };
 
@@ -297,7 +301,7 @@ async function handleSubmit() {
     productStore.product.images.length = 0;
   }
   if (typeof productStore.product.thumbnail_image == "string") {
-    productStore.product.thumbnail_image = "";
+    productStore.product.thumbnail_image = null;
   } else {
     productStore.product.thumbnail_image =
       productStore.product.thumbnail_image[0];
@@ -310,8 +314,8 @@ async function handleSubmit() {
     (color) => color.id
   );
 
-  if (productStore.product.subcategory_id  != null) {
-    console.log("========&*&",productStore.product.subcategory_id )
+  if (productStore.product.subcategory_id != null) {
+    console.log("========&*&", productStore.product.subcategory_id);
     productStore.product.category_id = productStore.product.subcategory_id;
     const { subcategory_id, ...products } = productStore.product;
     // Create the payload
@@ -323,7 +327,7 @@ async function handleSubmit() {
     };
 
     // Submit the payload
-    await productStore.create(productPayload);
+    await productStore.update(id, productPayload);
   } else {
     const productPayload = {
       ...productStore.product,
@@ -333,7 +337,7 @@ async function handleSubmit() {
     };
 
     // Submit the payload
-    await productStore.create(productPayload);
+    await productStore.update(id, productPayload);
   }
 
   // Create the payload
@@ -344,9 +348,9 @@ async function checkSubCategory() {
   await categoryStore.showCategory(productStore.product.category_id);
   console.log("*(*(*(*)))", categoryStore.category.children?.length);
   if (categoryStore.category.children?.length != 0) {
-    showSubCategory.value = true;
+    productStore.showSubCategory = true;
   } else {
-    showSubCategory.value = false;
+    productStore.showSubCategory = false;
   }
 }
 
