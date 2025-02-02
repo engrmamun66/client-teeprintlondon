@@ -181,15 +181,7 @@
                                             <td class="text-end">$ 10.00</td>
                                         </tr>
                                         <tr>
-                                            <th>Shipping Charge</th>
-                                            <td class="text-end">$ 10.00</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Discount</th>
-                                            <td class="text-end">$ 10.00</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Tax</th>
+                                            <th>Shipping</th>
                                             <td class="text-end">$ 10.00</td>
                                         </tr>
 
