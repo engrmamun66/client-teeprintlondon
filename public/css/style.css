@@ -333,9 +333,6 @@ table thead tr th {
 .teeprint-cart-ordertable table tr:nth-child(even) td {
   background-color: #eee;
 }
- textarea {
-  resize: none;
-}
 
  .table-responsive {
   display: inline-table;
@@ -433,7 +430,7 @@ table thead tr th {
 }
 
  label {
-  font-weight: 500;
+  font-weight: 300;
   margin-bottom: 5px;
   color: var(--fontcolor-primary);
   display: inline-block;
@@ -4861,5 +4858,452 @@ cart popup css
   .teeprint-cart-sidebar-inner .teeprint-cart-sidebar-summary {
     position: absolute;
     bottom: 0;
+  }
+}
+
+
+/*====================== 
+checkout css  
+=======================*/
+
+
+.teeprint-checkout-wrapper {
+  padding: 50px 0;
+}
+
+.teeprint-customer-login {
+  background-color: #f2f3f8;
+  padding: 12px 15px;
+}
+
+.teeprint-customer-login h5 {
+  font-weight: 400;
+  font-size: 18px;
+  color: #555;
+}
+
+.teeprint-customer-login h5 a {
+  padding-left: 15px;
+  color: #59a9a1;
+}
+
+.teeprint-billing-fullfilment-content .teeprint-billing-address,
+.teeprint-billing-fullfilment-content .teeprint-fulfillment {
+  padding: 0 20px;
+  position: relative;
+  width: 100%;
+  padding-top: 25px;
+  padding-bottom: 15px;
+}
+
+.teeprint-billing-fullfilment-content .teeprint-billing-address .teeprint-checkout-title,
+.teeprint-billing-fullfilment-content .teeprint-fulfillment .teeprint-checkout-title {
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: .5px;
+  background-color: #fff;
+  width: auto;
+  margin-bottom: 20px;
+}
+
+.teeprint-billing-fullfilment-content .teeprint-billing-address .teeprint-row,
+.teeprint-billing-fullfilment-content .teeprint-fulfillment .teeprint-row {
+  margin: 0 -15px;
+}
+
+.teeprint-billing-fullfilment-content .teeprint-billing-address .teeprint-row .teeprint-column-6,
+.teeprint-billing-fullfilment-content .teeprint-billing-address .teeprint-row .teeprint-column-12,
+.teeprint-billing-fullfilment-content .teeprint-fulfillment .teeprint-row .teeprint-column-6,
+.teeprint-billing-fullfilment-content .teeprint-fulfillment .teeprint-row .teeprint-column-12 {
+  padding: 0 15px;
+}
+
+.teeprint-billing-fullfilment-content .teeprint-fulfillment {
+  margin-top: 50px;
+}
+
+.teeprint-collaps-content {
+  padding: 10px 0 0;
+}
+
+.teeprint-collaps-content .teeprint-pickup-location-list {
+  padding-bottom: 20px;
+}
+
+.teeprint-radio-inline {
+  width: 100%;
+  height: 35px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f2f3f8;
+}
+
+.teeprint-radio-inline:first-child {
+  border-top: 1px solid #f2f3f8;
+}
+
+.teeprint-radio-inline .teeprint-radio {
+  font-weight: 400;
+}
+
+.teeprint-checkout-ordersummery {
+  padding-left: 30px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner {
+  position: relative;
+  padding: 20px 20px 20px;
+  background-color: #eee;
+  border-radius: 8px;
+}
+
+.teeprint-ordersummery-title {
+  position: absolute;
+    top: -15px;
+    left: 20px;
+    display: inline-block;
+    font-size: 17px;
+    text-transform: uppercase;
+    margin: 0 auto;
+    padding: 6px 19px;
+    letter-spacing: .5px;
+    background-color: #fff;
+    font-weight: 500;
+    box-shadow: 0px 0px 10px #eee;
+    border-radius: 3px;
+}
+
+.teeprint-order-list-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 85px;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.teeprint-order-list-box .teeprint-order-img {
+  width: 60px;
+  margin-right: 14px;
+}
+
+.teeprint-order-list-box .teeprint-order-img img {
+  width: 60px;
+  height: 65px;
+  -o-object-fit: contain;
+  object-fit: contain;
+  border: 1px solid #f2f3f8;
+}
+
+.teeprint-order-list-box .teeprint-order-product-details .teeprint-order-product-name {
+  width: 100%;
+  display: inline-block;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.teeprint-order-product-quantity {
+  font-weight: 500;
+}
+
+.teeprint-order-list-box .teeprint-order-product-details .teeprint-order-details-bottom {
+  width: 100%;
+  display: inline-block;
+}
+
+.teeprint-order-list-box .teeprint-order-product-details .teeprint-order-details-bottom .teeprint-order-quantity {
+  width: auto;
+  float: left;
+  font-weight: 400;
+}
+
+.teeprint-order-list-box .teeprint-order-product-details .teeprint-order-details-bottom .teeprint-order-product-price {
+  width: auto;
+  float: left;
+  text-align: right;
+  padding-right: 6px;
+  padding-left: 5px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-checkout-order-table table tbody {
+  border: none;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-checkout-order-table table tbody tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-checkout-order-table table tbody tr th {
+  background-color: transparent;
+  border: none;
+  padding: 10px 0;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-checkout-order-table table tbody tr th strong {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-checkout-order-table table tbody tr td {
+  border: none;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-checkout-order-table table tbody tr td strong {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-additional-charge-title {
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row {
+  -ms-flex-wrap: unset;
+      flex-wrap: unset;
+  padding-bottom: 15px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-checkbox-inline {
+  min-width: 30%;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-btn-toolbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: -6px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-btn-toolbar .teeprint-btn-group {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-btn-toolbar .teeprint-btn-group .teeprint-btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: .25rem;
+  -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+  position: relative;
+  -ms-flex: 0 1 auto;
+  -webkit-box-flex: 0;
+          flex: 0 1 auto;
+  background: #f2f3f8;
+  border-color: #eee;
+  color: #333;
+  font-weight: 400;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-btn-toolbar select {
+  height: 34px;
+  width: auto;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-input-ammount-area {
+  display: none;
+  width: 100%;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-input-ammount-area .teeprint-input-group {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
+  width: 230px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-input-ammount-area .teeprint-input-group input {
+  position: relative;
+  -ms-flex: 1 1 auto;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
+  width: 1%;
+  margin-bottom: 0;
+  height: 34px !important;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  margin-right: 10px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-input-ammount-area .teeprint-input-group .teeprint-input-group-append {
+  display: flex;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-input-ammount-area .teeprint-input-group .teeprint-input-group-append .teeprint-btn {
+  color: #fff;
+  background-color: #555;
+  background-image: none;
+  border-color: #555;
+  padding: 0;
+  width: 35px;
+  height: 32px;
+  text-align: center;
+  margin-top: 0px;
+  border-radius: 2px !important;
+  position: relative;
+  z-index: 2;
+  margin-right: 5px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-input-ammount-area .teeprint-input-group .teeprint-input-group-append .teeprint-optional-cancel-btn {
+  color: #555 !important;
+  background-color: #f2f3f8 !important;
+  border-color: #f2f3f8 !important;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-single-optional-service {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-single-optional-service label {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-optional-service .teeprint-row .teeprint-column-12 .teeprint-row .teeprint-optional-service-content .teeprint-single-optional-service select {
+  height: 34px;
+  width: auto;
+  margin-top: -8px;
+  margin-left: 5px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-checkout-payment {
+  padding: 20px 0;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-checkout-payment .teeprint-collaps .teeprint-collaps-item .teeprint-collaps-content .teeprint-payment-form {
+  padding: 15px 0;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-checkout-payment .teeprint-collaps .teeprint-collaps-item .teeprint-collaps-content .teeprint-payment-form .teeprint-row {
+  margin: 0 -15px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-checkout-payment .teeprint-collaps .teeprint-collaps-item .teeprint-collaps-content .teeprint-payment-form .teeprint-row .teeprint-form-group {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-ordersummery-checkbox {
+  padding-bottom: 15px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-ordersummery-checkbox .teeprint-radio-inline .teeprint-checkbox {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-ordersummery-checkbox .teeprint-radio-inline .teeprint-checkbox a {
+  font-weight: 500;
+  color: #333;
+}
+
+.teeprint-checkout-ordersummery .teeprint-checkout-ordersummery-inner .teeprint-ordersummery-checkbox .teeprint-radio-inline .teeprint-checkbox a:hover {
+  text-decoration: underline !important;
+}
+.teeprint-checkout-ordersummery table tr th,
+.teeprint-checkout-ordersummery table tr td {
+  padding: 5px 0;
+}
+.teeprint-ordersummery-button {
+  padding-top: 15px;
+  text-align: center;
+  border-top: 2px solid #aaa;
+}
+.teeprint-backtocart-btn {
+  background-color: #2da4e0;
+  padding: 12px 30px;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.teeprint-placeorder-btn {
+  padding: 12px 30px;
+  color: #fff;
+  border-radius: 3px;
+}
+.teeprint-checkbox.teeprint-checkout-title > span, 
+.teeprint-radio.teeprint-checkout-title > span, 
+.teeprint-checkbox.teeprint-checkout-title > span, 
+.teeprint-radio.teeprint-checkout-title > span {
+  top: 10px;
+}
+.ordernote-textarea {
+  height: auto;
+}
+@media (max-width: 991px) {
+  .teeprint-checkout-wrapper {
+    padding: 30px 0;
+  }
+  .teeprint-radio-inline {
+    height: auto;
+  }
+  .teeprint-checkout-ordersummery {
+    padding-left: 0;
+    margin-top: 30px;
+  }
+  .teeprint-backtocart-btn {
+    padding: 12px 20px;
+  }
+  .teeprint-placeorder-btn {
+    padding: 12px 20px;
   }
 }
