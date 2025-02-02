@@ -147,7 +147,7 @@
                                     </div>
                                     <div class="teeprint-order-product-details">
                                         <div class="teeprint-order-product-name">
-                                            Tank with V-Neck and Panel Detail&nbsp;
+                                            Anthem Organic Long Sleeve T-Shirt
                                             <strong class="teeprint-order-product-quantity">×&nbsp;1</strong>
                                         </div>
                                         <div class="teeprint-order-details-bottom">
@@ -162,7 +162,7 @@
                                     </div>
                                     <div class="teeprint-order-product-details">
                                         <div class="teeprint-order-product-name">
-                                            Tank with V-Neck and Panel Detail&nbsp;
+                                            Anthem Organic Long Sleeve T-Shirt
                                             <strong class="teeprint-order-product-quantity">×&nbsp;1</strong>
                                         </div>
                                         <div class="teeprint-order-details-bottom">
