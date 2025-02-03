@@ -80,7 +80,14 @@ export const useProductStore = defineStore("product", () => {
     try {
       let response = await Color.list();
       if (response.status == 200) {
-        colorList.value = response.data.data;
+        let tempColor = ref([]);
+        tempColor.value = response.data.data;
+        tempColor.value.forEach((color) => {
+          if (color.status == 1) {
+            colorList.value.push(color);
+          }
+        });
+        tempColor.value.length  = 0 
       }
     } catch (error) {}
   }
@@ -198,6 +205,7 @@ export const useProductStore = defineStore("product", () => {
       if (response.status == 200) {
         productList.value = response.data.data.data;
       }
+
     } catch (error) {}
   }
 
