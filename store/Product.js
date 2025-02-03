@@ -191,7 +191,7 @@ export const useProductStore = defineStore("product", () => {
       if (response.status == 200) {
         showModal.value = false;
         await showProduct(id);
-        Toaster.success("Color updated successfully");
+        Toaster.success("Product updated successfully");
       }
     } catch (error) {
       if (error.response.status == 422) {
