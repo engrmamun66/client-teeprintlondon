@@ -87,7 +87,7 @@ export const useProductStore = defineStore("product", () => {
             colorList.value.push(color);
           }
         });
-        tempColor.value.length  = 0 
+        tempColor.value.length = 0;
       }
     } catch (error) {}
   }
@@ -205,7 +205,6 @@ export const useProductStore = defineStore("product", () => {
       if (response.status == 200) {
         productList.value = response.data.data.data;
       }
-
     } catch (error) {}
   }
 
