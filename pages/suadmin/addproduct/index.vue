@@ -137,6 +137,7 @@
               <el-BaseSelectMultiple
                 v-model="productStore.selectedColor"
                 :data="productStore.colorList"
+                :label=null
                 :class="{ 'is-invalid': errors.color }"
               />
               <div v-if="errors.color" class="invalid-feedback">
