@@ -4526,6 +4526,7 @@ cart popup css
   line-height: 60px;
   font-size: 25px;
   border-radius: 15px;
+  border: 1px solid #4f4f4f;
 }
 
 .teeprint-cartbar-launcher .teeprint-cartbar-launcher-summary {
@@ -4611,18 +4612,18 @@ cart popup css
 }
 
 .teeprint-cartsidebar-overlay .teeprint-cart-sidebar-content .teeprint-cart-modalclose {
-  position: absolute;
+  position: fixed;
   padding: 10px 15px;
   font-size: 15px;
   text-align: center;
   background: transparent;
   color: #fff;
-  top: 3px;
+  top: 13px;
   right: 0;
   cursor: pointer;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  z-index: 9;
+  z-index: 999999;
 }
 
 .teeprint-cartsidebar-overlay .teeprint-cart-sidebar-content .teeprint-cart-modalclose:hover {
@@ -4640,13 +4641,14 @@ cart popup css
   font-size: 12px;
   text-transform: uppercase;
   text-align: center;
-  padding: 15px 0 15px;
+  padding: 27px 0 15px;
   z-index: 2;
   position: relative;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   font-weight: 500;
   color: #fff;
+  border-left: 1px solid #727272;
 }
 
 .teeprint-selected-date-inner {
