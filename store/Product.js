@@ -191,13 +191,14 @@ export const useProductStore = defineStore("product", () => {
       }
     }
   }
-
-  async function getColorList() {
+ let productList = ref([])
+  async function getProductList() {
     try {
       let response = await Product.list();
       if (response.status == 200) {
-        // colorList.value = response.data.data;
-        console.log("_+_+_+_+_+_+_+_+_", response.data.data)
+        // console.log("_+_+_+_+_+_+_+_+_", response.data.data.data)
+        productList.value = response.data.data.data
+        console.log("_+_+_+_+_+_+_+_+_", productList.value)
       }
     } catch (error) {}
   }
@@ -211,6 +212,7 @@ export const useProductStore = defineStore("product", () => {
     resetBrandAttribute,
     getGenders,
     deleteImage,
+    getProductList,
     genderList,
     colorAttribute,
     showModal,
@@ -219,6 +221,7 @@ export const useProductStore = defineStore("product", () => {
     selectedColor,
     colorList,
     showSubCategory,
+    productList
   };
 });
 
