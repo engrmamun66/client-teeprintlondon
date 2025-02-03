@@ -35,6 +35,7 @@ export const useProductStore = defineStore("product", () => {
       { id: 6, name: "XXL", unit_price: 32, quantity: 10 },
       { id: 7, name: "XXXL", unit_price: 35, quantity: 10 },
     ],
+    status: 1
   });
 
   let showModal = ref(false);
@@ -120,6 +121,7 @@ export const useProductStore = defineStore("product", () => {
       long_description: response.data.data.long_description,
       colors: response.data.data.colors,
       sku: response.data.data.sku,
+      status: response.data.data.status,
       sizes: product.value.sizes.map((size) => {
         const updatedSize = response.data.data.sizes.find(
           (s) => s.id === size.id

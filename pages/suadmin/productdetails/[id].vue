@@ -195,6 +195,16 @@
                 </tr>
               </tbody>
             </table>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select
+                class="form-control"
+                v-model="productStore.product.status"
+              >
+                <option  :value="1">Active</option>
+                <option  :value="0">Inactive</option>
+              </select>
+            </div>
 
             <div class="ionic-card-footer justify-content-end">
               <button
