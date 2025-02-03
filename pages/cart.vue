@@ -46,7 +46,9 @@ let price = ref(5.49)
                                         Colour:Blac
                                     </td>
                                     <td>$2000</td>
-                                    <td>1</td>
+                                    <td>
+                                        <input style="width:70px;text-align: center;" min="1" type="number" value="1">
+                                    </td>
                                     <td>$2000.00</td>
                                 </tr>
 
@@ -61,7 +63,9 @@ let price = ref(5.49)
                                         Colour:Blac
                                     </td>
                                     <td>$2000</td>
-                                    <td>4</td>
+                                    <td>
+                                        <input style="width:70px;text-align: center;" min="1" type="number" value="1">
+                                    </td>
                                     <td>$8000.00</td>
                                 </tr>
 
@@ -76,7 +80,9 @@ let price = ref(5.49)
                                         Colour:Blac
                                     </td>
                                     <td>$2000</td>
-                                    <td>1</td>
+                                    <td>
+                                        <input style="width:70px;text-align: center;" min="1" type="number" value="1">
+                                    </td>
                                     <td>$2000.00</td>
                                 </tr>
                                 <tr>
