@@ -96,8 +96,9 @@ let price = ref(5.49)
                 </div>
             </div>
             
-            <div class="teeprint-row teeprint-cart-bottom---">
-                <div class="col-lg-6 col-md-6 col-sm-12">
+            <!-- <div class="teeprint-row teeprint-cart-bottom---"> -->
+            <div class="row">
+                <div class="col-md-6 col-12">
                     <div class="delivery-policy">
                         <img src="/img/delivery-policy.jpg" alt="">
                         <div class="desciber">                           
@@ -126,7 +127,7 @@ let price = ref(5.49)
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-md-6 col-12">
                     <div class="teeprint-cart-order-summery">
                         <h5>Cart Total</h5>
                         <table class="table">
@@ -181,6 +182,9 @@ let price = ref(5.49)
 .delivery-policy{
     overflow: hidden;
     display: flex;
+    padding: 15px;
+    background: #eeeeee;
+    border-radius: 0px;
 }
 .delivery-policy img{
     width: 40%;
