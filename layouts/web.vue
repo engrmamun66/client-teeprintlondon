@@ -2,6 +2,8 @@
     <div>
       <web-header></web-header>
       <Toaster></Toaster>
+      <!--cart sidebar-->
+      <web-inPageCart v-model="openCart"></web-inPageCart>
       <slot></slot>
       <web-footerArea></web-footerArea>
     </div>
@@ -51,9 +53,14 @@ useHead({
   ],
 });
 
-
+let openCart = ref(false)
 
 onMounted(()=>{
+  // useNuxtApp().$emit('openInPageCart', true)
+   useNuxtApp().$on('openInPageCart', (bool) => {
+    openCart.value = false;
+    H.delay(()=>openCart.value = true)    
+   }) 
    
 })
 </script>

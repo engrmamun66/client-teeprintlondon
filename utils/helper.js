@@ -16,6 +16,7 @@ export const FORMATS = {
 
 export let moment = momentJs;
 globalThis.moment = moment;
+export const CURRENCY = '£'
 
 export const H = {
   // With Field Validation
@@ -67,6 +68,42 @@ export const H = {
     } else {
       return data;
     }
+  },
+  getDeliveryOptions: function(){
+
+    /**
+     * 
+      Standard delivery : 5.49 pound (4 working Days)
+      Next Day Delivery : 10.49 pound
+      Same Day Delivery : 15.00 (Same Day Delivery) --- if before
+     */
+
+    let options = [
+      {
+        id: 1,
+        name: 'Standard delivery',
+        price: 5.49,
+        delivery_date: moment().add(4, 'day').format(FORMATS.date),
+      },
+      {
+        id: 2,
+        name: 'Next Day Delivery', 
+        price: 10.49,
+        delivery_date: moment().add(1, 'day').format(FORMATS.date),
+      },      
+    ]
+
+    if(1){
+      options.push({
+        id: 2,
+        name: 'Same Day Delivery', 
+        price: 15.00,
+        delivery_date: moment().format(FORMATS.date),
+      })
+    }
+
+    return options
+
   },
 
 };
