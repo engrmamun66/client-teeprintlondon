@@ -193,5 +193,8 @@ let price = ref(5.49)
 .delivery-policy .desciber{
     margin-left: 15px;
 } 
+.delivery-policy .desciber .alert {
+    font-size: 15px;
+} 
 </style>
 
