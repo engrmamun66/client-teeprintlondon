@@ -127,7 +127,7 @@ let menus = ref([
                                     </a>
                                 </li> -->
                                 <li>
-                                    <a href="#" class="p-1 text-white size-1p4"> 
+                                    <a href="#" class="p-1 text-white size-1p4" id="header_cart"> 
                                         <i class="bx bx-shopping-bag fs-3"></i>
                                         
                                     </a>
@@ -271,7 +271,7 @@ let menus = ref([
                             </span>
                             <i class="la la-arrow-right ml-2"></i>
                         </nuxt-link>
-                        <a href="#" class="p-1 text-white size-1p4 relative"> 
+                        <a href="#" class="p-1 text-white size-1p4 relative" id="header_cart"> 
                             <i class="bx bx-shopping-bag fs-3"></i>
                             <span class="badge badge-primary shopping-cart-badge">
                                 0

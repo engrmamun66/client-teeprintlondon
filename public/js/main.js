@@ -71,22 +71,7 @@ $(document).ready(function() {
     })
 });
 
-// right sidebar js 
-$(function() {
-
-    $('.rm-sidebar-menu').click(function() {
-        $('.teeprint-rightsidebar-overlay').addClass('is-open');
-        return false;
-    });
-
-    $('.teeprint-rightsidebar-close, .teeprint-rightsidebar-overlay').click(function() {
-        $('.teeprint-rightsidebar-overlay').removeClass('is-open');
-    });
-    $('.teeprint-rightsidebar-content').on('click', function(e) {
-        e.stopPropagation();
-    });
-
-});
+ 
 
 // toogle js 
 $(document).ready(function() {
@@ -137,17 +122,5 @@ $(".pd-tab_tab-head li").click(function() {
 });
 });
 
-// cart sidebar js 
-$(function() {
-
-    $('.teeprint-cartbar-launcher').click(function() {
-        $('.teeprint-cartsidebar-overlay').addClass('is-open');
-        return false;
-    });
-
-    $('.teeprint-cart-modalclose').click(function() {
-        $('.teeprint-cartsidebar-overlay').removeClass('is-open');
-    });
-
-});
+ 
 
