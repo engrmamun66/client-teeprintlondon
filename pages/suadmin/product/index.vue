@@ -64,14 +64,14 @@
                 <!-- Category Column -->
                 <td>
                   <div class="px-2">
-                    <span>{{ product.category_id }}</span>
+                    <span>{{ product.category.parent ? product.category.parent.name : product.category.name}}</span>
                   </div>
                 </td>
 
                 <!-- Brand Column -->
                 <td>
                   <div class="px-2">
-                    <span>{{ product.brand_id }}</span>
+                    <span>{{ product.brand.name }}</span>
                   </div>
                 </td>
 
@@ -102,13 +102,18 @@
                         />
                       </p>
                       <!-- Edit Action -->
-                      <p tooltip="Edit" flow="up">
+                      <!-- <p tooltip="Edit" flow="up">
                         <i-las
                           t="edit"
                           class="size-sm cp"
                           @click="showProduct(product.id)"
                         />
-                      </p>
+                      </p> -->
+                      <nuxt-link :to="`/suadmin/productdetails/${product.id}`">
+                        <p tooltip="Edit" flow="up">
+                          <i-las t="edit" class="size-sm cp" />
+                        </p>
+                      </nuxt-link>
                     </li>
                   </ul>
                 </td>
@@ -122,10 +127,10 @@
             :skipAutoClose="false"
             @yes="
               async () => {
-                let isDeleted = await Categorystore.deleteCategory(categoryId);
+                let isDeleted = await productStore.deleteProduct(productId);
                 if (isDeleted) {
                   showConfirmation = false;
-                  categoryId = null;
+                  productId = null;
                 }
               }
             "
@@ -144,7 +149,7 @@ import { useProductStore } from "~/store/Product";
 const productStore = useProductStore();
 let showConfirmation = ref(false);
 let editMode = ref(false);
-let categoryId = ref(null);
+let productId = ref(null);
 let editor = ref(null);
 let clearImage = ref(false);
 let Sub_category = [
@@ -162,7 +167,7 @@ function handleSubmit() {}
 
 onMounted(async () => {
   await productStore.getProductList();
-  Categorystore.getParentcategorylist();
+  // Categorystore.getParentcategorylist();
 });
 </script>
 <style scoped>

@@ -191,16 +191,27 @@ export const useProductStore = defineStore("product", () => {
       }
     }
   }
- let productList = ref([])
+  let productList = ref([]);
   async function getProductList() {
     try {
       let response = await Product.list();
       if (response.status == 200) {
-        // console.log("_+_+_+_+_+_+_+_+_", response.data.data.data)
-        productList.value = response.data.data.data
-        console.log("_+_+_+_+_+_+_+_+_", productList.value)
+        productList.value = response.data.data.data;
       }
     } catch (error) {}
+  }
+
+  async function deleteProduct(id) {
+    try {
+      let response = await Product.delete(id);
+      if (response.status == 200) {
+        await getProductList();
+        Toaster.success("Product is deleted");
+        return true;
+      }
+    } catch (error) {
+      return false;
+    }
   }
 
   return {
@@ -213,6 +224,7 @@ export const useProductStore = defineStore("product", () => {
     getGenders,
     deleteImage,
     getProductList,
+    deleteProduct,
     genderList,
     colorAttribute,
     showModal,
@@ -221,7 +233,7 @@ export const useProductStore = defineStore("product", () => {
     selectedColor,
     colorList,
     showSubCategory,
-    productList
+    productList,
   };
 });
 
