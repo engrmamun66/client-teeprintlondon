@@ -88,8 +88,9 @@ let price = ref(5.49)
                                 <tr>
                                     <td colspan="3">
                                         <div class="d-flex">
-                                            <input class="coupon-code-input" type="text" placeholder="Coupon Code" />
-                                            <button class="teeprint-button teeprint-theme-btn teeprint-apply-coupon-btn" type="submit">Apply Coupon</button>
+                                            <!-- <input class="coupon-code-input" type="text" placeholder="Coupon Code" /> -->
+                                            <!-- <button class="teeprint-button teeprint-theme-btn teeprint-apply-coupon-btn" type="submit">Apply Coupon</button> -->
+                                            <nuxt-link to="/shop" class="teeprint-button teeprint-theme-btn teeprint-apply-coupon-btn" type="submit">Continue Shopping</nuxt-link>
                                         </div>
                                     </td>
                                     <td colspan="3">
