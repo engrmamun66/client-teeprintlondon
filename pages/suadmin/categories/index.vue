@@ -180,6 +180,46 @@
                         </div>
                       </div>
                     </div>
+
+                    <div
+                      class="col-md-4 col-12"
+                      style="min-width: 200px"
+                      label=""
+                    >
+                      <div
+                        class="form-group text-muted"
+                        v-if="Categorystore.categoryattribute?.is_parent === 0"
+                      >
+                        <label>Parent Category</label>
+                        <span class="text-danger p-1">*</span>
+                        <select
+                          class="form-control"
+                          v-model="Categorystore.categoryattribute.type"
+                        >
+                          <option :value="null" class="text-muted">
+                            -Please Select-
+                          </option>
+                          <option
+                            :value="1"
+                          >
+                            Popular Product
+                          </option>
+                          <option
+                            :value="2"
+                          >
+                            Clothing
+                          </option>
+                          <option
+                            :value="3"
+                          >
+                            Advertising Materials
+                          </option>
+                        </select>
+                        <div>
+                          <span class="field-error-span text-danger p-1"></span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div>
