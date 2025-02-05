@@ -137,7 +137,7 @@
               <el-BaseSelectMultiple
                 v-model="productStore.selectedColor"
                 :data="productStore.colorList"
-                :label=null
+                :label="null"
                 :class="{ 'is-invalid': errors.color }"
               />
               <div v-if="errors.color" class="invalid-feedback">
@@ -356,11 +356,10 @@ const handleFileRemoval = (removedFile) => {
 
 async function handleSubmit() {
   // Validate fields
-  if(!validateForm()){
-    Toaster.error("Please fill all the required field")
+  if (!validateForm()) {
+    Toaster.error("Please fill all the required field");
   }
   if (!validateForm()) return;
-
 
   // Map selected genders and colors to their IDs
   productStore.product.thumbnail_image =
@@ -372,13 +371,23 @@ async function handleSubmit() {
     (color) => color.id
   );
 
+  // Helper function to create the payload
+  const createProductPayload = (product) => ({
+    ...product,
+    sizes: JSON.stringify(product.sizes), // Custom serialization for sizes
+    genders: JSON.stringify(product.genders), // Stringify genders
+    colors: JSON.stringify(product.colors), // Stringify colors
+  });
+
+  // Destructure and modify the product if subcategory_id exists
+  if (productStore.product.subcategory_id != null) {
+    const { subcategory_id, ...productWithoutSubcategory } =
+      productStore.product;
+    productStore.product.category_id = subcategory_id;
+  }
+
   // Create the payload
-  const productPayload = {
-    ...productStore.product,
-    sizes: JSON.stringify(productStore.product.sizes), // Custom serialization for sizes
-    genders: JSON.stringify(productStore.product.genders), // Stringify genders
-    colors: JSON.stringify(productStore.product.colors), // Stringify colors
-  };
+  const productPayload = createProductPayload(productStore.product);
 
   // Submit the payload
   await productStore.create(productPayload);
