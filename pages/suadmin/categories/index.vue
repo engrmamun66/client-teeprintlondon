@@ -304,12 +304,20 @@ function handleSubmit() {
     }
   }
   if (editMode.value) {
+    const {
+      type,
+      ...payload
+    }= Categorystore.categoryattribute
     Categorystore.update(
       Categorystore.categoryattribute.id,
-      Categorystore.categoryattribute
+      payload
     );
   } else {
-    Categorystore.create(Categorystore.categoryattribute);
+    const {
+      type,
+      ...payload
+    }= Categorystore.categoryattribute
+    Categorystore.create(payload);
   }
 }
 
