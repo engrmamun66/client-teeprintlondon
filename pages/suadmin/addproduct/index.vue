@@ -334,6 +334,8 @@ const errors = ref({
   subcategory_id: "",
   color: "",
   short_description: "",
+  thumbnail_image: "",
+  images: "",
 });
 
 onMounted(async () => {
