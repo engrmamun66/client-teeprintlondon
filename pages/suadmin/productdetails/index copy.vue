@@ -13,11 +13,18 @@
             Product Details
           </h3>
           <form @submit.prevent>
-            <el-BaseInput type="text" label="Name" v-model="product.name" />
+            <el-BaseInput
+              type="text"
+              label="Name"
+              v-model="productStore.product.name"
+            />
             <!-- Brand Dropdown -->
             <div class="form-group">
               <label class="form-label">Brand</label>
-              <select class="form-control" v-model="product.brand_id">
+              <select
+                class="form-control"
+                v-model="productStore.product.brand_id"
+              >
                 <option disabled :value="null">- Select Brand -</option>
                 <option
                   v-for="brand in brandStore.brandList"
@@ -33,17 +40,17 @@
             <div class="form-group">
               <el-BaseSelectMultiple
                 label="Gender"
-                v-model="selectedItem"
+                v-model="productStore.selectedGender"
                 :data="productStore.genderList"
               ></el-BaseSelectMultiple>
             </div>
 
             <!-- Category Dropdown -->
             <div class="form-group">
-              <label class="form-label">Category</label>
+              <label class="form-label">Category </label>
               <select
                 class="form-control"
-                v-model="product.category_id"
+                v-model="productStore.product.category_id"
                 @change="checkSubCategory"
               >
                 <option disabled :value="null">- Select Category -</option>
@@ -58,9 +65,12 @@
             </div>
 
             <!-- Category Dropdown -->
-            <div class="form-group" v-if="showSubCategory">
+            <div class="form-group" v-if="productStore.showSubCategory">
               <label class="form-label">Sub Category</label>
-              <select class="form-control" v-model="product.subcategory_id">
+              <select
+                class="form-control"
+                v-model="productStore.product.subcategory_id"
+              >
                 <option disabled :value="null">- Select Sub Category -</option>
                 <option
                   v-for="category in categoryStore.category.children"
@@ -71,12 +81,20 @@
                 </option>
               </select>
             </div>
+            <!-- Color Dropdown -->
+            <div class="form-group">
+              <el-BaseSelectMultiple
+                label="Color"
+                v-model="productStore.selectedColor"
+                :data="productStore.colorList"
+              ></el-BaseSelectMultiple>
+            </div>
 
             <div class="form-group">
               <label>Short Description</label>
               <textarea
                 class="form-control"
-                v-model="product.short_description"
+                v-model="productStore.product.short_description"
                 rows="3"
                 placeholder="Short description of the product"
               ></textarea>
@@ -87,7 +105,7 @@
               <div>
                 <!-- Wrap RedactorEditor in a single root element -->
                 <RedactorEditor
-                  v-model="product.long_description"
+                  v-model="productStore.product.long_description"
                   ref="editor"
                   class="mt-4"
                 ></RedactorEditor>
@@ -100,7 +118,7 @@
               </h3>
               <div class="size-selection">
                 <div
-                  v-for="size in product.sizes"
+                  v-for="size in productStore.product.sizes"
                   :key="size.name"
                   @click="toggleSizeSelection(size.name)"
                   :class="{ selected: selectedSizes.includes(size.name) }"
@@ -156,13 +174,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="size in product.sizes" :key="size.name">
+                <tr v-for="size in productStore.product.sizes" :key="size.name">
                   <td>{{ size.name }}</td>
                   <td>
                     <input
                       type="number"
                       class="form-control"
-                      v-model="size.price"
+                      v-model="size.unit_price"
                       min="0"
                     />
                   </td>
@@ -177,6 +195,16 @@
                 </tr>
               </tbody>
             </table>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select
+                class="form-control"
+                v-model="productStore.product.status"
+              >
+                <option :value="1">Active</option>
+                <option :value="0">Inactive</option>
+              </select>
+            </div>
 
             <div class="ionic-card-footer justify-content-end">
               <button
@@ -202,27 +230,19 @@
           <h3 class="product-details-heading" style="color: black">
             Image Upload
           </h3>
-          <div class="image-upload-section">
-            <input
-              type="file"
-              multiple
-              accept="image/*"
-              @change="handleImageUpload"
-              class="file-input"
-            />
-            <div v-if="uploadedImages.length" class="image-preview-grid">
-              <div
-                v-for="(image, index) in uploadedImages"
-                :key="index"
-                class="image-preview"
-              >
-                <img :src="image" alt="Uploaded Image" />
-                <button @click="removeImage(index)" class="remove-image-btn">
-                  ✖
-                </button>
-              </div>
-            </div>
-            <p v-else class="no-images-text">No images uploaded yet.</p>
+          <div class="form-group">
+            <label for="Upload File">Upload your thumbnail image</label>
+            <Admin-DropFiles
+              v-model="productStore.product.thumbnail_image"
+              :singleImage="true"
+            ></Admin-DropFiles>
+          </div>
+          <div class="form-group">
+            <label for="Upload File">Upload product image</label>
+            <Admin-DropFiles
+              v-model="productStore.product.images"
+              @removeFile="handleFileRemoval"
+            ></Admin-DropFiles>
           </div>
         </div>
       </div>
@@ -235,63 +255,106 @@ import { ref } from "vue";
 import { useProductStore } from "~/store/Product";
 import { useCategorystore } from "~/store/Category";
 import { useBrandStore } from "~/store/Brand";
+import { useColorStore } from "~/store/Color";
+const colorStore = useColorStore();
 const brandStore = useBrandStore();
 const productStore = useProductStore();
 const categoryStore = useCategorystore();
 // Use ref for the product object
-const product = ref({
-  name: "Classic T-Shirt",
-  price: 25,
-  brand_id: null, // New property
-  gender: null, // New property
-  category_id: null, // New property
-  subcategory_id: null,
-  short_description: "A comfortable and stylish classic t-shirt.",
-  long_description:
-    "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
-  color: "2",
-  sku:"eakdhcbadcb",
-  sizes: [
-    { id: 1, name: "XS", price: 20, quantity: 10 },
-    { id: 2, name: "S", price: 22, quantity: 10 },
-    { id: 3, name: "M", price: 25, quantity: 10 },
-    { id: 4, name: "L", price: 28, quantity: 10 },
-    { id: 5, name: "XL", price: 30, quantity: 10 },
-    { id: 6, name: "XXL", price: 32, quantity: 10 },
-    { id: 7, name: "XXXL", price: 35, quantity: 10 },
-  ],
-});
-
-let selectedItem = ref(null);
-
+const route = useRoute();
 const selectedSizes = ref([]);
 const bulkPrice = ref(null);
 const bulkQuantity = ref(null);
 const uploadedImages = ref([]);
 const editor = ref();
-
+const id = route.params.id;
 onMounted(async () => {
   await productStore.getGenders();
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
+  await productStore.getColorList();
+  await productStore.showProduct(id);
+
+  if (productStore.product.subcategory_id) {
+    checkSubCategory();
+  }
+
+  // productStore.selectedGender = productStore.product.genders
 });
 
-let showSubCategory = ref(false);
+const handleFileRemoval = (removedFile) => {
+  // console.log("Removed File:", removedFile[0].id);
+  // console.log("Removed File:", removedFile[0]);
+  if (removedFile[0] instanceof File) {
+    // console.log("This is a File object:", removedFile[0]);
+  } else {
+    console.log("This is a regular object:", removedFile[0]);
+    productStore.deleteImage(removedFile[0].id);
+  }
+  // Handle the removed file as needed, e.g., updating the uploadedFiles list
+};
 
 async function handleSubmit() {
-  product.value.sizes = JSON.stringify(product.value.sizes);
-  // console.log("=====", product.value);
-  await productStore.create(product.value);
+  let uploadedFiles = ref([]);
+  productStore.product.images.forEach((image) => {
+    if (image instanceof File) {
+      console.log("This is a File object:", image);
+      uploadedFiles.value.push(image);
+    }
+  });
+
+  if (uploadedFiles.value.length != 0) {
+    productStore.product.images.length = 0;
+    productStore.product.images = [...uploadedFiles.value];
+    uploadedFiles.value.length = 0;
+  } else {
+    productStore.product.images.length = 0;
+  }
+  if (typeof productStore.product.thumbnail_image == "string") {
+    productStore.product.thumbnail_image = null;
+  } else {
+    productStore.product.thumbnail_image =
+      productStore.product.thumbnail_image[0];
+  }
+
+  productStore.product.genders = productStore.selectedGender.map(
+    (gender) => gender.id
+  );
+  productStore.product.colors = productStore.selectedColor.map(
+    (color) => color.id
+  );
+
+  // Helper function to create the payload
+  const createProductPayload = (product) => ({
+    ...product,
+    sizes: JSON.stringify(product.sizes), // Custom serialization for sizes
+    genders: JSON.stringify(product.genders), // Stringify genders
+    colors: JSON.stringify(product.colors), // Stringify colors
+  });
+
+  // Destructure and modify the product if subcategory_id exists
+  if (productStore.product.subcategory_id != null) {
+    productStore.product.category_id = productStore.product.subcategory_id;
+    const { subcategory_id, ...productWithoutSubcategory } =
+      productStore.product;
+    productStore.product = productWithoutSubcategory; // Update the product object
+  }
+
+  // Create the payload
+  const productPayload = createProductPayload(productStore.product);
+
+  // Submit the payload
+  await productStore.update(id, productPayload);
 }
 
 async function checkSubCategory() {
-  // console.log("+====", product.value.category);
-  await categoryStore.showCategory(product.value.category_id);
+  // console.log("+====", productStore.product.category);
+  await categoryStore.showCategory(productStore.product.category_id);
   console.log("*(*(*(*)))", categoryStore.category.children?.length);
   if (categoryStore.category.children?.length != 0) {
-    showSubCategory.value = true;
+    productStore.showSubCategory = true;
   } else {
-    showSubCategory.value = false;
+    productStore.showSubCategory = false;
   }
 }
 
@@ -306,9 +369,9 @@ const toggleSizeSelection = (sizeName) => {
 };
 
 const applyBulkUpdate = () => {
-  product.value.sizes.forEach((size) => {
+  productStore.product.sizes.forEach((size) => {
     if (selectedSizes.value.includes(size.name)) {
-      if (bulkPrice.value !== null) size.price = bulkPrice.value;
+      if (bulkPrice.value !== null) size.unit_price = bulkPrice.value;
       if (bulkQuantity.value !== null) size.quantity = bulkQuantity.value;
     }
   });
