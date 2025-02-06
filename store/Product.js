@@ -35,6 +35,7 @@ export const useProductStore = defineStore("product", () => {
       { id: 6, name: "XXL", unit_price: 32, quantity: 10 },
       { id: 7, name: "XXXL", unit_price: 35, quantity: 10 },
     ],
+    status: 1
   });
 
   let showModal = ref(false);
@@ -87,7 +88,7 @@ export const useProductStore = defineStore("product", () => {
             colorList.value.push(color);
           }
         });
-        tempColor.value.length  = 0 
+        tempColor.value.length = 0;
       }
     } catch (error) {}
   }
@@ -127,12 +128,29 @@ export const useProductStore = defineStore("product", () => {
       long_description: response.data.data.long_description,
       colors: response.data.data.colors,
       sku: response.data.data.sku,
-      sizes: product.value.sizes.map((size) => {
-        const updatedSize = response.data.data.sizes.find(
-          (s) => s.id === size.id
+      status: response.data.data.status,
+      sizes: response.data.data.sizes.map((responseSize) => {
+        // Find the corresponding size in the product's sizes array
+        const existingSize = product.value.sizes.find(
+          (size) => size.id === responseSize.size_id
         );
-
-        return updatedSize ? { ...size, ...updatedSize } : size;
+  
+        // If a matching size is found, update its properties
+        if (existingSize) {
+          return {
+            ...existingSize,
+            unit_price: parseFloat(responseSize.unit_price), // Convert string to number
+            quantity: responseSize.quantity,
+          };
+        }
+  
+        // If no matching size is found, return the response size as-is
+        return {
+          id: responseSize.size_id,
+          name: responseSize.name || `Size ${responseSize.size_id}`, // Default name if not provided
+          unit_price: parseFloat(responseSize.unit_price),
+          quantity: responseSize.quantity,
+        };
       }),
       category_id:
         response.data.data.category.parent != null
@@ -161,6 +179,7 @@ export const useProductStore = defineStore("product", () => {
         selectedColor.value = product.value.colors
           .map((color) => colorList.value.find((c) => c.id === color.color_id))
           .filter((gender) => gender !== undefined); // Filtering out unmatched genders
+          console.log(product.value.sizes)
 
         showModal.value = true; // Show the modal
       }
@@ -189,7 +208,7 @@ export const useProductStore = defineStore("product", () => {
       if (response.status == 200) {
         showModal.value = false;
         await showProduct(id);
-        Toaster.success("Color updated successfully");
+        Toaster.success("Product updated successfully");
       }
     } catch (error) {
       if (error.response.status == 422) {
@@ -205,7 +224,6 @@ export const useProductStore = defineStore("product", () => {
       if (response.status == 200) {
         productList.value = response.data.data.data;
       }
-
     } catch (error) {}
   }
 
