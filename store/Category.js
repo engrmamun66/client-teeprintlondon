@@ -13,6 +13,7 @@ export const useCategorystore = defineStore("category", () => {
     image: null,
     image_url: null,
     description: null,
+    type: 1,
     status: 1,
   });
 
@@ -26,6 +27,7 @@ export const useCategorystore = defineStore("category", () => {
       image: null,
       image_url: null,
       description: null,
+      type: 1,
       status: 1,
     };
   }
@@ -119,6 +121,7 @@ export const useCategorystore = defineStore("category", () => {
         category.value = response.data.data;
         categoryattribute.value.name = category.value.name;
         categoryattribute.value.status = category.value.status;
+        categoryattribute.value.type = category.value.type;
         categoryattribute.value.image_url = category.value.image_url;
         categoryattribute.value.description = category.value.description;
         categoryattribute.value.id = category.value.id;

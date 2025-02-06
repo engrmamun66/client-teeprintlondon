@@ -13,17 +13,30 @@
             Product Details
           </h3>
           <form @submit.prevent>
-            <el-BaseInput
-              type="text"
-              label="Name"
-              v-model="productStore.product.name"
-            />
+            <!-- Name Field -->
+            <div class="form-group">
+              <label class="form-label"
+                >Name <span class="required-star">*</span></label
+              >
+              <el-BaseInput
+                type="text"
+                v-model="productStore.product.name"
+                :class="{ 'is-invalid': errors.name }"
+              />
+              <div v-if="errors.name != null" class="invalid-feedback">
+                {{ errors.name }}
+              </div>
+            </div>
+
             <!-- Brand Dropdown -->
             <div class="form-group">
-              <label class="form-label">Brand</label>
+              <label class="form-label"
+                >Brand <span class="required-star">*</span></label
+              >
               <select
                 class="form-control"
                 v-model="productStore.product.brand_id"
+                :class="{ 'is-invalid': errors.brand_id }"
               >
                 <option disabled :value="null">- Select Brand -</option>
                 <option
@@ -34,24 +47,49 @@
                   {{ brand.name }}
                 </option>
               </select>
+              <div v-if="errors.brand_id" class="invalid-feedback">
+                {{ errors.brand_id }}
+              </div>
             </div>
 
             <!-- Gender Dropdown -->
             <div class="form-group">
+              <label class="form-label"
+                >Gender <span class="required-star">*</span></label
+              >
               <el-BaseSelectMultiple
-                label="Gender"
+                :label="null"
                 v-model="productStore.selectedGender"
                 :data="productStore.genderList"
+                :class="{ 'is-invalid': errors.gender }"
               ></el-BaseSelectMultiple>
+
+              <div v-if="errors.gender != null" class="invalid-feedback">
+                {{ errors.gender }}
+              </div>
             </div>
+
+            <!-- Gender Dropdown -->
+            <!-- <div class="form-group">
+              <label class="form-label">Gender <span class="required-star">*</span></label>
+              <el-BaseSelectMultiple
+                v-model="productStore.selectedGender"
+                :data="productStore.genderList"
+                :class="{ 'is-invalid': errors.gender }"
+              />
+              <div v-if="errors.gender" class="invalid-feedback">{{ errors.gender }}</div>
+            </div> -->
 
             <!-- Category Dropdown -->
             <div class="form-group">
-              <label class="form-label">Category </label>
+              <label class="form-label"
+                >Category <span class="required-star">*</span></label
+              >
               <select
                 class="form-control"
                 v-model="productStore.product.category_id"
                 @change="checkSubCategory"
+                :class="{ 'is-invalid': errors.category_id }"
               >
                 <option disabled :value="null">- Select Category -</option>
                 <option
@@ -62,14 +100,20 @@
                   {{ category.name }}
                 </option>
               </select>
+              <div v-if="errors.category_id" class="invalid-feedback">
+                {{ errors.category_id }}
+              </div>
             </div>
 
-            <!-- Category Dropdown -->
+            <!-- Sub Category Dropdown -->
             <div class="form-group" v-if="productStore.showSubCategory">
-              <label class="form-label">Sub Category</label>
+              <label class="form-label"
+                >Sub Category <span class="required-star">*</span></label
+              >
               <select
                 class="form-control"
                 v-model="productStore.product.subcategory_id"
+                :class="{ 'is-invalid': errors.subcategory_id }"
               >
                 <option disabled :value="null">- Select Sub Category -</option>
                 <option
@@ -80,30 +124,48 @@
                   {{ category.name }}
                 </option>
               </select>
-            </div>
-            <!-- Color Dropdown -->
-            <div class="form-group">
-              <el-BaseSelectMultiple
-                label="Color"
-                v-model="productStore.selectedColor"
-                :data="productStore.colorList"
-              ></el-BaseSelectMultiple>
+              <div v-if="errors.subcategory_id" class="invalid-feedback">
+                {{ errors.subcategory_id }}
+              </div>
             </div>
 
+            <!-- Color Dropdown -->
             <div class="form-group">
-              <label>Short Description</label>
+              <label class="form-label"
+                >Color <span class="required-star">*</span></label
+              >
+              <el-BaseSelectMultiple
+                v-model="productStore.selectedColor"
+                :data="productStore.colorList"
+                :label="null"
+                :class="{ 'is-invalid': errors.color }"
+              />
+              <div v-if="errors.color" class="invalid-feedback">
+                {{ errors.color }}
+              </div>
+            </div>
+
+            <!-- Short Description -->
+            <div class="form-group">
+              <label class="form-label"
+                >Short Description <span class="required-star">*</span></label
+              >
               <textarea
                 class="form-control"
                 v-model="productStore.product.short_description"
                 rows="3"
                 placeholder="Short description of the product"
+                :class="{ 'is-invalid': errors.short_description }"
               ></textarea>
+              <div v-if="errors.short_description" class="invalid-feedback">
+                {{ errors.short_description }}
+              </div>
             </div>
 
+            <!-- Long Description -->
             <div class="form-group">
-              <label>Long Description</label>
+              <label class="form-label">Long Description</label>
               <div>
-                <!-- Wrap RedactorEditor in a single root element -->
                 <RedactorEditor
                   v-model="productStore.product.long_description"
                   ref="editor"
@@ -112,6 +174,7 @@
               </div>
             </div>
 
+            <!-- Bulk Update Section -->
             <div class="bulk-update-section">
               <h3 class="additional-details-heading" style="color: black">
                 Select Sizes
@@ -162,6 +225,7 @@
               </button>
             </div>
 
+            <!-- Sizes and Pricing Table -->
             <h3 class="additional-details-heading" style="color: black">
               Sizes and Pricing
             </h3>
@@ -195,17 +259,8 @@
                 </tr>
               </tbody>
             </table>
-            <div class="form-group">
-              <label class="form-label">Status</label>
-              <select
-                class="form-control"
-                v-model="productStore.product.status"
-              >
-                <option  :value="1">Active</option>
-                <option  :value="0">Inactive</option>
-              </select>
-            </div>
 
+            <!-- Footer Buttons -->
             <div class="ionic-card-footer justify-content-end">
               <button
                 type="button"
@@ -213,10 +268,6 @@
                 @click="handleSubmit"
               >
                 Submit
-                <!-- <BtnLoader
-                :show="H.isPendingAnyApi('Category:create|Category:update')"
-                color="black"
-              /> -->
               </button>
               <button type="button" class="leap-btn leap-cancel-btn m-1">
                 Cancel
@@ -231,18 +282,30 @@
             Image Upload
           </h3>
           <div class="form-group">
-            <label for="Upload File">Upload your thumbnail image</label>
+            <label for="Upload File"
+              >Upload your thumbnail image
+              <span class="required-star">*</span></label
+            >
+            {{ errors.thumbnail_image }}
+            <div v-if="errors.thumbnail_image != null" style="color: red">
+              {{ errors.thumbnail_image }}
+            </div>
             <Admin-DropFiles
               v-model="productStore.product.thumbnail_image"
               :singleImage="true"
-            ></Admin-DropFiles>
+            />
           </div>
           <div class="form-group">
-            <label for="Upload File">Upload product image</label>
+            <label for="Upload File"
+              >Upload product image <span class="required-star">*</span></label
+            >
             <Admin-DropFiles
               v-model="productStore.product.images"
               @removeFile="handleFileRemoval"
-            ></Admin-DropFiles>
+            />
+            <div v-if="errors.images" style="color: red">
+              {{ errors.images }}
+            </div>
           </div>
         </div>
       </div>
@@ -268,6 +331,91 @@ const bulkQuantity = ref(null);
 const uploadedImages = ref([]);
 const editor = ref();
 const id = route.params.id;
+const errors = ref({
+  name: "",
+  brand_id: "",
+  gender: "",
+  category_id: "",
+  subcategory_id: "",
+  color: "",
+  short_description: "",
+  thumbnail_image: "",
+  images: "",
+});
+function validateForm() {
+  let isValid = true;
+
+  // Reset errors
+  errors.value = {
+    name: "",
+    brand_id: "",
+    gender: "",
+    category_id: "",
+    subcategory_id: "",
+    color: "",
+    short_description: "",
+    thumbnail_image: "",
+    images: "",
+  };
+
+  // Validate Name
+  if (!productStore.product.name) {
+    errors.value.name = "Name is required.";
+    isValid = false;
+  }
+
+  // Validate Brand
+  if (!productStore.product.brand_id) {
+    errors.value.brand_id = "Brand is required.";
+    isValid = false;
+  }
+
+  // Validate Gender
+  if (!productStore.selectedGender.length) {
+    errors.value.gender = "Gender is required.";
+    isValid = false;
+  }
+
+  // Validate Category
+  if (!productStore.product.category_id) {
+    errors.value.category_id = "Category is required.";
+    isValid = false;
+  }
+
+  // Validate Sub Category (if applicable)
+  if (productStore.showSubCategory && !productStore.product.subcategory_id) {
+    errors.value.subcategory_id = "Sub Category is required.";
+    isValid = false;
+  }
+
+  // Validate Color
+  if (!productStore.selectedColor.length) {
+    errors.value.color = "Color is required.";
+    isValid = false;
+  }
+
+  // Validate Short Description
+  if (!productStore.product.short_description) {
+    errors.value.short_description = "Short Description is required.";
+    isValid = false;
+  }
+
+  if (!productStore.product.thumbnail_image) {
+    console.log("=-=-", productStore.product.thumbnail_image);
+    errors.value.thumbnail_image = "Thumbnail image is required";
+    console.log("=-=-", errors.value.thumbnail_image);
+    isValid = false;
+  }
+  if (
+    !productStore.product.images ||
+    productStore.product.images.length === 0
+  ) {
+    errors.value.images = "At least one product image is required";
+    isValid = false;
+  }
+
+  return isValid;
+}
 onMounted(async () => {
   await productStore.getGenders();
   await categoryStore.getParentcategorylist();
@@ -295,6 +443,11 @@ const handleFileRemoval = (removedFile) => {
 };
 
 async function handleSubmit() {
+  // Validate fields
+  if (!validateForm()) {
+    Toaster.error("Please fill all the required field");
+  }
+  if (!validateForm()) return;
   let uploadedFiles = ref([]);
   productStore.product.images.forEach((image) => {
     if (image instanceof File) {
@@ -324,33 +477,27 @@ async function handleSubmit() {
     (color) => color.id
   );
 
+  // Helper function to create the payload
+  const createProductPayload = (product) => ({
+    ...product,
+    sizes: JSON.stringify(product.sizes), // Custom serialization for sizes
+    genders: JSON.stringify(product.genders), // Stringify genders
+    colors: JSON.stringify(product.colors), // Stringify colors
+  });
+
+  // Destructure and modify the product if subcategory_id exists
   if (productStore.product.subcategory_id != null) {
-    console.log("========&*&", productStore.product.subcategory_id);
     productStore.product.category_id = productStore.product.subcategory_id;
-    const { subcategory_id, ...products } = productStore.product;
-    // Create the payload
-    const productPayload = {
-      ...products,
-      sizes: JSON.stringify(productStore.product.sizes), // Custom serialization for sizes
-      genders: JSON.stringify(productStore.product.genders), // Stringify genders
-      colors: JSON.stringify(productStore.product.colors), // Stringify colors
-    };
-
-    // Submit the payload
-    await productStore.update(id, productPayload);
-  } else {
-    const productPayload = {
-      ...productStore.product,
-      sizes: JSON.stringify(productStore.product.sizes), // Custom serialization for sizes
-      genders: JSON.stringify(productStore.product.genders), // Stringify genders
-      colors: JSON.stringify(productStore.product.colors), // Stringify colors
-    };
-
-    // Submit the payload
-    await productStore.update(id, productPayload);
+    const { subcategory_id, ...productWithoutSubcategory } =
+      productStore.product;
+    productStore.product = productWithoutSubcategory; // Update the product object
   }
 
   // Create the payload
+  const productPayload = createProductPayload(productStore.product);
+
+  // Submit the payload
+  await productStore.update(id, productPayload);
 }
 
 async function checkSubCategory() {
@@ -411,6 +558,20 @@ const removeImage = (index) => {
   gap: 20px;
   max-width: 1200px;
   margin: 20px auto;
+}
+
+.required-star {
+  color: red;
+  margin-left: 4px;
+}
+
+.is-invalid {
+  border-color: red;
+}
+
+.invalid-feedback {
+  color: red;
+  font-size: 0.875em;
 }
 
 .card {
