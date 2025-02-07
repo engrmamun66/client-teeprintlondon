@@ -192,7 +192,7 @@ onMounted(()=>{
 .accordion button[aria-expanded='true'] .icon::after {
   width: 0;
 }
-.accordion button[aria-expanded='true'] + .accordion-content {
+.accordion button[aria-expanded='true'] ~ .accordion-content {
   opacity: 1;
   max-height: 9em;
   transition: all 800ms linear;
@@ -202,7 +202,7 @@ onMounted(()=>{
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: opacity 200ms linear, max-height 200ms linear;
+  transition: opacity 800ms linear, max-height 800ms linear;
   will-change: opacity, max-height;
 }
 .accordion .accordion-content p {
