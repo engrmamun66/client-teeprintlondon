@@ -195,7 +195,7 @@ onMounted(()=>{
 .accordion button[aria-expanded='true'] + .accordion-content {
   opacity: 1;
   max-height: 9em;
-  transition: all 200ms linear;
+  transition: all 800ms linear;
   will-change: opacity, max-height;
 }
 .accordion .accordion-content {
