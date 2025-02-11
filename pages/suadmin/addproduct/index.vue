@@ -327,7 +327,7 @@
             </div>
           </div>
 
-          <div class="card calculator-card">
+          <div class="card calculator-card" style="margin-top: 64rem;">
             <h3 class="calculator-heading" style="color: black">
               Percentage Calculator
             </h3>
