@@ -166,11 +166,23 @@
             <div class="form-group">
               <label class="form-label">Long Description</label>
               <div>
-                <RedactorEditor
+                <!-- <RedactorEditor
                   v-model="productStore.product.long_description"
                   ref="editor"
                   class="mt-4"
-                ></RedactorEditor>
+                ></RedactorEditor> -->
+                <Editor
+                  ref="editor"
+                  v-model="productStore.product.long_description"
+                  api-key="raz47c045ba5lv073s9m9i3psszrg7mhu8qlspsh6do9h3we"
+                  :init="{
+                    height: 300,
+                    menubar: false,
+                    plugins: 'lists link image table code help',
+                    toolbar:
+                      'undo redo | formatselect | bold italic |  bullist numlist',
+                  }"
+                />
               </div>
             </div>
 
@@ -396,6 +408,7 @@ import { useProductStore } from "~/store/Product";
 import { useCategorystore } from "~/store/Category";
 import { useBrandStore } from "~/store/Brand";
 import { useColorStore } from "~/store/Color";
+import Editor from "@tinymce/tinymce-vue";
 const colorStore = useColorStore();
 const brandStore = useBrandStore();
 const productStore = useProductStore();
@@ -419,6 +432,13 @@ const errors = ref({
   thumbnail_image: "",
   images: "",
 });
+
+const setContent = (content) => {
+  if (editor.value && editor.value.editor) {
+    editor.value.editor.setContent(content)
+  }
+}
+
 function validateForm() {
   let isValid = true;
 
@@ -503,6 +523,7 @@ onMounted(async () => {
   if (productStore.product.subcategory_id) {
     checkSubCategory();
   }
+  setContent(productStore.product.long_description)
 
   // productStore.selectedGender = productStore.product.genders
 });

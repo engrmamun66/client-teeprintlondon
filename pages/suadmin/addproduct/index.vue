@@ -166,11 +166,17 @@
             <div class="form-group">
               <label class="form-label">Long Description</label>
               <div>
-                <RedactorEditor
+                <Editor
                   v-model="productStore.product.long_description"
-                  ref="editor"
-                  class="mt-4"
-                ></RedactorEditor>
+                  api-key="raz47c045ba5lv073s9m9i3psszrg7mhu8qlspsh6do9h3we"
+                  :init="{
+                    height: 300,
+                    menubar: false,
+                    plugins: 'lists link image table code help',
+                    toolbar:
+                      'undo redo | formatselect | bold italic |  bullist numlist',
+                  }"
+                />
               </div>
             </div>
 
@@ -327,7 +333,7 @@
             </div>
           </div>
 
-          <div class="card calculator-card" style="margin-top: 64rem;">
+          <div class="card calculator-card" style="margin-top: 64rem">
             <h3 class="calculator-heading" style="color: black">
               Percentage Calculator
             </h3>
@@ -388,7 +394,7 @@ import { useProductStore } from "~/store/Product";
 import { useCategorystore } from "~/store/Category";
 import { useBrandStore } from "~/store/Brand";
 import { useColorStore } from "~/store/Color";
-
+import Editor from "@tinymce/tinymce-vue";
 const colorStore = useColorStore();
 const brandStore = useBrandStore();
 const productStore = useProductStore();
