@@ -134,9 +134,6 @@
               <label class="form-label"
                 >Color <span class="required-star">*</span></label
               >
-              <pre>
-                {{ productStore.colorList }}
-              </pre>
               <el-BaseSelectMultiple
                 v-model="productStore.selectedColor"
                 :data="productStore.colorList"
@@ -227,15 +224,15 @@
                 Apply to Selected Sizes
               </button>
             </div>
-            <div>
-              <div class="form-group">
-                <label>Discount:</label>
+            <div class="d-flex align-items-end gap-2">
+              <div class="flex-grow-1">
+                <label class="font-weight-bold">Discount:</label>
                 <input
                   type="number"
                   class="form-control"
                   v-model="productStore.product.discount"
                   min="0"
-                  placeholder="Enter price"
+                  placeholder="Enter discount in (%)"
                 />
               </div>
             </div>
@@ -248,8 +245,11 @@
               <thead>
                 <tr>
                   <th>Size</th>
-                  <th>Price ($)</th>
+                  <th>Price (£)</th>
                   <th>Quantity</th>
+                  <th v-if="productStore.product.discount">
+                    Price After Discount
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -268,6 +268,16 @@
                       type="number"
                       class="form-control"
                       v-model="size.quantity"
+                      min="0"
+                    />
+                  </td>
+
+                  <td v-if="productStore.product.discount">
+                    <input
+                      disabled
+                      type="number"
+                      class="form-control"
+                      :value="calculateDiscountedPrice(size.unit_price)"
                       min="0"
                     />
                   </td>
@@ -314,6 +324,56 @@
             />
             <div v-if="errors.images" style="color: red">
               {{ errors.images }}
+            </div>
+          </div>
+
+          <div class="card calculator-card">
+            <h3 class="calculator-heading" style="color: black">
+              Percentage Calculator
+            </h3>
+
+            <!-- X% of Y Calculation -->
+            <div class="form-group">
+              <label>What is X% of Y?</label>
+              <input
+                type="number"
+                v-model="percentage"
+                placeholder="Enter percentage (X)"
+              />
+              <input
+                type="number"
+                v-model="number"
+                placeholder="Enter number (Y)"
+              />
+
+              <input
+                type="text"
+                :value="percentageResult"
+                placeholder="Result will appear here"
+                readonly
+              />
+            </div>
+
+            <!-- What percentage is X of Y Calculation -->
+            <div class="form-group">
+              <label>What percentage is X of Y?</label>
+              <input
+                type="number"
+                v-model="fromNumber"
+                placeholder="Enter number (X)"
+              />
+              <input
+                type="number"
+                v-model="toNumber"
+                placeholder="Enter number (Y)"
+              />
+
+              <input
+                type="text"
+                :value="percentageChangeResult"
+                placeholder="Result will appear here"
+                readonly
+              />
             </div>
           </div>
         </div>
@@ -365,10 +425,48 @@ onMounted(async () => {
   );
 });
 
+const percentage = ref(null); // For X% of Y
+const number = ref(null); // For X% of Y
+const fromNumber = ref(null); // For percentage change
+const toNumber = ref(null); // For percentage change
+
+// Compute the result of "X% of Y"
+const percentageResult = computed(() => {
+  if (!percentage.value || !number.value) return "";
+  const result = (percentage.value / 100) * number.value;
+  return `${percentage.value}% of ${number.value} is ${result}`;
+});
+
+// Compute the result of "What percentage is X of Y"
+const percentageChangeResult = computed(() => {
+  if (!fromNumber.value || !toNumber.value) return "";
+  const result = ((toNumber.value / fromNumber.value) * 100).toFixed(2);
+  return `${toNumber.value} is ${result}% of ${fromNumber.value}`;
+});
+
+// Methods (only triggered when needed)
+const calculatePercentage = () => {
+  if (!percentage.value || !number.value) {
+    alert("Please enter valid numbers.");
+  }
+};
+
+const calculatePercentageChange = () => {
+  if (!fromNumber.value || !toNumber.value) {
+    alert("Please enter valid numbers.");
+  }
+};
+
 let showSubCategory = ref(false);
 
 const handleFileRemoval = (removedFile) => {
   console.log("Removed File:", removedFile);
+};
+
+// Function to calculate the discounted price
+const calculateDiscountedPrice = (price) => {
+  const discount = productStore.product.discount || 0;
+  return (price - (price * discount) / 100).toFixed(2);
 };
 
 async function handleSubmit() {
@@ -536,6 +634,41 @@ const removeImage = (index) => {
 </script>
 
 <style scoped>
+.calculator-card {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.calculator-heading {
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
 .cards-container {
   display: flex;
   gap: 20px;
@@ -574,6 +707,9 @@ const removeImage = (index) => {
 
 .form-group {
   margin-bottom: 15px;
+}
+.font-weight-bold {
+  font-weight: bold;
 }
 
 .form-control {
