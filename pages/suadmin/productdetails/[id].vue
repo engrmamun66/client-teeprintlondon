@@ -345,7 +345,7 @@
             </div>
           </div>
 
-          <div class="card calculator-card " style="margin-top: 63rem;">
+          <div class="card calculator-card" style="margin-top: 63rem">
             <h3 class="calculator-heading" style="color: black">
               Percentage Calculator
             </h3>
@@ -435,9 +435,9 @@ const errors = ref({
 
 const setContent = (content) => {
   if (editor.value && editor.value.editor) {
-    editor.value.editor.setContent(content)
+    editor.value.editor.setContent(content);
   }
-}
+};
 
 function validateForm() {
   let isValid = true;
@@ -513,8 +513,18 @@ function validateForm() {
 
   return isValid;
 }
+
+// Function to hide the status bar
+const hideStatusBar = () => {
+  const statusBar = document.querySelector(".tox-statusbar__branding");
+  if (statusBar) {
+    statusBar.style.display = "none";
+  }
+};
+
 onMounted(async () => {
   await productStore.getGenders();
+  hideStatusBar();
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
   await productStore.getColorList();
@@ -523,11 +533,10 @@ onMounted(async () => {
   if (productStore.product.subcategory_id) {
     checkSubCategory();
   }
-  setContent(productStore.product.long_description)
+  setContent(productStore.product.long_description);
 
   // productStore.selectedGender = productStore.product.genders
 });
-
 
 const percentage = ref(null); // For X% of Y
 const number = ref(null); // For X% of Y
@@ -547,8 +556,6 @@ const percentageChangeResult = computed(() => {
   const result = ((toNumber.value / fromNumber.value) * 100).toFixed(2);
   return `${toNumber.value} is ${result}% of ${fromNumber.value}`;
 });
-
-
 
 // Function to calculate the discounted price
 const calculateDiscountedPrice = (price) => {

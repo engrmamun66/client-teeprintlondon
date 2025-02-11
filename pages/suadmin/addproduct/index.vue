@@ -419,8 +419,16 @@ const errors = ref({
   images: "",
 });
 
+const hideStatusBar = () => {
+  const statusBar = document.querySelector(".tox-statusbar__branding");
+  if (statusBar) {
+    statusBar.style.display = "none";
+  }
+};
+
 onMounted(async () => {
   await productStore.getGenders();
+  hideStatusBar();
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
   await productStore.getColorList();
