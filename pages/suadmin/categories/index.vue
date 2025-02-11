@@ -37,7 +37,7 @@
                 </td>
                 <td>
                   <div class="px-2">
-                    <span>{{ category?.parent?.name  }}</span>
+                    <span>{{ category?.parent?.name }}</span>
                   </div>
                 </td>
 
@@ -196,9 +196,9 @@
                         >
                           <label>Category Type</label>
                           <span class="text-danger p-1">*</span>
-                          <select
+                          <!-- <select
                             class="form-control"
-                            v-model="Categorystore.categoryattribute.type"
+                            v-model="Categorystore.categoryattribute.types"
                           >
                             <option :value="null" class="text-muted">
                               -Please Select-
@@ -206,7 +206,13 @@
                             <option :value="1">Popular Product</option>
                             <option :value="2">Clothing</option>
                             <option :value="3">Advertising Materials</option>
-                          </select>
+                          </select> -->
+                          <el-BaseSelectMultiple
+                            v-model="Categorystore.selectedTypes"
+                            :data="categories"
+                            :label="null"
+                          />
+
                           <div>
                             <span
                               class="field-error-span text-danger p-1"
@@ -282,6 +288,11 @@ let Sub_category = [
   { id: 1, name: "Sub Product 1" },
   { id: 2, name: "Sub Product 2" },
 ];
+const categories = ref([
+  { id: 1, name: "Popular Product" },
+  { id: 2, name: "Clothing" },
+  { id: 3, name: "Advertising Materials" },
+]);
 
 async function showCategory(id) {
   await Categorystore.showCategory(id);
@@ -298,25 +309,24 @@ function handleSubmit() {
     .is_parent
     ? 1
     : 0;
+
+  Categorystore.categoryattribute.types = Categorystore.selectedTypes.map(
+    (category) => category.id
+  );
   if (Categorystore.categoryattribute.is_parent == 0) {
     if (Categorystore.categoryattribute.is_parent == null) {
       Toaster.error("Please Select Parent Category");
     }
   }
   if (editMode.value) {
-    const {
-      type,
-      ...payload
-    }= Categorystore.categoryattribute
-    Categorystore.update(
-      Categorystore.categoryattribute.id,
-      payload
-    );
+    const { type, ...payload } = Categorystore.categoryattribute;
+    Categorystore.update(Categorystore.categoryattribute.id, payload);
   } else {
-    const {
-      type,
-      ...payload
-    }= Categorystore.categoryattribute
+    const payload = {
+      ...Categorystore.categoryattribute,
+      types: JSON.stringify(Categorystore.categoryattribute.types),
+    };
+
     Categorystore.create(payload);
   }
 }
@@ -330,7 +340,8 @@ function OpenModal() {
 
 onMounted(async () => {
   await Categorystore.getCategories();
-  Categorystore.getParentcategorylist();
+  await Categorystore.getParentcategorylist();
+  await Categorystore.getTypes();
 });
 </script>
 <style scoped>

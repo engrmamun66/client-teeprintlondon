@@ -25,6 +25,7 @@ export const useProductStore = defineStore("product", () => {
     long_description:
       "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
     colors: [],
+    discount:null,
 
     sizes: [
       { id: 1, name: "XS", unit_price: 20, quantity: 10 },

@@ -13,7 +13,7 @@ export const useCategorystore = defineStore("category", () => {
     image: null,
     image_url: null,
     description: null,
-    type: 1,
+    types: null,
     status: 1,
   });
 
@@ -27,7 +27,7 @@ export const useCategorystore = defineStore("category", () => {
       image: null,
       image_url: null,
       description: null,
-      type: 1,
+      types: null,
       status: 1,
     };
   }
@@ -36,7 +36,6 @@ export const useCategorystore = defineStore("category", () => {
       let response = await Category.parentCategoryList();
 
       if (response.status == 200) {
-
         parentcategorylist.value = response.data.data;
       }
     } catch (error) {
@@ -121,7 +120,7 @@ export const useCategorystore = defineStore("category", () => {
         category.value = response.data.data;
         categoryattribute.value.name = category.value.name;
         categoryattribute.value.status = category.value.status;
-        categoryattribute.value.type = category.value.type;
+        categoryattribute.value.types = category.value.type;
         categoryattribute.value.image_url = category.value.image_url;
         categoryattribute.value.description = category.value.description;
         categoryattribute.value.id = category.value.id;
@@ -171,6 +170,17 @@ export const useCategorystore = defineStore("category", () => {
       //   }
     }
   }
+  let types = ref([])
+let selectedTypes = ref(null)
+ async  function getTypes(){
+    try{
+      let response = await Category.getTypes();
+      console.log(response.data)
+      types.value = response.data
+    }catch(error){
+
+    }
+  }
 
   return {
     getParentcategorylist,
@@ -180,11 +190,15 @@ export const useCategorystore = defineStore("category", () => {
     showCategory,
     update,
     resetCategoryAttribute,
+    getTypes,
+    types,
     categoryList,
     parentcategorylist,
     category,
     categoryattribute,
     showCategoryModal,
+    types,
+    selectedTypes
   };
 });
 

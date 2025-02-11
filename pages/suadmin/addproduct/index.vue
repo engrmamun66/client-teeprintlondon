@@ -134,6 +134,9 @@
               <label class="form-label"
                 >Color <span class="required-star">*</span></label
               >
+              <pre>
+                {{ productStore.colorList }}
+              </pre>
               <el-BaseSelectMultiple
                 v-model="productStore.selectedColor"
                 :data="productStore.colorList"
@@ -223,6 +226,18 @@
               >
                 Apply to Selected Sizes
               </button>
+            </div>
+            <div>
+              <div class="form-group">
+                <label>Discount:</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  v-model="productStore.product.discount"
+                  min="0"
+                  placeholder="Enter price"
+                />
+              </div>
             </div>
 
             <!-- Sizes and Pricing Table -->
