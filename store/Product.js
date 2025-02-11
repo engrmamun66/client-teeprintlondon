@@ -133,7 +133,7 @@ export const useProductStore = defineStore("product", () => {
       sizes: response.data.data.sizes.map((responseSize) => {
         // Find the corresponding size in the product's sizes array
         const existingSize = product.value.sizes.find(
-          (size) => size.id === responseSize.size_id
+          (size) => size.id == responseSize.size_id
         );
   
         // If a matching size is found, update its properties
@@ -161,6 +161,7 @@ export const useProductStore = defineStore("product", () => {
         response.data.data.category.parent != null
           ? response.data.data.category.id
           : null,
+          discount:response.data.data.discount
     };
   }
 
