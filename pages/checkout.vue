@@ -34,10 +34,9 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Country / Region </label>
-                                        <select>
-                                            <option>United America</option>
-                                            <option>Bangladesh</option>
-                                            <option>India</option>
+                                        <select disabled>
+                                            <option>United Kingdom</option>
+
                                         </select>
                                     </div>
                                 </div>
@@ -193,7 +192,7 @@
                                 </table>
                             </div>
                             <div class="teeprint-ordersummery-button">
-                                <button type="button" class="teeprint-button teeprint-theme-btn teeprint-placeorder-btn">Proceed To Submit Your Quote</button>
+                                <button type="button" class="teeprint-button teeprint-theme-btn teeprint-placeorder-btn">Proceed To Payment</button>
                             </div>
                         </div>
                     </div>
