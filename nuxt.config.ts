@@ -31,6 +31,7 @@ export default defineNuxtConfig({
 
   devtools: {
     viteInspect: true,
+    enabled: true,
     vscode: {
       enabled: true,
       codeServer: "coder-code-server",

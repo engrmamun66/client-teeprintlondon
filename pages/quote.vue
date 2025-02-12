@@ -1,6 +1,6 @@
 
 <script setup>
-import FrontendApi from "~/apis/Frontend"
+import FrontendApi from "~/apis/web/Frontend"
   
 definePageMeta({
   titleTemplate: '% :: Home',

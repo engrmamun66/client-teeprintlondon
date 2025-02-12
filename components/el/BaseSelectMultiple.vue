@@ -342,11 +342,10 @@ let random_id = computed(() => ('random_' + H.randomBetween(333, 294444)))
     float: left;
     align-items: center;
     border: none;
-    background-color: var(--border-dark);
-    background-color: #030303;
+    background-color: white; 
     padding: 0px 3px !important;
     position: relative;
-    color: rgb(172, 172, 172);
+    color: rgb(61 61 61);
     margin-right: 0.5rem;
     margin-bottom: 2px;
     border-radius: 3px;
@@ -362,8 +361,8 @@ let random_id = computed(() => ('random_' + H.randomBetween(333, 294444)))
     min-width: 100%;
     border: 1px solid;
     border-radius: 10px;
-    background-color: #1e1e2d;
-    background-color: var(--border-dark);
+    color: balck;
+    background-color: #d3d3d3; 
     z-index: 22;
     padding: 12px 15px !important;
     border: none;
@@ -395,23 +394,28 @@ let random_id = computed(() => ('random_' + H.randomBetween(333, 294444)))
     width: 100%;
     margin: 0;
     border-radius: 0;
-    background-color: #2a2a3c;
+    color: black  !important;
+    background-color: #c0c0c0;
 }
 .btn-options-toggler .option-box li.selected {
     width: 100%;
     margin: 0;
     border-radius: 0;
+    color: black  !important;
     background-color: #2a2a3c;
 }
 .btn-options-toggler .option-box li a,
 .btn-options-toggler .option-box li i,
 .btn-options-toggler .option-box li .las,
 .btn-options-toggler .option-box li a:hover {
-    color: #adadaf;
+    color: #0f0f0f;
     border-radius: 0;
     background-color: transparent;
     cursor: pointer;
     font-size: 14px;
+}
+.btn-options-toggler .option-box li.selected a {
+    color: #f5f5f5; 
 }
 .animation-showing {
     animation-name: frame-showing;
@@ -453,7 +457,7 @@ let random_id = computed(() => ('random_' + H.randomBetween(333, 294444)))
 }
 a.add-new-item{
     text-decoration: none;
-    color: var(--textcolor-white);
+    color: white;
     text-align: center;
     display: block;
     width: 100%;

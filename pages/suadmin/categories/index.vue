@@ -97,9 +97,10 @@
       </admin-card>
 
       <modal-global
-        v-model="Categorystore.showCategoryModal"
-        :footer="false"
+        v-model="Categorystore.showCategoryModal" 
         :title="editMode ? 'Update Category' : 'Add Category'"
+        @clicked-submit="handleSubmit"
+        @clicked-cancel="Categorystore.showCategoryModal=false"
       >
         <template #modalbody>
           <div class="row">
@@ -120,80 +121,35 @@
                 </div>
                 <div class="col-12">
                   <div class="row">
-                    <div class="form-group col-6">
-                      <div class="time-box-input">
-                        <div
-                          style="display: flex; gap: 1rem; align-items: center"
-                        >
-                          <p class="mt-3">Is Parent</p>
-                          <div>
-                            <label>
-                              <input
-                                type="radio"
-                                name="is_parent1"
-                                :value="1"
-                                v-model="
-                                  Categorystore.categoryattribute.is_parent
-                                "
-                              />
-                              Yes
-                            </label>
-                            <label>
-                              <input
-                                type="radio"
-                                name="is_parent2"
-                                :value="0"
-                                v-model="
-                                  Categorystore.categoryattribute.is_parent
-                                "
-                              />
-                              No
-                            </label>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="my-3 col-12">
+                       
+                        <label class="me-3">Is Parent</label> 
+                         
+                          <div class="form-check form-check-inline">
+                            <input v-model="Categorystore.categoryattribute.is_parent" :value="1" class="form-check-input cp" type="radio" name="is_parent1" id="inlineRadio1" value="option1">
+                            <label class="form-check-label cp" for="inlineRadio1">Yes</label>
+                          </div> 
+                          <div class="form-check form-check-inline">
+                            <input v-model="Categorystore.categoryattribute.is_parent" :value="0" class="form-check-input cp" type="radio" name="is_parent1" id="inlineRadio2" value="option1">
+                            <label class="form-check-label cp" for="inlineRadio2">No</label>
+                          </div>   
+
+
                     </div>
-                    <div
-                      class="col-md-4 col-12"
-                      style="min-width: 200px"
-                      label=""
-                    >
-                      <div
-                        class="form-group text-muted"
-                        v-if="Categorystore.categoryattribute?.is_parent === 0"
-                      >
+                    <div class="col-md-12 col-12" >
+                      <div class="form-group text-muted" v-if="Categorystore.categoryattribute?.is_parent === 0" >
                         <label>Parent Category</label>
                         <span class="text-danger p-1">*</span>
-                        <select
-                          class="form-control"
-                          v-model="Categorystore.categoryattribute.parent_id"
-                        >
-                          <option :value="null" class="text-muted">
-                            -Please Select-
-                          </option>
-                          <option
-                            v-for="(
-                              item, index
-                            ) in Categorystore.parentcategorylist"
-                            :key="index"
-                            :value="item.id"
-                          >
-                            {{ item.name }}
-                          </option>
+                        <select class="form-control" v-model="Categorystore.categoryattribute.parent_id" >
+                          <option :value="null" class="text-muted"> -Please Select- </option>
+                          <option v-for="( item, index ) in Categorystore.parentcategorylist" :key="index" :value="item.id" > {{ item.name }} </option>
                         </select>
                         <div>
                           <span class="field-error-span text-danger p-1"></span>
                         </div>
                       </div>
-                      <div
-                        class="col-md-4 col-12"
-                        style="min-width: 200px"
-                        label=""
-                      >
-                        <div
-                          class="form-group text-muted"
-                          v-if="Categorystore.categoryattribute?.is_parent == 1"
-                        >
+                      <div class="col-md-12 col-12"  >
+                        <div class="form-group text-muted" v-if="Categorystore.categoryattribute?.is_parent == 1" >
                           <label>Category Type</label>
                           <span class="text-danger p-1">*</span>
                           <!-- <select
@@ -212,12 +168,7 @@
                             :data="categories"
                             :label="null"
                           />
-
-                          <div>
-                            <span
-                              class="field-error-span text-danger p-1"
-                            ></span>
-                          </div>
+ 
                         </div>
                       </div>
                     </div>
@@ -230,44 +181,15 @@
                         style="display: flex; gap: 1rem; align-items: center"
                       >
                         <p class="mt-3">Status</p>
-                        <el-Radio
-                          name="status"
-                          :value="1"
-                          label="Active"
-                          v-model="Categorystore.categoryattribute.status"
-                        >
-                          Active
-                        </el-Radio>
-                        <el-Radio
-                          name="status"
-                          :value="0"
-                          label="Inactive"
-                          v-model="Categorystore.categoryattribute.status"
-                        >
-                          Inactive
-                        </el-Radio>
+                        <el-Radio name="status" :value="1" v-model="Categorystore.categoryattribute.status" > Active </el-Radio>
+                        <el-Radio name="status" :value="0" v-model="Categorystore.categoryattribute.status" > Inactive </el-Radio>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="ionic-card-footer justify-content-end">
-              <button
-                type="button"
-                class="leap-btn leap-submit-btn me-2 m-1"
-                @click="handleSubmit"
-              >
-                Save
-                <BtnLoader
-                  :show="H.isPendingAnyApi('Category:create|Category:update')"
-                  color="black"
-                />
-              </button>
-              <button type="button" class="leap-btn leap-cancel-btn m-1">
-                Cancel
-              </button>
-            </div>
+            
           </div>
         </template>
       </modal-global>

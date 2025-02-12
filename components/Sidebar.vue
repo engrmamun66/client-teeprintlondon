@@ -32,28 +32,28 @@
       </li>
       <li>
         <nuxt-link @click="activeMenu('categories')" :to="'/suadmin/categories'" class="leftsidebar-link menu-tooltip">
-          <i class="las la-home"></i>
+          <i class="las la-cog"></i>
           <span class="menu-text">Categories</span>
           <span class="tooltip__text tooltip__text--right"> Categories </span>
         </nuxt-link>
       </li>
       <li>
         <nuxt-link @click="activeMenu('brands')" :to="'/suadmin/brands'" class="leftsidebar-link menu-tooltip">
-          <i class="las la-home"></i>
+          <i class="las la-cog"></i>
           <span class="menu-text">Brands</span>
           <span class="tooltip__text tooltip__text--right"> Brands </span>
         </nuxt-link>
       </li>
       <li>
         <nuxt-link @click="activeMenu('brands')" :to="'/suadmin/product'" class="leftsidebar-link menu-tooltip">
-          <i class="las la-home"></i>
+          <i class="las la-cog"></i>
           <span class="menu-text">Product</span>
           <span class="tooltip__text tooltip__text--right"> Product </span>
         </nuxt-link>
       </li>
       <li>
         <nuxt-link @click="activeMenu('quotation')" :to="'/suadmin/quotations'" class="leftsidebar-link menu-tooltip">
-          <i class="las la-home"></i>
+          <i class="las la-cog"></i>
           <span class="menu-text">Quotation</span>
           <span class="tooltip__text tooltip__text--right"> Brands </span>
         </nuxt-link>
@@ -61,7 +61,7 @@
       <li>
           <a @click="activeMenu('settings')" 
             class="collaps-togglelink menu-tooltip" :class="{active: isCurrent('settings')}">
-            <i-las t="male" /><span class="menu-text">Settings</span>
+            <i-las t="settings" /><span class="menu-text">Settings</span>
             <span class="menu-plusminus-icon"><i class="lni" :class="[state.isCollapseMenu && state.menu == 'settings' ? 'lni-chevron-down' : 'lni-chevron-right']"></i></span>
             <span class="tooltip__text tooltip__text--right"> Settings </span>
           </a>

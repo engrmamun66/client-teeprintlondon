@@ -1,8 +1,8 @@
 <script setup>
 /**
  * ===== Use Example =======
-  <el-radio class="col-md-3 col-6" name="is_trucked" :value="0" label="Track quantity only" v-model="payload.is_tracked" ></el-radio>
-  <el-radio class="col-md-3 col-6" name="is_trucked" :value="1" label="Track specific assets " v-model="payload.is_tracked" ></el-radio>
+  <el-radio class="col-md-3 col-6" name="is_trucked" :value="0" label="Track quantity only" v-model="payload.is_tracked" >Inactive</el-radio>
+  <el-radio class="col-md-3 col-6" name="is_trucked" :value="1" label="Track specific assets " v-model="payload.is_tracked" >Active</el-radio>
  */
 let props = defineProps({
   modelValue: {
@@ -15,12 +15,7 @@ let props = defineProps({
   value: {
     default: "",
     required: true,
-  },
-  label: {
-    type: String,
-    default: "",
-    required: false,
-  },
+  }, 
   disabled: {
     default: false,
     required: false,
@@ -69,9 +64,9 @@ onMounted(()=> {
                   $emit('update:modelValue', target.value);
               }" 
               >
-              <label v-if="label" class="form-check-label cp m-0 ms-2 " :for="uniqueId" 
+              <label class="form-check-label cp m-0 ms-2 " :for="uniqueId" 
               @click="$emit('click', $refs.inputField.checked)" >
-                  {{ label }}
+                  <slot>Lable Here</slot>
               </label>
 
             </template>

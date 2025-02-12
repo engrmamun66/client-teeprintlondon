@@ -79,6 +79,7 @@ body.bl{
 
     /* --fontfamily-primary: 'Poppins', sans-serif; */
     /* --fontfamily-primary: Noto_regular, sans-serif; */
+    --fontfamily-primary: "Prompt", sans-serif;
 }
 
 *,
@@ -94,7 +95,9 @@ body {
     font-family: var(--fontfamily-primary);
     font-size: 15px;
     color: var(--fontcolor-dark);
+    font-family: var(--fontfamily-primary);
 }
+ 
 
 h1,
 h2,
@@ -107,6 +110,10 @@ h5 {
     line-height: 25px;
     font-weight: 600;
     letter-spacing: 0.5px;
+}
+
+.cp{
+    cursor: pointer;
 }
 
 p {

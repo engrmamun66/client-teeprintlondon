@@ -27,6 +27,10 @@ let menus = ref([
     },
 ])
 
+
+let homeStore = inject('homeStore')
+// homeStore.getTypewiseCategoryList( )
+
 </script>
 
 <template>
