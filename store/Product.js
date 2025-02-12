@@ -21,6 +21,7 @@ export const useProductStore = defineStore("product", () => {
     genders: [],
     images: [],
     thumbnail_image: null,
+    min_unit_price:null,
     short_description: "A comfortable and stylish classic t-shirt.",
     long_description:
       "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
@@ -60,6 +61,7 @@ export const useProductStore = defineStore("product", () => {
 
   async function create(payload = {}) {
     try {
+      console.log("payload", payload)
       let response = await Product.create(payload);
       if (response.data.success) {
         await getColorList();

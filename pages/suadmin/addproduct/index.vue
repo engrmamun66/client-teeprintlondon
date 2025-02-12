@@ -527,6 +527,11 @@ async function handleSubmit() {
       productStore.product;
     productStore.product.category_id = subcategory_id;
   }
+  console.log("payload", productStore.product);
+
+  productStore.product.min_unit_price = Math.min(
+    ...productStore.product.sizes.map((size) => size.unit_price)
+  );
 
   // Create the payload
   const productPayload = createProductPayload(productStore.product);
