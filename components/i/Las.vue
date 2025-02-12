@@ -46,6 +46,7 @@
     <i v-if="t=='history'" class="las la-history" v-bind="$attrs" :style="fontSize ? 'font-size:' + fontSize : ''"></i>
     <i v-if="t=='clock'" class="las la-clock" v-bind="$attrs" :style="fontSize ? 'font-size:' + fontSize : ''"></i>
     <i v-if="t=='expand'" class="bx bx-expand" v-bind="$attrs" :style="fontSize ? 'font-size:' + fontSize : ''"></i>
+    <i v-if="t=='settings'" class="las la-cog" v-bind="$attrs" :style="fontSize ? 'font-size:' + fontSize : ''"></i>
     <i v-if="t=='compress'" class="las la-compress" v-bind="$attrs" :style="fontSize ? 'font-size:' + fontSize : ''"></i>
     <i v-if="t=='printer'" class="bx bx-printer" v-bind="$attrs" :style="fontSize ? 'font-size:' + fontSize : ''"></i>
     <i v-if="t=='pdf'" class="las la-file-pdf" v-bind="$attrs" :style="fontSize ? 'font-size:' + fontSize : ''"></i>
