@@ -30,6 +30,7 @@ export const useCategorystore = defineStore("category", () => {
       types: null,
       status: 1,
     };
+    selectedTypes.value = null
   }
   async function getParentcategorylist() {
     try {
@@ -37,6 +38,7 @@ export const useCategorystore = defineStore("category", () => {
 
       if (response.status == 200) {
         parentcategorylist.value = response.data.data;
+
       }
     } catch (error) {
       //   if (error.response.status == 401) {
@@ -124,6 +126,7 @@ export const useCategorystore = defineStore("category", () => {
         categoryattribute.value.image_url = category.value.image_url;
         categoryattribute.value.description = category.value.description;
         categoryattribute.value.id = category.value.id;
+        selectedTypes.value = response.data.data.types
 
         // console.log("adkcbkadcbkadcbkjadbc", categoryattribute.value.description)
         if (category.value.parent_id) {
@@ -150,6 +153,7 @@ export const useCategorystore = defineStore("category", () => {
     try {
       payload = {
         ...payload,
+
         _method: "PUT",
       };
       let response = await Category.update(id, payload);
