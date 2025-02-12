@@ -146,6 +146,7 @@
 <script setup>
 // import { useCategorystore } from "~/store/Category";
 import { useProductStore } from "~/store/Product";
+import axios from 'axios';
 const productStore = useProductStore();
 let showConfirmation = ref(false);
 let editMode = ref(false);
@@ -168,6 +169,12 @@ function handleSubmit() {}
 onMounted(async () => {
   await productStore.getProductList();
   // Categorystore.getParentcategorylist();
+  try {
+    const response = await axios.get('http://client-treeprintlondon-api.test/api/type-wise-category-list');
+    console.log('Category List:', response.data);
+  } catch (error) {
+    console.error('Error fetching category list:', error);
+  }
 });
 </script>
 <style scoped>

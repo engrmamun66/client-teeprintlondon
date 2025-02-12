@@ -166,11 +166,23 @@
             <div class="form-group">
               <label class="form-label">Long Description</label>
               <div>
-                <RedactorEditor
+                <!-- <RedactorEditor
                   v-model="productStore.product.long_description"
                   ref="editor"
                   class="mt-4"
-                ></RedactorEditor>
+                ></RedactorEditor> -->
+                <Editor
+                  ref="editor"
+                  v-model="productStore.product.long_description"
+                  api-key="raz47c045ba5lv073s9m9i3psszrg7mhu8qlspsh6do9h3we"
+                  :init="{
+                    height: 300,
+                    menubar: false,
+                    plugins: 'lists link image table code help',
+                    toolbar:
+                      'undo redo | formatselect | bold italic |  bullist numlist',
+                  }"
+                />
               </div>
             </div>
 
@@ -225,6 +237,19 @@
               </button>
             </div>
 
+            <div class="d-flex align-items-end gap-2">
+              <div class="flex-grow-1">
+                <label class="font-weight-bold">Discount:</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  v-model="productStore.product.discount"
+                  min="0"
+                  placeholder="Enter discount in (%)"
+                />
+              </div>
+            </div>
+
             <!-- Sizes and Pricing Table -->
             <h3 class="additional-details-heading" style="color: black">
               Sizes and Pricing
@@ -235,6 +260,9 @@
                   <th>Size</th>
                   <th>Price ($)</th>
                   <th>Quantity</th>
+                  <th v-if="productStore.product.discount">
+                    Price After Discount
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -253,6 +281,15 @@
                       type="number"
                       class="form-control"
                       v-model="size.quantity"
+                      min="0"
+                    />
+                  </td>
+                  <td v-if="productStore.product.discount">
+                    <input
+                      disabled
+                      type="number"
+                      class="form-control"
+                      :value="calculateDiscountedPrice(size.unit_price)"
                       min="0"
                     />
                   </td>
@@ -307,6 +344,58 @@
               {{ errors.images }}
             </div>
           </div>
+
+          <div class="card calculator-card" style="margin-top: 63rem">
+            <h3 class="calculator-heading" style="color: black">
+              Percentage Calculator
+            </h3>
+
+            <!-- X% of Y Calculation -->
+            <div class="form-group">
+              <label style="font-weight: bold">What is X% of Y?</label>
+              <input
+                type="number"
+                v-model="percentage"
+                placeholder="Enter percentage (X)"
+              />
+              <input
+                type="number"
+                v-model="number"
+                placeholder="Enter number (Y)"
+              />
+
+              <input
+                type="text"
+                :value="percentageResult"
+                placeholder="Result will appear here"
+                readonly
+              />
+            </div>
+
+            <!-- What percentage is X of Y Calculation -->
+            <div class="form-group">
+              <label style="font-weight: bold"
+                >What percentage is X of Y?</label
+              >
+              <input
+                type="number"
+                v-model="fromNumber"
+                placeholder="Enter number (X)"
+              />
+              <input
+                type="number"
+                v-model="toNumber"
+                placeholder="Enter number (Y)"
+              />
+
+              <input
+                type="text"
+                :value="percentageChangeResult"
+                placeholder="Result will appear here"
+                readonly
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -319,6 +408,7 @@ import { useProductStore } from "~/store/Product";
 import { useCategorystore } from "~/store/Category";
 import { useBrandStore } from "~/store/Brand";
 import { useColorStore } from "~/store/Color";
+import Editor from "@tinymce/tinymce-vue";
 const colorStore = useColorStore();
 const brandStore = useBrandStore();
 const productStore = useProductStore();
@@ -342,6 +432,13 @@ const errors = ref({
   thumbnail_image: "",
   images: "",
 });
+
+const setContent = (content) => {
+  if (editor.value && editor.value.editor) {
+    editor.value.editor.setContent(content);
+  }
+};
+
 function validateForm() {
   let isValid = true;
 
@@ -416,8 +513,18 @@ function validateForm() {
 
   return isValid;
 }
+
+// Function to hide the status bar
+const hideStatusBar = () => {
+  const statusBar = document.querySelector(".tox-statusbar__branding");
+  if (statusBar) {
+    statusBar.style.display = "none";
+  }
+};
+
 onMounted(async () => {
   await productStore.getGenders();
+  hideStatusBar();
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
   await productStore.getColorList();
@@ -426,9 +533,35 @@ onMounted(async () => {
   if (productStore.product.subcategory_id) {
     checkSubCategory();
   }
+  setContent(productStore.product.long_description);
 
   // productStore.selectedGender = productStore.product.genders
 });
+
+const percentage = ref(null); // For X% of Y
+const number = ref(null); // For X% of Y
+const fromNumber = ref(null); // For percentage change
+const toNumber = ref(null); // For percentage change
+
+// Compute the result of "X% of Y"
+const percentageResult = computed(() => {
+  if (!percentage.value || !number.value) return "";
+  const result = (percentage.value / 100) * number.value;
+  return `${number.value}% of ${percentage.value}  is ${result}`;
+});
+
+// Compute the result of "What percentage is X of Y"
+const percentageChangeResult = computed(() => {
+  if (!fromNumber.value || !toNumber.value) return "";
+  const result = ((toNumber.value / fromNumber.value) * 100).toFixed(2);
+  return `${toNumber.value} is ${result}% of ${fromNumber.value}`;
+});
+
+// Function to calculate the discounted price
+const calculateDiscountedPrice = (price) => {
+  const discount = productStore.product.discount || 0;
+  return (price - (price * discount) / 100).toFixed(2);
+};
 
 const handleFileRemoval = (removedFile) => {
   // console.log("Removed File:", removedFile[0].id);
@@ -553,6 +686,48 @@ const removeImage = (index) => {
 </script>
 
 <style scoped>
+.calculator-card {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.calculator-heading {
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
 .cards-container {
   display: flex;
   gap: 20px;
@@ -696,5 +871,8 @@ const removeImage = (index) => {
 .no-images-text {
   color: #888;
   font-style: italic;
+}
+.font-weight-bold {
+  font-weight: bold;
 }
 </style>
