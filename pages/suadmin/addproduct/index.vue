@@ -150,13 +150,26 @@
               <label class="form-label"
                 >Short Description <span class="required-star">*</span></label
               >
-              <textarea
+              <!-- <textarea
                 class="form-control"
                 v-model="productStore.product.short_description"
                 rows="3"
                 placeholder="Short description of the product"
                 :class="{ 'is-invalid': errors.short_description }"
-              ></textarea>
+              ></textarea> -->
+
+              <Editor
+                v-model="productStore.product.short_description"
+                api-key="raz47c045ba5lv073s9m9i3psszrg7mhu8qlspsh6do9h3we"
+                :init="{
+                  height: 300,
+                  menubar: false,
+                  plugins: 'lists link image table code help',
+                  toolbar:
+                    'undo redo | formatselect | bold italic |  bullist numlist',
+                }"
+              />
+
               <div v-if="errors.short_description" class="invalid-feedback">
                 {{ errors.short_description }}
               </div>
@@ -333,7 +346,7 @@
             </div>
           </div>
 
-          <div class="card calculator-card" style="margin-top: 64rem">
+          <div class="card calculator-card" style="margin-top: 80rem">
             <h3 class="calculator-heading" style="color: black">
               Percentage Calculator
             </h3>
