@@ -1,5 +1,5 @@
 import { AuthEndpoints } from './Auth';
-import { FrontendEndpoints } from './Frontend'; 
+import { FrontendEndpoints } from './web/Frontend'; 
 import { CategoryEndpoints } from './Category'; 
 import { ColorEndpoints } from './Color'; 
 

@@ -10,11 +10,10 @@
 </template>
 
 <script setup>
-
-import { useMenuState } from '@/composables/useMenuState';
-const { state, toggleSidebar, toggleProfilePopup, isCollapse } = useMenuState();
-import { useCommonStore } from '~/store/Common';
-const commonStore = useCommonStore();
+ 
+import { useHomeStore } from '~/store/web/Home';
+const homeStore = useHomeStore();
+provide('homeStore', homeStore)
 
 useHead({
   title: "Tee Print",
