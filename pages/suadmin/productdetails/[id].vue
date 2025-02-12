@@ -150,13 +150,25 @@
               <label class="form-label"
                 >Short Description <span class="required-star">*</span></label
               >
-              <textarea
+              <!-- <textarea
                 class="form-control"
                 v-model="productStore.product.short_description"
                 rows="3"
                 placeholder="Short description of the product"
                 :class="{ 'is-invalid': errors.short_description }"
-              ></textarea>
+              ></textarea> -->
+              <Editor
+                ref="editorShort"
+                v-model="productStore.product.short_description"
+                api-key="raz47c045ba5lv073s9m9i3psszrg7mhu8qlspsh6do9h3we"
+                :init="{
+                  height: 300,
+                  menubar: false,
+                  plugins: 'lists link image table code help',
+                  toolbar:
+                    'undo redo | formatselect | bold italic |  bullist numlist',
+                }"
+              />
               <div v-if="errors.short_description" class="invalid-feedback">
                 {{ errors.short_description }}
               </div>
@@ -172,7 +184,7 @@
                   class="mt-4"
                 ></RedactorEditor> -->
                 <Editor
-                  ref="editor"
+                  ref="editorLong"
                   v-model="productStore.product.long_description"
                   api-key="raz47c045ba5lv073s9m9i3psszrg7mhu8qlspsh6do9h3we"
                   :init="{
@@ -419,7 +431,8 @@ const selectedSizes = ref([]);
 const bulkPrice = ref(null);
 const bulkQuantity = ref(null);
 const uploadedImages = ref([]);
-const editor = ref();
+const editorLong = ref();
+const editorShort = ref();
 const id = route.params.id;
 const errors = ref({
   name: "",
@@ -433,12 +446,11 @@ const errors = ref({
   images: "",
 });
 
-const setContent = (content) => {
-  if (editor.value && editor.value.editor) {
-    editor.value.editor.setContent(content);
+const setContent = (editorRef, content) => {
+  if (editorRef.value?.editor) {
+    editorRef.value.editor.setContent(content);
   }
 };
-
 function validateForm() {
   let isValid = true;
 
@@ -515,16 +527,17 @@ function validateForm() {
 }
 
 // Function to hide the status bar
-const hideStatusBar = () => {
-  const statusBar = document.querySelector(".tox-statusbar__branding");
-  if (statusBar) {
-    statusBar.style.display = "none";
+
+const hideElement = (selector) => {
+  const element = document.querySelector(selector);
+  if (element) {
+    element.style.display = "none";
   }
 };
-
 onMounted(async () => {
   await productStore.getGenders();
-  hideStatusBar();
+  // Usage
+
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
   await productStore.getColorList();
@@ -533,7 +546,8 @@ onMounted(async () => {
   if (productStore.product.subcategory_id) {
     checkSubCategory();
   }
-  setContent(productStore.product.long_description);
+  setContent(editorLong, productStore.product.long_description);
+  setContent(editorShort, productStore.product.short_description);
 
   // productStore.selectedGender = productStore.product.genders
 });
