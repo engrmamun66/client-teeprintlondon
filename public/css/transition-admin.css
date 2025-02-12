@@ -1,0 +1,26 @@
+ 
+
+/* -------------------------------------------------------------------------- */
+/*                           Transition For All Pages                          */
+/* -------------------------------------------------------------------------- */
+/* Page Out */
+.page-leave-active {
+    transition: all 0.3s;
+}
+
+.page-leave-to {
+    opacity: 0;
+    filter: blur(.05rem);
+    /* transform: translateY(5rem); */
+}
+
+/* Page IN */
+.page-enter-active {
+    transition: all .5s;
+}
+
+.page-enter-from {
+    opacity: 0;
+    /* filter: blur(.2rem); */
+    transform: translateY(2rem);
+}

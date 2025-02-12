@@ -44,7 +44,7 @@ useHead({
     {type:'text/css', rel: 'stylesheet', href:'/css/datatables.bootstrap.min.css'},
     {type:'text/css', rel: 'stylesheet', href:'/css/tooltip.css'},
     {type:'text/css', rel: 'stylesheet', href:'/css/style-admin.css'},
-    {type:'text/css', rel: 'stylesheet', href:'/css/transition.css'},
+    {type:'text/css', rel: 'stylesheet', href:'/css/transition-admin.css'},
     { type: "text/css", rel: "stylesheet", href: "/redactor/redactor.min.css" },
   ],
   script: [

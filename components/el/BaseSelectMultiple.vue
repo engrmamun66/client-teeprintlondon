@@ -342,8 +342,7 @@ let random_id = computed(() => ('random_' + H.randomBetween(333, 294444)))
     float: left;
     align-items: center;
     border: none;
-    background-color: var(--border-dark);
-    background-color: #030303;
+    background-color: white; 
     padding: 0px 3px !important;
     position: relative;
     color: rgb(172, 172, 172);
@@ -395,19 +394,21 @@ let random_id = computed(() => ('random_' + H.randomBetween(333, 294444)))
     width: 100%;
     margin: 0;
     border-radius: 0;
-    background-color: #2a2a3c;
+    color: black  !important;
+    background-color: #c0c0c0;
 }
 .btn-options-toggler .option-box li.selected {
     width: 100%;
     margin: 0;
     border-radius: 0;
+    color: black  !important;
     background-color: #2a2a3c;
 }
 .btn-options-toggler .option-box li a,
 .btn-options-toggler .option-box li i,
 .btn-options-toggler .option-box li .las,
 .btn-options-toggler .option-box li a:hover {
-    color: #adadaf;
+    color: #222222;
     border-radius: 0;
     background-color: transparent;
     cursor: pointer;
