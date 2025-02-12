@@ -1055,8 +1055,11 @@ Admin Content css
     padding: 10px 30px;
     transition: all 0.3s;
 }
-:has(.leap-admin-sidebar.active) .leap-admin-main-wrapper #leap-admin-main-container { 
-    margin-left: 280px; 
+@media screen and (min-width: 992px) {
+    :has(.leap-admin-sidebar.active) .leap-admin-main-wrapper #leap-admin-main-container { 
+        margin-left: 280px; 
+    }
+    
 }
 
 .leap-admin-main-wrapper #leap-admin-main-container.margin_left {
@@ -1406,6 +1409,10 @@ Header Rightside css
 
 .leap-admin-main-wrapper .rightside-top-nav .rightside-navmenu li button {
     color: var(--fontcolor-tertiary);
+}
+
+button{
+    border: none;
 }
 
 .leap-admin-main-wrapper .rightside-top-nav .rightside-navmenu li.leap-admin-right-dropdown a.leap-admin-dropdown-link {

@@ -3,12 +3,16 @@ import FrontendApi from "../apis/web/Frontend";
 
 export const useHomeStore = defineStore("homeStore", () => {
 
-  let menus = ref([]);
+  let menus = ref(useCookie('menus').value || []);
   async function getTypewiseCategoryList(){
     try {
 
       FrontendApi.getTypewiseCategoryList().then(response => {
-        console.log('response', response.status, response.data);
+        if(response.data.success){
+          menus.value = response.data.data || [] 
+          useCookie('menus').value = menus.value
+          
+        }
       })
       
     } catch (error) {

@@ -29,7 +29,7 @@ let menus = ref([
 
 
 let homeStore = inject('homeStore')
-// homeStore.getTypewiseCategoryList( )
+homeStore.getTypewiseCategoryList()
 
 </script>
 
@@ -145,119 +145,36 @@ let homeStore = inject('homeStore')
                                     <li>
                                         <a href="/" :class="{'teeprint-active-menu': useRoute().name=== 'home'}">Home</a>
                                     </li> 
-                                    <li>
-                                        <nuxt-link to="/shop">Popular Products <i class="lni lni-chevron-down"></i></nuxt-link>
-                                        <div class="teeprint-submenu">
-                                            <ul>
-                                                <li>
-                                                      <a href="#">T-Shirt <i class="lni lni-chevron-right"></i></a>
-                                                        <div class="teeprint-sub-submenu">
-                                                            <ul>
-                                                                <li><a href="#">Custom T-Shirts</a></li>
-                                                                <li><a href="#">Printed T-Shirts</a></li>
-                                                                <li><a href="#">Bulk T-Shirt Orders</a></li>
-                                                               
-                                                            </ul>
-                                                        </div>
-                                                    </li>
+                                    <template v-if="homeStore.menus?.length">
+                                        <template v-for="(item, index) in homeStore.menus" :key="index">
+                                            <li>
+                                                <nuxt-link :to="`/shop`"> {{ item?.name }} <i class="lni lni-chevron-down" v-if="item?.categories?.length"></i></nuxt-link>
+                                                <template v-if="item?.categories?.length">
+                                                    <div class="teeprint-submenu">
+                                                        <ul>
+                                                            <template v-for="(child2, index2) in item?.categories" :key="index2">
+                                                                <li>
+                                                                    <nuxt-link :to="`/products-by-category/${child2?.slug || 'not-found'}`"> {{ child2.name }} <i class="lni lni-chevron-right"></i></nuxt-link>
+                                                                    <template v-if="child2.children">
+                                                                        <div class="teeprint-sub-submenu">
+                                                                            <ul>
+                                                                                <template v-for="(child3, index3) in child2.children" :key="index3">
+                                                                                    <li><nuxt-link :to="`/products-by-category/${child3?.slug || 'not-found'}`">{{child3.name}}</nuxt-link></li>
+                                                                                </template> 
+                                                                            </ul>
+                                                                        </div>
+                                                                    </template>
+                                                                </li>
 
-                                                <li><a href="#">Hoodie</a></li>
-
-                                                <li><a href="#">Tote Bag</a></li>
-                                                <li><a href="#">Sports</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <nuxt-link to="/shop" >Same Day Items<i class="lni lni-chevron-down"></i></nuxt-link>
-                                        <div class="teeprint-submenu">
-                                            <ul>
-                                                <li><a href="#">Same Day Garment Printing</a></li>
-                                                        <li><a href="#">Same Day Hoodie Printing</a></li>
-                                                        <li><a href="#">Same Day Tote Bag Printing</a></li>
-                                                        <li><a href="#">Same Day Cap Printing</a></li>
-                                                        <li><a href="#">Same Day Document Printing London</a></li>
-                                                        <li><a href="#">Same Day Business Card Printing London</a></li>
-                                                        <li><a href="#">Same Day Flyer Leaflet Printing London</a></li>
-                                                        <li><a href="#">Same Day Poster Printing London</a></li>
-                                                        <li><a href="#">Same Day Booklet Brochure Printing London</a></li>
-                                                        <li><a href="#">Same Day Banner Printing London</a></li>
-                                                        <li><a href="#">Same Day Sticker Printing London</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#">Categories<i class="lni lni-chevron-down"></i></a>
-                                        <div class="teeprint-submenu teeprint-sub-largemenu">
-                                            <div class="teeprint-submenu-grid">
-                                                <div class="teeprint-submenu-grid-box">
-                                                    <ul>
-                                                        <li><a href="#">Accessories</a></li>
-                                                        <li><a href="#">All in Ones &amp; Pyjamas</a></li>
-                                                        <li><a href="#">Aprons</a></li>
-                                                        <li><a href="#">Baby &amp; Toddler</a></li>
-                                                        <li><a href="#">Bags</a></li>
-                                                        <li><a href="#">Blankets</a></li>
-                                                        <li><a href="#">Chefswear &amp; Catering</a></li>
-                                                        <li><a href="#">Children</a></li>
-                                                        <li><a href="#">Cleaning</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="teeprint-submenu-grid-box">
-                                                    <ul>
-                                                        <li><a href="#">Accessories</a></li>
-                                                        <li><a href="#">All in Ones &amp; Pyjamas</a></li>
-                                                        <li><a href="#">Aprons</a></li>
-                                                        <li><a href="#">Baby &amp; Toddler</a></li>
-                                                        <li><a href="#">Bags</a></li>
-                                                        <li><a href="#">Blankets</a></li>
-                                                        <li><a href="#">Chefswear &amp; Catering</a></li>
-                                                        <li><a href="#">Children</a></li>
-                                                        <li><a href="#">Cleaning</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="teeprint-submenu-grid-box">
-                                                    <ul>
-                                                        <li><a href="#">Accessories</a></li>
-                                                        <li><a href="#">All in Ones &amp; Pyjamas</a></li>
-                                                        <li><a href="#">Aprons</a></li>
-                                                        <li><a href="#">Baby &amp; Toddler</a></li>
-                                                        <li><a href="#">Bags</a></li>
-                                                        <li><a href="#">Blankets</a></li>
-                                                        <li><a href="#">Chefswear &amp; Catering</a></li>
-                                                        <li><a href="#">Children</a></li>
-                                                        <li><a href="#">Cleaning</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="teeprint-submenu-grid-box">
-                                                    <ul>
-                                                        <li><a href="#">Accessories</a></li>
-                                                        <li><a href="#">All in Ones &amp; Pyjamas</a></li>
-                                                        <li><a href="#">Aprons</a></li>
-                                                        <li><a href="#">Baby &amp; Toddler</a></li>
-                                                        <li><a href="#">Bags</a></li>
-                                                        <li><a href="#">Blankets</a></li>
-                                                        <li><a href="#">Chefswear &amp; Catering</a></li>
-                                                        <li><a href="#">Children</a></li>
-                                                        <li><a href="#">Cleaning</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="teeprint-submenu-grid-box">
-                                                    <ul>
-                                                        <li><a href="#">Accessories</a></li>
-                                                        <li><a href="#">All in Ones &amp; Pyjamas</a></li>
-                                                        <li><a href="#">Aprons</a></li>
-                                                        <li><a href="#">Baby &amp; Toddler</a></li>
-                                                        <li><a href="#">Bags</a></li>
-                                                        <li><a href="#">Blankets</a></li>
-                                                        <li><a href="#">Chefswear &amp; Catering</a></li>
-                                                        <li><a href="#">Children</a></li>
-                                                        <li><a href="#">Cleaning</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                                            </template> 
+                                                        </ul>
+                                                    </div>
+                                                </template>
+                                            </li> 
+                                        </template>
+                                    </template>
+                                    
+                                 
                                     <li>
                                         <a href="#">About us </a>
                                     </li>
