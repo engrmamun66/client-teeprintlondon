@@ -37,6 +37,32 @@ export const useHomeStore = defineStore("homeStore", () => {
   }
 
 
+  let products = ref([])
+  let payload = reactive({
+    category_slug: null,
+    category_ids: [],
+    brand_ids: [],
+    size_ids: [],
+    gender_ids: [],
+  })
+
+  async function getProducts(){
+    try {
+
+      FrontendApi.getProducts(payload).then(response => {
+        if(response.data.success){
+          products.value = response.data.data || []  
+          console.log('products', products.value);
+          
+        }
+      })
+      
+    } catch (error) {
+      
+    }
+  }
+
+
     
   return { 
     menus, 
@@ -44,6 +70,9 @@ export const useHomeStore = defineStore("homeStore", () => {
 
     searchedProducts,
     searchProduct,
+
+    products,
+    getProducts,
 
   };
 });

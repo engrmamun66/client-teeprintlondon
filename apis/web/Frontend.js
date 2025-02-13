@@ -17,5 +17,17 @@ export default {
   async searchProduct(search = null) {
     return await Api().get(`/search-products`, { params: { search } });
   }, 
+  async getProducts(paload={}) {
+    /**
+     * 
+     * 
+      category_slug: 'category-slug',
+      category_ids"": [1, 2],
+      brand_ids"": [3, 4],
+      size_ids"": [5, 6],
+      gender_ids"": [7, 8]
+     */
+    return await Api().post(`/filter-products`, paload);
+  }, 
  
 };

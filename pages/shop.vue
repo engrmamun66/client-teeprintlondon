@@ -1,11 +1,17 @@
-<script setup lang="ts">
+<script setup lang="ts"> 
 
-let homeStore = inject('homeStore')
+ 
+let homeStore = inject('homeStore', {getProducts: ()=>{}});
   
 definePageMeta({
   titleTemplate: '% :: shop',
   name: 'shop',
   layout: 'web',
+})
+
+ 
+onMounted(()=>{
+    homeStore.getProducts()
 })
 
 
