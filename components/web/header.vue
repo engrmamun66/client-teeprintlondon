@@ -45,6 +45,28 @@ watch(search, (a)=>{
                                     </button>
                                 </div>
                             </div>
+                            <div role="listbox" class="dropdown-menu show">
+                                <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
+                                    <div class="inner-serch" data-item="186061">
+                                        <img src="https://teeprint.london/wp-content/uploads/elementor/thumbs/T-Shirt-Printing-London-qxo057nudah6z4iq83tw731v7ht72ia0a2um6qgv3s.jpg"> Product Name
+                                    </div>
+                                </div>
+                                <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
+                                    <div class="inner-serch" data-item="186061">
+                                        <img src="https://teeprint.london/wp-content/uploads/elementor/thumbs/T-Shirt-Printing-London-qxo057nudah6z4iq83tw731v7ht72ia0a2um6qgv3s.jpg"> Product Name
+                                    </div>
+                                </div>
+                                <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
+                                    <div class="inner-serch" data-item="186061">
+                                        <img src="https://teeprint.london/wp-content/uploads/elementor/thumbs/T-Shirt-Printing-London-qxo057nudah6z4iq83tw731v7ht72ia0a2um6qgv3s.jpg"> Product Name
+                                    </div>
+                                </div>
+                                <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
+                                    <div class="inner-serch" data-item="186061">
+                                        <img src="https://teeprint.london/wp-content/uploads/elementor/thumbs/T-Shirt-Printing-London-qxo057nudah6z4iq83tw731v7ht72ia0a2um6qgv3s.jpg"> Product Name
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="teeprint-header-usercart">
