@@ -193,7 +193,7 @@ function addToCart(event: Event){
                                 <option value="rating">Sort by average rating</option>
                                 <option value="date">Sort by latest</option>
                                 <option value="price">Low to high</option>
-                                <option value="price-desc" selected="selected">High to low</option>
+                                <option value="price-desc" selected="true">High to low</option>
                             </select>
                         </div>
                     </div>

@@ -1,35 +1,17 @@
-<script setup>
-
-let menus = ref([
-    {
-        title: 'Home',
-        to: {name: 'home'}
-    },
-    {
-        title: 'Popular Products',
-        to: {name: 'shop'}
-    },
-    {
-        title: 'Same Day Items',
-        to: {name: 'shop'}
-    },
-    {
-        title: 'Categories',
-        to: {name: 'shop'}
-    },
-    {
-        title: 'About Us',
-        to: {name: 'quote'}
-    },
-    {
-        title: 'Contact Us',
-        to: {name: 'quote'}
-    },
-])
-
+<script setup> 
 
 let homeStore = inject('homeStore')
 homeStore.getTypewiseCategoryList()
+
+let search = ref('')
+
+let dbounceSearch = H.debounce(homeStore.searchProduct, 300);
+
+
+watch(search, (a)=>{
+    console.log(a);
+    dbounceSearch(a || null)
+})
 
 </script>
 
@@ -53,7 +35,7 @@ homeStore.getTypewiseCategoryList()
                         <div class="teeprint-header-search-inner">
                             <div class="teeprint-category-search">
                                 <div class="teeprint-category-search-input">
-                                    <input type="search" placeholder="Search For Products" />
+                                    <input v-model="search" type="search" placeholder="Search For Products" />
                                 </div>
                                 <div class="teeprint-category-search-button">
                                     <button type="button" class="btn theme-btn teeprint-category-search-btn">

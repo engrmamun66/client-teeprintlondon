@@ -69,6 +69,20 @@ export const H = {
       return data;
     }
   },
+  debounce: function (func, wait) {
+    
+    /** How to use this
+     * let dbounceSearch = H.debounce(componentStore.getComponentList, 1500);
+     * then call this dbounceSearch(param1, param2, ...)
+     */
+
+    let timeout;
+    return function (...args) {
+      const context = this;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+  },
   getDeliveryOptions: function(){
 
     /**

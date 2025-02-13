@@ -14,5 +14,8 @@ export default {
   async getTypewiseCategoryList() {
     return await Api().get(`/type-wise-category-list`);
   }, 
+  async searchProduct(search = null) {
+    return await Api().get(`/search-products`, { params: { search } });
+  }, 
  
 };

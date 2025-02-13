@@ -20,11 +20,30 @@ export const useHomeStore = defineStore("homeStore", () => {
     }
   }
 
+  let searchedProducts = ref([])
+  async function searchProduct(search = null){
+    try {
+
+      FrontendApi.searchProduct(search).then(response => {
+        if(response.data.success){
+          searchedProducts.value = response.data.data || []  
+          
+        }
+      })
+      
+    } catch (error) {
+      
+    }
+  }
+
 
     
   return { 
     menus, 
     getTypewiseCategoryList,
+
+    searchedProducts,
+    searchProduct,
 
   };
 });
