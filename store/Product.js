@@ -291,6 +291,7 @@ export const useProductStore = defineStore("product", () => {
     deleteImage,
     getProductList,
     deleteProduct,
+    resetProduct,
     genderList,
     colorAttribute,
     showModal,

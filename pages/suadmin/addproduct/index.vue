@@ -69,18 +69,6 @@
                 {{ errors.gender }}
               </div>
             </div>
-
-            <!-- Gender Dropdown -->
-            <!-- <div class="form-group">
-              <label class="form-label">Gender <span class="required-star">*</span></label>
-              <el-BaseSelectMultiple
-                v-model="productStore.selectedGender"
-                :data="productStore.genderList"
-                :class="{ 'is-invalid': errors.gender }"
-              />
-              <div v-if="errors.gender" class="invalid-feedback">{{ errors.gender }}</div>
-            </div> -->
-
             <!-- Category Dropdown -->
             <div class="form-group">
               <label class="form-label"
@@ -151,13 +139,6 @@
               <label class="form-label"
                 >Short Description <span class="required-star">*</span></label
               >
-              <!-- <textarea
-                class="form-control"
-                v-model="productStore.product.short_description"
-                rows="3"
-                placeholder="Short description of the product"
-                :class="{ 'is-invalid': errors.short_description }"
-              ></textarea> -->
 
               <Editor
                 v-model="productStore.product.short_description"
@@ -199,7 +180,15 @@
               <h3 class="additional-details-heading" style="color: black">
                 Select Sizes
               </h3>
+
               <div class="size-selection">
+                <div
+                  @click="toggleAllSizes"
+                  :class="{ selected: isAllSelected }"
+                  class="size-card all-sizes"
+                >
+                  All Sizes
+                </div>
                 <div
                   v-for="size in productStore.product.sizes"
                   :key="size.name"
@@ -306,15 +295,24 @@
             </table>
 
             <!-- Footer Buttons -->
-            <div class="ionic-card-footer justify-content-end">
+            <div class="ionic-card-footer d-flex justify-content-between mt-2">
               <button
                 type="button"
                 class="leap-btn leap-submit-btn me-2 m-1"
                 @click="handleSubmit"
               >
                 Submit
+                <BtnLoader
+                  :show="H.isPendingAnyApi('Product:create')"
+                  style="color: white"
+                ></BtnLoader>
               </button>
-              <button type="button" class="leap-btn leap-cancel-btn m-1">
+              <button
+                type="button"
+                style="background-color: red"
+                class="leap-btn leap-cancel-btn m-1"
+                @click="navigateToProducts"
+              >
                 Cancel
               </button>
             </div>
@@ -418,12 +416,14 @@ const colorStore = useColorStore();
 const brandStore = useBrandStore();
 const productStore = useProductStore();
 const categoryStore = useCategorystore();
-
+const route = useRoute();
 const selectedSizes = ref([]);
 
 const uploadedImages = ref([]);
 const editor = ref();
-
+const navigateToProducts = () => {
+  navigateTo("/suadmin/product");
+};
 // Validation errors
 const errors = ref({
   name: "",
@@ -444,17 +444,26 @@ const hideStatusBar = () => {
   }
 };
 
+const isAllSelected = computed(() => {
+  return selectedSizes.value.length === productStore.product.sizes.length;
+});
+
+const toggleAllSizes = () => {
+  if (isAllSelected.value) {
+    selectedSizes.value = [];
+  } else {
+    selectedSizes.value = productStore.product.sizes.map((s) => s.name);
+  }
+};
+
 onMounted(async () => {
+  productStore.resetProduct();
   await productStore.getGenders();
   hideStatusBar();
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
   await productStore.getColorList();
   await productStore.getProductList();
-  console.log(
-    "(&(&(*&(&(&(&(&(&(&(&(&(7))))))))))))",
-    typeof productStore.product.thumbnail_image
-  );
 });
 
 const percentage = ref(null); // For X% of Y
@@ -650,6 +659,11 @@ const toggleSizeSelection = (sizeName) => {
 };
 
 const applyBulkUpdate = () => {
+  if (selectedSizes.value.length == 0) {
+    Toaster.error("Please select at least one size before updating.");
+    return;
+  }
+
   productStore.product.sizes.forEach((size) => {
     if (selectedSizes.value.includes(size.name)) {
       if (productStore.bulkPrice !== null)
@@ -663,6 +677,7 @@ const applyBulkUpdate = () => {
   productStore.bulkPrice = null;
   productStore.bulkQuantity = null;
   selectedSizes.value = [];
+
   Toaster.success("Price or Quantity updated");
 };
 
@@ -807,6 +822,10 @@ button:hover {
   font-weight: bold;
   background-color: white;
   transition: background-color 0.2s ease-in-out;
+}
+
+.all-sizes {
+  font-weight: bold;
 }
 
 .size-card.selected {
