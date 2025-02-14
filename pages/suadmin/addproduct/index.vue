@@ -20,6 +20,7 @@
               >
               <el-BaseInput
                 type="text"
+                placeholder="Name of T shirt"
                 v-model="productStore.product.name"
                 :class="{ 'is-invalid': errors.name }"
               />
@@ -218,7 +219,7 @@
                 <input
                   type="number"
                   class="form-control"
-                  v-model="bulkPrice"
+                  v-model="productStore.bulkPrice"
                   min="0"
                   placeholder="Enter price"
                 />
@@ -229,7 +230,7 @@
                 <input
                   type="number"
                   class="form-control"
-                  v-model="bulkQuantity"
+                  v-model="productStore.bulkQuantity"
                   min="0"
                   placeholder="Enter quantity"
                 />
@@ -258,7 +259,7 @@
 
             <!-- Sizes and Pricing Table -->
             <h3 class="additional-details-heading" style="color: black">
-              Sizes and Pricing
+              Sizes and Pricing <span class="required-star">*</span>
             </h3>
             <table class="table">
               <thead>
@@ -326,7 +327,10 @@
             Image Upload
           </h3>
           <div class="form-group">
-            <label for="Upload File">Upload your thumbnail image</label>
+            <label for="Upload File"
+              >Upload your thumbnail image
+              <span class="required-star">*</span></label
+            >
             <div v-if="errors.thumbnail_image != null" style="color: red">
               {{ errors.thumbnail_image }}
             </div>
@@ -336,7 +340,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="Upload File">Upload product image</label>
+            <label for="Upload File"
+              >Upload product image<span class="required-star">*</span></label
+            >
             <Admin-DropFiles
               v-model="productStore.product.images"
               @removeFile="handleFileRemoval"
@@ -414,8 +420,7 @@ const productStore = useProductStore();
 const categoryStore = useCategorystore();
 
 const selectedSizes = ref([]);
-const bulkPrice = ref(null);
-const bulkQuantity = ref(null);
+
 const uploadedImages = ref([]);
 const editor = ref();
 
@@ -495,8 +500,18 @@ const calculateDiscountedPrice = (price) => {
   const discount = productStore.product.discount || 0;
   return (price - (price * discount) / 100).toFixed(2);
 };
-
+function validateSizes() {
+  return productStore.product.sizes.some(
+    (size) => size.unit_price > 0 || size.quantity > 0
+  );
+}
 async function handleSubmit() {
+  if (!validateSizes()) {
+    Toaster.error(
+      "At least one size must have a unit price or quantity greater than 0."
+    );
+    return;
+  }
   // Validate fields
   if (!validateForm()) {
     Toaster.error("Please fill all the required field");
@@ -637,14 +652,16 @@ const toggleSizeSelection = (sizeName) => {
 const applyBulkUpdate = () => {
   productStore.product.sizes.forEach((size) => {
     if (selectedSizes.value.includes(size.name)) {
-      if (bulkPrice.value !== null) size.unit_price = bulkPrice.value;
-      if (bulkQuantity.value !== null) size.quantity = bulkQuantity.value;
+      if (productStore.bulkPrice !== null)
+        size.unit_price = productStore.bulkPrice;
+      if (productStore.bulkQuantity !== null)
+        size.quantity = productStore.bulkQuantity;
     }
   });
 
   // Clear bulk inputs and unselect all sizes
-  bulkPrice.value = null;
-  bulkQuantity.value = null;
+  productStore.bulkPrice = null;
+  productStore.bulkQuantity = null;
   selectedSizes.value = [];
   Toaster.success("Price or Quantity updated");
 };
