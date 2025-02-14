@@ -60,19 +60,19 @@ let props = defineProps({
     //     required: false,
     // },
     color: {        
-        default: '#36c9233f', // green
+        default: '#2d2d2d3d', // green
         required: false,
     },
     
 })
 
-let MODE = props.bg == 'dark' ? 'var(--bg-dark)' : 'var(--bg-light)'
+let MODE = props.bg == 'dark' ? 'green' : '#f8f8f8'
 </script>
 
 <style scoped>
 .just-test {
     --dddd: #36c9233f;
-    --dddd: #ffffff34;
+    --dddd: #2d2d2d3d;
 }
 
 @keyframes shimmer {

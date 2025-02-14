@@ -4,6 +4,8 @@ const prefix = "";
 
 export const FrontendEndpoints = {
   submitQuote: '/quotations',
+  searchProduct: '/search-products',
+  getProducts: '/filter-products',
 }
 
 

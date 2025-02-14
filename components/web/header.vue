@@ -4,13 +4,21 @@ let homeStore = inject('homeStore')
 homeStore.getTypewiseCategoryList()
 
 let search = ref('')
+let isFocused = ref(false) 
 
 let dbounceSearch = H.debounce(homeStore.searchProduct, 300);
 
 
-watch(search, (a)=>{
-    console.log(a);
+watch(search, (a)=>{ 
     dbounceSearch(a || null)
+    if(!a){ 
+        homeStore.searchedProducts = []
+    }
+})
+watch(isFocused, (a)=>{  
+    if(!a){ 
+        homeStore.searchedProducts = []
+    }
 })
 
  
@@ -37,7 +45,7 @@ watch(search, (a)=>{
                         <div class="teeprint-header-search-inner">
                             <div class="teeprint-category-search">
                                 <div class="teeprint-category-search-input">
-                                    <input v-model="search" type="search" placeholder="Search For Products" />
+                                    <input @focus.stop="isFocused=true" @focusout.stop="H.delay(()=>isFocused=false, 100)" v-model="search" type="search" placeholder="Search For Products" />
                                 </div>
                                 <div class="teeprint-category-search-button">
                                     <button type="button" class="btn theme-btn teeprint-category-search-btn">
@@ -45,28 +53,31 @@ watch(search, (a)=>{
                                     </button>
                                 </div>
                             </div>
-                            <div role="listbox" class="dropdown-menu show">
-                                <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
-                                    <div class="inner-serch" data-item="186061">
-                                        <img src="https://teeprint.london/wp-content/uploads/elementor/thumbs/T-Shirt-Printing-London-qxo057nudah6z4iq83tw731v7ht72ia0a2um6qgv3s.jpg"> Product Name
+                            <template v-if="isFocused">
+                                <template v-if="H.isPendingAnyApi('Frontend:searchProduct')">
+                                    <div role="listbox" class="dropdown-menu show">
+                                        <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
+                                            <div v-for="x in 3" class="inner-serch d-flex mb-1">
+                                                <shimmer-effect width="25px" height="26px" class="me-2"></shimmer-effect> 
+                                                <shimmer-effect width="100%" height="26px"></shimmer-effect> 
+                                            </div> 
+                                        </div>
+                                        
                                     </div>
-                                </div>
-                                <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
-                                    <div class="inner-serch" data-item="186061">
-                                        <img src="https://teeprint.london/wp-content/uploads/elementor/thumbs/T-Shirt-Printing-London-qxo057nudah6z4iq83tw731v7ht72ia0a2um6qgv3s.jpg"> Product Name
-                                    </div>
-                                </div>
-                                <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
-                                    <div class="inner-serch" data-item="186061">
-                                        <img src="https://teeprint.london/wp-content/uploads/elementor/thumbs/T-Shirt-Printing-London-qxo057nudah6z4iq83tw731v7ht72ia0a2um6qgv3s.jpg"> Product Name
-                                    </div>
-                                </div>
-                                <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
-                                    <div class="inner-serch" data-item="186061">
-                                        <img src="https://teeprint.london/wp-content/uploads/elementor/thumbs/T-Shirt-Printing-London-qxo057nudah6z4iq83tw731v7ht72ia0a2um6qgv3s.jpg"> Product Name
-                                    </div>
-                                </div>
-                            </div>
+                                </template>
+                                <template v-else-if="search && homeStore.searchedProducts?.length">
+                                    <template v-for="product in homeStore.searchedProducts" :key="product.id">
+                                        <div role="listbox" class="dropdown-menu show">
+                                            <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
+                                                <div class="inner-serch cp" data-item="186061">
+                                                    <img :src="product.thumbnail_image_url"> {{ product.name }}
+                                                </div>
+                                            </div> 
+                                        </div>
+
+                                    </template>
+                                </template>
+                            </template>
                         </div>
                     </div>
                     <div class="teeprint-header-usercart">

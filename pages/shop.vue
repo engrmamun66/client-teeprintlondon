@@ -1,7 +1,5 @@
 <script setup lang="ts"> 
 
- 
-let homeStore = inject('homeStore', {getProducts: ()=>{}});
   
 definePageMeta({
   titleTemplate: '% :: shop',
@@ -9,19 +7,13 @@ definePageMeta({
   layout: 'web',
 })
 
- 
-onMounted(()=>{
-    homeStore.getProducts()
-})
-
-
 
 </script>
 
 
 
 <template>
-    <div>
+    <div> 
         <web-productList></web-productList> 
     </div>
         
