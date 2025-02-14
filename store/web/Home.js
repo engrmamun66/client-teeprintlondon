@@ -37,6 +37,7 @@ export const useHomeStore = defineStore("homeStore", () => {
   }
 
 
+  let paginateData = ref([])
   let products = ref([])
   let payload = reactive({
     category_slug: null,
@@ -51,8 +52,8 @@ export const useHomeStore = defineStore("homeStore", () => {
 
       FrontendApi.getProducts(payload).then(response => {
         if(response.data.success){
-          products.value = response.data.data || []  
-          console.log('products', products.value);
+          paginateData.value = response.data.data || {}
+          products.value = response.data.data?.data || []   
           
         }
       })
@@ -71,6 +72,7 @@ export const useHomeStore = defineStore("homeStore", () => {
     searchedProducts,
     searchProduct,
 
+    paginateData,
     products,
     getProducts,
 

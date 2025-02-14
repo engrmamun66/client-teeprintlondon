@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+let homeStore = inject('homeStore', {getProducts: ()=>{}});
+
 let props = defineProps({
     categorySlug: {
         default: undefined,
@@ -45,7 +47,9 @@ let products = ref([
         "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AM1220BLK20FRONT-1.jpg"
     }
 ])
-
+ 
+homeStore.getProducts()
+ 
 
 function addToCart(event: Event){
     let target = event.target as HTMLElement
