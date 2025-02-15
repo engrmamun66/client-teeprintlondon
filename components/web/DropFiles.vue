@@ -11,7 +11,6 @@
     <span class="filename fs-13 cp">Upload your file</span>
     <i class="bx bx-upload fs-16"></i>
   </div>
-
   <div v-if="selectedFiles?.length" class="ionic-img-uploadshow">
     <ul>
       <template v-for="(file, i) in selectedFiles">

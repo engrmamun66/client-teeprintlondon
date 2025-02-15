@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
-let homeStore = inject('homeStore', {getProducts: ()=>{}});
+let homeStore = inject('homeStore') as any ;
 
-let props = defineProps({
+const { categorySlug } = defineProps({
     categorySlug: {
         default: undefined,
         required: false,
@@ -47,6 +47,10 @@ let products = ref([
         "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AM1220BLK20FRONT-1.jpg"
     }
 ])
+
+if(categorySlug){
+    homeStore.payload.category_slug = categorySlug
+}
  
 homeStore.getProducts()
  
@@ -202,12 +206,12 @@ function addToCart(event: Event){
                         </div>
                     </div>
                     <div class="row productlist-itemrow">
-                        <template v-for="product in products">
+                        <template v-for="product in homeStore.products">
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-4 col-6">
                                 <div class="teeprint-product" @click.stop="navigateTo('/details')">
                                     <div class="teeprint-product-inner">
                                         <div class="teeprint-product-image">
-                                            <img :src="product.image_url" alt="Img" />
+                                            <img :src="product.thumbnail_image_url" alt="Img" />
                                             <div class="teeprint-product-overlow">
                                                 <div class="teeprint-product-overlow-inner" @click.stop="false">
                                                     <nuxt-link :to="'/details'" class="teeprint-view-btn" title="Hello from speech bubble!">
@@ -221,7 +225,7 @@ function addToCart(event: Event){
                                         </div>
                                         <div class="teeprint-product-body">
                                             <h5 class="teeprint-product-title">
-                                                Anthem Unisex Hoodie
+                                                {{product.name}}
                                             </h5>
                                             <span class="teeprint-price">£18.36</span>
                                         </div>

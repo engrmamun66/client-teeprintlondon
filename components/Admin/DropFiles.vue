@@ -14,7 +14,7 @@
 
   <div v-if="selectedFiles?.length" class="ionic-img-uploadshow">
     <ul>
-      <template v-for="(file, i) in selectedFiles" :key="i">
+      <template v-for="(file, i) in selectedFiles.filter(Boolean)" :key="i">
         <li class="mb-2">
           <div class="preview-frame">
             <template v-if="isImage(file)">
@@ -31,6 +31,8 @@
       </template>
     </ul>
   </div>
+
+   
 
   <div v-if="showImageModal && showImageModalFile" class="image-modal">
     <div class="image-modal-frame">

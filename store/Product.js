@@ -13,7 +13,7 @@ export const useProductStore = defineStore("product", () => {
   let selectedColor = ref(null);
   let showSubCategory = ref(false);
   const product = ref({
-    name: "Classic T-Shirt",
+    name: "",
     price: 25,
     brand_id: null, // New property
     category_id: null, // New property
@@ -39,6 +39,13 @@ export const useProductStore = defineStore("product", () => {
     ],
     status: 1
   });
+
+  const cloned_product = H.clone(product.value)
+
+
+  function clearProduct(){
+    product.value = cloned_product.value
+  }
 
   let showModal = ref(false);
   function resetBrandAttribute() {
@@ -67,7 +74,9 @@ export const useProductStore = defineStore("product", () => {
         await getColorList();
         showModal.value = false;
         resetBrandAttribute();
-        Toaster.success("Color created succsfully");
+        Toaster.success("Color created succsfully"); 
+        clearProduct()
+        navigateTo({name: 'admin_product_list'})
       }
     } catch (error) {
       //   if (error.response.status == 401) {

@@ -290,6 +290,8 @@ function handleSubmit() {
     };
 
     Categorystore.create(payload);
+
+    Categorystore.getTypes()
   }
 }
 

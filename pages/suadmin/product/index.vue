@@ -151,12 +151,14 @@ const productStore = useProductStore();
 let showConfirmation = ref(false);
 let editMode = ref(false);
 let productId = ref(null);
-let editor = ref(null);
-let clearImage = ref(false);
-let Sub_category = [
-  { id: 1, name: "Sub Product 1" },
-  { id: 2, name: "Sub Product 2" },
-];
+ 
+
+
+
+definePageMeta({
+  name: 'admin_product_list'
+})
+
 
 async function showCategory(id) {
   await Categorystore.showCategory(id);

@@ -334,7 +334,7 @@
               v-model="productStore.product.thumbnail_image"
               :singleImage="true"
             />
-          </div>
+          </div> 
           <div class="form-group">
             <label for="Upload File">Upload product image</label>
             <Admin-DropFiles
@@ -408,6 +408,8 @@ import { useCategorystore } from "~/store/Category";
 import { useBrandStore } from "~/store/Brand";
 import { useColorStore } from "~/store/Color";
 import Editor from "@tinymce/tinymce-vue";
+
+
 const colorStore = useColorStore();
 const brandStore = useBrandStore();
 const productStore = useProductStore();
@@ -445,11 +447,7 @@ onMounted(async () => {
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
   await productStore.getColorList();
-  await productStore.getProductList();
-  console.log(
-    "(&(&(*&(&(&(&(&(&(&(&(&(7))))))))))))",
-    typeof productStore.product.thumbnail_image
-  );
+  await productStore.getProductList(); 
 });
 
 const percentage = ref(null); // For X% of Y

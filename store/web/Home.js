@@ -73,6 +73,7 @@ export const useHomeStore = defineStore("homeStore", () => {
     searchProduct,
 
     paginateData,
+    payload,
     products,
     getProducts,
 
