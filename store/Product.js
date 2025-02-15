@@ -12,32 +12,34 @@ export const useProductStore = defineStore("product", () => {
   let selectedGender = ref(null);
   let selectedColor = ref(null);
   let showSubCategory = ref(false);
+  let bulkPrice = ref(null);
+  let bulkQuantity = ref(null);
   const product = ref({
     name: "",
-    price: 25,
+    price: 0,
     brand_id: null, // New property
     category_id: null, // New property
     subcategory_id: null,
     genders: [],
     images: [],
     thumbnail_image: null,
-    min_unit_price:null,
+    min_unit_price: null,
     short_description: "A comfortable and stylish classic t-shirt.",
     long_description:
       "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
     colors: [],
-    discount:null,
+    discount: null,
 
     sizes: [
-      { id: 1, name: "XS", unit_price: 20, quantity: 10 },
-      { id: 2, name: "S", unit_price: 22, quantity: 10 },
-      { id: 3, name: "M", unit_price: 25, quantity: 10 },
-      { id: 4, name: "L", unit_price: 28, quantity: 10 },
-      { id: 5, name: "XL", unit_price: 30, quantity: 10 },
-      { id: 6, name: "XXL", unit_price: 32, quantity: 10 },
-      { id: 7, name: "XXXL", unit_price: 35, quantity: 10 },
+      { id: 1, name: "XS", unit_price: 0, quantity: 0 },
+      { id: 2, name: "S", unit_price: 0, quantity: 0 },
+      { id: 3, name: "M", unit_price: 0, quantity: 0 },
+      { id: 4, name: "L", unit_price: 0, quantity: 0 },
+      { id: 5, name: "XL", unit_price: 0, quantity: 0 },
+      { id: 6, name: "XXL", unit_price: 0, quantity: 0 },
+      { id: 7, name: "XXXL", unit_price: 0, quantity: 0 },
     ],
-    status: 1
+    status: 1,
   });
 
   const cloned_product = H.clone(product.value)
@@ -66,15 +68,49 @@ export const useProductStore = defineStore("product", () => {
     } catch (error) {}
   }
 
+  const resetProduct = () => {
+    (selectedColor.value = null),
+      (selectedGender.value = null),
+      (bulkPrice.value = null),
+      (bulkQuantity.value = null);
+    product.value = {
+      name: null,
+      price: 25,
+      brand_id: null,
+      category_id: null,
+      subcategory_id: null,
+      genders: [],
+      images: [],
+      thumbnail_image: null,
+      min_unit_price: null,
+      short_description: "A comfortable and stylish classic t-shirt.",
+      long_description:
+        "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
+      colors: [],
+      discount: null,
+      sizes: [
+        { id: 1, name: "XS", unit_price: 0, quantity: 0 },
+        { id: 2, name: "S", unit_price: 0, quantity: 0 },
+        { id: 3, name: "M", unit_price: 0, quantity: 0 },
+        { id: 4, name: "L", unit_price: 0, quantity: 0 },
+        { id: 5, name: "XL", unit_price: 0, quantity: 0 },
+        { id: 6, name: "XXL", unit_price: 0, quantity: 0 },
+        { id: 7, name: "XXXL", unit_price: 0, quantity: 0 },
+      ],
+      status: 1,
+    };
+  };
+
   async function create(payload = {}) {
     try {
-      console.log("payload", payload)
+      console.log("payload", payload);
       let response = await Product.create(payload);
       if (response.data.success) {
         await getColorList();
         showModal.value = false;
+        resetProduct();
         resetBrandAttribute();
-        Toaster.success("Color created succsfully"); 
+        Toaster.success("Product added succsfully"); 
         clearProduct()
         navigateTo({name: 'admin_product_list'})
       }
@@ -146,7 +182,7 @@ export const useProductStore = defineStore("product", () => {
         const existingSize = product.value.sizes.find(
           (size) => size.id == responseSize.size_id
         );
-  
+
         // If a matching size is found, update its properties
         if (existingSize) {
           return {
@@ -155,7 +191,7 @@ export const useProductStore = defineStore("product", () => {
             quantity: responseSize.quantity,
           };
         }
-  
+
         // If no matching size is found, return the response size as-is
         return {
           id: responseSize.size_id,
@@ -172,7 +208,7 @@ export const useProductStore = defineStore("product", () => {
         response.data.data.category.parent != null
           ? response.data.data.category.id
           : null,
-          discount:response.data.data.discount
+      discount: response.data.data.discount,
     };
   }
 
@@ -192,7 +228,7 @@ export const useProductStore = defineStore("product", () => {
         selectedColor.value = product.value.colors
           .map((color) => colorList.value.find((c) => c.id === color.color_id))
           .filter((gender) => gender !== undefined); // Filtering out unmatched genders
-          console.log(product.value.sizes)
+        console.log(product.value.sizes);
 
         showModal.value = true; // Show the modal
       }
@@ -264,6 +300,7 @@ export const useProductStore = defineStore("product", () => {
     deleteImage,
     getProductList,
     deleteProduct,
+    resetProduct,
     genderList,
     colorAttribute,
     showModal,
@@ -273,6 +310,8 @@ export const useProductStore = defineStore("product", () => {
     colorList,
     showSubCategory,
     productList,
+    bulkPrice,
+    bulkQuantity,
   };
 });
 

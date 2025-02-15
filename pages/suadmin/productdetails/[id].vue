@@ -69,17 +69,6 @@
               </div>
             </div>
 
-            <!-- Gender Dropdown -->
-            <!-- <div class="form-group">
-              <label class="form-label">Gender <span class="required-star">*</span></label>
-              <el-BaseSelectMultiple
-                v-model="productStore.selectedGender"
-                :data="productStore.genderList"
-                :class="{ 'is-invalid': errors.gender }"
-              />
-              <div v-if="errors.gender" class="invalid-feedback">{{ errors.gender }}</div>
-            </div> -->
-
             <!-- Category Dropdown -->
             <div class="form-group">
               <label class="form-label"
@@ -150,13 +139,7 @@
               <label class="form-label"
                 >Short Description <span class="required-star">*</span></label
               >
-              <!-- <textarea
-                class="form-control"
-                v-model="productStore.product.short_description"
-                rows="3"
-                placeholder="Short description of the product"
-                :class="{ 'is-invalid': errors.short_description }"
-              ></textarea> -->
+
               <Editor
                 ref="editorShort"
                 v-model="productStore.product.short_description"
@@ -178,11 +161,6 @@
             <div class="form-group">
               <label class="form-label">Long Description</label>
               <div>
-                <!-- <RedactorEditor
-                  v-model="productStore.product.long_description"
-                  ref="editor"
-                  class="mt-4"
-                ></RedactorEditor> -->
                 <Editor
                   ref="editorLong"
                   v-model="productStore.product.long_description"
@@ -204,6 +182,13 @@
                 Select Sizes
               </h3>
               <div class="size-selection">
+                <div
+                  @click="toggleAllSizes"
+                  :class="{ selected: isAllSelected }"
+                  class="size-card all-sizes"
+                >
+                  All Sizes
+                </div>
                 <div
                   v-for="size in productStore.product.sizes"
                   :key="size.name"
@@ -264,7 +249,7 @@
 
             <!-- Sizes and Pricing Table -->
             <h3 class="additional-details-heading" style="color: black">
-              Sizes and Pricing
+              Sizes and Pricing <span class="required-star">*</span>
             </h3>
             <table class="table">
               <thead>
@@ -316,7 +301,11 @@
                 class="leap-btn leap-submit-btn me-2 m-1"
                 @click="handleSubmit"
               >
-                Submit
+                Update
+                <BtnLoader
+                  :show="H.isPendingAnyApi('Product:update')"
+                  style="color: white"
+                ></BtnLoader>
               </button>
               <button type="button" class="leap-btn leap-cancel-btn m-1">
                 Cancel
@@ -357,7 +346,7 @@
             </div>
           </div>
 
-          <div class="card calculator-card" style="margin-top: 63rem">
+          <div class="card calculator-card" style="margin-top: 65rem">
             <h3 class="calculator-heading" style="color: black">
               Percentage Calculator
             </h3>
@@ -571,6 +560,18 @@ const percentageChangeResult = computed(() => {
   return `${toNumber.value} is ${result}% of ${fromNumber.value}`;
 });
 
+const isAllSelected = computed(() => {
+  return selectedSizes.value.length === productStore.product.sizes.length;
+});
+
+const toggleAllSizes = () => {
+  if (isAllSelected.value) {
+    selectedSizes.value = [];
+  } else {
+    selectedSizes.value = productStore.product.sizes.map((s) => s.name);
+  }
+};
+
 // Function to calculate the discounted price
 const calculateDiscountedPrice = (price) => {
   const discount = productStore.product.discount || 0;
@@ -589,7 +590,19 @@ const handleFileRemoval = (removedFile) => {
   // Handle the removed file as needed, e.g., updating the uploadedFiles list
 };
 
+function validateSizes() {
+  return productStore.product.sizes.some(
+    (size) => size.unit_price > 0 || size.quantity > 0
+  );
+}
+
 async function handleSubmit() {
+  if (!validateSizes()) {
+    Toaster.error(
+      "At least one size must have a unit price or quantity greater than 0."
+    );
+    return;
+  }
   // Validate fields
   if (!validateForm()) {
     Toaster.error("Please fill all the required field");
@@ -669,6 +682,10 @@ const toggleSizeSelection = (sizeName) => {
 };
 
 const applyBulkUpdate = () => {
+  if (selectedSizes.value.length == 0) {
+    Toaster.error("Please select at least one size before updating.");
+    return;
+  }
   productStore.product.sizes.forEach((size) => {
     if (selectedSizes.value.includes(size.name)) {
       if (bulkPrice.value !== null) size.unit_price = bulkPrice.value;

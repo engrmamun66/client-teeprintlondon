@@ -20,6 +20,7 @@
               >
               <el-BaseInput
                 type="text"
+                placeholder="Name of T shirt"
                 v-model="productStore.product.name"
                 :class="{ 'is-invalid': errors.name }"
               />
@@ -68,18 +69,6 @@
                 {{ errors.gender }}
               </div>
             </div>
-
-            <!-- Gender Dropdown -->
-            <!-- <div class="form-group">
-              <label class="form-label">Gender <span class="required-star">*</span></label>
-              <el-BaseSelectMultiple
-                v-model="productStore.selectedGender"
-                :data="productStore.genderList"
-                :class="{ 'is-invalid': errors.gender }"
-              />
-              <div v-if="errors.gender" class="invalid-feedback">{{ errors.gender }}</div>
-            </div> -->
-
             <!-- Category Dropdown -->
             <div class="form-group">
               <label class="form-label"
@@ -150,13 +139,6 @@
               <label class="form-label"
                 >Short Description <span class="required-star">*</span></label
               >
-              <!-- <textarea
-                class="form-control"
-                v-model="productStore.product.short_description"
-                rows="3"
-                placeholder="Short description of the product"
-                :class="{ 'is-invalid': errors.short_description }"
-              ></textarea> -->
 
               <Editor
                 v-model="productStore.product.short_description"
@@ -198,7 +180,15 @@
               <h3 class="additional-details-heading" style="color: black">
                 Select Sizes
               </h3>
+
               <div class="size-selection">
+                <div
+                  @click="toggleAllSizes"
+                  :class="{ selected: isAllSelected }"
+                  class="size-card all-sizes"
+                >
+                  All Sizes
+                </div>
                 <div
                   v-for="size in productStore.product.sizes"
                   :key="size.name"
@@ -218,7 +208,7 @@
                 <input
                   type="number"
                   class="form-control"
-                  v-model="bulkPrice"
+                  v-model="productStore.bulkPrice"
                   min="0"
                   placeholder="Enter price"
                 />
@@ -229,7 +219,7 @@
                 <input
                   type="number"
                   class="form-control"
-                  v-model="bulkQuantity"
+                  v-model="productStore.bulkQuantity"
                   min="0"
                   placeholder="Enter quantity"
                 />
@@ -258,7 +248,7 @@
 
             <!-- Sizes and Pricing Table -->
             <h3 class="additional-details-heading" style="color: black">
-              Sizes and Pricing
+              Sizes and Pricing <span class="required-star">*</span>
             </h3>
             <table class="table">
               <thead>
@@ -305,15 +295,24 @@
             </table>
 
             <!-- Footer Buttons -->
-            <div class="ionic-card-footer justify-content-end">
+            <div class="ionic-card-footer d-flex justify-content-between mt-2">
               <button
                 type="button"
                 class="leap-btn leap-submit-btn me-2 m-1"
                 @click="handleSubmit"
               >
                 Submit
+                <BtnLoader
+                  :show="H.isPendingAnyApi('Product:create')"
+                  style="color: white"
+                ></BtnLoader>
               </button>
-              <button type="button" class="leap-btn leap-cancel-btn m-1">
+              <button
+                type="button"
+                style="background-color: red"
+                class="leap-btn leap-cancel-btn m-1"
+                @click="navigateToProducts"
+              >
                 Cancel
               </button>
             </div>
@@ -326,7 +325,10 @@
             Image Upload
           </h3>
           <div class="form-group">
-            <label for="Upload File">Upload your thumbnail image</label>
+            <label for="Upload File"
+              >Upload your thumbnail image
+              <span class="required-star">*</span></label
+            >
             <div v-if="errors.thumbnail_image != null" style="color: red">
               {{ errors.thumbnail_image }}
             </div>
@@ -336,7 +338,9 @@
             />
           </div> 
           <div class="form-group">
-            <label for="Upload File">Upload product image</label>
+            <label for="Upload File"
+              >Upload product image<span class="required-star">*</span></label
+            >
             <Admin-DropFiles
               v-model="productStore.product.images"
               @removeFile="handleFileRemoval"
@@ -414,13 +418,14 @@ const colorStore = useColorStore();
 const brandStore = useBrandStore();
 const productStore = useProductStore();
 const categoryStore = useCategorystore();
-
+const route = useRoute();
 const selectedSizes = ref([]);
-const bulkPrice = ref(null);
-const bulkQuantity = ref(null);
+
 const uploadedImages = ref([]);
 const editor = ref();
-
+const navigateToProducts = () => {
+  navigateTo("/suadmin/product");
+};
 // Validation errors
 const errors = ref({
   name: "",
@@ -441,13 +446,26 @@ const hideStatusBar = () => {
   }
 };
 
+const isAllSelected = computed(() => {
+  return selectedSizes.value.length === productStore.product.sizes.length;
+});
+
+const toggleAllSizes = () => {
+  if (isAllSelected.value) {
+    selectedSizes.value = [];
+  } else {
+    selectedSizes.value = productStore.product.sizes.map((s) => s.name);
+  }
+};
+
 onMounted(async () => {
+  productStore.resetProduct();
   await productStore.getGenders();
   hideStatusBar();
   await categoryStore.getParentcategorylist();
   await brandStore.getBrandList();
   await productStore.getColorList();
-  await productStore.getProductList(); 
+  await productStore.getProductList();
 });
 
 const percentage = ref(null); // For X% of Y
@@ -493,8 +511,18 @@ const calculateDiscountedPrice = (price) => {
   const discount = productStore.product.discount || 0;
   return (price - (price * discount) / 100).toFixed(2);
 };
-
+function validateSizes() {
+  return productStore.product.sizes.some(
+    (size) => size.unit_price > 0 || size.quantity > 0
+  );
+}
 async function handleSubmit() {
+  if (!validateSizes()) {
+    Toaster.error(
+      "At least one size must have a unit price or quantity greater than 0."
+    );
+    return;
+  }
   // Validate fields
   if (!validateForm()) {
     Toaster.error("Please fill all the required field");
@@ -633,17 +661,25 @@ const toggleSizeSelection = (sizeName) => {
 };
 
 const applyBulkUpdate = () => {
+  if (selectedSizes.value.length == 0) {
+    Toaster.error("Please select at least one size before updating.");
+    return;
+  }
+
   productStore.product.sizes.forEach((size) => {
     if (selectedSizes.value.includes(size.name)) {
-      if (bulkPrice.value !== null) size.unit_price = bulkPrice.value;
-      if (bulkQuantity.value !== null) size.quantity = bulkQuantity.value;
+      if (productStore.bulkPrice !== null)
+        size.unit_price = productStore.bulkPrice;
+      if (productStore.bulkQuantity !== null)
+        size.quantity = productStore.bulkQuantity;
     }
   });
 
   // Clear bulk inputs and unselect all sizes
-  bulkPrice.value = null;
-  bulkQuantity.value = null;
+  productStore.bulkPrice = null;
+  productStore.bulkQuantity = null;
   selectedSizes.value = [];
+
   Toaster.success("Price or Quantity updated");
 };
 
@@ -788,6 +824,10 @@ button:hover {
   font-weight: bold;
   background-color: white;
   transition: background-color 0.2s ease-in-out;
+}
+
+.all-sizes {
+  font-weight: bold;
 }
 
 .size-card.selected {
