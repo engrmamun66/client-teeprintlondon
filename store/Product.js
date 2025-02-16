@@ -46,7 +46,10 @@ export const useProductStore = defineStore("product", () => {
 
 
   function clearProduct(){
-    product.value = cloned_product.value
+    Object.keys(product.value).forEach(key => {
+      product.value[key] = cloned_product.value[key]
+    })
+    
   }
 
   let showModal = ref(false);

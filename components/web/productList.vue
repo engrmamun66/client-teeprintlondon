@@ -211,7 +211,7 @@ function addToCart(event: Event){
                                 <div class="teeprint-product" @click.stop="navigateTo('/details')">
                                     <div class="teeprint-product-inner">
                                         <div class="teeprint-product-image">
-                                            <img :src="product.thumbnail_image_url" alt="Img" />
+                                            <img :src="product.thumbnail_image_url || `/img/placeholder-image.jpg`" alt="Img" />
                                             <div class="teeprint-product-overlow">
                                                 <div class="teeprint-product-overlow-inner" @click.stop="false">
                                                     <nuxt-link :to="'/details'" class="teeprint-view-btn" title="Hello from speech bubble!">
