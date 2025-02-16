@@ -1,12 +1,8 @@
 <script setup>
-/**
- * Use Example
- * ===========
- * <lazy-web-GoogleReview></lazy-web-GoogleReview> 
- */
+import { ref, onMounted, nextTick } from 'vue';
+
 const widgetId = "d0b99e741d5c5237cc365589e66";
 const isLoaded = ref(false);
-let goggleReviewArea = ref(null);
 
 const loadTrustIndexScript = () => {
   return new Promise((resolve, reject) => {
@@ -31,7 +27,7 @@ const loadTrustIndexScript = () => {
       reject();
     };
 
-    goggleReviewArea.value.appendChild(script);
+    document.body.appendChild(script);
   });
 };
 
@@ -39,41 +35,43 @@ const initTrustIndex = () => {
   if (typeof Trustindex !== "undefined" && Trustindex.initWidgetsFromDom) {
     Trustindex.initWidgetsFromDom();
     console.log("✅ TrustIndex widget initialized.");
-    isLoaded.value = true; 
-
+    isLoaded.value = true;
   } else {
     console.error("❌ TrustIndex failed to load. Retrying...");
     setTimeout(initTrustIndex, 2000);
   }
 };
 
-
-
 onMounted(async () => {
-  await loadTrustIndexScript();  
+  await loadTrustIndexScript(); // Load the script dynamically
+  await nextTick(); // Ensure Vue DOM updates are done
+  initTrustIndex(); // Initialize the widget
 });
-
-
 </script>
 
 <template>
-    <div v-bind="$attrs">
-        <!-- <h2 class="text-center mb-2">Google Reviews</h2> -->
-        <div goggleReviewArea ref="goggleReviewArea" ></div>
-        <p class="text-center my-5 d-none">Loading reviews...</p>
+  <ClientOnly>
+    <div class="review-container">
+      <h2>Google Reviews</h2>
+      <div v-if="isLoaded" class="ti-widget" :data-widget-id="widgetId"></div>
+      <p v-else>Loading reviews...</p>
     </div>
-
+  </ClientOnly>
 </template>
 
-<style scoped> 
-
-[goggleReviewArea] > div:empty ~ p{
-    display: block !important;
+<style scoped>
+.review-container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
 }
-
 
 h2 {
   color: #333;
 }
-
 </style>

@@ -334,7 +334,7 @@ Visit Design in London to explore our premium design services and elevate your b
                             </h2>
                         </div>
                     </div>
-                    <div class="col-md-7">
+                    <!-- <div class="col-md-7">
                         <div class="clientreview-box">
                             <div class="clientreview-box-inner">
                                 <div class="client-review-icon-img">
@@ -367,7 +367,8 @@ Visit Design in London to explore our premium design services and elevate your b
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                    
                 </div>
             </div>
         </div>
