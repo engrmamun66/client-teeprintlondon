@@ -44,19 +44,8 @@ function withFilter(section: Section, {
     
 
     if(section === 'category'){
-
-        // menus.forEach((menu, i) => {
-        //     if(i != pIndex){
-        //         menu[i].is_checked = false
-        //         if(menu[i]['categories']?.length){
-        //             menu[i]['categories'].forEach(child => {
-        //                 // child.is_checked = false
-        //             })
-        //         }
-        //     }
-        // })
-
-
+  
+ 
         let bool = Boolean(menus[pIndex].is_checked)
         menus[pIndex].is_checked = !(bool)
         if(cIndex === -1){
@@ -65,7 +54,14 @@ function withFilter(section: Section, {
                     item.is_checked = menus[pIndex].is_checked
                 }) 
             } 
-        }  
+        } else if (cIndex > -1) {
+            menus[pIndex]['categories'][cIndex]['is_checked'] = !(!!(menus[pIndex]['categories'][cIndex].is_checked))
+            let hasUnchecke = menus[pIndex]['categories'].some(item => !item.is_checked)
+            if(hasUnchecke){
+                menus[pIndex].is_checked = false
+            }
+
+        }
          
 
     }
@@ -108,11 +104,11 @@ function withFilter(section: Section, {
                                                 </a>
                                                 <template v-if="item?.categories?.length">
                                                     <ul class="ps-4">
-                                                        <template v-for="(child2, index2) in item?.categories" :key="index2">
+                                                        <template v-for="(child2, index2) in item?.categories" :key="child2.id">
                                                             <li :parent-index="index" :child-index="index2">  
-                                                                <a @click.prevent="false" href="#">
+                                                                <a @click.stop.prevent="withFilter('category', {pIndex: index, cIndex: index2})" href="#">
                                                                     <label class="teeprint-checkbox" :for="`parent_${index2}`"> 
-                                                                        <input @click.stop="withFilter('category', {pIndex: index, cIndex: index2})" type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
+                                                                        <input type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
                                                                         {{ child2.name }} 
                                                                         <span></span>  
                                                                     </label> 
