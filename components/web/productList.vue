@@ -202,9 +202,8 @@ function addToCart(event: Event){
                         }"></pagination>
                     </div> 
 
-                    <div googleReviewDisplay></div>
-                    
-                    
+              
+                    <lazy-web-GoogleReview></lazy-web-GoogleReview> 
  
                 </div>
             </div>

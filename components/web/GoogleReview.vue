@@ -2,6 +2,7 @@
 
 const widgetId = "d0b99e741d5c5237cc365589e66";
 const isLoaded = ref(false);
+let goggleReviewArea = ref(null);
 
 const loadTrustIndexScript = () => {
   return new Promise((resolve, reject) => {
@@ -26,7 +27,7 @@ const loadTrustIndexScript = () => {
       reject();
     };
 
-    document.body.appendChild(script);
+    goggleReviewArea.value.appendChild(script);
   });
 };
 
@@ -60,9 +61,7 @@ onMounted(async () => {
 </script>
 
 <template>
-   <!-- <ClientOnly> 
-        <div class="ti-widget" :data-widget-id="widgetId"></div>  
-  </ClientOnly> --> 
+   <div ref="goggleReviewArea"></div>
 </template>
 
 <style scoped>
