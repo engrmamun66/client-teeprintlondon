@@ -58,6 +58,7 @@ onMounted(async () => {
 
 <template>
     <div v-bind="$attrs">
+        <h2 class="text-center mb-2">Google Reviews</h2>
         <div goggleReviewArea ref="goggleReviewArea" ></div>
         <p class="text-center my-5 d-none">Loading reviews...</p>
     </div>
@@ -68,6 +69,11 @@ onMounted(async () => {
 
 [goggleReviewArea] > div:empty ~ p{
     display: block !important;
+}
+
+
+h2 {
+  color: #333;
 }
 
 </style>
