@@ -15,11 +15,20 @@ watch(search, (a)=>{
         homeStore.searchedProducts = []
     }
 })
-watch(isFocused, (a)=>{  
-    if(!a){ 
-        homeStore.searchedProducts = []
-    }
+
+
+onMounted(() => {
+    setTimeout(() => {
+        let REVIEW_ELEMENTS = Array.from(document.querySelectorAll('[REVIEW_ELEMENT]'))
+        if(REVIEW_ELEMENTS.length){
+            REVIEW_ELEMENTS.forEach(el => {
+                console.log('333');
+                el.innerHTML = REVIEW_ELEMENT
+            })
+        }
+    }, 2000);
 })
+ 
 
  
 
@@ -56,21 +65,20 @@ watch(isFocused, (a)=>{
                             <template v-if="isFocused">
                                 <template v-if="H.isPendingAnyApi('Frontend:searchProduct')">
                                     <div role="listbox" class="dropdown-menu show">
-                                        <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
+                                        <div role="option" class="dropdown-item">
                                             <div v-for="x in 3" class="inner-serch d-flex mb-1">
                                                 <shimmer-effect width="25px" height="26px" class="me-2"></shimmer-effect> 
                                                 <shimmer-effect width="100%" height="26px"></shimmer-effect> 
                                             </div> 
-                                        </div>
-                                        
+                                        </div> 
                                     </div>
                                 </template>
                                 <template v-else-if="search && homeStore.searchedProducts?.length">
-                                    <template v-for="product in homeStore.searchedProducts" :key="product.id">
+                                    <template v-for="(product, i) in homeStore.searchedProducts" :key="i">
                                         <div role="listbox" class="dropdown-menu show">
-                                            <div role="option" class="dropdown-item" id="ngb-typeahead-0-0">
-                                                <div class="inner-serch cp" data-item="186061">
-                                                    <img :src="product.thumbnail_image_url"> {{ product.name }}
+                                            <div role="option" class="dropdown-item">
+                                                <div class="inner-serch cp">
+                                                    <img :src="product.thumbnail_image_url || `/img/placeholder-image.jpg`" @mouseover="log(homeStore.searchedProducts)"> {{ product.name }}
                                                 </div>
                                             </div> 
                                         </div>
@@ -171,8 +179,8 @@ watch(isFocused, (a)=>{
                                                         <ul>
                                                             <template v-for="(child2, index2) in item?.categories" :key="index2">
                                                                 <li>
-                                                                    <nuxt-link :to="`/products-by-category/${child2?.slug || 'not-found'}`"> {{ child2.name }} <i class="lni lni-chevron-right"></i></nuxt-link>
-                                                                    <template v-if="child2.children">
+                                                                    <nuxt-link :to="`/products-by-category/${child2?.slug || 'not-found'}`"> {{ child2.name }} <i v-if="child2.children?.length" class="lni lni-chevron-right"></i></nuxt-link>
+                                                                    <template v-if="child2.children?.length">
                                                                         <div class="teeprint-sub-submenu">
                                                                             <ul>
                                                                                 <template v-for="(child3, index3) in child2.children" :key="index3">

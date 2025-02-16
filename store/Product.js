@@ -46,7 +46,24 @@ export const useProductStore = defineStore("product", () => {
 
 
   function clearProduct(){
-    product.value = cloned_product.value
+    Object.keys(product.value).forEach(key => {
+      switch (key) {
+        case 'id':
+          delete cloned_product.value
+          break;
+        case 'sizes':
+          cloned_product.value['sizes'].forEach(item => {
+            item.unit_price = 0
+            item.quantity = 0
+          })
+          break;
+      
+        default:
+          product.value[key] = cloned_product.value?.[key] || null
+          break;
+      }
+    })
+    
   }
 
   let showModal = ref(false);
@@ -111,7 +128,7 @@ export const useProductStore = defineStore("product", () => {
         resetProduct();
         resetBrandAttribute();
         Toaster.success("Product added succsfully"); 
-        clearProduct()
+        resetProduct()
         navigateTo({name: 'admin_product_list'})
       }
     } catch (error) {
@@ -311,7 +328,7 @@ export const useProductStore = defineStore("product", () => {
     showSubCategory,
     productList,
     bulkPrice,
-    bulkQuantity,
+    bulkQuantity, 
   };
 });
 

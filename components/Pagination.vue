@@ -2,12 +2,23 @@
   <nav v-if="modelValue?.links?.length && modelValue?.links?.length > 3" aria-label="Page navigation example">
     <ul class="pagination">
       <li v-for="(link, i) in modelValue.links" :key="i" class="page-item">
-        <nuxt-link  
-        class="page-link" 
-        :class="[getActiveClass(i)]"
-        :to="link.active ? '' : makeRoute(i)"
-        @click="(i>0 && i < modelValue.links.length-1) ? $emit('jumpToPage', i) : handlePrevNext(i)"
-        v-html="getHtml(i)"></nuxt-link>
+        <template v-if="prevent">
+          <a
+          class="page-link" 
+          :class="[getActiveClass(i)]"
+          :to="link.active ? '' : makeRoute(i)"
+          @click.prevent="(i>0 && i < modelValue.links.length-1) ? $emit('jumpToPage', i) : handlePrevNext(i)"
+          v-html="getHtml(i)"></a>
+        </template>
+        <template v-else>
+          <nuxt-link  
+            class="page-link" 
+            :class="[getActiveClass(i)]"
+            :to="link.active ? '' : makeRoute(i)"
+            @click="(i>0 && i < modelValue.links.length-1) ? $emit('jumpToPage', i) : handlePrevNext(i)"
+            v-html="getHtml(i)"></nuxt-link>
+        </template>
+        
       </li>
     </ul>
   </nav>
@@ -37,6 +48,10 @@ let props = defineProps({
       total: 19,
     },
   },
+  prevent: {
+    default: true,
+    required: true,
+  }
 });
 
 const myEmit = defineEmits(["update:modelValue", "jumpToPage"]);
@@ -96,14 +111,14 @@ let jumpToPage = (page) => {
 a{
     background-color: #1e1e2d;
     color: rgb(150, 150, 150) !important;
-    background-color: transparent;
+    background-color: #ffffff52;
     border: 1px solid var(--linecolor-black);
     cursor: pointer !important;
 }
 a:hover,
 a:focus
  {
-    background-color: #242436 !important;
+    background-color: #ffffff !important;
     border: 1px solid var(--linecolor-black) !important;
     box-shadow: none !important;
 }
@@ -111,7 +126,7 @@ a.active-page,
 a.active-page:hover
 {
   color: var(--fontcolor-dark) !important;
-  background-color: var(--bgcolor-secondary) !important;
+  background-color: #ffffff;
   box-shadow: none !important;
 }
 </style>

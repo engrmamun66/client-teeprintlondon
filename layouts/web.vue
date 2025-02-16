@@ -6,6 +6,7 @@
       <web-inPageCart v-model="openCart"></web-inPageCart>
       <slot></slot>
       <web-footerArea></web-footerArea>
+      <!-- <web-GoogleReview></web-GoogleReview>  -->
     </div>
 </template>
 
@@ -47,6 +48,12 @@ useHead({
     },
     {
       src: "/js/main.js", 
+    }, 
+    {
+      src: "https://cdn.trustindex.io/loader.js?d0b99e741d5c5237cc365589e66", 
+      async: true,
+      defer: true,
+      'custom-element': 'amp-iframe',
     },
 
   ],

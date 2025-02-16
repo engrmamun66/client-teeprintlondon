@@ -1,11 +1,17 @@
 <template>
   <div>
     <div class="position-relative">
-      <page-content-header
+      <div class="d-flex justify-content-between">
+        <page-content-header
         :title="'Product Details'"
         :links="[]"
         :buttons="[]"
-      />
+        />
+        <div>
+          <a href="#" @click.prevent="navigateTo({name: 'admin_product_list'})" class="btn btn-success"> Back </a>
+        </div>
+       
+      </div>
       <div class="cards-container">
         <!-- Product Details Card -->
         <div class="card product-details-card">
@@ -561,7 +567,11 @@ const percentageChangeResult = computed(() => {
 });
 
 const isAllSelected = computed(() => {
-  return selectedSizes.value.length === productStore.product.sizes.length;
+  try {
+    return selectedSizes.value.length === productStore.product.sizes.length;
+  } catch (error) {
+    return false
+  }
 });
 
 const toggleAllSizes = () => {

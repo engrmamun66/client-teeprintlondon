@@ -4184,7 +4184,7 @@ profile modal css
 /* -------------------------------------------------------------------------- */
 .leap-admin-main-wrapper .leftside-top-nav .guard-searched-result {
     max-height: 40vh !important;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 .leap-admin-main-wrapper .leftside-top-nav .guard-searched-result li {

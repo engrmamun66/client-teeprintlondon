@@ -1,11 +1,18 @@
 <template>
   <div>
     <div class="position-relative">
-      <page-content-header
-        :title="'Product Details'"
-        :links="[]"
-        :buttons="[]"
-      />
+      <div class="d-flex justify-content-between">
+        <page-content-header
+          :title="'Product Details'"
+          :links="[]"
+          :buttons="[]"
+        />
+        <div>
+          <a href="#" @click.prevent="productStore.resetProduct();navigateTo({name: 'admin_product_list'})" class="btn btn-success"> Back </a>
+        </div>
+        
+      </div>
+      
       <div class="cards-container">
         <!-- Product Details Card -->
         <div class="card product-details-card">

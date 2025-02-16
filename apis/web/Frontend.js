@@ -19,7 +19,7 @@ export default {
   async searchProduct(search = null) {
     return await Api().get(`/search-products`, { params: { search } });
   }, 
-  async getProducts(paload={}) {
+  async getProducts(paload={}, params={}) {
     /**
      * 
      * 
@@ -29,7 +29,7 @@ export default {
       size_ids"": [5, 6],
       gender_ids"": [7, 8]
      */
-    return await Api().post(`/filter-products`, paload);
+    return await Api().post(`/filter-products`, paload, {params});
   }, 
  
 };

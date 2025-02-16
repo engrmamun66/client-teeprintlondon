@@ -3647,13 +3647,17 @@ Product list css
   font-size: 14px;
   padding: 12px 15px;
   display: block;
-  color: #666;
-  border-bottom: 1px solid #f2f3f8;
+  color: #666; 
   font-weight: 400;
 }
+.teeprint-category-menulist ul ul{ 
+  margin-top: 0px;
+}
+.teeprint-category-menulist ul ul li:last-child{ 
+  border-bottom: 1px solid #f2f3f8; 
+}
 .teeprint-category-menulist ul li a:hover {
-  background-color: var(--bgcolor-secondary);
-  color: #fff;
+  background-color: #f3f3f3; 
 }
 .teeprint-category-menulist ul li a i {
   float: right;
@@ -3724,6 +3728,7 @@ Product list css
   font-size: 14px !important;
   color: #666 !important;
   font-weight: 400;
+  margin-bottom: 0;
 }
 .orderby {
   width: 200px;
@@ -4242,8 +4247,7 @@ Product Details css
     border-bottom: 1px solid #e5e5e5;
 }
 .parts-engin-model .teeprint-category-menulist ul li a:hover {
-    background-color: transparent;
-    color: var(--fontcolor-secondary);
+    background-color: #f3f3f3; 
 }
 .addtocart-btn,
 .detailsquote-btn {

@@ -173,7 +173,6 @@ onMounted(async () => {
   // Categorystore.getParentcategorylist();
   try {
     const response = await axios.get('http://client-treeprintlondon-api.test/api/type-wise-category-list');
-    console.log('Category List:', response.data);
   } catch (error) {
     console.error('Error fetching category list:', error);
   }

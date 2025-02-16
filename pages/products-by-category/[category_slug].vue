@@ -8,14 +8,14 @@ definePageMeta({
 })
 
 
-const { slug } = useRoute().params
+const { category_slug } = useRoute().params
  
 </script>
 
 
 <template>
   <div>  
-    <web-productList :category-slug="slug" ></web-productList>
+    <web-productList :category-slug="category_slug" ></web-productList>
    
   </div>
 </template>

@@ -26,7 +26,8 @@ export const useHomeStore = defineStore("homeStore", () => {
 
       FrontendApi.searchProduct(search).then(response => {
         if(response.data.success){
-          searchedProducts.value = response.data.data || []  
+          searchedProducts.value = response.data.data || []
+          console.log('searchedProducts.value', searchedProducts.value?.length, searchedProducts.value);
           
         }
       })
@@ -37,9 +38,14 @@ export const useHomeStore = defineStore("homeStore", () => {
   }
 
 
-  let paginateData = ref([])
-  let products = ref([])
+  let paginateData = ref(useCookie('web_paginateData') || {})
+  let products = ref(useCookie('web_products') || [])
+  let queryParams = ref({
+    page: 1,
+    per_page: 2
+  })
   let payload = reactive({
+    search: '',
     category_slug: null,
     category_ids: [],
     brand_ids: [],
@@ -47,14 +53,20 @@ export const useHomeStore = defineStore("homeStore", () => {
     gender_ids: [],
   })
 
-  async function getProducts(){
+  async function getProducts({page}={}){
     try {
-
-      FrontendApi.getProducts(payload).then(response => {
+      let query = H.clone(queryParams.value)
+      if(page){
+        query.page = page
+      }
+      FrontendApi.getProducts(payload, query).then(response => {
         if(response.data.success){
           paginateData.value = response.data.data || {}
-          products.value = response.data.data?.data || []   
-          
+          products.value = response.data.data?.data || []
+          if(query.page == 1){
+            useCookie('web_paginateData').value = paginateData.value
+            useCookie('web_products').value = products.value
+          }
         }
       })
       
@@ -62,6 +74,14 @@ export const useHomeStore = defineStore("homeStore", () => {
       
     }
   }
+
+
+  function showingCountText(){ 
+      if(!paginateData.value?.total) return `Showing 0 of 0 results`
+
+      return `Showing 1-${queryParams.value.per_page} of ${paginateData.value?.total}  results`
+  }
+
 
 
     
@@ -74,8 +94,10 @@ export const useHomeStore = defineStore("homeStore", () => {
 
     paginateData,
     payload,
+    paginateData,
     products,
     getProducts,
+    showingCountText,
 
   };
 });

@@ -9,45 +9,6 @@ const { categorySlug } = defineProps({
     }
 })
  
-let products = ref([
-    {
-        "id": 1,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AM1120GYM20FRONT-6.jpg"
-    },
-    {
-        "id": 2,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AF02220BLK20FRONT-1.jpg"
-    },
-    {
-        "id": 3,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AF03020BLK20FRONT-1.jpg"
-    },
-    {
-        "id": 4,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AM0420BLK20FRONT-1.jpg"
-    },
-    {
-        "id": 5,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AM0420BLK20FRONT-1.jpg"
-    },
-    {
-        "id": 6,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AM1220BLK20FRONT-1.jpg"
-    }
-])
-
 if(categorySlug){
     homeStore.payload.category_slug = categorySlug
 }
@@ -68,8 +29,49 @@ function addToCart(event: Event){
     }
 }
 
+type Section = 'category' | 'brand' | 'price' | ''
+
+function withFilter(section: Section, {
+    pIndex = -1,
+    cIndex = -1,
+}={})
+{
+
+    let menus = H.clone(homeStore.menus)
+
+    console.log({pIndex, cIndex});
+ 
+    
+
+    if(section === 'category'){
+  
+ 
+        let bool = Boolean(menus[pIndex].is_checked)
+        menus[pIndex].is_checked = !(bool)
+        if(cIndex === -1){
+            if(menus[pIndex]['categories']?.length){
+                menus[pIndex]['categories'].forEach(item=> {
+                    item.is_checked = menus[pIndex].is_checked
+                }) 
+            } 
+        } else if (cIndex > -1) {
+            menus[pIndex]['categories'][cIndex]['is_checked'] = !(!!(menus[pIndex]['categories'][cIndex].is_checked))
+            let hasUnchecke = menus[pIndex]['categories'].some(item => !item.is_checked)
+            if(hasUnchecke){
+                menus[pIndex].is_checked = false
+            }
+
+        }
+         
+
+    }
+
+    homeStore.menus = menus
+}
 
 
+
+ 
 
 </script>
 
@@ -77,22 +79,49 @@ function addToCart(event: Event){
 
 <template>
     <section class="teeprint-list-product">
-        <h3 v-if="categorySlug" class="text-center mb-4">Category Products: {{ categorySlug }} </h3>
         <div class="container">
             <div class="row">
                 <div class="productlist-leftside">
                     <div class="teeprint-category-menu">
                         <div class="teeprint-category-menu-inner">
                             <div class="teeprint-categorymenu-title">
-                                <h5>Category</h5>
+                                <h5> Category  </h5>
                             </div>
                             <div class="teeprint-category-menulist">
-                                <ul>
-                                    <li><a href="#">Accessories<i class="lni lni-chevron-right"></i></a></li>
-                                    <li><a href="#">All in Ones<i class="lni lni-chevron-right"></i></a></li>
-                                    <li><a href="#">Aprons<i class="lni lni-chevron-right"></i></a></li>
-                                    <li><a href="#">Baby & Toddler<i class="lni lni-chevron-right"></i></a></li>
-                                </ul>
+                                <template v-if="homeStore.menus?.length">
+                                    <ul class="ps-3 mb-3">
+                                        <template v-for="(item, index) in homeStore.menus" :key="index">
+                                            <li :parent-index="index">
+                                                
+                                                <a href="#" class="text-black">
+                                                    <label class="teeprint-checkbox" :for="`main_${index}`"> 
+                                                        <input type="checkbox" :id="`main_${index}`" :checked="item?.is_checked" @click.stop="withFilter('category', {pIndex: index})" > 
+                                                        {{ item?.name }}  
+                                                        <i class="lni lni-chevron-right"></i>
+                                                        <span></span>
+                                                    </label>
+                                                     
+                                                </a>
+                                                <template v-if="item?.categories?.length">
+                                                    <ul class="ps-4">
+                                                        <template v-for="(child2, index2) in item?.categories" :key="child2.id">
+                                                            <li :parent-index="index" :child-index="index2">  
+                                                                <a @click.stop.prevent="withFilter('category', {pIndex: index, cIndex: index2})" href="#">
+                                                                    <label class="teeprint-checkbox" :for="`parent_${index2}`"> 
+                                                                        <input type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
+                                                                        {{ child2.name }} 
+                                                                        <span></span>  
+                                                                    </label> 
+                                                                </a>
+                                                            </li>  
+                                                        </template>
+                                                    </ul> 
+                                                </template>
+                                            </li>  
+                                        </template>
+                                    </ul>
+
+                                </template>
                             </div>
                         </div>
                     </div>
@@ -195,7 +224,7 @@ function addToCart(event: Event){
                 <div class="productlist-rightside">
                     <div class="row">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span>Showing 1–16 of 20 results</span>
+                            <span @click="log(homeStore.paginateData)" > {{ homeStore.showingCountText() }} </span>
                             <select name="orderby" class="orderby" aria-label="Shop order">
                                 <option value="popularity">Sort by popularity</option>
                                 <option value="rating">Sort by average rating</option>
@@ -211,7 +240,7 @@ function addToCart(event: Event){
                                 <div class="teeprint-product" @click.stop="navigateTo('/details')">
                                     <div class="teeprint-product-inner">
                                         <div class="teeprint-product-image">
-                                            <img :src="product.thumbnail_image_url" alt="Img" />
+                                            <img :src="product.thumbnail_image_url || `/img/placeholder-image.jpg`" alt="Img" />
                                             <div class="teeprint-product-overlow">
                                                 <div class="teeprint-product-overlow-inner" @click.stop="false">
                                                     <nuxt-link :to="'/details'" class="teeprint-view-btn" title="Hello from speech bubble!">
@@ -235,27 +264,14 @@ function addToCart(event: Event){
                             
                         </template>                         
                     </div>
-                    <!-- <div class="row mt-4">
-                        <div class="col-md-12">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div> -->
+                    <div class="mt-4 d-flex justify-content-center  ">
+                        <pagination v-model="homeStore.paginateData" :prevent="true" @jumpToPage="(page: number) => {
+                            homeStore.getProducts({page})
+                        }"></pagination>
+                    </div> 
+
+              
+ 
                 </div>
             </div>
         </div>
