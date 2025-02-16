@@ -236,11 +236,12 @@ function addToCart(event: Event){
                             
                         </template>                         
                     </div>
-                    <div class="row mt-4">
+                    <div class="mt-4 d-flex justify-content-center  ">
                         <pagination v-model="homeStore.paginateData" :prevent="true" @jumpToPage="(page) => {
                             homeStore.getProducts({page})
                         }"></pagination>
-                    </div>
+                    </div> 
+ 
                 </div>
             </div>
         </div>

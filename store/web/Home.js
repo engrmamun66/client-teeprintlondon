@@ -26,7 +26,8 @@ export const useHomeStore = defineStore("homeStore", () => {
 
       FrontendApi.searchProduct(search).then(response => {
         if(response.data.success){
-          searchedProducts.value = response.data.data || []  
+          searchedProducts.value = response.data.data || []
+          console.log('searchedProducts.value', searchedProducts.value?.length, searchedProducts.value);
           
         }
       })
@@ -44,6 +45,7 @@ export const useHomeStore = defineStore("homeStore", () => {
     per_page: 2
   })
   let payload = reactive({
+    search: '',
     category_slug: null,
     category_ids: [],
     brand_ids: [],

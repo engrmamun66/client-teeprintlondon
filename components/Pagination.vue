@@ -111,7 +111,7 @@ let jumpToPage = (page) => {
 a{
     background-color: #1e1e2d;
     color: rgb(150, 150, 150) !important;
-    background-color: transparent;
+    background-color: #ffffff52;
     border: 1px solid var(--linecolor-black);
     cursor: pointer !important;
 }
