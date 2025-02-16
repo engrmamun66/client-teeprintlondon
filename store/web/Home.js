@@ -37,8 +37,8 @@ export const useHomeStore = defineStore("homeStore", () => {
   }
 
 
-  let paginateData = ref({})
-  let products = ref([])
+  let paginateData = ref(useCookie('web_paginateData') || {})
+  let products = ref(useCookie('web_products') || [])
   let queryParams = ref({
     page: 1,
     per_page: 2
@@ -61,7 +61,10 @@ export const useHomeStore = defineStore("homeStore", () => {
         if(response.data.success){
           paginateData.value = response.data.data || {}
           products.value = response.data.data?.data || []
-           
+          if(query.page == 1){
+            useCookie('web_paginateData').value = paginateData.value
+            useCookie('web_products').value = products.value
+          }
         }
       })
       
