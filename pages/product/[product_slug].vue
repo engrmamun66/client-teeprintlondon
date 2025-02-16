@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 
 let homeStore = inject('homeStore')
 let { product_slug } = useRoute().params
@@ -11,21 +11,21 @@ definePageMeta({
   layout: 'web',
 })
 
-const { name, short_description, thumbnail_image } = homeStore.product;
+// const { name, short_description, thumbnail_image } = homeStore.product;
 
-useSeoMeta({
-  title: name,
-  ogTitle: name,
-  description: short_description,
-  ogDescription: short_description,
-  ogImage: thumbnail_image,
+// useSeoMeta({
+//   title: name,
+//   ogTitle: name,
+//   description: short_description,
+//   ogDescription: short_description,
+//   ogImage: thumbnail_image,
 //   twitterCard: 'summary_large_image',
-}) 
+// }) 
 
 
 
 function addToCart(){
-    let imgElement = document.querySelector('.teeprint-product-view-image img') as HTMLElement
+    let imgElement = document.querySelector('.teeprint-product-view-image img')
 
     cartAnimation({element: imgElement}, ()=>{
         useNuxtApp().$emit('openInPageCart', true)
