@@ -29,9 +29,53 @@ function addToCart(event: Event){
     }
 }
 
+type Section = 'category' | 'brand' | 'price' | ''
+
+function withFilter(section: Section, {
+    pIndex = -1,
+    cIndex = -1,
+}={})
+{
+
+    let menus = H.clone(homeStore.menus)
+
+    console.log({pIndex, cIndex});
+ 
+    
+
+    if(section === 'category'){
+
+        // menus.forEach((menu, i) => {
+        //     if(i != pIndex){
+        //         menu[i].is_checked = false
+        //         if(menu[i]['categories']?.length){
+        //             menu[i]['categories'].forEach(child => {
+        //                 // child.is_checked = false
+        //             })
+        //         }
+        //     }
+        // })
+
+
+        let bool = Boolean(menus[pIndex].is_checked)
+        menus[pIndex].is_checked = !(bool)
+        if(cIndex === -1){
+            if(menus[pIndex]['categories']?.length){
+                menus[pIndex]['categories'].forEach(item=> {
+                    item.is_checked = menus[pIndex].is_checked
+                }) 
+            } 
+        }  
+         
+
+    }
+
+    homeStore.menus = menus
+}
 
 
 
+ 
 
 </script>
 
@@ -45,15 +89,43 @@ function addToCart(event: Event){
                     <div class="teeprint-category-menu">
                         <div class="teeprint-category-menu-inner">
                             <div class="teeprint-categorymenu-title">
-                                <h5>Category</h5>
+                                <h5> Category  </h5>
                             </div>
                             <div class="teeprint-category-menulist">
-                                <ul>
-                                    <li><a href="#">Accessories<i class="lni lni-chevron-right"></i></a></li>
-                                    <li><a href="#">All in Ones<i class="lni lni-chevron-right"></i></a></li>
-                                    <li><a href="#">Aprons<i class="lni lni-chevron-right"></i></a></li>
-                                    <li><a href="#">Baby & Toddler<i class="lni lni-chevron-right"></i></a></li>
-                                </ul>
+                                <template v-if="homeStore.menus?.length">
+                                    <ul class="ps-3 mb-3">
+                                        <template v-for="(item, index) in homeStore.menus" :key="index">
+                                            <li :parent-index="index">
+                                                
+                                                <a href="#" class="text-black">
+                                                    <label class="teeprint-checkbox" :for="`main_${index}`"> 
+                                                        <input type="checkbox" :id="`main_${index}`" :checked="item?.is_checked" @click.stop="withFilter('category', {pIndex: index})" > 
+                                                        {{ item?.name }}  
+                                                        <i class="lni lni-chevron-right"></i>
+                                                        <span></span>
+                                                    </label>
+                                                     
+                                                </a>
+                                                <template v-if="item?.categories?.length">
+                                                    <ul class="ps-4">
+                                                        <template v-for="(child2, index2) in item?.categories" :key="index2">
+                                                            <li :parent-index="index" :child-index="index2">  
+                                                                <a @click.prevent="false" href="#">
+                                                                    <label class="teeprint-checkbox" :for="`parent_${index2}`"> 
+                                                                        <input @click.stop="withFilter('category', {pIndex: index, cIndex: index2})" type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
+                                                                        {{ child2.name }} 
+                                                                        <span></span>  
+                                                                    </label> 
+                                                                </a>
+                                                            </li>  
+                                                        </template>
+                                                    </ul> 
+                                                </template>
+                                            </li>  
+                                        </template>
+                                    </ul>
+
+                                </template>
                             </div>
                         </div>
                     </div>
