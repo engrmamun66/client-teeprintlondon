@@ -47,7 +47,21 @@ export const useProductStore = defineStore("product", () => {
 
   function clearProduct(){
     Object.keys(product.value).forEach(key => {
-      product.value[key] = cloned_product.value[key]
+      switch (key) {
+        case 'id':
+          delete cloned_product.value
+          break;
+        case 'sizes':
+          cloned_product.value['sizes'].forEach(item => {
+            item.unit_price = 0
+            item.quantity = 0
+          })
+          break;
+      
+        default:
+          product.value[key] = cloned_product.value?.[key] || null
+          break;
+      }
     })
     
   }
@@ -315,6 +329,7 @@ export const useProductStore = defineStore("product", () => {
     productList,
     bulkPrice,
     bulkQuantity,
+    clearProduct,
   };
 });
 
