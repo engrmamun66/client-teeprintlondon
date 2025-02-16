@@ -5,13 +5,18 @@ let { product_slug } = useRoute().params
 
 let isMounted = ref(false)
 
-let showEffect = computed(()=> H.isPendingAnyApi('Frontend:getProductDetails'))
+let showEffect = computed(()=> isMounted.value == false || H.isPendingAnyApi('Frontend:getProductDetails'))
 
 await homeStore.getProductDetails(product_slug)
 if(homeStore.product?.images?.length){
     homeStore.product.images[0].selected = true
 }
-  
+
+onMounted(()=>{
+    isMounted.value = true
+})
+
+
 definePageMeta({
   titleTemplate: `% :: ${ 'Teepring - Product'}`,
   name: 'product_details',
@@ -68,11 +73,13 @@ function addToCart(){
                             </div>
                             <div class="col-md-6 teeprint-product-rightside">
                                 <h5 class="teeprint-product-title">
-                                    Mens Premium Sweatshirt - Delta Frost Midnight</h5>
-                                <p class="teeprint-product-price">
+                                    {{ homeStore.product?.name }}
+                                </h5>
+                                <p class="teeprint-product-price"> 
+                                    <!-- <ShimmerEffect v-if="showEffect" width="150px" height="20px" /> -->
                                     <span class="amount">
-                                        ৳ 105,000.00
-                                    </span>
+                                        {{ H.formatPrice(homeStore.product?.sizes?.[0]?.unit_price) }}
+                                    </span>  
                                 </p>
                                 <div class="select-size">
                                     <h5>Select Size</h5>

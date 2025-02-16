@@ -30,15 +30,7 @@ export const useProductStore = defineStore("product", () => {
     colors: [],
     discount: null,
 
-    sizes: [
-      { id: 1, name: "XS", unit_price: 0, quantity: 0 },
-      { id: 2, name: "S", unit_price: 0, quantity: 0 },
-      { id: 3, name: "M", unit_price: 0, quantity: 0 },
-      { id: 4, name: "L", unit_price: 0, quantity: 0 },
-      { id: 5, name: "XL", unit_price: 0, quantity: 0 },
-      { id: 6, name: "XXL", unit_price: 0, quantity: 0 },
-      { id: 7, name: "XXXL", unit_price: 0, quantity: 0 },
-    ],
+    sizes: H.clone(globalData.sizes),
     status: 1,
   });
 
@@ -105,15 +97,7 @@ export const useProductStore = defineStore("product", () => {
         "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
       colors: [],
       discount: null,
-      sizes: [
-        { id: 1, name: "XS", unit_price: 0, quantity: 0 },
-        { id: 2, name: "S", unit_price: 0, quantity: 0 },
-        { id: 3, name: "M", unit_price: 0, quantity: 0 },
-        { id: 4, name: "L", unit_price: 0, quantity: 0 },
-        { id: 5, name: "XL", unit_price: 0, quantity: 0 },
-        { id: 6, name: "XXL", unit_price: 0, quantity: 0 },
-        { id: 7, name: "XXXL", unit_price: 0, quantity: 0 },
-      ],
+      sizes: H.clone(globalData.sizes),
       status: 1,
     };
   };
