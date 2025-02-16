@@ -373,6 +373,10 @@ Visit Design in London to explore our premium design services and elevate your b
         </div>
     </section>
 
+    <div class="container">
+        <lazy-web-GoogleReview class="mb-5"></lazy-web-GoogleReview> 
+    </div>
+
 
     <web-questions></web-questions>
 

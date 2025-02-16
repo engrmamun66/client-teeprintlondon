@@ -203,7 +203,6 @@ function addToCart(event: Event){
                     </div> 
 
               
-                    <lazy-web-GoogleReview></lazy-web-GoogleReview> 
  
                 </div>
             </div>

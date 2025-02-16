@@ -1,5 +1,9 @@
 <script setup>
-
+/**
+ * Use Example
+ * ===========
+ * <lazy-web-GoogleReview></lazy-web-GoogleReview> 
+ */
 const widgetId = "d0b99e741d5c5237cc365589e66";
 const isLoaded = ref(false);
 let goggleReviewArea = ref(null);
@@ -35,17 +39,7 @@ const initTrustIndex = () => {
   if (typeof Trustindex !== "undefined" && Trustindex.initWidgetsFromDom) {
     Trustindex.initWidgetsFromDom();
     console.log("✅ TrustIndex widget initialized.");
-    isLoaded.value = true;
-
-    // setTimeout(() => {
-    //     let widget = document.querySelector('.ti-widget') 
-    //     let element = Array.from(document.querySelector('[googleReviewDisplay]')) 
-    //     if(widget && element){
-    //         element.appendChild = widget
-    //     }
-    //     console.log({widget, element});
-       
-    // }, 5000);
+    isLoaded.value = true; 
 
   } else {
     console.error("❌ TrustIndex failed to load. Retrying...");
@@ -58,18 +52,22 @@ const initTrustIndex = () => {
 onMounted(async () => {
   await loadTrustIndexScript();  
 });
+
+
 </script>
 
 <template>
-   <div ref="goggleReviewArea"></div>
+    <div v-bind="$attrs">
+        <div goggleReviewArea ref="goggleReviewArea" ></div>
+        <p class="text-center my-5 d-none">Loading reviews...</p>
+    </div>
+
 </template>
 
-<style scoped>
-.ti-widget {
-  margin: 20px 0px;
+<style scoped> 
+
+[goggleReviewArea] > div:empty ~ p{
+    display: block !important;
 }
 
-iframe{
-   width: 100% !important; 
-}
 </style>
