@@ -50,6 +50,16 @@ export const H = {
     let price = parseFloat(String(amount || 0)).toFixed(2)
     return `${CURRENCY} ${price}`
   },
+  toggleLoopItem: function (data, index, key = "isShow") {
+    if (!data) return;
+    data?.forEach((item, i) => {
+      if (i == index) {
+        item[key] = !(item[key] ?? false);
+      } else {
+        item[key] = false;
+      }
+    });
+  },
   clone: function (data, { remove = [], add = {}, only = [] } = {}) {
     data = JSON.parse(JSON.stringify(data));
 

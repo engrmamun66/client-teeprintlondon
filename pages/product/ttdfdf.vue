@@ -1,20 +1,13 @@
-<script setup lang="ts">
+<script setup>
 
 let homeStore = inject('homeStore')
 let { product_slug } = useRoute().params
 
-let isMounted = ref(false)
-
-let showEffect = computed(()=> H.isPendingAnyApi('Frontend:getProductDetails'))
-
 await homeStore.getProductDetails(product_slug)
-if(homeStore.product?.images?.length){
-    homeStore.product.images[0].selected = true
-}
   
 definePageMeta({
   titleTemplate: `% :: ${ 'Teepring - Product'}`,
-  name: 'product_details',
+  name: 'product_details--',
   layout: 'web',
 })
 
@@ -42,6 +35,7 @@ function addToCart(){
 
 
 
+
 </script>
 
 
@@ -54,24 +48,26 @@ function addToCart(){
                         <div class="teeprint-productdetails-inner">
                             <div class="col-md-6 teeprint-product-leftside">
                                 <div class="teeprint-product-details-image">
-                                    <div class="teeprint-product-view-image" @click="log(homeStore.product)">
-                                        <img class="teeprint-product-viewimage-active" :src="homeStore.product?.thumbnail_image_url || PLACEHOLDER_IMAGE" alt="Img" />
+                                    <div class="teeprint-product-view-image">
+                                        <img class="teeprint-product-viewimage-active" :src="homeStore.product.thumbnail_image_url || PLACEHOLDER_IMAGE" alt="Img" />
                                     </div>
-                                    <div class="teeprint-product-multipleimage">
-                                        <template v-for="(img, i) in homeStore.product?.images || []" :key="i">
-                                            <div class="teeprint-product-thumb-item" :class="{'teeprint-product-thumb-active': img.selected}">
-                                                <img :src="img.image_url" alt="teeprint" @click="H.toggleLoopItem(homeStore.product?.images, i, 'selected   ')" />
-                                            </div> 
+                                    <!-- <div v-if="homeStore.product?.images?.length" class="teeprint-product-multipleimage">
+                                        <template v-for="imageUrl in homeStore.product?.images">
+                                            <div class="teeprint-product-thumb-item teeprint-product-thumb-active">
+                                                <img :src="imageUrl" alt="teeprint" />
+                                            </div>
+
                                         </template> 
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="col-md-6 teeprint-product-rightside">
-                                <h5 class="teeprint-product-title">
-                                    Mens Premium Sweatshirt - Delta Frost Midnight</h5>
+                                <h5 class="teeprint-product-title" @click="log(homeStore.product)">
+                                   {{ homeStore.product?.name }}
+                                </h5>
                                 <p class="teeprint-product-price">
                                     <span class="amount">
-                                        ৳ 105,000.00
+                                        {{ H.formatPrice(homeStore.product?.sizes[0].unit_price) }}
                                     </span>
                                 </p>
                                 <div class="select-size">
@@ -86,7 +82,7 @@ function addToCart(){
                                 <div class="teeprint-quantity">
                                     <div class="teeprint-num-in">
                                         <span class="teeprint-minus dis">-</span>
-                                        <input type="text" class="teeprint-in-num" value="1" readonly="true" max="99992" />
+                                        <input type="text" class="teeprint-in-num" value="1" readonly="" max="99992" />
                                         <span class="teeprint-plus">+</span>
                                     </div>
                                 </div>
