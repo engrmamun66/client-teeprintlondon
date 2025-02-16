@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 
 let homeStore = inject('homeStore')
 let { product_slug } = useRoute().params
@@ -59,7 +59,7 @@ function addToCart(){
                         <div class="teeprint-productdetails-inner">
                             <div class="col-md-6 teeprint-product-leftside">
                                 <div class="teeprint-product-details-image">
-                                    <div class="teeprint-product-view-image" @click="log(homeStore.product)">
+                                    <div class="teeprint-product-view-image" @click="log(homeStore.product)" v-memo="[homeStore.product]">
                                         <img class="teeprint-product-viewimage-active" :src="homeStore.product?.thumbnail_image_url || PLACEHOLDER_IMAGE" alt="Img" />
                                     </div>
                                     <div class="teeprint-product-multipleimage">
