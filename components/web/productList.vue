@@ -9,45 +9,6 @@ const { categorySlug } = defineProps({
     }
 })
  
-let products = ref([
-    {
-        "id": 1,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AM1120GYM20FRONT-6.jpg"
-    },
-    {
-        "id": 2,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AF02220BLK20FRONT-1.jpg"
-    },
-    {
-        "id": 3,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AF03020BLK20FRONT-1.jpg"
-    },
-    {
-        "id": 4,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AM0420BLK20FRONT-1.jpg"
-    },
-    {
-        "id": 5,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AM0420BLK20FRONT-1.jpg"
-    },
-    {
-        "id": 6,
-        "name": " Anthem Unisex Hoodie ",
-        "price": "£18.36",
-        "image_url": "https://teeprint.london/wp-content/uploads/2024/08/AM1220BLK20FRONT-1.jpg"
-    }
-])
-
 if(categorySlug){
     homeStore.payload.category_slug = categorySlug
 }
@@ -78,7 +39,6 @@ function addToCart(event: Event){
 
 <template>
     <section class="teeprint-list-product">
-        <h3 v-if="categorySlug" class="text-center mb-4">Category Products: {{ categorySlug }} </h3>
         <div class="container">
             <div class="row">
                 <div class="productlist-leftside">
@@ -237,10 +197,14 @@ function addToCart(event: Event){
                         </template>                         
                     </div>
                     <div class="mt-4 d-flex justify-content-center  ">
-                        <pagination v-model="homeStore.paginateData" :prevent="true" @jumpToPage="(page) => {
+                        <pagination v-model="homeStore.paginateData" :prevent="true" @jumpToPage="(page: number) => {
                             homeStore.getProducts({page})
                         }"></pagination>
                     </div> 
+
+                    <div googleReviewDisplay></div>
+                    
+                    
  
                 </div>
             </div>

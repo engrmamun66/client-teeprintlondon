@@ -6,6 +6,7 @@
       <web-inPageCart v-model="openCart"></web-inPageCart>
       <slot></slot>
       <web-footerArea></web-footerArea>
+      <!-- <web-GoogleReview></web-GoogleReview>  -->
     </div>
 </template>
 
