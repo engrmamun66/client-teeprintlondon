@@ -71,6 +71,7 @@ function addToCart(event: Event){
 
 
 
+
 </script>
 
 
@@ -195,7 +196,7 @@ function addToCart(event: Event){
                 <div class="productlist-rightside">
                     <div class="row">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span>Showing 1–16 of 20 results</span>
+                            <span @click="log(homeStore.paginateData)" > {{ homeStore.showingCountText() }} </span>
                             <select name="orderby" class="orderby" aria-label="Shop order">
                                 <option value="popularity">Sort by popularity</option>
                                 <option value="rating">Sort by average rating</option>
@@ -235,27 +236,11 @@ function addToCart(event: Event){
                             
                         </template>                         
                     </div>
-                    <!-- <div class="row mt-4">
-                        <div class="col-md-12">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div> -->
+                    <div class="row mt-4">
+                        <pagination v-model="homeStore.paginateData" :prevent="true" @jumpToPage="(page) => {
+                            homeStore.getProducts({page})
+                        }"></pagination>
+                    </div>
                 </div>
             </div>
         </div>
