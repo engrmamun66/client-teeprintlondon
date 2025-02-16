@@ -8,7 +8,7 @@
         :buttons="[]"
         />
         <div>
-          <a href="#" @click.prevent="navigateTo({name: 'admin_product_list'})" class="btn btn-primary"> Back </a>
+          <a href="#" @click.prevent="navigateTo({name: 'admin_product_list'})" class="btn btn-success"> Back </a>
         </div>
        
       </div>

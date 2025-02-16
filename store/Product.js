@@ -128,7 +128,7 @@ export const useProductStore = defineStore("product", () => {
         resetProduct();
         resetBrandAttribute();
         Toaster.success("Product added succsfully"); 
-        clearProduct()
+        resetProduct()
         navigateTo({name: 'admin_product_list'})
       }
     } catch (error) {
@@ -328,8 +328,7 @@ export const useProductStore = defineStore("product", () => {
     showSubCategory,
     productList,
     bulkPrice,
-    bulkQuantity,
-    clearProduct,
+    bulkQuantity, 
   };
 });
 
