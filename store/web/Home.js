@@ -41,7 +41,7 @@ export const useHomeStore = defineStore("homeStore", () => {
   let products = ref(useCookie('web_products') || [])
   let queryParams = ref({
     page: 1,
-    per_page: 2
+    per_page: 12
   })
   let payload = reactive({
     search: '',
