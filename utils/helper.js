@@ -12,6 +12,7 @@ export const REVIEW_ELEMENT = `
 export const log = (...args) => console.log(...args);
 export const dir = (data) => console.dir(data);
 export const warn = (data) => console.warn(data); 
+export const PLACEHOLDER_IMAGE = '/img/placeholder-image.jpg'
 
 export const FORMATS = {
   date: "MM-DD-YYYY",
@@ -44,6 +45,10 @@ export const H = {
     setTimeout(() => {
       callback(...args);
     }, time);
+  },
+  formatPrice: function(amount){
+    let price = parseFloat(String(amount || 0)).toFixed(2)
+    return `${CURRENCY} ${price}`
   },
   clone: function (data, { remove = [], add = {}, only = [] } = {}) {
     data = JSON.parse(JSON.stringify(data));

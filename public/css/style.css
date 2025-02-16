@@ -3942,7 +3942,12 @@ Product list css
     line-height: 45px;
   }
   .teeprint-category-menulist ul li a {
-    padding: 10px 15px;
+    padding: 3px 15px;
+  .teeprint-category-menulist ul ul li a {
+    padding: 0px 15px;
+  }
+  .teeprint-category-menulist ul ul li:last-child a{
+    margin-bottom: 110px;
   }
 }
 

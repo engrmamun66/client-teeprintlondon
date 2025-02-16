@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 let homeStore = inject('homeStore') as any ;
+let isMounted = ref(false)
 
 const { categorySlug } = defineProps({
     categorySlug: {
@@ -13,7 +14,7 @@ if(categorySlug){
     homeStore.payload.category_slug = categorySlug
 }
  
-homeStore.getProducts()
+
  
 
 function addToCart(event: Event){
@@ -29,6 +30,9 @@ function addToCart(event: Event){
     }
 }
 
+
+let dbounceGetProducts = H.debounce(homeStore.getProducts, 500);
+
 type Section = 'category' | 'brand' | 'price' | ''
 
 function withFilter(section: Section, {
@@ -37,14 +41,11 @@ function withFilter(section: Section, {
 }={})
 {
 
-    let menus = H.clone(homeStore.menus)
-
-    console.log({pIndex, cIndex});
- 
+    let menus = H.clone(homeStore.menus) 
     
 
     if(section === 'category'){
-  
+
  
         let bool = Boolean(menus[pIndex].is_checked)
         menus[pIndex].is_checked = !(bool)
@@ -58,17 +59,35 @@ function withFilter(section: Section, {
             menus[pIndex]['categories'][cIndex]['is_checked'] = !(!!(menus[pIndex]['categories'][cIndex].is_checked))
             let hasUnchecke = menus[pIndex]['categories'].some(item => !item.is_checked)
             if(hasUnchecke){
-                menus[pIndex].is_checked = false
+                menus[pIndex].is_checked = !hasUnchecke
             }
 
         }
+
+
+        let selectedCategories = menus.map(menu => menu.categories).flat().filter(c => c.is_checked).map(c => c.id)
+        homeStore.payload.category_ids = selectedCategories
          
+        homeStore.menus = menus
 
-    }
+    } 
 
-    homeStore.menus = menus
+
+    dbounceGetProducts()
 }
 
+
+onMounted(async () => {
+    await homeStore.getProducts()
+    homeStore.menus.forEach(menu => {
+        menu.is_checked = false
+        menu.categories.forEach(cat => {
+            cat.is_checked = false
+        })
+    })
+
+    isMounted.value = true
+})
 
 
  
@@ -87,6 +106,9 @@ function withFilter(section: Section, {
                             <div class="teeprint-categorymenu-title">
                                 <h5> Category  </h5>
                             </div>
+                            <!-- 
+                            With category filter
+                            -->
                             <div class="teeprint-category-menulist">
                                 <template v-if="homeStore.menus?.length">
                                     <ul class="ps-3 mb-3">
@@ -166,7 +188,7 @@ function withFilter(section: Section, {
                                 <h5>Price</h5>
                             </div>
                             <div class="teeprint-category-menulist">
-                                
+                                <web-range></web-range>
                             </div>
                         </div>
                     </div>
@@ -235,34 +257,54 @@ function withFilter(section: Section, {
                         </div>
                     </div>
                     <div class="row productlist-itemrow">
-                        <template v-for="product in homeStore.products">
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-4 col-6">
-                                <div class="teeprint-product" @click.stop="navigateTo('/details')">
-                                    <div class="teeprint-product-inner">
-                                        <div class="teeprint-product-image">
-                                            <img :src="product.thumbnail_image_url || `/img/placeholder-image.jpg`" alt="Img" />
-                                            <div class="teeprint-product-overlow">
-                                                <div class="teeprint-product-overlow-inner" @click.stop="false">
-                                                    <nuxt-link :to="'/details'" class="teeprint-view-btn" title="Hello from speech bubble!">
-                                                        <i class="bx bx-search-alt"></i>
-                                                    </nuxt-link>
-                                                    <a href="#" class="teeprint-addcart-btn" @click.stop.prevent="addToCart" >
-                                                        <i class="bx bx-cart"></i>
-                                                    </a>
-                                                </div>
+                        <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getProducts')">
+                            <template v-for="x in 12">
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-4 col-6">
+                                    <div class="teeprint-product" @click.stop="navigateTo('/details')">
+                                        <div class="teeprint-product-inner">
+                                            <div class="teeprint-product-image d-flex justify-content-center">
+                                                <ShimmerEffect width="calc(100% - 30px)" height="200px" radius="0px"></ShimmerEffect> 
                                             </div>
-                                        </div>
-                                        <div class="teeprint-product-body">
-                                            <h5 class="teeprint-product-title">
-                                                {{product.name}}
-                                            </h5>
-                                            <span class="teeprint-price">£18.36</span>
+                                            <div class="teeprint-product-body">
+                                                <ShimmerEffect width="100%" height="20px" class="mb-2"></ShimmerEffect>
+                                                <ShimmerEffect width="100px" height="20px"></ShimmerEffect> 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                        </template>                         
+                                
+                            </template>  
+                        </template>
+                        <template v-else>
+                            <template v-for="product in homeStore.products">
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-4 col-6">
+                                    <div class="teeprint-product" @click.stop="navigateTo(`/product/${product.slug}`)">
+                                        <div class="teeprint-product-inner">
+                                            <div class="teeprint-product-image">
+                                                <img :src="product.thumbnail_image_url || `/img/placeholder-image.jpg`" alt="Img" />
+                                                <div class="teeprint-product-overlow">
+                                                    <div class="teeprint-product-overlow-inner" @click.stop="false">
+                                                        <nuxt-link :to="`/product/${product.slug}`" class="teeprint-view-btn" title="Hello from speech bubble!">
+                                                            <i class="bx bx-search-alt"></i>
+                                                        </nuxt-link>
+                                                        <a href="#" class="teeprint-addcart-btn" @click.stop.prevent="addToCart" >
+                                                            <i class="bx bx-cart"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="teeprint-product-body">
+                                                <h5 class="teeprint-product-title">
+                                                    {{product.name}}
+                                                </h5>
+                                                <span class="teeprint-price">£18.36</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </template>                         
+                        </template>
                     </div>
                     <div class="mt-4 d-flex justify-content-center  ">
                         <pagination v-model="homeStore.paginateData" :prevent="true" @jumpToPage="(page: number) => {

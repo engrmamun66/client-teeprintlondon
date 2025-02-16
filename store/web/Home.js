@@ -26,8 +26,7 @@ export const useHomeStore = defineStore("homeStore", () => {
 
       FrontendApi.searchProduct(search).then(response => {
         if(response.data.success){
-          searchedProducts.value = response.data.data || []
-          console.log('searchedProducts.value', searchedProducts.value?.length, searchedProducts.value);
+          searchedProducts.value = response.data.data || [] 
           
         }
       })
@@ -59,16 +58,15 @@ export const useHomeStore = defineStore("homeStore", () => {
       if(page){
         query.page = page
       }
-      FrontendApi.getProducts(payload, query).then(response => {
-        if(response.data.success){
-          paginateData.value = response.data.data || {}
-          products.value = response.data.data?.data || []
-          if(query.page == 1){
-            useCookie('web_paginateData').value = paginateData.value
-            useCookie('web_products').value = products.value
-          }
+      let response = await FrontendApi.getProducts(payload, query) 
+      if(response.data.success){
+        paginateData.value = response.data.data || {}
+        products.value = response.data.data?.data || []
+        if(query.page == 1){
+          useCookie('web_paginateData').value = paginateData.value
+          useCookie('web_products').value = products.value
         }
-      })
+      } 
       
     } catch (error) {
       
@@ -80,6 +78,19 @@ export const useHomeStore = defineStore("homeStore", () => {
       if(!paginateData.value?.total) return `Showing 0 of 0 results`
 
       return `Showing 1-${queryParams.value.per_page} of ${paginateData.value?.total}  results`
+  }
+
+  let product = ref({})
+  async function getProductDetails(slug){ 
+    try { 
+      let response = await FrontendApi.getProductDetails(slug) 
+      if(response.data.success){
+        product.value = response.data.data || {} 
+      } 
+      
+    } catch (error) {
+      
+    }
   }
 
 
@@ -94,10 +105,13 @@ export const useHomeStore = defineStore("homeStore", () => {
 
     paginateData,
     payload,
+    queryParams,
     paginateData,
     products,
     getProducts,
     showingCountText,
+    getProductDetails,
+    product,
 
   };
 });

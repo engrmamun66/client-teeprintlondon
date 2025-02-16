@@ -6,6 +6,7 @@ export const FrontendEndpoints = {
   submitQuote: '/quotations',
   searchProduct: '/search-products',
   getProducts: '/filter-products',
+  getProductDetails: '/product-details-by-slug/\\d+',
 }
 
 
@@ -30,6 +31,9 @@ export default {
       gender_ids"": [7, 8]
      */
     return await Api().post(`/filter-products`, paload, {params});
+  }, 
+  async getProductDetails(slug, params={}) { 
+    return await Api().get(`/product-details-by-slug/${slug}`, {params});
   }, 
  
 };

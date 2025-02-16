@@ -6,7 +6,7 @@ homeStore.getTypewiseCategoryList()
 let search = ref('')
 let isFocused = ref(false) 
 
-let dbounceSearch = H.debounce(homeStore.searchProduct, 300);
+let dbounceSearch = H.debounce(String(homeStore.searchProduct).trimStart().trimEnd(), 300);
 
 
 watch(search, (a)=>{ 
@@ -14,23 +14,7 @@ watch(search, (a)=>{
     if(!a){ 
         homeStore.searchedProducts = []
     }
-})
-
-
-onMounted(() => {
-    setTimeout(() => {
-        let REVIEW_ELEMENTS = Array.from(document.querySelectorAll('[REVIEW_ELEMENT]'))
-        if(REVIEW_ELEMENTS.length){
-            REVIEW_ELEMENTS.forEach(el => {
-                console.log('333');
-                el.innerHTML = REVIEW_ELEMENT
-            })
-        }
-    }, 2000);
-})
- 
-
- 
+}) 
 
 </script>
 
@@ -54,7 +38,7 @@ onMounted(() => {
                         <div class="teeprint-header-search-inner">
                             <div class="teeprint-category-search">
                                 <div class="teeprint-category-search-input">
-                                    <input @focus.stop="isFocused=true" @focusout.stop="H.delay(()=>isFocused=false, 100)" v-model="search" type="search" placeholder="Search For Products" />
+                                    <input @focus.stop="isFocused=true" @focusout.stop="H.delay(()=>isFocused=false, 100)" v-model.trim="search" type="search" placeholder="Search For Products" />
                                 </div>
                                 <div class="teeprint-category-search-button">
                                     <button type="button" class="btn theme-btn teeprint-category-search-btn">

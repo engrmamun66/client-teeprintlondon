@@ -1,9 +1,27 @@
 <script setup lang="ts">
+
+let homeStore = inject('homeStore')
+let { product_slug } = useRoute().params
+
+await homeStore.getProductDetails(product_slug)
   
 definePageMeta({
-  titleTemplate: '% :: details', 
+  titleTemplate: `% :: ${ 'Teepring - Product'}`,
+  name: 'product_details',
   layout: 'web',
 })
+
+const { name, short_description, thumbnail_image } = homeStore.product;
+
+useSeoMeta({
+  title: name,
+  ogTitle: name,
+  description: short_description,
+  ogDescription: short_description,
+  ogImage: thumbnail_image,
+//   twitterCard: 'summary_large_image',
+}) 
+
 
 
 function addToCart(){
@@ -29,27 +47,25 @@ function addToCart(){
                             <div class="col-md-6 teeprint-product-leftside">
                                 <div class="teeprint-product-details-image">
                                     <div class="teeprint-product-view-image">
-                                        <img class="teeprint-product-viewimage-active" src="https://teeprint.london/wp-content/uploads/2024/08/AM1120GYM20FRONT-6.jpg" alt="Img" />
+                                        <img class="teeprint-product-viewimage-active" :src="homeStore.product.thumbnail_image_url || PLACEHOLDER_IMAGE" alt="Img" />
                                     </div>
-                                    <div class="teeprint-product-multipleimage">
-                                        <div class="teeprint-product-thumb-item teeprint-product-thumb-active">
-                                            <img src="https://teeprint.london/wp-content/uploads/2024/08/AM1120GYM20FRONT-6.jpg" alt="teeprint" />
-                                        </div>
-                                        <div class="teeprint-product-thumb-item">
-                                            <img src="https://teeprint.london/wp-content/uploads/2024/08/AM1120GYM20FRONT-6.jpg" alt="teeprint" />
-                                        </div>
-                                        <div class="teeprint-product-thumb-item">
-                                            <img src="https://teeprint.london/wp-content/uploads/2024/08/AM1120GYM20FRONT-6.jpg" alt="teeprint" />
-                                        </div>
-                                    </div>
+                                    <!-- <div v-if="homeStore.product?.images?.length" class="teeprint-product-multipleimage">
+                                        <template v-for="imageUrl in homeStore.product?.images">
+                                            <div class="teeprint-product-thumb-item teeprint-product-thumb-active">
+                                                <img :src="imageUrl" alt="teeprint" />
+                                            </div>
+
+                                        </template> 
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="col-md-6 teeprint-product-rightside">
-                                <h5 class="teeprint-product-title">
-                                    Mens Premium Sweatshirt - Delta Frost Midnight</h5>
+                                <h5 class="teeprint-product-title" @click="log(homeStore.product)">
+                                   {{ homeStore.product?.name }}
+                                </h5>
                                 <p class="teeprint-product-price">
                                     <span class="amount">
-                                        ৳ 105,000.00
+                                        {{ H.formatPrice(homeStore.product?.sizes[0].unit_price) }}
                                     </span>
                                 </p>
                                 <div class="select-size">
