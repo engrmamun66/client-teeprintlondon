@@ -58,7 +58,7 @@ onMounted(async () => {
 
 <template>
     <div v-bind="$attrs">
-        <h2 class="text-center mb-2">Google Reviews</h2>
+        <!-- <h2 class="text-center mb-2">Google Reviews</h2> -->
         <div goggleReviewArea ref="goggleReviewArea" ></div>
         <p class="text-center my-5 d-none">Loading reviews...</p>
     </div>
