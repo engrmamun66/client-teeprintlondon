@@ -117,10 +117,11 @@ const progressStyle = computed(() => {
 </template>
 
 <style scoped>
-::selection {
-  color: #fff;
-  background: #17a2b8;
+ 
+.wrapper {
+  --range-color: #444444; 
 }
+
 .wrapper {
   width: 100%;
   background: #fff;
@@ -162,7 +163,7 @@ input[type="number"]::-webkit-inner-spin-button {
   right: 25%;
   position: absolute;
   border-radius: 5px;
-  background: #17a2b8;
+  background: var(--range-color);
 }
 .range-input {
   position: relative;
@@ -186,7 +187,7 @@ input[type="range"]::-webkit-slider-thumb {
   height: 17px;
   width: 17px;
   border-radius: 50%;
-  background: #17a2b8;
+  background: var(--range-color);
   pointer-events: auto;
   -webkit-appearance: none;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
@@ -196,7 +197,7 @@ input[type="range"]::-moz-range-thumb {
   width: 17px;
   border: none;
   border-radius: 50%;
-  background: #17a2b8;
+  background: var(--range-color);
   pointer-events: auto;
   -moz-appearance: none;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
