@@ -210,7 +210,11 @@ onMounted(()=>{
   font-weight: 300;
   margin: 2em 0;
 }
-
+@media (max-width: 767px) {
+  .accordion button {
+    font-size: 15px;
+  }
+}
 
 
 

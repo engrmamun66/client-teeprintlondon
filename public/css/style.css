@@ -761,10 +761,10 @@ h2.section-heading-title-big {
 }
 @media (max-width: 767px) {
   h4.section-heading-title-small {
-      font-size: 16px;
+      font-size: 14px;
   }
   h2.section-heading-title-big {
-    font-size: 30px;
+    font-size: 22px;
   }
   .section-paragraph {
     font-size: 15px;
@@ -1405,26 +1405,38 @@ Header css
 }
 
 @media (max-width: 991px) {
-  .teeprint-header .teeprint-top-header {
+  .teeprint-header .teeprint-menu-header {
+    /* position: fixed;
+    height: 70px;
+    top: 0; */
+    background-color: var(--fontcolor-primary);
+    height: 70px;
+  }
+  .teeprint-header-usercart {
+    display: none;
+  }
+  .teeprint-logo {
     display: none;
   }
   .teeprint-header .teeprint-middle-header {
-    display: none;
+    height: 75px;
   }
-  .teeprint-header .teeprint-menu-header {
-    position: fixed;
-    height: 70px;
-    top: 0;
-    background-color: var(--fontcolor-primary);
+  .teeprint-middle-header .container {
+    height: 100%;
+  }
+  .teeprint-middle-header .container .row {
+    justify-content: center;
+    height: 100%;
   }
   .teeprint-header .teeprint-menu-header .container {
     background-color: transparent;
   }
   .teeprint-header .teeprint-menu-header .teeprint-logo {
     display: block;
+    height: 70px;
   }
   .teeprint-header .teeprint-menu-header .teeprint-logo-area {
-    height: 70px;
+    height: 100%;
     padding-left: 15px;
   }
   .teeprint-logo-area-inner {
@@ -1435,17 +1447,17 @@ Header css
   }
   .teeprint-logo-area-inner .teeprint-logo-area-middle {
     display: table-cell;
-    height: 25px;
+    height: 40px;
     vertical-align: middle;
     -webkit-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
   }
   .teeprint-logo-area-inner .teeprint-logo-area-middle a {
     display: block;
-    height: 25px;
+    height: 40px;
   }
   .teeprint-logo-area-inner .teeprint-logo-area-middle a img {
-    height: 20px !important;
+    height: 40px !important;
     width: auto !important;
     max-width: unset !important;
     -webkit-transition: all 0.4s ease-in-out;
@@ -2077,6 +2089,9 @@ about us css
   .teeprint-makes-section .teeprint-makes-box .teeprint-makes-content .teeprint-makes-title {
     font-size: 18px;
     line-height: 25px;
+  }
+  .teeprint-makes-section iframe {
+    height: auto;
   }
 }
 
@@ -3943,8 +3958,6 @@ Product list css
   }
   .teeprint-category-menulist ul li a {
     padding: 3px 15px;
-  .teeprint-category-menulist ul ul li a {
-    padding: 0px 15px;
   }
   .teeprint-category-menulist ul ul li:last-child a{
     margin-bottom: 110px;
@@ -3969,11 +3982,11 @@ Product list css
       height: auto;
       max-height: unset;
   }
-  .teeprint-product-rightside {
+  /* .teeprint-product-rightside {
       flex: 0 0 100%;
       max-width: 100%;
       padding-top: 20px;
-  }
+  } */
 }
 
 @media (max-width: 767px) {
@@ -4406,7 +4419,7 @@ Product Details css
         padding-bottom: 30px;
     }
     .teeprint-product-rightside, .teeprint-product-rightside {
-        padding-left: 0px;
+        padding-left: 30px;
     }
     .addtocart-btn, .detailsquote-btn {
         font-size: 12px;
@@ -4419,6 +4432,11 @@ Product Details css
     .teeprint-pricing-features ul li {
         font-size: 13px;
     }
+}
+@media(max-width:767px) {
+  .teeprint-product-rightside, .teeprint-product-rightside {
+    padding-left: 0px;
+}
 }
 /*--- /.price-range-slider ---*/
 
