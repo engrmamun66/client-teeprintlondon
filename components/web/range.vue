@@ -1,3 +1,22 @@
+
+<template> 
+  <div class="wrapper"> 
+      <div class="price-input mb-4"> 
+          <input :value="getMinMax.min" type="number" readonly class="input-min"> 
+          <input :value="getMinMax.max" type="number" readonly class="input-max"> 
+      </div>
+      <div class="slider">
+          <div class="progress" :style="`left:${progressStyle.left};right:${progressStyle.right}`" ></div>
+      </div>
+      <div class="range-input">
+          <input v-model="inputMin" @change="flipValueAfterChange" @input="updateModelValue" type="range" class="range-min" :min="min" :max="max" step="1">
+          <input v-model="inputMax" @change="flipValueAfterChange" @input="updateModelValue" type="range" class="range-max" :min="min" :max="max" step="1">
+      </div>
+  </div>  
+</template>
+
+
+
 <script setup>
 
 
@@ -100,21 +119,6 @@ const progressStyle = computed(() => {
 
 </script>
 
-<template> 
-    <div class="wrapper"> 
-        <div class="price-input"> 
-            <input :value="getMinMax.min" type="number" readonly class="input-min"> 
-            <input :value="getMinMax.max" type="number" readonly class="input-max"> 
-        </div>
-        <div class="slider">
-            <div class="progress" :style="`left:${progressStyle.left};right:${progressStyle.right}`" ></div>
-        </div>
-        <div class="range-input">
-            <input v-model="inputMin" @change="flipValueAfterChange" @input="updateModelValue" type="range" class="range-min" :min="min" :max="max" step="1">
-            <input v-model="inputMax" @change="flipValueAfterChange" @input="updateModelValue" type="range" class="range-max" :min="min" :max="max" step="1">
-        </div>
-    </div>  
-</template>
 
 <style scoped>
  
@@ -126,7 +130,7 @@ const progressStyle = computed(() => {
   width: 100%;
   background: #fff;
   border-radius: 10px;
-  padding: 20px; 
+  padding: 20px;  
 }
 header h2 {
   font-size: 24px;
@@ -144,6 +148,7 @@ header p {
 } 
 .price-input > input {
   width: 48%; 
+  border: 1px solid #e3e3e3;
 } 
  
 input[type="number"]::-webkit-outer-spin-button,

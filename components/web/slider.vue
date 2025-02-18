@@ -27,7 +27,7 @@
                </div>
            </div>
            <div class="teeprint-owl-carousel-item">
-               <div class="teeprint-owl-intro-slide" style="background-image: url('./img/home/layout1/slider.jpg');">
+               <div class="teeprint-owl-intro-slide">
                    <div class="teeprint-owl-intro-slide-overley">
                        <div class="teeprint-container">
                            <div class="teeprint-row teeprint-align-center">
@@ -52,7 +52,7 @@
                </div>
            </div>
            <div class="teeprint-owl-carousel-item">
-               <div class="teeprint-owl-intro-slide" style="background-image: url('./img/slider.jpg');">
+               <div class="teeprint-owl-intro-slide">
                    <div class="teeprint-owl-intro-slide-overley">
                        <div class="teeprint-container">
                            <div class="teeprint-row teeprint-align-center">

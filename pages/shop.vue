@@ -7,7 +7,6 @@ definePageMeta({
   layout: 'web',
 })
 
-
 </script>
 
 

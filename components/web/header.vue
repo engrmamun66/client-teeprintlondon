@@ -106,7 +106,7 @@ watch(search, (a)=>{
                         <div class="teeprint-logo-area">
                             <div class="teeprint-logo-area-inner">
                                 <div class="teeprint-logo-area-middle">
-                                    <a href="#">
+                                    <a href="/">
                                         <img src="/img/logo.jpg" alt="logo image" />
                                     </a>
                                 </div>

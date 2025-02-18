@@ -1,58 +1,62 @@
 <script setup>
+import { ref, computed, inject, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import { useSeoMeta } from '#imports';
 
-let homeStore = inject('homeStore')
-let { product_slug } = useRoute().params
+let homeStore = inject('homeStore');
+let { product_slug } = useRoute().params;
 
-let isMounted = ref(false)
+let isMounted = ref(false);
 
-let showEffect = computed(()=> isMounted.value == false || H.isPendingAnyApi('Frontend:getProductDetails'))
 
-await homeStore.getProductDetails(product_slug)
-if(homeStore.product?.images?.length){
-    homeStore.product.images[0].selected = true
+ 
+
+await homeStore.getProductDetails(product_slug);
+
+if (homeStore.product?.images?.length) {
+    homeStore.product.images.unshift({
+        id: 0,
+        selected: true,
+        image_url: homeStore.product?.thumbnail_image_url
+    }) 
 }
 
-onMounted(()=>{
-    isMounted.value = true
-})
-
+onMounted(() => {
+    isMounted.value = true;
+});
 
 definePageMeta({
-  titleTemplate: `% :: ${ 'Teepring - Product'}`,
-  name: 'product_details',
-  layout: 'web',
-})
+    titleTemplate: `%s :: Teepring - Product`, // Dynamic title template
+    name: 'product_details',
+    layout: 'web',
+});
 
+// Extract product details for SEO
 const { name, short_description, thumbnail_image } = homeStore.product;
 
+// Set SEO meta tags
 useSeoMeta({
-  title: name,
-  ogTitle: name,
-  description: short_description,
-  ogDescription: short_description,
-  ogImage: thumbnail_image,
-  twitterCard: 'summary_large_image',
-}) 
+    title: `% :: ${name}`, // Dynamic title based on product name
+    ogTitle: name, // Open Graph title
+    description: short_description, // Meta description
+    ogDescription: short_description, // Open Graph description
+    ogImage: thumbnail_image, // Open Graph image
+    twitterCard: 'summary_large_image', // Twitter card type
+});
 
-
-
-function addToCart(){
-    let imgElement = document.querySelector('.teeprint-product-view-image img')
-
-    cartAnimation({element: imgElement}, ()=>{
-        useNuxtApp().$emit('openInPageCart', true)
-    })
+// Function to handle adding product to cart
+function addToCart() {
+    let imgElement = document.querySelector('.teeprint-product-view-image img'); 
+    cartAnimation({ element: imgElement }, () => {
+        useNuxtApp().$emit('openInPageCart', true);
+    });
 }
-
-
-
-
 </script>
 
 
 <template>
     <div>
-        <section class="teeprint-product-details-wrapper">
+        <section v-if="homeStore.product" class="teeprint-product-details-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="teeprint-productdetails-body">
@@ -60,7 +64,14 @@ function addToCart(){
                             <div class="col-md-6 teeprint-product-leftside">
                                 <div class="teeprint-product-details-image">
                                     <div class="teeprint-product-view-image" @click="log(homeStore.product)" v-memo="[homeStore.product]">
-                                        <img class="teeprint-product-viewimage-active" :src="homeStore.product?.thumbnail_image_url || PLACEHOLDER_IMAGE" alt="Img" />
+                                        <template v-if="!isMounted">
+                                           <ShimmerEffect height="200px"></ShimmerEffect> 
+                                        </template>
+                                        <template v-else>
+                                            <template v-for="(img, i) in homeStore.product?.images || []" :key="i">
+                                                <img v-if="img?.selected" class="teeprint-product-viewimage-active" :src="img?.image_url || PLACEHOLDER_IMAGE" alt="Img" />
+                                            </template>
+                                        </template>
                                     </div>
                                     <div class="teeprint-product-multipleimage">
                                         <template v-for="(img, i) in homeStore.product?.images || []" :key="i">

@@ -191,30 +191,7 @@ onMounted(async () => {
                                 <web-range></web-range>
                             </div>
                         </div>
-                    </div>
-                    <div class="teeprint-category-menu">
-                        <div class="teeprint-category-menu-inner">
-                            <div class="teeprint-categorymenu-title">
-                                <h5>Status</h5>
-                            </div>
-                            <div class="teeprint-category-menulist">
-                                <div class="brand-list">
-                                    <div class="teeprint-checkbox-inline">
-                                        <label class="teeprint-checkbox" for="brand"> 
-                                            <input type="checkbox" id="brand"> In Stock 
-                                            <span></span> 
-                                        </label>
-                                    </div>
-                                    <div class="teeprint-checkbox-inline">
-                                        <label class="teeprint-checkbox" for="brand2"> 
-                                            <input type="checkbox" id="brand2"> Out Of Stock 
-                                            <span></span> 
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div> 
                     <div class="teeprint-category-menu">
                         <div class="teeprint-category-menu-inner">
                             <div class="teeprint-categorymenu-title">
