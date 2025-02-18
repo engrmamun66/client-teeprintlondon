@@ -131,7 +131,7 @@ export const H = {
       options.push({
         id: 2,
         name: 'Same Day Delivery', 
-        price: 15.00,
+        price: 0.00,
         delivery_date: moment().format(FORMATS.date),
       })
     }

@@ -113,7 +113,7 @@ onMounted(async () => {
                                 <template v-if="homeStore.menus?.length">
                                     <ul class="ps-3 mb-3">
                                         <template v-for="(item, index) in homeStore.menus" :key="index">
-                                            <li :parent-index="index">
+                                            <li v-if="index < 2" :parent-index="index">
                                                 
                                                 <a href="#" class="text-black">
                                                     <label class="teeprint-checkbox" :for="`main_${index}`"> 
@@ -296,3 +296,10 @@ onMounted(async () => {
         </div>
     </section>
 </template>
+
+<style scoped>
+.teeprint-category-menulist ul li a { 
+    padding: 3px 0px; 
+}
+
+</style>

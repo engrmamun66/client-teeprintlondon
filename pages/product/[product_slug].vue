@@ -21,27 +21,26 @@ if (homeStore.product?.images?.length) {
     }) 
 }
 
-onMounted(() => {
-    isMounted.value = true;
+onMounted(async () => { 
+    isMounted.value = true; 
 });
 
 definePageMeta({
-    titleTemplate: `%s :: Teepring - Product`, // Dynamic title template
+    titleTemplate: `%s :: Teepring - Product`, 
     name: 'product_details',
     layout: 'web',
 });
-
-// Extract product details for SEO
+ 
 const { name, short_description, thumbnail_image } = homeStore.product;
 
 // Set SEO meta tags
 useSeoMeta({
-    title: `% :: ${name}`, // Dynamic title based on product name
-    ogTitle: name, // Open Graph title
-    description: short_description, // Meta description
-    ogDescription: short_description, // Open Graph description
-    ogImage: thumbnail_image, // Open Graph image
-    twitterCard: 'summary_large_image', // Twitter card type
+    title: `% :: ${name}`,
+    ogTitle: name,
+    description: short_description,
+    ogDescription: short_description,
+    ogImage: thumbnail_image,
+    twitterCard: 'summary_large_image',
 });
 
 // Function to handle adding product to cart
@@ -64,19 +63,14 @@ function addToCart() {
                             <div class="col-md-6 teeprint-product-leftside">
                                 <div class="teeprint-product-details-image">
                                     <div class="teeprint-product-view-image" @click="log(homeStore.product)" v-memo="[homeStore.product]">
-                                        <template v-if="!isMounted">
-                                           <ShimmerEffect height="200px"></ShimmerEffect> 
-                                        </template>
-                                        <template v-else>
-                                            <template v-for="(img, i) in homeStore.product?.images || []" :key="i">
-                                                <img v-if="img?.selected" class="teeprint-product-viewimage-active" :src="img?.image_url || PLACEHOLDER_IMAGE" alt="Img" />
-                                            </template>
-                                        </template>
+                                        <template v-for="(img, i) in homeStore.product?.images || []" :key="i">
+                                            <img v-if="img?.selected" class="teeprint-product-viewimage-active" :src="img?.image_url || PLACEHOLDER_IMAGE" alt="Img" />
+                                        </template> 
                                     </div>
                                     <div class="teeprint-product-multipleimage">
                                         <template v-for="(img, i) in homeStore.product?.images || []" :key="i">
                                             <div class="teeprint-product-thumb-item" :class="{'teeprint-product-thumb-active': img.selected}">
-                                                <img :src="img.image_url" alt="teeprint" @click="H.toggleLoopItem(homeStore.product?.images, i, 'selected   ')" />
+                                                <img :src="img.image_url" alt="teeprint" @click="H.toggleLoopItem(homeStore.product?.images, i, 'selected')" />
                                             </div> 
                                         </template> 
                                     </div>

@@ -150,8 +150,9 @@ let price = ref(5.49)
                                     <td>
 
                                         <select v-model="price" class="px-0 ps-1">
-                                            <template v-for="opt in H.getDeliveryOptions()">
-                                                <option :value="opt.price">{{opt.name}} ({{CURRENCY}} {{ opt.price }})</option> 
+                                            <template v-for="(opt, i) in H.getDeliveryOptions()">
+                                                <option v-if="i ==2" :value="opt.price">{{opt.name}}</option> 
+                                                <option v-else :value="opt.price">{{opt.name}} ({{CURRENCY}} {{ opt.price }})</option> 
                                             </template>
                                         </select>
                                     
