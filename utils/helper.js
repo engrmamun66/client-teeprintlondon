@@ -130,7 +130,7 @@ export const H = {
     if(1){
       options.push({
         id: 2,
-        name: 'Same Day Delivery', 
+        name: 'Same Day Pickup', 
         price: 0.00,
         delivery_date: moment().format(FORMATS.date),
       })
