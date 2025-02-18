@@ -107,34 +107,21 @@ function addToCart() {
                                     <a class="teeprint-button detailsquote-btn"> <i class='bx bx-comment'></i> Instant Quote </a>
                                 </div>
                                 <hr class="pd-devided">
-                                <span class="product-otherinfo">
-                                    Categories:
-                                    <samp>Chefswear & Catering, Headwear</samp>
+                                <span class="product-otherinfo d-flex"> 
+                                    <strong>Category:&nbsp;</strong>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">{{ homeStore.product?.category?.parent?.name }}</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">{{ homeStore.product?.category?.name }}</li>
+                                        </ol>
+                                    </nav>
                                 </span>
                                 <div class="product-details-sortdes">
-                                    <h6>All prices are VAT inclusive</h6>
-                                    <ul>
-                                        <li>Unisex styling.</li>
-                                        <li>Coolmax? panels for maximum comfort.</li>
-                                        <li>Keeps you cool.</li>
-                                        <li>Elasticated back and tie tapes.</li>
-                                        <li>Domestic wash 60??C.</li>
-                                    </ul>
+                                    <h6>Short Description</h6>
+                                    <div v-html="homeStore.product.short_description"></div>
                                 </div>
-                                <div class="product-details-sortdes">
-                                    <h6>Premium Sweatshirt</h6>
-                                    <ul>
-                                        <li>Regular fit, Crew Neck </li>
-                                        <li>High-weight, 230 GSM</li>
-                                    </ul>
-                                </div>
-                                <div class="product-details-sortdes">
-                                    <h6>Fabric</h6>
-                                    <ul>
-                                        <li>Regular fit, Crew Neck </li>
-                                        <li>High-weight, 230 GSM</li>
-                                    </ul>
-                                </div>
+                                
+                                
                                 <table class="table">
                                     <thead>
                                         <tr>
