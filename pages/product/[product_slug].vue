@@ -104,7 +104,7 @@ function addToCart() {
                                 </div>
                                 <div class="product-details-btn">
                                     <a class="teeprint-button teeprint-theme-btn addtocart-btn" @click="addToCart()"><i class="bx bx-shopping-bag"></i> Add to Cart </a>
-                                    <a class="teeprint-button detailsquote-btn"> <i class='bx bx-comment'></i> Instant Quote </a>
+                                    <nuxt-link :to="{name: 'quote'}" class="teeprint-button detailsquote-btn"> <i class='bx bx-comment'></i> Instant Quote </nuxt-link>
                                 </div>
                                 <hr class="pd-devided">
                                 <span class="product-otherinfo d-flex"> 
