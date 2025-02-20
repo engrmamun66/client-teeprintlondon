@@ -18,11 +18,12 @@ export const useAuthStore = defineStore("auth", () => {
             if (response.status == 200) { 
                 useCookie('access_token').value = response?.data?.data?.access_token 
                 localStorage.setItem('user', JSON.stringify(response?.data?.data?.user));
-                console.log(response.data.data.user)
+
                 navigateTo({name: 'dashboard'});
             }
         } catch (err) {
             loading.value = false;
+            Toaster.error("Invalid Email or Password.")
             if (err?.response?.status == 401) {
                 loginFormError.value.type = 401;
                 loginFormError.value.message = err.response?.data?.message || err.response?.data?.error;

@@ -12,7 +12,7 @@
             <div class="login-container">
               <div class="login-container-body">
                 <div class="text-center">
-                  <img src="/img/logo.jpg" class="img-fluid login-logo" />
+                  <img src="/img/logo.jpg" class="img-fluid login-logo" style="border-radius: 20%;" />
                 </div>
                 <div class="login-heading">Welcome to the Admin Panel!</div>
                 <div class="login-subheading">Sign in to continue</div>
@@ -157,7 +157,7 @@ const submitLoginForm = async () => {
 }
 
 .login-register-overlay {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(141, 139, 139, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 40px;
@@ -167,7 +167,7 @@ const submitLoginForm = async () => {
 }
 
 .login-container {
-  background: white;
+  background: linear-gradient(135deg, #8998dd 0%, #764ba2 100%);
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -188,7 +188,7 @@ const submitLoginForm = async () => {
 
 .login-subheading {
   font-size: 14px;
-  color: #666;
+  color: #000000;
   text-align: center;
   margin-bottom: 30px;
   margin-right: 1rem;
