@@ -5364,3 +5364,12 @@ checkout css
     padding: 12px 20px;
   }
 }
+
+
+/*============================= 
+printing css  
+==============================*/
+
+.printing-subtitle strong {
+  font-weight: 700;
+}

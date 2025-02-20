@@ -19,7 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container mb-4">
+  <div class="container mb-4 mt-5 pt-4">
     <div class="row mb-3">
       <div class="col-md-12">
         <div class="section-main-heading text-center">
