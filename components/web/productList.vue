@@ -78,6 +78,7 @@ function withFilter(section: Section, {
 
 
 onMounted(async () => {
+    homeStore.resetPayload()
     await homeStore.getProducts()
     homeStore.menus.forEach(menu => {
         menu.is_checked = false

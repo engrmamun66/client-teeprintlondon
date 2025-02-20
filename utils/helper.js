@@ -8,7 +8,7 @@ export const REVIEW_ELEMENT = `
   <script defer async src='https://cdn.trustindex.io/loader.js?d0b99e741d5c5237cc365589e66'></script>
   <script async custom-element='amp-iframe' src='https://cdn.ampproject.org/v0/amp-iframe-0.1.js'></script>   
 `
-
+export const APPNAME = 'Teeprint'
 export const log = (...args) => console.log(...args);
 export const dir = (data) => console.dir(data);
 export const warn = (data) => console.warn(data); 

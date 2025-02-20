@@ -1,8 +1,26 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-
+import fs from 'fs';
+import path from 'path';
 const THEME = process.env.THEME ? process.env.THEME : "default";
 
 export default defineNuxtConfig({
+  hooks: {
+    'build:before': () => {
+      // Define the JSON data
+      const jsonData = {
+        message: 'This file was created during the build process!',
+        timestamp: new Date().toISOString(),
+      };
+
+      // Define the file path (root directory)
+      const filePath = path.resolve(__dirname, 'data.json');
+
+      // Write the JSON data to the file
+      fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2));
+
+      console.log('data.json file created successfully in the root directory!');
+    },
+  },
   dir: {
     middleware: `middlewares`,
     pages: `pages`,

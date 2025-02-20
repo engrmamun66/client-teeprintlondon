@@ -7,6 +7,7 @@ let homeStore = inject('homeStore');
 let { product_slug } = useRoute().params;
 
 let isMounted = ref(false);
+let imageIndex = ref(0);
 
 
  
@@ -26,7 +27,7 @@ onMounted(async () => {
 });
 
 definePageMeta({
-    titleTemplate: `%s :: Teepring - Product`, 
+    titleTemplate: `%s :: Product Details`, 
     name: 'product_details',
     layout: 'web',
 });
@@ -35,7 +36,7 @@ const { name, short_description, thumbnail_image } = homeStore.product;
 
 // Set SEO meta tags
 useSeoMeta({
-    title: `% :: ${name}`,
+    title: `${APPNAME} :: ${name}`,
     ogTitle: name,
     description: short_description,
     ogDescription: short_description,
@@ -63,19 +64,20 @@ function addToCart() {
                             <div class="col-md-6 teeprint-product-leftside">
                                 <div class="teeprint-product-details-image">
                                     <div class="teeprint-product-view-image" @click="log(homeStore.product)" v-memo="[homeStore.product]">
-                                        <template v-for="(img, i) in homeStore.product?.images || []" :key="i">
-                                            <img v-if="img?.selected" class="teeprint-product-viewimage-active" :src="img?.image_url || PLACEHOLDER_IMAGE" alt="Img" />
-                                        </template> 
+                                        
+                                        <img v-memo="[imageIndex]" class="teeprint-product-viewimage-active" :src="homeStore.product?.images?.[imageIndex]?.image_url || PLACEHOLDER_IMAGE" alt="Img" />
+                                         
                                     </div>
                                     <div class="teeprint-product-multipleimage">
                                         <template v-for="(img, i) in homeStore.product?.images || []" :key="i">
-                                            <div class="teeprint-product-thumb-item" :class="{'teeprint-product-thumb-active': img.selected}">
-                                                <img :src="img.image_url" alt="teeprint" @click="H.toggleLoopItem(homeStore.product?.images, i, 'selected')" />
+                                            <div class="teeprint-product-thumb-item" :class="{'teeprint-product-thumb-active': img?.selected}">
+                                                <img :src="img.image_url" alt="teeprint" @click="imageIndex = i" />
                                             </div> 
                                         </template> 
                                     </div>
                                 </div>
                             </div>
+                        
                             <div class="col-md-6 teeprint-product-rightside">
                                 <h5 class="teeprint-product-title">
                                     {{ homeStore.product?.name }}

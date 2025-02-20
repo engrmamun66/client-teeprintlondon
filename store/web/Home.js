@@ -52,6 +52,15 @@ export const useHomeStore = defineStore("homeStore", () => {
     gender_ids: [],
   })
 
+  function resetPayload(){
+    payload.search = ''
+    payload.category_slug = null
+    payload.category_ids = []
+    payload.brand_ids = []
+    payload.size_ids = []
+    payload.gender_ids = []
+  }
+
   async function getProducts({page}={}){
     try {
       let query = H.clone(queryParams.value)
@@ -111,6 +120,7 @@ export const useHomeStore = defineStore("homeStore", () => {
     getProducts,
     showingCountText,
     getProductDetails,
+    resetPayload,
     product,
 
   };

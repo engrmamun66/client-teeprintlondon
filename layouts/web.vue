@@ -17,7 +17,7 @@ const homeStore = useHomeStore();
 provide('homeStore', homeStore)
 
 useHead({
-  title: "Tee Print",
+  title: APPNAME,
   // titleTemplate: '%s | Home',
   meta: [{ name: "description", content: "My amazing site434." }],
   bodyAttrs: [{"class": `leap-admin-body`},],
