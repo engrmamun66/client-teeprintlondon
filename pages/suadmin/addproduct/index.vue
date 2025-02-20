@@ -27,7 +27,7 @@
               >
               <el-BaseInput
                 type="text"
-                placeholder="Name of T shirt"
+                placeholder="Product name"
                 v-model="productStore.product.name"
                 :class="{ 'is-invalid': errors.name }"
               />

@@ -100,7 +100,8 @@
         v-model="Categorystore.showCategoryModal"
         :title="editMode ? 'Update Category' : 'Add Category'"
         @clicked-submit="handleSubmit"
-        @clicked-cancel="Categorystore.showCategoryModal = false"
+        @clicked-cancel="Categorystore.showCategoryModal = false;asMounted()"
+        @clicked-close="Categorystore.showCategoryModal = false;asMounted()"
       >
         <template #modalbody>
           <div class="row">
@@ -302,10 +303,15 @@ function OpenModal() {
   Categorystore.showCategoryModal = !Categorystore.showCategoryModal;
 }
 
-onMounted(async () => {
+
+async function asMounted(){
   await Categorystore.getCategories();
   await Categorystore.getParentcategorylist();
   await Categorystore.getTypes();
+}
+
+onMounted(async () => {
+  await asMounted()
 });
 </script>
 <style scoped>

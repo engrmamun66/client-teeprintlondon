@@ -1,4 +1,5 @@
 <script setup>
+import seoMeta from '~/seo-meta.json'
 import { ref, computed, inject, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useSeoMeta } from '#imports';
@@ -9,20 +10,25 @@ let { product_slug } = useRoute().params;
 let isMounted = ref(false);
 let imageIndex = ref(0);
 
+let getThumbnailImage = computed(() => {
+    return homeStore.product?.images?.[imageIndex.value]?.image_url
+})
 
- 
 
-await homeStore.getProductDetails(product_slug);
+console.log('product_slug', seoMeta[product_slug]);
 
-if (homeStore.product?.images?.length) {
-    homeStore.product.images.unshift({
-        id: 0,
-        selected: true,
-        image_url: homeStore.product?.thumbnail_image_url
-    }) 
-}
+
 
 onMounted(async () => { 
+    await homeStore.getProductDetails(product_slug);
+
+    if (homeStore.product?.images?.length) {
+        homeStore.product.images.unshift({
+            id: 0,
+            selected: true,
+            image_url: homeStore.product?.thumbnail_image_url
+        }) 
+    }
     isMounted.value = true; 
 });
 
@@ -32,16 +38,15 @@ definePageMeta({
     layout: 'web',
 });
  
-const { name, short_description, thumbnail_image } = homeStore.product;
+const { seo_title, seo_description, seo_image } = seoMeta?.[product_slug] || {};
 
 // Set SEO meta tags
 useSeoMeta({
-    title: `${APPNAME} :: ${name}`,
-    ogTitle: name,
-    description: short_description,
-    ogDescription: short_description,
-    ogImage: thumbnail_image,
-    twitterCard: 'summary_large_image',
+    title: `${APPNAME} :: ${seo_title}`,
+    ogTitle: seo_title,
+    description: seo_description,
+    ogDescription: seo_description,
+    ogImage: seo_image, 
 });
 
 // Function to handle adding product to cart
@@ -56,22 +61,22 @@ function addToCart() {
 
 <template>
     <div>
-        <section v-if="homeStore.product" class="teeprint-product-details-wrapper">
+        <section class="teeprint-product-details-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="teeprint-productdetails-body">
                         <div class="teeprint-productdetails-inner">
                             <div class="col-md-6 teeprint-product-leftside">
                                 <div class="teeprint-product-details-image">
-                                    <div class="teeprint-product-view-image" @click="log(homeStore.product)" v-memo="[homeStore.product]">
+                                    <div class="teeprint-product-view-image" @click="log(homeStore.product)">
                                         
-                                        <img v-memo="[imageIndex]" class="teeprint-product-viewimage-active" :src="homeStore.product?.images?.[imageIndex]?.image_url || PLACEHOLDER_IMAGE" alt="Img" />
+                                        <img class="teeprint-product-viewimage-active" :src="getThumbnailImage || PLACEHOLDER_IMAGE" alt="Img" />
                                          
                                     </div>
                                     <div class="teeprint-product-multipleimage">
                                         <template v-for="(img, i) in homeStore.product?.images || []" :key="i">
                                             <div class="teeprint-product-thumb-item" :class="{'teeprint-product-thumb-active': img?.selected}">
-                                                <img :src="img.image_url" alt="teeprint" @click="imageIndex = i" />
+                                                <img :src="img.image_url" alt="teeprint" @click="imageIndex = i;H.toggleLoopItem(homeStore.product?.images, i, 'selected')" />
                                             </div> 
                                         </template> 
                                     </div>
@@ -82,19 +87,34 @@ function addToCart() {
                                 <h5 class="teeprint-product-title">
                                     {{ homeStore.product?.name }}
                                 </h5>
-                                <p class="teeprint-product-price"> 
-                                    <!-- <ShimmerEffect v-if="showEffect" width="150px" height="20px" /> -->
-                                    <span class="amount">
-                                        {{ H.formatPrice(homeStore.product?.sizes?.[0]?.unit_price) }}
-                                    </span>  
-                                </p>
+                                <div class="d-flex justify-content-start align-items-center mb-3">
+                                    <p class="teeprint-product-price m-0 p-0"> 
+                                        <!-- <ShimmerEffect v-if="showEffect" width="150px" height="20px" /> -->
+                                        <span class="amount">
+                                            {{ H.formatPrice(homeStore.product?.sizes?.[0]?.unit_price) }}
+                                        </span>  
+                                    </p>
+                                    <web-discountCard v-if="homeStore.product?.discount" class="ms-4">
+                                        {{Number(homeStore.product?.discount).toFixed(0)}}
+                                    </web-discountCard>
+                                </div>
+                                
                                 <div class="select-size">
                                     <h5>Select Size</h5>
-                                    <ul>
-                                        <li>M</li>
-                                        <li>L</li>
-                                        <li>XL</li>
-                                        <li>2XL</li>
+                                    <ul v-if="homeStore.product?.sizes">
+                                        <template v-for="(item, i) in homeStore.product?.sizes" :key="i">
+                                            <li>{{ item.name }}</li>
+
+                                        </template>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="select-size select-colors">
+                                    <h5>Select Color</h5>
+                                    <ul v-if="homeStore.product?.colors">
+                                        <template v-for="(item, i) in homeStore.product?.colors" :key="i">
+                                            <li>{{ item.name }}</li>
+                                        </template> 
                                     </ul>
                                 </div>
                                 <div class="teeprint-quantity">

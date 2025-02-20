@@ -8,12 +8,15 @@ export default defineNuxtConfig({
     'build:before': () => {
       // Define the JSON data
       const jsonData = {
-        message: 'This file was created during the build process!',
-        timestamp: new Date().toISOString(),
+        "women-t-shirt": {
+          title: "Teepring Product Title",
+          Description: "Lorem ipsum description",
+          keywords: 'T-shirt, cloths, women-collection'
+        }
       };
 
       // Define the file path (root directory)
-      const filePath = path.resolve(__dirname, 'data.json');
+      const filePath = path.resolve(__dirname, 'seo-meta.json');
 
       // Write the JSON data to the file
       fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2));
