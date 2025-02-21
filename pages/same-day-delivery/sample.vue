@@ -20,10 +20,14 @@ function addToCart() {
     <section class="teeprint-makes-section">
       <div class="container">
         <div class="row">
-          <web-postCard
+          <MultipleImageCard
             :right="true"
             title="Revolutionizes Printing Services in London"
-            image-url="/img/Home/Leonardo_Phoenix_10_A_highquality_crisp_image_of_a_crisp_white_1.jpg"
+            :images="[
+              '/img/Home/Leonardo_Phoenix_10_A_highquality_crisp_image_of_a_crisp_white_1.jpg',
+              '/img/Home/Flux_Dev_A_vibrant_and_modern_illustration_featuring_a_casual__2.jpeg',
+              '/img/Banner/Leonardo_Phoenix_10_a_vibrant_and_eyecatching_business_banner_0.jpg',
+            ]"
           >
             We understand that every customer has unique needs, which is why we
             proudly offer no minimum order quantity on all our custom t-shirt
@@ -37,61 +41,15 @@ function addToCart() {
             service, regardless of order size. Perfect for individuals,
             businesses, or events.
 
-            <br />
-
-            <nuxt-link
-              :to="{ name: 'quote' }"
-              class="teeprint-button teeprint-theme-btn zoomInOut mt-5"
-              data-v-inspector="pages/index.vue:277:25"
-            >
-              Get A Free Quote <i class="la la-arrow-right ml-1"></i
-            ></nuxt-link>
-          </web-postCard>
-        </div>
-      </div>
-    </section>
-    <section class="trusted-logo">
-      <div class="trusted-logo-content-inner">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="owl-carousel owl-theme">
-                <div class="item">
-                  <img src="/img/bloomberg.jpg" alt="trusted img" />
-                </div>
-                <div class="item">
-                  <img src="/img/coinbase.png" alt="trusted img" />
-                </div>
-                <div class="item">
-                  <img src="/img/databricks.jpg" alt="trusted img" />
-                </div>
-                <div class="item">
-                  <img src="/img/ft.png" alt="trusted img" />
-                </div>
-                <div class="item">
-                  <img src="/img/gem.jpg" alt="trusted img" />
-                </div>
-                <div class="item">
-                  <img src="/img/google.png" alt="trusted img" />
-                </div>
-                <div class="item">
-                  <img src="/img/meta.png" alt="trusted img" />
-                </div>
-                <div class="item">
-                  <img src="/img/milbrook.jpg" alt="trusted img" />
-                </div>
-                <div class="item">
-                  <img src="/img/nhs.jpg" alt="trusted img" />
-                </div>
-                <div class="item">
-                  <img src="/img/pitch.jpg" alt="trusted img" />
-                </div>
-                <div class="item">
-                  <img src="/img/queen.jpg" alt="trusted img" />
-                </div>
-              </div>
-            </div>
-          </div>
+            <template #link>
+              <nuxt-link
+                :to="{ name: 'quote' }"
+                class="teeprint-button teeprint-theme-btn zoomInOut mt-5"
+              >
+                Get A Free Quote <i class="la la-arrow-right ml-1"></i>
+              </nuxt-link>
+            </template>
+          </MultipleImageCard>
         </div>
       </div>
     </section>
@@ -386,8 +344,12 @@ function addToCart() {
         </div>
       </div>
     </section>
-    <div class="container">
-      <web-DuelCard></web-DuelCard>
+    <div class="container mt-5">
+      <web-DuelCard
+        img_left="/img/quote-page-card-image-1.jpeg"
+        img_right="/img/quote-page-card-image-2.jpeg"
+        paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
+      />
     </div>
 
     <web-questions></web-questions>
