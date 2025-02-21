@@ -22,6 +22,7 @@
     "mitt": "^3.0.1",
     "moment": "^2.29.4",
     "pinia": "^2.3.0",
+    "swiper": "^8.4.7",
     "vue-ctk-date-time-picker": "^3.0.0-alpha.0"
   }
 }

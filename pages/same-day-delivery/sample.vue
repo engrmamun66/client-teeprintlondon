@@ -17,7 +17,7 @@ function addToCart() {
 
 <template>
   <div>
-    <section class="teeprint-makes-section">
+    <!-- <section class="teeprint-makes-section">
       <div class="container">
         <div class="row">
           <web-postCard
@@ -49,7 +49,46 @@ function addToCart() {
           </web-postCard>
         </div>
       </div>
-    </section>
+    </section> -->
+
+    <section class="teeprint-makes-section">
+    <div class="container">
+      <div class="row">
+        <MultipleImageCard
+          :right="true"
+          title="Revolutionizes Printing Services in London"
+          :images="[
+            '/img/Home/Leonardo_Phoenix_10_A_highquality_crisp_image_of_a_crisp_white_1.jpg',
+            '/img/Home/Leonardo_Phoenix_10_A_highquality_crisp_image_of_a_crisp_white_1.jpg',
+            '/img/Home/Leonardo_Phoenix_10_A_highquality_crisp_image_of_a_crisp_white_1.jpg',
+          ]"
+        >
+          We understand that every customer has unique needs, which is why we
+          proudly offer no minimum order quantity on all our custom t-shirt
+          printing services. Whether you need a single t-shirt for a personal
+          project or hundreds for a corporate event, we’ve got you covered.
+          Our flexible printing service allows you to order exactly what you
+          need, without restrictions. From small orders to bulk printing, our
+          high-quality, affordable t-shirt print ensures every order meets
+          your exact specifications. With the added benefit of same-day
+          delivery available in London, you can count on us for fast, reliable
+          service, regardless of order size. Perfect for individuals,
+          businesses, or events.
+
+          <template #link>
+            <nuxt-link
+              :to="{ name: 'quote' }"
+              class="teeprint-button teeprint-theme-btn zoomInOut mt-5"
+            >
+              Get A Free Quote <i class="la la-arrow-right ml-1"></i>
+            </nuxt-link>
+          </template>
+        </MultipleImageCard>
+      </div>
+    </div>
+  </section>
+
+
     <section class="trusted-logo">
       <div class="trusted-logo-content-inner">
         <div class="container">
