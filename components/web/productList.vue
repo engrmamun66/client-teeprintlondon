@@ -302,5 +302,15 @@ onMounted(async () => {
 .teeprint-category-menulist ul li a { 
     padding: 3px 0px; 
 }
+.teeprint-categorymenu-title { 
+    height: 45px !important;  
+}
 
+.brand-list {
+    padding: 0px 15px 15px;
+}
+
+.teeprint-category-menulist ul ul li:last-child a {
+    margin-bottom: 20px;
+}
 </style>
