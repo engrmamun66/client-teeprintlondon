@@ -102,6 +102,36 @@ export const useHomeStore = defineStore("homeStore", () => {
     }
   }
 
+  let additionalData = reactive({
+    brands: [],
+    delivery_types: [],
+    genders: [],
+    min_price: 0,
+    max_price: 100, 
+  })
+  async function getAdditionalData(){ 
+    try { 
+      let response = await FrontendApi.getAdditionalData() 
+      if(response.data.success){
+        let data = response.data.data || {} 
+        if(typeof data == 'object'){
+          Object.keys(data).forEach(key => {
+            let value = data[key]
+            if(key === 'min_price' || key === 'max_price'){
+              value = parseInt(value)
+            }
+            additionalData[key] = data[key]
+          })
+          console.log({additionalData});
+        }
+        console.log({'datadatadata': data});
+      } 
+      
+    } catch (error) {
+      
+    }
+  }
+
 
 
     
@@ -122,6 +152,8 @@ export const useHomeStore = defineStore("homeStore", () => {
     getProductDetails,
     resetPayload,
     product,
+    additionalData,
+    getAdditionalData,
 
   };
 });

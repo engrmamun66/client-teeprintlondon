@@ -7,6 +7,7 @@ export const FrontendEndpoints = {
   searchProduct: '/search-products',
   getProducts: '/filter-products',
   getProductDetails: '/product-details-by-slug/\\d+',
+  getAdditionalData: '/additional-data-for-product-filtering',
 }
 
 
@@ -34,6 +35,9 @@ export default {
   }, 
   async getProductDetails(slug, params={}) { 
     return await Api().get(`/product-details-by-slug/${slug}`, {params});
+  }, 
+  async getAdditionalData() { 
+    return await Api().get(`/additional-data-for-product-filtering`);
   }, 
  
 };
