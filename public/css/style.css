@@ -4993,6 +4993,9 @@ checkout css
   padding: 6px 0;
   border-bottom: 1px solid #f2f3f8;
 }
+.teeprint-radio-inline.quote-page {
+  height: 48px;
+}
 
 .teeprint-radio-inline:first-child {
   border-top: 1px solid #f2f3f8;

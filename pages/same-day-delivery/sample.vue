@@ -387,31 +387,7 @@ function addToCart() {
       </div>
     </section>
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-md-12">
-          <div class="row my-4">
-            <div class="col-md-12">
-              <div class="section-main-heading text-center">
-                <h4 class="section-heading-title-small">
-                  <span class="line-decoration"></span> Promise
-                </h4>
-                <h2 class="section-heading-title-big">Our Promise</h2>
-              </div>
-            </div>
-          </div>
-          <div class="promiss-section">
-            <img src="/img/quote-page-card-image-1.jpeg" alt="" />
-            <div class="our-promiss">
-              <p>
-                We bring your vision to life with creative designs that leave a
-                lasting impression. Your dream is our mission, your satisfaction
-                is our commitment, and delivering excellence is our promise
-              </p>
-            </div>
-            <img src="/img/quote-page-card-image-2.jpeg" alt="" />
-          </div>
-        </div>
-      </div>
+      <web-DuelCard></web-DuelCard>
     </div>
 
     <web-questions></web-questions>

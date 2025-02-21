@@ -130,7 +130,7 @@ async function sendQuotation() {
                 <form @submit.prevent="sendQuotation">
                   <div class="row">
                     <div class="col-md-12 mb-2">
-                      <div class="teeprint-radio-inline">
+                      <div class="teeprint-radio-inline quote-page">
                         <div class="teeprint-radio-box">
                           <label class="teeprint-radio">
                             <input
@@ -305,69 +305,15 @@ async function sendQuotation() {
               </div>
             </div>
           </div>
-          <div class="promiss-section">
-            <img src="/img/quote-page-card-image-1.jpeg" alt="" />
-            <div class="our-promiss">
-              <p>
-                We bring your vision to life with creative designs that leave a
-                lasting impression. Your dream is our mission, your satisfaction
-                is our commitment, and delivering excellence is our promise
-              </p>
-            </div>
-            <img src="/img/quote-page-card-image-2.jpeg" alt="" />
-          </div>
+          <web-DuelCard class="mt-5"></web-DuelCard>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<style scoped>
-.promiss-section {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-.promiss-section img {
-  width: 30%;
-}
-.promiss-section img:first-child {
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-}
-.promiss-section img:last-child {
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-.promiss-section .our-promiss {
-  padding: 20px 20px;
-  text-align: justify;
-  background-color: rgb(241, 241, 241);
-}
+<style>
 
-@media screen and (max-width: 768px) {
-  .promiss-section {
-    flex-direction: column;
-  }
-  .promiss-section img {
-    width: 100%;
-  }
-  .promiss-section img:first-child {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 0px;
-  }
-  .promiss-section img:last-child {
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-  }
-  .promiss-section .our-promiss {
-    padding: 20px 20px;
-    text-align: justify;
-    background-color: rgb(241, 241, 241);
-  }
-}
 
 .bg_animation {
   --bcolor: #00000015;
