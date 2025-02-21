@@ -115,6 +115,8 @@
 </template>
 
 <script setup>
+
+
 import { useMenuState } from '@/composables/useMenuState';
 const { state, toggleSidebar, toggleProfilePopup, isCollapse, activeMenu, isCurrent } = useMenuState();
 
@@ -122,7 +124,8 @@ const showProfileInfoModal = ref(false);
 let authUser = ref(null)
 onMounted(()=>{
    authUser.value = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null
-
+   
+   
 })
 </script>
 

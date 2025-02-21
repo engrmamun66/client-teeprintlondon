@@ -16,6 +16,10 @@ watch(search, (a)=>{
     }
 }) 
 
+onMounted(() => {
+    homeStore.getAdditionalData()
+})
+
 </script>
 
 <template>
