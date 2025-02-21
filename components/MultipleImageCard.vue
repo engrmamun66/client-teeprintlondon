@@ -1,35 +1,50 @@
 <template>
-    <div class="post-card">
-      <div class="post-card-content" :class="{ 'flex-row-reverse': right }">
-        <div class="post-card-image">
-          <swiper
-            :modules="[SwiperAutoplay, SwiperEffectCreative]"
-            :slides-per-view="1"
-            :loop="true"
-            :autoplay="{
-              delay: 3000,
-              disableOnInteraction: false,
-            }"
-            :effect="'creative'"
-            :creative-effect="{
-              prev: {
-                shadow: false,
-                translate: ['-20%', 0, -1],
-              },
-              next: {
-                translate: ['100%', 0, 0],
-              },
-            }"
-          >
-            <swiper-slide v-for="(image, index) in images" :key="index">
-              <img :src="image" :alt="`Slide ${index + 1}`" />
-            </swiper-slide>
-          </swiper>
+    <div class="col-xl-12 col-lg-12 col-12">
+      <div class="teeprint-makes-box">
+        <div class="teeprint-makes-box-image" :style="`order:${right ? 2 : 0}`">
+          <div class="teeprint-makes-overlay"></div>
+          <div class="teeprint-makes-image">
+            <swiper
+              :modules="[SwiperAutoplay, SwiperEffectCreative]"
+              :slides-per-view="1"
+              :loop="true"
+              :autoplay="{
+                delay: 3000,
+                disableOnInteraction: false,
+              }"
+              :effect="'creative'"
+              :creative-effect="{
+                prev: {
+                  shadow: false,
+                  translate: ['-20%', 0, -1],
+                  opacity: 0, // Hide previous image completely
+                },
+                next: {
+                  translate: ['100%', 0, 0],
+                },
+              }"
+            >
+              <swiper-slide v-for="(image, index) in images" :key="index">
+                <img :src="image" :alt="`Slide ${index + 1}`" class="swiper-slide-img" />
+              </swiper-slide>
+            </swiper>
+          </div>
         </div>
-        <div class="post-card-text">
-          <h3>{{ title }}</h3>
-          <p><slot></slot></p>
-          <slot name="link"></slot>
+        <div class="teeprint-makes-content">
+          <div class="teeprint-makes-content-inner">
+            <h3 class="teeprint-makes-title">
+              {{ title }}
+            </h3>
+            <p class="teeprint-makes-short-des">
+              <slot>
+                Need custom t-shirts in a hurry for your campaign, event, or festival?
+                Tee Print London is your go-to for fast, reliable solutions. We offer
+                same-day t-shirt printing with delivery across London and next-day t-shirt
+                printing for customers throughout the UK.
+              </slot>
+            </p>
+            <slot name="link"></slot>
+          </div>
         </div>
       </div>
     </div>
@@ -57,33 +72,42 @@
   </script>
   
   <style scoped>
-  .post-card {
-    margin: 20px 0;
-  }
-  
-  .post-card-content {
+  .teeprint-makes-box {
     display: flex;
     align-items: center;
     gap: 20px;
   }
   
-  .post-card-image {
+  .teeprint-makes-box-image {
+    flex: 1;
+    max-width: 50%;
+    position: relative;
+  }
+  
+  .teeprint-makes-content {
     flex: 1;
     max-width: 50%;
   }
   
-  .post-card-text {
-    flex: 1;
-    max-width: 50%;
-  }
-  
-  .flex-row-reverse {
-    flex-direction: row-reverse;
-  }
-  
-  img {
+  .swiper-slide-img {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Ensures top image is above */
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .swiper-slide-prev {
+    opacity: 0 !important; /* Hide the behind image */
+    z-index: 0;
+  }
+  
+  .swiper-slide-active {
+    opacity: 1;
+    z-index: 1;
   }
   </style>
+  

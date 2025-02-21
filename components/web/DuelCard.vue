@@ -1,16 +1,29 @@
 <template>
-  <div class="promiss-section" v-bind="$attrs" >
-    <img src="/img/quote-page-card-image-1.jpeg" alt="" />
-    <div class="our-promiss" >
-      <p >
-        We bring your vision to life with creative designs that leave a lasting
-        impression. Your dream is our mission, your satisfaction is our
-        commitment, and delivering excellence is our promise
-      </p>
+  <div class="promiss-section" v-bind="$attrs">
+    <img :src="img_left" alt="Left Image" />
+    <div class="our-promiss">
+      <p>{{ paragraph }}</p>
     </div>
-    <img src="/img/quote-page-card-image-2.jpeg" alt="" />
+    <img :src="img_right" alt="Right Image" />
   </div>
 </template>
+
+<script setup>
+defineProps({
+  img_left: {
+    type: String,
+    required: true,
+  },
+  img_right: {
+    type: String,
+    required: true,
+  },
+  paragraph: {
+    type: String,
+    required: true,
+  },
+});
+</script>
 
 <style scoped>
 .promiss-section {
@@ -30,7 +43,7 @@
   border-bottom-right-radius: 15px;
 }
 .promiss-section .our-promiss {
-  padding: 20px 20px;
+  padding: 20px;
   text-align: justify;
   background-color: rgb(241, 241, 241);
 }
@@ -51,11 +64,6 @@
     border-top-right-radius: 0px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-  }
-  .promiss-section .our-promiss {
-    padding: 20px 20px;
-    text-align: justify;
-    background-color: rgb(241, 241, 241);
   }
 }
 </style>
