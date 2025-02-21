@@ -25,6 +25,7 @@
               <th>Minimum Quantity</th>
               <th>Maximum Quantity</th>
               <th>Amount (%)</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>

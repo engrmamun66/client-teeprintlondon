@@ -31,7 +31,7 @@
                   :src="authUser?.profile_img"
                 />
                 <i v-else class="la la-user"></i>
-              </a>
+              </a> 
               <div
                 @mouseleave="state.showProfilePopup = false"
                 class="leap-admin-rightside-dropdown --animate-show"
