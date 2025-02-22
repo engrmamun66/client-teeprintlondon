@@ -215,21 +215,6 @@ let { staticPagesByParentCat } = globalData;
                     >Instant Quote <i class="la la-arrow-right ml-2"></i
                   ></nuxt-link>
                 </li>
-                <!-- <li>
-                                    <a class="teeprint-search-bar">
-                                        <i class="bx bx-search"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="teeprint-customer-login">
-                                        <i class='bx bx-user'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="teeprint-cart-bar">
-                                        <i class="bx bx-shopping-bag"></i>
-                                    </a>
-                                </li> -->
                 <li>
                   <a href="#" class="p-1 text-white size-1p4" id="header_cart">
                     <i class="bx bx-shopping-bag fs-3"></i>
@@ -323,23 +308,17 @@ let { staticPagesByParentCat } = globalData;
                         <div class="teeprint-submenu">
                           <ul>
                             <li>
-                              <nuxt-link
-                                to="/same-day-delivery/shirt"
-                              >
+                              <nuxt-link to="/same-day-delivery/shirt">
                                 Same Day Shirt Printing
                               </nuxt-link>
                             </li>
                             <li>
-                              <nuxt-link
-                                to="/same-day-delivery/hoodie"
-                              >
+                              <nuxt-link to="/same-day-delivery/hoodie">
                                 Same Day Hoodie Printing
                               </nuxt-link>
                             </li>
                             <li>
-                              <nuxt-link
-                                to="/same-day-delivery/cap"
-                              >
+                              <nuxt-link to="/same-day-delivery/cap">
                                 Same Day Cap Printing
                               </nuxt-link>
                             </li>
