@@ -50,6 +50,10 @@ export const useHomeStore = defineStore("homeStore", () => {
     brand_ids: [],
     size_ids: [],
     gender_ids: [],
+    price_range: {
+      min: 0,
+      max: 0,
+    }
   })
 
   function resetPayload(){
@@ -59,6 +63,10 @@ export const useHomeStore = defineStore("homeStore", () => {
     payload.brand_ids = []
     payload.size_ids = []
     payload.gender_ids = []
+    payload.price_range = {
+      min: 0,
+      max: 0,
+    }
   }
 
   async function getProducts({page}={}){
@@ -118,9 +126,9 @@ export const useHomeStore = defineStore("homeStore", () => {
           Object.keys(data).forEach(key => {
             let value = data[key]
             if(key === 'min_price' || key === 'max_price'){
-              value = parseInt(value)
+              value = parseInt(value) 
             }
-            additionalData[key] = data[key]
+            additionalData[key] = value
           })
           console.log({additionalData});
         }

@@ -113,35 +113,46 @@ onMounted(async () => {
                             <div class="teeprint-category-menulist">
                                 <template v-if="homeStore.menus?.length">
                                     <ul class="ps-3 mb-3">
-                                        <template v-for="(item, index) in homeStore.menus" :key="index">
-                                            <li v-if="index < 2" :parent-index="index">
-                                                
-                                                <a href="#" class="text-black">
-                                                    <label class="teeprint-checkbox" :for="`main_${index}`"> 
-                                                        <input type="checkbox" :id="`main_${index}`" :checked="item?.is_checked" @click.stop="withFilter('category', {pIndex: index})" > 
-                                                        {{ item?.name }}  
-                                                        <i class="lni lni-chevron-right"></i>
-                                                        <span></span>
-                                                    </label>
-                                                     
-                                                </a>
-                                                <template v-if="item?.categories?.length">
-                                                    <ul class="ps-4">
-                                                        <template v-for="(child2, index2) in item?.categories" :key="child2.id">
-                                                            <li :parent-index="index" :child-index="index2">  
-                                                                <a @click.stop.prevent="withFilter('category', {pIndex: index, cIndex: index2})" href="#">
-                                                                    <label class="teeprint-checkbox" :for="`parent_${index2}`"> 
-                                                                        <input type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
-                                                                        {{ child2.name }} 
-                                                                        <span></span>  
-                                                                    </label> 
-                                                                </a>
-                                                            </li>  
-                                                        </template>
-                                                    </ul> 
-                                                </template>
-                                            </li>  
+                                        <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getAdditionalData')">
+                                            <li v-for="x in 2" class="mb-4">
+                                                <ShimmerEffect width="calc(100% - 20px)" height="20px" radius="0px" class="mt-2" /> 
+                                                <ShimmerEffect width="calc(100% - 38px)" height="17px" radius="0px" class="mt-2 ms-3" /> 
+                                                <ShimmerEffect width="calc(100% - 38px)" height="17px" radius="0px" class="mt-2 ms-3" /> 
+                                            </li>
                                         </template>
+                                        <template v-else>
+                                            <template v-for="(item, index) in homeStore.menus" :key="index">
+                                                <li v-if="index < 2" :parent-index="index">
+                                                    
+                                                    <a href="#" class="text-black">
+                                                        <label class="teeprint-checkbox" :for="`main_${index}`"> 
+                                                            <input type="checkbox" :id="`main_${index}`" :checked="item?.is_checked" @click.stop="withFilter('category', {pIndex: index})" > 
+                                                            {{ item?.name }}  
+                                                            <i class="lni lni-chevron-right"></i>
+                                                            <span></span>
+                                                        </label>
+                                                        
+                                                    </a>
+                                                    <template v-if="item?.categories?.length">
+                                                        <ul class="ps-4">
+                                                            <template v-for="(child2, index2) in item?.categories" :key="child2.id">
+                                                                <li :parent-index="index" :child-index="index2">  
+                                                                    <a @click.stop.prevent="withFilter('category', {pIndex: index, cIndex: index2})" href="#">
+                                                                        <label class="teeprint-checkbox" :for="`parent_${index2}`"> 
+                                                                            <input type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
+                                                                            {{ child2.name }} 
+                                                                            <span></span>  
+                                                                        </label> 
+                                                                    </a>
+                                                                </li>  
+                                                            </template>
+                                                        </ul> 
+                                                    </template>
+                                                </li>  
+                                            </template>
+
+                                        </template>
+                                        
                                     </ul>
 
                                 </template>
@@ -155,30 +166,28 @@ onMounted(async () => {
                             </div>
                             <div class="teeprint-category-menulist">
                                 <div class="brand-list">
-                                    <div class="teeprint-checkbox-inline">
-                                        <label class="teeprint-checkbox" for="brand"> 
-                                            <input type="checkbox" id="brand"> Russels 
-                                            <span></span> 
-                                        </label>
-                                    </div>
-                                    <div class="teeprint-checkbox-inline">
-                                        <label class="teeprint-checkbox" for="brand2"> 
-                                            <input type="checkbox" id="brand2"> Sols 
-                                            <span></span> 
-                                        </label>
-                                    </div>
-                                    <div class="teeprint-checkbox-inline">
-                                        <label class="teeprint-checkbox" for="brand3"> 
-                                            <input type="checkbox" id="brand3"> AFD 
-                                            <span></span> 
-                                        </label>
-                                    </div>
-                                    <div class="teeprint-checkbox-inline">
-                                        <label class="teeprint-checkbox" for="brand4"> 
-                                            <input type="checkbox" id="brand4"> Antheme 
-                                            <span></span> 
-                                        </label>
-                                    </div>
+                                    <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getAdditionalData')">
+                                        <template v-for="x in 4">
+                                            <div class="teeprint-checkbox-inline mb-1">
+                                                <label class="teeprint-checkbox d-flex ps-0" for="brand"> 
+                                                    <ShimmerEffect width="20px" height="20px" radius="0px" class="me-2" /> 
+                                                    <ShimmerEffect width="100%" height="20px" radius="2px" /> 
+                                                </label>
+                                            </div>
+                                        </template>
+                                        
+                                    </template>
+                                    <template v-else>
+                                        <template v-for="brand in homeStore.additionalData.brands">
+                                            <div class="teeprint-checkbox-inline">
+                                                <label class="teeprint-checkbox" for="brand"> 
+                                                    <input type="checkbox" id="brand"> {{ brand.name }} 
+                                                    <span></span> 
+                                                </label>
+                                            </div>
+                                        </template>
+
+                                    </template>
                                 </div>
                             </div>
                         </div>
@@ -189,7 +198,22 @@ onMounted(async () => {
                                 <h5>Price</h5>
                             </div>
                             <div class="teeprint-category-menulist">
-                                <web-range></web-range>
+                                <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getAdditionalData')">
+                                    <div class="p-3">
+                                        <div class="d-flex">
+                                            <ShimmerEffect width="50%" height="34px" radius="5px" class="me-1" /> 
+                                            <ShimmerEffect width="50%" height="34px" radius="5px" class="ms-1" /> 
+                                        </div>
+                                        <ShimmerEffect width="100%" height="14px" radius="0px" class="mt-2" /> 
+
+                                    </div>
+                                </template>
+                                <template v-else>
+                                    <web-range v-model="homeStore.payload.price_range" :min="homeStore.additionalData.min_price" :max="homeStore.additionalData.max_price" ></web-range>
+                                </template>
+                                    <!-- <h3>
+                                        {{ homeStore.payload.price_range }}
+                                    </h3> -->
                             </div>
                         </div>
                     </div> 
@@ -200,22 +224,30 @@ onMounted(async () => {
                             </div>
                             <div class="teeprint-category-menulist">
                                 <div class="brand-list">
-                                    <label class="teeprint-radio" for="kids"> 
-                                        <input type="radio" id="kids" name="gender"> Kids
-                                        <span></span> 
-                                    </label>
-                                    <label class="teeprint-radio" for="Ladies"> 
-                                        <input type="radio" id="Ladies" name="gender"> Ladies
-                                        <span></span> 
-                                    </label>
-                                    <label class="teeprint-radio" for="Mens"> 
-                                        <input type="radio" id="Mens" name="gender"> Mens
-                                        <span></span> 
-                                    </label>
-                                    <label class="teeprint-radio" for="Others"> 
-                                        <input type="radio" id="Others" name="gender"> Others
-                                        <span></span> 
-                                    </label>
+                                    <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getAdditionalData')">
+                                        <template v-for="x in 4">
+                                            <div class="teeprint-checkbox-inline mb-1">
+                                                <label class="teeprint-checkbox d-flex ps-0" for="gender"> 
+                                                    <ShimmerEffect width="20px" height="20px" radius="0px" class="me-2" /> 
+                                                    <ShimmerEffect width="100%" height="20px" radius="2px" /> 
+                                                </label>
+                                            </div>
+                                        </template>
+                                        
+                                    </template>
+                                    <template v-else>
+                                        <template v-for="gender in homeStore.additionalData.genders">
+                                            <div class="teeprint-checkbox-inline">
+                                                <label class="teeprint-radio" for="kids"> 
+                                                    <input type="radio" id="kids" name="gender"> {{gender.name}}
+                                                    <span></span> 
+                                                </label>
+                                            </div>
+                                        </template>
+
+                                    </template>
+                                    
+                                     
                                 </div>
                             </div>
                         </div>

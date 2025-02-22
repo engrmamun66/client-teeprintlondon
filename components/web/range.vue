@@ -1,9 +1,9 @@
 
 <template> 
-  <div class="wrapper"> 
+  <div class="wrapper">  
       <div class="price-input mb-4"> 
-          <input :value="getMinMax.min" type="number" readonly class="input-min"> 
-          <input :value="getMinMax.max" type="number" readonly class="input-max"> 
+          <input :value="getMinMax().min" type="number" readonly class="input-min"> 
+          <input :value="getMinMax().max" type="number" readonly class="input-max"> 
       </div>
       <div class="slider">
           <div class="progress" :style="`left:${progressStyle.left};right:${progressStyle.right}`" ></div>
@@ -20,7 +20,13 @@
 <script setup>
 
 
-let { min, max } = defineProps({
+let props = defineProps({
+    modelValue: {
+      default: {
+        min: 0,
+        max: 0, 
+      }
+    },
     min: {
         default: 0,
         type: Number,
@@ -36,79 +42,38 @@ let { min, max } = defineProps({
 let emits = defineEmits(['update:modelValue'])
  
 
-let inputMin = ref(0) // min
-let inputMax = ref(100) // max
-
-watch(inputMin, (minVal, oVal) => {
-    if(minVal > inputMax.value){
-        inputMin.value = +inputMax.value 
-    }
-})
-watch(inputMax, (maxVal, oVal) => {
-    if(maxVal < inputMin.value){
-        inputMax.value = +inputMin.value + 1
-    }
-})
-
+let inputMin = ref(props.min) // min
+let inputMax = ref(props.max) // max
+ 
 
 let timeout = null
  
-let getMinMax = computed(() => {
-    let minMax = {
-        min: inputMin.value, 
-        max: inputMax.value
-    }
-
-    if(inputMin.value < inputMax.value){
-        minMax.min = inputMin.value
-        minMax.max = inputMax.value
-        minMax.changed = true
-    } 
-    if(inputMin.value > inputMax.value){
-        minMax.min = inputMax.value
-        minMax.max = inputMin.value
-        minMax.changed = true
-    } 
-    if (inputMin.value === inputMax.value) {
-        minMax.min = inputMin.value
-        minMax.max = +inputMax.value + 1
-        minMax.changed = true
-    }
-    else {
-        minMax.changed = false
-    }
-
-
-    // clearTimeout(timeout)
-
-    // timeout = setTimeout(() => {
-    //     inputMin.value = minMax.min
-    //     inputMax.value = minMax.max
-    // }, 100);
-
-
-    return minMax
-
-
-})
+function getMinMax(){
+  let minMax = {
+    min: inputMin.value, 
+    max: inputMax.value, 
+  }  
+  return minMax
+}
 
 function updateModelValue(){
-    emits('update:modelValue', getMinMax.value)
+    emits('update:modelValue', getMinMax())
 }
-function flipValueAfterChange(){
-    // if(inputMin.value > inputMax.value){
-    //     let min = inputMin.value
-    //     let max = inputMax.value
-    //     minMax.min = max
-    //     minMax.max = min 
-    // }  
+function flipValueAfterChange(){ 
+  if(Number(inputMin.value) > Number(inputMax.value)){
+      let _max = inputMin.value
+      let _min = inputMax.value
+      inputMin.value = Number(_min)  
+      inputMax.value = Number(_max) 
+  }   
+   
 }
 
 // Compute progress styles
 const progressStyle = computed(() => {
-  const range = max - min;
-  const left = ((getMinMax.value.min - min) / range) * 100;
-  const right = 100 - ((getMinMax.value.max - min) / range) * 100;
+  const range = props.max - props.min;
+  const left = ((getMinMax().min - props.min) / range) * 100;
+  const right = 100 - ((getMinMax().max - props.min) / range) * 100;
 
   return {
     left: `${left}%`,
@@ -116,6 +81,10 @@ const progressStyle = computed(() => {
   };
 });
 
+
+onMounted(() => {
+   
+})
 
 </script>
 
