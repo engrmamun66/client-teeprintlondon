@@ -341,7 +341,7 @@ function addToCart() {
           <div class="card">
             <img
               class="card-img-top"
-              src="/img/Tote bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg"
+              src="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg"
               alt="Card image cap"
             />
             <div class="card-body">

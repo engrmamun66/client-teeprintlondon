@@ -58,7 +58,7 @@ const sameDayItems = ref([
   {
     title: "Same Day Tote Bag Print",
     image:
-      "/img/Tote bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg",
+      "/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg",
   },
   {
     title: "Same Day Sweatshirt Print",
