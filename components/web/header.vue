@@ -322,6 +322,11 @@ let { staticPagesByParentCat } = globalData;
                                 Same Day Cap Printing
                               </nuxt-link>
                             </li>
+                            <li>
+                              <nuxt-link to="/same-day-delivery/tote_bag">
+                                Same Day Tote bag Printing
+                              </nuxt-link>
+                            </li>
                           </ul>
                         </div>
                       </li>

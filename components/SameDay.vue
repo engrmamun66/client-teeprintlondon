@@ -35,7 +35,7 @@
     { title: "Same Day Brochure Booklet Print", image: "/img/Booklet and brochure/Leonardo_Phoenix_10_a_stunning_professionallydesigned_booklet_1.jpg" },
     { title: "Same Day Document Print", image: "/img/Home/Leonardo_Phoenix_10_A_sleek_modern_digital_printer_approximate_0.jpg" },
     { title: "Same Day Hoodie Print", image: "/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_3.jpg" },
-    { title: "Same Day Tote Bag Print", image: "/img/Tote bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg" },
+    { title: "Same Day Tote Bag Print", image: "/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg" },
     { title: "Same Day Sweatshirt Print", image: "/img/Sweatshirt/Leonardo_Phoenix_10_a_casual_relaxedfit_light_blue_sweatshirt_2.jpg" }
   ];
   </script>
