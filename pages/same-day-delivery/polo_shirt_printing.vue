@@ -22,17 +22,17 @@ function addToCart() {
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="Same-Day Printing for Tote Bags"
+            title="Same-Day Printing for Polo Shirts"
             :images="[
               '/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_tote_bag_image_featuring_a_highq_0.jpg',
               '/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_0.jpg',
               '/img/Tote_bag/Leonardo_Phoenix_10_a_worn_natural_canvas_tote_bag_with_a_rela_0.jpg',
             ]"
           >
-            Need high-quality custom tote bags in a hurry? Tee Print London provides
+            Need high-quality custom Polo Shirts in a hurry? Tee Print London provides
             same-day printing services, ensuring fast and reliable results.
             Whether it’s for businesses, events, promotions, or personal use,
-            our efficient process guarantees stylish and professional tote bags
+            our efficient process guarantees stylish and professional Polo Shirts
             without delays. Serving clients across London and the UK, we
             specialize in delivering premium printing solutions with a quick
             turnaround to meet your urgent needs.
@@ -57,21 +57,21 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Your Tote Bag Printing
+                  Why Choose Tee Print London for Your Polo Shirt Printing
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
                   Tee Print London is your go-to destination for high-quality
-                  tote bag printing, offering premium designs, exceptional
+                  Polo Shirt printing, offering premium designs, exceptional
                   craftsmanship, and unbeatable customer service. Whether you're
                   looking for custom prints for your brand, event, or personal
-                  style, we provide vibrant, long-lasting prints on durable,
-                  high-quality materials. Our advanced printing techniques ensure
+                  style, we provide vibrant, long-lasting prints on comfortable,
+                  high-quality fabrics. Our advanced printing techniques ensure
                   sharp details and rich colors that won’t fade over time. Plus,
                   with fast turnaround times and competitive pricing, we make
                   customization effortless and affordable. Choose Tee Print
-                  London for stylish, durable, and uniquely crafted tote bags that
+                  London for stylish, durable, and uniquely crafted Polo Shirts that
                   make a statement!
                 </p>
               </div>
@@ -79,20 +79,6 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <!-- <video
-                class="rounded-video"
-                autoplay
-                loop
-                muted
-                playsinline
-                width="100%"
-              >
-                <source
-                  src="/img/cap/59f7a4f5-fdc2-4e15-80e0-18040a44da9d_video (online-video-cutter.com).mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video> -->
               <img src="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_colorful_tote_bag_image_with_0.jpg" alt="about iamge" />
             </div>
           </div>
@@ -133,14 +119,14 @@ function addToCart() {
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Same-Day Tote Bag Printing – Fast, Reliable, and High-Quality
+                  Same-Day Polo Shirt Printing – Fast, Reliable, and High-Quality
                 </h2>
               </div>
               <p>
-                When time is of the essence, and you need custom-printed tote bags
+                When time is of the essence, and you need custom-printed Polo Shirts
                 without delays, Tee Print London is here to help. We specialize
                 in same-day printing services, allowing you to receive
-                professionally printed tote bags on the very same day you place
+                professionally printed Polo Shirts on the very same day you place
                 your order. Whether you're preparing for a corporate event,
                 promotional campaign, or simply want a unique design for personal
                 use, our service ensures you get premium-quality prints with a fast
@@ -154,9 +140,9 @@ function addToCart() {
                 understand that urgent orders require not only quick processing but
                 also high standards, which is why our printing process ensures
                 crisp, clear, and professional results. Whether you need a single
-                tote bag or a bulk order, our team is dedicated to providing the
+                Polo Shirt or a bulk order, our team is dedicated to providing the
                 best service in London and across the UK. Why wait for days? Get
-                your custom tote bags printed today with Tee Print London and enjoy
+                your custom Polo Shirts printed today with Tee Print London and enjoy
                 fast, reliable, and high-quality printing tailored to your needs.
               </p>
               <nuxt-link
@@ -183,29 +169,29 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Get Your Custom Tote Bags Printed Today!
+                  Get Your Custom Polo Shirts Printed Today!
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait days or even weeks for your custom tote bags when you
+                  Why wait days or even weeks for your custom Polo Shirts when you
                   can have them printed today? At Tee Print London, we offer
-                  same-day tote bag printing to ensure you get your custom designs
+                  same-day Polo Shirt printing to ensure you get your custom designs
                   exactly when you need them. Whether it’s for a corporate event,
                   business promotion, charity fundraiser, or personal use, we
                   provide a seamless and hassle-free printing experience with
                   top-notch results. Our process is designed for speed and
-                  convenience—simply select your tote bag, upload your design, and
+                  convenience—simply select your Polo Shirt, upload your design, and
                   let us handle the rest. Using advanced printing techniques,
                   including Direct-to-Garment (DTG), screen printing, and vinyl
                   printing, we guarantee sharp, vibrant, and long-lasting prints
-                  that won’t fade after just a few uses. We understand the urgency
+                  that won’t fade after just a few washes. We understand the urgency
                   of last-minute orders, which is why our same-day printing service
                   is tailored to meet your deadlines without compromising on
-                  quality. Whether you need a single tote bag or a bulk order, we
+                  quality. Whether you need a single Polo Shirt or a bulk order, we
                   ensure every piece is printed with precision, durability, and
                   style. Don’t let long wait times slow you down—place your order
-                  now with Tee Print London and get your custom tote bags printed
+                  now with Tee Print London and get your custom Polo Shirts printed
                   on the same day with professional service and unmatched quality.
                 </p>
               </div>
