@@ -338,9 +338,9 @@ let { staticPagesByParentCat } = globalData;
                             </li>
                             <li>
                               <nuxt-link
-                                to="/products-by-category/same-day-mug-printing"
+                                to="/same-day-delivery/cap"
                               >
-                                Same Day Mug Printing
+                                Same Day Cap Printing
                               </nuxt-link>
                             </li>
                           </ul>
