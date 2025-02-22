@@ -24,9 +24,9 @@ function addToCart() {
             :right="true"
             title="Same-Day Printing for Caps"
             :images="[
-              '/img/Cotton_T_shirt/Leonardo_Phoenix_10_A_fit_middleaged_man_with_short_dark_hair_0.jpg',
-              '/img/Football_team_t_shirt/Leonardo_Kino_XL_a_young_men_wearing_football_sports_t_shirt_2.jpg',
-              '/img/Universit_T_Shirt/Leonardo_Phoenix_10_A_young_adult_male_student_likely_in_his_e_1.jpg',
+              '/img/cap/Leonardo_Kino_XL_a_cap_image_written_teeprintlondon_on_that_ca_3adcfaadcadc.jpg',
+              '/img/cap/Leonardo_Phoenix_10_A_middleaged_man_with_a_gentle_smile_and_s_2.jpg',
+              '/img/cap/Leonardo_Kino_XL_a_cap_image_written_Your_Design_Here_on_the_0.jpg',
             ]"
           >
             Need high-quality custom caps in a hurry? Tee Print London provides
@@ -88,7 +88,7 @@ function addToCart() {
                 width="100%"
               >
                 <source
-                  src="/video/8ce45d1c-1418-4b67-9a72-22a87dcd1d58_videomerged (online-video-cutter.com).mp4"
+                  src="/img/cap/59f7a4f5-fdc2-4e15-80e0-18040a44da9d_video (online-video-cutter.com).mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
@@ -125,10 +125,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img
-                src="/img/Home/AHIGH-~1.jpg"
-                alt="about iamge"
-              />
+              <img src="/img/cap/Leonardo_Kino_XL_a_cap_image_written_Your_Design_Here_on_the_1.jpg" alt="about iamge" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -195,33 +192,30 @@ function addToCart() {
                   Why wait days or even weeks for your custom apparel when you
                   can have it printed today? At Tee Print London, we offer
                   same-day cap printing to ensure you get your custom designs
-                  exactly when you need them. Whether it’s for a corporate event,
-                  business promotion, sports team, charity fundraiser, or
+                  exactly when you need them. Whether it’s for a corporate
+                  event, business promotion, sports team, charity fundraiser, or
                   personal use, we provide a seamless and hassle-free printing
                   experience with top-notch results. Our process is designed for
                   speed and convenience—simply select your cap, upload your
                   design, and let us handle the rest. Using advanced printing
-                  techniques, including Direct-to-Garment (DTG), screen printing,
-                  and vinyl printing, we guarantee sharp, vibrant, and
-                  long-lasting prints that won’t fade after just a few washes. We
-                  understand the urgency of last-minute orders, which is why our
-                  same-day printing service is tailored to meet your deadlines
-                  without compromising on quality. Whether you need a single cap
-                  or a bulk order, we ensure every piece is printed with
-                  precision, durability, and style. Don’t let long wait times
-                  slow you down—place your order now with Tee Print London and
-                  get your custom caps printed on the same day with professional
-                  service and unmatched quality.
+                  techniques, including Direct-to-Garment (DTG), screen
+                  printing, and vinyl printing, we guarantee sharp, vibrant, and
+                  long-lasting prints that won’t fade after just a few washes.
+                  We understand the urgency of last-minute orders, which is why
+                  our same-day printing service is tailored to meet your
+                  deadlines without compromising on quality. Whether you need a
+                  single cap or a bulk order, we ensure every piece is printed
+                  with precision, durability, and style. Don’t let long wait
+                  times slow you down—place your order now with Tee Print London
+                  and get your custom caps printed on the same day with
+                  professional service and unmatched quality.
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img
-                src="/img/Home/personalized-t-shirt.jpg"
-                alt="about iamge"
-              />
+              <img src="/img/cap/Leonardo_Phoenix_10_A_person_likely_in_their_midtwenties_to_ea_3.jpg" alt="about iamge" />
             </div>
           </div>
         </div>
@@ -229,8 +223,8 @@ function addToCart() {
     </section>
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/quote-page-card-image-1.jpeg"
-        img_right="/img/quote-page-card-image-2.jpeg"
+        img_left="/img/cap/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2.jpg"
+        img_right="/img/cap/Leonardo_Phoenix_10_a_young_man_in_his_early_twenties_with_a_l_2.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
