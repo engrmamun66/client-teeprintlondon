@@ -285,14 +285,11 @@ export const useProductStore = defineStore("product", () => {
         product.value = mapProductFromResponse(response); // Use the helper function
 
         selectedGender.value = product.value.genders
-          .map((gender) =>
-            genderList.value.find((g) => g.id === gender.gender_id)
-          )
+          .map((gender) => genderList.value.find((g) => g.id === gender.id))
           .filter((gender) => gender !== undefined); // Filtering out unmatched genders
-        selectedColor.value = product.value.colors
-          .map((color) => colorList.value.find((c) => c.id === color.color_id))
-          .filter((gender) => gender !== undefined); // Filtering out unmatched genders
-        console.log(product.value.sizes);
+        selectedColor.value = product.value.colors.map((color) =>
+          colorList.value.find((c) => c.id === color.id)
+        );
 
         showModal.value = true; // Show the modal
       }
