@@ -8,8 +8,8 @@ definePageMeta({
 
 <template>
   <div>
-    <web-slider></web-slider>
-    <web-trusted></web-trusted>
+    <web-slider />
+    <web-trusted />
     <web-customerFinally></web-customerFinally>
 
     <section class="teeprint-makes-section">
@@ -130,7 +130,6 @@ definePageMeta({
       </div>
     </section>
 
-    
     <div class="container mt-4">
       <SameDay />
     </div>
@@ -303,40 +302,6 @@ definePageMeta({
                 <h2 class="section-heading-title-big">Customers Say</h2>
               </div>
             </div>
-            <!-- <div class="col-md-7">
-                        <div class="clientreview-box">
-                            <div class="clientreview-box-inner">
-                                <div class="client-review-icon-img">
-                                    <div class="clientreview-image-name">
-                                        <img
-                                            src="https://s3.us-east-2.amazonaws.com/images.rentmy.co/content-image/3607/media/1732786939_2fhryp0s_Figure→465239372_8576968645672920_753324174024411760_n.jpg.png"
-                                            alt="client image" />
-                                    </div>
-                                </div>
-                                <div class="client-reviewstar">
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                </div>
-                                <div class="clientreview-content">
-                                    <p>
-                                        Using Pack’er Up’s rental totes made my move so 
-                                        much easier! The strong, stackable totes were a 
-                                        game changer. No more worrying about flimsy boxes 
-                                        collapsing or endless packing tape. Plus, knowing 
-                                        they’re eco-friendly and reusable gave me peace of 
-                                        mind. Highly recommend for anyone looking to make 
-                                        their move hassle-free and sustainable!
-                                    </p>
-                                </div>
-                                <div class="client-name-country">
-                                    <h5>Chris Bannan</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
           </div>
         </div>
       </div>
