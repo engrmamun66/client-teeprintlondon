@@ -65,4 +65,8 @@ export let globalData = {
         theme: "dark",
         minuteStep: "1",
     }, 
+    staticPagesByParentCat: {
+        'Men': '/same-day-delivery/category/men',
+        'Women': '',
+    }, 
 }

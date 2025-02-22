@@ -20,6 +20,8 @@ onMounted(() => {
     homeStore.getAdditionalData()
 })
 
+let { staticPagesByParentCat } = globalData
+
 </script>
 
 <template>
@@ -167,7 +169,7 @@ onMounted(() => {
                                                         <ul>
                                                             <template v-for="(child2, index2) in item?.categories" :key="index2">
                                                                 <li>
-                                                                    <nuxt-link :to="`/products-by-category/${child2?.slug || 'not-found'}`"> {{ child2.name }} <i v-if="child2.children?.length" class="lni lni-chevron-right"></i></nuxt-link>
+                                                                    <nuxt-link :to="staticPagesByParentCat?.[child2.name] || `/products-by-category/${child2?.slug || 'not-found'}`"> {{ child2.name }} <i v-if="child2.children?.length" class="lni lni-chevron-right"></i></nuxt-link>
                                                                     <template v-if="child2.children?.length">
                                                                         <div class="teeprint-sub-submenu">
                                                                             <ul>
