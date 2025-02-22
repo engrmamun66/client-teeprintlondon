@@ -313,6 +313,11 @@ let { staticPagesByParentCat } = globalData;
                               </nuxt-link>
                             </li>
                             <li>
+                              <nuxt-link to="/same-day-delivery/polo_shirt_printing">
+                                Same Day Polo Shirt Printing
+                              </nuxt-link>
+                            </li>
+                            <li>
                               <nuxt-link to="/same-day-delivery/hoodie">
                                 Same Day Hoodie Printing
                               </nuxt-link>
