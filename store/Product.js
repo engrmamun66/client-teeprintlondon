@@ -30,32 +30,38 @@ export const useProductStore = defineStore("product", () => {
     colors: [],
     discount: null,
 
-    sizes: H.clone(globalData.sizes),
+    sizes: [
+      { id: 1, name: "XS", unit_price: 0, quantity: 0 },
+      { id: 2, name: "S", unit_price: 0, quantity: 0 },
+      { id: 3, name: "M", unit_price: 0, quantity: 0 },
+      { id: 4, name: "L", unit_price: 0, quantity: 0 },
+      { id: 5, name: "XL", unit_price: 0, quantity: 0 },
+      { id: 6, name: "XXL", unit_price: 0, quantity: 0 },
+      { id: 7, name: "XXXL", unit_price: 0, quantity: 0 },
+    ],
     status: 1,
   });
 
-  const cloned_product = H.clone(product.value)
+  const cloned_product = H.clone(product.value);
 
-
-  function clearProduct(){
-    Object.keys(product.value).forEach(key => {
+  function clearProduct() {
+    Object.keys(product.value).forEach((key) => {
       switch (key) {
-        case 'id':
-          delete cloned_product.value
+        case "id":
+          delete cloned_product.value;
           break;
-        case 'sizes':
-          cloned_product.value['sizes'].forEach(item => {
-            item.unit_price = 0
-            item.quantity = 0
-          })
+        case "sizes":
+          cloned_product.value["sizes"].forEach((item) => {
+            item.unit_price = 0;
+            item.quantity = 0;
+          });
           break;
-      
+
         default:
-          product.value[key] = cloned_product.value?.[key] || null
+          product.value[key] = cloned_product.value?.[key] || null;
           break;
       }
-    })
-    
+    });
   }
 
   let showModal = ref(false);
@@ -97,7 +103,15 @@ export const useProductStore = defineStore("product", () => {
         "This classic t-shirt is made from 100% cotton, ensuring a soft and breathable fit. Perfect for casual wear or as a base layer.",
       colors: [],
       discount: null,
-      sizes: H.clone(globalData.sizes),
+      sizes: [
+        { id: 1, name: "XS", unit_price: 0, quantity: 0 },
+        { id: 2, name: "S", unit_price: 0, quantity: 0 },
+        { id: 3, name: "M", unit_price: 0, quantity: 0 },
+        { id: 4, name: "L", unit_price: 0, quantity: 0 },
+        { id: 5, name: "XL", unit_price: 0, quantity: 0 },
+        { id: 6, name: "XXL", unit_price: 0, quantity: 0 },
+        { id: 7, name: "XXXL", unit_price: 0, quantity: 0 },
+      ],
       status: 1,
     };
   };
@@ -111,9 +125,9 @@ export const useProductStore = defineStore("product", () => {
         showModal.value = false;
         resetProduct();
         resetBrandAttribute();
-        Toaster.success("Product added succsfully"); 
-        resetProduct()
-        navigateTo({name: 'admin_product_list'})
+        Toaster.success("Product added succsfully");
+        resetProduct();
+        navigateTo({ name: "admin_product_list" });
       }
     } catch (error) {
       //   if (error.response.status == 401) {
@@ -164,6 +178,55 @@ export const useProductStore = defineStore("product", () => {
     }
   }
 
+  // function mapProductFromResponse(response) {
+  //   return {
+  //     id: response.data.data.id,
+  //     name: response.data.data.name,
+  //     price: 25, // Default or fetch from response
+  //     brand_id: response.data.data.brand_id,
+  //     genders: response.data.data.genders,
+  //     images: response.data.data.images,
+  //     thumbnail_image: response.data.data.thumbnail_image_url,
+  //     short_description: response.data.data.short_description,
+  //     long_description: response.data.data.long_description,
+  //     colors: response.data.data.colors,
+  //     sku: response.data.data.sku,
+  //     status: response.data.data.status,
+  //     sizes: response.data.data.sizes.map((responseSize) => {
+  //       // Find the corresponding size in the product's sizes array
+  //       const existingSize = product.value.sizes.find(
+  //         (size) => size.id == responseSize.pivot.size_id
+  //       );
+
+  //       // If a matching size is found, update its properties
+  //       if (existingSize) {
+  //         return {
+  //           ...existingSize,
+  //           unit_price: parseFloat(responseSize.unit_price), // Convert string to number
+  //           quantity: responseSize.quantity,
+  //         };
+  //       }
+
+  //       // If no matching size is found, return the response size as-is
+  //       return {
+  //         id: responseSize.size_id,
+  //         name: responseSize.name || `Size ${responseSize.size_id}`, // Default name if not provided
+  //         unit_price: parseFloat(responseSize.unit_price),
+  //         quantity: responseSize.quantity,
+  //       };
+  //     }),
+  //     category_id:
+  //       response.data.data.category.parent != null
+  //         ? response.data.data.category.parent.id
+  //         : response.data.data.category.id,
+  //     subcategory_id:
+  //       response.data.data.category.parent != null
+  //         ? response.data.data.category.id
+  //         : null,
+  //     discount: response.data.data.discount,
+  //   };
+  // }
+
   function mapProductFromResponse(response) {
     return {
       id: response.data.data.id,
@@ -181,24 +244,24 @@ export const useProductStore = defineStore("product", () => {
       sizes: response.data.data.sizes.map((responseSize) => {
         // Find the corresponding size in the product's sizes array
         const existingSize = product.value.sizes.find(
-          (size) => size.id == responseSize.size_id
+          (size) => size.id == responseSize.id
         );
 
         // If a matching size is found, update its properties
         if (existingSize) {
           return {
             ...existingSize,
-            unit_price: parseFloat(responseSize.unit_price), // Convert string to number
-            quantity: responseSize.quantity,
+            unit_price: parseFloat(responseSize.pivot.unit_price), // Convert string to number
+            quantity: responseSize.pivot.quantity,
           };
         }
 
-        // If no matching size is found, return the response size as-is
+        // If no matching size is found, return the response size with necessary properties
         return {
-          id: responseSize.size_id,
-          name: responseSize.name || `Size ${responseSize.size_id}`, // Default name if not provided
-          unit_price: parseFloat(responseSize.unit_price),
-          quantity: responseSize.quantity,
+          id: responseSize.id,
+          name: responseSize.name || `Size ${responseSize.id}`, // Default name if not provided
+          unit_price: parseFloat(responseSize.pivot.unit_price),
+          quantity: responseSize.pivot.quantity,
         };
       }),
       category_id:
@@ -222,14 +285,11 @@ export const useProductStore = defineStore("product", () => {
         product.value = mapProductFromResponse(response); // Use the helper function
 
         selectedGender.value = product.value.genders
-          .map((gender) =>
-            genderList.value.find((g) => g.id === gender.gender_id)
-          )
+          .map((gender) => genderList.value.find((g) => g.id === gender.id))
           .filter((gender) => gender !== undefined); // Filtering out unmatched genders
-        selectedColor.value = product.value.colors
-          .map((color) => colorList.value.find((c) => c.id === color.color_id))
-          .filter((gender) => gender !== undefined); // Filtering out unmatched genders
-        console.log(product.value.sizes);
+        selectedColor.value = product.value.colors.map((color) =>
+          colorList.value.find((c) => c.id === color.id)
+        );
 
         showModal.value = true; // Show the modal
       }
@@ -312,7 +372,7 @@ export const useProductStore = defineStore("product", () => {
     showSubCategory,
     productList,
     bulkPrice,
-    bulkQuantity, 
+    bulkQuantity,
   };
 });
 
