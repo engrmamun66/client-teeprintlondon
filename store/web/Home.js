@@ -53,6 +53,8 @@ export const useHomeStore = defineStore("homeStore", () => {
     brand_ids: [],
     // size_ids: [],
     gender_ids: [],
+    // min_unit_price: null,
+    // max_unit_price: null,
     price_range: {
       min: 0,
       max: 0,
@@ -78,7 +80,13 @@ export const useHomeStore = defineStore("homeStore", () => {
       if(page){
         query.page = page
       }
-      let response = await FrontendApi.getProducts(payload, query) 
+      let _payload = H.clone(payload)
+      if(_payload.price_range.max){
+        _payload.min_unit_price = _payload.price_range.min
+        _payload.max_unit_price = _payload.price_range.max 
+      }
+
+      let response = await FrontendApi.getProducts(_payload, query) 
       if(response.data.success){
         paginateData.value = response.data.data || {}
         products.value = response.data.data?.data || []

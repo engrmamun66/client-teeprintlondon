@@ -263,10 +263,8 @@ onMounted(async () => {
                     <div class="row">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <span @click="log(homeStore.paginateData)" > {{ homeStore.showingCountText() }} </span>
-                            <select name="orderby" class="orderby" aria-label="Shop order">
-                                <option value="popularity">Sort by popularity</option>
-                                <option value="rating">Sort by average rating</option>
-                                <option value="date">Sort by latest</option>
+                            <select name="orderby" class="orderby"> 
+                                <option value="">-Default-</option>
                                 <option value="price">Low to high</option>
                                 <option value="price-desc" selected="true">High to low</option>
                             </select>
