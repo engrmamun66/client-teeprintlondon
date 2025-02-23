@@ -294,19 +294,13 @@ async function sendQuotation() {
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-        <div class="col-lg-12 col-md-12">
-          <div class="row my-4">
-            <div class="col-md-12">
-              <div class="section-main-heading text-center">
-                <h4 class="section-heading-title-small">
-                  <span class="line-decoration"></span> Promise
-                </h4>
-                <h2 class="section-heading-title-big">Our Promise</h2>
-              </div>
-            </div>
-          </div>
-          <web-DuelCard class="mt-5"></web-DuelCard>
-        </div>
+        <div class="container mt-5">
+      <web-DuelCard
+        img_left="/img/quote-page-card-image-1.jpeg"
+        img_right="/img/quote-page-card-image-2.jpeg"
+        paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
+      />
+    </div>
       </div>
     </div>
   </section>

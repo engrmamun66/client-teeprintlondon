@@ -8,8 +8,8 @@ definePageMeta({
 
 <template>
   <div>
-    <web-slider></web-slider>
-    <web-trusted></web-trusted>
+    <web-slider />
+    <web-trusted />
     <web-customerFinally></web-customerFinally>
 
     <section class="teeprint-makes-section">
@@ -130,153 +130,9 @@ definePageMeta({
       </div>
     </section>
 
-    <section class="container mt-4">
-      <div class="row mb-4">
-        <div class="col-md-12">
-          <div class="section-main-heading text-center">
-            <h4 class="section-heading-title-small">
-              <span class="line-decoration"></span> Other Items
-            </h4>
-            <h2 class="section-heading-title-big">
-              with Guaranteed Same-Day Printing and Delivery in London & Next
-              Day for UK
-            </h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 col-6 mb-4 cp">
-          <div class="card">
-            <img
-              class="card-img-top"
-              src="/img/Banner/Leonardo_Phoenix_10_a_vibrant_and_eyecatching_business_banner_0.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Same Day Banner Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-6 mb-4 cp">
-          <div class="card">
-            <img
-              class="card-img-top"
-              src="/img/Flyer and Leaflet/1985.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Same Day Flyer Leaflet Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-6 mb-4 cp">
-          <div class="card">
-            <img
-              class="card-img-top"
-              src="/img/Poster Print/Leonardo_Phoenix_10_a_vibrant_and_appetizing_business_poster_f_1.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Same Day Poster Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-6 mb-4 cp">
-          <div class="card">
-            <img
-              class="card-img-top"
-              src="/img/Business card/5073120.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Same Day Business Card Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-6 mb-4 cp">
-          <div class="card">
-            <img
-              class="card-img-top"
-              src="/img/Booklet and brochure/Leonardo_Phoenix_10_a_stunning_professionallydesigned_booklet_1.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Same Day Brochure Booklet Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-6 mb-4 cp">
-          <div class="card">
-            <img
-              class="card-img-top"
-              src="/img/Home/Leonardo_Phoenix_10_A_sleek_modern_digital_printer_approximate_0.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Same Day Document Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-6 mb-4 cp">
-          <div class="card">
-            <img
-              class="card-img-top"
-              src="/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_3.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Same Day Hoodie Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-6 mb-4 cp">
-          <div class="card">
-            <img
-              class="card-img-top"
-              src="/img/Tote bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Same Day Tote Bag Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-6 mb-4 cp">
-          <div class="card">
-            <img
-              class="card-img-top"
-              src="/img/Sweatshirt/Leonardo_Phoenix_10_a_casual_relaxedfit_light_blue_sweatshirt_2.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Same Day Sweatshirt Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="container mt-4">
+      <SameDay />
+    </div>
 
     <section class="teeprint-information">
       <div class="teeprint-content-inner">
@@ -446,40 +302,6 @@ definePageMeta({
                 <h2 class="section-heading-title-big">Customers Say</h2>
               </div>
             </div>
-            <!-- <div class="col-md-7">
-                        <div class="clientreview-box">
-                            <div class="clientreview-box-inner">
-                                <div class="client-review-icon-img">
-                                    <div class="clientreview-image-name">
-                                        <img
-                                            src="https://s3.us-east-2.amazonaws.com/images.rentmy.co/content-image/3607/media/1732786939_2fhryp0s_Figure→465239372_8576968645672920_753324174024411760_n.jpg.png"
-                                            alt="client image" />
-                                    </div>
-                                </div>
-                                <div class="client-reviewstar">
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                </div>
-                                <div class="clientreview-content">
-                                    <p>
-                                        Using Pack’er Up’s rental totes made my move so 
-                                        much easier! The strong, stackable totes were a 
-                                        game changer. No more worrying about flimsy boxes 
-                                        collapsing or endless packing tape. Plus, knowing 
-                                        they’re eco-friendly and reusable gave me peace of 
-                                        mind. Highly recommend for anyone looking to make 
-                                        their move hassle-free and sustainable!
-                                    </p>
-                                </div>
-                                <div class="client-name-country">
-                                    <h5>Chris Bannan</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
           </div>
         </div>
       </div>

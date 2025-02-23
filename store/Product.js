@@ -147,11 +147,14 @@ export const useProductStore = defineStore("product", () => {
         let tempColor = ref([]);
         tempColor.value = response.data.data;
         tempColor.value.forEach((color) => {
-          if (color.status == 1) {
+          if (
+            color.status == 1 &&
+            !colorList.value.some((c) => c.id == color.id)
+          ) {
             colorList.value.push(color);
           }
         });
-        tempColor.value.length = 0;
+        or.value.length = 0;
       }
     } catch (error) {}
   }
@@ -278,6 +281,7 @@ export const useProductStore = defineStore("product", () => {
 
   async function showProduct(id) {
     try {
+      selectedGender.value = null;
       let response = await Product.show(id);
       // console.log("==========>>>>>>", response.data.data);
 
