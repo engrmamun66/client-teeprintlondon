@@ -60,7 +60,7 @@ watch(deliveryCost, (a, b) => {
                                                         Color: {{ item.colors?.[0]?.name }} 
                                                     </template>
                                                 </td>
-                                                <td>$2000</td>
+                                                <td>{{ H.formatPrice(item.sizes?.[0].pivot?.discounted_unit_price) }}</td>
                                                 <td>
                                                     <div class="teeprint-num-in d-flex">
                                                         <span class="teeprint-minus teeprint-dis" @click="cartStore.inCrementDecrementQuantity(i, -1)">-</span>
@@ -68,7 +68,7 @@ watch(deliveryCost, (a, b) => {
                                                         <span class="teeprint-plus" @click="cartStore.inCrementDecrementQuantity(i, 1)">+</span>
                                                     </div>
                                                 </td>
-                                                <td>$2000.00</td>
+                                                <td>{{ H.formatPrice(Number(item.sizes?.[0].pivot?.discounted_unit_price) * item.sizes[0].cart_quantity) }}</td>
                                             </tr>
 
                                         </template>
