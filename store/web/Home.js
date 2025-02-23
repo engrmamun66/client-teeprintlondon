@@ -51,7 +51,7 @@ export const useHomeStore = defineStore("homeStore", () => {
     category_slug: null,
     category_ids: [],
     brand_ids: [],
-    size_ids: [],
+    // size_ids: [],
     gender_ids: [],
     price_range: {
       min: 0,

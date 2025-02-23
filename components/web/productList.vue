@@ -163,8 +163,16 @@ onMounted(async () => {
                                     <template v-else>
                                         <template v-for="brand in homeStore.additionalData.brands">
                                             <div class="teeprint-checkbox-inline">
-                                                <label class="teeprint-checkbox" for="brand"> 
-                                                    <input type="checkbox" id="brand"> {{ brand.name }} 
+                                                <label class="teeprint-checkbox"> 
+                                                    <input type="checkbox" @click.stop="({target})=>{
+                                                        let { checked } = target
+                                                        if(checked){
+                                                            homeStore.payload.brand_ids.push(brand.id)
+                                                        } else {
+                                                            homeStore.payload.brand_ids = homeStore.payload.brand_ids.filter(id => id != brand.id)
+                                                        }
+                                                        homeStore.getProducts()
+                                                    }" > {{ brand.name }} 
                                                     <span></span> 
                                                 </label>
                                             </div>
@@ -210,7 +218,7 @@ onMounted(async () => {
                                     <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getAdditionalData')">
                                         <template v-for="x in 4">
                                             <div class="teeprint-checkbox-inline mb-1">
-                                                <label class="teeprint-checkbox d-flex ps-0" for="gender"> 
+                                                <label class="teeprint-checkbox d-flex ps-0"> 
                                                     <ShimmerEffect width="20px" height="20px" radius="0px" class="me-2" /> 
                                                     <ShimmerEffect width="100%" height="20px" radius="2px" /> 
                                                 </label>
@@ -219,14 +227,29 @@ onMounted(async () => {
                                         
                                     </template>
                                     <template v-else>
+                                        <div class="teeprint-checkbox-inline">
+                                            <label class="teeprint-radio"> 
+                                                <input type="radio" name="gender" @click.stop="()=>{  
+                                                    homeStore.payload.gender_ids = []
+                                                    homeStore.getProducts()
+                                                }"> All
+                                                <span></span> 
+                                            </label>
+                                        </div>
+
                                         <template v-for="gender in homeStore.additionalData.genders">
                                             <div class="teeprint-checkbox-inline">
-                                                <label class="teeprint-radio" for="kids"> 
-                                                    <input type="radio" id="kids" name="gender"> {{gender.name}}
+                                                <label class="teeprint-radio"> 
+                                                    <input type="radio" name="gender" @click.stop="({target})=>{ 
+                                                        homeStore.payload.gender_ids.push(gender.id)
+                                                        homeStore.payload.gender_ids = new Set([...homeStore.payload.gender_ids])
+                                                        homeStore.getProducts()
+                                                    }"> {{gender.name}}
                                                     <span></span> 
                                                 </label>
                                             </div>
                                         </template>
+                                        
 
                                     </template>
                                     
