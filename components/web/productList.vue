@@ -183,7 +183,7 @@ onMounted(async () => {
                             </div>
                         </div>
                     </div>
-                    <div v-if="false" class="teeprint-category-menu">
+                    <div v-if="true" --range="dd" class="teeprint-category-menu">
                         <div class="teeprint-category-menu-inner">
                             <div class="teeprint-categorymenu-title">
                                 <h5>Price</h5>
