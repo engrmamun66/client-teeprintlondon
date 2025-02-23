@@ -106,7 +106,7 @@ export const useHomeStore = defineStore("homeStore", () => {
   function showingCountText(){ 
       if(!paginateData.value?.total) return `Showing 0 of 0 results`
 
-      return `Showing 1-${queryParams.value.per_page} of ${paginateData.value?.total}  results`
+      return `Showing ${paginateData.value?.total} products`
   }
 
   let product = ref({})
