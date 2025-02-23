@@ -72,6 +72,7 @@ export const useHomeStore = defineStore("homeStore", () => {
       min: 0,
       max: 0,
     }
+    delete payload.sort
   }
 
   async function getProducts({page}={}){

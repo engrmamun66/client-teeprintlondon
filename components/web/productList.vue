@@ -263,10 +263,17 @@ onMounted(async () => {
                     <div class="row">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <span @click="log(homeStore.paginateData)" > {{ homeStore.showingCountText() }} </span>
-                            <select name="orderby" class="orderby"> 
-                                <option value="">-Default-</option>
-                                <option value="price">Low to high</option>
-                                <option value="price-desc" selected="true">High to low</option>
+                            <select name="orderby" class="orderby" @change="({taget}) =>{
+                                if(target.value){
+                                    homeStore.payload.sort = target.value
+                                } else {
+                                    delete homeStore.payload.sort
+                                }
+                                homeStore.getProducts()
+                            }"> 
+                                <option value="">-Default Sorting-</option>
+                                <option value="low">Low to high</option>
+                                <option value="high" >High to low</option>
                             </select>
                         </div>
                     </div>
