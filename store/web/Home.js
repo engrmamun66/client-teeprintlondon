@@ -1,7 +1,10 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
 import FrontendApi from "../apis/web/Frontend";
+import { useCartStore } from "~/store/web/cart";
 
 export const useHomeStore = defineStore("homeStore", () => {
+
+  let cartStore = useCartStore()
 
   let menus = ref(useCookie('menus').value || []);
   async function getTypewiseCategoryList(){
@@ -240,8 +243,11 @@ export const useHomeStore = defineStore("homeStore", () => {
       __product.colors = __product.sizes.filter(size => size.colors)
       cart.push(__product)
 
-      useNuxtApp().$emit('openInPageCart', true);
+      
+      useNuxtApp().$emit('cartItemAdded', true);
 
+      cartStore.cart = cart 
+      
       H.localStorage('cart').value = cart
       // reset product
       product.value.sizes.forEach((size, i) => {

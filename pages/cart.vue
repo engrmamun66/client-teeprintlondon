@@ -1,4 +1,5 @@
 <script setup>
+let cartStore = inject("cartStore");
 
 definePageMeta({
 titleTemplate: '% :: cart',
@@ -6,12 +7,19 @@ name: 'cart',
 layout: 'web',
 })
 
+let isMounted = ref(false)
+
 onMounted(() => {
     useNuxtApp().$emit('hideInPageCart', false)
+    H.delay(()=> isMounted.value = true, 1000)
 })
 
 
-let price = ref(5.49)
+let deliveryCost = ref(5.49)
+
+watch(deliveryCost, (a, b) => {
+    H.localStorage('deliveryCost').value = a
+})
 
 </script>
 
@@ -35,68 +43,59 @@ let price = ref(5.49)
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><i class="la la-times cart-remove"></i></td>
-                                    <td><img src="https://teeprint.london/wp-content/uploads/2024/08/AM1120GYM20FRONT-6.jpg" /></td>
-                                    <td>
-                                        <b>Anthem Organic Long Sleeve T-Shirt</b>
-                                        <br>
-                                        Delivery:Urgent 2-3 days
-                                        <br>
-                                        Colour:Blac
-                                    </td>
-                                    <td>$2000</td>
-                                    <td>
-                                        <input style="width:70px;text-align: center;" min="1" type="number" value="1">
-                                    </td>
-                                    <td>$2000.00</td>
-                                </tr>
+                                <template v-if="isMounted">
+                                    <template v-if="cartStore.cart?.length">
+                                        <template v-for="(item, i) in cartStore.cart">
+                                            <tr>
+                                                <td><i @click="cartStore.deleteItem(i)" class="la la-trash cart-remove"></i></td>
+                                                <td><img :src="item.thumbnail_image_url" /></td>
+                                                <td>
+                                                    <b>{{ item.name }}</b>
+                                                    <br>
+                                                    <template v-if="item.sizes?.[0]?.name">
+                                                        Size: {{ item.cosizeslors?.[0]?.name }} 
+                                                    </template>
+                                                    <br>
+                                                    <template v-if="item.colors?.[0]?.name">
+                                                        Color: {{ item.colors?.[0]?.name }} 
+                                                    </template>
+                                                </td>
+                                                <td>$2000</td>
+                                                <td>
+                                                    <div class="teeprint-num-in d-flex">
+                                                        <span class="teeprint-minus teeprint-dis" @click="cartStore.inCrementDecrementQuantity(i, -1)">-</span>
+                                                        <input type="text" class="teeprint-in-num text-center" :value="item.sizes[0].cart_quantity" :disabled="true" readonly="true" style="width: 50px">
+                                                        <span class="teeprint-plus" @click="cartStore.inCrementDecrementQuantity(i, 1)">+</span>
+                                                    </div>
+                                                </td>
+                                                <td>$2000.00</td>
+                                            </tr>
 
-                                <tr>
-                                    <td><i class="la la-times cart-remove"></i></td>
-                                    <td><img src="https://teeprint.london/wp-content/uploads/2024/08/AM1120GYM20FRONT-6.jpg" /></td>
-                                    <td>
-                                        <b>Anthem Organic Long Sleeve T-Shirt</b>
-                                        <br>
-                                        Delivery:Urgent 2-3 days
-                                        <br>
-                                        Colour:Blac
-                                    </td>
-                                    <td>$2000</td>
-                                    <td>
-                                        <input style="width:70px;text-align: center;" min="1" type="number" value="1">
-                                    </td>
-                                    <td>$8000.00</td>
-                                </tr>
-
-                                <tr>
-                                    <td><i class="la la-times cart-remove"></i></td>
-                                    <td><img src="https://teeprint.london/wp-content/uploads/2024/08/AM1120GYM20FRONT-6.jpg" /></td>
-                                    <td>
-                                        <b>Anthem Organic Long Sleeve T-Shirt</b>
-                                        <br>
-                                        Delivery:Urgent 2-3 days
-                                        <br>
-                                        Colour:Blac
-                                    </td>
-                                    <td>$2000</td>
-                                    <td>
-                                        <input style="width:70px;text-align: center;" min="1" type="number" value="1">
-                                    </td>
-                                    <td>$2000.00</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">
-                                        <div class="d-flex">
-                                            <!-- <input class="coupon-code-input" type="text" placeholder="Coupon Code" /> -->
-                                            <!-- <button class="teeprint-button teeprint-theme-btn teeprint-apply-coupon-btn" type="submit">Apply Coupon</button> -->
-                                            <nuxt-link to="/shop" class="teeprint-button teeprint-theme-btn teeprint-apply-coupon-btn" type="submit">Continue Shopping</nuxt-link>
-                                        </div>
-                                    </td>
-                                    <td colspan="3">
-                                        <a class="teeprint-button teeprint-theme-btn teeprint-proceed-checkout-btn" href="checkout.html">Proceed Checkout<i class="la la-arrow-right"></i> </a>
-                                    </td>
-                                </tr>
+                                        </template>
+                                    </template>
+                                    <template v-else> 
+                                        <tr>
+                                            <td colspan="99">
+                                                <h6 class="text-center text-black-50 my-5">Cart Is Empty</h6>
+                                            </td>
+                                              
+                                        </tr> 
+                                    </template>
+                                </template>
+                                <template v-else>
+                                    <tr v-for="x in cartStore?.cart?.length || 4">
+                                        <td colspan="0">
+                                            <ShimmerEffect></ShimmerEffect>
+                                        </td>
+                                        <td colspan="4">
+                                            <ShimmerEffect></ShimmerEffect>
+                                        </td>
+                                        <td colspan="0">
+                                            <ShimmerEffect></ShimmerEffect>
+                                        </td>
+                                    </tr>
+                                </template>
+ 
                             </tbody>
                         </table>
                     </div>
@@ -139,43 +138,58 @@ let price = ref(5.49)
                         <h5>Cart Total</h5>
                         <table class="table">
                             <tbody>
-                                <tr>
-                                    <td>Subtotal</td>
-                                    <td>
-                                        <span class="ps-2"><b> {{CURRENCY}}12000.00 </b></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Delivery Method</td>
-                                    <td>
-
-                                        <select v-model="price" class="px-0 ps-1">
-                                            <template v-for="(opt, i) in H.getDeliveryOptions()">
-                                                <option v-if="i ==2" :value="opt.price">{{opt.name}}</option> 
-                                                <option v-else :value="opt.price">{{opt.name}} ({{CURRENCY}} {{ opt.price }})</option> 
-                                            </template>
-                                        </select>
-                                    
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Delivery Charge</td>
-                                    <td><span class="ps-2"> {{CURRENCY}}{{price}} </span></td>
-                                </tr>
-                                <tr>
-                                    <td>Discount</td>
-                                    <td><span class="ps-2"> {{CURRENCY}}0.00</span></td>
-                                </tr>
-                                
-                               
-                                <tr>
-                                    <td>
-                                        <h4>Total</h4>
-                                    </td>
-                                    <td>
-                                        <h4 class="ps-2"> $12000.00</h4>
-                                    </td>
-                                </tr>
+                                <template v-if="isMounted"> 
+                                    <template v-if="cartStore.cart?.length"> 
+                                        <tr>
+                                            <td>Subtotal</td>
+                                            <td>
+                                                <span class="ps-2"><b> {{ H.formatPrice(cartStore.totalPrice) }} </b></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Delivery Method</td>
+                                            <td>
+        
+                                                <select v-model="deliveryCost" class="px-0 ps-1">
+                                                    <template v-for="(opt, i) in H.getDeliveryOptions()">
+                                                        <option v-if="i ==2" :value="opt.price">{{opt.name}}</option> 
+                                                        <option v-else :value="opt.price">{{opt.name}} ({{CURRENCY}} {{ opt.price }})</option> 
+                                                    </template>
+                                                </select>
+                                            
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Delivery Charge</td>
+                                            <td><span class="ps-2"> {{ H.formatPrice(deliveryCost) }} </span></td>
+                                        </tr>  
+                                        <tr>
+                                            <td>
+                                                <h4>Total</h4>
+                                            </td>
+                                            <td>
+                                                <h4 class="ps-2"> {{ H.formatPrice(cartStore.totalPrice + deliveryCost) }} </h4>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                    <template v-else>
+                                        <tr> 
+                                            <td colspan="99">
+                                                <h6 class="text-center text-black-50 my-5">Cart Is Empty</h6>
+                                            </td>  
+                                        </tr>  
+                                    </template>
+                                </template>
+                                <template v-else> 
+                                    <tr v-for="x in 3">
+                                        <td>
+                                            <ShimmerEffect></ShimmerEffect>
+                                        </td>
+                                        <td>
+                                            <ShimmerEffect></ShimmerEffect>
+                                        </td>
+                                    </tr>   
+                                </template>
                             </tbody>
                         </table>
                     </div>

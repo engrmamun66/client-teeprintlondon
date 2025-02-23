@@ -13,8 +13,11 @@
 <script setup>
  
 import { useHomeStore } from '~/store/web/Home';
+import { useCartStore } from '~/store/web/cart';
 const homeStore = useHomeStore();
 provide('homeStore', homeStore)
+const cartStore = useCartStore();
+provide('cartStore', cartStore)
 
 useHead({
   title: APPNAME,
@@ -62,7 +65,7 @@ useHead({
 let openCart = ref(false)
 
 onMounted(()=>{ 
-   useNuxtApp().$on('openInPageCart', (bool) => {
+   useNuxtApp().$on('cartItemAdded', (bool) => {
     openCart.value = false;
     H.delay(()=>openCart.value = true)    
    }) 

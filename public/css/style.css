@@ -4849,6 +4849,13 @@ cart popup css
   font-weight: 500 !important;
 }
 
+.teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-size {
+  position: absolute;
+  left: 170px;
+  top: 46px;
+  font-weight: 500 !important;
+}
+
 .teeprint-cart-sidebar-inner .teeprint-cart-sidebar-lines ul li .teeprint-list-item .teeprint-remove-product {
   position: absolute;
   top: 6px;

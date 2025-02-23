@@ -1,5 +1,6 @@
 <script setup>
 let homeStore = inject("homeStore");
+let cartStore = inject("cartStore");
 homeStore.getTypewiseCategoryList();
 
 let search = ref("");
@@ -20,52 +21,7 @@ watch(search, (a) => {
 onMounted(() => {
   homeStore.getAdditionalData();
 });
-
-const sameDayItems = ref([
-  {
-    title: "Same Day Banner Print",
-    image:
-      "/img/Banner/Leonardo_Phoenix_10_a_vibrant_and_eyecatching_business_banner_0.jpg",
-  },
-  {
-    title: "Same Day Flyer Leaflet Print",
-    image: "/img/Flyer and Leaflet/1985.jpg",
-  },
-  {
-    title: "Same Day Poster Print",
-    image:
-      "/img/Poster Print/Leonardo_Phoenix_10_a_vibrant_and_appetizing_business_poster_f_1.jpg",
-  },
-  {
-    title: "Same Day Business Card Print",
-    image: "/img/Business card/5073120.jpg",
-  },
-  {
-    title: "Same Day Brochure Booklet Print",
-    image:
-      "/img/Booklet and brochure/Leonardo_Phoenix_10_a_stunning_professionallydesigned_booklet_1.jpg",
-  },
-  {
-    title: "Same Day Document Print",
-    image:
-      "/img/Home/Leonardo_Phoenix_10_A_sleek_modern_digital_printer_approximate_0.jpg",
-  },
-  {
-    title: "Same Day Hoodie Print",
-    image:
-      "/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_3.jpg",
-  },
-  {
-    title: "Same Day Tote Bag Print",
-    image:
-      "/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg",
-  },
-  {
-    title: "Same Day Sweatshirt Print",
-    image:
-      "/img/Sweatshirt/Leonardo_Phoenix_10_a_casual_relaxedfit_light_blue_sweatshirt_2.jpg",
-  },
-]);
+ 
 
 let { staticPagesByParentCat } = globalData;
 </script>
@@ -362,7 +318,7 @@ let { staticPagesByParentCat } = globalData;
               id="header_cart"
             >
               <i class="bx bx-shopping-bag fs-3"></i>
-              <span class="badge badge-primary shopping-cart-badge"> 0 </span>
+              <span class="badge badge-primary shopping-cart-badge"> {{cartStore.totalItems}} </span>
             </a>
           </div>
         </div>
