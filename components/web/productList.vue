@@ -183,7 +183,7 @@ onMounted(async () => {
                             </div>
                         </div>
                     </div>
-                    <div v-if="true" --range="dd" class="teeprint-category-menu">
+                    <div v-if="true" class="teeprint-category-menu">
                         <div class="teeprint-category-menu-inner">
                             <div class="teeprint-categorymenu-title">
                                 <h5>Price</h5>
@@ -200,7 +200,7 @@ onMounted(async () => {
                                     </div>
                                 </template>
                                 <template v-else>
-                                    <web-range v-model="homeStore.payload.price_range" :min="homeStore.additionalData.min_price" :max="homeStore.additionalData.max_price" ></web-range>
+                                    <web-range v-model="homeStore.payload.price_range" :min="homeStore.additionalData.min_price" :max="homeStore.additionalData.max_price" @change="homeStore.getProducts()" ></web-range>
                                 </template>
                                     <!-- <h3>
                                         {{ homeStore.payload.price_range }}

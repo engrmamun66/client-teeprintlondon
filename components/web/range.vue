@@ -39,7 +39,7 @@ let props = defineProps({
     },
 })
 
-let emits = defineEmits(['update:modelValue'])
+let emits = defineEmits(['update:modelValue', 'change'])
  
 
 let inputMin = ref(props.min) // min
@@ -65,7 +65,8 @@ function flipValueAfterChange(){
       let _min = inputMax.value
       inputMin.value = Number(_min)  
       inputMax.value = Number(_max) 
-  }   
+  }
+  emits('change', getMinMax())
    
 }
 
