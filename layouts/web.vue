@@ -61,8 +61,7 @@ useHead({
 
 let openCart = ref(false)
 
-onMounted(()=>{
-  // useNuxtApp().$emit('openInPageCart', true)
+onMounted(()=>{ 
    useNuxtApp().$on('openInPageCart', (bool) => {
     openCart.value = false;
     H.delay(()=>openCart.value = true)    

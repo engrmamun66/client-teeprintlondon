@@ -15,21 +15,6 @@ if(categorySlug){
 }
  
 
- 
-
-function addToCart(event: Event){
-    let target = event.target as HTMLElement
-    let parentElement = target?.closest('.teeprint-product-image')
-    if(parentElement){
-        let imgElement = parentElement.querySelector('img')
-        if(imgElement){
-            cartAnimation({element: imgElement}, ()=>{
-                useNuxtApp().$emit('openInPageCart', true)
-            })
-        }
-    }
-}
-
 
 let dbounceGetProducts = H.debounce(homeStore.getProducts, 500);
 
@@ -89,8 +74,6 @@ onMounted(async () => {
 
     isMounted.value = true
 })
-
-
  
 
 </script>
@@ -297,7 +280,7 @@ onMounted(async () => {
                                                         <nuxt-link :to="`/product/${product.slug}`" class="teeprint-view-btn" title="Hello from speech bubble!">
                                                             <i class="bx bx-search-alt"></i>
                                                         </nuxt-link>
-                                                        <a href="#" class="teeprint-addcart-btn" @click.stop.prevent="addToCart" >
+                                                        <a href="#" class="teeprint-addcart-btn" @click.prevent="homeStore.addToCartNow( $event, product.slug )" >
                                                             <i class="bx bx-cart"></i>
                                                         </a>
                                                     </div>

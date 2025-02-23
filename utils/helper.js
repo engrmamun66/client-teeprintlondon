@@ -60,6 +60,40 @@ export const H = {
       }
     });
   },
+  localStorage: function (name) {
+    return {
+      get value() {
+        if (typeof process == "undefined") {
+          var process = { client: true };
+        }
+        if (process.client && globalThis.localStorage) {
+          let data = globalThis.localStorage.getItem(name);
+          if (
+            (data && data?.startsWith("{") && data?.endsWith("}")) ||
+            (data?.startsWith("[") && data?.endsWith("]"))
+          ) {
+            data = JSON.parse(data);
+          }
+          return data;
+        }
+      },
+      set value(value) {
+        if (typeof process == "undefined") {
+          var process = { client: true };
+        }
+        if (process.client && globalThis.localStorage) {
+          if(value === null || value === ''){
+            localStorage.removeItem(name)
+          } else {
+            if (value && typeof value === "object") {
+              value = JSON.stringify(value);
+            }
+            localStorage.setItem(name, value);
+          }
+        }
+      },
+    };
+  },
   clone: function (data, { remove = [], add = {}, only = [] } = {}) {
     data = JSON.parse(JSON.stringify(data));
 

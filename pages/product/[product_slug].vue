@@ -9,14 +9,11 @@ let { product_slug } = useRoute().params;
 
 let isMounted = ref(false);
 let imageIndex = ref(0);
+let tab = ref(1);
 
 let getThumbnailImage = computed(() => {
     return homeStore.product?.images?.[imageIndex.value]?.image_url
 })
-
-
-console.log('product_slug', seoMeta[product_slug]);
-
 
 
 onMounted(async () => { 
@@ -30,6 +27,9 @@ onMounted(async () => {
         }) 
     }
     isMounted.value = true; 
+
+   homeStore.product.image
+    
 });
 
 definePageMeta({
@@ -48,14 +48,9 @@ useSeoMeta({
     ogDescription: seo_description,
     ogImage: seo_image, 
 });
+  
+  
 
-// Function to handle adding product to cart
-function addToCart() {
-    let imgElement = document.querySelector('.teeprint-product-view-image img'); 
-    cartAnimation({ element: imgElement }, () => {
-        useNuxtApp().$emit('openInPageCart', true);
-    });
-}
 </script>
 
 
@@ -91,7 +86,7 @@ function addToCart() {
                                     <p class="teeprint-product-price m-0 p-0"> 
                                         <!-- <ShimmerEffect v-if="showEffect" width="150px" height="20px" /> -->
                                         <span class="amount">
-                                            {{ H.formatPrice(homeStore.product?.sizes?.[0]?.unit_price) }}
+                                            {{ H.formatPrice(homeStore.get_price) }}
                                         </span>  
                                     </p>
                                     <web-discountCard v-if="homeStore.product?.discount" class="ms-4">
@@ -103,7 +98,10 @@ function addToCart() {
                                     <h5>Select Size</h5>
                                     <ul v-if="homeStore.product?.sizes">
                                         <template v-for="(item, i) in homeStore.product?.sizes" :key="i">
-                                            <li>{{ item.name }}</li>
+                                            <li @click="()=>{
+
+                                                H.toggleLoopItem(homeStore.product?.sizes, i, 'selected')
+                                            }" :class="{selected: item?.selected}">{{ item.name }}</li>
 
                                         </template>
                                         
@@ -111,21 +109,41 @@ function addToCart() {
                                 </div>
                                 <div class="select-size select-colors">
                                     <h5>Select Color</h5>
-                                    <ul v-if="homeStore.product?.colors">
-                                        <template v-for="(item, i) in homeStore.product?.colors" :key="i">
-                                            <li>{{ item.name }}</li>
-                                        </template> 
+                                    <ul v-if="homeStore.product?.colors"> 
+                                        <select class="form-control" style="width: 250px;" @change="({target})=> {
+                                            homeStore.product?.colors.forEach(color => {
+                                                if(color.id == target.value){
+                                                    color.selected = true
+                                                } else {
+                                                    color.selected = false
+                                                }
+                                            })
+                                        }" >
+                                            <template v-for="(color, i) in homeStore.product?.colors" :key="i">
+                                                <option :value="color.id" >{{ color.name }}</option>
+                                            </template>
+                                        </select>
                                     </ul>
                                 </div>
+                                <!-- <div class="select-size select-colors">
+                                    <h5>Select Gender</h5>
+                                    <ul v-if="homeStore.product?.genders">
+                                        <template v-for="(item, i) in homeStore.product?.genders" :key="i">
+                                            <li @click="H.toggleLoopItem(homeStore.product?.genders, i, 'selected')" :class="{selected: item?.selected}">{{ item.name }}</li>
+                                        </template> 
+                                    </ul>
+                                </div> -->
                                 <div class="teeprint-quantity">
                                     <div class="teeprint-num-in">
-                                        <span class="teeprint-minus dis">-</span>
-                                        <input type="text" class="teeprint-in-num" value="1" readonly="true" max="99992" />
-                                        <span class="teeprint-plus">+</span>
+                                        <span @click="homeStore.quantityGetSet = -1" class="teeprint-minus dis">-</span>
+                                        <input :value="homeStore.quantityGetSet" type="text" class="teeprint-in-num" readonly="true" max="99999" />
+                                        <span @click="homeStore.quantityGetSet = 1" class="teeprint-plus">+</span>
                                     </div>
                                 </div>
                                 <div class="product-details-btn">
-                                    <a class="teeprint-button teeprint-theme-btn addtocart-btn" @click="addToCart()"><i class="bx bx-shopping-bag"></i> Add to Cart </a>
+                                    <a class="teeprint-button teeprint-theme-btn addtocart-btn" :class="{'opacity-25': !homeStore.quantityGetSet}" @click.prevent="homeStore.addToCartNow()">
+                                        <i class="bx bx-shopping-bag"></i> Add to Cart 
+                                    </a>
                                     <nuxt-link :to="{name: 'quote'}" class="teeprint-button detailsquote-btn"> <i class='bx bx-comment'></i> Instant Quote </nuxt-link>
                                 </div>
                                 <hr class="pd-devided">
@@ -144,42 +162,7 @@ function addToCart() {
                                 </div>
                                 
                                 
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Size</th>
-                                            <th>Chest (Round)</th>
-                                            <th>Length</th>
-                                            <th>Sleeve</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>M</td>
-                                            <td>40.5</td>
-                                            <td>27.75</td>
-                                            <td>24.25</td>
-                                        </tr>
-                                        <tr>
-                                            <td>L</td>
-                                            <td>42.5</td>
-                                            <td>28.05</td>
-                                            <td>24.75</td>
-                                        </tr>
-                                        <tr>
-                                            <td>XL</td>
-                                            <td>44.5</td>
-                                            <td>29.25</td>
-                                            <td>25.25</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2XL</td>
-                                            <td>46.5</td>
-                                            <td>30</td>
-                                            <td>25.75</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <web-priceTable></web-priceTable>
                             </div>
                         </div>
                     </div>
@@ -188,155 +171,59 @@ function addToCart() {
                     <div class="col-md-12">
                         <div class="pd-tab">
                             <ul class="pd-tab_tab-head">
-                                <li class="active" rel="pddescription">Description</li>
-                                <li rel="pdrelatedproduct">Related Product</li>
+                                <li @click="tab = 1" :class="{'active': tab == 1}" rel="pddescription">Description</li>
+                                <li @click="tab = 2" :class="{'active': tab == 2}" rel="pdrelatedproduct">Related Product</li>
                             </ul>
-                            <div class="pd-tab_container">
-                                <div id="pddescription" class="pd-tab_content">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Size</th>
-                                                <th>Chest (Round)</th>
-                                                <th>Length</th>
-                                                <th>Sleeve</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>M</td>
-                                                <td>40.5</td>
-                                                <td>27.75</td>
-                                                <td>24.25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>L</td>
-                                                <td>42.5</td>
-                                                <td>28.05</td>
-                                                <td>24.75</td>
-                                            </tr>
-                                            <tr>
-                                                <td>XL</td>
-                                                <td>44.5</td>
-                                                <td>29.25</td>
-                                                <td>25.25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2XL</td>
-                                                <td>46.5</td>
-                                                <td>30</td>
-                                                <td>25.75</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    
+                            <div class="pd-tab_container"> 
+                                <div v-if="tab==1" id="pddescription" class="pd-tab_content">
+                                    <div v-html="homeStore.product?.long_description || 'Description not added'"></div> 
                                 </div>
-                                <div id="pdrelatedproduct" class="pd-tab_content">
+                                <div v-else id="pdrelatedproduct" class="pd-tab_content">
                                     <div class="related-product">
-                                        <div class="row productlist-itemrow">
-                                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-4 col-6">
-                                                <div class="teeprint-product">
-                                                    <div class="teeprint-product-inner">
-                                                        <div class="teeprint-product-image">
-                                                            <img src="https://teeprint.london/wp-content/uploads/2024/08/AM1120GYM20FRONT-6.jpg" alt="Img" />
-                                                            <div class="teeprint-product-overlow">
-                                                                <div class="teeprint-product-overlow-inner">
-                                                                    <a href="#" class="teeprint-view-btn" title="Hello from speech bubble!">
-                                                                        <i class="las la-eye"></i>
-                                                                    </a>
-                                                                    <a href="#" class="teeprint-addcart-btn">
-                                                                        <i class="bx bx-cart"></i>
-                                                                    </a>
+                                        <template v-if="homeStore.related_products?.length" >
+                                            <div class="row productlist-itemrow">
+                                                <template v-for="relatedItem in homeStore.related_products">
+                                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-4 col-6">
+                                                        <div class="teeprint-product">
+                                                            <div class="teeprint-product-inner">
+                                                                <div class="teeprint-product-image" @click.stop="navigateTo(`/product/${relatedItem.slug}`)">
+                                                                    <img :src="relatedItem?.thumbnail_image_url || PLACEHOLDER_IMAGE" alt="Img" />
+                                                                    <div class="teeprint-product-overlow">
+                                                                        <div class="teeprint-product-overlow-inner">
+                                                                            <nuxt-link :to="`/product/${relatedItem.slug}`" class="teeprint-view-btn" title="Hello from speech bubble!">
+                                                                                <i class="bx bx-search-alt"></i>
+                                                                            </nuxt-link>
+                                                                            <a href="#" class="teeprint-addcart-btn" @click.stop.prevent="log" >
+                                                                                <i class="bx bx-cart"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="teeprint-product-body">
+                                                                    <h5 class="teeprint-product-title">
+                                                                        Anthem Unisex Hoodie
+                                                                    </h5>
+                                                                    <span class="teeprint-price">£18.36</span>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="teeprint-product-body">
-                                                            <h5 class="teeprint-product-title">
-                                                                Anthem Unisex Hoodie
-                                                            </h5>
-                                                            <span class="teeprint-price">£18.36</span>
-                                                        </div>
                                                     </div>
-                                                </div>
+                                                </template>
+                                                 
                                             </div>
-                                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-4 col-6">
-                                                <div class="teeprint-product">
-                                                    <div class="teeprint-product-inner">
-                                                        <div class="teeprint-product-image">
-                                                            <img src="https://teeprint.london/wp-content/uploads/2024/08/AF02220BLK20FRONT-1.jpg" alt="Img" />
-                                                            <div class="teeprint-product-overlow">
-                                                                <div class="teeprint-product-overlow-inner">
-                                                                    <a href="#" class="teeprint-view-btn" title="Hello from speech bubble!">
-                                                                        <i class="las la-eye"></i>
-                                                                    </a>
-                                                                    <a href="#" class="teeprint-addcart-btn">
-                                                                        <i class="bx bx-cart"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="teeprint-product-body">
-                                                            <h5 class="teeprint-product-title">
-                                                                Anthem Unisex Hoodie
-                                                            </h5>
-                                                            <span class="teeprint-price">£18.36</span>
-                                                        </div>
-                                                    </div>
+
+                                        </template>
+                                        <template v-else >
+                                            <div class="row productlist-itemrow">
+    
+                                                <div class="col-12">
+                                                    <p>  <strong>There are no related product</strong> </p>
                                                 </div>
+                                                
                                             </div>
-                                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-4 col-6">
-                                                <div class="teeprint-product">
-                                                    <div class="teeprint-product-inner">
-                                                        <div class="teeprint-product-image">
-                                                            <img src="https://teeprint.london/wp-content/uploads/2024/08/AF03020BLK20FRONT-1.jpg" alt="Img" />
-                                                            <div class="teeprint-product-overlow">
-                                                                <div class="teeprint-product-overlow-inner">
-                                                                    <a href="#" class="teeprint-view-btn" title="Hello from speech bubble!">
-                                                                        <i class="las la-eye"></i>
-                                                                    </a>
-                                                                    <a href="#" class="teeprint-addcart-btn">
-                                                                        <i class="bx bx-cart"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="teeprint-product-body">
-                                                            <h5 class="teeprint-product-title">
-                                                                Anthem Unisex Hoodie
-                                                            </h5>
-                                                            <span class="teeprint-price">£18.36</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-4 col-6">
-                                                <div class="teeprint-product">
-                                                    <div class="teeprint-product-inner">
-                                                        <div class="teeprint-product-image">
-                                                            <img src="https://teeprint.london/wp-content/uploads/2024/08/AM0420BLK20FRONT-1.jpg" alt="Img" />
-                                                            <div class="teeprint-product-overlow">
-                                                                <div class="teeprint-product-overlow-inner">
-                                                                    <a href="#" class="teeprint-view-btn" title="Hello from speech bubble!">
-                                                                        <i class="las la-eye"></i>
-                                                                    </a>
-                                                                    <a href="#" class="teeprint-addcart-btn">
-                                                                        <i class="bx bx-cart"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="teeprint-product-body">
-                                                            <h5 class="teeprint-product-title">
-                                                                Anthem Unisex Hoodie
-                                                            </h5>
-                                                            <span class="teeprint-price">£18.36</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </template>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>

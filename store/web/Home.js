@@ -98,11 +98,23 @@ export const useHomeStore = defineStore("homeStore", () => {
   }
 
   let product = ref({})
+  let popular_products = ref([])
+  let related_products = ref([])
   async function getProductDetails(slug){ 
     try { 
       let response = await FrontendApi.getProductDetails(slug) 
       if(response.data.success){
-        product.value = response.data.data || {} 
+        product.value = response.data.data?.product || {} 
+        popular_products.value = response.data.data?.popular_products || []
+        related_products.value = response.data.data?.related_products || []
+
+        // with sizes
+        product.value.sizes = product.value.sizes.filter(size => parseFloat(size.pivot.unit_price) > 0)
+        product.value.sizes = product.value.sizes.filter(size => size.cart_quantity = 1)
+        if(product.value.sizes?.length) product.value.sizes[0].selected = true
+
+        // with colors
+        if(product.value.colors?.length) product.value.colors[0].selected = true 
       } 
       
     } catch (error) {
@@ -130,15 +142,119 @@ export const useHomeStore = defineStore("homeStore", () => {
             }
             additionalData[key] = value
           })
-          console.log({additionalData});
         }
-        console.log({'datadatadata': data});
       } 
       
     } catch (error) {
       
     }
   }
+
+
+
+  /**
+   * Some computed property
+   */
+
+  let quantityGetSet = computed({
+    get(){
+      try {
+        if(!product.value?.sizes?.length) return 0
+        return product.value?.sizes.filter(size => size?.selected)?.[0]?.cart_quantity || 0
+      } catch (error) {
+        console.log({'errorerrorerror': error });
+      }
+    },
+    set(value){
+      if(!product.value?.sizes?.length) return
+      product.value?.sizes.forEach(size => {
+        if(size.selected){
+          size.cart_quantity += (value)
+          if(size.cart_quantity < 1){
+            size.cart_quantity = 1
+          }
+        }
+      })
+    }
+  })
+
+  /**
+   * { 
+          "pivot": {
+              "product_id": 1,
+              "size_id": 1,
+              "unit_price": "12.00",
+              "quantity": 33434,
+              "discounted_unit_price": "12.00"
+          },
+          "cart_quantity": 1,
+          "selected": true
+      }
+   */
+  let get_price = computed(() => {
+    if(!product.value?.sizes?.length) {
+      return 0
+    }
+    else {
+      let item = product.value?.sizes.filter(size => size?.selected)?.[0]
+      if(item){
+        let { cart_quantity, pivot: { discounted_unit_price } } = item
+        // return ( Number(cart_quantity) * Number(discounted_unit_price) )
+        return (Number(discounted_unit_price))
+      }
+    }
+  })
+
+
+  async function addToCartNow(event=null, slug=null) {
+    if(slug){
+      product.value = {}
+      await getProductDetails(slug)
+    } 
+
+    if(!quantityGetSet.value){
+        Toaster.error('Please select product size')
+        return
+    }
+
+    let imgElement 
+
+    if(!event){
+      imgElement = document.querySelector('.teeprint-product-view-image img'); 
+    } else {
+      let target = event.target
+      let parentElement = target?.closest('.teeprint-product-image')
+      imgElement = parentElement.querySelector('img')   
+    }
+   
+    cartAnimation({ element: imgElement }, () => { 
+
+      if(!H.localStorage('cart').value){
+          H.localStorage('cart').value = []
+      }
+
+      let cart = H.localStorage('cart').value
+
+      let __product = H.clone(product.value)
+      __product.sizes = __product.sizes.filter(size => size.selected)
+      __product.colors = __product.sizes.filter(size => size.colors)
+      cart.push(__product)
+
+      useNuxtApp().$emit('openInPageCart', true);
+
+      H.localStorage('cart').value = cart
+      // reset product
+      product.value.sizes.forEach((size, i) => {
+          if(i === 0){
+              size.selected = true
+              size.cart_quantity = 1
+          } else {
+              size.selected = false
+              size.cart_quantity = 1
+          }
+      })
+  }); 
+}
 
 
 
@@ -160,8 +276,15 @@ export const useHomeStore = defineStore("homeStore", () => {
     getProductDetails,
     resetPayload,
     product,
+    popular_products,
+    related_products,
     additionalData,
     getAdditionalData,
+
+    quantityGetSet,
+    get_price,
+
+    addToCartNow,
 
   };
 });

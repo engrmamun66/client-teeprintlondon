@@ -4316,6 +4316,11 @@ Product Details css
     transition: 0.1s ease-in-out;
     border-radius: 15px;
 }
+.select-size ul li.selected {
+    color: white;
+    background-color: #333;
+    border: 1px solid #333; 
+}
 .pd-devided {
   border-color: #000;
 }
@@ -4382,9 +4387,7 @@ Product Details css
     padding-right: 20px;
     padding-bottom: 20px;
 }
-.pd-tab_content {
-    display: none;
-}
+ 
 .pd-tab_content > :first-child {
     margin-top: 0;
 }

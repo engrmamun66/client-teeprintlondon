@@ -1,0 +1,38 @@
+<template>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Size</th>
+                <th>Chest (Round)</th>
+                <th>Length</th>
+                <th>Sleeve</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>M</td>
+                <td>40.5</td>
+                <td>27.75</td>
+                <td>24.25</td>
+            </tr>
+            <tr>
+                <td>L</td>
+                <td>42.5</td>
+                <td>28.05</td>
+                <td>24.75</td>
+            </tr>
+            <tr>
+                <td>XL</td>
+                <td>44.5</td>
+                <td>29.25</td>
+                <td>25.25</td>
+            </tr>
+            <tr>
+                <td>2XL</td>
+                <td>46.5</td>
+                <td>30</td>
+                <td>25.75</td>
+            </tr>
+        </tbody>
+    </table>
+</template>
