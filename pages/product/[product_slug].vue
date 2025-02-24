@@ -5,12 +5,11 @@ import { useRoute } from "vue-router";
 import { useSeoMeta } from "#imports";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 
-// Correct import for Swiper v8
-import { Navigation, Pagination, Autoplay } from "swiper";
+// Import Swiper modules
+import { Pagination, Autoplay } from "swiper";
 
 let homeStore = inject("homeStore");
 let { product_slug } = useRoute().params;
@@ -30,12 +29,18 @@ let image_url = ref([]);
 // Function to handle slide change
 const onSlideChange = (swiper) => {
   activeThumbnailIndex.value = swiper.realIndex; // Update active thumbnail index
+  console.log("Slide changed to:", swiper.realIndex);
 };
 
 // Function to set active thumbnail and update Swiper
 const setActiveThumbnail = (index) => {
-  activeThumbnailIndex.value = index;
-  swiperInstance.value.slideTo(index); // Update Swiper slide
+  console.log("Setting active thumbnail:", index);
+  if (swiperInstance.value) {
+    activeThumbnailIndex.value = index + 1;
+    swiperInstance.value.slideTo(index + 1); // Update Swiper slide
+  } else {
+    console.error("Swiper instance is not initialized.");
+  }
 };
 
 onMounted(async () => {
@@ -99,19 +104,23 @@ let showEffect = computed(
                       <!-- Swiper Slider for Images -->
                       <div class="image-slider-container">
                         <swiper
-                          :modules="[Navigation, Pagination, Autoplay]"
+                          :modules="[Pagination, Autoplay]"
                           :slides-per-view="1"
                           :space-between="20"
                           :loop="true"
                           :pagination="{ clickable: true }"
-                          :navigation="false"
                           :autoplay="{
                             delay: 3000, // Auto-slide every 3 seconds
                             disableOnInteraction: false, // Continue autoplay even after user interaction
                           }"
                           class="image-swiper"
                           @slide-change="onSlideChange"
-                          @swiper="(swiper) => (swiperInstance = swiper)"
+                          @swiper="
+                            (swiper) => {
+                              swiperInstance = swiper;
+                              console.log('Swiper instance:', swiper);
+                            }
+                          "
                         >
                           <!-- Swiper Slides -->
                           <swiper-slide
@@ -512,15 +521,6 @@ let showEffect = computed(
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
-}
-
-/* Customize Swiper navigation and pagination */
-.swiper-button-next,
-.swiper-button-prev {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 50%;
 }
 
 .swiper-pagination-bullet {
