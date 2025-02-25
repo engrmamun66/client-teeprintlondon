@@ -27,19 +27,20 @@ const setActiveThumbnail = (index) => {
 onMounted(async () => {
   await homeStore.getProductDetails(product_slug);
 
-  if (homeStore.product?.images?.length) {
-    homeStore.product.images.unshift({
-      id: 0,
-      selected: true,
-      image_url: homeStore.product?.thumbnail_image_url,
-    });
-  }
+  // if (homeStore.product?.images?.length) {
+  //   homeStore.product.images.unshift({
+  //     id: 0,
+  //     selected: true,
+  //     image_url: homeStore.product?.thumbnail_image_url,
+  //   });
+  // }
 
   H.delay(() => (isMounted.value = true), 500);
 
   homeStore.product.images?.forEach((image) => {
     image_url.value.push(image.image_url);
   });
+
   console.log("Image URLs:", image_url.value);
 
   setInterval(() => {
@@ -503,17 +504,29 @@ let showEffect = computed(
 </template>
 
 <style scoped>
+/* Carousel container */
+.image-slider-container {
+  width: 100%; /* Ensure the container takes full width */
+  max-width: 100%; /* Prevent overflow */
+  margin: 0 auto; /* Center the container */
+  padding: 0; /* Remove padding to ensure full width */
+}
+
+/* Carousel item */
 .carousel-item {
-  height: 500px; /* Adjust height as needed */
+  width: 100%; /* Ensure the carousel item takes full width */
+  height: 800px; /* Adjust height automatically */
   overflow: hidden;
 }
 
+/* Carousel image */
 .carousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  width: 100%; /* Ensure the image takes full width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the image fits within the container */
 }
 
+/* Thumbnail items */
 .teeprint-product-thumb-item {
   cursor: pointer;
   margin: 5px;
@@ -525,10 +538,30 @@ let showEffect = computed(
   border-color: #007aff;
 }
 
+.teeprint-product-view-image img {
+  width: 100%;
+  max-height: 800px;
+  object-fit: contain;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .carousel-item {
-    height: 300px; /* Adjust height for smaller screens */
+    height: 500px; /* Adjust height for smaller screens */
+  }
+
+  .teeprint-product-details-image {
+    width: 100%; /* Ensure the image container takes full width */
+    padding: 0; /* Remove padding to ensure full width */
+  }
+
+  .teeprint-product-view-image {
+    width: 100%; /* Ensure the view container takes full width */
+  }
+  .teeprint-product-view-image img {
+    max-height: 500px; /* Reduce height for mobile */
+    max-width: 100%;
+    width: 100%;
   }
 }
 </style>

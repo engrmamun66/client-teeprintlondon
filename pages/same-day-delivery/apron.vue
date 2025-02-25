@@ -22,18 +22,18 @@ function addToCart() {
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="Same-Day Printing for Caps"
+            title="Same-Day Printing for T-Shirts"
             :images="[
-              '/img/cap/Leonardo_Kino_XL_a_cap_image_written_teeprintlondon_on_that_ca_3adcfaadcadc.jpg',
-              '/img/cap/Leonardo_Phoenix_10_A_middleaged_man_with_a_gentle_smile_and_s_2.jpg',
-              '/img/cap/Leonardo_Kino_XL_a_cap_image_written_Your_Design_Here_on_the_1.jpg',
+              '/img/Apron/Leonardo_Phoenix_10_A_handsome_young_man_in_his_early_twenties_1.jpg',
+              '/img/Apron/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_0.jpg',
+              '/img/Apron/Leonardo_Phoenix_10_A_young_man_in_his_early_twenties_with_a_c_1.jpg',
             ]"
           >
-            Need high-quality custom caps in a hurry? Tee Print London provides
-            same-day printing services, ensuring fast and reliable results.
-            Whether it’s for businesses, events, sports teams, or personal use,
-            our efficient process guarantees stylish and professional apparel
-            without delays. Serving clients across London and the UK, we
+            Need high-quality custom aprons in a hurry? Tee Print London
+            provides same-day printing services, ensuring fast and reliable
+            results. Whether it’s for businesses, events, kitchens, or personal
+            use, our efficient process guarantees stylish and professional
+            aprons without delays. Serving clients across London and the UK, we
             specialize in delivering premium printing solutions with a quick
             turnaround to meet your urgent needs.
 
@@ -57,29 +57,29 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Your Cap Printing
+                  Why Choose Tee Print London for Your Apron Printing
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
                   Tee Print London is your go-to destination for high-quality
-                  cap printing, offering premium designs, exceptional
+                  apron printing, offering premium designs, exceptional
                   craftsmanship, and unbeatable customer service. Whether you're
-                  looking for custom prints for your brand, team, or personal
-                  style, we provide vibrant, long-lasting prints on comfortable,
-                  high-quality fabrics. Our advanced printing techniques ensure
-                  sharp details and rich colors that won’t fade over time. Plus,
-                  with fast turnaround times and competitive pricing, we make
-                  customization effortless and affordable. Choose Tee Print
-                  London for stylish, durable, and uniquely crafted caps that
-                  make a statement!
+                  looking for custom prints for your business, kitchen, or
+                  personal use, we provide vibrant, long-lasting prints on
+                  durable, high-quality fabrics. Our advanced printing
+                  techniques ensure sharp details and rich colors that won’t
+                  fade over time. Plus, with fast turnaround times and
+                  competitive pricing, we make customization effortless and
+                  affordable. Choose Tee Print London for stylish, durable, and
+                  uniquely crafted aprons that make a statement!
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <video
+              <!-- <video
                 class="rounded-video"
                 autoplay
                 loop
@@ -88,11 +88,15 @@ function addToCart() {
                 width="100%"
               >
                 <source
-                  src="/img/cap/59f7a4f5-fdc2-4e15-80e0-18040a44da9d_video (online-video-cutter.com).mp4"
+                  src="/video/8ce45d1c-1418-4b67-9a72-22a87dcd1d58_videomerged (online-video-cutter.com).mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
-              </video>
+              </video> -->
+              <img
+                src="/img/Apron/Leonardo_Phoenix_10_a_young_man_in_his_early_twenties_with_a_r_2.jpg"
+                alt="about iamge"
+              />
             </div>
           </div>
         </div>
@@ -126,7 +130,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
               <img
-                src="/img/cap/Leonardo_Kino_XL_a_cap_image_written_Your_Design_Here_on_the_1.jpg"
+                src="/img/Apron/Leonardo_Phoenix_10_a_young_man_in_his_early_twenties_with_a_r_2 (1).jpg"
                 alt="about iamge"
               />
             </div>
@@ -134,17 +138,17 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
-                <h2 class="section-heading-title-big">
-                  Same-Day Cap Printing – Fast, Reliable, and High-Quality
+                <h2 class="section-heading-title-big mt-5">
+                  Same-Day Apron Printing – Fast, Reliable, and High-Quality
                 </h2>
               </div>
               <p>
-                When time is of the essence, and you need custom-printed caps
+                When time is of the essence, and you need custom-printed aprons
                 without delays, Tee Print London is here to help. We specialize
                 in same-day printing services, allowing you to receive
-                professionally printed apparel on the very same day you place
+                professionally printed aprons on the very same day you place
                 your order. Whether you're preparing for a corporate event,
-                sports competition, promotional campaign, or simply want a
+                kitchen staff uniforms, promotional campaigns, or simply want a
                 unique design for personal use, our service ensures you get
                 premium-quality prints with a fast turnaround. At Tee Print
                 London, we use state-of-the-art printing techniques such as
@@ -157,11 +161,11 @@ function addToCart() {
                 understand that urgent orders require not only quick processing
                 but also high standards, which is why our printing process
                 ensures crisp, clear, and professional results. Whether you need
-                a single cap or a bulk order, our team is dedicated to providing
-                the best service in London and across the UK. Why wait for days?
-                Get your custom caps printed today with Tee Print London and
-                enjoy fast, reliable, and high-quality printing tailored to your
-                needs.
+                a single apron or a bulk order, our team is dedicated to
+                providing the best service in London and across the UK. Why wait
+                for days? Get your custom aprons printed today with Tee Print
+                London and enjoy fast, reliable, and high-quality printing
+                tailored to your needs.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -187,30 +191,30 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Get Your Custom Caps Printed Today!
+                  Get Your Custom Aprons Printed Today!
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait days or even weeks for your custom apparel when you
-                  can have it printed today? At Tee Print London, we offer
-                  same-day cap printing to ensure you get your custom designs
+                  Why wait days or even weeks for your custom aprons when you
+                  can have them printed today? At Tee Print London, we offer
+                  same-day apron printing to ensure you get your custom designs
                   exactly when you need them. Whether it’s for a corporate
-                  event, business promotion, sports team, charity fundraiser, or
-                  personal use, we provide a seamless and hassle-free printing
-                  experience with top-notch results. Our process is designed for
-                  speed and convenience—simply select your cap, upload your
-                  design, and let us handle the rest. Using advanced printing
-                  techniques, including Direct-to-Garment (DTG), screen
+                  event, business promotion, kitchen staff, charity fundraiser,
+                  or personal use, we provide a seamless and hassle-free
+                  printing experience with top-notch results. Our process is
+                  designed for speed and convenience—simply select your apron,
+                  upload your design, and let us handle the rest. Using advanced
+                  printing techniques, including Direct-to-Garment (DTG), screen
                   printing, and vinyl printing, we guarantee sharp, vibrant, and
                   long-lasting prints that won’t fade after just a few washes.
                   We understand the urgency of last-minute orders, which is why
                   our same-day printing service is tailored to meet your
                   deadlines without compromising on quality. Whether you need a
-                  single cap or a bulk order, we ensure every piece is printed
+                  single apron or a bulk order, we ensure every piece is printed
                   with precision, durability, and style. Don’t let long wait
                   times slow you down—place your order now with Tee Print London
-                  and get your custom caps printed on the same day with
+                  and get your custom aprons printed on the same day with
                   professional service and unmatched quality.
                 </p>
               </div>
@@ -219,7 +223,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
               <img
-                src="/img/cap/Leonardo_Phoenix_10_A_person_likely_in_their_midtwenties_to_ea_3.jpg"
+                src="/img/Apron/Leonardo_Phoenix_10_a_young_man_in_his_early_twenties_with_a_r_3.jpg"
                 alt="about iamge"
               />
             </div>
@@ -229,8 +233,8 @@ function addToCart() {
     </section>
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/cap/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2.jpg"
-        img_right="/img/cap/Leonardo_Phoenix_10_a_young_man_in_his_early_twenties_with_a_l_2.jpg"
+        img_left="/img/Apron/Leonardo_Phoenix_10_A_young_man_in_his_early_twenties_with_a_c_2.jpg"
+        img_right="/img/Apron/Leonardo_Phoenix_10_a_young_man_in_his_early_twenti.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
