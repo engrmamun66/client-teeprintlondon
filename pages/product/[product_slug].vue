@@ -505,21 +505,21 @@ let showEffect = computed(
 
 <style scoped>
 .image-slider-container {
-  max-width: 650px;
-  max-height: 750px;
+  max-width: 100%;
   margin: auto;
   padding: 20px;
 }
 
 .image-swiper {
   width: 100%;
-  height: 700px; /* Adjust height as needed */
+  height: auto;
+  max-height: 700px;
 }
 
 .swiper-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   border-radius: 10px;
 }
 
@@ -539,6 +539,9 @@ let showEffect = computed(
 }
 
 .teeprint-product-thumb-item.teeprint-product-thumb-active {
-  border-color: #007aff; /* Highlight active thumbnail */
+  border-color: #007aff;
 }
+
+/* Responsive adjustments */
+
 </style>
