@@ -273,7 +273,7 @@ export const useHomeStore = defineStore("homeStore", () => {
 
       let __product = H.clone(product.value)
       __product.sizes = __product.sizes.filter(size => size.selected)
-      __product.colors = __product.sizes.filter(size => size.colors)
+      __product.colors = __product.colors.filter(color => color.selected)
       cart.push(__product)
 
       
