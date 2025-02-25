@@ -48,12 +48,12 @@ watch(deliveryCost, (a, b) => {
                                         <template v-for="(item, i) in cartStore.cart">
                                             <tr>
                                                 <td><i @click="cartStore.deleteItem(i)" class="la la-trash cart-remove"></i></td>
-                                                <td><img :src="item.thumbnail_image_url" /></td>
+                                                <td><img @auxclick="log(item)" :src="item.thumbnail_image_url" /></td>
                                                 <td>
                                                     <b>{{ item.name }}</b>
                                                     <br>
                                                     <template v-if="item.sizes?.[0]?.name">
-                                                        Size: {{ item.cosizeslors?.[0]?.name }} 
+                                                        Size: {{ item.sizes?.[0]?.name }} 
                                                     </template>
                                                     <br>
                                                     <template v-if="item.colors?.[0]?.name">
