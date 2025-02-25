@@ -109,6 +109,10 @@ body {
 .cp{
   cursor: pointer;
 }
+.cn{
+  cursor: unset;
+  pointer-events: none;
+}
 
 @media (max-width: 1199px) {
    h1 {

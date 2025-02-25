@@ -123,7 +123,15 @@ export const useHomeStore = defineStore("homeStore", () => {
         // with sizes
         product.value.sizes = product.value.sizes.filter(size => parseFloat(size.pivot.unit_price) > 0)
         product.value.sizes = product.value.sizes.filter(size => size.cart_quantity = 1)
-        if(product.value.sizes?.length) product.value.sizes[0].selected = true
+        if(product.value.sizes?.length) {
+          // product.value.sizes[0].selected = true
+          let index = product.value.sizes.findIndex(size => size.pivot.unit_price === product.value.min_unit_price)
+          if(index > -1){
+            product.value.sizes[index].selected = true
+          } else {
+            product.value.sizes[0].selected = true
+          } 
+        }
 
         // with colors
         if(product.value.colors?.length) product.value.colors[0].selected = true 
@@ -207,6 +215,19 @@ export const useHomeStore = defineStore("homeStore", () => {
       }
    */
   let get_price = computed(() => {
+    if(!product.value?.sizes?.length) {
+      return 0
+    }
+    else {
+      let item = product.value?.sizes.filter(size => size?.selected)?.[0]
+      if(item){
+        let { cart_quantity, pivot: { unit_price } } = item
+        // return ( Number(cart_quantity) * Number(unit_price) )
+        return (Number(unit_price))
+      }
+    }
+  })
+  let get_discounted_price = computed(() => {
     if(!product.value?.sizes?.length) {
       return 0
     }
@@ -301,6 +322,7 @@ export const useHomeStore = defineStore("homeStore", () => {
 
     quantityGetSet,
     get_price,
+    get_discounted_price,
 
     addToCartNow,
 

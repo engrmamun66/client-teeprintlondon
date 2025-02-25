@@ -299,7 +299,7 @@ onMounted(async () => {
                         <template v-else>
                             <template v-for="product in homeStore.products">
                                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-4 col-6">
-                                    <div class="teeprint-product" @click.stop="navigateTo(`/product/${product.slug}`)">
+                                    <div class="teeprint-product" @auxclick="log(product)" @click.stop="navigateTo(`/product/${product.slug}`)">
                                         <div class="teeprint-product-inner">
                                             <div class="teeprint-product-image">
                                                 <img :src="product.thumbnail_image_url || `/img/placeholder-image.jpg`" alt="Img" />
@@ -318,7 +318,13 @@ onMounted(async () => {
                                                 <h5 class="teeprint-product-title">
                                                     {{product.name}}
                                                 </h5>
-                                                <span class="teeprint-price">£18.36</span>
+                                                <template v-if="product?.discounted_min_unit_price">
+                                                    <span class="teeprint-price"> {{ H.formatPrice(product?.discounted_min_unit_price) }} </span>
+                                                    <span class="teeprint-price text-decoration-line-through opacity-25 cn ms-2">{{ H.formatPrice(product?.min_unit_price) }}</span>
+                                                </template>
+                                                <template v-else>
+                                                    <span class="teeprint-price">{{ H.formatPrice(product?.min_unit_price) }}</span> 
+                                                </template>
                                             </div>
                                         </div>
                                     </div>
