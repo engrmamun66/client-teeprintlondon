@@ -24,9 +24,9 @@ function addToCart() {
             :right="true"
             title="Same-Day Printing for Polo Shirts"
             :images="[
-              '/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_tote_bag_image_featuring_a_highq_0.jpg',
-              '/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_0.jpg',
-              '/img/Tote_bag/Leonardo_Phoenix_10_a_worn_natural_canvas_tote_bag_with_a_rela_0.jpg',
+              '/img/Polo_T_shirt/Leonardo_Phoenix_10_A_casually_dressed_young_man_in_his_early_2.jpg',
+              '/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_male_model_in_his_early_twenties_w_0.jpg',
+              '/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_1.jpg',
             ]"
           >
             Need high-quality custom Polo Shirts in a hurry? Tee Print London provides
@@ -79,7 +79,21 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_colorful_tote_bag_image_with_0.jpg" alt="about iamge" />
+              <!-- <img src="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_colorful_tote_bag_image_with_0.jpg" alt="about iamge" /> -->
+              <video
+                class="rounded-video"
+                autoplay
+                loop
+                muted
+                playsinline
+                width="100%"
+              >
+                <source
+                  src="/img/Polo_T_shirt/60a766b1-ffa4-4b6e-be69-531f597d778f_video (online-video-cutter.com).mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
@@ -112,7 +126,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_casual_tote_bag_with_a_playf_0.jpg" alt="about iamge" />
+              <img src="/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_male_model_in_his_early_twenties_w_2.jpg" alt="about iamge" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -199,7 +213,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_colorful_tote_bag_image_with_2.jpg" alt="about iamge" />
+              <img src="/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_0.jpg" alt="about iamge" />
             </div>
           </div>
         </div>
@@ -207,8 +221,8 @@ function addToCart() {
     </section>
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/Tote_bag/Leonardo_Phoenix_10_a_worn_natural_canvas_tote_bag_with_a_rela_2.jpg"
-        img_right="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_recta_3.jpg"
+        img_left="/img/Polo_T_shirt/Leonardo_Phoenix_10_A_casually_dressed_young_man_in_his_early_3.jpg"
+        img_right="/img/Polo_T_shirt/Leonardo_Phoenix_10_a_young_man_with_a_strong_jawline_and_a_co_3.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>

@@ -26,7 +26,7 @@ function addToCart() {
             :images="[
               '/img/cap/Leonardo_Kino_XL_a_cap_image_written_teeprintlondon_on_that_ca_3adcfaadcadc.jpg',
               '/img/cap/Leonardo_Phoenix_10_A_middleaged_man_with_a_gentle_smile_and_s_2.jpg',
-              '/img/cap/Leonardo_Kino_XL_a_cap_image_written_Your_Design_Here_on_the_0.jpg',
+              '/img/cap/Leonardo_Kino_XL_a_cap_image_written_Your_Design_Here_on_the_1.jpg',
             ]"
           >
             Need high-quality custom caps in a hurry? Tee Print London provides
@@ -125,7 +125,10 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/cap/Leonardo_Kino_XL_a_cap_image_written_Your_Design_Here_on_the_1.jpg" alt="about iamge" />
+              <img
+                src="/img/cap/Leonardo_Kino_XL_a_cap_image_written_Your_Design_Here_on_the_1.jpg"
+                alt="about iamge"
+              />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -215,7 +218,10 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/cap/Leonardo_Phoenix_10_A_person_likely_in_their_midtwenties_to_ea_3.jpg" alt="about iamge" />
+              <img
+                src="/img/cap/Leonardo_Phoenix_10_A_person_likely_in_their_midtwenties_to_ea_3.jpg"
+                alt="about iamge"
+              />
             </div>
           </div>
         </div>
