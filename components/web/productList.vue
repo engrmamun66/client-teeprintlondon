@@ -241,8 +241,7 @@ onMounted(async () => {
                                             <div class="teeprint-checkbox-inline">
                                                 <label class="teeprint-radio"> 
                                                     <input type="radio" :value="gender.id" name="gender" @click.stop="({target})=>{ 
-                                                        homeStore.payload.gender_ids.push(gender.id)
-                                                        homeStore.payload.gender_ids = new Set([...homeStore.payload.gender_ids])
+                                                        homeStore.payload.gender_ids = [gender.id]
                                                         homeStore.getProducts()
                                                     }"> {{gender.name}}
                                                     <span></span> 
