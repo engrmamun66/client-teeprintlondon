@@ -35,7 +35,7 @@
             <h3 class="teeprint-makes-title">
               {{ title }}
             </h3>
-            <p class="teeprint-makes-short-des">
+            <p class="teeprint-makes-short-des"> 
               <slot>
                 Need custom t-shirts in a hurry for your campaign, event, or festival?
                 Tee Print London is your go-to for fast, reliable solutions. We offer
@@ -43,7 +43,9 @@
                 printing for customers throughout the UK.
               </slot>
             </p>
-            <slot name="link"></slot>
+            <div>
+              <slot name="link"></slot>
+            </div>
           </div>
         </div>
       </div>
@@ -76,6 +78,25 @@
     display: flex;
     align-items: center;
     gap: 20px;
+  }
+
+
+  @media screen and (max-width: 900px) {
+    .teeprint-makes-box {
+      flex-direction: column;
+    }
+    .teeprint-makes-box-image{
+      order: -1 !important;
+    }
+    .teeprint-makes-section .teeprint-makes-box .teeprint-makes-box-image .teeprint-makes-image::after { 
+      top: 0;
+      border-radius: 10px;
+      box-shadow: 33px 38px 8px #00000042;
+    }
+
+    .teeprint-makes-section .teeprint-makes-box .teeprint-makes-box-image .teeprint-makes-image img { 
+      border-radius: 10px; 
+  }
   }
   
   .teeprint-makes-box-image {
