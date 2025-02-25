@@ -4305,6 +4305,7 @@ Product Details css
 }
 .select-size ul {
   display: flex;
+  flex-wrap: wrap;
 }
 .select-size ul li {
   width: auto;
