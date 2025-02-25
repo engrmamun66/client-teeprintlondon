@@ -293,6 +293,11 @@ let { staticPagesByParentCat } = globalData;
                                 Same Day Tote Apron Printing
                               </nuxt-link>
                             </li>
+                            <li>
+                              <nuxt-link to="/same-day-delivery/apron">
+                                Same Day Fleeces & Knits Printing
+                              </nuxt-link>
+                            </li>
                           </ul>
                         </div>
                       </li>
