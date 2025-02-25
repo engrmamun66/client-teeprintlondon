@@ -240,7 +240,7 @@ onMounted(async () => {
                                         <template v-for="gender in homeStore.additionalData.genders">
                                             <div class="teeprint-checkbox-inline">
                                                 <label class="teeprint-radio"> 
-                                                    <input type="radio" name="gender" @click.stop="({target})=>{ 
+                                                    <input type="radio" :value="gender.id" name="gender" @click.stop="({target})=>{ 
                                                         homeStore.payload.gender_ids.push(gender.id)
                                                         homeStore.payload.gender_ids = new Set([...homeStore.payload.gender_ids])
                                                         homeStore.getProducts()
