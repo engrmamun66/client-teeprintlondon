@@ -320,7 +320,7 @@ onMounted(async () => {
                                                 </h5>
                                                 <template v-if="product?.discounted_min_unit_price">
                                                     <span class="teeprint-price"> {{ H.formatPrice(product?.discounted_min_unit_price) }} </span>
-                                                    <span class="teeprint-price text-decoration-line-through opacity-25 cn ms-2">{{ H.formatPrice(product?.min_unit_price) }}</span>
+                                                    <span class="teeprint-price text-decoration-line-through opacity-59 cn ms-2">{{ H.formatPrice(product?.min_unit_price) }}</span>
                                                 </template>
                                                 <template v-else>
                                                     <span class="teeprint-price">{{ H.formatPrice(product?.min_unit_price) }}</span> 

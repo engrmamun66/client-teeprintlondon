@@ -194,7 +194,7 @@ let showEffect = computed(
                         {{ H.formatPrice(homeStore.get_discounted_price) }}
                       </template>
                     </span>
-                    <span v-if="homeStore.get_price && homeStore.get_discounted_price && homeStore.get_price !== homeStore.get_discounted_price" class="amount text-decoration-line-through opacity-25 cn ms-2">
+                    <span v-if="homeStore.get_price && homeStore.get_discounted_price && homeStore.get_price !== homeStore.get_discounted_price" class="amount text-decoration-line-through opacity-50 cn ms-2">
                       <template v-if="showEffect">
                         <ShimmerEffect
                           width="100px"
