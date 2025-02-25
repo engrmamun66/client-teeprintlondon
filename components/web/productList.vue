@@ -241,8 +241,7 @@ onMounted(async () => {
                                             <div class="teeprint-checkbox-inline">
                                                 <label class="teeprint-radio"> 
                                                     <input type="radio" :value="gender.id" name="gender" @click.stop="({target})=>{ 
-                                                        homeStore.payload.gender_ids.push(gender.id)
-                                                        homeStore.payload.gender_ids = new Set([...homeStore.payload.gender_ids])
+                                                        homeStore.payload.gender_ids = [gender.id]
                                                         homeStore.getProducts()
                                                     }"> {{gender.name}}
                                                     <span></span> 
@@ -320,7 +319,7 @@ onMounted(async () => {
                                                 </h5>
                                                 <template v-if="product?.discounted_min_unit_price">
                                                     <span class="teeprint-price"> {{ H.formatPrice(product?.discounted_min_unit_price) }} </span>
-                                                    <span class="teeprint-price text-decoration-line-through opacity-59 cn ms-2">{{ H.formatPrice(product?.min_unit_price) }}</span>
+                                                    <span class="teeprint-price text-decoration-line-through opacity-50 cn ms-2">{{ H.formatPrice(product?.min_unit_price) }}</span>
                                                 </template>
                                                 <template v-else>
                                                     <span class="teeprint-price">{{ H.formatPrice(product?.min_unit_price) }}</span> 

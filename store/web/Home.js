@@ -158,7 +158,7 @@ export const useHomeStore = defineStore("homeStore", () => {
           Object.keys(data).forEach(key => {
             let value = data[key]
             if(key === 'min_price'){
-              value = parseInt(value) 
+              value = 1 || parseInt(value) 
             }
             if(key === 'max_price'){
               value = parseInt(value) || 50
