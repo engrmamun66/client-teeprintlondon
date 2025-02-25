@@ -82,7 +82,7 @@ function addToCart() {
             <div class="teeprint-about-img">
               <img
                 src="/img/Fleeces_and_Knits/Leonardo_Phoenix_10_A_solitary_young_man_in_his_early_twenties_1.jpg"
-                ,
+                
                 alt="about image"
               />
             </div>
