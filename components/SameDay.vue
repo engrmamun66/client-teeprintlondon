@@ -43,6 +43,7 @@
 </template>
 
 <script setup>
+
 const items = [
   { title: "Same Day T shirt Print", image: "/img/Cotton_T_shirt/Leonardo_Phoenix_10_A_fit_middleaged_man_with_short_dark_hair_1.jpg", link: "same-day-delivery/shirt" },
   { title: "Same Day Polo Shirt Print", image: "/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_1.jpg", link: "same-day-delivery/polo_shirt_printing" },
@@ -54,6 +55,9 @@ const items = [
   { title: "Same Day Document Print", image: "/img/Home/Leonardo_Phoenix_10_A_sleek_modern_digital_printer_approximate_0.jpg" },
   { title: "Same Day Document Print", image: "/img/Home/Leonardo_Phoenix_10_A_sleek_modern_digital_printer_approximate_0.jpg" },
 ];
+
+
+
 </script>
 
 <style scoped>
