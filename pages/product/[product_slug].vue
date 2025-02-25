@@ -408,7 +408,7 @@ let showEffect = computed(
           <div class="row pd-description">
             <div class="col-md-12">
               <div class="pd-tab">
-                <ul class="pd-tab_tab-head">
+                <!-- <ul class="pd-tab_tab-head">
                   <li
                     @click="tab = 1"
                     :class="{ active: tab == 1 }"
@@ -423,10 +423,10 @@ let showEffect = computed(
                   >
                     Related Product
                   </li>
-                </ul>
+                </ul> -->
+                <h4 class="mt-4- mb-1">Product Description</h4>
                 <div class="pd-tab_container">
-                  <div
-                    v-if="tab == 1"
+                  <div 
                     id="pddescription"
                     class="pd-tab_content"
                   >
@@ -436,8 +436,12 @@ let showEffect = computed(
                         'Description not added'
                       "
                     ></div>
-                  </div>
-                  <div v-else id="pdrelatedproduct" class="pd-tab_content">
+                  </div> 
+                </div>
+
+                <h4 class="mt-4 mb-1">Related Products</h4>
+                <div class="pd-tab_container"> 
+                  <div id="pdrelatedproduct" class="pd-tab_content">
                     <div class="related-product">
                       <template v-if="homeStore.related_products?.length">
                         <div class="row productlist-itemrow">
