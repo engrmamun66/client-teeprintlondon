@@ -3,13 +3,6 @@ import seoMeta from "~/seo-meta.json";
 import { ref, computed, inject, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useSeoMeta } from "#imports";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-
-// Import Swiper modules
-import { Pagination, Autoplay } from "swiper";
 
 let homeStore = inject("homeStore");
 let { product_slug } = useRoute().params;
@@ -18,7 +11,6 @@ let isMounted = ref(false);
 let imageIndex = ref(0);
 let tab = ref(1);
 let activeThumbnailIndex = ref(0); // Track the active thumbnail index
-let swiperInstance = ref(null); // Reference to Swiper instance
 
 let getThumbnailImage = computed(() => {
   return homeStore.product?.images?.[imageIndex.value]?.image_url;
@@ -26,21 +18,10 @@ let getThumbnailImage = computed(() => {
 
 let image_url = ref([]);
 
-// Function to handle slide change
-const onSlideChange = (swiper) => {
-  activeThumbnailIndex.value = swiper.realIndex; // Update active thumbnail index
-  console.log("Slide changed to:", swiper.realIndex);
-};
-
-// Function to set active thumbnail and update Swiper
+// Function to set active thumbnail and update Carousel
 const setActiveThumbnail = (index) => {
   console.log("Setting active thumbnail:", index);
-  if (swiperInstance.value) {
-    activeThumbnailIndex.value = index + 1;
-    swiperInstance.value.slideTo(index + 1); // Update Swiper slide
-  } else {
-    console.error("Swiper instance is not initialized.");
-  }
+  activeThumbnailIndex.value = index;
 };
 
 onMounted(async () => {
@@ -60,6 +41,19 @@ onMounted(async () => {
     image_url.value.push(image.image_url);
   });
   console.log("Image URLs:", image_url.value);
+
+  setInterval(() => {
+    if (!image_url.value.length) return;
+
+    activeThumbnailIndex.value =
+      (activeThumbnailIndex.value + 1) % image_url.value.length;
+
+    let carouselElement = document.getElementById("productCarousel");
+    if (carouselElement) {
+      let bsCarousel = new bootstrap.Carousel(carouselElement);
+      bsCarousel.next();
+    }
+  }, 10000); // Change slide every 3 seconds
 });
 
 definePageMeta({
@@ -101,39 +95,44 @@ let showEffect = computed(
                       <ShimmerEffect height="600px"></ShimmerEffect>
                     </template>
                     <template v-else>
-                      <!-- Swiper Slider for Images -->
-                      <div class="image-slider-container">
-                        <swiper
-                          :modules="[Pagination, Autoplay]"
-                          :slides-per-view="1"
-                          :space-between="20"
-                          :loop="true"
-                          :pagination="{ clickable: true }"
-                          :autoplay="{
-                            delay: 3000, // Auto-slide every 3 seconds
-                            disableOnInteraction: false, // Continue autoplay even after user interaction
-                          }"
-                          class="image-swiper"
-                          @slide-change="onSlideChange"
-                          @swiper="
-                            (swiper) => {
-                              swiperInstance = swiper;
-                              console.log('Swiper instance:', swiper);
-                            }
-                          "
-                        >
-                          <!-- Swiper Slides -->
-                          <swiper-slide
+                      <!-- Bootstrap Carousel for Images -->
+                      <div
+                        id="productCarousel"
+                        class="carousel slide"
+                        data-bs-ride="carousel"
+                      >
+                        <div class="carousel-inner">
+                          <div
                             v-for="(image, index) in image_url"
                             :key="index"
+                            :class="[
+                              'carousel-item',
+                              { active: index === activeThumbnailIndex },
+                            ]"
                           >
                             <img
                               :src="image"
                               alt="Product Image"
-                              class="swiper-image"
+                              class="d-block w-100"
                             />
-                          </swiper-slide>
-                        </swiper>
+                          </div>
+                        </div>
+                        <button
+                          class="carousel-control-prev"
+                          type="button"
+                          data-bs-target="#productCarousel"
+                          data-bs-slide="prev"
+                        >
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button
+                          class="carousel-control-next"
+                          type="button"
+                          data-bs-target="#productCarousel"
+                          data-bs-slide="next"
+                        >
+                          <span class="visually-hidden">Next</span>
+                        </button>
                       </div>
                     </template>
                   </div>
@@ -504,31 +503,15 @@ let showEffect = computed(
 </template>
 
 <style scoped>
-.image-slider-container {
-  max-width: 100%;
-  margin: auto;
-  padding: 20px;
+.carousel-item {
+  height: 500px; /* Adjust height as needed */
+  overflow: hidden;
 }
 
-.image-swiper {
+.carousel-item img {
   width: 100%;
-  height: auto;
-  max-height: 700px;
-}
-
-.swiper-image {
-  width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: contain;
-  border-radius: 10px;
-}
-
-.swiper-pagination-bullet {
-  background-color: #fff;
-}
-
-.swiper-pagination-bullet-active {
-  background-color: #007aff;
 }
 
 .teeprint-product-thumb-item {
@@ -543,5 +526,9 @@ let showEffect = computed(
 }
 
 /* Responsive adjustments */
-
+@media (max-width: 768px) {
+  .carousel-item {
+    height: 300px; /* Adjust height for smaller screens */
+  }
+}
 </style>
