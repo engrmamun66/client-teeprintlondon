@@ -6,7 +6,7 @@ interface cartAnim {
 
 
 
-export function cartAnimation({element}: cartAnim, callback: Function ) {
+export function cartAnimation({element}: cartAnim, callback: Function ):void {
  
     try {     
 
@@ -23,27 +23,29 @@ export function cartAnimation({element}: cartAnim, callback: Function ) {
         clonDiv.style.background = styles.background
         clonDiv.style.transition = '1s all'
 
+        clonDiv.classList.remove('w-100')
         clonDiv.style.position = 'fixed'
-        clonDiv.style.left = bounds.left + 'px'
-        clonDiv.style.top = bounds.top + 'px'
-        clonDiv.style.width = bounds.width + 'px'
-        clonDiv.style.height = bounds.height + 'px'
+        clonDiv.style.left = `${bounds.left}px`;
+        clonDiv.style.top = `${bounds.top}px`;
+        clonDiv.style.width = `${bounds.width}px`;
+        clonDiv.style.height = `${bounds.height}px`; 
         clonDiv.style.zIndex = '99999999'
 
-        document.body.appendChild(clonDiv)
-
+        document.body.appendChild(clonDiv)  
+        
         setTimeout(() => {
 
-            let headerCart = document.querySelector('#in_page_cart_icon') as HTMLElement
+            let cartElelemnt = document.querySelector('#in_page_cart_icon') as HTMLElement
 
-            let headerCartBound = headerCart.getBoundingClientRect()
+            let cartElementBound = cartElelemnt.getBoundingClientRect()
       
     
-            clonDiv.style.left = headerCartBound.left + 'px'
-            clonDiv.style.top = headerCartBound.top + 'px'
-            clonDiv.style.width = headerCartBound.width + 'px'
-            clonDiv.style.height = headerCartBound.height + 'px'
+            clonDiv.style.left = cartElementBound.left + 'px'
+            clonDiv.style.top = cartElementBound.top + 'px'
+            clonDiv.style.width = '50px'
+            clonDiv.style.height = '50px'
             clonDiv.style.opacity = '0.8'
+
 
             setTimeout(() => {
                 clonDiv.remove()

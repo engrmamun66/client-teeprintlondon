@@ -308,9 +308,9 @@ onMounted(async () => {
                                                         <nuxt-link :to="`/product/${product.slug}`" class="teeprint-view-btn" title="Hello from speech bubble!">
                                                             <i class="bx bx-search-alt"></i>
                                                         </nuxt-link>
-                                                        <a href="#" class="teeprint-addcart-btn" @click.prevent="homeStore.addToCartNow( $event, product.slug )" >
+                                                        <!-- <a href="#" class="teeprint-addcart-btn" @click.prevent="homeStore.addToCartNow( $event, product.slug )" >
                                                             <i class="bx bx-cart"></i>
-                                                        </a>
+                                                        </a> -->
                                                     </div>
                                                 </div>
                                             </div>

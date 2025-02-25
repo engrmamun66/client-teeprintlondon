@@ -461,13 +461,13 @@ let showEffect = computed(
                                         >
                                           <i class="bx bx-search-alt"></i>
                                         </nuxt-link>
-                                        <a
+                                        <!-- <a
                                           href="#"
                                           class="teeprint-addcart-btn"
                                           @click.stop.prevent="log"
                                         >
                                           <i class="bx bx-cart"></i>
-                                        </a>
+                                        </a> -->
                                       </div>
                                     </div>
                                   </div>

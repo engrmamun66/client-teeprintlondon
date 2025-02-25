@@ -235,7 +235,7 @@ export const useHomeStore = defineStore("homeStore", () => {
     let imgElement 
 
     if(!event){
-      imgElement = document.querySelector('.teeprint-product-view-image img'); 
+      imgElement = document.querySelector('.carousel-item.active img'); 
     } else {
       let target = event.target
       let parentElement = target?.closest('.teeprint-product-image')
