@@ -188,8 +188,9 @@ onMounted(() => {
 
 .accordion button {
   position: relative;
-  display: block;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: 1em 0;
   color: #7288a2;
@@ -207,18 +208,19 @@ onMounted(() => {
 }
 
 .accordion button .accordion-title {
-  padding: 1em 1.5em 1em 0;
+  flex: 1;
+  text-align: left;
+  padding-right: 1em;
 }
 
 .accordion button .icon {
   display: inline-block;
-  position: absolute;
-  top: 18px;
-  right: 0;
   width: 22px;
   height: 22px;
   border: 1px solid;
   border-radius: 22px;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .accordion button .icon::before {
@@ -288,11 +290,10 @@ onMounted(() => {
   }
 
   .accordion button .accordion-title {
-    padding: 0.75em 1.25em 0.75em 0;
+    padding-right: 0.5em;
   }
 
   .accordion button .icon {
-    top: 14px;
     width: 18px;
     height: 18px;
   }
