@@ -298,6 +298,11 @@ let { staticPagesByParentCat } = globalData;
                                 Same Day Fleeces & Knits Printing
                               </nuxt-link>
                             </li>
+                            <li>
+                              <nuxt-link to="/same-day-delivery/active_wear">
+                                Same Day Active Wear Printing
+                              </nuxt-link>
+                            </li>
                           </ul>
                         </div>
                       </li>
