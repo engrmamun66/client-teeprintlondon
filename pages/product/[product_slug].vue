@@ -520,63 +520,83 @@ let showEffect = computed(
 
 <style scoped>
 /* Carousel container */
-.image-slider-container {
-  width: 100%; /* Ensure the container takes full width */
-  max-width: 100%; /* Prevent overflow */
-  margin: 0 auto; /* Center the container */
-  padding: 0; /* Remove padding to ensure full width */
+.teeprint-product-details-image {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Reduce the gap between main image and thumbnails */
+}
+
+/* Main image container */
+.teeprint-product-view-image {
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* Adjust height for main image */
+  overflow: hidden;
 }
 
 /* Carousel item */
 .carousel-item {
-  width: 100%; /* Ensure the carousel item takes full width */
-  height: 800px; /* Adjust height automatically */
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 /* Carousel image */
 .carousel-item img {
-  width: 100%; /* Ensure the image takes full width */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* Limit height for main image */
   object-fit: contain; /* Ensure the image fits within the container */
+}
+
+/* Thumbnail container */
+.teeprint-product-multipleimage {
+  display: flex;
+  gap: 10px; /* Reduce the gap between thumbnails */
+  overflow-x: auto; /* Allow horizontal scrolling for thumbnails */
+  padding: 10px 0; /* Add padding for better spacing */
 }
 
 /* Thumbnail items */
 .teeprint-product-thumb-item {
   cursor: pointer;
-  margin: 5px;
   border: 2px solid transparent;
   transition: border-color 0.3s ease;
+  flex: 0 0 auto; /* Prevent thumbnails from shrinking */
+  width: 80px; /* Fixed width for thumbnails */
+  height: 80px; /* Fixed height for thumbnails */
+  overflow: hidden;
 }
 
 .teeprint-product-thumb-item.teeprint-product-thumb-active {
   border-color: #007aff;
 }
 
-.teeprint-product-view-image img {
+.teeprint-product-thumb-item img {
   width: 100%;
-  max-height: 800px;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover; /* Ensure thumbnails fill the container */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .carousel-item {
-    height: 500px; /* Adjust height for smaller screens */
-  }
-
-  .teeprint-product-details-image {
-    width: 100%; /* Ensure the image container takes full width */
-    padding: 0; /* Remove padding to ensure full width */
-  }
-
   .teeprint-product-view-image {
-    width: 100%; /* Ensure the view container takes full width */
+    max-height: 400px; /* Reduce height for smaller screens */
   }
-  .teeprint-product-view-image img {
-    max-height: 500px; /* Reduce height for mobile */
-    max-width: 100%;
-    width: 100%;
+
+  .teeprint-product-thumb-item {
+    width: 60px; /* Smaller thumbnails for mobile */
+    height: 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  .teeprint-product-view-image {
+    max-height: 300px; /* Further reduce height for very small screens */
+  }
+
+  .teeprint-product-thumb-item {
+    width: 50px; /* Even smaller thumbnails for very small screens */
+    height: 50px;
   }
 }
 </style>
