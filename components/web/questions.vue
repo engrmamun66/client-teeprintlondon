@@ -1,23 +1,3 @@
-<script setup>
-onMounted(() => {
-  const items = Array.from(document.querySelectorAll(".accordion button"));
-
-  function toggleAccordion() {
-    const itemToggle = this.getAttribute("aria-expanded");
-
-    items.forEach((item) => {
-      item.setAttribute("aria-expanded", "false");
-    });
-
-    if (itemToggle == "false") {
-      this.setAttribute("aria-expanded", "true");
-    }
-  }
-
-  items.forEach((item) => item.addEventListener("click", toggleAccordion));
-});
-</script>
-
 <template>
   <div class="container mb-4 mt-5 pt-4">
     <div class="row mb-3">
@@ -120,7 +100,7 @@ onMounted(() => {
         </button>
         <div class="accordion-content">
           <p>
-            We use high-quality paper with matte, gloss, and satin finishes available. 
+            We use high-quality paper with matte, gloss, and satin finishes available.
             For outdoor posters, we also offer durable, weather-resistant materials.
           </p>
         </div>
@@ -152,9 +132,50 @@ onMounted(() => {
   </div>
 </template>
 
+<script setup>
+import { onMounted } from 'vue';
 
+onMounted(() => {
+  const items = Array.from(document.querySelectorAll(".accordion button"));
+
+  function toggleAccordion() {
+    const itemToggle = this.getAttribute("aria-expanded");
+
+    items.forEach((item) => {
+      item.setAttribute("aria-expanded", "false");
+    });
+
+    if (itemToggle == "false") {
+      this.setAttribute("aria-expanded", "true");
+    }
+  }
+
+  items.forEach((item) => item.addEventListener("click", toggleAccordion));
+});
+</script>
 
 <style scoped>
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.section-main-heading {
+  margin-bottom: 2rem;
+}
+
+.section-heading-title-small {
+  font-size: 1.25rem;
+  color: #7288a2;
+  margin-bottom: 0.5rem;
+}
+
+.section-heading-title-big {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
 .accordion .accordion-item {
   border-bottom: 1px solid #e5e5e5;
   padding-left: 15px;
@@ -185,13 +206,6 @@ onMounted(() => {
   color: #03b5d2;
 }
 
-.accordion button:hover::after,
-.accordion button:focus::after {
-  cursor: pointer;
-  color: #03b5d2;
-  border: 1px solid #03b5d2;
-}
-
 .accordion button .accordion-title {
   padding: 1em 1.5em 1em 0;
 }
@@ -217,6 +231,7 @@ onMounted(() => {
   height: 2px;
   background: currentColor;
 }
+
 .accordion button .icon::after {
   display: block;
   position: absolute;
@@ -231,15 +246,18 @@ onMounted(() => {
 .accordion button[aria-expanded="true"] {
   color: #03b5d2;
 }
+
 .accordion button[aria-expanded="true"] .icon::after {
   width: 0;
 }
+
 .accordion button[aria-expanded="true"] ~ .accordion-content {
   opacity: 1;
   max-height: 9em;
   transition: all 800ms linear;
   will-change: opacity, max-height;
 }
+
 .accordion .accordion-content {
   opacity: 0;
   max-height: 0;
@@ -247,14 +265,55 @@ onMounted(() => {
   transition: opacity 800ms linear, max-height 800ms linear;
   will-change: opacity, max-height;
 }
+
 .accordion .accordion-content p {
   font-size: 1rem;
   font-weight: 300;
   margin: 2em 0;
 }
+
+/* Responsive Styles */
 @media (max-width: 767px) {
+  .section-heading-title-small {
+    font-size: 1rem;
+  }
+
+  .section-heading-title-big {
+    font-size: 1.5rem;
+  }
+
   .accordion button {
-    font-size: 15px;
+    font-size: 1rem;
+    padding: 0.75em 0;
+  }
+
+  .accordion button .accordion-title {
+    padding: 0.75em 1.25em 0.75em 0;
+  }
+
+  .accordion button .icon {
+    top: 14px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .accordion button .icon::before {
+    top: 7px;
+    left: 4px;
+    width: 8px;
+    height: 2px;
+  }
+
+  .accordion button .icon::after {
+    top: 4px;
+    left: 7px;
+    width: 2px;
+    height: 8px;
+  }
+
+  .accordion .accordion-content p {
+    font-size: 0.875rem;
+    margin: 1.5em 0;
   }
 }
 </style>
