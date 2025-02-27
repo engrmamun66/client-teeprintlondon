@@ -6,12 +6,10 @@ homeStore.getTypewiseCategoryList();
 let search = ref("");
 let isFocused = ref(false);
 
-let dbounceSearch = H.debounce(
-  String(homeStore.searchProduct).trimStart().trimEnd(),
-  300
-);
+let dbounceSearch = H.debounce(homeStore.searchProduct, 300 );
 
 watch(search, (a) => {
+  if(a) a = String(a).trimStart().trimEnd()
   dbounceSearch(a || null);
   if (!a) {
     homeStore.searchedProducts = [];

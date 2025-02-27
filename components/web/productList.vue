@@ -257,10 +257,12 @@ onMounted(async () => {
                         </div>
                     </div>
                 </div>
+                
                 <div class="productlist-rightside">
                     <div class="row">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <span @click="log(homeStore.paginateData)" > {{ homeStore.showingCountText() }} </span>
+                            <button v-if="homeStore.payload.category_slug" class="p-2 border radius-10" style=":hover{background-color: green!important;}">{{categorySlug}} <i @click="homeStore.payload.category_slug = null;log(333)" class='bx bx-x-circle transformY-2px'></i> </button>
                             <select name="orderby" class="orderby" @change="({target}) =>{
                                 if(target.value){
                                     homeStore.payload.sort = target.value

@@ -222,6 +222,70 @@ body {
   text-decoration: none;
 }
 
+
+.radius-0 {
+  border-radius: 0px !important;
+}
+
+.radius-3 {
+  border-radius: 3px;
+}
+
+.radius-4 {
+  border-radius: 4px;
+}
+
+.radius-5 {
+  border-radius: 5px;
+}
+
+.radius-10 {
+  border-radius: 10px;
+}
+
+.radius-50 {
+  border-radius: 50%;
+}
+
+
+
+.transformY-0px{
+  transform: translateY(var(--transformY, 0px));
+}
+.transformY-1px{
+  transform: translateY(var(--transformY, 1px));
+}
+.transformY-2px{
+  transform: translateY(var(--transformY, 2px));
+}
+.transformY-3px{
+  transform: translateY(var(--transformY, 3px));
+}
+.transformY-4px{
+  transform: translateY(var(--transformY, 4px));
+}
+.transformY-5px{
+  transform: translateY(var(--transformY, 5px));
+}
+.transformY-0px-{
+  transform: translateY(var(--transformY, 0px));
+}
+.transformY-1px-{
+  transform: translateY(var(--transformY, -1px));
+}
+.transformY-2px-{
+  transform: translateY(var(--transformY, -2px));
+}
+.transformY-3px-{
+  transform: translateY(var(--transformY, -3px));
+}
+.transformY-4px-{
+  transform: translateY(var(--transformY, -4px));
+}
+.transformY-5px-{
+  transform: translateY(var(--transformY, -5px));
+}
+
  ol,
  ul {
   margin: 0;
