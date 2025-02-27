@@ -1,6 +1,5 @@
 export default defineNuxtPlugin(nuxtApp => {
-    
-    
+ 
 
     return {
         provide: {          
@@ -16,6 +15,13 @@ export default defineNuxtPlugin(nuxtApp => {
                 text = String(text);
                 const ucFirst = (str) => (str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
                 return text.split(' ').map(ucFirst).join(' ');
+            },
+            slugToTitle: (text) => { // upper case, first char of each words
+                if(!text) return '';
+                text = String(text);
+                const ucFirst = (str) => (str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
+                let result = text.split('-').map(ucFirst).join(' ');
+                return String(result).replace(/\s/g, ' ')
             },
             isValidEmail: (email) => {
                 let emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
