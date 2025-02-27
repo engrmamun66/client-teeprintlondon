@@ -10,10 +10,6 @@ const { categorySlug } = defineProps({
     }
 })
  
-if(categorySlug){
-    homeStore.payload.category_slug = categorySlug
-}
- 
 
 
 let dbounceGetProducts = H.debounce(homeStore.getProducts, 500);
@@ -64,6 +60,9 @@ function withFilter(section: Section, {
 
 onMounted(async () => {
     homeStore.resetPayload()
+    if(categorySlug){
+        homeStore.payload.category_slug = categorySlug
+    }
     await homeStore.getProducts()
     homeStore.menus.forEach(menu => {
         menu.is_checked = false
