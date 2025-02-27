@@ -35,13 +35,13 @@ let { staticPagesByParentCat } = globalData;
             <div class="teeprint-logo-area">
               <div class="teeprint-logo-area-inner">
                 <div class="teeprint-logo-area-middle">
-                  <nuxt-link :to="{ name: 'home' }">
+                  <a href="/">
                     <img
                       src="/img/logo2.png"
                       alt="logo image"
                       style="height: 4.5rem"
                     />
-                  </nuxt-link>
+                  </a>
                 </div>
               </div>
             </div>
