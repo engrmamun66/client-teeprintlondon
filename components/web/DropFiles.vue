@@ -12,7 +12,7 @@
     <i class="bx bx-upload fs-16"></i>
   </div>
   <div v-if="selectedFiles?.length" class="ionic-img-uploadshow">
-    <ul>
+    <ul class="d-flex flex-wrap">
       <template v-for="(file, i) in selectedFiles">
         <li class="mb-2">
           <div class="preview-frame">
