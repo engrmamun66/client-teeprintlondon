@@ -3258,7 +3258,7 @@ information css
     height: 50px;
   }
   .teeprint-info-box img {
-    width: 28px;
+    width: 100%;
   }
   .teeprint-info-box p {
     font-size: 14px;

@@ -171,11 +171,11 @@ function handleSubmit() {}
 onMounted(async () => {
   await productStore.getProductList();
   // Categorystore.getParentcategorylist();
-  try {
-    const response = await axios.get('http://client-treeprintlondon-api.test/api/type-wise-category-list');
-  } catch (error) {
-    console.error('Error fetching category list:', error);
-  }
+  // try {
+  //   const response = await axios.get('http://client-treeprintlondon-api.test/api/type-wise-category-list');
+  // } catch (error) {
+  //   console.error('Error fetching category list:', error);
+  // }
 });
 </script>
 <style scoped>
