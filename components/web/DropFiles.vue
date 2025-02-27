@@ -117,9 +117,9 @@ watch(
 
 const onChangeFile = (event) => {
   const allFiles = Array.from(event.target.files);
-  selectedFiles.value = allFiles   
-  emit("update:modelValue", allFiles?.length ? allFiles : []);
-  emit("uploadFile", allFiles);
+  selectedFiles.value = [...allFiles, ...(props.modelValue || [])]   
+  emit("update:modelValue", selectedFiles.value);
+  emit("uploadFile", selectedFiles.value);
   event.target.value = ""; 
 };
 
