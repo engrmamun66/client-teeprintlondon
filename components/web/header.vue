@@ -92,19 +92,19 @@ let { staticPagesByParentCat } = globalData;
                   >
                     <div role="listbox" class="dropdown-menu show">
                       <div role="option" class="dropdown-item">
-                        <div class="inner-serch cp">
-                          <nuxt-link :to="`/product/${product.slug}`" @click="search=null">
-                            <img
-                              :src="
-                                product.thumbnail_image_url ||
-                                `/img/placeholder-image.jpg`
-                              "
-                              @mouseover="log(homeStore.searchedProducts)"
-                            />
-                            {{ product.name }}
+                        <nuxt-link :to="`/product/${product.slug}`" class="text-black" @click="search=null">
+                          <div class="inner-serch cp">
+                              <img
+                                :src="
+                                  product.thumbnail_image_url ||
+                                  `/img/placeholder-image.jpg`
+                                "
+                                @mouseover="log(homeStore.searchedProducts)"
+                              />
+                              {{ product.name }}
 
-                          </nuxt-link>
-                        </div>
+                            </div>
+                        </nuxt-link>
                       </div>
                     </div>
                   </template>
