@@ -92,19 +92,19 @@ let { staticPagesByParentCat } = globalData;
                   >
                     <div role="listbox" class="dropdown-menu show">
                       <div role="option" class="dropdown-item">
-                        <div class="inner-serch cp">
-                          <nuxt-link :to="`/product/${product.slug}`" @click="search=null">
-                            <img
-                              :src="
-                                product.thumbnail_image_url ||
-                                `/img/placeholder-image.jpg`
-                              "
-                              @mouseover="log(homeStore.searchedProducts)"
-                            />
-                            {{ product.name }}
+                        <nuxt-link :to="`/product/${product.slug}`" class="text-black" @click="search=null">
+                          <div class="inner-serch cp">
+                              <img
+                                :src="
+                                  product.thumbnail_image_url ||
+                                  `/img/placeholder-image.jpg`
+                                "
+                                @mouseover="log(homeStore.searchedProducts)"
+                              />
+                              {{ product.name }}
 
-                          </nuxt-link>
-                        </div>
+                            </div>
+                        </nuxt-link>
                       </div>
                     </div>
                   </template>
@@ -173,9 +173,9 @@ let { staticPagesByParentCat } = globalData;
                   ></nuxt-link>
                 </li>
                 <li>
-                  <a href="#" class="p-1 text-white size-1p4" id="header_cart">
+                  <nuxt-link to="/cart" class="p-1 text-white size-1p4" id="header_cart">
                     <i class="bx bx-shopping-bag fs-3"></i>
-                  </a>
+                  </nuxt-link>
                 </li>
               </ul>
 
@@ -333,14 +333,13 @@ let { staticPagesByParentCat } = globalData;
               <span class=""> Instant Quote </span>
               <i class="la la-arrow-right ml-2"></i>
             </nuxt-link>
-            <a
-              href="#"
+            <nuxt-link to="/cart"
               class="p-1 text-white size-1p4 relative"
               id="header_cart"
             >
               <i class="bx bx-shopping-bag fs-3"></i>
               <span class="badge badge-primary shopping-cart-badge"> {{cartStore.totalItems}} </span>
-            </a>
+            </nuxt-link>
           </div>
         </div>
       </div>
