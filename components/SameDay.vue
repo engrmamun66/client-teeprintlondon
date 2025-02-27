@@ -99,7 +99,8 @@ const items = [
   {
     title: "Same Day Document Print",
     image:
-      "/img/Home/Leonardo_Phoenix_10_A_sleek_modern_digital_printer_approximate_0.jpg",
+      "/img/Dress_Shirts/Leonardo_Phoenix_10_a_men_wearing_dress_black_shirt_in_london_0.jpg",
+      link: "same-day-delivery/dress_shirt",
   },
 ];
 </script>
