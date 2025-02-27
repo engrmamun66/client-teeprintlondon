@@ -34,6 +34,7 @@ useHead({
     { type: "text/css", rel: "stylesheet", href: "/css/owl.carousel.min.css" },
     { type: "text/css", rel: "stylesheet", href: "/css/owl.theme.default.min.css" },
     { type: "text/css", rel: "stylesheet", href: "/css/style.css" },
+    {type:'text/css', rel: 'stylesheet', href:'/css/tooltip.css'},
     { type: "text/css", rel: "stylesheet", href: "/css/transition.css" },
   ],
   script: [
