@@ -69,7 +69,7 @@ const items = [
   {
     title: "Same Day Cap Print",
     image:
-      "/img/cap/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2.jpg",
+      "https://res.cloudinary.com/dyfnpakfq/image/upload/v1740849802/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2_jlwcmk.jpg",
     link: "same-day-delivery/cap",
   },
   {

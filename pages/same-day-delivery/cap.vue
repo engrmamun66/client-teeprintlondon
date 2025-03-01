@@ -229,7 +229,7 @@ function addToCart() {
     </section>
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/cap/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2.jpg"
+        img_left="https://res.cloudinary.com/dyfnpakfq/image/upload/v1740849802/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2_jlwcmk.jpg"
         img_right="/img/cap/Leonardo_Phoenix_10_a_young_man_in_his_early_twenties_with_a_l_2.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
