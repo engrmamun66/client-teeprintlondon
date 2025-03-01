@@ -95,7 +95,7 @@ function addToCart() {
                 width="100%"
               >
                 <source
-                  src="/img/Hoodie/efbb14eb-4cfd-4c3b-9508-56c53e57e1d5_video (online-video-cutter.com).mp4"
+                  src="/img/Hoodie/efbb14eb-4cfd-4c3b-9508-56c53e57e1d5_video.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
