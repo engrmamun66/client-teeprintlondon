@@ -26,7 +26,7 @@ function addToCart() {
             :images="[
               '/img/cap/Leonardo_Kino_XL_a_cap_image_written_teeprintlondon_on_that_ca_3adcfaadcadc.jpg',
               '/img/cap/Leonardo_Phoenix_10_A_middleaged_man_with_a_gentle_smile_and_s_2.jpg',
-              '/img/cap/leonardo_kino_xl_cap_image_design.jpg',
+              '/img/cap/leonardokinoxlcapimagedesign.jpg',
             ]"
           >
             Need high-quality custom caps in a hurry? Tee Print London provides
@@ -126,7 +126,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
               <img
-                src="/img/cap/leonardo_kino_xl_cap_image_design.jpg"
+                src="/img/cap/leonardokinoxlcapimagedesign.jpg"
                 alt="about iamge"
               />
             </div>
