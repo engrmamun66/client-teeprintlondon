@@ -126,7 +126,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
               <img
-                src="/img/Home/AHIGH-~1.jpg"
+                src="/img/Home/AHIGH.jpg"
                 alt="about iamge"
               />
             </div>
