@@ -88,7 +88,7 @@ function addToCart() {
                 width="100%"
               >
                 <source
-                  src="/video/8ce45d1c-1418-4b67-9a72-22a87dcd1d58_videomerged (online-video-cutter.com).mp4"
+                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1740854271/8ce45d1c-1418-4b67-9a72-22a87dcd1d58_videomerged_online-video-cutter.com_exzym9.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.

@@ -121,7 +121,7 @@ definePageMeta({
                 playsinline
                 width="100%"
               >
-                <source src="/video/londonn.mp4" type="video/mp4" />
+                <source src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1740854363/londonn_yq8izj.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

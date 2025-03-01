@@ -79,20 +79,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <!-- <video
-                class="rounded-video"
-                autoplay
-                loop
-                muted
-                playsinline
-                width="100%"
-              >
-                <source
-                  src="/video/8ce45d1c-1418-4b67-9a72-22a87dcd1d58_videomerged (online-video-cutter.com).mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video> -->
+
               <img
                 src="/img/Apron/Leonardo_Phoenix_10_a_young_man_in_his_early_twenties_with_a_r_2.jpg"
                 alt="about iamge"

@@ -95,7 +95,7 @@ function addToCart() {
                 width="100%"
               >
                 <source
-                  src="/img/Hoodie/efbb14eb-4cfd-4c3b-9508-56c53e57e1d5_video.mp4"
+                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1740854046/efbb14eb-4cfd-4c3b-9508-56c53e57e1d5_video_vmxcx3.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
