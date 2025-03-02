@@ -21,9 +21,8 @@ function addToCart() {
             :right="true"
             title="High-Quality Business Card Printing"
             :images="[
-              '/img/ticket_and_voucher/GreyBlackPurpleMinimalistMusicNightEventTicket.jpg',
-              '/img/ticket_and_voucher/YellowRestaurantGiftVoucher.jpg',
-              '/img/ticket_and_voucher/OrangeandYellowIllustrativeFoodTruckGiftVoucherA4Landscape.png',
+              '/img/business_card/675.jpg',
+              '/img/business_card/1213.jpg',
             ]"
           >
             Make a lasting impression with Tee Print London’s premium business card printing services. Whether you’re a professional, entrepreneur, or business owner, our business cards are designed to reflect your brand’s identity. With customizable designs, premium materials, and professional finishes, we ensure your business cards are both functional and visually stunning. Let us help you create business cards that leave a lasting impression on your clients and partners.
@@ -55,7 +54,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/ticket_and_voucher/BeigeRedBlackIllustrativeBasketballCompetitionTicket.jpg" alt="about image" />
+              <img src="/img/business_card/24148.jpg" alt="about image" />
             </div>
           </div>
         </div>
@@ -86,7 +85,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/ticket_and_voucher/WhiteandBlueModernAirplaneBoardingPassTicket.jpg" alt="about image" />
+              <img src="/img/business_card/3503566.jpg" alt="about image" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -127,7 +126,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/ticket_and_voucher/ticket.jpg" alt="about image" />
+              <img src="/img/business_card/5073120.jpg" alt="about image" />
             </div>
           </div>
         </div>
@@ -135,9 +134,10 @@ function addToCart() {
     </section>
 
     <div class="container mt-5">
+
       <web-DuelCard
-        img_left="/img/ticket_and_voucher/OrangeandYellowIllustrativeFoodTruckGiftVoucherA4Landscape.png"
-        img_right="/img/ticket_and_voucher/PinkMinimalistGiftCardVoucherGiftCertificate.png"
+        img_left="/img/business_card/OJZ24D0.jpg"
+        img_right="/img/business_card/123458.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
