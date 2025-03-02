@@ -89,7 +89,7 @@ function addToCart() {
                 width="100%"
               >
                 <source
-                  src="/img/Polo_T_shirt/60a766b1-ffa4-4b6e-be69-531f597d778f_video (online-video-cutter.com).mp4"
+                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1740854173/60a766b1-ffa4-4b6e-be69-531f597d778f_video_dyum8u.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.

@@ -79,20 +79,6 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <!-- <video
-                class="rounded-video"
-                autoplay
-                loop
-                muted
-                playsinline
-                width="100%"
-              >
-                <source
-                  src="/img/cap/59f7a4f5-fdc2-4e15-80e0-18040a44da9d_video (online-video-cutter.com).mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video> -->
               <img src="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_colorful_tote_bag_image_with_0.jpg" alt="about iamge" />
             </div>
           </div>

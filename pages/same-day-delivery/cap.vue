@@ -26,7 +26,7 @@ function addToCart() {
             :images="[
               '/img/cap/Leonardo_Kino_XL_a_cap_image_written_teeprintlondon_on_that_ca_3adcfaadcadc.jpg',
               '/img/cap/Leonardo_Phoenix_10_A_middleaged_man_with_a_gentle_smile_and_s_2.jpg',
-              '/img/cap/Leonardo_Kino_XL_a_cap_image_written_Your_Design_Here_on_the_1.jpg',
+              '/img/cap/leonardokinoxlcapimagedesign.jpg',
             ]"
           >
             Need high-quality custom caps in a hurry? Tee Print London provides
@@ -88,7 +88,7 @@ function addToCart() {
                 width="100%"
               >
                 <source
-                  src="/img/cap/59f7a4f5-fdc2-4e15-80e0-18040a44da9d_video (online-video-cutter.com).mp4"
+                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1740853865/59f7a4f5-fdc2-4e15-80e0-18040a44da9d_video_l02cqf.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
@@ -126,7 +126,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
               <img
-                src="/img/cap/Leonardo_Kino_XL_a_cap_image_written_Your_Design_Here_on_the_1.jpg"
+                src="/img/cap/leonardokinoxlcapimagedesign.jpg"
                 alt="about iamge"
               />
             </div>
@@ -229,7 +229,7 @@ function addToCart() {
     </section>
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/cap/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2.jpg"
+        img_left="https://res.cloudinary.com/dyfnpakfq/image/upload/v1740849802/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2_jlwcmk.jpg"
         img_right="/img/cap/Leonardo_Phoenix_10_a_young_man_in_his_early_twenties_with_a_l_2.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />

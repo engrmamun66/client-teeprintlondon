@@ -69,7 +69,7 @@ const items = [
   {
     title: "Same Day Cap Print",
     image:
-      "/img/cap/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2.jpg",
+      "https://res.cloudinary.com/dyfnpakfq/image/upload/v1740849802/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2_jlwcmk.jpg",
     link: "same-day-delivery/cap",
   },
   {
@@ -99,7 +99,8 @@ const items = [
   {
     title: "Same Day Document Print",
     image:
-      "/img/Home/Leonardo_Phoenix_10_A_sleek_modern_digital_printer_approximate_0.jpg",
+      "/img/Dress_Shirts/Leonardo_Phoenix_10_a_men_wearing_dress_black_shirt_in_london_0.jpg",
+      link: "same-day-delivery/dress_shirt",
   },
 ];
 </script>
