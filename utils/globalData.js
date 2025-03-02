@@ -67,6 +67,6 @@ export let globalData = {
     }, 
     staticPagesByParentCat: {
         'Men': '/same-day-delivery/category/men',
-        'Women': '',
+        'Flyers & Leaflets Printing': '/advertise/flyer_and_leaflet',
     }, 
 }
