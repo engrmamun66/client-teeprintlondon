@@ -70,6 +70,7 @@ export let globalData = {
         'Flyers & Leaflets Printing': '/advertise/flyer_and_leaflet',
         'Folded Leaflets & Menu Printing': '/advertise/folded_flyer_and_menu',
         'Tickets & Vouchers Printing': '/advertise/ticket_and_voucher',
-        'Business Cards Printing' :'/advertise/business_card'
+        'Business Cards Printing' :'/advertise/business_card',
+        'Banners Printing' :'/advertise/advertising_banner'
     }, 
 }
