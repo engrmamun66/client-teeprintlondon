@@ -19,12 +19,14 @@ function addToCart() {
     <section class="teeprint-makes-section">
       <div class="container">
         <div class="row">
-          <MultipleImageCard
+          <MultipleImageCardsforticket
             :right="true"
             title="High-Quality Ticket and Voucher Printing"
+
             :images="[
-              '/img/flyer_and_leaflet/Leonardo_Kino_XL_Folded_Leaflet_1.jpg',
-              '/img/menu_print/Leonardo_Kino_XL_Restaurant_menu_0.jpg',
+              '/img/ticket_and_voucher/GreyBlackPurpleMinimalistMusicNightEventTicket.jpg',
+              '/img/ticket_and_voucher/YellowRestaurantGiftVoucher.jpg',
+              '/img/ticket_and_voucher/OrangeandYellowIllustrativeFoodTruckGiftVoucherA4Landscape.png',
             ]"
           >
             Make your events, promotions, or special offers stand out with Tee
@@ -44,7 +46,7 @@ function addToCart() {
                 Get A Free Quote <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </template>
-          </MultipleImageCard>
+          </MultipleImageCardsforticket>
         </div>
       </div>
     </section>
@@ -78,7 +80,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
               <img
-                src="/img/menu_print/Leonardo_Phoenix_10_A_rustic_wooden_table_adorned_with_a_few_s_1.jpg"
+                src="/img/ticket_and_voucher/BeigeRedBlackIllustrativeBasketballCompetitionTicket.jpg"
                 alt="about image"
               />
             </div>
@@ -114,7 +116,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
               <img
-                src="/img/flyer_and_leaflet/Leonardo_Phoenix_10_A_rectangular_trifolded_flyer_for_a_restau_0svksfv.jpg"
+                src="/img/ticket_and_voucher/WhiteandBlueModernAirplaneBoardingPassTicket.jpg"
                 alt="about image"
               />
             </div>
@@ -181,7 +183,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
               <img
-                src="/img/menu_print/Leonardo_Kino_XL_Restaurant_menu_0.jpg"
+                src="/img/ticket_and_voucher/ticket.jpg"
                 alt="about image"
               />
             </div>
@@ -192,8 +194,8 @@ function addToCart() {
 
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/menu_print/Leonardo_Phoenix_10_A_visually_appealing_modern_illustration_o_0.jpg"
-        img_right="/img/flyer_and_leaflet/Leonardo_Kino_XL_Folded_Leaflet_2.jpg"
+        img_left="/img/ticket_and_voucher/OrangeandYellowIllustrativeFoodTruckGiftVoucherA4Landscape.png"
+        img_right="/img/ticket_and_voucher/PinkMinimalistGiftCardVoucherGiftCertificate.png"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
