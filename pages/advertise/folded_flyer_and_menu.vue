@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -8,7 +8,6 @@ function addToCart() {
   let imgElement = document.querySelector(
     ".teeprint-product-view-image img"
   ) as HTMLElement;
-
   cartAnimation({ element: imgElement }, () => {
     useNuxtApp().$emit("openInPageCart", true);
   });
@@ -22,13 +21,21 @@ function addToCart() {
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="High-Quality Flyer and Leaflet Printing"
+            title="High-Quality Folded Flyer and Menu Printing"
             :images="[
-              '/img/flyer_and_leaflet/1985.jpg',
-              '/img/flyer_and_leaflet/Leonardo_Kino_XL_a_flyer_related_to_a_restaurant_2.jpg',
+              '/img/flyer_and_leaflet/Leonardo_Kino_XL_Folded_Leaflet_1.jpg',
+              '/img/menu_print/Leonardo_Kino_XL_Restaurant_menu_0.jpg',
             ]"
           >
-            Need professional flyers or leaflets for your business, event, or personal project? Tee Print London offers premium printing services with a focus on quality and precision. Whether you're promoting a product, announcing an event, or sharing information, our flyers and leaflets are designed to make a lasting impression. With customizable sizes, materials, and finishes, we ensure your prints stand out.
+            Looking for eye-catching folded flyers or elegant menu designs? Tee
+            Print London specializes in high-quality folded flyer and menu
+            printing that combines creativity with precision. Whether you're
+            promoting a restaurant, café, event, or business, our folded flyers
+            and menus are designed to captivate your audience. With customizable
+            sizes, premium materials, and a variety of finishes, we ensure your
+            prints are both functional and visually stunning. Let us help you
+            make a lasting impression with professionally crafted printed
+            materials.
 
             <template #link>
               <nuxt-link
@@ -50,12 +57,21 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Flyer and Leaflet Printing?
+                  Why Choose Tee Print London for Folded Flyers and Menus?
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  At Tee Print London, we combine cutting-edge printing technology with exceptional craftsmanship to deliver flyers and leaflets that exceed expectations. Our services are perfect for businesses, events, and personal projects, offering vibrant colors, sharp details, and durable finishes. Whether you need a small batch or a large order, we provide competitive pricing and fast turnaround times without compromising on quality. Choose us for professional, eye-catching prints that leave a lasting impression.
+                  At Tee Print London, we pride ourselves on delivering
+                  exceptional printing services tailored to your needs. Our
+                  folded flyers and menus are crafted using state-of-the-art
+                  printing technology, ensuring vibrant colors, sharp details,
+                  and professional finishes. Whether you need a compact menu for
+                  your restaurant or a multi-panel flyer for your next event, we
+                  offer a wide range of customization options to suit your
+                  brand. With fast turnaround times, competitive pricing, and a
+                  commitment to quality, we are your trusted partner for all
+                  your printing needs.
                 </p>
               </div>
             </div>
@@ -63,8 +79,8 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
               <img
-                src="/img/flyer_and_leaflet/10921697.jpg"
-                alt="about iamge"
+                src="/img/menu_print/Leonardo_Phoenix_10_A_rustic_wooden_table_adorned_with_a_few_s_1.jpg"
+                alt="about image"
               />
             </div>
           </div>
@@ -98,26 +114,31 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img
-                src="/img/flyer_and_leaflet/2190.jpg"
-                alt="about iamge"
-              />
+
+              <img src="/img/flyer_and_leaflet/Leonardo_Phoenix_10_A_rectangular_trifolded_flyer_for_a_restau_0svksfv.jpg" alt="about image" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Premium Flyer and Leaflet Printing – Fast, Reliable, and High-Quality
+                  Premium Folded Flyers and Menus – Designed to Impress
                 </h2>
               </div>
               <p>
-                At Tee Print London, we understand the importance of timely and high-quality printing. Our flyer and leaflet printing services are designed to meet your deadlines without compromising on quality. Whether you need promotional materials for a business, event, or personal project, we use state-of-the-art printing techniques to ensure vibrant colors, sharp details, and professional finishes. With customizable options and fast turnaround times, we make it easy to get the prints you need when you need them.
+                Our folded flyers and menus are more than just printed materials
+                – they are powerful tools to communicate your brand’s message.
+                Whether you’re showcasing a restaurant menu, promoting an event,
+                or advertising a business, our designs are tailored to grab
+                attention and leave a lasting impression. With options for
+                bi-fold, tri-fold, or custom folds, we ensure your materials are
+                both functional and visually appealing. Combined with fast
+                printing services and high-quality finishes, we make it easy to
+                create professional-grade prints that stand out.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
                 class="teeprint-button teeprint-theme-btn zoomInOut"
-                href="#"
               >
                 Get A Free Quote <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
@@ -138,22 +159,27 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Get Your Flyers and Leaflets Printed Today!
+                  Get Your Folded Flyers and Menus Printed Today!
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait for days when you can have your flyers and leaflets printed today? At Tee Print London, we offer fast and reliable printing services to ensure your promotional materials are ready when you need them. Whether it's for a business campaign, event, or personal project, we provide seamless printing solutions with top-notch results. Our advanced printing techniques guarantee vibrant, long-lasting prints that make an impact. Place your order now and experience the best in flyer and leaflet printing.
+                  Don’t wait to make an impact – get your folded flyers and
+                  menus printed today with Tee Print London. Our streamlined
+                  process ensures quick turnaround times without compromising on
+                  quality. Whether you need a small batch for a local event or a
+                  large order for a business campaign, we’ve got you covered.
+                  With our advanced printing techniques and attention to detail,
+                  we guarantee vibrant, durable, and professional results. Place
+                  your order now and experience the best in folded flyer and
+                  menu printing.
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img
-                src="https://res.cloudinary.com/dyfnpakfq/image/upload/v1740911648/2123_dossne.jpg"
-                alt="about image"
-              />
+              <img src="/img/menu_print/Leonardo_Kino_XL_Restaurant_menu_0.jpg" alt="about image" />
             </div>
           </div>
         </div>
@@ -162,8 +188,8 @@ function addToCart() {
 
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/flyer_and_leaflet/Leonardo_Phoenix_10_a_highly_detailed_and_photorealistic_image_1.jpg"
-        img_right="/img/flyer_and_leaflet/Leonardo_Kino_XL_a_flyer_related_to_a_restaurant_2.jpg"
+        img_left="/img/menu_print/Leonardo_Phoenix_10_A_visually_appealing_modern_illustration_o_0.jpg"
+        img_right="/img/flyer_and_leaflet/Leonardo_Kino_XL_Folded_Leaflet_2.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
