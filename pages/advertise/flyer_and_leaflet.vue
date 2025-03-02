@@ -22,20 +22,13 @@ function addToCart() {
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="Same-Day Printing for Hoodies & Sweatshirts"
+            title="High-Quality Flyer and Leaflet Printing"
             :images="[
-              '/img/Hoodie/Leonardo_Kino_XL_a_men_wearing_hoodie_Teeprint_London_written_2.jpg',
-              '/img/Hoodie/Leonardo_Kino_XL_a_men_wearing_hoodieStay_Cozy_Stay_Cool_writt_0.jpg',
-              '/img/Hoodie/Flux_Dev_a_highquality_photorealistic_image_of_a_trendy_hoodie_0.jpeg',
+              '/img/flyer_and_leaflet/1985.jpg',
+              '/img/flyer_and_leaflet/Leonardo_Kino_XL_a_flyer_related_to_a_restaurant_2.jpg',
             ]"
           >
-            Need high-quality custom hoodies or sweatshirts in a hurry? Tee
-            Print London provides same-day printing services, ensuring fast and
-            reliable results. Whether it’s for businesses, events, sports teams,
-            or personal use, our efficient process guarantees stylish and
-            professional apparel without delays. Serving clients across London
-            and the UK, we specialize in delivering premium printing solutions
-            with a quick turnaround to meet your urgent needs.
+            Need professional flyers or leaflets for your business, event, or personal project? Tee Print London offers premium printing services with a focus on quality and precision. Whether you're promoting a product, announcing an event, or sharing information, our flyers and leaflets are designed to make a lasting impression. With customizable sizes, materials, and finishes, we ensure your prints stand out.
 
             <template #link>
               <nuxt-link
@@ -57,49 +50,22 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Your Hoodies & Sweatshirts
-                  Printing
+                  Why Choose Tee Print London for Flyer and Leaflet Printing?
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Tee Print London is your go-to destination for high-quality
-                  hoodie and sweatshirt printing, offering premium designs,
-                  exceptional craftsmanship, and unbeatable customer service.
-                  Whether you're looking for custom prints for your brand, team,
-                  or personal style, we provide vibrant, long-lasting prints on
-                  comfortable, high-quality fabrics. Our advanced printing
-                  techniques ensure sharp details and rich colors that won’t
-                  fade over time. Plus, with fast turnaround times and
-                  competitive pricing, we make customization effortless and
-                  affordable. Choose Tee Print London for stylish, durable, and
-                  uniquely crafted hoodies and sweatshirts that make a
-                  statement!
+                  At Tee Print London, we combine cutting-edge printing technology with exceptional craftsmanship to deliver flyers and leaflets that exceed expectations. Our services are perfect for businesses, events, and personal projects, offering vibrant colors, sharp details, and durable finishes. Whether you need a small batch or a large order, we provide competitive pricing and fast turnaround times without compromising on quality. Choose us for professional, eye-catching prints that leave a lasting impression.
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <!-- <img
-                src="https://teeprint.london/wp-content/uploads/2022/11/t-shirt-printing-cover-1024x694.jpg"
+              <img
+                src="/img/flyer_and_leaflet/10921697.jpg"
                 alt="about iamge"
-              /> -->
-
-              <video
-                class="rounded-video"
-                autoplay
-                loop
-                muted
-                playsinline
-                width="100%"
-              >
-                <source
-                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1740854046/efbb14eb-4cfd-4c3b-9508-56c53e57e1d5_video_vmxcx3.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              />
             </div>
           </div>
         </div>
@@ -133,7 +99,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
               <img
-                src="/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_2.jpg"
+                src="/img/flyer_and_leaflet/2190.jpg"
                 alt="about iamge"
               />
             </div>
@@ -141,38 +107,12 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
-                <!-- <h4 class="section-heading-title-small">
-                                <span class="line-decoration"></span> About Us
-                            </h4> -->
                 <h2 class="section-heading-title-big">
-                  Same-Day Hoodie & Sweatshirt Printing – Fast, Reliable, and
-                  High-Quality
+                  Premium Flyer and Leaflet Printing – Fast, Reliable, and High-Quality
                 </h2>
               </div>
               <p>
-                When time is of the essence, and you need custom-printed hoodies
-                or sweatshirts without delays, Tee Print London is here to help.
-                We specialize in same-day printing services, allowing you to
-                receive professionally printed apparel on the very same day you
-                place your order. Whether you're preparing for a corporate
-                event, sports competition, promotional campaign, or simply want
-                a unique design for personal use, our service ensures you get
-                premium-quality prints with a fast turnaround. At Tee Print
-                London, we use state-of-the-art printing techniques such as
-                Direct-to-Garment (DTG), screen printing, and vinyl printing to
-                produce vibrant, long-lasting designs that withstand multiple
-                washes. No matter the complexity of your design—whether it's a
-                logo, slogan, graphic, or personalized text—we bring your vision
-                to life with precision and care. Our commitment to quality means
-                that speed does not compromise the excellence of our work. We
-                understand that urgent orders require not only quick processing
-                but also high standards, which is why our printing process
-                ensures crisp, clear, and professional results. Whether you need
-                a single hoodie or a bulk order, our team is dedicated to
-                providing the best service in London and across the UK. Why wait
-                for days? Get your custom hoodies and sweatshirts printed today
-                with Tee Print London and enjoy fast, reliable, and high-quality
-                printing tailored to your needs.
+                At Tee Print London, we understand the importance of timely and high-quality printing. Our flyer and leaflet printing services are designed to meet your deadlines without compromising on quality. Whether you need promotional materials for a business, event, or personal project, we use state-of-the-art printing techniques to ensure vibrant colors, sharp details, and professional finishes. With customizable options and fast turnaround times, we make it easy to get the prints you need when you need them.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -198,32 +138,12 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Get Your Custom Hoodies & Sweatshirts Printed Today!
+                  Get Your Flyers and Leaflets Printed Today!
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait days or even weeks for your custom apparel when you
-                  can have it printed today? At Tee Print London, we offer
-                  same-day hoodie and sweatshirt printing to ensure you get your
-                  custom designs exactly when you need them. Whether it’s for a
-                  corporate event, business promotion, sports team, charity
-                  fundraiser, or personal use, we provide a seamless and
-                  hassle-free printing experience with top-notch results. Our
-                  process is designed for speed and convenience—simply select
-                  your hoodie or sweatshirt, upload your design, and let us
-                  handle the rest. Using advanced printing techniques, including
-                  Direct-to-Garment (DTG), screen printing, and vinyl printing,
-                  we guarantee sharp, vibrant, and long-lasting prints that
-                  won’t fade after just a few washes. We understand the urgency
-                  of last-minute orders, which is why our same-day printing
-                  service is tailored to meet your deadlines without
-                  compromising on quality. Whether you need a single hoodie or a
-                  bulk order, we ensure every piece is printed with precision,
-                  durability, and style. Don’t let long wait times slow you
-                  down—place your order now with Tee Print London and get your
-                  custom hoodies and sweatshirts printed on the same day with
-                  professional service and unmatched quality.
+                  Why wait for days when you can have your flyers and leaflets printed today? At Tee Print London, we offer fast and reliable printing services to ensure your promotional materials are ready when you need them. Whether it's for a business campaign, event, or personal project, we provide seamless printing solutions with top-notch results. Our advanced printing techniques guarantee vibrant, long-lasting prints that make an impact. Place your order now and experience the best in flyer and leaflet printing.
                 </p>
               </div>
             </div>
@@ -231,18 +151,19 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
               <img
-                src="/img/Hoodie/Leonardo_Phoenix_10_a_young_adult_male_figure_likely_in_his_ea_1.jpg"
-                alt="about iamge"
+                src="/img/flyer_and_leaflet/2123.jpg"
+                alt="about image"
               />
             </div>
           </div>
         </div>
       </div>
     </section>
+
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/Hoodie/Leonardo_Phoenix_10_a_surreal_and_vibrant_cinematic_photograph_3.jpg"
-        img_right="/img/Hoodie/Leonardo_Phoenix_10_A_young_man_likely_in_his_early_twenties_w_0.jpg"
+        img_left="/img/flyer_and_leaflet/Leonardo_Phoenix_10_a_highly_detailed_and_photorealistic_image_1.jpg"
+        img_right="/img/flyer_and_leaflet/Leonardo_Kino_XL_a_flyer_related_to_a_restaurant_2.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
