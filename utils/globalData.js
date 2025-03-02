@@ -69,6 +69,7 @@ export let globalData = {
         'Men': '/same-day-delivery/category/men',
         'Flyers & Leaflets Printing': '/advertise/flyer_and_leaflet',
         'Folded Leaflets & Menu Printing': '/advertise/folded_flyer_and_menu',
-        'Tickets & Vouchers Printing': '/advertise/ticket_and_voucher'
+        'Tickets & Vouchers Printing': '/advertise/ticket_and_voucher',
+        'Business Cards Printing' :'/advertise/business_card'
     }, 
 }
