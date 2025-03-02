@@ -21,8 +21,9 @@ function addToCart() {
             :right="true"
             title="High-Quality Banner Printing"
             :images="[
-              '/img/business_card/675.jpg',
-              '/img/business_card/1213.jpg',
+              '/img/banners/6.jpg',
+              '/img/banners/7.jpg',
+              '/img/banners/10.jpg',
             ]"
           >
             Make a bold statement with Tee Print London’s premium banner printing services. Whether you need Advertising Banners, PVC Banners, Vinyl Banners, or Roller Banners, we deliver high-quality prints that grab attention and leave a lasting impression. Perfect for events, promotions, trade shows, or storefront displays, our banners are designed to stand out with vibrant colors, sharp details, and durable materials. Let us help you create banners that effectively communicate your message and enhance your brand visibility.
@@ -54,7 +55,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/business_card/24148.jpg" alt="about image" />
+              <img src="/img/banners/9.jpg" alt="about image" />
             </div>
           </div>
         </div>
@@ -85,7 +86,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/business_card/3503566.jpg" alt="about image" />
+              <img src="/img/banners/12.jpg" alt="about image" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -126,7 +127,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/business_card/5073120.jpg" alt="about image" />
+              <img src="/img/banners/13.jpg" alt="about image" />
             </div>
           </div>
         </div>
@@ -135,8 +136,8 @@ function addToCart() {
 
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/business_card/OJZ24D0.jpg"
-        img_right="/img/business_card/123458.jpg"
+        img_left="/img/banners/14.jpg"
+        img_right="/img/banners/3.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
