@@ -5,10 +5,7 @@ definePageMeta({
 });
 
 function addToCart() {
-  let imgElement = document.querySelector(
-    ".teeprint-product-view-image img"
-  ) as HTMLElement;
-
+  let imgElement = document.querySelector(".teeprint-product-view-image img") as HTMLElement;
   cartAnimation({ element: imgElement }, () => {
     useNuxtApp().$emit("openInPageCart", true);
   });

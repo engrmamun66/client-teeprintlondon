@@ -1,4 +1,10 @@
-<script setup lang="ts">
+<template>
+  <p>Sample</p>
+</template>
+<script setup>
+</script>
+
+<!-- <script setup lang="ts">
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -343,4 +349,4 @@ function addToCart() {
 
     <web-questions></web-questions>
   </div>
-</template>
+</template> -->
