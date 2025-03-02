@@ -25,7 +25,7 @@ function addToCart() {
             title="Same-Day Printing for Active Wear"
             :images="[
               '/img/Active_wear/Leonardo_Phoenix_10_A_surreal_and_vibrant_cinematic_photograph_2.jpg',
-              '/img/Active_wear/Leonardo_Phoenix_10_a_surreal_and_vibrant_cinematic_photograph_1 (1).jpg',
+              '/img/Active_wear/Leonardo_Phoenix_10_a_surreal_and_vibrant_cinem.jpg',
               '/img/Active_wear/Leonardo_Phoenix_10_a_surreal_and_vibrant_cinematic_photograph_0.jpg',
             ]"
           >
