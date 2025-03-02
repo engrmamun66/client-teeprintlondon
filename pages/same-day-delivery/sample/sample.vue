@@ -130,9 +130,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
-                <!-- <h4 class="section-heading-title-small">
-                                <span class="line-decoration"></span> About Us
-                            </h4> -->
+
                 <h2 class="section-heading-title-big">Why Tee Print?</h2>
               </div>
               <p>
@@ -180,8 +178,7 @@ function addToCart() {
             />
             <div class="card-body">
               <h5 class="card-title">Same Day Banner Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
             </div>
           </div>
         </div>
@@ -195,8 +192,7 @@ function addToCart() {
             />
             <div class="card-body">
               <h5 class="card-title">Same Day Flyer Leaflet Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
             </div>
           </div>
         </div>
@@ -210,8 +206,7 @@ function addToCart() {
             />
             <div class="card-body">
               <h5 class="card-title">Same Day Poster Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
             </div>
           </div>
         </div>
@@ -225,8 +220,7 @@ function addToCart() {
             />
             <div class="card-body">
               <h5 class="card-title">Same Day Business Card Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
             </div>
           </div>
         </div>
@@ -239,8 +233,7 @@ function addToCart() {
             />
             <div class="card-body">
               <h5 class="card-title">Same Day Brochure Booklet Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
             </div>
           </div>
         </div>
@@ -253,8 +246,7 @@ function addToCart() {
             />
             <div class="card-body">
               <h5 class="card-title">Same Day Document Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
             </div>
           </div>
         </div>
@@ -268,8 +260,7 @@ function addToCart() {
             />
             <div class="card-body">
               <h5 class="card-title">Same Day Hoodie Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
             </div>
           </div>
         </div>
@@ -282,8 +273,7 @@ function addToCart() {
             />
             <div class="card-body">
               <h5 class="card-title">Same Day Tote Bag Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
             </div>
           </div>
         </div>
@@ -296,8 +286,7 @@ function addToCart() {
             />
             <div class="card-body">
               <h5 class="card-title">Same Day Sweatshirt Print</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
             </div>
           </div>
         </div>
