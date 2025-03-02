@@ -2112,7 +2112,7 @@ input:-internal-autofill-selected {
 }
 
 input::placeholder {
-    color: var(--fontcolor-muted) !important;
+    color: rgb(179, 179, 179) !important;
 }
 
 .leap-admin-main-wrapper ::placeholder {

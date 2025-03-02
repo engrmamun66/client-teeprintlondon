@@ -332,9 +332,9 @@ export const useProductStore = defineStore("product", () => {
     }
   }
   let productList = ref([]);
-  async function getProductList() {
-    try {
-      let response = await Product.list();
+  async function getProductList(params={}) {
+    try { 
+      let response = await Product.list({ params });
       if (response.status == 200) {
         productList.value = response.data.data.data;
       }
