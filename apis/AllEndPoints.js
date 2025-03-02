@@ -3,6 +3,7 @@ import { FrontendEndpoints } from './web/Frontend';
 import { CategoryEndpoints } from './Category'; 
 import { ColorEndpoints } from './Color'; 
 import { ProductEndpoints } from './Product'; 
+import { DiscountEndpoints } from './Discount'; 
 
 /**
  * This file will help to show 
@@ -14,7 +15,8 @@ export const AllDeveloperDefinedEndPoints = {
     Frontend: {...FrontendEndpoints},
     Category: {...CategoryEndpoints},
     Color: {... ColorEndpoints},
-    Product:{...ProductEndpoints}
+    Product:{...ProductEndpoints},
+    Discount:{...DiscountEndpoints},
 }
 
 /**

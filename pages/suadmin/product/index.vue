@@ -19,8 +19,8 @@
             <div class="form-group">
               <label class="">Category</label>
               <select v-model="params.category" class="form-control" @auxclick="log(homeStore.menus)" >
+                <option :value="null">-Select Category-</option>
                 <template v-for="item in homeStore.menus || []">
-                  <option :value="null">-Select Category-</option>
                   <optgroup :label="item.name">
                     <template v-for="(child2, index2) in item?.categories" :key="index2" >
                       <option @click="log(child2)" :value="`parent-${child2.id}`">{{ child2.name }}</option>

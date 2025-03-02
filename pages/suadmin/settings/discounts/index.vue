@@ -22,66 +22,21 @@
         >
           <thead>
             <tr>
-              <th>Minimum Quantity</th>
-              <th>Maximum Quantity</th>
-              <th>Amount (%)</th>
-              <th>Actions</th>
+              <th>Applied Category</th>
+              <th>Applied Time</th>
+              <th>Amount (%)</th> 
             </tr>
           </thead>
           <tbody>
-            <tr
-              class="odd"
-              v-for="(brand, index) in brandStore.brandList"
-              :key="index"
-            >
-              <td>
-                <div class="px-2">
-                  <span>{{ brand?.name }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="px-2">
-                  <img
-                    :src="
-                      brand?.image_url ? brand?.image_url : '/img/noimage.jpg'
-                    "
-                    alt="Brand Image"
-                    class="w-16 h-16 object-cover rounded"
-                  />
-                </div>
-              </td>
-              <td>
-                <div class="px-2">
-                  <p>
-                    <span>{{
-                      brand?.status == 1 ? "Active" : "Inactive"
-                    }}</span>
-                  </p>
-                </div>
-              </td>
-              <td>
-                <ul class="d-flex justify-content-evenly td-actions">
-                  <li class="d-flex justify-content-evenly">
-                    <p tooltip="Delete" flow="up">
-                      <i-las
-                        t="trash"
-                        class="size-sm cp"
-                        @click="
-                          showConfirmation = true;
-                          brandId = brand.id;
-                        "
-                      />
-                    </p>
-                    <p tooltip="Edit" flow="up">
-                      <i-las
-                        t="edit"
-                        class="size-sm cp"
-                        @click="showBrand(brand.id)"
-                      />
-                    </p>
-                  </li>
-                </ul>
-              </td>
+            <tr class="odd" v-for="(brand, index) in 1" :key="index" >
+               <td> All </td>
+               <td> 19 Feb 2025 08:25 AM </td>
+               <td> 22 </td>
+            </tr>
+            <tr class="odd" v-for="(brand, index) in 1" :key="index" >
+               <td> Women </td>
+               <td> 18 Feb 2025 08:25 AM </td>
+               <td> 22 </td>
             </tr>
           </tbody>
         </table>
@@ -105,95 +60,64 @@
       </div>
     </admin-card>
 
-    <modal-global
+    <modal-global  
       v-model="brandStore.showModal"
-      :footer="false"
+      :footer="true"
+      @clicked-submit="showCofirmModal=true"
+      @clicked-cancel="clearPayload"
+      @clicked-close="clearPayload"
       :title="editMode ? 'Update Discount' : 'Add Discount'"
     >
       <template #modalbody>
-        <div class="row">
-          <!-- Pickup -->
+        <div class="row w-100">
+    
+              
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+              <label class="">Category</label>
+              <select v-model="payload.category_id" class="form-control" @auxclick="log(homeStore.menus)" >
+                <option :value="null">-Select Category-</option>
+                <template v-for="item in homeStore.menus || []">
+                  <optgroup :label="item.name">
+                    <template v-for="(child2, index2) in item?.categories" :key="index2" >
+                      <option @click="log(child2)" :value="`parent-${child2.id}`">{{ child2.name }}</option>
+                      <template v-for="(child3, index3) in child2?.children || []" :key="index3" >
+                        <option :value="`child-${child3.id}`" class="ps-2 ms-1"> ❏ {{ child3.name }}</option>
+                      </template>
+                    </template>   
 
-          <div class="col-12">
-            <div class="row">
-              <div class="col-12">
-                <div class="form-group">
-                  <div class="date-box">
-                    <div class="date-box-input">
-                      <el-BaseInput
-                        type="number"
-                        label="Minimum Quantity"
-                        v-model="brandStore.brandAttribute.name"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="form-group">
-                  <div class="date-box">
-                    <div class="date-box-input">
-                      <el-BaseInput
-                        type="number"
-                        label="Maximum Quantity"
-                        v-model="brandStore.brandAttribute.name"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="form-group">
-                  <div class="date-box">
-                    <div class="date-box-input">
-                      <el-BaseInput
-                        type="number"
-                        label="Discount Amount"
-                        v-model="brandStore.brandAttribute.name"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                  </optgroup>
+                  
+                </template>
+              </select>  
+            </div> 
+          </div>  
+          <el-baseInput v-model="payload.discount" label="Discount (%)" class="col-md-6 col-12" type="number"></el-baseInput>
 
-          <div class="ionic-card-footer justify-content-end">
-            <button
-              type="button"
-              class="leap-btn leap-submit-btn me-2 m-1"
-              @click="handleSubmit"
-            >
-              Save
-              <BtnLoader
-                :show="H.isPendingAnyApi('Brand:create|Brand:update')"
-                color="black"
-              />
-            </button>
-            <button type="button" class="leap-btn leap-cancel-btn m-1">
-              Cancel
-            </button>
-          </div>
+
         </div>
       </template>
     </modal-global>
+
+    <modal-Confirm v-model="showCofirmModal" @yes="createDiscount" @no="clearPayload">
+
+    </modal-Confirm>
   </div>
 </template>
 
 <script setup>
+import Discount from "../apis/Discount";
 import { useBrandStore } from "~/store/Brand";
 const brandStore = useBrandStore();
 let showConfirmation = ref(false);
 let editMode = ref(false);
 let brandId = ref(null);
-let editor = ref(null);
 let clearImage = ref(false);
 
-async function showBrand(id) {
-  await brandStore.showBrand(id);
+import { useHomeStore } from '~/store/web/Home'; 
+const homeStore = useHomeStore(); 
 
-  editMode.value = true;
-}
+
 
 function handleSubmit() {
   // console.log( brandStore.brandAttribute.image )
@@ -213,7 +137,34 @@ function OpenModal() {
   brandStore.showModal = !brandStore.showModal;
 }
 
+let payload = reactive({
+  type: null,
+  category_id: null,
+  discount: 0,
+})
+
+function clearPayload(){
+  payload.type = null
+  payload.category_id = null
+  payload.discount = 0
+}
+
+
+let showCofirmModal = ref(false)
+
+async function createDiscount() {
+  let data = H.clone(payload)
+  if(data.category_id){
+    data.type = 'category'
+  } else {
+    data.type = 'all'
+  }
+  await Discount.create(data)
+  Toaster.success('Discount applied')
+}
+
 onMounted(async () => {
+  homeStore.getTypewiseCategoryList();
   await brandStore.getBrandList();
 });
 </script>

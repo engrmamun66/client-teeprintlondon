@@ -200,14 +200,12 @@ onMounted(() => {
 .confirm-message {
   display: inline-flex;
   align-items: center;
-
-  color: #ffffff; /* Neutral text color */
+  color: #121212;
   padding: 5px 10px;
-
   border-radius: 5px;
-  font-size: 0.995rem; /* Slightly smaller text */
+  font-size: 0.995rem;
   line-height: 1.5;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .confirm-message i {
