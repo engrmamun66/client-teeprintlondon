@@ -161,11 +161,6 @@ let { staticPagesByParentCat } = globalData;
             <div class="teeprint-menu">
               <ul class="teeprint-mobile-device">
                 <li>
-                  <a class="teeprint-mobile-menubar">
-                    <i class="bx bx-menu"></i>
-                  </a>
-                </li>
-                <li>
                   <nuxt-link
                     :to="{ name: 'quote' }"
                     class="teeprint-button teeprint-theme-btn quote-btn zoomInOut"
@@ -173,10 +168,21 @@ let { staticPagesByParentCat } = globalData;
                   ></nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/cart" class="p-1 text-white size-1p4" id="header_cart">
-                    <i class="bx bx-shopping-bag fs-3"></i>
+                  <nuxt-link class="p-1 text-white size-1p4">
+                    <i class="bx bx-search"></i>
                   </nuxt-link>
                 </li>
+                <li>
+                  <nuxt-link to="/cart" class="p-1 text-white size-1p4" id="header_cart">
+                    <i class="bx bx-shopping-bag"></i>
+                  </nuxt-link>
+                </li>
+                <li>
+                  <a class="teeprint-mobile-menubar">
+                    <i class="bx bx-menu"></i>
+                  </a>
+                </li>
+                
               </ul>
 
               <!-- Main menu  -->

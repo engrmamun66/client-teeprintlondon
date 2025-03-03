@@ -1488,6 +1488,7 @@ Header css
   }
   .teeprint-header .teeprint-middle-header {
     height: 75px;
+    display: none;
   }
   .teeprint-middle-header .container {
     height: 100%;
@@ -1565,6 +1566,7 @@ Header css
     position: fixed;
     left: 0;
     width: 100%;
+    height: 100%;
     background: #fff;
     -webkit-box-shadow: 0 0 30px 0 rgba(51, 77, 136, 0.08);
             box-shadow: 0 0 30px 0 rgba(51, 77, 136, 0.08);
@@ -1622,10 +1624,13 @@ Header css
     align-items: center;
       background-color: var(--bgcolor-white) !important;
       padding: 9px 15px;
-      font-size: 14px;
+      font-size: 12px;
       border-radius: 100px !important;
       color: var(--fontcolor-primary) !important;
-      margin-right: 0;
+      margin-right: 10px;
+    }
+  .teeprint-mobile-device li a.quote-btn i {
+      font-size: 14px;
     }
   .quote-btn-area {
     display: none;
@@ -3669,6 +3674,18 @@ Contact us css
   .map iframe {
       height: 400px;
   }
+  .contact-leftside {
+    order: 0;
+  }
+  .contact-form {
+    order: -2;
+  }
+  .contact-form form {
+    padding: 0;
+  }
+  .contact-linbar {
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 575px) {
@@ -5069,7 +5086,8 @@ checkout css
   border-bottom: 1px solid #f2f3f8;
 }
 .teeprint-radio-inline.quote-page {
-  height: 48px;
+  height: auto;
+  padding: 15px 0 6px;
 }
 
 .teeprint-radio-inline:first-child {
