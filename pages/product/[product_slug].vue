@@ -141,11 +141,7 @@ let showEffect = computed(
                     <template v-if="showEffect">
                       <div
                         v-for="x in 4"
-                        class="teeprint-product-thumb-item"
-                        :class="{
-                          'teeprint-product-thumb-active': img?.selected,
-                        }"
-                      >
+                        class="teeprint-product-thumb-item" >
                         <ShimmerEffect width="100%"></ShimmerEffect>
                       </div>
                     </template>

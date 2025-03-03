@@ -262,64 +262,61 @@ let { staticPagesByParentCat } = globalData;
                     </template>
                   </template>
 
-                  <nav class="teeprint-nav-manu">
-                    <ul>
-                      <li>
-                        <nuxt-link to="#">
-                          Same Day Delivery <i class="lni lni-chevron-down"></i>
-                        </nuxt-link>
-                        <div class="teeprint-submenu">
-                          <ul>
-                            <li>
-                              <nuxt-link to="/same-day-delivery/shirt">
-                                Same Day Shirt Printing
-                              </nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="/same-day-delivery/polo_shirt_printing">
-                                Same Day Polo Shirt Printing
-                              </nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="/same-day-delivery/hoodie">
-                                Same Day Hoodie Printing
-                              </nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="/same-day-delivery/cap">
-                                Same Day Cap Printing
-                              </nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="/same-day-delivery/tote_bag">
-                                Same Day Tote bag Printing
-                              </nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="/same-day-delivery/apron">
-                                Same Day Tote Apron Printing
-                              </nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="/same-day-delivery/fleeces_and_knits">
-                                Same Day Fleeces & Knits Printing
-                              </nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="/same-day-delivery/active_wear">
-                                Same Day Active Wear Printing
-                              </nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="/same-day-delivery/dress_shirt">
-                                Same Day Dress Shirt Printing
-                              </nuxt-link>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
-                    </ul>
-                  </nav>
+                
+                  <li>
+                    <nuxt-link to="#">
+                      Same Day Delivery <i class="lni lni-chevron-down"></i>
+                    </nuxt-link>
+                    <div class="teeprint-submenu">
+                      <ul>
+                        <li>
+                          <nuxt-link to="/same-day-delivery/shirt">
+                            Same Day Shirt Printing
+                          </nuxt-link>
+                        </li>
+                        <li>
+                          <nuxt-link to="/same-day-delivery/polo_shirt_printing">
+                            Same Day Polo Shirt Printing
+                          </nuxt-link>
+                        </li>
+                        <li>
+                          <nuxt-link to="/same-day-delivery/hoodie">
+                            Same Day Hoodie Printing
+                          </nuxt-link>
+                        </li>
+                        <li>
+                          <nuxt-link to="/same-day-delivery/cap">
+                            Same Day Cap Printing
+                          </nuxt-link>
+                        </li>
+                        <li>
+                          <nuxt-link to="/same-day-delivery/tote_bag">
+                            Same Day Tote bag Printing
+                          </nuxt-link>
+                        </li>
+                        <li>
+                          <nuxt-link to="/same-day-delivery/apron">
+                            Same Day Tote Apron Printing
+                          </nuxt-link>
+                        </li>
+                        <li>
+                          <nuxt-link to="/same-day-delivery/fleeces_and_knits">
+                            Same Day Fleeces & Knits Printing
+                          </nuxt-link>
+                        </li>
+                        <li>
+                          <nuxt-link to="/same-day-delivery/active_wear">
+                            Same Day Active Wear Printing
+                          </nuxt-link>
+                        </li>
+                        <li>
+                          <nuxt-link to="/same-day-delivery/dress_shirt">
+                            Same Day Dress Shirt Printing
+                          </nuxt-link>
+                        </li>
+                      </ul>
+                    </div>
+                  </li> 
 
                   <li>
                     <a href="#">About us </a>
