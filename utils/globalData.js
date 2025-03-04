@@ -72,6 +72,7 @@ export let globalData = {
         'Tickets & Vouchers Printing': '/advertise/ticket_and_voucher',
         'Business Cards Printing' :'/advertise/business_card',
         'Banners Printing' :'/advertise/advertising_banner',
-        'Sign Printing' :'/advertise/sign_print'
+        'Sign Printing' :'/advertise/sign_print',
+        'Sticker Printing' : '/advertise/sticker_print'
     }, 
 }
