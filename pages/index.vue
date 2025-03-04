@@ -153,7 +153,7 @@ definePageMeta({
             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
               <div class="teeprint-info-box">
                 <div class="teeprint-info-box-inner">
-                  <nuxt-img
+                  <img
                     src="/img/Home/Leonardo_Phoenix_10_A_few_vibrant_tshirts_with_diverse_colors_0.jpg"
                     alt=""
                   />
@@ -183,7 +183,7 @@ definePageMeta({
             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
               <div class="teeprint-info-box renty-information-middle">
                 <div class="teeprint-info-box-inner">
-                  <nuxt-img
+                  <img
                     src="/img/Home/WhatsApp Image 2025-01-03 at 22.03.42_74ce6356.jpg"
                   />
                   <h5 class="pt-4">
@@ -243,7 +243,7 @@ definePageMeta({
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <nuxt-img
+              <img
                 src="/img/Home/2.jpg"
                 alt="about iamge"
               />
@@ -283,7 +283,7 @@ definePageMeta({
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <nuxt-img src="/img/Home/personalized-t-shirt.jpg" alt="about iamge" />
+              <img src="/img/Home/personalized-t-shirt.jpg" alt="about iamge" />
             </div>
           </div>
         </div>
