@@ -12,9 +12,6 @@
     "nuxt": "^3.14.1592"
   },
   "dependencies": {
-    "@capacitor/android": "^4.6.1",
-    "@capacitor/core": "^4.6.1",
-    "@capacitor/ios": "^4.6.1",
     "@nuxtjs/device": "^3.1.0",
     "@pinia/nuxt": "^0.5.1",
     "@tinymce/tinymce-vue": "^6.1.0",
