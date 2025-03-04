@@ -31,7 +31,7 @@ function addToCart() {
             title="Revolutionizes Printing Services in London"
             :images="[
               '/img/Home/Leonardo_Phoenix_10_A_highquality_crisp_image_of_a_crisp_white_1.jpg',
-              '/img/Home/Flux_Dev_A_vibrant_and_modern_illustration_featuring_a_casual__2.jpeg',
+              '/img/Home/2.jpeg',
               '/img/Banner/Leonardo_Phoenix_10_a_vibrant_and_eyecatching_business_banner_0.jpg',
             ]"
           >
@@ -128,7 +128,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
               <img
-                src="/img/Home/Flux_Dev_A_vibrant_and_modern_illustration_featuring_a_casual__2.jpeg"
+                src="/img/Home/2.jpeg"
                 alt="about iamge"
               />
             </div>
