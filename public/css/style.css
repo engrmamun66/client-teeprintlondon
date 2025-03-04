@@ -1565,7 +1565,7 @@ Header css
     display: none;
     position: fixed;
     left: 0;
-    width: 100%;
+    width: 280px;
     height: 100%;
     background: #fff;
     -webkit-box-shadow: 0 0 30px 0 rgba(51, 77, 136, 0.08);
@@ -1576,7 +1576,7 @@ Header css
   }
   .teeprint-nav-manu ul {
     height: auto;
-    padding: 15px 0;
+    padding: 0 0;
   }
   .teeprint-nav-manu ul li {
     display: inline-block;
@@ -1592,7 +1592,7 @@ Header css
     line-height: 37px;
     padding: 0 20px;
     color: #222529;
-    text-align: center;
+    text-align: left;
   }
   .teeprint-nav-manu ul li a:after {
     width: 100%;
@@ -1608,8 +1608,12 @@ Header css
     width: unset;
   }
   .teeprint-nav-manu ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     line-height: 37px;
     padding: 0 20px;
+    border-bottom: 1px solid #eee;
   }
   .teeprint-menu {
     padding-right: 0px;
@@ -1635,6 +1639,14 @@ Header css
   .quote-btn-area {
     display: none;
   }
+  .teeprint-nav-manu ul li .teeprint-submenu {
+    width: 100%;
+    background-color: #fff;
+  }
+  .teeprint-nav-manu ul li .teeprint-submenu ul li a {
+    color: #333;
+    padding-left: 30px;
+}
 }
 
 

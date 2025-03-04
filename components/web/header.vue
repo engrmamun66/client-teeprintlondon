@@ -186,7 +186,7 @@ let { staticPagesByParentCat } = globalData;
               </ul>
 
               <!-- Main menu  -->
-              <nav class="teeprint-nav-manu">
+              <nav class="teeprint-nav-manu m-teeprint-navemenu-active">
                 <ul>
                   <li>
                     <a
@@ -211,7 +211,7 @@ let { staticPagesByParentCat } = globalData;
                           ></i
                         ></nuxt-link>
                         <template v-if="item?.categories?.length">
-                          <div class="teeprint-submenu">
+                          <div class="teeprint-submenu m-teeprint-submenu-active">
                             <ul>
                               <template
                                 v-for="(child2, index2) in item?.categories"

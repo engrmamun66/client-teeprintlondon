@@ -1,11 +1,11 @@
 const prefix = "discount";
 
 export const DiscountEndpoints = {
-  create: `/products/apply-discount`, 
+  create: `/apply-discount`, 
 };
 
 export default {
   async create(payload = {}) {
-    return await ApiAuth().post(`/products/apply-discount`, payload );
+    return await ApiAuth().post(`/apply-discount`, payload );
   }, 
 };
