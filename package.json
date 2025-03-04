@@ -2,10 +2,10 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --port 3200",
+    "dev": "nuxt dev",
+    "start": "node .output/server/index.mjs", 
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "preview": "nuxt preview"
   },
   "devDependencies": {
     "@capacitor/cli": "^4.6.1",
