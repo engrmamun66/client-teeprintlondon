@@ -24,9 +24,9 @@ function addToCart() {
             :right="true"
             title="Custom Stickers for Every Need"
             :images="[
-              '/img/sticker_print/Beige and Red Cute Illustrative Pastry Handmade Circle Sticker.jpg',
-              '/img/sticker_print/Beige and Red Cute Illustrative Pastry Handmade Circle Sticker.jpg',
-              '/img/sticker_print/Beige and Red Cute Illustrative Pastry Handmade Circle Sticker.jpg',
+              '/img/sticker_print/2.jpg',
+              '/img/sticker_print/3.jpg',
+              '/img/sticker_print/7.jpg',
             ]"
           >
             At Tee Print London, we specialize in creating high-quality custom stickers that are perfect for branding, promotions, or personal use. Whether you’re looking to add a creative touch to your products, promote your business, or personalize your belongings, our wide range of sticker options has you covered. From durable waterproof stickers to elegant transparent designs, we offer something for every need.
@@ -69,7 +69,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/sign_print/Leonardo_Phoenix_10_a_rectangular_business.jpg" alt="about image" />
+              <img src="/img/sticker_print/13.jpg" alt="about image" />
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/sign_print/Leonardo_Phoenix_10_Design_a_versatile_and_customizable_door_s_3.jpg" alt="about image" />
+              <img src="/img/sticker_print/1.jpg" alt="about image" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -150,7 +150,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/sign_print/Leonardo_Phoenix_10_A_sleek_modern_business_sign_suspended_in_1.jpg" alt="about image" />
+              <img src="/img/sticker_print/10.jpg" alt="about image" />
             </div>
           </div>
         </div>
@@ -159,8 +159,8 @@ function addToCart() {
 
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/sign_print/Leonardo_Phoenix_10_Design_a_versatile_and_customizable_door_s_1.jpg"
-        img_right="/img/sign_print/Leonardo_Phoenix_10_A_rustic_wooden_or_sleek_glass_business_si_1.jpg"
+        img_left="/img/sticker_print/8.jpg"
+        img_right="/img/sticker_print/12.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
