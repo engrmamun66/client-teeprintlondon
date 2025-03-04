@@ -5,7 +5,9 @@ definePageMeta({
 });
 
 function addToCart() {
-  let imgElement = document.querySelector(".teeprint-product-view-image img") as HTMLElement;
+  let imgElement = document.querySelector(
+    ".teeprint-product-view-image img"
+  ) as HTMLElement;
   cartAnimation({ element: imgElement }, () => {
     useNuxtApp().$emit("openInPageCart", true);
   });
@@ -20,7 +22,6 @@ function addToCart() {
           <MultipleImageCardsforticket
             :right="true"
             title="High-Quality Ticket and Voucher Printing"
-
             :images="[
               '/img/ticket_and_voucher/GreyBlackPurpleMinimalistMusicNightEventTicket.jpg',
               '/img/ticket_and_voucher/YellowRestaurantGiftVoucher.jpg',
@@ -150,7 +151,7 @@ function addToCart() {
     </section>
 
     <div>
-      <Advertise /> 
+      <Advertise />
     </div>
 
     <section class="teeprint-about-section">
@@ -180,10 +181,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img
-                src="/img/ticket_and_voucher/ticket.jpg"
-                alt="about image"
-              />
+              <img src="/img/ticket_and_voucher/ticket.jpg" alt="about image" />
             </div>
           </div>
         </div>
