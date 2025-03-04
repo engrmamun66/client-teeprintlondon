@@ -39,7 +39,7 @@ export default defineNuxtConfig({
     ],
   },
 
-  modules: ["@pinia/nuxt", "@nuxtjs/device", "@nuxt/image"],
+  modules: ["@pinia/nuxt", "@nuxtjs/device"],
 
   runtimeConfig: {
     public: { ...process.env }, //process.env
