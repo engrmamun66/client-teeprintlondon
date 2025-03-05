@@ -73,6 +73,7 @@ export let globalData = {
         'Business Cards Printing' :'/advertise/business_card',
         'Banners Printing' :'/advertise/advertising_banner',
         'Sign Printing' :'/advertise/sign_print',
-        'Sticker Printing' : '/advertise/sticker_print'
+        'Sticker Printing' : '/advertise/sticker_print',
+        'Mug Printing' : '/advertise/mug_print'
     }, 
 }
