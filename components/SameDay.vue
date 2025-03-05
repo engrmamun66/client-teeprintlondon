@@ -97,7 +97,7 @@ const items = [
     link: "same-day-delivery/active_wear",
   },
   {
-    title: "Same Day Document Print",
+    title: "Same Day Dress Shirt Print",
     image:
       "/img/Dress_Shirts/Leonardo_Phoenix_10_a_men_wearing_dress_black_shirt_in_london_0.jpg",
       link: "same-day-delivery/dress_shirt",
