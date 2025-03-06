@@ -108,7 +108,7 @@ onMounted(async () => {
                                                     
                                                     <a href="#" class="text-black">
                                                         <label class="teeprint-checkbox" :for="`main_${index}`"> 
-                                                            <input type="checkbox" :id="`main_${index}`" :checked="item?.is_checked" @click.stop="withFilter('category', {pIndex: index})" > 
+                                                            <input type="checkbox" :id="`main_${index}`" :checked="item?.is_checked" @click.stop="homeStore.payload.category_slug = null;withFilter('category', {pIndex: index})" > 
                                                             {{ item?.name }}  
                                                             <i class="lni lni-chevron-right"></i>
                                                             <span></span>
@@ -119,7 +119,7 @@ onMounted(async () => {
                                                         <ul class="ps-4">
                                                             <template v-for="(child2, index2) in item?.categories" :key="child2.id">
                                                                 <li :parent-index="index" :child-index="index2">  
-                                                                    <a @click.stop.prevent="withFilter('category', {pIndex: index, cIndex: index2})" href="#">
+                                                                    <a @click.stop.prevent="homeStore.payload.category_slug = null;withFilter('category', {pIndex: index, cIndex: index2})" href="#">
                                                                         <label class="teeprint-checkbox" :for="`parent_${index2}`"> 
                                                                             <input type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
                                                                             {{ child2.name }} 
