@@ -76,6 +76,7 @@ export let globalData = {
         'Sticker Printing' : '/advertise/sticker_print',
         'Mug Printing' : '/advertise/mug_print',
         'Active wear' : '/cloth/active_wear',
+        'Apron' : '/cloth/apron',
 
     }, 
 }
