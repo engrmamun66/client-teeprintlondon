@@ -78,7 +78,8 @@ export let globalData = {
         'Active wear' : '/cloth/active_wear',
         'Apron' : '/cloth/apron',
         'Tote bag' : '/cloth/tote_bag',
-        'Cap' : '/cloth/cap'
+        'Cap' : '/cloth/cap',
+        'Dress shirt' : '/cloth/dress_shirt'
 
     }, 
 }
