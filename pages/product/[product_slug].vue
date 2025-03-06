@@ -101,9 +101,8 @@ let showEffect = computed(
                         id="productCarousel"
                         class="carousel slide"
                         data-bs-ride="carousel"
-                        style="width: 100%; height: 400px; overflow: hidden"
                       >
-                        <div class="carousel-inner" style="height: 100%">
+                        <div class="carousel-inner">
                           <div
                             v-for="(image, index) in image_url"
                             :key="index"
@@ -111,17 +110,11 @@ let showEffect = computed(
                               'carousel-item',
                               { active: index === activeThumbnailIndex },
                             ]"
-                            style="height: 100%"
                           >
                             <img
                               :src="image"
                               alt="Product Image"
                               class="d-block w-100"
-                              style="
-                                object-fit: cover;
-                                height: 100%;
-                                width: 100%;
-                              "
                             />
                           </div>
                         </div>
@@ -146,7 +139,9 @@ let showEffect = computed(
                   </div>
                   <div class="teeprint-product-multipleimage">
                     <template v-if="showEffect">
-                      <div v-for="x in 4" class="teeprint-product-thumb-item">
+                      <div
+                        v-for="x in 4"
+                        class="teeprint-product-thumb-item" >
                         <ShimmerEffect width="100%"></ShimmerEffect>
                       </div>
                     </template>
@@ -195,14 +190,7 @@ let showEffect = computed(
                         {{ H.formatPrice(homeStore.get_discounted_price) }}
                       </template>
                     </span>
-                    <span
-                      v-if="
-                        homeStore.get_price &&
-                        homeStore.get_discounted_price &&
-                        homeStore.get_price !== homeStore.get_discounted_price
-                      "
-                      class="amount text-decoration-line-through opacity-50 cn ms-2"
-                    >
+                    <span v-if="homeStore.get_price && homeStore.get_discounted_price && homeStore.get_price !== homeStore.get_discounted_price" class="amount text-decoration-line-through opacity-50 cn ms-2">
                       <template v-if="showEffect">
                         <ShimmerEffect
                           width="100px"
@@ -434,18 +422,21 @@ let showEffect = computed(
                 </ul> -->
                 <h4 class="mt-4- mb-1">Product Description</h4>
                 <div class="pd-tab_container">
-                  <div id="pddescription" class="pd-tab_content">
+                  <div 
+                    id="pddescription"
+                    class="pd-tab_content"
+                  >
                     <div
                       v-html="
                         homeStore.product?.long_description ||
                         'Description not added'
                       "
                     ></div>
-                  </div>
+                  </div> 
                 </div>
 
                 <h4 class="mt-4 mb-1">Related Products</h4>
-                <div class="pd-tab_container">
+                <div class="pd-tab_container"> 
                   <div id="pdrelatedproduct" class="pd-tab_content">
                     <div class="related-product">
                       <template v-if="homeStore.related_products?.length">
