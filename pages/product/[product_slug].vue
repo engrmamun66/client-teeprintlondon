@@ -29,7 +29,7 @@ const setActiveThumbnail = (index) => {
 // Function to handle image load event
 const onImageLoad = () => {
   loadedImagesCount.value++;
-  if (loadedImagesCount.value >= image_url.value.length) {
+  if (loadedImagesCount.value > 0) {
     allImagesLoaded.value = true; // All images are loaded
   }
 };
