@@ -319,10 +319,7 @@ let { staticPagesByParentCat } = globalData;
                   </li> 
 
                   <li>
-                    <a href="#">About us </a>
-                  </li>
-                  <li>
-                    <a href="#">Contact us</a>
+                    <a href="#">Design and services</a>
                   </li>
                 </ul>
               </nav>

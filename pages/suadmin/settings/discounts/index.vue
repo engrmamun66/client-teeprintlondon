@@ -80,7 +80,7 @@
                 <template v-for="item in homeStore.menus || []">
                   <optgroup :label="item.name">
                     <template v-for="(child2, index2) in item?.categories" :key="index2" >
-                      <option @click="log(child2)" :value="`parent-${child2.id}`">{{ child2.name }}</option>
+                      <option @click="log(child2)" :value="child2.id">{{ child2.name }}</option>
                       <template v-for="(child3, index3) in child2?.children || []" :key="index3" >
                         <option :value="`child-${child3.id}`" class="ps-2 ms-1"> ❏ {{ child3.name }}</option>
                       </template>

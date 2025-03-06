@@ -5,7 +5,9 @@ definePageMeta({
 });
 
 function addToCart() {
-  let imgElement = document.querySelector(".teeprint-product-view-image img") as HTMLElement;
+  let imgElement = document.querySelector(
+    ".teeprint-product-view-image img"
+  ) as HTMLElement;
   cartAnimation({ element: imgElement }, () => {
     useNuxtApp().$emit("openInPageCart", true);
   });
@@ -112,8 +114,10 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-
-              <img src="/img/flyer_and_leaflet/Leonardo_Phoenix_10_A_rectangular_trifolded_flyer_for_a_restau_0svksfv.jpg" alt="about image" />
+              <img
+                src="/img/flyer_and_leaflet/Leonardo_Phoenix_10_A_rectangular_trifolded_flyer_for_a_restau_0svksfv.jpg"
+                alt="about image"
+              />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -147,7 +151,7 @@ function addToCart() {
     </section>
 
     <div>
-      <Advertise /> 
+      <Advertise />
     </div>
 
     <section class="teeprint-about-section">
@@ -177,7 +181,10 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/menu_print/Leonardo_Kino_XL_Restaurant_menu_0.jpg" alt="about image" />
+              <img
+                src="/img/menu_print/Leonardo_Kino_XL_Restaurant_menu_0.jpg"
+                alt="about image"
+              />
             </div>
           </div>
         </div>

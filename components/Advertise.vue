@@ -49,58 +49,58 @@
 <script setup>
 const items = [
   {
+    title: "Flyers & Leaflets Printing",
+    image:
+      "/img/flyer_and_leaflet/2190.jpg",
+    link: "advertise/flyer_and_leaflet",
+  },
+  {
+    title: "Folded Leaflets & Menu Printing",
+    image:
+      "/img/menu_print/Leonardo_Phoenix_10_A_rustic_wooden_table_adorned_with_a_few_s_1.jpg",
+    link: "advertise/folded_flyer_and_menu",
+  },
+  {
+    title: "Tickets & Vouchers Printing",
+    image:
+      "/img/ticket_and_voucher/OrangeandYellowIllustrativeFoodT.jpg",
+    link: "advertise/ticket_and_voucher",
+  },
+  {
+    title: "Business Cards Printing",
+    image:
+      "/img/business_card/24148.jpg",
+    link: "advertise/business_card",
+  },
+  {
+    title: "Banners Printing",
+    image:
+      "/img/banners/10.jpg",
+    link: "advertise/advertising_banner",
+  },
+  {
+    title: "Sign Printing",
+    image:
+      "/img/sign_print/Leonardo_Phoenix_10_Design_a_versatile_and_customizable_door_s_1.jpg",
+    link: "advertise/sign_print",
+  },
+  {
+    title: "Sticker Printing",
+    image:
+      "/img/sticker_print/3.jpg",
+    link: "advertise/sticker_print",
+  },
+  {
+    title: "Mug Printing",
+    image:
+      "/img/mug_print/3.jpg",
+    link: "advertise/mug_print",
+  },
+  {
     title: "Same Day T shirt Print",
     image:
       "/img/Cotton_T_shirt/Leonardo_Phoenix_10_A_fit_middleaged_man_with_short_dark_hair_1.jpg",
     link: "same-day-delivery/shirt",
-  },
-  {
-    title: "Same Day Polo Shirt Print",
-    image:
-      "/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_1.jpg",
-    link: "same-day-delivery/polo_shirt_printing",
-  },
-  {
-    title: "Same Day Hoodie Print",
-    image:
-      "/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_3.jpg",
-    link: "same-day-delivery/hoodie",
-  },
-  {
-    title: "Same Day Cap Print",
-    image:
-      "https://res.cloudinary.com/dyfnpakfq/image/upload/v1740849802/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2_jlwcmk.jpg",
-    link: "same-day-delivery/cap",
-  },
-  {
-    title: "Same Day Tote Bag Print",
-    image:
-      "/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg",
-    link: "same-day-delivery/tote_bag",
-  },
-  {
-    title: "Same Day Apron Print",
-    image:
-      "/img/Apron/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_3.jpg",
-    link: "same-day-delivery/apron",
-  },
-  {
-    title: "Same Day Fleeces & Knits Print",
-    image:
-      "/img/Fleeces_and_Knits/Leonardo_Phoenix_10_A_single_young_man_likely_in_his_early_twe_0.jpg",
-    link: "same-day-delivery/fleeces_and_knits",
-  },
-  {
-    title: "Same Day Active Wear Print",
-    image:
-      "/img/Active_wear/Leonardo_Phoenix_10_a_surreal_and_vibrant_cinematic_photo_of_a_1.jpg",
-    link: "same-day-delivery/active_wear",
-  },
-  {
-    title: "Same Day Document Print",
-    image:
-      "/img/Dress_Shirts/Leonardo_Phoenix_10_a_men_wearing_dress_black_shirt_in_london_0.jpg",
-      link: "same-day-delivery/dress_shirt",
   },
 ];
 </script>

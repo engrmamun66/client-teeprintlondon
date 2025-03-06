@@ -244,7 +244,7 @@ definePageMeta({
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
               <img
-                src="/img/Home/Flux_Dev_A_vibrant_and_modern_illustration_featuring_a_casual__2.jpeg"
+                src="/img/Home/2.jpg"
                 alt="about iamge"
               />
             </div>
