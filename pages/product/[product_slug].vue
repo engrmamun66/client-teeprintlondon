@@ -11,6 +11,8 @@ let isMounted = ref(false);
 let imageIndex = ref(0);
 let tab = ref(1);
 let activeThumbnailIndex = ref(0); // Track the active thumbnail index
+let allImagesLoaded = ref(false); // Track if all images are loaded
+let loadedImagesCount = ref(0); // Track the number of images loaded
 
 let getThumbnailImage = computed(() => {
   return homeStore.product?.images?.[imageIndex.value]?.image_url;
@@ -24,16 +26,16 @@ const setActiveThumbnail = (index) => {
   activeThumbnailIndex.value = index;
 };
 
+// Function to handle image load event
+const onImageLoad = () => {
+  loadedImagesCount.value++;
+  if (loadedImagesCount.value >= image_url.value.length) {
+    allImagesLoaded.value = true; // All images are loaded
+  }
+};
+
 onMounted(async () => {
   await homeStore.getProductDetails(product_slug);
-
-  // if (homeStore.product?.images?.length) {
-  //   homeStore.product.images.unshift({
-  //     id: 0,
-  //     selected: true,
-  //     image_url: homeStore.product?.thumbnail_image_url,
-  //   });
-  // }
 
   H.delay(() => (isMounted.value = true), 500);
 
@@ -54,7 +56,7 @@ onMounted(async () => {
       let bsCarousel = new bootstrap.Carousel(carouselElement);
       bsCarousel.next();
     }
-  }, 10000); // Change slide every 3 seconds
+  }, 10000); // Change slide every 10 seconds
 });
 
 definePageMeta({
@@ -91,8 +93,9 @@ let showEffect = computed(
                   <div
                     class="teeprint-product-view-image"
                     @click="log(homeStore.product)"
+ 
                   >
-                    <template v-if="showEffect">
+                    <template v-if="showEffect || !allImagesLoaded">
                       <ShimmerEffect height="600px"></ShimmerEffect>
                     </template>
                     <template v-else>
@@ -115,6 +118,7 @@ let showEffect = computed(
                               :src="image"
                               alt="Product Image"
                               class="d-block w-100"
+                              @load="onImageLoad"
                             />
                           </div>
                         </div>
@@ -141,7 +145,8 @@ let showEffect = computed(
                     <template v-if="showEffect">
                       <div
                         v-for="x in 4"
-                        class="teeprint-product-thumb-item" >
+                        class="teeprint-product-thumb-item"
+                      >
                         <ShimmerEffect width="100%"></ShimmerEffect>
                       </div>
                     </template>
@@ -158,7 +163,11 @@ let showEffect = computed(
                           }"
                           @click="setActiveThumbnail(i)"
                         >
-                          <img :src="img.image_url" alt="teeprint" />
+                          <img
+                            :src="img.image_url"
+                            alt="teeprint"
+                            @load="onImageLoad"
+                          />
                         </div>
                       </template>
                     </template>
@@ -190,7 +199,14 @@ let showEffect = computed(
                         {{ H.formatPrice(homeStore.get_discounted_price) }}
                       </template>
                     </span>
-                    <span v-if="homeStore.get_price && homeStore.get_discounted_price && homeStore.get_price !== homeStore.get_discounted_price" class="amount text-decoration-line-through opacity-50 cn ms-2">
+                    <span
+                      v-if="
+                        homeStore.get_price &&
+                        homeStore.get_discounted_price &&
+                        homeStore.get_price !== homeStore.get_discounted_price
+                      "
+                      class="amount text-decoration-line-through opacity-50 cn ms-2"
+                    >
                       <template v-if="showEffect">
                         <ShimmerEffect
                           width="100px"
@@ -404,39 +420,20 @@ let showEffect = computed(
           <div class="row pd-description">
             <div class="col-md-12">
               <div class="pd-tab">
-                <!-- <ul class="pd-tab_tab-head">
-                  <li
-                    @click="tab = 1"
-                    :class="{ active: tab == 1 }"
-                    rel="pddescription"
-                  >
-                    Description
-                  </li>
-                  <li
-                    @click="tab = 2"
-                    :class="{ active: tab == 2 }"
-                    rel="pdrelatedproduct"
-                  >
-                    Related Product
-                  </li>
-                </ul> -->
-                <h4 class="mt-4- mb-1">Product Description</h4>
+                <h4 class="mt-4 mb-1">Product Description</h4>
                 <div class="pd-tab_container">
-                  <div 
-                    id="pddescription"
-                    class="pd-tab_content"
-                  >
+                  <div id="pddescription" class="pd-tab_content">
                     <div
                       v-html="
                         homeStore.product?.long_description ||
                         'Description not added'
                       "
                     ></div>
-                  </div> 
+                  </div>
                 </div>
 
                 <h4 class="mt-4 mb-1">Related Products</h4>
-                <div class="pd-tab_container"> 
+                <div class="pd-tab_container">
                   <div id="pdrelatedproduct" class="pd-tab_content">
                     <div class="related-product">
                       <template v-if="homeStore.related_products?.length">
@@ -473,13 +470,6 @@ let showEffect = computed(
                                         >
                                           <i class="bx bx-search-alt"></i>
                                         </nuxt-link>
-                                        <!-- <a
-                                          href="#"
-                                          class="teeprint-addcart-btn"
-                                          @click.stop.prevent="log"
-                                        >
-                                          <i class="bx bx-cart"></i>
-                                        </a> -->
                                       </div>
                                     </div>
                                   </div>
@@ -595,4 +585,15 @@ let showEffect = computed(
     height: 50px;
   }
 }
+
+.fixed-dimensions {
+  width: 600px; /* Set your desired fixed width */
+  height: 600px; /* Set your desired fixed height */
+  overflow: hidden; /* Prevent content from overflowing */
+}
+
+.teeprint-product-view-image {
+  transition: width 0.3s, height 0.3s; /* Smooth transition when dimensions change */
+}
+
 </style>
