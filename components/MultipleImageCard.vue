@@ -6,7 +6,7 @@
         <div class="teeprint-makes-overlay"></div>
         <div class="teeprint-makes-image">
           <!-- Show shimmer effect until at least 1 image is loaded or timeout occurs -->
-          <ShimmerEffect v-if="loading" height="600px"></ShimmerEffect>
+          <ShimmerEffect v-if="loading" height="400px"></ShimmerEffect>
 
           <!-- Swiper -->
           <swiper
@@ -175,4 +175,29 @@ onMounted(() => {
     border-radius: 10px;
   }
 }
+
+
+.shimmer-effect {
+  height: 600px; /* Default height for larger screens */
+}
+
+/* Responsive heights */
+@media screen and (max-width: 1200px) {
+  .shimmer-effect {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .shimmer-effect {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .shimmer-effect {
+    height: 300px;
+  }
+}
+
 </style>
