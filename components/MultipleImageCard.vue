@@ -6,7 +6,7 @@
         <div class="teeprint-makes-overlay"></div>
         <div class="teeprint-makes-image">
           <!-- Show shimmer effect until at least 1 image is loaded or timeout occurs -->
-          <ShimmerEffect v-if="loading" height="400px"></ShimmerEffect>
+          <ShimmerEffect v-if="loading" class="shimmer-effectss"></ShimmerEffect>
 
           <!-- Swiper -->
           <swiper
@@ -102,6 +102,8 @@ const startTimeout = () => {
   }, 500); // 0.5-second timeout
 };
 
+const shimmerHeight = computed(() => (window.innerWidth > 768 ? "600px" : "300px"));
+
 // Watch for changes in the images array
 watch(
   () => props.images,
@@ -126,7 +128,7 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
+<style >
 .teeprint-makes-box {
   display: flex;
   align-items: center;
@@ -176,28 +178,17 @@ onMounted(() => {
   }
 }
 
-
-.shimmer-effect {
-  height: 600px; /* Default height for larger screens */
+.shimmer-effectss {
+  height: 300px !important;
 }
 
-/* Responsive heights */
-@media screen and (max-width: 1200px) {
-  .shimmer-effect {
-    height: 500px;
+@media (min-width: 768px) {
+  .shimmer-effectss {
+    height: 600px !important;
   }
 }
 
-@media screen and (max-width: 900px) {
-  .shimmer-effect {
-    height: 400px;
-  }
-}
 
-@media screen and (max-width: 600px) {
-  .shimmer-effect {
-    height: 300px;
-  }
-}
+
 
 </style>
