@@ -8,18 +8,20 @@ layout: 'web',
 })
 
 let isMounted = ref(false)
+let deliveryCost = ref(H.getDeliveryOptions()[0]['cost'])
 
 onMounted(() => {
     useNuxtApp().$emit('hideInPageCart', false)
     H.delay(()=> isMounted.value = true, 1000)
+    H.localStorage('deliveryCost').value = H.localStorage('deliveryCost').value || deliveryCost.value
 })
 
-
-let deliveryCost = ref(5.49)
-
-watch(deliveryCost, (a, b) => {
+watch(deliveryCost, (a) => {
     H.localStorage('deliveryCost').value = a
 })
+
+
+ 
 
 </script>
 
@@ -111,19 +113,19 @@ watch(deliveryCost, (a, b) => {
                             
                             <template v-for="(opt, i) in H.getDeliveryOptions()">
                                 <template v-if="i == 0">
-                                    <h6 class="mb-1">{{opt.name}} ({{CURRENCY}} {{ opt.price }})</h6>
+                                    <h6 class="mb-1">{{opt.name}} ({{CURRENCY}} {{ opt.cost }})</h6>
                                     <div class="alert alert-primary" role="alert">
                                         Delivery will in next 4 working days
                                     </div>
                                 </template>
                                 <template v-else-if="i == 1">
-                                    <h6 class="mb-1">{{opt.name}} ({{CURRENCY}} {{ opt.price }})</h6>
+                                    <h6 class="mb-1">{{opt.name}} ({{CURRENCY}} {{ opt.cost }})</h6>
                                     <div class="alert alert-warning" role="alert">
                                         Delivery will by tomorrow
                                     </div>
                                 </template>
                                 <template v-else-if="i == 2">
-                                    <h6 class="mb-1">{{opt.name}} ({{CURRENCY}} {{ opt.price }})</h6>
+                                    <h6 class="mb-1">{{opt.name}} ({{CURRENCY}} {{ opt.cost }})</h6>
                                     <div class="alert alert-success" role="alert">
                                         If you order before 03:00 PM
                                     </div>
@@ -152,8 +154,8 @@ watch(deliveryCost, (a, b) => {
         
                                                 <select v-model="deliveryCost" class="px-0 ps-1">
                                                     <template v-for="(opt, i) in H.getDeliveryOptions()">
-                                                        <option v-if="i ==2" :value="opt.price">{{opt.name}}</option> 
-                                                        <option v-else :value="opt.price">{{opt.name}} ({{CURRENCY}} {{ opt.price }})</option> 
+                                                        <option v-if="i ==2" :value="opt.cost">{{opt.name}}</option> 
+                                                        <option v-else :value="opt.cost">{{opt.name}} ({{CURRENCY}} {{ opt.cost }})</option> 
                                                     </template>
                                                 </select>
                                             

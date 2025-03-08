@@ -165,6 +165,9 @@ export const useHomeStore = defineStore("homeStore", () => {
             }
             additionalData[key] = value
           })
+          
+          useCookie('delivery_types').value = additionalData.delivery_types
+        
         }
       } 
       
@@ -296,6 +299,20 @@ export const useHomeStore = defineStore("homeStore", () => {
 }
 
 
+async function placeOrder(payload){
+  try {
+      let response = await FrontendApi.placeOrder(payload)
+      if(response.data.success){
+        Toaster.success('Order created successfully')
+        return true
+      }
+  } catch (error) {
+    
+  }
+  return false
+}
+
+
 
     
   return { 
@@ -325,6 +342,7 @@ export const useHomeStore = defineStore("homeStore", () => {
     get_discounted_price,
 
     addToCartNow,
+    placeOrder,
 
   };
 });

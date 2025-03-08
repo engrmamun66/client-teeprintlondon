@@ -108,7 +108,7 @@ export default defineNuxtPlugin(nuxtApp => {
     });
     nuxtApp.vueApp.directive('validation', {mounted:(el, bindings) => {
         /**
-         * Use Format: <input type="text" v-validate:validator_string|||.keyup.focus="[errors, field_name]">
+         * Use Format: <input type="text" v-validation:validator_string|||.keyup.focus="[errors, field_name]">
          * ==========================================================================================================
          * validator_string/arg:
          * --------------------

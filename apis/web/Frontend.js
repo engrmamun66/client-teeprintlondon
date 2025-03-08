@@ -39,5 +39,8 @@ export default {
   async getAdditionalData() { 
     return await Api().get(`/additional-data-for-product-filtering`);
   }, 
+  async placeOrder(payload) { 
+    return await Api().post(`/orders`, payload);
+  }, 
  
 };

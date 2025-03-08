@@ -1,5 +1,4 @@
 
-import axios from "axios";
 import momentJs from "moment";
 import isPendingAnyApi from "~/apis/AllEndPoints";
 import objectValidation from "./object-validation/validator"; 
@@ -146,33 +145,45 @@ export const H = {
       Same Day Delivery : 15.00 (Same Day Delivery) --- if before
      */
 
-    let options = [
+    let defaultCharges = [
       {
-        id: 1,
-        name: 'Standard delivery',
-        price: 5.49,
-        delivery_date: moment().add(4, 'day').format(FORMATS.date),
+          "id": 1,
+          "name": "Standard delivery",
+          "cost": "5.49",
+          "status": 1,
+          "created_at": "2025-03-08T09:45:37.000000Z",
+          "updated_at": "2025-03-08T09:45:37.000000Z"
       },
       {
-        id: 2,
-        name: 'Next Day Delivery', 
-        price: 10.49,
-        delivery_date: moment().add(1, 'day').format(FORMATS.date),
-      },      
+          "id": 2,
+          "name": "Next Day delivery",
+          "cost": "10.49",
+          "status": 1,
+          "created_at": "2025-03-08T09:45:37.000000Z",
+          "updated_at": "2025-03-08T09:45:37.000000Z"
+      },
+      {
+          "id": 3,
+          "name": "Same Day pickup",
+          "cost": "0.00",
+          "status": 1,
+          "created_at": "2025-03-08T09:45:37.000000Z",
+          "updated_at": "2025-03-08T09:45:37.000000Z"
+      }
     ]
 
-    if(1){
-      options.push({
-        id: 2,
-        name: 'Same Day Pickup', 
-        price: 0.00,
-        delivery_date: moment().format(FORMATS.date),
-      })
+    let options = useCookie('delivery_types').value || defaultCharges
+    if(!H.nowIsBefore3PM() && options.length >= 2){
+      options.length = 2
     }
-
     return options
 
   },
+  nowIsBefore3PM: function(){
+    let today = moment().format('YYYY-MM-DD')
+    let isBefore_3PM = new Date() < new Date(`${today} 15:00`)
+    return isBefore_3PM
+  }
 
 };
 

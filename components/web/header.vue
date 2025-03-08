@@ -325,6 +325,7 @@ let { staticPagesByParentCat } = globalData;
               </nav>
             </div>
           </div>
+          <!-- Desktop quote button -->
           <div class="quote-btn-area">
             <nuxt-link
               :to="{ name: 'quote' }"
@@ -332,13 +333,6 @@ let { staticPagesByParentCat } = globalData;
             >
               <span class=""> Instant Quote </span>
               <i class="la la-arrow-right ml-2"></i>
-            </nuxt-link>
-            <nuxt-link to="/cart"
-              class="p-1 text-white size-1p4 relative"
-              id="header_cart"
-            >
-              <i class="bx bx-shopping-bag fs-3"></i>
-              <span class="badge badge-primary shopping-cart-badge"> {{cartStore.totalItems}} </span>
             </nuxt-link>
           </div>
         </div>

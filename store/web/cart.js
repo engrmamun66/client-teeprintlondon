@@ -35,7 +35,7 @@ export const useCartStore = defineStore("cartStore", () => {
       if(cart.value[index].sizes[0].cart_quantity < 1){
         cart.value[index].sizes[0].cart_quantity = 1
       }
-      H.localStorage('cart').value = cart.value  
+      H.localStorage('cart').value = cart.value   
    }
 
    function deleteItem(index){ 
