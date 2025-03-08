@@ -146,42 +146,36 @@ let { staticPagesByParentCat } = globalData;
     <div class="teeprint-menu-header">
       <div class="container">
         <div class="row">
-          <div class="teeprint-logo">
-            <div class="teeprint-logo-area">
-              <div class="teeprint-logo-area-inner">
-                <div class="teeprint-logo-area-middle">
-                  <a href="/">
-                    <img src="/img/logo.jpg" alt="logo image" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- Mobie view  -->
           <div class="teeprint-menu-area">
             <div class="teeprint-menu">
               <ul class="teeprint-mobile-device">
-                <li>
-                  <nuxt-link
-                    :to="{ name: 'quote' }"
-                    class="teeprint-button teeprint-theme-btn quote-btn zoomInOut"
-                    >Instant Quote <i class="la la-arrow-right ml-2"></i
-                  ></nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link class="p-1 text-white size-1p4">
-                    <i class="bx bx-search"></i>
-                  </nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link to="/cart" class="p-1 text-white size-1p4" id="header_cart">
-                    <i class="bx bx-shopping-bag"></i>
-                  </nuxt-link>
-                </li>
                 <li>
                   <a class="teeprint-mobile-menubar">
                     <i class="bx bx-menu"></i>
                   </a>
                 </li>
+                
+                <li>
+                  <nuxt-link
+                    :to="{ name: 'quote' }" style="zoom:0.8"
+                    class="teeprint-button teeprint-theme-btn quote-btn zoomInOut"
+                    >Instant Quote <i class="la la-arrow-right ml-2"></i
+                  ></nuxt-link>
+                </li>
+
+                <li>
+                  <nuxt-link class="p-1 text-white size-1p4">
+                    <i class="bx bx-search"></i>
+                  </nuxt-link>
+                </li>
+                
+                <!-- <li>
+                  <nuxt-link to="/cart" class="p-1 text-white size-1p4" id="header_cart">
+                    <i class="bx bx-shopping-bag"></i>
+                  </nuxt-link>
+                </li> -->
+                
                 
               </ul>
 
@@ -325,6 +319,19 @@ let { staticPagesByParentCat } = globalData;
               </nav>
             </div>
           </div>
+          <div class="teeprint-logo">
+            <div class="teeprint-logo-area">
+              <div class="teeprint-logo-area-inner">
+                <div class="teeprint-logo-area-middle">
+                  <a href="/">
+                    <img src="/img/logo.jpg" alt="logo image" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
           <!-- Desktop quote button -->
           <div class="quote-btn-area">
             <nuxt-link
