@@ -69,9 +69,8 @@ function processCartItems(){
     })
 }
 
-let getDeliveryCostItem = computed(() => {
-    if(!H.getDeliveryOptions()?.length) return ({id: 1, cost: 200})
-    return H.getDeliveryOptions().find(item => (item?.id == payload.delivery_type_id || 1) )
+let getDeliveryCostItem = computed(() => { 
+    return H.getDeliveryOptions().find(item => (item?.id == payload.delivery_type_id))  
 })
 
  
@@ -79,9 +78,10 @@ let getDeliveryCostItem = computed(() => {
 
 onMounted(() => {
 
-    let deliveryCost = Number(H.localStorage('deliveryCost').value) || H.getDeliveryOptions()[0]['cost']
+    let deliveryCost = Number(H.localStorage('deliveryCost').value) || H.getDeliveryOptions()[0]['cost'] 
  
-    payload.delivery_type_id = H.getDeliveryOptions().filter(cost => cost.cost == deliveryCost)?.['id'] || H.getDeliveryOptions()[0]['id'] 
+    payload.delivery_type_id = H.getDeliveryOptions().filter(item => item.cost == deliveryCost)?.[0]?.['id'] || H.getDeliveryOptions()[0]['id'] 
+    // console.log('888--', payload.delivery_type_id);
     checkDeliveryType() 
     
     H.delay(()=>{
