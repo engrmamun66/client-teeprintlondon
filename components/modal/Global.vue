@@ -19,7 +19,7 @@
             <slot name="modalbody" />
           </div>
           <div v-if="footer" class="modal-footer">
-            <button v-if="showSubmit" @click="submit" type="button" class="leap-btn leap-submit-btn me-2 m-1"> {{ submitText }} <btn-loader v-if="isCalling" :show="isCalling" color="'white'" /> </button>
+            <button v-if="showSubmit" @click="submit" type="button" class="leap-btn leap-submit-btn me-2 m-1"> {{ submitText }} <btn-loader v-if="isCalling" :show="isCalling" color="black" /> </button>
             <button v-if="showCancel" @click="cancel();$emit('update:modelValue', false)" type="button" class="leap-btn leap-cancel-btn m-0"> {{ cancelText }} </button>
           </div>
         </div>

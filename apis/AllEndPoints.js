@@ -4,7 +4,8 @@ import { CategoryEndpoints } from './Category';
 import { ColorEndpoints } from './Color'; 
 import { ProductEndpoints } from './Product'; 
 import { DiscountEndpoints } from './Discount'; 
-
+import { BrandEndpoints } from './Brand'; 
+import { QuatationEndpoints } from './Quotation'; 
 /**
  * This file will help to show 
  * loader or loading... text bease on current API calling
@@ -17,6 +18,8 @@ export const AllDeveloperDefinedEndPoints = {
     Color: {... ColorEndpoints},
     Product:{...ProductEndpoints},
     Discount:{...DiscountEndpoints},
+    Brand:{...BrandEndpoints},
+    Quatation:{...QuatationEndpoints},
 }
 
 /**
