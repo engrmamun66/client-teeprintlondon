@@ -113,22 +113,14 @@ export const useQuatationStore = defineStore("quatation", () => {
 
   async function update(id, payload = {}) {
     try {
-      // payload = {
-      //    status:2,
-      //   _method: "PUT",
-      // };
-      // id = 1
       let response = await Quatation.update(id, payload);
-      if (response.status == 200) {
-        await getColorList();
-        showModal.value = false;
-        resetBrandAttribute();
+      console.log(response.data.success)
+      if (response.data.success) {
         Toaster.success("Quatation updated successfully");
       }
     } catch (error) {
       if (error.response.status == 422) {
-        // registrationFormError.value.type = 422;
-        // registrationFormError.value.messages = error.response.data.errors;
+
       }
     }
   }

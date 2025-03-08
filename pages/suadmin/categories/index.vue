@@ -100,6 +100,7 @@
         v-model="Categorystore.showCategoryModal"
         :title="editMode ? 'Update Category' : 'Add Category'"
         @clicked-submit="handleSubmit"
+        :isCalling="H.isPendingAnyApi('Category:create') || H.isPendingAnyApi('Category:update')"
         @clicked-cancel="Categorystore.showCategoryModal = false;asMounted()"
         @clicked-close="Categorystore.showCategoryModal = false;asMounted()"
       >

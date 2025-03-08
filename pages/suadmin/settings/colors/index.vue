@@ -156,7 +156,7 @@
               class="leap-btn leap-submit-btn me-2 m-1"
               @click="handleSubmit"
             >
-              Save
+              Submit
               <BtnLoader
                 :show="H.isPendingAnyApi('Color:create|Color:update')"
                 color="black"

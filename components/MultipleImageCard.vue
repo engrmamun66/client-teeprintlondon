@@ -1,10 +1,16 @@
+
 <template>
   <div class="col-xl-12 col-lg-12 col-12">
     <div class="teeprint-makes-box">
       <div class="teeprint-makes-box-image" :style="`order:${right ? 2 : 0}`">
         <div class="teeprint-makes-overlay"></div>
         <div class="teeprint-makes-image">
+          <!-- Show shimmer effect until at least 1 image is loaded or timeout occurs -->
+          <ShimmerEffect v-if="loading" class="shimmer-effectss"></ShimmerEffect>
+
+          <!-- Swiper -->
           <swiper
+            v-else
             :modules="[SwiperAutoplay, SwiperEffectCreative]"
             :slides-per-view="1"
             :loop="true"
@@ -14,33 +20,29 @@
             }"
             :effect="'creative'"
             :creative-effect="{
-              prev: {
-                shadow: false,
-                translate: ['-20%', 0, -1],
-                opacity: 0, // Hide previous image completely
-              },
-              next: {
-                translate: ['100%', 0, 0],
-              },
+              prev: { shadow: false, translate: ['-20%', 0, -1], opacity: 0 },
+              next: { translate: ['100%', 0, 0] },
             }"
           >
             <swiper-slide v-for="(image, index) in images" :key="index">
-              <img :src="image" :alt="`Slide ${index + 1}`" class="swiper-slide-img" />
+              <img
+                :src="image"
+                :alt="`Slide ${index + 1}`"
+                class="swiper-slide-img"
+                @load="onImageLoad"
+                @error="onImageError"
+              />
             </swiper-slide>
           </swiper>
         </div>
       </div>
       <div class="teeprint-makes-content">
         <div class="teeprint-makes-content-inner">
-          <h3 class="teeprint-makes-title">
-            {{ title }}
-          </h3>
+          <h3 class="teeprint-makes-title">{{ title }}</h3>
           <p class="teeprint-makes-short-des">
             <slot>
               Need custom t-shirts in a hurry for your campaign, event, or festival?
-              Tee Print London is your go-to for fast, reliable solutions. We offer
-              same-day t-shirt printing with delivery across London and next-day t-shirt
-              printing for customers throughout the UK.
+              Tee Print London is your go-to for fast, reliable solutions.
             </slot>
           </p>
           <div>
@@ -53,26 +55,80 @@
 </template>
 
 <script setup>
+import { ref, onMounted, watch } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay as SwiperAutoplay, EffectCreative as SwiperEffectCreative } from 'swiper';
 import 'swiper/swiper-bundle.css';
 
-defineProps({
-  right: {
-    type: Boolean,
-    default: false,
+const props = defineProps({
+  right: { type: Boolean, default: false },
+  title: { type: String, required: true },
+  images: { type: Array, required: true },
+});
+
+const loading = ref(true);
+const loaded = ref(0);
+let timeoutId = null;
+
+// Image load handler
+const onImageLoad = () => {
+  loaded.value++;
+  // console.log(`Image loaded. Current loaded count: ${loaded.value}`);
+
+  if (loaded.value >= 1) {
+    // console.log("At least one image loaded. Hiding shimmer.");
+    clearTimeout(timeoutId); // Clear the timeout if at least one image loads
+    loading.value = false;
+  }
+};
+
+// Image error handler
+const onImageError = () => {
+  loaded.value++;
+  // console.error(`Failed to load an image. Current loaded count: ${loaded.value}`);
+
+  if (loaded.value >= 1) {
+    // console.log("At least one image loaded (or errored). Hiding shimmer.");
+    clearTimeout(timeoutId); // Clear the timeout if at least one image loads or errors
+    loading.value = false;
+  }
+};
+
+// Timeout to handle cases where no images load
+const startTimeout = () => {
+  timeoutId = setTimeout(() => {
+    // console.log("Timeout reached. Hiding shimmer.");
+    loading.value = false;
+  }, 500); // 0.5-second timeout
+};
+
+const shimmerHeight = computed(() => (window.innerWidth > 768 ? "600px" : "300px"));
+
+// Watch for changes in the images array
+watch(
+  () => props.images,
+  () => {
+    // Reset state when images prop changes
+    loading.value = true;
+    loaded.value = 0;
+    clearTimeout(timeoutId); // Clear any existing timeout
+    startTimeout(); // Start a new timeout
   },
-  title: {
-    type: String,
-    required: true,
-  },
-  images: {
-    type: Array,
-    required: true,
-  },
+  { immediate: true }
+);
+
+// Start the timeout when the component mounts
+onMounted(() => {
+  if (props.images.length === 0) {
+    // console.log("No images provided. Hiding shimmer.");
+    loading.value = false;
+  } else {
+    startTimeout();
+  }
 });
 </script>
-<style scoped>
+
+<style >
 .teeprint-makes-box {
   display: flex;
   align-items: center;
@@ -121,4 +177,18 @@ defineProps({
     border-radius: 10px;
   }
 }
+
+.shimmer-effectss {
+  height: 300px !important;
+}
+
+@media (min-width: 768px) {
+  .shimmer-effectss {
+    height: 600px !important;
+  }
+}
+
+
+
+
 </style>

@@ -311,7 +311,7 @@
                 Submit
                 <BtnLoader
                   :show="H.isPendingAnyApi('Product:create')"
-                  style="color: white"
+                   color="black"
                 ></BtnLoader>
               </button>
               <button
@@ -731,7 +731,7 @@ input {
 
 button {
   padding: 5px 10px;
-  background-color: #007bff;
+  background-color: #05c361;
   color: white;
   border: none;
   border-radius: 3px;
@@ -739,7 +739,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #04a150;
 }
 
 .cards-container {
