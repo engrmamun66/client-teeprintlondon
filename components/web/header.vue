@@ -156,19 +156,20 @@ let { staticPagesByParentCat } = globalData;
                   </a>
                 </li>
                 
-                <li>
-                  <nuxt-link
-                    :to="{ name: 'quote' }" style="zoom:0.8"
-                    class="teeprint-button teeprint-theme-btn quote-btn zoomInOut"
-                    >Instant Quote <i class="la la-arrow-right ml-2"></i
-                  ></nuxt-link>
-                </li>
-
-                <li>
+                
+                <li class="me-2">
                   <nuxt-link class="p-1 text-white size-1p4">
                     <i class="bx bx-search"></i>
                   </nuxt-link>
                 </li>
+                
+                <li>
+                  <nuxt-link
+                    :to="{ name: 'quote' }" style="zoom:0.9"
+                    class="teeprint-button teeprint-theme-btn quote-btn zoomInOut"
+                    >Instant Quote <i class="la la-arrow-right ml-2"></i
+                  ></nuxt-link>
+                </li> 
                 
                 <!-- <li>
                   <nuxt-link to="/cart" class="p-1 text-white size-1p4" id="header_cart">
