@@ -196,7 +196,7 @@ watch(deliveryCost, (a) => {
                         </table>
 
                         <nuxt-link to="/shop" class="teeprint-button teeprint-theme-btn addtocart-btn"> Continue Shopping </nuxt-link>
-                        <nuxt-link to="/checkout" class="teeprint-button teeprint-theme-btn addtocart-btn"> Go Checkout </nuxt-link>
+                        <nuxt-link to="/checkout" class="teeprint-button teeprint-theme-btn addtocart-btn" v-if="cartStore.cart?.length"> Go Checkout </nuxt-link>
 
                     </div>
                 </div>
