@@ -5052,8 +5052,7 @@ checkout css
 .teeprint-billing-fullfilment-content .teeprint-fulfillment {
   padding: 0 20px;
   position: relative;
-  width: 100%;
-  padding-top: 25px;
+  width: 100%; 
   padding-bottom: 15px;
 }
 
