@@ -84,7 +84,8 @@ export let globalData = {
         'Organic Cotton T-shirt':'/cloth/cotton_t_shirt',
         'Polo Shirts':'/cloth/polo_shirt',
         'School and university shirts' : '/cloth/university_shirt',
-        'Basketball Team Shirts' : '/cloth/basketball_shirt'
+        'Basketball Team Shirts' : '/cloth/basketball_shirt',
+        'Football Team shirts': '/cloth/football_shirt'
 
     }, 
 }

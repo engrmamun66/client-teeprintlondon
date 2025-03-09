@@ -22,23 +22,23 @@ function addToCart() {
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="Premium Quality Basketball Team Shirts"
+            title="Premium Quality Football Team Shirts"
             :images="[
-              '/img/Basket_ball/3.jpg',
-              '/img/Basket_ball/5.jpg',
-              '/img/Basket_ball/6.jpg',
+              '/img/Football_team_t_shirt/7.jpg',
+              '/img/Football_team_t_shirt/5.jpg',
+              '/img/Football_team_t_shirt/6.jpg',
             ]"
           >
             At Tee Print London, we specialize in delivering **premium-quality
-            Basketball Team Shirts** that combine style, durability, and
-            comfort. Whether you're outfitting a basketball team, creating
-            uniforms for players, or designing shirts for a sports event, we
-            provide vibrant, long-lasting prints on high-quality fabrics. Our
-            advanced printing techniques ensure sharp details and rich colors
-            that won’t fade over time. With fast turnaround times and
-            competitive pricing, we make customization effortless and
-            affordable. Choose Tee Print London for stylish, durable, and
-            uniquely crafted Basketball Team Shirts that make a statement!
+            Football Team Shirts** that combine style, durability, and comfort.
+            Whether you're outfitting a football team, creating uniforms for
+            players, or designing shirts for a sports event, we provide vibrant,
+            long-lasting prints on high-quality fabrics. Our advanced printing
+            techniques ensure sharp details and rich colors that won’t fade over
+            time. With fast turnaround times and competitive pricing, we make
+            customization effortless and affordable. Choose Tee Print London for
+            stylish, durable, and uniquely crafted Football Team Shirts that
+            make a statement!
 
             <template #link>
               <nuxt-link
@@ -60,19 +60,19 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Your Basketball Team Shirts?
+                  Why Choose Tee Print London for Your Football Team Shirts?
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
                   Tee Print London is your trusted partner for **high-quality
-                  Basketball Team Shirts**. We use only the finest materials and
+                  Football Team Shirts**. We use only the finest materials and
                   cutting-edge technology to bring your ideas to life. Our
                   state-of-the-art printing techniques, including
                   Direct-to-Garment (DTG), screen printing, and vinyl printing,
                   ensure your designs are vibrant, sharp, and built to last.
                   With unbeatable customer service and a commitment to
-                  excellence, we make it easy to create custom Basketball Team
+                  excellence, we make it easy to create custom Football Team
                   Shirts that stand out. Whether you need a single shirt or a
                   bulk order, Tee Print London delivers premium quality every
                   time. **Purchase from us** and experience the difference that
@@ -92,7 +92,7 @@ function addToCart() {
                 width="100%"
               >
                 <source
-                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1741552243/94c86413-2dca-4fa7-9d0c-e7b241bd6c03_video_online-video-cutter.com_rl2lir.mp4"
+                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1741554588/8ce45d1c-1418-4b67-9a72-22a87dcd1d58_video_online-video-cutter.com_tocj4n.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
@@ -129,28 +129,28 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/Basket_ball/9.jpg" alt="about image" />
+              <img src="/img/Football_team_t_shirt/1.jpg" alt="about image" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  High-Quality Basketball Team Shirts You Can Trust
+                  High-Quality Football Team Shirts You Can Trust
                 </h2>
               </div>
               <p>
-                When it comes to custom Basketball Team Shirts, **quality
+                When it comes to custom Football Team Shirts, **quality
                 matters**. At Tee Print London, we specialize in creating
                 durable, stylish, and comfortable shirts that meet your exact
                 needs. Our expert team uses advanced printing methods to ensure
                 your designs are vibrant, precise, and long-lasting. From
                 intricate logos to bold graphics, we handle every detail with
-                care, ensuring your Basketball Team Shirts look great and
-                perform even better. Whether you need a single shirt or a bulk
-                order, Tee Print London is dedicated to delivering exceptional
-                results every time. **Purchase from us** and experience the
-                perfect blend of quality, comfort, and style!
+                care, ensuring your Football Team Shirts look great and perform
+                even better. Whether you need a single shirt or a bulk order,
+                Tee Print London is dedicated to delivering exceptional results
+                every time. **Purchase from us** and experience the perfect
+                blend of quality, comfort, and style!
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -176,16 +176,16 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Get Your Custom Basketball Team Shirts Printed Today!
+                  Get Your Custom Football Team Shirts Printed Today!
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait days or even weeks for your custom Basketball Team
+                  Why wait days or even weeks for your custom Football Team
                   Shirts when you can have them printed today? At Tee Print
                   London, we offer same-day printing to ensure you get your
                   custom designs exactly when you need them. Whether it’s for a
-                  basketball team, sports event, or personal use, we provide a
+                  football team, sports event, or personal use, we provide a
                   seamless and hassle-free printing experience with top-notch
                   results. Our process is designed for speed and
                   convenience—simply select your shirt, upload your design, and
@@ -198,7 +198,7 @@ function addToCart() {
                   compromising on quality. Whether you need a single shirt or a
                   bulk order, we ensure every piece is printed with precision,
                   durability, and style. **Purchase from Tee Print London** and
-                  get your custom Basketball Team Shirts printed on the same day
+                  get your custom Football Team Shirts printed on the same day
                   with professional service and unmatched quality.
                 </p>
               </div>
@@ -206,7 +206,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/Basket_ball/4.jpg" alt="about image" />
+              <img src="/img/Football_team_t_shirt/9.jpg" alt="about image" />
             </div>
           </div>
         </div>
@@ -214,8 +214,8 @@ function addToCart() {
     </section>
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/Basket_ball/8.jpg"
-        img_right="/img/Basket_ball/7.jpg"
+        img_left="/img/Football_team_t_shirt/10.jpg"
+        img_right="/img/Football_team_t_shirt/4.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
