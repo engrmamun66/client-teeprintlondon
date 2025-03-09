@@ -1,3 +1,4 @@
+
 <template>
   <div class="col-xl-12 col-lg-12 col-12">
     <div class="teeprint-makes-box">
@@ -5,10 +6,7 @@
         <div class="teeprint-makes-overlay"></div>
         <div class="teeprint-makes-image">
           <!-- Show shimmer effect until at least 1 image is loaded or timeout occurs -->
-          <ShimmerEffect
-            v-if="loading"
-            class="shimmer-effectss"
-          ></ShimmerEffect>
+          <ShimmerEffect v-if="loading" class="shimmer-effectss"></ShimmerEffect>
 
           <!-- Swiper -->
           <swiper
@@ -43,9 +41,8 @@
           <h3 class="teeprint-makes-title">{{ title }}</h3>
           <p class="teeprint-makes-short-des">
             <slot>
-              Need custom t-shirts in a hurry for your campaign, event, or
-              festival? Tee Print London is your go-to for fast, reliable
-              solutions.
+              Need custom t-shirts in a hurry for your campaign, event, or festival?
+              Tee Print London is your go-to for fast, reliable solutions.
             </slot>
           </p>
           <div>
@@ -57,15 +54,11 @@
   </div>
 </template>
 
-
 <script setup>
-import { ref, onMounted, watch } from "vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import {
-  Autoplay as SwiperAutoplay,
-  EffectCreative as SwiperEffectCreative,
-} from "swiper";
-import "swiper/swiper-bundle.css";
+import { ref, onMounted, watch } from 'vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay as SwiperAutoplay, EffectCreative as SwiperEffectCreative } from 'swiper';
+import 'swiper/swiper-bundle.css';
 
 const props = defineProps({
   right: { type: Boolean, default: false },
@@ -77,30 +70,14 @@ const loading = ref(true);
 const loaded = ref(0);
 let timeoutId = null;
 
-// ✅ Safe Image Preloading (Fixes Undefined `Image` Error)
-const preloadImages = () => {
-  if (
-    typeof window === "undefined" || // ✅ Ensures browser-only execution
-    !props.images ||
-    props.images.length === 0
-  )
-    return;
-
-  props.images.forEach((imgSrc) => {
-    if (!imgSrc) return;
-
-    const img = new Image(); // ✅ Now safe to use
-    img.src = imgSrc;
-    img.onload = onImageLoad;
-    img.onerror = onImageError;
-  });
-};
-
 // Image load handler
 const onImageLoad = () => {
   loaded.value++;
+  // console.log(`Image loaded. Current loaded count: ${loaded.value}`);
+
   if (loaded.value >= 1) {
-    clearTimeout(timeoutId);
+    // console.log("At least one image loaded. Hiding shimmer.");
+    clearTimeout(timeoutId); // Clear the timeout if at least one image loads
     loading.value = false;
   }
 };
@@ -108,45 +85,50 @@ const onImageLoad = () => {
 // Image error handler
 const onImageError = () => {
   loaded.value++;
+  // console.error(`Failed to load an image. Current loaded count: ${loaded.value}`);
+
   if (loaded.value >= 1) {
-    clearTimeout(timeoutId);
+    // console.log("At least one image loaded (or errored). Hiding shimmer.");
+    clearTimeout(timeoutId); // Clear the timeout if at least one image loads or errors
     loading.value = false;
   }
 };
 
-// Timeout for cases where no images load
+// Timeout to handle cases where no images load
 const startTimeout = () => {
   timeoutId = setTimeout(() => {
+    // console.log("Timeout reached. Hiding shimmer.");
     loading.value = false;
-  }, 500);
+  }, 500); // 0.5-second timeout
 };
 
+const shimmerHeight = computed(() => (window.innerWidth > 768 ? "600px" : "300px"));
+
+// Watch for changes in the images array
 watch(
   () => props.images,
   () => {
+    // Reset state when images prop changes
     loading.value = true;
     loaded.value = 0;
-    clearTimeout(timeoutId);
-    startTimeout();
-    preloadImages(); // ✅ Call preloading when images change
+    clearTimeout(timeoutId); // Clear any existing timeout
+    startTimeout(); // Start a new timeout
   },
   { immediate: true }
 );
 
+// Start the timeout when the component mounts
 onMounted(() => {
   if (props.images.length === 0) {
+    // console.log("No images provided. Hiding shimmer.");
     loading.value = false;
   } else {
     startTimeout();
-    preloadImages(); // ✅ Preload images on mount
   }
 });
 </script>
 
-
-
-
-<style>
+<style >
 .teeprint-makes-box {
   display: flex;
   align-items: center;
@@ -185,20 +167,13 @@ onMounted(() => {
     order: -1 !important; /* Ensure image is above content on mobile */
   }
 
-  .teeprint-makes-section
-    .teeprint-makes-box
-    .teeprint-makes-box-image
-    .teeprint-makes-image::after {
+  .teeprint-makes-section .teeprint-makes-box .teeprint-makes-box-image .teeprint-makes-image::after {
     top: 0;
     border-radius: 10px;
     box-shadow: 33px 38px 8px #00000042;
   }
 
-  .teeprint-makes-section
-    .teeprint-makes-box
-    .teeprint-makes-box-image
-    .teeprint-makes-image
-    img {
+  .teeprint-makes-section .teeprint-makes-box .teeprint-makes-box-image .teeprint-makes-image img {
     border-radius: 10px;
   }
 }
@@ -212,4 +187,8 @@ onMounted(() => {
     height: 600px !important;
   }
 }
+
+
+
+
 </style>
