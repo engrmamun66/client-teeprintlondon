@@ -25,7 +25,7 @@ function addToCart() {
             :images="[
               '/img/ticket_and_voucher/GreyBlackPurpleMinimalistMusicNightEventTicket.jpg',
               '/img/ticket_and_voucher/YellowRestaurantGiftVoucher.jpg',
-              '/img/ticket_and_voucher/OrangeandYellowIllustrativeFoodTruckGiftVoucherA4Landscape.png',
+              '/img/ticket_and_voucher/OrangeandYellowIllustrativeFoodTruckGiftVoucherA4Landscape.jpg',
             ]"
           >
             Make your events, promotions, or special offers stand out with Tee
@@ -190,8 +190,8 @@ function addToCart() {
 
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/ticket_and_voucher/OrangeandYellowIllustrativeFoodTruckGiftVoucherA4Landscape.png"
-        img_right="/img/ticket_and_voucher/PinkMinimalistGiftCardVoucherGiftCertificate.png"
+        img_left="/img/ticket_and_voucher/OrangeandYellowIllustrativeFoodTruckGiftVoucherA4Landscape.jpg"
+        img_right="/img/ticket_and_voucher/PinkMinimalistGiftCardVoucherGiftCertificate.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
