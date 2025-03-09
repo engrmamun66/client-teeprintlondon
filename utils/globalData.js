@@ -79,7 +79,8 @@ export let globalData = {
         'Apron' : '/cloth/apron',
         'Tote bag' : '/cloth/tote_bag',
         'Cap' : '/cloth/cap',
-        'Dress shirt' : '/cloth/dress_shirt'
+        'Dress shirt' : '/cloth/dress_shirt',
+        'Hoodies' : '/cloth/hoodie'
 
     }, 
 }
