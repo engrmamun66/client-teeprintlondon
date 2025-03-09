@@ -106,7 +106,7 @@ onBeforeUnmount(() => {
                         <div @click="showFilters = !showFilters" class="teeprint-category-menu-inner">
                             <div class="teeprint-categorymenu-title d-flex justify-content-between align-items-center">
                                 <h5> <i class="las la-filter fs-5 transformY-3px"></i> Show Filters  </h5>
-                                <i class="lni me-2 fs-25" :class="{'lni-chevron-down': !showFilters, 'lni-chevron-right': showFilters}"></i>
+                                <i class="lni me-2 fs-6" :class="{'lni-chevron-down': showFilters, 'lni-chevron-right': !showFilters}"></i>
                             </div> 
                         </div>
                     </div>
