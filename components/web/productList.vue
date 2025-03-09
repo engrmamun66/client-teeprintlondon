@@ -61,11 +61,12 @@ function withFilter(section: Section, {
 
 
 function updatefilterView(){
-    if(window.innerWidth > 500){
+    if(window.innerWidth > 600){
         showFilters.value = true
     } else {
         showFilters.value = false
     }
+    
 
 }
 
@@ -82,7 +83,8 @@ onMounted(async () => {
             cat.is_checked = false
         })
     })
-    
+    updatefilterView()
+    window.removeEventListener("resize", updatefilterView)
     window.addEventListener("resize", updatefilterView)
     
     isMounted.value = true
