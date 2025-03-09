@@ -68,7 +68,6 @@ export const useHomeStore = defineStore("homeStore", () => {
       FrontendApi.searchProduct(search).then(response => {
         if(response.data.success){
           searchedProducts.value = response.data.data || [] 
-          
         }
       })
       

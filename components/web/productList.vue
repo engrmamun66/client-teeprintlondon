@@ -80,7 +80,7 @@ onMounted(async () => {
 
 
 <template>
-    <section class="teeprint-list-product">
+    <section class="teeprint-list-product" id="THIS_IS_PRDUCT_LIST_PAGE">
         <div class="container">
             <div class="row">
                 <div class="productlist-leftside">

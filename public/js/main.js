@@ -110,9 +110,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $(".pd-tab_content").hide();
-$(".pd-tab_content:first").show();
-
- 
+    $(".pd-tab_content:first").show();
 });
 
  

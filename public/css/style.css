@@ -1155,6 +1155,7 @@ Header css
   display: block;
   z-index: 99;
 }
+ 
 @keyframes growDown {
   0% {
     transform: scaleY(0);
@@ -1295,6 +1296,12 @@ Header css
   position: relative;
 }
 
+@media screen and (max-width: 500px) {
+  .teeprint-category-search-input {
+    width: 320px !important; 
+  }
+}
+
 .teeprint-category-search-input input {
   background-color: var(--bgcolor-white);
   width: 100%;
@@ -1302,7 +1309,7 @@ Header css
   border-radius: 0;
   border: none;
   font-weight: 400;
-  color: var(--fontcolor-darkgray);
+  color: #333;
   border-radius: 100px 0 0 100px;
   line-height: 50px;
   padding-left: 25px;
@@ -1488,7 +1495,10 @@ Header css
   }
   .teeprint-header .teeprint-middle-header {
     height: 75px;
-    display: none;
+    /* display: none; */
+    position: fixed;
+    top: 70px;
+    z-index: 999;
   }
   .teeprint-middle-header .container {
     height: 100%;
