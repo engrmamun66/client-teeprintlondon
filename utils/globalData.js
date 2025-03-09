@@ -80,7 +80,8 @@ export let globalData = {
         'Tote bag' : '/cloth/tote_bag',
         'Cap' : '/cloth/cap',
         'Dress shirt' : '/cloth/dress_shirt',
-        'Hoodies' : '/cloth/hoodie'
+        'Hoodies' : '/cloth/hoodie',
+        'Organic Cotton T-shirt':'/cloth/cotton_t_shirt'
 
     }, 
 }
