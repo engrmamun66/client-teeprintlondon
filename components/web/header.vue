@@ -271,8 +271,8 @@ let { staticPagesByParentCat } = globalData;
                         <nuxt-link :to="`/shop`">
                           {{ item?.name }}
                           <i
-                            class="lni" 
-                            :class="{'lni-chevron-down': item?.isShow, 'lni-chevron-right': !item?.isShow, 'teeprint-active-menu': item?.isShow}"
+                            class="lni lni-chevron-down" 
+                            :_class="{'lni-chevron-down': !item?.isShow, 'lni-chevron-right': item?.isShow, 'teeprint-active-menu': item?.isShow}"
                             v-if="item?.categories?.length"
                           ></i
                         ></nuxt-link>
@@ -322,7 +322,7 @@ let { staticPagesByParentCat } = globalData;
                   <template v-for="(item, index) in sameDayMenus">
                     <li @click.stop="hideAllFirst(1); H.toggleLoopItem(sameDayMenus, index, 'isShow')">
                       <nuxt-link to="#">
-                        {{ item.name }} <i class="lni" :class="{'lni-chevron-down': item?.isShow, 'lni-chevron-right': !item?.isShow, 'teeprint-active-menu': item?.isShow}"></i>
+                        {{ item.name }} <i class="lni" :class="{'lni-chevron-down': !item?.isShow, 'lni-chevron-right': item?.isShow, 'teeprint-active-menu': item?.isShow}"></i>
                       </nuxt-link>
                       <div v-if="item?.isShow" class="teeprint-submenu">
                         <ul >
