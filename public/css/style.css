@@ -1005,11 +1005,14 @@ Header css
 .teeprint-menu .teeprint-mobile-device {
   display: none;
 }
-.teeprint-nav-manu ul {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  height: 60px;
+@media screen and (min-width: 992px) {
+  .teeprint-nav-manu ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 60px;
+  }
+  
 }
 .teeprint-nav-manu ul li {
   display: inline-block;

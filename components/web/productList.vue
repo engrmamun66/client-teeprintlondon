@@ -61,7 +61,7 @@ function withFilter(section: Section, {
 
 
 function updatefilterView(){
-    if(window.innerWidth > 600){
+    if(window.innerWidth > 767){
         showFilters.value = true
     } else {
         showFilters.value = false
@@ -292,7 +292,7 @@ onBeforeUnmount(() => {
                     <div class="row">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <span @click="log(homeStore.paginateData)" > {{ homeStore.showingCountText() }} </span>
-                            <button v-if="homeStore.payload.category_slug" tooltip="Category" class="p-2 border radius-10" style=":hover{background-color: green!important;}">{{ $slugToTitle(categorySlug) }} <i @click="homeStore.payload.category_slug = null;homeStore.getProducts()" class='bx bx-x-circle transformY-2px'></i> </button>
+                            <button v-if="homeStore.payload.category_slug" tooltip="Category" class="p-2 border radius-10 d-sm-none d-md-block" style=":hover{background-color: green!important;}">{{ $slugToTitle(categorySlug) }} <i @click="homeStore.payload.category_slug = null;homeStore.getProducts()" class='bx bx-x-circle transformY-2px'></i> </button>
                             <select name="orderby" class="orderby" @change="({target}) =>{
                                 if(target.value){
                                     homeStore.payload.sort = target.value
@@ -396,7 +396,7 @@ onBeforeUnmount(() => {
 #FILTERS_TOGGLER{
     display: none;       
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 767px) {
     #FILTERS_TOGGLER{
         cursor: pointer;
         display: block;
