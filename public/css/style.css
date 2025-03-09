@@ -1505,7 +1505,7 @@ Header css
     /* display: none; */
     position: fixed;
     top: 70px;
-    z-index: 999;
+    z-index: 9;
   }
   .teeprint-middle-header .container {
     height: 100%;
@@ -1590,10 +1590,13 @@ Header css
     top: 70px;
     z-index: 9999;
     border-top: 1px solid var(--fontcolor-secondary);
+    padding-bottom: 115px;
   }
   .teeprint-nav-manu ul {
     height: auto;
     padding: 0 0;
+    height: 100%;
+    overflow: auto;
   }
   .teeprint-nav-manu ul li {
     display: inline-block;
@@ -1664,7 +1667,14 @@ Header css
     color: #333;
     padding-left: 30px;
 }
-
+.teeprint-submenu ul li a i {
+  font-size: 9px;
+    margin-left: 3px;
+    font-weight: bold;
+}
+.teeprint-sub-submenu ul li a {
+  padding-left: 45px !important;
+}
 
 }
 
