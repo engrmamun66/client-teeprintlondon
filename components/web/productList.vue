@@ -10,6 +10,8 @@ const { categorySlug } = defineProps({
     }
 })
  
+let showFilters = ref(true)
+ 
 
 
 let dbounceGetProducts = H.debounce(homeStore.getProducts, 500);
@@ -58,6 +60,16 @@ function withFilter(section: Section, {
 }
 
 
+function updatefilterView(){
+    if(window.innerWidth > 500){
+        showFilters.value = true
+    } else {
+        showFilters.value = false
+    }
+
+}
+
+
 onMounted(async () => {
     homeStore.resetPayload()
     if(categorySlug){
@@ -70,8 +82,14 @@ onMounted(async () => {
             cat.is_checked = false
         })
     })
-
+    
+    window.addEventListener("resize", updatefilterView)
+    
     isMounted.value = true
+})
+
+onBeforeUnmount(() => {
+    window.removeEventListener("resize", updatefilterView)
 })
  
 
@@ -84,178 +102,188 @@ onMounted(async () => {
         <div class="container">
             <div class="row">
                 <div class="productlist-leftside">
-                    <div class="teeprint-category-menu">
-                        <div class="teeprint-category-menu-inner">
-                            <div class="teeprint-categorymenu-title">
-                                <h5> Category  </h5>
+                    <div id="FILTERS_TOGGLER" class="teeprint-category-menu">
+                        <div @click="showFilters = !showFilters" class="teeprint-category-menu-inner">
+                            <div class="teeprint-categorymenu-title d-flex justify-content-between align-items-center">
+                                <h5> <i class="las la-filter fs-5 transformY-3px"></i> Show Filters  </h5>
+                                <i class="lni me-2 fs-25" :class="{'lni-chevron-down': showFilters, 'lni-chevron-right': !showFilters}"></i>
+                            </div> 
+                        </div>
+                    </div>
+                    <template v-if="showFilters">
+                        <div class="teeprint-category-menu">
+                            <div class="teeprint-category-menu-inner">
+                                <div class="teeprint-categorymenu-title">
+                                    <h5> Category  </h5>
+                                </div>
+                                <!-- 
+                                With category filter
+                                -->
+                                <div class="teeprint-category-menulist">
+                                    <template v-if="homeStore.menus?.length">
+                                        <ul class="ps-3 mb-3">
+                                            <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getAdditionalData')">
+                                                <li v-for="x in 2" class="mb-4">
+                                                    <ShimmerEffect width="calc(100% - 20px)" height="20px" radius="0px" class="mt-2" /> 
+                                                    <ShimmerEffect width="calc(100% - 38px)" height="17px" radius="0px" class="mt-2 ms-3" /> 
+                                                    <ShimmerEffect width="calc(100% - 38px)" height="17px" radius="0px" class="mt-2 ms-3" /> 
+                                                </li>
+                                            </template>
+                                            <template v-else>
+                                                <template v-for="(item, index) in homeStore.menus" :key="index">
+                                                    <li v-if="index < 2" :parent-index="index">
+                                                        
+                                                        <a href="#" class="text-black">
+                                                            <label class="teeprint-checkbox" :for="`main_${index}`"> 
+                                                                <input type="checkbox" :id="`main_${index}`" :checked="item?.is_checked" @click.stop="homeStore.payload.category_slug = null;withFilter('category', {pIndex: index})" > 
+                                                                {{ item?.name }}  
+                                                                <i class="lni lni-chevron-right"></i>
+                                                                <span></span>
+                                                            </label>
+                                                            
+                                                        </a>
+                                                        <template v-if="item?.categories?.length">
+                                                            <ul class="ps-4">
+                                                                <template v-for="(child2, index2) in item?.categories" :key="child2.id">
+                                                                    <li :parent-index="index" :child-index="index2">  
+                                                                        <a @click.stop.prevent="homeStore.payload.category_slug = null;withFilter('category', {pIndex: index, cIndex: index2})" href="#">
+                                                                            <label class="teeprint-checkbox" :for="`parent_${index2}`"> 
+                                                                                <input type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
+                                                                                {{ child2.name }} 
+                                                                                <span></span>  
+                                                                            </label> 
+                                                                        </a>
+                                                                    </li>  
+                                                                </template>
+                                                            </ul> 
+                                                        </template>
+                                                    </li>  
+                                                </template>
+
+                                            </template>
+                                            
+                                        </ul>
+
+                                    </template>
+                                </div>
                             </div>
-                            <!-- 
-                            With category filter
-                            -->
-                            <div class="teeprint-category-menulist">
-                                <template v-if="homeStore.menus?.length">
-                                    <ul class="ps-3 mb-3">
+                        </div>
+                        <div class="teeprint-category-menu">
+                            <div class="teeprint-category-menu-inner">
+                                <div class="teeprint-categorymenu-title">
+                                    <h5>Brands</h5>
+                                </div>
+                                <div class="teeprint-category-menulist">
+                                    <div class="brand-list">
                                         <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getAdditionalData')">
-                                            <li v-for="x in 2" class="mb-4">
-                                                <ShimmerEffect width="calc(100% - 20px)" height="20px" radius="0px" class="mt-2" /> 
-                                                <ShimmerEffect width="calc(100% - 38px)" height="17px" radius="0px" class="mt-2 ms-3" /> 
-                                                <ShimmerEffect width="calc(100% - 38px)" height="17px" radius="0px" class="mt-2 ms-3" /> 
-                                            </li>
+                                            <template v-for="x in 4">
+                                                <div class="teeprint-checkbox-inline mb-1">
+                                                    <label class="teeprint-checkbox d-flex ps-0" for="brand"> 
+                                                        <ShimmerEffect width="20px" height="20px" radius="0px" class="me-2" /> 
+                                                        <ShimmerEffect width="100%" height="20px" radius="2px" /> 
+                                                    </label>
+                                                </div>
+                                            </template>
+                                            
                                         </template>
                                         <template v-else>
-                                            <template v-for="(item, index) in homeStore.menus" :key="index">
-                                                <li v-if="index < 2" :parent-index="index">
-                                                    
-                                                    <a href="#" class="text-black">
-                                                        <label class="teeprint-checkbox" :for="`main_${index}`"> 
-                                                            <input type="checkbox" :id="`main_${index}`" :checked="item?.is_checked" @click.stop="homeStore.payload.category_slug = null;withFilter('category', {pIndex: index})" > 
-                                                            {{ item?.name }}  
-                                                            <i class="lni lni-chevron-right"></i>
-                                                            <span></span>
-                                                        </label>
-                                                        
-                                                    </a>
-                                                    <template v-if="item?.categories?.length">
-                                                        <ul class="ps-4">
-                                                            <template v-for="(child2, index2) in item?.categories" :key="child2.id">
-                                                                <li :parent-index="index" :child-index="index2">  
-                                                                    <a @click.stop.prevent="homeStore.payload.category_slug = null;withFilter('category', {pIndex: index, cIndex: index2})" href="#">
-                                                                        <label class="teeprint-checkbox" :for="`parent_${index2}`"> 
-                                                                            <input type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
-                                                                            {{ child2.name }} 
-                                                                            <span></span>  
-                                                                        </label> 
-                                                                    </a>
-                                                                </li>  
-                                                            </template>
-                                                        </ul> 
-                                                    </template>
-                                                </li>  
+                                            <template v-for="brand in homeStore.additionalData.brands">
+                                                <div class="teeprint-checkbox-inline">
+                                                    <label class="teeprint-checkbox"> 
+                                                        <input type="checkbox" @click.stop="({target})=>{
+                                                            let { checked } = target
+                                                            if(checked){
+                                                                homeStore.payload.brand_ids.push(brand.id)
+                                                            } else {
+                                                                homeStore.payload.brand_ids = homeStore.payload.brand_ids.filter(id => id != brand.id)
+                                                            }
+                                                            homeStore.getProducts()
+                                                        }" > {{ brand.name }} 
+                                                        <span></span> 
+                                                    </label>
+                                                </div>
                                             </template>
 
                                         </template>
-                                        
-                                    </ul>
-
-                                </template>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="teeprint-category-menu">
-                        <div class="teeprint-category-menu-inner">
-                            <div class="teeprint-categorymenu-title">
-                                <h5>Brands</h5>
-                            </div>
-                            <div class="teeprint-category-menulist">
-                                <div class="brand-list">
-                                    <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getAdditionalData')">
-                                        <template v-for="x in 4">
-                                            <div class="teeprint-checkbox-inline mb-1">
-                                                <label class="teeprint-checkbox d-flex ps-0" for="brand"> 
-                                                    <ShimmerEffect width="20px" height="20px" radius="0px" class="me-2" /> 
-                                                    <ShimmerEffect width="100%" height="20px" radius="2px" /> 
-                                                </label>
-                                            </div>
-                                        </template>
-                                        
-                                    </template>
-                                    <template v-else>
-                                        <template v-for="brand in homeStore.additionalData.brands">
-                                            <div class="teeprint-checkbox-inline">
-                                                <label class="teeprint-checkbox"> 
-                                                    <input type="checkbox" @click.stop="({target})=>{
-                                                        let { checked } = target
-                                                        if(checked){
-                                                            homeStore.payload.brand_ids.push(brand.id)
-                                                        } else {
-                                                            homeStore.payload.brand_ids = homeStore.payload.brand_ids.filter(id => id != brand.id)
-                                                        }
-                                                        homeStore.getProducts()
-                                                    }" > {{ brand.name }} 
-                                                    <span></span> 
-                                                </label>
-                                            </div>
-                                        </template>
-
-                                    </template>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div v-if="true" class="teeprint-category-menu">
-                        <div class="teeprint-category-menu-inner">
-                            <div class="teeprint-categorymenu-title">
-                                <h5>Price</h5>
-                            </div>
-                            <div class="teeprint-category-menulist">
-                                <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getAdditionalData')">
-                                    <div class="p-3">
-                                        <div class="d-flex">
-                                            <ShimmerEffect width="50%" height="34px" radius="5px" class="me-1" /> 
-                                            <ShimmerEffect width="50%" height="34px" radius="5px" class="ms-1" /> 
-                                        </div>
-                                        <ShimmerEffect width="100%" height="14px" radius="0px" class="mt-2" /> 
-
-                                    </div>
-                                </template>
-                                <template v-else>
-                                    <web-range v-model="homeStore.payload.price_range" :min="homeStore.additionalData.min_price" :max="homeStore.additionalData.max_price" @change="homeStore.getProducts()" ></web-range>
-                                </template>
-                                    <!-- <h3>
-                                        {{ homeStore.payload.price_range }}
-                                    </h3> -->
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="teeprint-category-menu">
-                        <div class="teeprint-category-menu-inner">
-                            <div class="teeprint-categorymenu-title">
-                                <h5>Gender</h5>
-                            </div>
-                            <div class="teeprint-category-menulist">
-                                <div class="brand-list">
+                        <div v-if="true" class="teeprint-category-menu">
+                            <div class="teeprint-category-menu-inner">
+                                <div class="teeprint-categorymenu-title">
+                                    <h5>Price</h5>
+                                </div>
+                                <div class="teeprint-category-menulist">
                                     <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getAdditionalData')">
-                                        <template v-for="x in 4">
-                                            <div class="teeprint-checkbox-inline mb-1">
-                                                <label class="teeprint-checkbox d-flex ps-0"> 
-                                                    <ShimmerEffect width="20px" height="20px" radius="0px" class="me-2" /> 
-                                                    <ShimmerEffect width="100%" height="20px" radius="2px" /> 
-                                                </label>
+                                        <div class="p-3">
+                                            <div class="d-flex">
+                                                <ShimmerEffect width="50%" height="34px" radius="5px" class="me-1" /> 
+                                                <ShimmerEffect width="50%" height="34px" radius="5px" class="ms-1" /> 
                                             </div>
-                                        </template>
-                                        
+                                            <ShimmerEffect width="100%" height="14px" radius="0px" class="mt-2" /> 
+
+                                        </div>
                                     </template>
                                     <template v-else>
-                                        <div class="teeprint-checkbox-inline">
-                                            <label class="teeprint-radio"> 
-                                                <input type="radio" name="gender" @click.stop="()=>{  
-                                                    homeStore.payload.gender_ids = []
-                                                    homeStore.getProducts()
-                                                }"> All
-                                                <span></span> 
-                                            </label>
-                                        </div>
-
-                                        <template v-for="gender in homeStore.additionalData.genders">
+                                        <web-range v-model="homeStore.payload.price_range" :min="homeStore.additionalData.min_price" :max="homeStore.additionalData.max_price" @change="homeStore.getProducts()" ></web-range>
+                                    </template>
+                                        <!-- <h3>
+                                            {{ homeStore.payload.price_range }}
+                                        </h3> -->
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="teeprint-category-menu">
+                            <div class="teeprint-category-menu-inner">
+                                <div class="teeprint-categorymenu-title">
+                                    <h5>Gender</h5>
+                                </div>
+                                <div class="teeprint-category-menulist">
+                                    <div class="brand-list">
+                                        <template v-if="!isMounted || H.isPendingAnyApi('Frontend:getAdditionalData')">
+                                            <template v-for="x in 4">
+                                                <div class="teeprint-checkbox-inline mb-1">
+                                                    <label class="teeprint-checkbox d-flex ps-0"> 
+                                                        <ShimmerEffect width="20px" height="20px" radius="0px" class="me-2" /> 
+                                                        <ShimmerEffect width="100%" height="20px" radius="2px" /> 
+                                                    </label>
+                                                </div>
+                                            </template>
+                                            
+                                        </template>
+                                        <template v-else>
                                             <div class="teeprint-checkbox-inline">
                                                 <label class="teeprint-radio"> 
-                                                    <input type="radio" :value="gender.id" name="gender" @click.stop="({target})=>{ 
-                                                        homeStore.payload.gender_ids = [gender.id]
+                                                    <input type="radio" name="gender" @click.stop="()=>{  
+                                                        homeStore.payload.gender_ids = []
                                                         homeStore.getProducts()
-                                                    }"> {{gender.name}}
+                                                    }"> All
                                                     <span></span> 
                                                 </label>
                                             </div>
+
+                                            <template v-for="gender in homeStore.additionalData.genders">
+                                                <div class="teeprint-checkbox-inline">
+                                                    <label class="teeprint-radio"> 
+                                                        <input type="radio" :value="gender.id" name="gender" @click.stop="({target})=>{ 
+                                                            homeStore.payload.gender_ids = [gender.id]
+                                                            homeStore.getProducts()
+                                                        }"> {{gender.name}}
+                                                        <span></span> 
+                                                    </label>
+                                                </div>
+                                            </template>
+                                            
+
                                         </template>
                                         
-
-                                    </template>
-                                    
-                                     
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </template>
                 </div>
                 
                 <div class="productlist-rightside">
@@ -361,5 +389,15 @@ onMounted(async () => {
 
 .teeprint-category-menulist ul ul li:last-child a {
     margin-bottom: 20px;
+}
+
+#FILTERS_TOGGLER{
+    display: none;       
+}
+@media screen and (max-width: 500px) {
+    #FILTERS_TOGGLER{
+        cursor: pointer;
+        display: block;
+    }
 }
 </style>
