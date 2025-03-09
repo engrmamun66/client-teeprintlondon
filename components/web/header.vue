@@ -26,7 +26,7 @@ watch(search, (a) => {
 
  let sameDayMenus = ref([
   {
-    name: 'Same Day Shirt Printing',
+    name: 'Same Day Printing',
     slug: '/same-day-delivery/shirt',
     childs: [
       {

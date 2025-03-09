@@ -4,6 +4,27 @@ definePageMeta({
   name: "home",
   layout: "web",
 });
+
+const youtubeIframe = ref(null);
+const videoOverlay = ref(null);
+
+// Initialize video play functionality
+onMounted(() => {
+  if (!youtubeIframe.value || !videoOverlay.value) {
+    console.error("Iframe or overlay element not found!");
+    return;
+  }
+
+  // Add click event listener to the overlay
+  videoOverlay.value.addEventListener("click", () => {
+    // Send a play command to the iframe
+    youtubeIframe.value.contentWindow.postMessage(
+      '{"event":"command","func":"playVideo","args":""}',
+      "*"
+    );
+    videoOverlay.value.style.display = "none"; // Hide the overlay after clicking
+  });
+});
 </script>
 
 <template>
@@ -15,16 +36,20 @@ definePageMeta({
     <section class="teeprint-makes-section">
       <div class="container">
         <h2 class="text-center m-2">Our Printing Environment</h2>
-        <iframe
-          width="100%"
-          height="654"
-          src="https://www.youtube.com/embed/pN2yLAtMDjg"
-          title="Amazing Graphic T-Shirt Mass Production Process. One-stop Clothing Manufacturing Factory"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
+        <div class="video-container">
+          <iframe
+            ref="youtubeIframe"
+            width="100%"
+            height="654"
+            src="https://www.youtube.com/embed/pN2yLAtMDjg?enablejsapi=1"
+            title="Amazing Graphic T-Shirt Mass Production Process. One-stop Clothing Manufacturing Factory"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <div ref="videoOverlay" class="video-overlay"></div>
+        </div>
       </div>
     </section>
 
@@ -121,7 +146,10 @@ definePageMeta({
                 playsinline
                 width="100%"
               >
-                <source src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1740854363/londonn_yq8izj.mp4" type="video/mp4" />
+                <source
+                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1740854363/londonn_yq8izj.mp4"
+                  type="video/mp4"
+                />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -243,10 +271,7 @@ definePageMeta({
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img
-                src="/img/Home/2.jpg"
-                alt="about iamge"
-              />
+              <img src="/img/Home/2.jpg" alt="about iamge" />
             </div>
           </div>
         </div>
@@ -320,5 +345,26 @@ definePageMeta({
   border-radius: 20px; /* Adjust as needed */
   overflow: hidden; /* Ensures the video doesn't overflow the border */
   display: block; /* Removes unwanted spacing below the video */
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 654px;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+iframe {
+  position: relative;
+  z-index: 0;
 }
 </style>
