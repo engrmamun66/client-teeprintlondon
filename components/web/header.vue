@@ -29,6 +29,10 @@ watch(search, (a) => {
     name: 'Same Day Printing',
     slug: '/same-day-delivery/shirt',
     childs: [
+    {
+        name: 'Same Day Shirt Printing',
+        slug: '/same-day-delivery/shirt',
+      },
       {
         name: 'Same Day Polo Shirt Printing',
         slug: '/same-day-delivery/polo_shirt_printing',
