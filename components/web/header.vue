@@ -1,12 +1,12 @@
 <script setup>
-let homeStore = inject("homeStore");
-let cartStore = inject("cartStore");
+let homeStore = inject("homeStore"); 
 homeStore.getTypewiseCategoryList();
 
 let search = ref("");
 let isFocused = ref(false);
 
 let dbounceSearch = H.debounce(homeStore.searchProduct, 300 );
+let dbounceGetProducts = H.debounce(homeStore.getProducts, 300 );
 
 watch(search, (a) => {
   if(a) a = String(a).trimStart().trimEnd()
@@ -15,6 +15,14 @@ watch(search, (a) => {
     homeStore.searchedProducts = [];
   }
 });
+
+ function getProductByEnterOrSerchClick(){
+  homeStore.payload.search = a
+  dbounceGetProducts()
+  H.delay(() => homeStore.payload.search = null)
+  navigateTo({path: '/shop'})
+ }
+
 
 onMounted(() => {
   homeStore.getAdditionalData();
@@ -51,13 +59,14 @@ let { staticPagesByParentCat } = globalData;
                   <input
                     @focus.stop="isFocused = true"
                     @focusout.stop="H.delay(() => (isFocused = false), 100)"
+                    @keyup.enter="getProductByEnterOrSerchClick()"
                     v-model.trim="search"
                     type="search"
                     placeholder="Search For Products"
                   />
                 </div>
                 <div class="teeprint-category-search-button">
-                  <button
+                  <button @click.stop="getProductByEnterOrSerchClick()"
                     type="button"
                     class="btn theme-btn teeprint-category-search-btn"
                   >
@@ -157,16 +166,16 @@ let { staticPagesByParentCat } = globalData;
                 </li>
                 
                 
-                <li class="me-2">
+                <!-- <li class="me-2">
                   <nuxt-link class="p-1 text-white size-1p4">
                     <i class="bx bx-search"></i>
                   </nuxt-link>
-                </li>
+                </li> -->
                 
                 <li>
                   <nuxt-link
-                    :to="{ name: 'quote' }" style="zoom:0.9"
-                    class="teeprint-button teeprint-theme-btn quote-btn zoomInOut"
+                    :to="{ name: 'quote' }" 
+                    class="teeprint-button teeprint-theme-btn quote-btn zoomInOut ms-3"
                     >Instant Quote <i class="la la-arrow-right ml-2"></i
                   ></nuxt-link>
                 </li> 
