@@ -1138,91 +1138,6 @@ Header css
 .teeprint-nav-manu ul li.teeprint-desktop-cart-bar a:after {
   display: none;
 }
-
-.teeprint-nav-manu ul li .teeprint-submenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: calc(100% + 190px);
-  perspective: 1000px;
-  z-index: -1;
-  background: var(--bgcolor-primary);
-  animation: growDown 300ms ease-in-out forwards;
-  transform-origin: top center;
-  display: none;
-}
-.teeprint-nav-manu ul li:hover .teeprint-submenu {
-  display: block;
-  z-index: 99;
-}
- 
-@keyframes growDown {
-  0% {
-    transform: scaleY(0);
-  }
-  80% {
-    transform: scaleY(1.1);
-  }
-  100% {
-    transform: scaleY(1);
-  }
-}
-
-.teeprint-nav-manu ul li .teeprint-submenu.teeprint-sub-largemenu {
-  min-width: 1000px;
-  padding: 15px 15px 0;
-}
-
-.teeprint-nav-manu ul li .teeprint-submenu ul {
-  height: unset;
-  margin-bottom: 20px;
-}
-.teeprint-nav-manu ul li .teeprint-submenu ul li {
-  float: unset;
-  width: 100%;
-  display: inline-block;
-  margin-right: 0;
-}
-
-.teeprint-nav-manu ul li .teeprint-submenu ul li a {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--bgcolor-white);
-}
-
-.teeprint-nav-manu ul li .teeprint-submenu ul li a i {
-  font-size: 10px;
-}
-
-.teeprint-nav-manu ul li .teeprint-submenu ul li a:hover {
-  color: var(--fontcolor-white);
-}
-
-.teeprint-nav-manu ul li .teeprint-submenu ul li:last-child a {
-  border-bottom: none;
-}
-
-.teeprint-submenu ul li .teeprint-sub-submenu {
-  position: absolute;
-   top: 0;
-   left: 100%;
-   width: 100%;
-   perspective: 1000px;
-   z-index: -1;
-  background: var(--bgcolor-primary);
-  animation: growDown 300ms ease-in-out forwards;
-  transform-origin: top center;
-  display: none;
-  border-left: 1px solid #222;
-}
-.teeprint-submenu ul li:hover .teeprint-sub-submenu {
-  display: block;
-  z-index: 99;
-}
 @keyframes growDown {
   0% {
     transform: scaleY(0);
@@ -1295,7 +1210,99 @@ Header css
   height: 50px;
   position: relative;
 }
+@media screen and (min-width: 993px) {
 
+  .teeprint-nav-manu ul li .teeprint-submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: calc(100% + 190px);
+    perspective: 1000px;
+    z-index: -1;
+    background: var(--bgcolor-primary);
+    animation: growDown 300ms ease-in-out forwards;
+    transform-origin: top center;
+    display: none;
+  }
+  .teeprint-nav-manu ul li:hover .teeprint-submenu {
+    display: block;
+    z-index: 99;
+  }
+   
+  @keyframes growDown {
+    0% {
+      transform: scaleY(0);
+    }
+    80% {
+      transform: scaleY(1.1);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+  
+  .teeprint-nav-manu ul li .teeprint-submenu.teeprint-sub-largemenu {
+    min-width: 1000px;
+    padding: 15px 15px 0;
+  }
+  
+  .teeprint-nav-manu ul li .teeprint-submenu ul {
+    height: unset;
+    margin-bottom: 20px;
+  }
+  .teeprint-nav-manu ul li .teeprint-submenu ul li {
+    float: unset;
+    width: 100%;
+    display: inline-block;
+    margin-right: 0;
+  }
+  
+  .teeprint-nav-manu ul li .teeprint-submenu ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--bgcolor-white);
+  }
+  
+  .teeprint-nav-manu ul li .teeprint-submenu ul li a i {
+    font-size: 10px;
+  }
+  
+  .teeprint-nav-manu ul li .teeprint-submenu ul li a:hover {
+    color: var(--fontcolor-white);
+  }
+  
+  .teeprint-nav-manu ul li .teeprint-submenu ul li:last-child a {
+    border-bottom: none;
+  }
+  
+  .teeprint-submenu ul li .teeprint-sub-submenu {
+    position: absolute;
+     top: 0;
+     left: 100%;
+     width: 100%;
+     perspective: 1000px;
+     z-index: -1;
+    background: var(--bgcolor-primary);
+    animation: growDown 300ms ease-in-out forwards;
+    transform-origin: top center;
+    display: none;
+    border-left: 1px solid #222;
+  }
+  .teeprint-submenu ul li:hover .teeprint-sub-submenu {
+    display: block;
+    z-index: 99;
+  }
+
+}
+@media screen and (max-width: 500px) {
+  .teeprint-category-search-input {
+    width: 320px !important; 
+  }
+}
 @media screen and (max-width: 500px) {
   .teeprint-category-search-input {
     width: 320px !important; 
@@ -1657,6 +1664,8 @@ Header css
     color: #333;
     padding-left: 30px;
 }
+
+
 }
 
 
