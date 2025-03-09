@@ -12,8 +12,46 @@ export const useHomeStore = defineStore("homeStore", () => {
 
       FrontendApi.getTypewiseCategoryList().then(response => {
         if(response.data.success){
-          menus.value = response.data.data || [] 
-          useCookie('menus').value = menus.value
+          // menus.value = response.data.data || [] 
+          // useCookie('menus').value = menus.value
+          menus.value = response.data.data || [];
+
+          // Define the priority order
+          const priorityOrder = [
+            22, // T-Shirts
+            34, // Hoodies
+            26, // Uniform Shirts
+            27, // Organic Cotton T-shirt
+            28, // School and university shirts
+            29, // Promotion Shirts
+            30, // Sports Shirts
+            31, // Football Team Shirts
+            32  // Basketball Team Shirts
+          ];
+        
+          // Separate the categories into priority and rest
+          const priorityCategories = [];
+          const restCategories = [];
+        
+          menus.value[1].categories.forEach(category => {
+            if (priorityOrder.includes(category.id)) {
+              priorityCategories.push(category);
+            } else {
+              restCategories.push(category);
+            }
+          });
+        
+          // Sort priorityCategories based on the priorityOrder
+          priorityCategories.sort((a, b) => priorityOrder.indexOf(a.id) - priorityOrder.indexOf(b.id));
+        
+          // Combine the arrays
+          const organizedCategories = [...priorityCategories, ...restCategories];
+        
+          // Reassign the organized array back to menus.value
+          menus.value[1].categories = organizedCategories;
+
+          // Store the organized array in a cookie
+          useCookie('menus').value = menus.value;
           
         }
       })
