@@ -24,6 +24,70 @@ watch(search, (a) => {
  }
 
 
+ let sameDayMenus = ref([
+  {
+    name: 'Same Day Shirt Printing',
+    slug: '/same-day-delivery/shirt',
+    childs: [
+      {
+        name: 'Same Day Polo Shirt Printing',
+        slug: '/same-day-delivery/polo_shirt_printing',
+      },
+      {
+        name: 'Same Day Hoodie Printing',
+        slug: '/same-day-delivery/hoodie',
+      },
+      {
+        name: 'Same Day Cap Printing',
+        slug: '/same-day-delivery/cap',
+      },
+      {
+        name: 'Same Day Tote bag Printing',
+        slug: '/same-day-delivery/tote_bag',
+      },
+      {
+        name: 'Same Day Tote Apron Printing',
+        slug: '/same-day-delivery/apron',
+      },
+      {
+        name: 'Same Day Fleeces & Knits Printing',
+        slug: '/same-day-delivery/fleeces_and_knits',
+      },
+      {
+        name: 'Same Day Active Wear Printing',
+        slug: '/same-day-delivery/active_wear',
+      },
+      {
+        name: 'Same Day Dress Shirt Printing',
+        slug: '/same-day-delivery/dress_shirt',
+      },
+    ]
+  }
+ ])
+
+ function hideAllFirst(_for=1){
+  try {
+    if(_for === 1){
+      H.toggleLoopItem(homeStore.menus, -1, 'isShow')
+      homeStore.menus.forEach(item => {
+        item['isShow'] = false
+        (item?.categories || []).forEach(child2 => {
+          child2['isShow'] = false
+        })
+      })
+    } 
+    else if(_for === 2) {
+      sameDayMenus.value.forEach(item => {
+        item['isShow'] = false
+        item.childs.forEach(child => child['isShow'] = false)
+      })
+    }
+  } catch (error) {
+    console.log('hideAllFirst:error', error);
+  }
+ }
+
+
 onMounted(() => {
   homeStore.getAdditionalData();
 });
@@ -202,41 +266,30 @@ let { staticPagesByParentCat } = globalData;
                     >
                   </li>
                   <template v-if="homeStore.menus?.length">
-                    <template
-                      v-for="(item, index) in homeStore.menus"
-                      :key="index"
-                    >
-                      <li>
+                    <template v-for="(item, index) in homeStore.menus" :key="index" > 
+                      <li @click.stop="hideAllFirst(2); H.toggleLoopItem(homeStore.menus, index, 'isShow')">
                         <nuxt-link :to="`/shop`">
                           {{ item?.name }}
                           <i
-                            class="lni lni-chevron-down"
+                            class="lni" 
+                            :class="{'lni-chevron-down': item?.isShow, 'lni-chevron-right': !item?.isShow, 'teeprint-active-menu': item?.isShow}"
                             v-if="item?.categories?.length"
                           ></i
                         ></nuxt-link>
-                        <template v-if="item?.categories?.length">
+                        <template v-if="item?.categories?.length && item?.isShow === true">
                           <div class="teeprint-submenu m-teeprint-submenu-active">
-                            <ul>
-                              <template
-                                v-for="(child2, index2) in item?.categories"
-                                :key="index2"
-                              >
-                                <li>
-                                  <nuxt-link
-                                    :to="
-                                      staticPagesByParentCat?.[child2.name] ||
-                                      `/products-by-category/${
-                                        child2?.slug || 'not-found'
-                                      }`
-                                    "
-                                  >
+                            <ul @click.stop="false">
+                              <template v-for="(child2, index2) in item?.categories" :key="index2" >
+                                <li @click.stop="hideAllFirst(2); H.toggleLoopItem(item?.categories, index2, 'isShow')">
+                                  <nuxt-link :to="staticPagesByParentCat?.[child2.name] || `/products-by-category/${ child2?.slug || 'not-found' }`" >
                                     {{ child2.name }}
                                     <i
                                       v-if="child2.children?.length"
-                                      class="lni lni-chevron-right"
+                                      class="lni"
+                                      :class="{'lni-chevron-down': child2?.isShow, 'lni-chevron-right': !child2?.isShow, 'teeprint-active-menu': child2?.isShow}"
                                     ></i
                                   ></nuxt-link>
-                                  <template v-if="child2.children?.length">
+                                  <template v-if="child2.children?.length && child2?.isShow === true">
                                     <div class="teeprint-sub-submenu">
                                       <ul>
                                         <template
@@ -266,61 +319,24 @@ let { staticPagesByParentCat } = globalData;
                     </template>
                   </template>
 
-                
-                  <li>
-                    <nuxt-link to="#">
-                      Same Day Delivery <i class="lni lni-chevron-down"></i>
-                    </nuxt-link>
-                    <div class="teeprint-submenu">
-                      <ul>
-                        <li>
-                          <nuxt-link to="/same-day-delivery/shirt">
-                            Same Day Shirt Printing
-                          </nuxt-link>
-                        </li>
-                        <li>
-                          <nuxt-link to="/same-day-delivery/polo_shirt_printing">
-                            Same Day Polo Shirt Printing
-                          </nuxt-link>
-                        </li>
-                        <li>
-                          <nuxt-link to="/same-day-delivery/hoodie">
-                            Same Day Hoodie Printing
-                          </nuxt-link>
-                        </li>
-                        <li>
-                          <nuxt-link to="/same-day-delivery/cap">
-                            Same Day Cap Printing
-                          </nuxt-link>
-                        </li>
-                        <li>
-                          <nuxt-link to="/same-day-delivery/tote_bag">
-                            Same Day Tote bag Printing
-                          </nuxt-link>
-                        </li>
-                        <li>
-                          <nuxt-link to="/same-day-delivery/apron">
-                            Same Day Tote Apron Printing
-                          </nuxt-link>
-                        </li>
-                        <li>
-                          <nuxt-link to="/same-day-delivery/fleeces_and_knits">
-                            Same Day Fleeces & Knits Printing
-                          </nuxt-link>
-                        </li>
-                        <li>
-                          <nuxt-link to="/same-day-delivery/active_wear">
-                            Same Day Active Wear Printing
-                          </nuxt-link>
-                        </li>
-                        <li>
-                          <nuxt-link to="/same-day-delivery/dress_shirt">
-                            Same Day Dress Shirt Printing
-                          </nuxt-link>
-                        </li>
-                      </ul>
-                    </div>
-                  </li> 
+                  <template v-for="(item, index) in sameDayMenus">
+                    <li @click.stop="hideAllFirst(1); H.toggleLoopItem(sameDayMenus, index, 'isShow')">
+                      <nuxt-link to="#">
+                        {{ item.name }} <i class="lni" :class="{'lni-chevron-down': item?.isShow, 'lni-chevron-right': !item?.isShow, 'teeprint-active-menu': item?.isShow}"></i>
+                      </nuxt-link>
+                      <div v-if="item?.isShow" class="teeprint-submenu">
+                        <ul >
+                          <template v-for="(child, i) in item.childs">
+                            <li>
+                              <nuxt-link :to="child.slug">
+                                {{ child.name }}
+                              </nuxt-link>
+                            </li>
+                          </template> 
+                        </ul>
+                      </div>
+                    </li> 
+                  </template>
 
                   <li>
                     <a href="#">Design and services</a>

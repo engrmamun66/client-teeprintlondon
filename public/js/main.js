@@ -6,13 +6,7 @@ $(document).on("scroll", function() {
         $(".teeprint-menu-header").removeClass("shrink");
     }
 });
-/*-- active menu js --*/
-$(document).ready(function() {
-    $('.teeprint-nav-manu ul li a').click(function() {
-        $('li a').removeClass("teeprint-active-menu");
-        $(this).addClass("teeprint-active-menu");
-    });
-});
+ 
 // toogle js 
 $(document).ready(function() {
     $(".teeprint-mobile-menubar").click(function() {

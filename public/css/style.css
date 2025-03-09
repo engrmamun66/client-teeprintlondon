@@ -1029,7 +1029,9 @@ Header css
 .teeprint-nav-manu ul li a i {
   font-size: 20px;
 }
-.teeprint-nav-manu ul li a .lni-chevron-down {
+.teeprint-nav-manu ul li a .lni-chevron-down,
+.teeprint-nav-manu ul li a .lni-chevron-right
+ {
   font-size: 9px;
   margin-left: 3px;
   font-weight: bold;
@@ -1661,7 +1663,6 @@ Header css
     background-color: #fff;
   }
   .teeprint-nav-manu ul li .teeprint-submenu ul li a {
-    color: #333;
     padding-left: 30px;
 }
 
