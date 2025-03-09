@@ -355,11 +355,7 @@ async function placeOrder(){
                                         <ShimmerEffect width="250px" height="44px"></ShimmerEffect>
                                     </div>
                                 </template>
-                            </div>
-
-                            <pre>
-                                {{ payload }}
-                            </pre>
+                            </div> 
                         </div>
                     </div>
                 </div>
