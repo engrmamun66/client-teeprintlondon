@@ -1,13 +1,20 @@
 <template>
     <div>
-      <button @click="createPayment">Pay with PayPal</button>
+      <button @click="createPayment" :disabled="isLoading">
+        {{ isLoading ? 'Processing...' : 'Pay with PayPal' }}
+      </button>
+      <p v-if="error" style="color: red;">{{ error }}</p>
     </div>
   </template>
   
   <script setup>
+  import { ref } from 'vue';
+  import { useRuntimeConfig } from '#imports'; // For accessing runtime config in Nuxt 3
+  
   // Refs for managing state
   const isLoading = ref(false);
   const error = ref(null);
+  const orderId = ref('ORDER123456'); // Replace with dynamic order ID if needed
   
   // Function to create a PayPal payment
   const createPayment = async () => {
@@ -18,7 +25,10 @@
       // Fetch payment details from Laravel backend
       const response = await $fetch(`${useRuntimeConfig()?.public?.['API_BASE_URL']}/create-payment`, {
         method: 'POST',
-        body: { amount: '10.00' }, // Amount in dollars
+        body: {
+          amount: '10.00', // Payment amount
+          order_id: orderId.value, // Pass the order ID
+        },
       });
   
       // Redirect to PayPal approval URL
