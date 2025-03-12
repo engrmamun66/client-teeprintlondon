@@ -25,7 +25,7 @@ function addToCart() {
             title="Same-Day Printing for T-Shirts"
             :images="[
               '/img/Cotton_T_shirt/Leonardo_Phoenix_10_A_fit_middleaged_man_with_short_dark_hair_0.jpg',
-              '/img/Football_team_t_shirt/Leonardo_Kino_XL_a_young_men_wearing_football_sports_t_shirt_2.jpg',
+              '/img/Football_team_t_shirt/6.jpg',
               '/img/Cotton_T_shirt/Leonardo_Phoenix_10_A_stylish_man_in_his_mid30s_with_a_strong_1.jpg',
             ]"
           >

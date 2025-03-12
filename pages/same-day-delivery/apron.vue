@@ -22,7 +22,7 @@ function addToCart() {
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="Same-Day Printing for T-Shirts"
+            title="Same-Day Printing for Aprons"
             :images="[
               '/img/Apron/Leonardo_Phoenix_10_A_handsome_young_man_in_his_early_twenties_1.jpg',
               '/img/Apron/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_0.jpg',

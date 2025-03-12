@@ -24,7 +24,7 @@ function addToCart() {
             :right="true"
             title="Same-Day Printing for Fleeces & Knits"
             :images="[
-              '/img/Fleeces_and_Knits/Leonardo_Phoenix_10_A_single_young_man_likely_in_his_early_twe_3.jpg',
+              '/img/Fleeces_and_Knits/Leonardo_Phoenix_10_A_young_man_in_his_early_twenties_with_a_c_1.jpg',
               '/img/Fleeces_and_Knits/Leonardo_Phoenix_10_A_young_man_in_his_early_twenties_with_a_c_0.jpg',
               '/img/Fleeces_and_Knits/Leonardo_Phoenix_10_A_solitary_young_man_in_his_early_twenties_2.jpg',
             ]"

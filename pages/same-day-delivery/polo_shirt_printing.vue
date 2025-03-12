@@ -24,8 +24,8 @@ function addToCart() {
             :right="true"
             title="Same-Day Printing for Polo Shirts"
             :images="[
-              '/img/Polo_T_shirt/Leonardo_Phoenix_10_A_casually_dressed_young_man_in_his_early_2.jpg',
-              '/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_male_model_in_his_early_twenties_w_0.jpg',
+              '/img/Polo_T_shirt/1.jpg',
+              '/img/Polo_T_shirt/4.jpg',
               '/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_1.jpg',
             ]"
           >
@@ -80,20 +80,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
               <!-- <img src="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_colorful_tote_bag_image_with_0.jpg" alt="about iamge" /> -->
-              <video
-                class="rounded-video"
-                autoplay
-                loop
-                muted
-                playsinline
-                width="100%"
-              >
-                <source
-                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1740854173/60a766b1-ffa4-4b6e-be69-531f597d778f_video_dyum8u.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              <img src="/img/Polo_T_shirt/11.jpg" alt="about iamge" />
             </div>
           </div>
         </div>
@@ -126,7 +113,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_male_model_in_his_early_twenties_w_2.jpg" alt="about iamge" />
+              <img src="/img/Polo_T_shirt/14.jpg" alt="about iamge" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -213,7 +200,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_0.jpg" alt="about iamge" />
+              <img src="/img/Polo_T_shirt/10.jpg" alt="about iamge" />
             </div>
           </div>
         </div>
@@ -221,8 +208,8 @@ function addToCart() {
     </section>
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/Polo_T_shirt/Leonardo_Phoenix_10_A_casually_dressed_young_man_in_his_early_3.jpg"
-        img_right="/img/Polo_T_shirt/Leonardo_Phoenix_10_a_young_man_with_a_strong_jawline_and_a_co_3.jpg"
+        img_left="/img/Polo_T_shirt/8.jpg"
+        img_right="/img/Polo_T_shirt/9.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>

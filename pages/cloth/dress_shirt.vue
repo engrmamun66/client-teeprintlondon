@@ -199,7 +199,7 @@ function addToCart() {
     <div class="container mt-5">
       <web-DuelCard
         img_left="/img/Dress_Shirts/Leonardo_Phoenix_10_a_men_wearing_dress_blue_shirt_in_office_E_3.jpg"
-        img_right="/img/Dress_Shirts/Leonardo_Phoenix_10_a_men_wearing_dress_black_shirt_in_london_3.jpg"
+        img_right="/img/Dress_Shirts/Leonardo_Phoenix_10_a_men_wearing_dress_black_shirt_in_london_2.jpg"
         paragraph="At Tee Print London, we bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>

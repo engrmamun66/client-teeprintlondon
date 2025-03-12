@@ -26,9 +26,13 @@ watch(search, (a) => {
 
  let sameDayMenus = ref([
   {
-    name: 'Same Day Shirt Printing',
+    name: 'Same Day Printing',
     slug: '/same-day-delivery/shirt',
     childs: [
+    {
+        name: 'Same Day Shirt Printing',
+        slug: '/same-day-delivery/shirt',
+      },
       {
         name: 'Same Day Polo Shirt Printing',
         slug: '/same-day-delivery/polo_shirt_printing',
@@ -322,9 +326,9 @@ let { staticPagesByParentCat } = globalData;
                   <template v-for="(item, index) in sameDayMenus">
                     <li @click.stop="hideAllFirst(1); H.toggleLoopItem(sameDayMenus, -1, 'isShow'); H.toggleLoopItem(sameDayMenus, index, 'isShow')" @mouseenter.stop="hideAllFirst(1); H.toggleLoopItem(sameDayMenus, index, 'isShow')">
                       <nuxt-link to="#">
-                        {{ item.name }} <i class="lni" :_class="{'lni-chevron-down': !item?.isShow, 'lni-chevron-right': item?.isShow, 'teeprint-active-menu': item?.isShow}"></i>
+                        {{ item.name }}<i class="lni lni-chevron-down teeprint-active-menu"></i>
                       </nuxt-link>
-                      <div v-if="item?.isShow" class="teeprint-submenu">
+                      <div  class="teeprint-submenu">
                         <ul >
                           <template v-for="(child, i) in item.childs">
                             <li>
