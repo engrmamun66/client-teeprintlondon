@@ -124,7 +124,7 @@ function addToCart() {
                       </tr>
                       <tr>
                         <td>Phone</td>
-                        <td>+44 7432 046354</td>
+                        <td>+44 7888 185120</td>
                       </tr>
                       <tr>
                         <td>Address</td>
