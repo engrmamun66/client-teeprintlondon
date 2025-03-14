@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-2 col-sm-4">
-                        <div class="teeprint-footer-location">
+                        <div class="teeprint-footer-links">
                             <h4>Get in touch</h4>
                             <ul>
                                 <li>38 Worland Road,<br>
