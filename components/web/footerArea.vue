@@ -4,7 +4,7 @@
         <div class="teeprint-top-footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-4">
+                    <div class="col-lg-3 col-md-2 col-sm-4">
                         <div class="teeprint-footer-location">
                             <h4>Get in touch</h4>
                             <ul>
@@ -14,7 +14,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-4">
+                    <!-- <div class="col-lg-2 col-md-2 col-sm-4">
                         <div class="teeprint-footer-links">
                             <h4>Company</h4>
                             <ul>
@@ -24,14 +24,14 @@
                                 <li><a href="#">Blog</a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-lg-2 col-md-2 col-sm-4">
                         <div class="teeprint-footer-links">
                             <h4>Discover</h4>
                             <ul>
                                 <li><a href="#">FAQ’s</a></li>
                                 <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><nuxt-link to="/privacy">Privacy Policy</nuxt-link></li>
                                 <li><a href="#">Refund and Returns Policy</a></li>
                             </ul>
                         </div>
