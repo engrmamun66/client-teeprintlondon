@@ -111,7 +111,7 @@ let { staticPagesByParentCat } = globalData;
                 <div class="teeprint-logo-area-middle">
                   <a href="/">
                     <img
-                      src="/img/logo2.png"
+                      src="/img/logon_fina.png"
                       alt="logo image"
                       style="height: 4.5rem"
                     />
