@@ -8,10 +8,13 @@
                         <div class="teeprint-footer-location">
                             <h4>Get in touch</h4>
                             <ul>
-                                <li>27A Poplar St East Rutherford,NJ 07073 </li>
-                                <li><i class="la la-envelope"></i> <b>info@teeprint.com</b></li>
-                                <li><i class="la la-phone"></i> <b>00 123 456 99</b></li>
-                            </ul>
+                                <li>38 Worland Road,<br>
+                                    City - London,<br>
+                                    County - England,<br>
+                                    Postcode - E15 4EY</li>
+                                <li><i class="la la-envelope"></i> <b>support@teeprintlondon.co.uk</b></li>
+                                <li><i class="la la-phone"></i> <b>+44 7432 046354</b></li>
+                                </ul>
                         </div>
                     </div>
                     <!-- <div class="col-lg-2 col-md-2 col-sm-4">
