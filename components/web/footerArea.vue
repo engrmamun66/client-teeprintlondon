@@ -32,7 +32,7 @@
                                 <li><a href="#">FAQ’s</a></li>
                                 <li><a href="#">Contact Us</a></li>
                                 <li><nuxt-link to="/privacy">Privacy Policy</nuxt-link></li>
-                                <li><a href="#">Refund and Returns Policy</a></li>
+                                <li><nuxt-link to="/refund">Refund and Returns Policy</nuxt-link></li>
                             </ul>
                         </div>
                     </div>

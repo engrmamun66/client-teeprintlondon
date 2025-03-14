@@ -208,11 +208,16 @@ function addToCart() {
                       </tr>
                       <tr>
                         <td>Phone</td>
-                        <td>[Your Contact Number]</td>
+                        <td>+44 7432 046354</td>
                       </tr>
                       <tr>
                         <td>Address</td>
-                        <td>[Your Business Address]</td>
+                        <td>
+                          38 Worland Road,<br />
+                          City - London,<br />
+                          County - England,<br />
+                          Postcode - E15 4EY
+                        </td>
                       </tr>
                     </tbody>
                   </table>
