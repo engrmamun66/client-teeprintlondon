@@ -4417,7 +4417,7 @@ Product Details css
     background-color: var(--bgcolor-secondary);
 }
 .pd-description {
-    padding-top: 100px;
+    padding-top: 0px;
 }
 .select-size h5 {
   display: block;
@@ -5087,6 +5087,12 @@ checkout css
   position: relative;
   width: 100%; 
   padding-bottom: 15px;
+}
+
+@media screen and (max-width: 991px) {
+  .teeprint-billing-fullfilment-content .teeprint-billing-address {
+    margin-top: 65px;
+  }
 }
 
 .teeprint-billing-fullfilment-content .teeprint-billing-address .teeprint-checkout-title,

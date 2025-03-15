@@ -236,15 +236,15 @@ async function placeOrder(){
                             </div>
                         </div>
                     </div>
-                    <div class="teeprint-billing-fullfilment-content">
+                    <!-- <div class="teeprint-billing-fullfilment-content">
                         <div class="teeprint-billing-address">
-                            <!-- <label class="teeprint-checkbox teeprint-checkout-title">
+                            <label class="teeprint-checkbox teeprint-checkout-title">
                                 <input v-model="payload.customer_first_name" type="checkbox" />
                                 Shipp to a different address
                                 <span  class="transformY-5px-" ></span>
-                            </label>  -->
+                            </label> 
                              <div class="shipp-address">
-                                <!-- <div class="row" >
+                                <div class="row" >
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>First Name</label>
@@ -252,11 +252,11 @@ async function placeOrder(){
                                         </div>
                                     </div>
                                      
-                                </div> -->
+                                </div>
                                 
                              </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-lg-6">
                     <div class="teeprint-checkout-ordersummery">
