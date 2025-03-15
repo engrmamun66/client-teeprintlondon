@@ -147,15 +147,28 @@ onBeforeUnmount(() => {
                                                         <template v-if="item?.categories?.length">
                                                             <ul class="ps-4">
                                                                 <template v-for="(child2, index2) in item?.categories" :key="child2.id">
-                                                                    <li :parent-index="index" :child-index="index2">  
-                                                                        <a @click.stop.prevent="homeStore.payload.category_slug = null;withFilter('category', {pIndex: index, cIndex: index2})" href="#">
-                                                                            <label class="teeprint-checkbox" :for="`parent_${index2}`"> 
-                                                                                <input type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
-                                                                                {{ child2.name }} 
-                                                                                <span></span>  
-                                                                            </label> 
-                                                                        </a>
-                                                                    </li>  
+                                                                    <template v-if="!globalData.staticPagesByParentCat?.[child2.name]">
+                                                                        <li :parent-index="index" :child-index="index2" @mouseenter="log(child2)">  
+                                                                            <a @click.stop.prevent="homeStore.payload.category_slug = null;withFilter('category', {pIndex: index, cIndex: index2})" href="#">
+                                                                                <label class="teeprint-checkbox" :for="`parent_${index2}`"> 
+                                                                                    <input type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
+                                                                                    {{ child2.name }} 
+                                                                                    <span></span>  
+                                                                                </label> 
+                                                                            </a>
+                                                                        </li>  
+                                                                    </template>
+                                                                    <template v-else>
+                                                                        <!-- <li :parent-index="index" :child-index="index2" @mouseenter="log(child2)">  
+                                                                            <a @click.stop.prevent="homeStore.payload.category_slug = null;withFilter('category', {pIndex: index, cIndex: index2})" href="#">
+                                                                                <label class="teeprint-checkbox" :for="`parent_${index2}`"> 
+                                                                                    <input type="checkbox" :id="`parent_${index2}`" :checked="child2?.is_checked"> 
+                                                                                    {{ child2.name }} --- nnnnn
+                                                                                    <span></span>  
+                                                                                </label> 
+                                                                            </a>
+                                                                        </li>   -->
+                                                                    </template>
                                                                 </template>
                                                             </ul> 
                                                         </template>
