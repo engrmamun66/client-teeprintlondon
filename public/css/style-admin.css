@@ -655,8 +655,9 @@ all admin css
 }
 
 .leap-admin-main-wrapper .navbar-middle {
-    display: table;
+    display: flex;
     width: 100%;
+    justify-content: space-between;
 }
 
 .leap-admin-main-wrapper .navbar-left-side {
@@ -1142,7 +1143,7 @@ Admin Content css
 @media (max-width: 991px) {
     .leap-admin-main-wrapper .leap-admin-sidebar.active {
         margin-left: -350px;
-    }
+    }  
 
     .leap-admin-main-wrapper .navbar.margin_left {
         padding-left: 0;
@@ -1705,10 +1706,12 @@ Header user css
 /*=============================
 Header responsive css 
 ===============================*/
-.leap-admin-main-wrapper .leap-admin-headermenu-responsive,
-.leap-admin-main-wrapper .leap-admin-header-logo-responsive {
+.leap-admin-main-wrapper .leap-admin-headermenu-responsive {
     display: none;
-}
+} 
+/* .leap-admin-main-wrapper .leap-admin-header-logo-responsive {
+    display: none;
+} */
 
 @media (max-width: 991px) {
     .leap-admin-main-wrapper .leap-admin-headermenu-responsive {

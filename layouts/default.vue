@@ -8,10 +8,7 @@
               <Header />
               <Sidebar />
               <div id="leap-admin-main-container" :class="{margin_left : isCollapse()}" >
-                <div style="min-height:100vh" 
-                  @touchstart="toggleNavBySwif($event)"
-                  @touchend="toggleNavBySwif($event)"
-                >
+                <div style="min-height:100vh">
                   <slot />
                 </div>
               </div>

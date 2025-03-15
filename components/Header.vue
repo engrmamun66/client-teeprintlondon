@@ -14,7 +14,7 @@
         <div class="leap-admin-headermenu-responsive">
           <ul>
             <li>
-              <a class="leap-admin-sidebarCollapse" @click="toggleSidebar()">
+              <a class="leap-admin-sidebar" @click="toggleSidebar()">
                 <i-las t="bars" />
               </a>
             </li>
