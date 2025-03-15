@@ -248,13 +248,10 @@ let Sub_category = [
   { id: 1, name: "Sub Product 1" },
   { id: 2, name: "Sub Product 2" },
 ];
-const categories = ref([
-  { id: 1, name: "Popular Product" },
-  { id: 2, name: "Clothing" },
-  { id: 3, name: "Advertising Materials" },
-]);
+
 
 async function showCategory(id) {
+  Categorystore.resetCategoryAttribute();
   await Categorystore.showCategory(id);
 
   editMode.value = true;
@@ -303,12 +300,14 @@ function OpenModal() {
   editMode.value = false;
   Categorystore.showCategoryModal = !Categorystore.showCategoryModal;
 }
-
+const categories = ref([]);
 
 async function asMounted(){
   await Categorystore.getCategories();
   await Categorystore.getParentcategorylist();
   await Categorystore.getTypes();
+  categories.value = [...Categorystore.types]
+
 }
 
 onMounted(async () => {

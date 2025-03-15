@@ -5,9 +5,9 @@
         <div class="leap-admin-header-logo-responsive">
           <div class="logo-area-inner">
             <div class="logo-area-middle">
-              <nuxt-link :to="'/'">
+              <!-- <nuxt-link :to="'/'">
                 <img src="/img/logo.jpg" />
-              </nuxt-link>
+              </nuxt-link> -->
             </div>
           </div>
         </div>
