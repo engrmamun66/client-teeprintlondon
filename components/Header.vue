@@ -1,26 +1,29 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light" :class="{ margin_left: isCollapse() }">
     <div class="container-fluid fullheight-100">
-      <div class="navbar-middle fullheight-100">
+      <div class="navbar-middle fullheight-100 gggg">
         <div class="leap-admin-header-logo-responsive">
           <div class="logo-area-inner">
-            <div class="logo-area-middle">
-              <nuxt-link :to="'/'">
+            <div class="logo-area-middle d-flex justify-content-end w-100">
+              <!-- <nuxt-link :to="'/'">
                 <img src="/img/logo.jpg" />
-              </nuxt-link>
+              </nuxt-link> -->
+              <a id="menu_toggler" class="leap-admin-sidebarCollapse fs-2 mt-2   cp show_upto_900"> 
+                <i class="las la-sign-out-alt text-black"></i>
+               </a>
             </div>
           </div>
         </div>
         <div class="leap-admin-headermenu-responsive">
           <ul>
             <li>
-              <a class="leap-admin-sidebar" @click="toggleSidebar()">
-                <i-las t="bars" />
+              <a class="leap-admin-sidebarCollapse" @click="toggleSidebar()">
+                <i t="bars" />
               </a>
             </li>
             <li>
               <a class="header-menu">
-                <i class="las la-ellipsis-v"></i>
+                <i-las t="bars"></i-las>
               </a>
             </li>
             <li>
@@ -30,7 +33,7 @@
                   v-if="authUser?.profile_img"
                   :src="authUser?.profile_img"
                 />
-                <i v-else class="la la-user"></i>
+                <i v-else class="las la-sign-out-alt"></i>
               </a> 
               <div
                 @mouseleave="state.showProfilePopup = false"
