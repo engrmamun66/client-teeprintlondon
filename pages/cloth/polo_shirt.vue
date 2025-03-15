@@ -156,7 +156,7 @@ function addToCart() {
     </section>
 
     <div>
-      <SameDay />
+    <Cloth />
     </div>
 
     <section class="teeprint-about-section">

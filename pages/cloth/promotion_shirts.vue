@@ -153,7 +153,7 @@ function addToCart() {
 
     <!-- Same-Day Service Section -->
     <div>
-      <SameDay />
+    <Cloth />
     </div>
 
     <!-- Order Your Custom Promotional Shirts Section -->
