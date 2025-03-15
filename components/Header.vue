@@ -35,7 +35,7 @@
                 />
                 <i v-else class="las la-sign-out-alt"></i>
               </a> 
-              <div
+              <div v-if="false"
                 @mouseleave="state.showProfilePopup = false"
                 class="leap-admin-rightside-dropdown --animate-show"
                 :class="{ selected: state?.showProfilePopup }"
