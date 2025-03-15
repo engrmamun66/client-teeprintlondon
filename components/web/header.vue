@@ -51,7 +51,7 @@ watch(search, (a) => {
         slug: '/same-day-delivery/tote_bag',
       },
       {
-        name: 'Same Day Tote Apron Printing',
+        name: 'Same Day Apron Printing',
         slug: '/same-day-delivery/apron',
       },
       {
