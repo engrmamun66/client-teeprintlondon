@@ -77,6 +77,10 @@
             </tbody>
           </table>
 
+          <div class="d-flex justify-content-center">
+            <Pagination v-model="Categorystore.paginateData" @jumpToPage="Categorystore.getCategories" ></Pagination>
+          </div>
+
           <Modal-Confirm
             v-if="showConfirmation"
             v-model="showConfirmation"

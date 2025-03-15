@@ -5,6 +5,7 @@ import Category from "../apis/Category";
 export const useCategorystore = defineStore("category", () => {
   let parentcategorylist = ref([]);
   let categoryList = ref([]);
+  let paginateData = ref(null);
   let categoryattribute = ref({
     id: null,
     name: null,
@@ -71,12 +72,12 @@ export const useCategorystore = defineStore("category", () => {
     }
   }
 
-  async function getCategories() {
+  async function getCategories(page=1) {
     try {
-      let response = await Category.getCategories();
+      let response = await Category.getCategories({ params: { page } });
 
       if (response.status == 201 || 200) {
-        // console.log(response.data.data.data);
+        paginateData.value = response.data.data;
         categoryList.value = response.data.data.data;
       }
     } catch (error) {
@@ -195,6 +196,7 @@ export const useCategorystore = defineStore("category", () => {
     resetCategoryAttribute,
     getTypes,
     types,
+    paginateData,
     categoryList,
     parentcategorylist,
     category,

@@ -24,7 +24,7 @@ let payload = reactive({
     billing_address: "",
     shipping_address: " ", 
     delivery_type_id: 1,
-    payment_method: "credit_card",
+    // payment_method: "credit_card",
     notes: "",
     items: []
 })
@@ -41,7 +41,7 @@ function resetPayload(){
     payload.billing_address = ""
     payload.shipping_address = " ",
     payload.delivery_type_id = 1
-    payload.payment_method = "credit_card"
+    // payload.payment_method = "credit_card"
     payload.notes = ""
     payload.items = []
 }
@@ -60,7 +60,7 @@ function processCartItems(){
         return ({
             product_id: item.id,
             product_size_id: item.sizes[0].pivot.id,
-            product_color_id: item.colors[0].id,
+            product_color_id: item.colors[0].pivot.id,
             quantity: item.sizes[0].cart_quantity,
             unit_price: item.sizes[0].pivot.unit_price,
             discounted_unit_price: item.sizes[0].pivot.discounted_unit_price,
