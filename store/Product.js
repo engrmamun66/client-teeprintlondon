@@ -332,10 +332,12 @@ export const useProductStore = defineStore("product", () => {
     }
   }
   let productList = ref([]);
-  async function getProductList(params={}) {
+  let paginateData = ref(null);
+  async function getProductList(page=1) {
     try { 
-      let response = await Product.list({ params });
+      let response = await Product.list({ params: { page } });
       if (response.status == 200) {
+        paginateData.value = response.data.data;
         productList.value = response.data.data.data;
       }
     } catch (error) {}
@@ -370,6 +372,7 @@ export const useProductStore = defineStore("product", () => {
     colorAttribute,
     showModal,
     product,
+    paginateData,
     selectedGender,
     selectedColor,
     colorList,

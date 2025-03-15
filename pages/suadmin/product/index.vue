@@ -162,6 +162,11 @@
             </tbody>
           </table>
 
+          <div class="d-flex justify-content-center">
+            <Pagination v-model="productStore.paginateData" @jumpToPage="productStore.getProductList" ></Pagination>
+          </div>
+
+
           <Modal-Confirm
             v-if="showConfirmation"
             v-model="showConfirmation"
