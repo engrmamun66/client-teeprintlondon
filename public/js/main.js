@@ -9,10 +9,21 @@ $(document).on("scroll", function() {
  
 // toogle js 
 $(document).ready(function() {
-    $(".teeprint-mobile-menubar").click(function() {
-        $(".teeprint-nav-manu ").slideToggle(200);
-    });
 
+
+    function hideMenu(event){ 
+        event.preventDefault();
+        let value = $(".teeprint-nav-manu").css('display') 
+        if((value == 'block' || value !== 'none') && window.innerWidth <= 450){
+            $(".teeprint-nav-manu").slideUp(200);
+        }
+    }
+    $(document).click(hideMenu);
+
+    $(".teeprint-mobile-menubar").click(function(event) {
+        event.stopImmediatePropagation()  
+        $(".teeprint-nav-manu").slideToggle(200); 
+    });
 });
 // slider js 
 $(document).ready(function() {

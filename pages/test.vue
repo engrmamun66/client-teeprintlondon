@@ -93,15 +93,14 @@ ul li{
 ul li p{
   height: 0px;
   opacity: 0;
-  transition: all 0.5s linear;
-  will-change: opacity, max-height, height;
+  transition: all 0.5s;
 }
 ul li.expand p{
   height: auto;
   max-height: 200px;
   opacity: 1;
   transition: all 0.5s linear;
-  will-change: opacity, max-height, height;
+  will-change: opacity, max-height;
 }
 
 </style>

@@ -1518,6 +1518,7 @@ Header css
   .teeprint-middle-header .container .row {
     justify-content: center;
     height: 100%;
+    box-shadow: 0px 4px 12px #0000000d;
   }
   .teeprint-header .teeprint-menu-header .container {
     background-color: transparent;
@@ -2144,8 +2145,7 @@ about us css
   width: 50%;
   padding: 20px;
   margin-top: 0px;
-  position: relative;
-  z-index: 9;
+  position: relative; 
 }
 .teeprint-makes-section .teeprint-makes-box .teeprint-makes-content .teeprint-makes-content-inner {
   background-color: #fff;

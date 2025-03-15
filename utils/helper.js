@@ -49,15 +49,24 @@ export const H = {
     let price = parseFloat(String(amount || 0)).toFixed(2)
     return `${CURRENCY} ${price}`
   },
-  toggleLoopItem: function (data, index, key = "isShow") {
+  toggleLoopItem: function (data, indexes, key = "isShow") {
+
+    if(!Array.isArray(indexes)){
+      indexes = [indexes]
+    }
     if (!data) return;
-    data?.forEach((item, i) => {
-      if (i == index) {
-        item[key] = !(item[key] ?? false);
-      } else {
-        item[key] = false;
-      }
-    });
+
+    indexes.forEach(index => {
+      data?.forEach((item, i) => {
+        if (i == index) {
+          item[key] = !(item[key] ?? false);
+        } else {
+          item[key] = false;
+        }
+      });
+    })
+    
+
   },
   localStorage: function (name) {
     return {

@@ -28,6 +28,7 @@ watch(search, (a) => {
   {
     name: 'Same Day Printing',
     slug: '/same-day-delivery/shirt',
+    isShow: false,
     childs: [
     {
         name: 'Same Day Shirt Printing',
@@ -75,22 +76,35 @@ watch(search, (a) => {
       H.toggleLoopItem(homeStore.menus, -1, 'isShow')
       homeStore.menus.forEach(item => {
         item['isShow'] = false
+        if(!item?.categories || !Array.isArray(item?.categories)) item.categories = []
         (item?.categories || []).forEach(child2 => {
           child2['isShow'] = false
         })
-      })
+      }) 
     } 
     else if(_for === 2) {
       sameDayMenus.value.forEach(item => {
         item['isShow'] = false
         item.childs.forEach(child => child['isShow'] = false)
-      })
-    }
+      }) 
+    } 
+
   } catch (error) {
-    console.log('hideAllFirst:error', error);
+    console.log('hideAllFirst:error', error, {_for});
+    
   }
  }
 
+
+ function onclickMenuItem(event, n, index){
+  event.stopImmediatePropagation() 
+  hideAllFirst(n); 
+  if(n == 2){
+    H.toggleLoopItem(homeStore.menus, [-1, index], 'isShow')
+  } else {
+    H.toggleLoopItem(sameDayMenus.value, [-1, index], 'isShow')
+  }
+ }
 
 onMounted(() => {
   homeStore.getAdditionalData();
@@ -258,7 +272,7 @@ let { staticPagesByParentCat } = globalData;
               </ul>
 
               <!-- Main menu  -->
-              <nav class="teeprint-nav-manu m-teeprint-navemenu-active">
+              <nav class="teeprint-nav-manu m-teeprint-navemenu-active" @click.stop="false">
                 <ul>
                   <li>
                     <a
@@ -271,7 +285,7 @@ let { staticPagesByParentCat } = globalData;
                   </li>
                   <template v-if="homeStore.menus?.length">
                     <template v-for="(item, index) in homeStore.menus" :key="index" > 
-                      <li @click.stop="hideAllFirst(2); H.toggleLoopItem(homeStore.menus, -1, 'isShow'); H.toggleLoopItem(homeStore.menus, index, 'isShow')" @mouseenter.stop="hideAllFirst(2); H.toggleLoopItem(homeStore.menus, -1, 'isShow'); H.toggleLoopItem(homeStore.menus, index, 'isShow')">
+                      <li @click="onclickMenuItem($event, 2, index)" @mouseenter="onclickMenuItem($event, 2, index)">
                         <nuxt-link :to="`/shop`">
                           {{ item?.name }}
                           <i
@@ -284,7 +298,7 @@ let { staticPagesByParentCat } = globalData;
                           <div class="teeprint-submenu m-teeprint-submenu-active">
                             <ul @click.stop="false">
                               <template v-for="(child2, index2) in item?.categories" :key="index2" >
-                                <li @click.stop="hideAllFirst(2); H.toggleLoopItem(item?.categories, -1, 'isShow'); H.toggleLoopItem(item?.categories, index2, 'isShow')" @mouseover="hideAllFirst(2); H.toggleLoopItem(item?.categories, -1, 'isShow'); H.toggleLoopItem(item?.categories, index2, 'isShow')">
+                                <li @click.stop="hideAllFirst(2);  H.toggleLoopItem(item?.categories, [-1, index2], 'isShow')" @mouseover="hideAllFirst(2);  H.toggleLoopItem(item?.categories, [-1, index2], 'isShow')">
                                   <nuxt-link :to="staticPagesByParentCat?.[child2.name] || `/products-by-category/${ child2?.slug || 'not-found' }`" >
                                     {{ child2.name }}
                                     <i
@@ -324,11 +338,11 @@ let { staticPagesByParentCat } = globalData;
                   </template>
 
                   <template v-for="(item, index) in sameDayMenus">
-                    <li @click.stop="hideAllFirst(1); H.toggleLoopItem(sameDayMenus, -1, 'isShow'); H.toggleLoopItem(sameDayMenus, index, 'isShow')" @mouseenter.stop="hideAllFirst(1); H.toggleLoopItem(sameDayMenus, index, 'isShow')">
+                    <li @click="onclickMenuItem($event, 1, index)" @mouseenter="onclickMenuItem($event, 1, index)">
                       <nuxt-link to="#">
                         {{ item.name }}<i class="lni lni-chevron-down teeprint-active-menu"></i>
                       </nuxt-link>
-                      <div  class="teeprint-submenu">
+                      <div v-if="item?.isShow" class="teeprint-submenu">
                         <ul >
                           <template v-for="(child, i) in item.childs">
                             <li>

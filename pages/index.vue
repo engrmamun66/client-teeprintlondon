@@ -353,6 +353,12 @@ onMounted(() => {
   height: 654px;
 }
 
+@media screen and (max-width: 992px) {
+  .video-container { 
+    height: 160px;
+  }
+}
+
 .video-overlay {
   position: absolute;
   top: 0;
