@@ -59,7 +59,7 @@ function processCartItems(){
     return cartStore.cart.map(item=>{
         return ({
             product_id: item.id,
-            product_size_id: item.sizes[0].id,
+            product_size_id: item.sizes[0].pivot.id,
             product_color_id: item.colors[0].id,
             quantity: item.sizes[0].cart_quantity,
             unit_price: item.sizes[0].pivot.unit_price,

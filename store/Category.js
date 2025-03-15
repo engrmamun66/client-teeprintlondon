@@ -158,7 +158,6 @@ export const useCategorystore = defineStore("category", () => {
         _method: "PUT",
       };
       let response = await Category.update(id, payload);
-      console.log(response.data);
       if (response.status == 200) {
         await getCategories();
         showCategoryModal.value = false;
