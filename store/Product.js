@@ -335,7 +335,7 @@ export const useProductStore = defineStore("product", () => {
   let paginateData = ref(null);
   async function getProductList(page=1) {
     try { 
-      let response = await Product.list({ params: { page } });
+      let response = await Product.list({ params: { page, per_page: 20 } });
       if (response.status == 200) {
         paginateData.value = response.data.data;
         productList.value = response.data.data.data;

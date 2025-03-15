@@ -49,7 +49,7 @@ export const useQuatationStore = defineStore("quatation", () => {
 
   async function getQuatationList(page=1) {
     try {
-      let response = await Quatation.list({ params: { page }});
+      let response = await Quatation.list({ params: { page, per_page: 20 }});
       if (response.status == 200) {
         paginateData.value = response.data.data;
         quatationList.value = response.data.data.data;

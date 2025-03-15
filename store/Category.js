@@ -74,7 +74,7 @@ export const useCategorystore = defineStore("category", () => {
 
   async function getCategories(page=1) {
     try {
-      let response = await Category.getCategories({ params: { page } });
+      let response = await Category.getCategories({ params: { page, per_page: 20 } });
 
       if (response.status == 201 || 200) {
         paginateData.value = response.data.data;
