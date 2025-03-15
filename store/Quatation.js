@@ -3,6 +3,7 @@ import { useCommonStore } from "~/store/Common";
 import Quatation from "../apis/Quotation.js";
 
 export const useQuatationStore = defineStore("quatation", () => {
+  let paginateData = ref(null);
   let quatationList = ref([]);
   let quatationAttribute = ref({
     id: null,
@@ -46,10 +47,11 @@ export const useQuatationStore = defineStore("quatation", () => {
     }
   }
 
-  async function getQuatationList() {
+  async function getQuatationList(page=1) {
     try {
-      let response = await Quatation.list();
+      let response = await Quatation.list({ params: { page }});
       if (response.status == 200) {
+        paginateData.value = response.data.data;
         quatationList.value = response.data.data.data;
       }
     } catch (error) {}
@@ -158,6 +160,7 @@ export const useQuatationStore = defineStore("quatation", () => {
     resetBrandAttribute,
     downloadFile,
     color,
+    paginateData,
     quatationList,
     quatationAttribute,
     showModal,

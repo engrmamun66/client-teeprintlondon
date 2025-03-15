@@ -107,6 +107,11 @@
           </tbody>
         </table>
 
+        <div class="d-flex justify-content-center">
+            <Pagination v-model="quatationStore.paginateData" @jumpToPage="quatationStore.getQuatationList" ></Pagination>
+          </div>
+
+
         <Modal-Confirm
           v-if="showConfirmation"
           v-model="showConfirmation"
