@@ -299,6 +299,10 @@ h1 {
   z-index: 1000000000;
 }
 
+.toasts-container:empty {
+  display: none;
+}
+
 :has(.rightbar) .toasts-container{
   top: 50px;
 }
