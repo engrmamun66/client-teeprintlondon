@@ -182,7 +182,7 @@ function OpenModal() {
 
 onMounted(async () => {
   await quatationStore.getQuatationList();
-  await quatationStore.update(1);
+  // await quatationStore.update(1);
 });
 </script>
 <style scoped>

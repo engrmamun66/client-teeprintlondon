@@ -127,6 +127,8 @@ export const useCategorystore = defineStore("category", () => {
         categoryattribute.value.id = category.value.id;
         selectedTypes.value = response.data.data.types;
 
+        console.log("-----", response.data.data.types)
+
         // console.log("adkcbkadcbkadcbkjadbc", categoryattribute.value.description)
         if (category.value.parent_id) {
           categoryattribute.value.parent_id = category.value.parent_id;
@@ -179,7 +181,8 @@ export const useCategorystore = defineStore("category", () => {
     try {
       let response = await Category.getTypes();
       console.log(response.data);
-      types.value = response.data;
+      types.value = response.data.data;
+
     } catch (error) {}
   }
 
