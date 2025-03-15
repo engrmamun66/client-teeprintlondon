@@ -4,17 +4,20 @@
         <div class="teeprint-top-footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-4">
-                        <div class="teeprint-footer-location">
+                    <div class="col-lg-3 col-md-2 col-sm-4">
+                        <div class="teeprint-footer-links">
                             <h4>Get in touch</h4>
                             <ul>
-                                <li>27A Poplar St East Rutherford,NJ 07073 </li>
-                                <li><i class="la la-envelope"></i> <b>info@teeprint.com</b></li>
-                                <li><i class="la la-phone"></i> <b>00 123 456 99</b></li>
-                            </ul>
+                                <li>38 Worland Road,<br>
+                                    City - London,<br>
+                                    County - England,<br>
+                                    Postcode - E15 4EY</li>
+                                <li><i class="la la-envelope"></i> <b>support@teeprintlondon.co.uk</b></li>
+                                <li><i class="la la-phone"></i> <b>+44 7888 185120</b></li>
+                                </ul>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-4">
+                    <!-- <div class="col-lg-2 col-md-2 col-sm-4">
                         <div class="teeprint-footer-links">
                             <h4>Company</h4>
                             <ul>
@@ -24,15 +27,15 @@
                                 <li><a href="#">Blog</a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-lg-2 col-md-2 col-sm-4">
                         <div class="teeprint-footer-links">
                             <h4>Discover</h4>
                             <ul>
-                                <li><a href="#">FAQ’s</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Refund and Returns Policy</a></li>
+                                <li><nuxt-link to="/question">FAQ’s</nuxt-link></li>
+                                <li><nuxt-link to="/quote">Contact Us</nuxt-link></li>
+                                <li><nuxt-link to="/privacy">Privacy Policy</nuxt-link></li>
+                                <li><nuxt-link to="/refund">Refund and Returns Policy</nuxt-link></li>
                             </ul>
                         </div>
                     </div>
@@ -51,7 +54,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-4">
                       <iframe
-                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1981.2238941316784!2d-0.063695!3d51.5145948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603e63fbc2617%3A0x74202ec123e41897!2sTee%20Print%20London!5e0!3m2!1sen!2suk!4v1694444089240!5m2!1sen!2suk"
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1240.7230805709628!2d0.00641884389052932!3d51.54171735688286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603218eac813d%3A0x48df07ec18e11c6c!2sStirling%20Apparel%20Ltd!5e0!3m2!1sen!2sbd!4v1741951227623!5m2!1sen!2sbd"
                           height="200"
                           style="border:0;width: 100%;border-radius: 10px;" 
                           loading="lazy"

@@ -99,11 +99,11 @@ async function sendQuotation() {
                     </div>
                     <h5>Address</h5>
                     <div class="branch-address">
-                      <span>7 Corsican Sq, London E3 3YD, United Kingdom</span>
-                    </div>
-                    <div class="branch-address">
-                      <h6>Branch</h6>
-                      <span>126 Commercial Road, E1 1NL</span>
+                      <span>38 Worland Road,<br>
+                            City - London,<br>
+                            County - England,<br>
+                            Postcode - E15 4EY
+                      </span>
                     </div>
                   </div>
                   <div class="col-md-12 text-center contact-info">
@@ -111,7 +111,7 @@ async function sendQuotation() {
                       <i class="la la-envelope-open"></i>
                     </div>
                     <h5>Email</h5>
-                    <span>contact@gmail.com</span>
+                    <span> support@teeprintlondon.co.uk</span>
                   </div>
                   <div class="col-md-12 text-center contact-info">
                     <div class="contact-circle">
@@ -287,7 +287,7 @@ async function sendQuotation() {
         </div>
         <div class="col-lg-12 col-md-12 map">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1981.2238941316784!2d-0.063695!3d51.5145948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603e63fbc2617%3A0x74202ec123e41897!2sTee%20Print%20London!5e0!3m2!1sen!2suk!4v1694444089240!5m2!1sen!2suk"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1240.7230805709628!2d0.00641884389052932!3d51.54171735688286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603218eac813d%3A0x48df07ec18e11c6c!2sStirling%20Apparel%20Ltd!5e0!3m2!1sen!2sbd!4v1741951227623!5m2!1sen!2sbd"
             height="200"
             style="border: 0; width: 100%; border-radius: 10px"
             loading="lazy"
