@@ -4,8 +4,7 @@ import { usePaypalStore } from '~/store/Paypal'
 let paypalStore = usePaypalStore()
 
 definePageMeta({
-  titleTemplate: "% :: Order Complete",
-  name: "order-complete",
+  titleTemplate: "% :: Order Complete", 
   layout: "web",
 });
 
