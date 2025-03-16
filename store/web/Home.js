@@ -348,8 +348,7 @@ async function placeOrder(payload){
     Toaster.error('Order create failed!')
   }
   return false
-}
-
+} 
 
 
     

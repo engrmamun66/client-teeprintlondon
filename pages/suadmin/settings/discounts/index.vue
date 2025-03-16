@@ -117,16 +117,13 @@ let clearImage = ref(false);
 import { useHomeStore } from '~/store/web/Home'; 
 const homeStore = useHomeStore(); 
 
+let paginateData = ref([])
+let dicountList = ref([])
 
-
-function handleSubmit() {
-  // console.log( brandStore.brandAttribute.image )
-  brandStore.brandAttribute.status = brandStore.brandAttribute.status ? 1 : 0;
-  if (editMode.value) {
-    brandStore.update(brandStore.brandAttribute.id, brandStore.brandAttribute);
-  } else {
-    brandStore.create(brandStore.brandAttribute);
-  }
+async function getDiscountLogs() {
+  Discount.getDiscountLogs().then(response => {
+    console.log({response});
+  })
 }
 
 function OpenModal() {
@@ -163,9 +160,11 @@ async function createDiscount() {
   Toaster.success('Discount applied')
 }
 
+
 onMounted(async () => {
   homeStore.getTypewiseCategoryList();
   await brandStore.getBrandList();
+  getDiscountLogs()
 });
 </script>
 <style scoped>

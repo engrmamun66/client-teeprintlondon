@@ -8,8 +8,6 @@
   </template>
   
   <script setup>
-  import { ref } from 'vue';
-  import { useRuntimeConfig } from '#imports'; // For accessing runtime config in Nuxt 3
   
   // Refs for managing state
   const isLoading = ref(false);

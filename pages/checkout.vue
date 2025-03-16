@@ -1,7 +1,9 @@
 
 <script setup>
+import { usePaypalStore } from '~/store/Paypal'
 let cartStore = inject('cartStore')
 let homeStore = inject('homeStore')
+let paypalStore = usePaypalStore()
 
 definePageMeta({
 titleTemplate: '% :: checkout',
@@ -104,7 +106,7 @@ async function placeOrder(){
     let created = await homeStore.placeOrder(payload)
     if(created){
         resetPayload()
-        localStorage('cart').value = null
+        H.localStorage('cart').value = null
         cartStore.cart = []
     }
 }
