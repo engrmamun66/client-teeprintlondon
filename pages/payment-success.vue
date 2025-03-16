@@ -50,7 +50,7 @@ onMounted(async () => {
                             receive a confirmation email.
                         </p>
 
-                        <table v-if="paypalStore.paymentData || !isMounted" class="table table-striped">
+                        <table v-if="paypalStore.paymentData" class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>Order Id</th>
@@ -62,16 +62,16 @@ onMounted(async () => {
                             <tbody>
                               <tr>
                                 <td>
-                                  {{ paypalStore.paymentData.order_id }}
+                                  {{ paypalStore.paymentData?.order_id }}
                                 </td>
                                 <td>
-                                  {{ paypalStore.paymentData.amount }}
+                                  {{ paypalStore.paymentData?.amount }}
                                 </td>
                                 <td>
-                                  {{ paypalStore.paymentData.currency }}
+                                  {{ paypalStore.paymentData?.currency }}
                                 </td>
                                 <td>
-                                  {{ paypalStore.paymentData.payment_method }}
+                                  {{ paypalStore.paymentData?.payment_method }}
                                 </td>
                               </tr>
                             </tbody>
