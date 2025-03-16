@@ -157,9 +157,8 @@ import { useAuthStore } from '~/store/Auth';
 const authStore = useAuthStore();
 import { useMenuState } from '@/composables/useMenuState';
 const { state, toggleSidebar, toggleProfilePopup, isCollapse, activeMenu, isCurrent, activeSubMenu } = useMenuState();
-onMounted(()=>{
-  console.log('state', state)
-})
+
+
 </script>
 <style scoped>
   .padding{

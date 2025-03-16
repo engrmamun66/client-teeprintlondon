@@ -3,7 +3,7 @@
     <LoaderApi v-if="false" />
     <page-content-header
       :title="'Dashboard'"
-      :links="[{ title: 'Quotation', href: '/suadmin/quotation' }]"
+      :links="[{ title: 'Quotation', href: '/suadmin/quotations' }]"
       :buttons="[]"
     />
     <div class="quotation-container">

@@ -76,7 +76,7 @@
             <div class="form-group">
               <label class="">Category</label>
               <select v-model="payload.category_id" class="form-control" @auxclick="log(homeStore.menus)" >
-                <option :value="null">-Select Category-</option>
+                <option :value="null">-Apply On All Categories-</option>
                 <template v-for="item in homeStore.menus || []">
                   <optgroup :label="item.name">
                     <template v-for="(child2, index2) in item?.categories" :key="index2" >

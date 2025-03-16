@@ -50,7 +50,7 @@ let props = defineProps({
   },
   prevent: {
     default: true,
-    required: true,
+    required: false,
   }
 });
 

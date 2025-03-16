@@ -339,12 +339,13 @@ export const useHomeStore = defineStore("homeStore", () => {
 async function placeOrder(payload){
   try {
       let response = await FrontendApi.placeOrder(payload)
-      if(response.data.success){
+      let succeess = Response.isOk(response)
+      if(succeess){
         Toaster.success('Order created successfully')
         return true
-      }
+      }  
   } catch (error) {
-    
+    Toaster.error('Order create failed!')
   }
   return false
 }
