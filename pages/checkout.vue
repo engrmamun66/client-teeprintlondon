@@ -1,7 +1,5 @@
 
-<script setup>
-import { usePaypalStore } from '~/store/Paypal'
-let paypalStore = usePaypalStore()
+<script setup> 
 let cartStore = inject('cartStore')
 let homeStore = inject('homeStore')
 
@@ -80,7 +78,7 @@ let getDeliveryCostItem = computed(() => {
 
 onMounted(() => {
 
-    let deliveryCost = Number(H.localStorage('deliveryCost').value) || H.getDeliveryOptions()[0]['cost'] 
+    let deliveryCost = Number(H.localStorage('deliveryCost').value) || Number(H.getDeliveryOptions()[0]['cost'] )
  
     payload.delivery_type_id = H.getDeliveryOptions().filter(item => item.cost == deliveryCost)?.[0]?.['id'] || H.getDeliveryOptions()[0]['id'] 
     // console.log('888--', payload.delivery_type_id);
@@ -320,12 +318,12 @@ async function placeOrder(){
                                             </tr>
                                             <tr>
                                                 <th>Shipping <small>({{ getDeliveryCostItem?.['name'] }})</small></th>
-                                                <td class="text-end">{{ H.formatPrice(getDeliveryCostItem?.['cost']) }}</td>
+                                                <td class="text-end">{{ H.formatPrice(Number(getDeliveryCostItem?.['cost'])) }}</td>
                                             </tr>
     
                                             <tr>
                                                 <th><strong>Total</strong></th>
-                                                <td class="text-end"><strong>{{ H.formatPrice(cartStore.totalPrice + (getDeliveryCostItem?.['cost'] || 0)) }}</strong></td>
+                                                <td class="text-end"><strong>{{ H.formatPrice(cartStore.totalPrice + (Number(getDeliveryCostItem?.['cost']) || 0)) }}</strong></td>
                                             </tr>
                                         </template>
                                         <template v-else>

@@ -13,7 +13,7 @@ let deliveryCost = ref(H.getDeliveryOptions()[0]['cost'])
 onMounted(() => {
     useNuxtApp().$emit('hideInPageCart', false)
     H.delay(()=> isMounted.value = true, 1000)
-    H.localStorage('deliveryCost').value = H.localStorage('deliveryCost').value || deliveryCost.value
+    H.localStorage('deliveryCost').value = H.localStorage('deliveryCost').value || Number(deliveryCost.value)
 })
 
 watch(deliveryCost, (a) => {
@@ -163,14 +163,14 @@ watch(deliveryCost, (a) => {
                                         </tr>
                                         <tr>
                                             <td>Delivery Charge</td>
-                                            <td><span class="ps-2"> {{ H.formatPrice(deliveryCost) }} </span></td>
+                                            <td><span class="ps-2"> {{ H.formatPrice(Number(deliveryCost)) }} </span></td>
                                         </tr>  
                                         <tr>
                                             <td>
                                                 <h4>Total</h4>
                                             </td>
                                             <td>
-                                                <h4 class="ps-2"> {{ H.formatPrice(cartStore.totalPrice + deliveryCost) }} </h4>
+                                                <h4 class="ps-2"> {{ H.formatPrice(cartStore.totalPrice + Number(deliveryCost)) }}</h4>
                                             </td>
                                         </tr>
                                     </template>
