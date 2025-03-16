@@ -8,7 +8,7 @@ export const usePaypalStore = defineStore("paypal", () => {
         let response = await Paypal.createPayment({amount, order_id})
         
         if(response.data.status == 'CREATED'){
-          let { links, id } = response.data
+          let { links } = response.data
           const approveLink = links.find((link) => link.rel === 'approve');
           if (approveLink) {
             window.location.href = approveLink.href;
@@ -21,15 +21,31 @@ export const usePaypalStore = defineStore("paypal", () => {
         console.log('error---', error);
       }
     }
+
+    let paymentData = ref(null)
    
     async function paymentSuccess({token, order_id}){
       try {
+        paymentData.value = null
         let response = await Paypal.paymentSuccess({ params: { token, order_id } })
-        if(Response.isOk(response)){
-          console.log('payment__response:0', response.data);
-          console.log('payment__response:1', response.data.data);
-          console.log('payment__response:2', response.data.links);
-        } 
+        /**
+         * response.data?.payment --> Example Object
+         * {
+              "payment_id": "0S620627AD4141800",
+              "payer_id": "B4E3U9V6FK6QW",
+              "order_id": "21",
+              "amount": "108.00",
+              "currency": "USD",
+              "status": "COMPLETED",
+              "payment_method": "PayPal",
+              "updated_at": "2025-03-16T10:09:50.000000Z",
+              "created_at": "2025-03-16T10:09:50.000000Z",
+              "id": 4
+          }
+         */
+        if(response.data?.payment?.payment_id){
+          paymentData.value = response.data?.payment
+        }
       } catch (error) {
         
       }
@@ -39,6 +55,7 @@ export const usePaypalStore = defineStore("paypal", () => {
   return {
     createPayment,
     paymentSuccess,
+    paymentData,
   };
 });
 

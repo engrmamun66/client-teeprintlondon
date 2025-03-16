@@ -1,9 +1,29 @@
 <script setup>
+// ?order_id=21&token=0S620627AD4141800&PayerID=B4E3U9V6FK6QW
+import { usePaypalStore } from '~/store/Paypal'
+let paypalStore = usePaypalStore()
+
 definePageMeta({
   titleTemplate: "% :: Order Complete",
   name: "order-complete",
   layout: "web",
 });
+
+let isMounted = ref(null)
+
+
+onMounted(async () => {
+  try {
+    let { token, order_id } = useRoute().query
+    await paypalStore.paymentSuccess({token, order_id}) 
+  } catch (error) {
+    
+  }
+
+
+  isMounted.value = true
+})
+
 </script>
 
 
@@ -29,7 +49,36 @@ definePageMeta({
                         <p> You will shortly
                             receive a confirmation email.
                         </p>
+
+                        <table v-if="paypalStore.paymentData || !isMounted" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Order Id</th>
+                                    <th>Amount</th>
+                                    <th>Currency</th>
+                                    <th>Payment Method</th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  {{ paypalStore.paymentData.order_id }}
+                                </td>
+                                <td>
+                                  {{ paypalStore.paymentData.amount }}
+                                </td>
+                                <td>
+                                  {{ paypalStore.paymentData.currency }}
+                                </td>
+                                <td>
+                                  {{ paypalStore.paymentData.payment_method }}
+                                </td>
+                              </tr>
+                            </tbody>
+
+                        </table>
                    </div>
+
                  </div>
     
                  <br />

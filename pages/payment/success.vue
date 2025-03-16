@@ -17,36 +17,13 @@
   
   const route = useRoute();
   
-  onMounted(async () => {
-    try {
-      const token = route.query.token;
-      const orderId = route.query.order_id;
-  
-      if (!token || !orderId) {
-        throw new Error('Token or Order ID is missing in the URL');
-      }
-  
-      // Fetch payment details from Laravel backend
-      const data = await $fetch(`${useRuntimeConfig()?.public?.['API_BASE_URL']}/payment-success`, {
-        method: 'GET',
-        params: { token, order_id: orderId },
-      });
-  
-      // Update UI with payment details
-      if (data.payment_id) {
-        transactionId.value = data.payment_id;
-      }
-      if (data.amount) {
-        amount.value = data.amount;
-      }
-      if (data.currency) {
-        currency.value = data.currency;
-      }
-  
-      console.log(data);
-    } catch (err) {
-      error.value = 'An error occurred while fetching payment details.';
-      console.error(err);
-    }
-  });
+  const token = route.query.token;
+  const order_id = route.query.order_id;
+
+  navigateTo({
+    path: '/payment-success',
+    query: route.query
+  })
+
+   
   </script>
