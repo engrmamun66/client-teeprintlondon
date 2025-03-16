@@ -8,7 +8,7 @@
               <!-- <nuxt-link :to="'/'">
                 <img src="/img/logo.jpg" />
               </nuxt-link> -->
-              <a id="menu_toggler" class="leap-admin-sidebarCollapse fs-2 mt-2   cp show_upto_900"> 
+              <a @click="logoutNow()" id="menu_toggler" class="leap-admin-sidebarCollapse fs-2 mt-2 cp show_upto_900"> 
                 <i class="las la-sign-out-alt text-black"></i>
                </a>
             </div>
@@ -33,7 +33,7 @@
                   v-if="authUser?.profile_img"
                   :src="authUser?.profile_img"
                 />
-                <i v-else class="las la-sign-out-alt"></i>
+                <i v-else @click="logoutNow()" class="las la-sign-out-alt cp"></i>
               </a> 
               <div v-if="false"
                 @mouseleave="state.showProfilePopup = false"
@@ -130,6 +130,13 @@ onMounted(()=>{
    
    
 })
+
+
+function logoutNow(){
+  useCookie('access_token').value = null
+  reloadNuxtApp({path: '/suadmin/login'})
+}
+
 </script>
 
 <style scoped>
