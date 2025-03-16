@@ -1,8 +1,11 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
 import FrontendApi from "../apis/web/Frontend";
 import { useCartStore } from "~/store/web/cart";
+import { usePaypalStore } from '~/store/Paypal'
 
 export const useHomeStore = defineStore("homeStore", () => {
+
+let paypalStore = usePaypalStore()
 
   let cartStore = useCartStore()
 
@@ -342,6 +345,11 @@ async function placeOrder(payload){
       let succeess = Response.isOk(response)
       if(succeess){
         Toaster.success('Order created successfully')
+        let { total: amount, id: order_id } = response.data?.data || {}
+
+        // H.localStorage('cart').value = null
+        paypalStore.createPayment({amount, order_id})
+
         return true
       }  
   } catch (error) {

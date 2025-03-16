@@ -1,9 +1,9 @@
 
 <script setup>
 import { usePaypalStore } from '~/store/Paypal'
+let paypalStore = usePaypalStore()
 let cartStore = inject('cartStore')
 let homeStore = inject('homeStore')
-let paypalStore = usePaypalStore()
 
 definePageMeta({
 titleTemplate: '% :: checkout',
@@ -94,7 +94,12 @@ onMounted(() => {
 })
 
 
-async function placeOrder(){ 
+async function placeOrder(){  
+
+    if(!H.localStorage('cart').value?.length){
+        Toaster.error('Your cart is emtpy')
+        return
+    }
     
     if(H.isPendingAnyApi('Frontend:placeOrder')) return
 
@@ -103,12 +108,7 @@ async function placeOrder(){
     if(!payload.customer_phone) return Toaster.error('Phone number is required')
     if(!payload.customer_email) return Toaster.error('Email is required')
 
-    let created = await homeStore.placeOrder(payload)
-    if(created){
-        resetPayload()
-        H.localStorage('cart').value = null
-        cartStore.cart = []
-    }
+    await homeStore.placeOrder(payload, {cartStore, resetPayload})
 }
 
 </script>
@@ -348,13 +348,19 @@ async function placeOrder(){
                             </div>
                             <div class="teeprint-ordersummery-button">
                                 <template v-if="isMounted">
-                                    <button @click="placeOrder()" :disabled="!payload?.items?.length" type="button" class="teeprint-button teeprint-theme-btn teeprint-placeorder-btn">
-                                        Proceed To Payment <BtnLoader v-if="H.isPendingAnyApi('Frontend:placeOrder')"></BtnLoader>
-                                    </button>
+                                    <div class="d-flex align-content-center flex-wrap">
+                                        <button @click="navigateTo({path: '/cart'})" type="button" class="teeprint-button teeprint-theme-btn teeprint-placeorder-btn mb-1">
+                                            Back To Cart  
+                                        </button>
+                                        <button @click="placeOrder()" type="button" class="teeprint-button teeprint-theme-btn teeprint-placeorder-btn mb-1">
+                                            Proceed To Payment <BtnLoader v-if="H.isPendingAnyApi('Frontend:placeOrder')"></BtnLoader>
+                                        </button>
+                                    </div>
                                 </template>
                                 <template v-else>
                                     <div class="w-100 d-flex justify-content-center">
-                                        <ShimmerEffect width="250px" height="44px"></ShimmerEffect>
+                                        <ShimmerEffect width="40%" height="40px" class="me-1"></ShimmerEffect>
+                                        <ShimmerEffect width="60%" height="40px"></ShimmerEffect>
                                     </div>
                                 </template>
                             </div> 

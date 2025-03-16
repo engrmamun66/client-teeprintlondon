@@ -41,9 +41,7 @@ onMounted(async () => {
 
   homeStore.product.images?.forEach((image) => {
     image_url.value.push(image.image_url);
-  });
-
-  console.log("Image URLs:", image_url.value);
+  }); 
 
   setInterval(() => {
     if (!image_url.value.length) return;
@@ -219,7 +217,7 @@ let showEffect = computed(
                     </span>
                   </p>
                   <web-discountCard
-                    v-if="homeStore.product?.discount"
+                    v-if="parseFloat(homeStore.product?.discount) > 0"
                     class="ms-4"
                   >
                     {{ Number(homeStore.product?.discount).toFixed(0) }}

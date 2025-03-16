@@ -39,9 +39,7 @@ onMounted(async () => {
 
   homeStore.product.images?.forEach((image) => {
     image_url.value.push(image.image_url);
-  });
-
-  console.log("Image URLs:", image_url.value);
+  }); 
 
   setInterval(() => {
     if (!image_url.value.length) return;
