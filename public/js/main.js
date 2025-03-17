@@ -11,8 +11,7 @@ $(document).on("scroll", function() {
 $(document).ready(function() {
 
 
-    function hideMenu(event){ 
-        event.preventDefault();
+    function hideMenu(event){  
         let value = $(".teeprint-nav-manu").css('display') 
         if((value == 'block' || value !== 'none') && window.innerWidth <= 450){
             $(".teeprint-nav-manu").slideUp(200);
@@ -21,6 +20,7 @@ $(document).ready(function() {
     $(document).click(hideMenu);
 
     $(".teeprint-mobile-menubar").click(function(event) {
+        console.log('11111');
         event.stopImmediatePropagation()  
         $(".teeprint-nav-manu").slideToggle(200); 
     });
