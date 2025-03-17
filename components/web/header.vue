@@ -35,8 +35,24 @@ watch(search, (a) => {
         slug: '/same-day-delivery/shirt',
       },
       {
-        name: 'Same Day Polo Shirt Printing',
-        slug: '/same-day-delivery/polo_shirt_printing',
+        name: 'Same Day Cotton T-Shirt Printing',
+        slug: '/same-day-delivery/cotton_t_shirt',
+      },
+      {
+        name: 'Same Day Football Shirt Printing',
+        slug: '/same-day-delivery/football_shirt',
+      },
+      {
+        name: 'Same Day Promotion Shirt Printing',
+        slug: '/same-day-delivery/promotion_shirts',
+      },
+      {
+        name: 'Same Day Sports Shirt Printing',
+        slug: '/same-day-delivery/sports_shirt',
+      },
+      {
+        name: 'Same Day University and School Shirt Printing',
+        slug: '/same-day-delivery/university_shirt',
       },
       {
         name: 'Same Day Hoodie Printing',
@@ -368,7 +384,7 @@ let { staticPagesByParentCat } = globalData;
               <div class="teeprint-logo-area-inner">
                 <div class="teeprint-logo-area-middle">
                   <a href="/">
-                    <img src="/img/logo.jpg" alt="logo image" />
+                    <img src="/img/logon_fina.png" alt="logo image" />
                   </a>
                 </div>
               </div>
