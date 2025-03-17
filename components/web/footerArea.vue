@@ -49,7 +49,7 @@
                                 <li><a href="#" class="teeprint-twitter-onlyicon"><i class="la la-twitter"></i></a></li>
                             </ul>
                             <h4>Payment</h4>
-                            <img src="https://s3.us-east-2.amazonaws.com/images.rentmy.co/content-image/3534/media/1728922614_6uosh0lb_payment.png">
+                            <img src="/img/card_image1.jpg">
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-4">

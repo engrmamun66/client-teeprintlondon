@@ -22,7 +22,7 @@ function addToCart() {
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="Premium Quality Football Team Shirts"
+            title="Premium Quality Football Team T-Shirts"
             :images="[
               '/img/Football_team_t_shirt/7.jpg',
               '/img/Football_team_t_shirt/5.jpg',
@@ -30,14 +30,14 @@ function addToCart() {
             ]"
           >
             At Tee Print London, we specialize in delivering **premium-quality
-            Football Team Shirts** that combine style, durability, and comfort.
+            Football Team T-Shirts** that combine style, durability, and comfort.
             Whether you're outfitting a football team, creating uniforms for
             players, or designing shirts for a sports event, we provide vibrant,
             long-lasting prints on high-quality fabrics. Our advanced printing
             techniques ensure sharp details and rich colors that won’t fade over
             time. With fast turnaround times and competitive pricing, we make
             customization effortless and affordable. Choose Tee Print London for
-            stylish, durable, and uniquely crafted Football Team Shirts that
+            stylish, durable, and uniquely crafted Football Team T-Shirts that
             make a statement!
 
             <template #link>
@@ -60,13 +60,13 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Your Football Team Shirts?
+                  Why Choose Tee Print London for Your Football Team T-Shirts?
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
                   Tee Print London is your trusted partner for **high-quality
-                  Football Team Shirts**. We use only the finest materials and
+                  Football Team T-Shirts**. We use only the finest materials and
                   cutting-edge technology to bring your ideas to life. Our
                   state-of-the-art printing techniques, including
                   Direct-to-Garment (DTG), screen printing, and vinyl printing,
@@ -136,17 +136,17 @@ function addToCart() {
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  High-Quality Football Team Shirts You Can Trust
+                  High-Quality Football Team T-Shirts You Can Trust
                 </h2>
               </div>
               <p>
-                When it comes to custom Football Team Shirts, **quality
+                When it comes to custom Football Team T-Shirts, **quality
                 matters**. At Tee Print London, we specialize in creating
                 durable, stylish, and comfortable shirts that meet your exact
                 needs. Our expert team uses advanced printing methods to ensure
                 your designs are vibrant, precise, and long-lasting. From
                 intricate logos to bold graphics, we handle every detail with
-                care, ensuring your Football Team Shirts look great and perform
+                care, ensuring your Football Team T-Shirts look great and perform
                 even better. Whether you need a single shirt or a bulk order,
                 Tee Print London is dedicated to delivering exceptional results
                 every time. **Purchase from us** and experience the perfect
@@ -176,7 +176,7 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Get Your Custom Football Team Shirts Printed Today!
+                  Get Your Custom Football Team T-Shirts Printed Today!
                 </h2>
               </div>
               <div class="aboutus-list">
@@ -198,7 +198,7 @@ function addToCart() {
                   compromising on quality. Whether you need a single shirt or a
                   bulk order, we ensure every piece is printed with precision,
                   durability, and style. **Purchase from Tee Print London** and
-                  get your custom Football Team Shirts printed on the same day
+                  get your custom Football Team T-Shirts printed on the same day
                   with professional service and unmatched quality.
                 </p>
               </div>

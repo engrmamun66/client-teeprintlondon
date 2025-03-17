@@ -17,13 +17,13 @@ function addToCart() {
 
 <template>
   <div>
-    <!-- Football Team Shirts Section -->
+    <!-- Football Team T-shirt Section -->
     <section class="teeprint-makes-section">
       <div class="container">
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="Same-Day Custom Football Team Shirts"
+            title="Same-Day Custom Football Team T-shirt"
             :images="[
               '/img/Football_team_t_shirt/7.jpg',
               '/img/Football_team_t_shirt/5.jpg',
@@ -52,7 +52,7 @@ function addToCart() {
       </div>
     </section>
 
-    <!-- Why Choose Tee Print London for Football Team Shirts -->
+    <!-- Why Choose Tee Print London for Football Team T-shirt -->
     <section class="teeprint-about-section">
       <div class="container">
         <div class="row">
@@ -60,7 +60,7 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Same-Day Football Team Shirts?
+                  Why Choose Tee Print London for Same-Day Football Team T-shirt?
                 </h2>
               </div>
               <div class="aboutus-list">
@@ -125,7 +125,7 @@ function addToCart() {
       <lazy-web-GoogleReview class="mb-5"></lazy-web-GoogleReview>
     </div>
 
-    <!-- High-Quality Football Team Shirts Section -->
+    <!-- High-Quality Football Team T-shirt Section -->
     <section class="teeprint-homewhychoose-section">
       <div class="container">
         <div class="row">
@@ -180,7 +180,7 @@ function addToCart() {
       <Cloth />
     </div>
 
-    <!-- Order Your Custom Football Team Shirts Section -->
+    <!-- Order Your Custom Football Team T-shirt Section -->
     <section class="teeprint-about-section">
       <div class="container">
         <div class="row">
@@ -188,7 +188,7 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Get Your Custom Football Team Shirts Printed Today!
+                  Get Your Custom Football Team T-shirt Printed Today!
                 </h2>
               </div>
               <div class="aboutus-list">

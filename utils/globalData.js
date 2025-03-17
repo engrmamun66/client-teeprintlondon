@@ -85,8 +85,8 @@ export let globalData = {
         'Polo Shirts':'/cloth/polo_shirt',
         'School and university shirts' : '/cloth/university_shirt',
         'Basketball Team Tank' : '/cloth/basketball_shirt',
-        'Football Team Shirts': '/cloth/football_shirt',
-        'Sports Shirts': '/cloth/sports_shirt',
+        'Football Team T-Shirts': '/cloth/football_shirt',
+        'Sports T-Shirts': '/cloth/sports_shirt',
         'Promotion Shirts': '/cloth/promotion_shirts'
 
     }, 

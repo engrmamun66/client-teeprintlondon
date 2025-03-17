@@ -22,21 +22,21 @@ function addToCart() {
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="Premium Quality Sports Shirts"
+            title="Premium Quality Sports T-Shirts"
             :images="[
               '/img/Sports_Shirts/1.jpg',
               '/img/Sports_Shirts/2.jpg',
             ]"
           >
             At Tee Print London, we specialize in delivering **premium-quality
-            Sports Shirts** that combine style, durability, and comfort. Whether
+            Sports T-Shirts** that combine style, durability, and comfort. Whether
             you're outfitting a sports team, creating uniforms for players, or
             designing shirts for a sports event, we provide vibrant,
             long-lasting prints on high-quality fabrics. Our advanced printing
             techniques ensure sharp details and rich colors that won’t fade over
             time. With fast turnaround times and competitive pricing, we make
             customization effortless and affordable. Choose Tee Print London for
-            stylish, durable, and uniquely crafted Sports Shirts that make a
+            stylish, durable, and uniquely crafted Sports T-Shirts that make a
             statement!
 
             <template #link>
@@ -59,19 +59,19 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Your Sports Shirts?
+                  Why Choose Tee Print London for Your Sports T-Shirts?
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
                   Tee Print London is your trusted partner for **high-quality
-                  Sports Shirts**. We use only the finest materials and
+                  Sports T-Shirts**. We use only the finest materials and
                   cutting-edge technology to bring your ideas to life. Our
                   state-of-the-art printing techniques, including
                   Direct-to-Garment (DTG), screen printing, and vinyl printing,
                   ensure your designs are vibrant, sharp, and built to last.
                   With unbeatable customer service and a commitment to
-                  excellence, we make it easy to create custom Sports Shirts
+                  excellence, we make it easy to create custom Sports T-Shirts
                   that stand out. Whether you need a single shirt or a bulk
                   order, Tee Print London delivers premium quality every time.
                   **Purchase from us** and experience the difference that
@@ -135,11 +135,11 @@ function addToCart() {
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  High-Quality Sports Shirts You Can Trust
+                  High-Quality Sports T-Shirts You Can Trust
                 </h2>
               </div>
               <p>
-                When it comes to custom Sports Shirts, **quality matters**. At
+                When it comes to custom Sports T-Shirts, **quality matters**. At
                 Tee Print London, we specialize in creating durable, stylish,
                 and comfortable shirts that meet your exact needs. Our expert
                 team uses advanced printing methods to ensure your designs are
@@ -174,12 +174,12 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Get Your Custom Sports Shirts Printed Today!
+                  Get Your Custom Sports T-Shirts Printed Today!
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait days or even weeks for your custom Sports Shirts when
+                  Why wait days or even weeks for your custom Sports T-Shirts when
                   you can have them printed today? At Tee Print London, we offer
                   same-day printing to ensure you get your custom designs
                   exactly when you need them. Whether it’s for a sports team,
@@ -195,7 +195,7 @@ function addToCart() {
                   deadlines without compromising on quality. Whether you need a
                   single shirt or a bulk order, we ensure every piece is printed
                   with precision, durability, and style. **Purchase from Tee
-                  Print London** and get your custom Sports Shirts printed on
+                  Print London** and get your custom Sports T-Shirts printed on
                   the same day with professional service and unmatched quality.
                 </p>
               </div>

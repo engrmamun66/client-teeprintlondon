@@ -17,13 +17,13 @@ function addToCart() {
 
 <template>
   <div>
-    <!-- Sports Shirts Section -->
+    <!-- Sports T-shirt Section -->
     <section class="teeprint-makes-section">
       <div class="container">
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="Same-Day Custom Sports Shirts"
+            title="Same-Day Custom Sports T-shirt"
             :images="[
               '/img/Sports_Shirts/1.jpg',
               '/img/Sports_Shirts/2.jpg',
@@ -51,7 +51,7 @@ function addToCart() {
       </div>
     </section>
 
-    <!-- Why Choose Tee Print London for Sports Shirts -->
+    <!-- Why Choose Tee Print London for Sports T-shirt -->
     <section class="teeprint-about-section">
       <div class="container">
         <div class="row">
@@ -59,7 +59,7 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Same-Day Sports Shirts?
+                  Why Choose Tee Print London for Same-Day Sports T-shirt?
                 </h2>
               </div>
               <div class="aboutus-list">
@@ -124,7 +124,7 @@ function addToCart() {
       <lazy-web-GoogleReview class="mb-5"></lazy-web-GoogleReview>
     </div>
 
-    <!-- High-Quality Sports Shirts Section -->
+    <!-- High-Quality Sports T-shirt Section -->
     <section class="teeprint-homewhychoose-section">
       <div class="container">
         <div class="row">
@@ -178,7 +178,7 @@ function addToCart() {
       <Cloth />
     </div>
 
-    <!-- Order Your Custom Sports Shirts Section -->
+    <!-- Order Your Custom Sports T-shirt Section -->
     <section class="teeprint-about-section">
       <div class="container">
         <div class="row">
@@ -186,7 +186,7 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Get Your Custom Sports Shirts Printed Today!
+                  Get Your Custom Sports T-shirt Printed Today!
                 </h2>
               </div>
               <div class="aboutus-list">

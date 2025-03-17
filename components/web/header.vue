@@ -39,7 +39,7 @@ watch(search, (a) => {
         slug: '/same-day-delivery/cotton_t_shirt',
       },
       {
-        name: 'Same Day Football Shirt Printing',
+        name: 'Same Day Football Team T-Shirt Printing',
         slug: '/same-day-delivery/football_shirt',
       },
       {
