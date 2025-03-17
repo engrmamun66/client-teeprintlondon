@@ -28,7 +28,7 @@ let paypalStore = usePaypalStore()
             28, // School and university shirts
             29, // Promotion Shirts
             30, // Sports Shirts
-            31, // Football Team Shirts
+            31, // Football Team T- Shirts
             32  // Basketball Team Shirts
           ];
         

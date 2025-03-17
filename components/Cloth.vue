@@ -85,9 +85,9 @@ const items = [
     link: "cloth/apron",
   },
   {
-    title: "Football Team Shirts",
+    title: "Football Team T- Shirts",
     image: "/img/Football_team_t_shirt/6.jpg",
-    link: "same-day-delivery/fleeces_and_knits",
+    link: "same-day-delivery/football_shirt",
   },
   {
     title: "Active Wear Print",
