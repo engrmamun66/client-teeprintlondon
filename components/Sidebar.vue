@@ -4,7 +4,7 @@
       <div class="logo-area-inner">
         <div class="logo-area-middle">
           <nuxt-link :to="'/'">
-            <img src="/img/logo.jpg" />
+            <img src="/img/logon_fina.png" />
           </nuxt-link>
         </div>
         <div class="leap-admin-collapes-area">
@@ -119,6 +119,13 @@
       <i class="las la-file-invoice"></i> <!-- Changed to an invoice icon for quotations -->
       <span class="menu-text">Quotation</span>
       <span class="tooltip__text tooltip__text--right"> Quotation </span>
+    </nuxt-link>
+  </li>
+  <li>
+    <nuxt-link @click="activeMenu('orders')" :to="'/suadmin/orders'" class="leftsidebar-link menu-tooltip">
+      <i class="las la-file-invoice"></i> <!-- Changed to an invoice icon for quotations -->
+      <span class="menu-text">Orders</span>
+      <span class="tooltip__text tooltip__text--right"> Orders </span>
     </nuxt-link>
   </li>
   <li>

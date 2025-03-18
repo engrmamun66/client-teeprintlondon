@@ -16,7 +16,7 @@
               <div class="login-container-body">
                 <div class="text-center">
                   <img
-                    src="/img/logo.jpg"
+                    src="/img/logon_fina.png"
                     class="img-fluid login-logo"
                   />
                 </div>

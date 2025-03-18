@@ -91,6 +91,7 @@ onMounted(() => {
 
 })
 
+let orderCreating = ref(false)
 
 async function placeOrder(){  
 
@@ -105,6 +106,12 @@ async function placeOrder(){
     if(!payload.customer_last_name) return Toaster.error('Last name is required')
     if(!payload.customer_phone) return Toaster.error('Phone number is required')
     if(!payload.customer_email) return Toaster.error('Email is required')
+
+    if(orderCreating.value) return
+
+    orderCreating.value = true
+
+    H.delay(()=> orderCreating.value = true, 30 * 1000)
 
     await homeStore.placeOrder(payload, {cartStore, resetPayload})
 }
@@ -351,7 +358,7 @@ async function placeOrder(){
                                             Back To Cart  
                                         </button>
                                         <button @click="placeOrder()" type="button" class="teeprint-button teeprint-theme-btn teeprint-placeorder-btn mb-1">
-                                            Proceed To Payment <BtnLoader v-if="H.isPendingAnyApi('Frontend:placeOrder')"></BtnLoader>
+                                            Proceed To Payment <BtnLoader v-if="orderCreating" color="white" class="text-white"></BtnLoader>
                                         </button>
                                     </div>
                                 </template>
