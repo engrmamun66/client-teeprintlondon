@@ -20,10 +20,25 @@ export const useOrderStore = defineStore("paypal", () => {
       }
     } 
 
+    let orderDetails = ref(null)
+    async function getOrderDetails(order_number){
+      try { 
+        let response = await OrderApi.getOrderDetails(order_number)
+        if(Response.isOk(response, {toaster: false})){
+          orderDetails.value = Response.parseData(response) 
+        }
+       
+      } catch (error) {
+        console.log('error---', error);
+      }
+    } 
+
   return {
     paginateData,
     orders,
     getOrderList,
+    orderDetails,
+    getOrderDetails,
   };
 });
 

@@ -120,7 +120,7 @@
             :ids="fileIds"
             @download="handleFileDownload"
           />
-        </div>
+        </div> 
       </div>
     </div>
   </div>

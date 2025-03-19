@@ -3,7 +3,7 @@
     <LoaderApi v-if="false" />
     <page-content-header
       :title="'Dashboard'"
-      :links="[{ title: 'Orders', href: '/suadmin/quotations' }]"
+      :links="[{ title: 'Orders', href: '/suadmin/orders' }]"
       :buttons="[]"
     />
     <admin-card :showHeader="true" :title="'Order List'">
@@ -18,7 +18,7 @@
         >
           <thead>
             <tr>
-              <th>Orde Id</th>
+              <th>Orde&nbsp;No</th>
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
@@ -30,14 +30,16 @@
             <tr class="odd" v-for="(order, index) in orderStore.orders" :key="index" >
               <td>
                 <div class="px-2">
-                  <span>{{ order?.id }}</span>
+                  <nuxt-link :to="`/suadmin/orders/${order.order_number}`">{{ order?.order_number }}</nuxt-link> 
                 </div>
               </td>
 
               <td>
                 <div class="px-2">
                   <p>
-                    <span>{{ [order?.customer_first_name, order?.customer_last_name].filter(Boolean).join(' ') }}</span>
+                    <nuxt-link :to="`/suadmin/orders/${order.order_number}`">
+                      {{ [order?.customer_first_name, order?.customer_last_name].filter(Boolean).join(' ') }}
+                    </nuxt-link> 
                   </p>
                 </div>
               </td>
@@ -87,7 +89,7 @@
                         "
                       />
                     </p> -->
-                    <nuxt-link :to="`/suadmin/orders/${order.id}`">
+                    <nuxt-link :to="`/suadmin/orders/${order.order_number}`">
                       <p tooltip="View" flow="up">
                         <i class="las la-eye size-sm cp"></i>
                       </p>

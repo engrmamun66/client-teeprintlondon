@@ -69,7 +69,11 @@ function createApiHandler({accessToken}) {
             }, 100);
             return response
         }, (error) => {
-    
+            if(error.response?.data?.message === "Unauthenticated."){
+                useCookie('token_expire').value = null
+                useCookie('token_expire_duration').value = null
+                reloadNuxtApp({path: '/suadmin/login'})
+            }
             delete State('response').pendings[fullURL(error.config)];
             delete State('response').endPoints[endPoint(error.config)];
             
