@@ -3,7 +3,7 @@
     <LoaderApi v-if="false" />
     <page-content-header
       :title="'Dashboard'"
-      :links="[{ title: 'Orders', href: '/suadmin/orders' }, { title: `Order: #${useRoute().params.order_id}`}]"
+      :links="[{ title: 'Orders', href: '/suadmin/orders' }, { title: `Order: #${useRoute().params.order_number}`}]"
       :buttons="[]"
     />
    
