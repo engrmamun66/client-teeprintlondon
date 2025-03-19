@@ -35,7 +35,7 @@
                 :placeholder="placeholder"
                 :disabled="disabled"
                 :type="isShowing ? 'text' : 'password'"
-                :value="modelValue"
+                :value="modelValue || value"
                 @keydown="$event.target.value ? $emit('keydown', $event) : false"
                 @keyup.stop="keyUp"
                 style="padding-right: 31px"
@@ -82,7 +82,7 @@
               :placeholder="placeholder"
               :disabled="disabled"
               :type="type"
-              :value="modelValue"
+              :value="modelValue || value"
               @keydown="$event.target.value ? $emit('keydown', $event) : false"
               @keyup.stop="keyUp"
               :style="input_styles + ';' + (type=='file' ? 'padding: 13px;': '')"
@@ -118,6 +118,9 @@ let props = defineProps({
   modelValue: {
     type: [String, Number],
     default: "",
+  },
+  value: { 
+    default: '',
   },
   label: {
     default: "",

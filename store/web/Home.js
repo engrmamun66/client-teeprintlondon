@@ -344,7 +344,6 @@ async function placeOrder(payload, {cartStore, resetPayload}){
       let response = await FrontendApi.placeOrder(payload)
       let succeess = Response.isOk(response)
       if(succeess){
-        H.delay(() => Toaster.success('Order created successfully'), 500)
         let { total: amount, id: order_id } = response.data?.data || {}
 
         H.localStorage('cart').value = null

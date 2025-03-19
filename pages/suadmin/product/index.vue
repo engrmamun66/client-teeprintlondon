@@ -163,7 +163,7 @@
           </table>
 
           <div class="d-flex justify-content-center">
-            <Pagination v-model="productStore.paginateData" @jumpToPage="productStore.getProductList" ></Pagination>
+            <Pagination v-model="productStore.paginateData" @jumpToPage="(page) => productStore.getProductList({page, ...params})" ></Pagination>
           </div>
 
 
@@ -237,6 +237,9 @@ function handleSubmit() {
       queryParams.subcategory_id = queryParams.category.split('-')[1]
     }
   }
+
+  // console.log(queryParams);
+  delete queryParams.category 
  
   productStore.getProductList(queryParams);
 }

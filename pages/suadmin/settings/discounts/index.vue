@@ -28,16 +28,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="odd" v-for="(brand, index) in 1" :key="index" >
-               <td> All </td>
-               <td> 19 Feb 2025 08:25 AM </td>
-               <td> 22 </td>
+            <tr class="odd" v-for="(item, index) in dicountList" :key="index" >
+               <td> {{ item?.category?.name }} {{ item.applied_to }} </td>
+               <td> {{ moment(item.applied_at).format('MMM DD YYYY hh:mm A') }} </td>
+               <td> {{ Number(item?.discount).toFixed(0) }}% </td>
             </tr>
-            <tr class="odd" v-for="(brand, index) in 1" :key="index" >
-               <td> Women </td>
-               <td> 18 Feb 2025 08:25 AM </td>
-               <td> 22 </td>
-            </tr>
+            
           </tbody>
         </table>
 
@@ -117,12 +113,15 @@ let clearImage = ref(false);
 import { useHomeStore } from '~/store/web/Home'; 
 const homeStore = useHomeStore(); 
 
-let paginateData = ref([])
+let paginateData = ref(null)
 let dicountList = ref([])
 
 async function getDiscountLogs() {
-  Discount.getDiscountLogs().then(response => {
-    console.log({response});
+  Discount.getDiscountLogs({ params: { per_page: 50 }}).then(response => {
+    if(Response.isOk(response)){
+      paginateData.value = Response.parseData(response)
+      dicountList.value = Response.parseData(response).data
+    }
   })
 }
 

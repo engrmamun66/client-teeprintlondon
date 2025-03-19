@@ -45,6 +45,7 @@ export const usePaypalStore = defineStore("paypal", () => {
          */
         if(response.data?.payment?.payment_id){
           paymentData.value = response.data?.payment
+          Toaster.success('Order created successful')
         }
       } catch (error) {
         

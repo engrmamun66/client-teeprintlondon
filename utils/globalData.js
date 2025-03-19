@@ -13,6 +13,28 @@ export const BTNCLASS = {
 };
  
 export let globalData = {  
+    orderStatusList: [
+        {
+            id: 1,
+            name: 'Pending',
+        },
+        {
+            id: 2,
+            name: 'Processing',
+        },        
+        {
+            id: 3,
+            name: 'Completed',
+        },        
+        {
+            id: 4,
+            name: 'Canceled',
+        },        
+        {
+            id: 5,
+            name: 'Unknown',
+        },        
+    ],
     yesNoList: [
         {
             id: 1,

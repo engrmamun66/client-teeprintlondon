@@ -47,7 +47,7 @@ export const H = {
   },
   formatPrice: function(amount){
     let price = parseFloat(String(amount || 0)).toFixed(2)
-    return `${CURRENCY} ${price}`
+    return `${CURRENCY}${price}`
   },
   toggleLoopItem: function (data, indexes, key = "isShow") {
 

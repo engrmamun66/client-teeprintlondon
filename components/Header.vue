@@ -6,7 +6,7 @@
           <div class="logo-area-inner">
             <div class="logo-area-middle d-flex justify-content-end w-100">
               <!-- <nuxt-link :to="'/'">
-                <img src="/img/logo.jpg" />
+                <img src="/img/logon_fina.png" />
               </nuxt-link> -->
               <a @click="logoutNow()" id="menu_toggler" class="leap-admin-sidebarCollapse fs-2 mt-2 cp show_upto_900"> 
                 <i class="las la-sign-out-alt text-black"></i>
