@@ -31,13 +31,14 @@ watch(search, (a) => {
     isShow: false,
     childs: [
     {
-        name: 'Same Day Shirt Printing',
+        name: 'Same Day T-Shirt Printing',
         slug: '/same-day-delivery/shirt',
       },
       {
         name: 'Same Day Cotton T-Shirt Printing',
         slug: '/same-day-delivery/cotton_t_shirt',
       },
+
       {
         name: 'Same Day Football Team T-Shirt Printing',
         slug: '/same-day-delivery/football_shirt',
@@ -47,12 +48,20 @@ watch(search, (a) => {
         slug: '/same-day-delivery/promotion_shirts',
       },
       {
+        name: 'Same Day Promotion T-Shirt Printing',
+        slug: '/same-day-delivery/promotion_t_shirts',
+      },
+      {
         name: 'Same Day Sports Shirt Printing',
         slug: '/same-day-delivery/sports_shirt',
       },
       {
         name: 'Same Day University and School Shirt Printing',
         slug: '/same-day-delivery/university_shirt',
+      },
+      {
+        name: 'Same Day University and School T-Shirt Printing',
+        slug: '/same-day-delivery/university_t_shirt',
       },
       {
         name: 'Same Day Hoodie Printing',

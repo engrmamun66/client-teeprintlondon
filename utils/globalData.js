@@ -103,13 +103,15 @@ export let globalData = {
         'Cap' : '/cloth/cap',
         'Dress shirt' : '/cloth/dress_shirt',
         'Hoodies' : '/cloth/hoodie',
-        'Organic Cotton T-shirt':'/cloth/cotton_t_shirt',
-        'Polo Shirts':'/cloth/polo_shirt',
-        'School and university shirts' : '/cloth/university_shirt',
+        'Organic Cotton T-shirt': '/cloth/cotton_t_shirt',
+        'Polo Shirts': '/cloth/polo_shirt',
+        'School and University shirts' : '/cloth/university_shirt',
         'Basketball Team Tank' : '/cloth/basketball_shirt',
         'Football Team T-Shirts': '/cloth/football_shirt',
         'Sports T-Shirts': '/cloth/sports_shirt',
-        'Promotion Shirts': '/cloth/promotion_shirts'
+        'Promotion Shirts': '/cloth/promotion_shirts',
+        'Promotion T-Shirts' :'/cloth/promotion_t_shirts',
+        'School and University T-shirts':'/cloth/university_t_shirt'
 
     }, 
 }
