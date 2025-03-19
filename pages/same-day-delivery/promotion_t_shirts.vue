@@ -25,9 +25,9 @@ function addToCart() {
             :right="true"
             title="Same-Day Promotional T-Shirts"
             :images="[
-              '/img/promotion_shirts/1.jpg',
-              '/img/promotion_shirts/3.jpg',
-              '/img/promotion_shirts/5.jpg',
+              '/img/promotional_t_shirt/1.jpg',
+              '/img/promotional_t_shirt/3.jpg',
+              '/img/promotional_t_shirt/5.jpg',
             ]"
           >
             Need promotional T-shirts in a hurry? Tee Print London specializes
@@ -82,7 +82,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/promotion_shirts/9.jpg" alt="promotional T-shirts" />
+              <img src="/img/promotional_t_shirt/9.jpg" alt="promotional T-shirts" />
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/promotion_shirts/6.jpg" alt="promotional T-shirts" />
+              <img src="/img/promotional_t_shirt/6.jpg" alt="promotional T-shirts" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -204,7 +204,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/promotion_shirts/2.jpg" alt="promotional T-shirts" />
+              <img src="/img/promotional_t_shirt/2.jpg" alt="promotional T-shirts" />
             </div>
           </div>
         </div>
@@ -214,8 +214,8 @@ function addToCart() {
     <!-- Duel Card Section -->
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/promotion_shirts/10.jpg"
-        img_right="/img/promotion_shirts/7.jpg"
+        img_left="/img/promotional_t_shirt/10.jpg"
+        img_right="/img/promotional_t_shirt/7.jpg"
         paragraph="At Tee Print London, we bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
