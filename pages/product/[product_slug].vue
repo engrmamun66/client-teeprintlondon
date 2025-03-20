@@ -38,23 +38,14 @@ onMounted(async () => {
   await homeStore.getProductDetails(product_slug);
 
   H.delay(() => (isMounted.value = true), 500);
+ 
+  image_url.value.push(homeStore.product.thumbnail_image_url );
 
   homeStore.product.images?.forEach((image) => {
     image_url.value.push(image.image_url);
   }); 
 
-  setInterval(() => {
-    if (!image_url.value.length) return;
-
-    activeThumbnailIndex.value =
-      (activeThumbnailIndex.value + 1) % image_url.value.length;
-
-    let carouselElement = document.getElementById("productCarousel");
-    if (carouselElement) {
-      let bsCarousel = new bootstrap.Carousel(carouselElement);
-      bsCarousel.next();
-    }
-  }, 10000); // Change slide every 10 seconds
+ 
 });
 
 definePageMeta({
@@ -150,7 +141,7 @@ let showEffect = computed(
                     </template>
                     <template v-else>
                       <template
-                        v-for="(img, i) in homeStore.product?.images || []"
+                        v-for="(image_url, i) in image_url || []"
                         :key="i"
                       >
                         <div
@@ -162,7 +153,7 @@ let showEffect = computed(
                           @click="setActiveThumbnail(i)"
                         >
                           <img
-                            :src="img.image_url"
+                            :src="image_url"
                             alt="teeprint"
                             @load="onImageLoad"
                           />
