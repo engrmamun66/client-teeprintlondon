@@ -26,7 +26,9 @@ let paypalStore = usePaypalStore()
             26, // Uniform Shirts
             27, // Organic Cotton T-shirt
             28, // School and university shirts
+            43, // School and university t-shirts
             29, // Promotion Shirts
+            42,// Promotion T-Shirts
             30, // Sports Shirts
             31, // Football Team T- Shirts
             32  // Basketball Team Shirts
