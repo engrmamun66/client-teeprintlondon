@@ -49,6 +49,10 @@ let props = defineProps({
         default: true,
         requird: false,
     },
+    speed: {
+        default: 500,
+        requird: false,
+    },
 })
 const emits = defineEmits(['change'])
 const wrapper = ref(null)
@@ -63,7 +67,6 @@ let startScrollLeft =ref(undefined)
 let timeoutId = ref(null)
 
 onMounted(() => {
-    if(!process.client) return
     setTimeout(() => {
         firstCardWidth.value = cards.value[0].offsetWidth
         carouselChildrens.values = [...carousel.value.children];
@@ -86,7 +89,7 @@ onMounted(() => {
 
         autoPlay();
 
-    }, 1000)
+    }, 100)
 })
 function prev(){
     carousel.value.scrollLeft += -firstCardWidth.value
@@ -112,8 +115,8 @@ const dragStop = (e) => {
 }
 
 const autoPlay = () => {
-    if(window.innerWidth < 800 || !isAutoPlay) return;
-    timeoutId.value = setTimeout(() => carousel.value.scrollLeft += firstCardWidth.value, 2500);
+    if(!isAutoPlay) return;
+    timeoutId.value = setTimeout(() => carousel.value.scrollLeft += firstCardWidth.value, props.speed);
 }
 
 const infiniteScroll = () => {

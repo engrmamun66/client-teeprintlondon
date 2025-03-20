@@ -22,6 +22,16 @@ let images = ref([
       </template>
      </DraggableCardSlider> 
 
+     <div class="row">
+      <div class="col-6">
+        <DraggableCardSlider :qty="1" :showButton="false" :cards-list="images" >
+          <template #card="{card}">
+            <img :src="card.image_url" alt="" style="pointer-events: none;">
+          </template>
+        </DraggableCardSlider> 
+      </div>
+     </div>
+
   </div>
 </template>
 
