@@ -447,8 +447,8 @@ table thead tr th {
 
 .teeprint-button.teeprint-theme-btn:hover {
   color: var(--fontcolor-white);
-  padding-left: 35px;
-  padding-right: 35px;
+  /* padding-left: 35px;
+  padding-right: 35px; */
 }
 .teeprint-button.teeprint-theme-btn:hover *{
   color: var(--fontcolor-white); 
