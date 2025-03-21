@@ -31,7 +31,7 @@ onMounted(() => {
   <div>
     <web-slider />
     <web-trusted />
-    <web-customerFinally></web-customerFinally>
+    <!-- <web-customerFinally></web-customerFinally> -->
 
     <section class="teeprint-makes-section">
       <div class="container">
@@ -219,18 +219,7 @@ onMounted(() => {
                     You
                   </h5>
                   <p>
-                    There’s no fixed rule when it comes to printing your custom
-                    t shirts from our t-shirt print shop. We allow our customers
-                    to provide their own logo, photo, design, artwork, and
-                    pattern, however they want before we print them on your t
-                    shirt. You have your full liberty to personalize your t
-                    shirts according to your convenience and we are always ready
-                    to accept your orders at any given moment. If you have
-                    t-shirt design ideas but need some help to bring it to
-                    reality then we are here to help you with t-shirt designing
-                    service. Just let us know your ideas and requirements, and
-                    our t-shirt designing expert will come up with exclusive
-                    mockups.
+                    There’s no fixed rule when it comes to printing your custom t-shirts at our t-shirt print shop. We offer complete flexibility, allowing you to provide your own logo, photo, design, artwork, or pattern, and we’ll print it exactly as you envision. Whether it’s for personal use, a special event, or promotional purposes, you have full liberty to personalize your t-shirts to suit your needs. We’re always ready to accept your orders, no matter the size or complexity, ensuring a hassle-free experience. If you have design ideas but need assistance to bring them to life, our t-shirt designing service is here to help. Simply share your ideas and requirements, and our expert designers will create exclusive mockups tailored to your vision. From concept to creation, we’re committed to delivering high-quality, custom t-shirts that reflect your unique style.
                   </p>
                 </div>
               </div>

@@ -141,15 +141,27 @@ function addToCart() {
                 <h6>Non-Refundable Items</h6>
                 <div class="table-responsive">
                   <table class="privacy-table">
-                    <tbody>
-                      <tr>
-                        <td>Customized or personalized items.</td>
-                      </tr>
-                      <tr>
-                        <td>Items damaged due to misuse or wear.</td>
-                      </tr>
-                    </tbody>
-                  </table>
+  <tbody>
+    <tr>
+      <td>Gift cards</td>
+    </tr>
+    <tr>
+      <td>Items not in original condition</td>
+    </tr>
+    <tr>
+      <td>Products collected on-site</td>
+    </tr>
+    <tr>
+      <td>Minor printing issues not visible from 3 feet</td>
+    </tr>
+    <tr>
+      <td>Customized or personalized items (unless defective)</td>
+    </tr>
+    <tr>
+      <td>Items damaged due to misuse or wear</td>
+    </tr>
+  </tbody>
+</table>
                 </div>
               </div>
             </div>
