@@ -138,7 +138,7 @@ function addToCart() {
                     </tbody>
                   </table>
                 </div>
-                <h6>Non-Refundable Items</h6>
+                <h6>Non-Refundable Items and condition</h6>
                 <div class="table-responsive">
                   <table class="privacy-table">
   <tbody>
