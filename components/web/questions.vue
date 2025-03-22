@@ -33,56 +33,114 @@
 import { onMounted } from 'vue';
 
 // Define the FAQs array
+// const faqs = [
+//   {
+//     question: "Can you design my poster if I don’t have existing artwork?",
+//     answer:
+//       "Yes! Our design team can craft a unique poster based on your vision and needs. We'll collaborate with you to ensure the final design aligns with your expectations.",
+//   },
+//   {
+//     question: "Can I review my poster before it's printed?",
+//     answer:
+//       "Yes, we provide a digital proof before printing. This allows you to review the design and request modifications if needed.",
+//   },
+//   {
+//     question: "Is there a minimum order requirement for same-day posters?",
+//     answer:
+//       "No, we have no minimum order quantity. Whether you need a single poster or multiple copies, we’ve got you covered.",
+//   },
+//   {
+//     question: "What poster sizes are available for same-day printing?",
+//     answer:
+//       "We offer a range of sizes from A4 to A0, along with custom dimensions to match your specifications. Just let us know what you need!",
+//   },
+//   {
+//     question: "Do you provide same-day delivery for posters?",
+//     answer:
+//       "Yes, we offer same-day delivery in London. Delivery charges vary depending on location, and we can arrange for courier service to bring your posters directly to you.",
+//   },
+//   {
+//     question: "How can I ensure the best quality for my printed posters?",
+//     answer:
+//       "For high-quality prints, provide your artwork in 300 dpi or higher in PDF, AI, or JPEG format. A 3mm bleed is recommended to prevent cropping issues.",
+//   },
+//   {
+//     question: "Are the posters suitable for outdoor use?",
+//     answer:
+//       "Yes, we offer waterproof and UV-resistant posters, making them perfect for outdoor advertising.",
+//   },
+//   {
+//     question: "What paper options do you provide for posters?",
+//     answer:
+//       "We use high-quality paper with matte, gloss, and satin finishes available. For outdoor posters, we also offer durable, weather-resistant materials.",
+//   },
+//   {
+//     question: "Until when can I place an order for same-day printing?",
+//     answer:
+//       "To guarantee same-day service, we recommend submitting your order in the morning. This allows us sufficient time to ensure high-quality printing and timely delivery.",
+//   },
+//   {
+//     question: "Can I get large-format posters printed on the same day?",
+//     answer:
+//       "Yes, we offer same-day printing for large-format posters, ideal for events, exhibitions, and storefront displays.",
+//   },
+// ];
+
 const faqs = [
   {
-    question: "Can you design my poster if I don’t have existing artwork?",
+    question: "Can you create a design if I don’t have existing artwork?",
     answer:
-      "Yes! Our design team can craft a unique poster based on your vision and needs. We'll collaborate with you to ensure the final design aligns with your expectations.",
+      "Yes! Our design team can create a custom design based on your vision and requirements. We’ll work closely with you to ensure the final product meets your expectations.",
   },
   {
-    question: "Can I review my poster before it's printed?",
+    question: "Can I review the design before finalizing?",
     answer:
-      "Yes, we provide a digital proof before printing. This allows you to review the design and request modifications if needed.",
+      "Absolutely. We provide a digital proof for your review, allowing you to request any changes before proceeding.",
   },
   {
-    question: "Is there a minimum order requirement for same-day posters?",
+    question: "Is there a minimum order requirement?",
     answer:
-      "No, we have no minimum order quantity. Whether you need a single poster or multiple copies, we’ve got you covered.",
+      "No, there’s no minimum order requirement. We cater to both small and large orders with the same level of care.",
   },
   {
-    question: "What poster sizes are available for same-day printing?",
+    question: "What sizes are available?",
     answer:
-      "We offer a range of sizes from A4 to A0, along with custom dimensions to match your specifications. Just let us know what you need!",
+      "We offer a variety of standard sizes, as well as custom dimensions to suit your specific needs. Let us know your requirements!",
   },
   {
+    question: "Do you offer same-day delivery?",
+    answer:
+      "Yes, we provide same-day delivery in certain areas. Delivery fees depend on your location, and we can arrange for your order to be delivered directly to you.",
+  },
+  {
+    question: "How can I ensure the best quality for my order?",
+    answer:
+      "For optimal results, provide your files in high resolution (300 dpi or higher) in formats like PDF, AI, or JPEG. Including a bleed is also recommended to avoid cropping issues.",
+  },
+  {
+    question: "Are your products suitable for outdoor use?",
+    answer:
+      "Yes, we offer durable, weather-resistant options that are perfect for outdoor applications.",
+  },
+  {
+    question: "What material options are available?",
+    answer:
+      "We provide a range of high-quality materials, including matte, gloss, and satin finishes. For outdoor use, we also offer robust, weatherproof options.",
+  },
+  {
+    question: "What’s the deadline for same-day service?",
+    answer:
+      "To ensure same-day service, we recommend placing your order early in the day. This gives us enough time to deliver a high-quality product on time.",
+  },
+  {
+    question: "Can I get large-format items on the same day?",
+    answer:
+      "Yes, we offer same-day service for large-format items, making them ideal for events, displays, and promotions.",
+  },
+    {
     question: "Do you provide same-day delivery for posters?",
     answer:
       "Yes, we offer same-day delivery in London. Delivery charges vary depending on location, and we can arrange for courier service to bring your posters directly to you.",
-  },
-  {
-    question: "How can I ensure the best quality for my printed posters?",
-    answer:
-      "For high-quality prints, provide your artwork in 300 dpi or higher in PDF, AI, or JPEG format. A 3mm bleed is recommended to prevent cropping issues.",
-  },
-  {
-    question: "Are the posters suitable for outdoor use?",
-    answer:
-      "Yes, we offer waterproof and UV-resistant posters, making them perfect for outdoor advertising.",
-  },
-  {
-    question: "What paper options do you provide for posters?",
-    answer:
-      "We use high-quality paper with matte, gloss, and satin finishes available. For outdoor posters, we also offer durable, weather-resistant materials.",
-  },
-  {
-    question: "Until when can I place an order for same-day printing?",
-    answer:
-      "To guarantee same-day service, we recommend submitting your order in the morning. This allows us sufficient time to ensure high-quality printing and timely delivery.",
-  },
-  {
-    question: "Can I get large-format posters printed on the same day?",
-    answer:
-      "Yes, we offer same-day printing for large-format posters, ideal for events, exhibitions, and storefront displays.",
   },
 ];
 
