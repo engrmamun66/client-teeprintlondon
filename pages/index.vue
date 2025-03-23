@@ -163,71 +163,73 @@ onMounted(() => {
     </div>
 
     <section class="teeprint-information">
-      <div class="teeprint-content-inner">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="section-main-heading text-center">
-                <h4 class="section-heading-title-small">
-                  <span class="line-decoration"></span> Discounted & Cheap
-                </h4>
-                <h2 class="section-heading-title-big">
-                  Durable and Washable Custom T-Shirts – Designed Your Way
-                </h2>
-              </div>
+  <div class="teeprint-content-inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-main-heading text-center">
+            <h4 class="section-heading-title-small">
+              <span class="line-decoration"></span> Discounted & Cheap
+            </h4>
+            <h2 class="section-heading-title-big">
+              Durable and Washable Custom T-Shirts – Designed Your Way
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5 pt-4">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div class="teeprint-info-box h-100">
+            <div class="teeprint-info-box-inner d-flex flex-column h-100">
+              <img
+                src="/img/Home/Leonardo_Phoenix_10_A_few_vibrant_tshirts_with_diverse_colors_0.jpg"
+                alt=""
+                class="img-fluid"
+              />
+              <h5 class="pt-4">
+                Get High Quality T shirt Print – Permanent & Washable
+              </h5>
+              <p class="flex-grow-1">
+                Printed artwork on custom T-shirts can fade over time,
+                especially with frequent washing, but the longevity of the
+                design is influenced by factors like the printing method,
+                ink quality, fabric type, and how the garment is cared for.
+                At Tee Print London, we use advanced printing techniques,
+                durable inks, and premium fabrics to ensure that your custom
+                designs remain vibrant and long-lasting. To help maintain
+                the quality of your printed T-shirts, we recommend washing
+                them inside out with cold water, avoiding harsh detergents,
+                and air drying. By following these simple care instructions,
+                you can minimize fading and keep your custom T-shirts
+                looking fresh for a longer time. Proper garment care is key
+                to extending the life of your printed T-shirts. For example,
+                washing your T-shirts inside out in cold water, avoiding
+                harsh detergents.
+              </p>
             </div>
           </div>
-          <div class="row justify-content-center mt-5 pt-4">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="teeprint-info-box">
-                <div class="teeprint-info-box-inner">
-                  <img
-                    src="/img/Home/Leonardo_Phoenix_10_A_few_vibrant_tshirts_with_diverse_colors_0.jpg"
-                    alt=""
-                  />
-                  <h5 class="pt-4">
-                    Get High Quality T shirt Print – Permanent & Washable
-                  </h5>
-                  <p>
-                    Printed artwork on custom T-shirts can fade over time,
-                    especially with frequent washing, but the longevity of the
-                    design is influenced by factors like the printing method,
-                    ink quality, fabric type, and how the garment is cared for.
-                    At Tee Print London, we use advanced printing techniques,
-                    durable inks, and premium fabrics to ensure that your custom
-                    designs remain vibrant and long-lasting. To help maintain
-                    the quality of your printed T-shirts, we recommend washing
-                    them inside out with cold water, avoiding harsh detergents,
-                    and air drying. By following these simple care instructions,
-                    you can minimize fading and keep your custom T-shirts
-                    looking fresh for a longer time. roper garment care is key
-                    to extending the life of your printed T-shirts. For example,
-                    washing your T-shirts inside out in cold water, avoiding
-                    harsh detergents
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="teeprint-info-box renty-information-middle">
-                <div class="teeprint-info-box-inner">
-                  <img
-                    src="/img/Home/WhatsApp Image 2025-01-03 at 22.03.42_74ce6356.jpg"
-                  />
-                  <h5 class="pt-4">
-                    You Can Provide Your Own Design or We Customize T shirts For
-                    You
-                  </h5>
-                  <p>
-                    There’s no fixed rule when it comes to printing your custom t-shirts at our t-shirt print shop. We offer complete flexibility, allowing you to provide your own logo, photo, design, artwork, or pattern, and we’ll print it exactly as you envision. Whether it’s for personal use, a special event, or promotional purposes, you have full liberty to personalize your t-shirts to suit your needs. We’re always ready to accept your orders, no matter the size or complexity, ensuring a hassle-free experience. If you have design ideas but need assistance to bring them to life, our t-shirt designing service is here to help. Simply share your ideas and requirements, and our expert designers will create exclusive mockups tailored to your vision. From concept to creation, we’re committed to delivering high-quality, custom t-shirts that reflect your unique style.
-                  </p>
-                </div>
-              </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div class="teeprint-info-box h-100">
+            <div class="teeprint-info-box-inner d-flex flex-column h-100">
+              <img
+                src="/img/Home/WhatsApp Image 2025-01-03 at 22.03.42_74ce6356.jpg"
+                alt=""
+                class="img-fluid"
+              />
+              <h5 class="pt-4">
+                You Can Provide Your Own Design or We Customize T shirts For You
+              </h5>
+              <p class="flex-grow-1">
+                There’s no fixed rule when it comes to printing your custom t-shirts at our t-shirt print shop. We offer complete flexibility, allowing you to provide your own logo, photo, design, artwork, or pattern, and we’ll print it exactly as you envision. Whether it’s for personal use, a special event, or promotional purposes, you have full liberty to personalize your t-shirts to suit your needs. We’re always ready to accept your orders, no matter the size or complexity, ensuring a hassle-free experience. If you have design ideas but need assistance to bring them to life, our t-shirt designing service is here to help. Simply share your ideas and requirements, and our expert designers will create exclusive mockups tailored to your vision. From concept to creation, we’re committed to delivering high-quality, custom t-shirts that reflect your unique style.
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- About us -->
     <section class="teeprint-homewhychoose-section">
@@ -273,19 +275,15 @@ onMounted(() => {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-content">
               <div class="section-main-heading">
-                <h2 class="section-heading-title-big">
-                  Explore Design In London, Our Sister Concern
-                </h2>
-              </div>
-              <div class="aboutus-list">
-                <p>
-                  At Tee Print London, we proudly present our sister concern,
-                  Design in London—a creative design agency specializing in web
-                  design, brand identity, graphics, print design, and more.
-                  Visit Design in London to explore our premium design services
-                  and elevate your brand!
-                </p>
-              </div>
+  <h2 class="section-heading-title-big">
+    Explore Our Premium Custom Products
+  </h2>
+</div>
+<div class="aboutus-list">
+  <p>
+    At Tee Print London, we specialize in creating high-quality, personalized items to suit your needs. From stylish hoodies and organic cotton T-shirts to school and university apparel, promotional wear, and sports team gear, we offer a wide range of customizable products. Whether you're looking for activewear, aprons, polo shirts, caps, or tote bags, our designs are crafted to bring your ideas to life. Discover our collection and find the perfect items to express your style or promote your brand!
+  </p>
+</div>
               <nuxt-link
                 :to="{ name: 'quote' }"
                 class="teeprint-button teeprint-theme-btn zoomInOut"
@@ -362,4 +360,45 @@ iframe {
   position: relative;
   z-index: 0;
 }
+
+
+
+
+
+
+.teeprint-info-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.teeprint-info-box-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.teeprint-info-box img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.teeprint-info-box h5 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.teeprint-info-box p {
+  flex-grow: 1;
+}
+
+
+
+
+
+
+
+
+
 </style>
