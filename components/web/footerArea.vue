@@ -93,19 +93,34 @@
     </div>
     <div class="teeprint-bottom-footer">
       <div class="container">
-        <div class="row">
-          <div class="col-xl-6 col-lg-7">
-            <div class="teeprint-bottom-footer-left">
-              <ul>
-                <li><a href="#">Privacry Policy</a></li>
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">Site Map</a></li>
-              </ul>
+        <div class="row align-items-center">
+          <!-- <div class="col-md-4 col-12 order-md-1 order-1">
+  <div class="teeprint-bottom-footer-left text-center text-md-start">
+    <ul class="list-inline mb-0">
+      <li class="list-inline-item mx-2 mx-md-0 me-md-2"><a href="#">Privacy Policy</a></li>
+      <li class="list-inline-item mx-2 mx-md-0 me-md-2"><a href="#">Terms of Use</a></li>
+      <li class="list-inline-item mx-2 mx-md-0"><a href="#">Site Map</a></li>
+    </ul>
+  </div>
+</div> -->
+          <div class="col-md-4 col-12 order-md-2 order-3 mt-3 mt-md-0">
+            <div class="teeprint-bottom-footer-content text-center">
+              <p class="mb-0">©2025 TeePrint London. All rights reserved.</p>
             </div>
           </div>
-          <div class="col-xl-6 col-lg-5">
-            <div class="teeprint-bottom-footer-content">
-              <p>© 2024 teeprint. All Rights Reserved</p>
+          <div class="col-md-4 col-12 order-md-3 order-2 mt-3 mt-md-0">
+            <div class="teeprint-bottom-footer-content text-center text-md-end">
+              <p class="mb-0">
+                Designed and Developed by
+                <a
+                  href="https://neazmorshedportfolio.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-white-90 hover:text-white transition-colors duration-200"
+                  style="color: white"
+                  >Neaz Morshed</a
+                >
+              </p>
             </div>
           </div>
         </div>
