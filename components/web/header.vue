@@ -69,6 +69,10 @@ watch(search, (a) => {
         slug: '/same-day-delivery/hoodie',
       },
       {
+        name: 'Same Day Sweat Shirt Printing',
+        slug: '/same-day-delivery/sweatshirt',
+      },
+      {
         name: 'Same Day Cap Printing',
         slug: '/same-day-delivery/cap',
       },

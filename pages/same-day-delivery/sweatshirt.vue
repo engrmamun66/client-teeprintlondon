@@ -24,9 +24,9 @@ function addToCart() {
             :right="true"
             title="Premium Custom Sweatshirts Printing in London"
             :images="[
-              '/img/Hoodie/Leonardo_Kino_XL_a_men_wearing_hoodie_Teeprint_London_written_2.jpg',
-              '/img/Hoodie/Leonardo_Kino_XL_a_men_wearing_hoodieStay_Cozy_Stay_Cool_writt_0.jpg',
-              '/img/Hoodie/Flux_Dev_a_highquality_photorealistic_image_of_a_trendy_hoodie_0.jpeg',
+              '/img/sweatshirt/1.jpg',
+              '/img/sweatshirt/4.jpg',
+              '/img/sweatshirt/3.jpg',
             ]"
           >
             Elevate your wardrobe with custom-printed sweatshirts from Tee Print
@@ -80,20 +80,10 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <video
-                class="rounded-video"
-                autoplay
-                loop
-                muted
-                playsinline
-                width="100%"
-              >
-                <source
-                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1740854046/efbb14eb-4cfd-4c3b-9508-56c53e57e1d5_video_vmxcx3.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              <img
+                src="/img/sweatshirt/2.jpg"
+                alt="about iamge"
+              />
             </div>
           </div>
         </div>
@@ -127,7 +117,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
               <img
-                src="/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_2.jpg"
+                src="/img/sweatshirt/5.jpg"
                 alt="about iamge"
               />
             </div>
@@ -209,7 +199,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
               <img
-                src="/img/Hoodie/Leonardo_Phoenix_10_a_young_adult_male_figure_likely_in_his_ea_1.jpg"
+                src="/img/sweatshirt/6.jpg"
                 alt="about iamge"
               />
             </div>
@@ -219,8 +209,8 @@ function addToCart() {
     </section>
     <div class="container mt-5">
       <web-DuelCard
-        img_left="/img/Hoodie/Leonardo_Phoenix_10_a_surreal_and_vibrant_cinematic_photograph_3.jpg"
-        img_right="/img/Hoodie/Leonardo_Phoenix_10_A_young_man_likely_in_his_early_twenties_w_0.jpg"
+        img_left="/img/sweatshirt/7.jpg"
+        img_right="/img/sweatshirt/8.jpg"
         paragraph="Transform ordinary sweatshirts into extraordinary pieces with our custom printing services. We combine quality materials with artistic printing to create wearable art that represents your unique style or brand identity."
       />
     </div>

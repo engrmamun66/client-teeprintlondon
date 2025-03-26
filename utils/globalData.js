@@ -111,7 +111,8 @@ export let globalData = {
         'Sports T-Shirts': '/cloth/sports_shirt',
         'Promotion Shirts': '/cloth/promotion_shirts',
         'Promotion T-Shirts' :'/cloth/promotion_t_shirts',
-        'School and University T-shirts':'/cloth/university_t_shirt'
+        'School and University T-shirts':'/cloth/university_t_shirt',
+        'Sweatshirt': '/cloth/sweatshirt'
 
     }, 
 }
