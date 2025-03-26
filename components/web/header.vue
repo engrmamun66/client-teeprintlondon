@@ -34,10 +34,7 @@ watch(search, (a) => {
         name: 'Same Day T-Shirt Printing',
         slug: '/same-day-delivery/shirt',
       },
-      {
-        name: 'Same Day T-Shirt Printing',
-        slug: '/same-day-delivery/shirt',
-      },
+      
       {
         name: 'Same Day Cotton T-Shirt Printing',
         slug: '/same-day-delivery/cotton_t_shirt',
