@@ -8,6 +8,7 @@
             <div class="teeprint-footer-links">
               <h4>Get in touch</h4>
               <ul>
+                <li>TeePrint London</li>
                 <li>
                   38 Worland Road,<br />
                   London, England,<br />
@@ -18,11 +19,11 @@
                   <b>support@teeprintlondon.co.uk</b>
                 </li>
                 <li><i class="la la-phone"></i> <b>+44 7888 185120</b></li>
-                <li>
+                <!-- <li>
                   <strong>Stirling Apparel Ltd</strong> Trading as TeePrint
                   London<br />
                   Company Registration No: 12317296 (England and Wales)
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
@@ -103,6 +104,18 @@
     </ul>
   </div>
 </div> -->
+
+          <div class="col-md-4 col-12 order-md-1 order-1 mt-3 mt-md-0">
+            <div
+              class="teeprint-bottom-footer-content text-center text-md-start"
+            >
+              <p class="mb-0">
+                <strong>Stirling Apparel Ltd</strong> Trading as TeePrint
+                London<br />
+                Reg No: 12317296 (England & Wales)
+              </p>
+            </div>
+          </div>
           <div class="col-md-4 col-12 order-md-2 order-3 mt-3 mt-md-0">
             <div class="teeprint-bottom-footer-content text-center">
               <p class="mb-0">©2025 TeePrint London. All rights reserved.</p>
