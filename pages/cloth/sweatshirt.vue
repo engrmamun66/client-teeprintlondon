@@ -80,9 +80,9 @@ function addToCart() {
             <div class="col-md-5">
               <div class="section-main-heading text-right pr-5">
                 <h4 class="section-heading-title-small">
-                  <span class="line-decoration"></span>Customer
+                  <span class="line-decoration"></span>What Our
                 </h4>
-                <h2 class="section-heading-title-big">Testimonials</h2>
+                <h2 class="section-heading-title-big">Customers Say</h2>
               </div>
             </div>
           </div>
