@@ -39,7 +39,7 @@ onMounted(async () => {
 
   H.delay(() => (isMounted.value = true), 500);
  
-  image_url.value.push(homeStore.product.thumbnail_image_url );
+  // image_url.value.push(homeStore.product.thumbnail_image_url );
 
   homeStore.product.images?.forEach((image) => {
     image_url.value.push(image.image_url);
@@ -554,19 +554,20 @@ let showEffect = computed(
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .teeprint-product-view-image {
-    max-height: 400px; /* Reduce height for smaller screens */
+  .teeprint-product-view-image img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
   }
 
-  .teeprint-product-thumb-item {
-    width: 60px; /* Smaller thumbnails for mobile */
-    height: 60px;
+  .carousel-inner {
+    max-height: 900px; /* Optional: limit height for mobile to avoid overflow */
   }
 }
 
 @media (max-width: 576px) {
   .teeprint-product-view-image {
-    max-height: 300px; /* Further reduce height for very small screens */
+    max-height: 800px; /* Further reduce height for very small screens */
   }
 
   .teeprint-product-thumb-item {
