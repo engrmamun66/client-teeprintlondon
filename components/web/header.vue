@@ -387,7 +387,7 @@ let { staticPagesByParentCat } = globalData;
                   </template>
 
                   <li>
-                    <a href="#">Design and services</a>
+                    <nuxt-link to="/designandservice">Design and services</nuxt-link>
                   </li>
                 </ul>
               </nav>
