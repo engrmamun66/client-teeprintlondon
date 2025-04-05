@@ -103,7 +103,7 @@
             <button
               type="button"
               class="leap-btn leap-cancel-btn m-1 px-4"
-              @click="navigateTo({path: '/suadmin/admin'})"
+              @click="navigateTo({path: '/suadmin/orders'})"
             >
               Back
             </button>
