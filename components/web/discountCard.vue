@@ -1,16 +1,14 @@
 <template>
-  <h1 class="discount_txt" v-bind="$attrs" >
-    <span>
-        <slot>10</slot>
+  <h1 class="discount_txt" v-bind="$attrs">
+    <span class="discount_number">
+      <slot>10</slot>
     </span>
-    <span
-      >%<br />
+    <span class="discount_symbol">
+      %<br />
       <p class="off">OFF</p>
     </span>
   </h1>
 </template>
-
- 
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@700&display=swap");
@@ -21,46 +19,50 @@
   --font-family: "Barlow";
 }
 
-h1{
-    zoom: 0.4;
-}
-
 h1.discount_txt {
-    background-color: #08a2db;
-    width: 170px;
-    padding: 20px 20px 20px 30px;
-    border-radius: 25px;
-    text-align: center;
-    color: #fff;
-    font-family: var(--font-family, "sans-serif");
-    overflow: hidden;
-}
- 
-
-h1.discount_txt > span > p {
-  margin: 0px;
-  margin-top: -5px;
-  height: 0px;
+  background-color: #08a2db;
+  width: 170px;
+  padding: 20px 20px 20px 30px;
+  border-radius: 25px;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-family, "sans-serif");
+  overflow: hidden;
   display: flex;
-  text-indent: 20px;
-  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  transform: scale(0.7);
+  transform-origin: top left;
 }
-h1.discount_txt > span:first-of-type {
+
+/* iOS-safe fallback for scaling on small screens */
+@media (max-width: 480px) {
+  h1.discount_txt {
+    transform: scale(0.6);
+  }
+}
+
+.discount_number {
   font-size: 75px;
-  position: revert;
-  float: left;
-  margin: -10px;
-}
-
-h1.discount_txt > span  {
   color: #ffffff;
+  margin-right: 5px;
 }
 
-h1.discount_txt > span:last-of-type {
+.discount_symbol {
   font-size: 45px;
-  z-index: 2;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  line-height: 1;
 }
-h1 p.off{
-    color: #6fff00;
+
+.discount_symbol .off {
+  margin: 0;
+  margin-top: -5px;
+  font-size: 20px;
+  color: #6fff00;
 }
 </style>

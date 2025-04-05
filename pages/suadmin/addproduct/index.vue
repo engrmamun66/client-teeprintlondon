@@ -8,11 +8,19 @@
           :buttons="[]"
         />
         <div>
-          <a href="#" @click.prevent="productStore.resetProduct();navigateTo({name: 'admin_product_list'})" class="btn btn-success"> Back </a>
+          <a
+            href="#"
+            @click.prevent="
+              productStore.resetProduct();
+              navigateTo({ name: 'admin_product_list' });
+            "
+            class="btn btn-success"
+          >
+            Back
+          </a>
         </div>
-        
       </div>
-      
+
       <div class="cards-container">
         <!-- Product Details Card -->
         <div class="card product-details-card">
@@ -138,6 +146,91 @@
               />
               <div v-if="errors.color" class="invalid-feedback">
                 {{ errors.color }}
+              </div>
+            </div>
+
+            <div class="form-group d-flex">
+              <label class="form-label"
+                >Show Size Table <span class="required-star">*</span></label
+              >
+              <div class="checkbox-group mx-3" style="display: flex; gap: 20px">
+                <label style="display: flex; align-items: center">
+                  <input
+                    type="checkbox"
+                    v-model="productStore.product.showsizetable"
+                    :true-value="'Yes'"
+                    :false-value="null"
+                    :checked="
+                      productStore.product.showsizetable == 'Yes' ||
+                      productStore.product.showsizetable == null
+                    "
+                    @change="
+                      productStore.product.showsizetable =
+                        productStore.product.showsizetable === 'Yes'
+                          ? 'Yes'
+                          : 'Yes'
+                    "
+                    :class="{ 'is-invalid': errors.color }"
+                  />
+                  Yes
+                </label>
+                <label style="display: flex; align-items: center">
+                  <input
+                    type="checkbox"
+                    v-model="productStore.product.showsizetable"
+                    :true-value="'No'"
+                    :false-value="null"
+                    @change="
+                      productStore.product.showsizetable =
+                        productStore.product.showsizetable == 'No' ? 'No' : null
+                    "
+                  />
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group d-flex">
+              <label class="form-label"
+                >Show Personalize field 
+                <span class="required-star">*</span></label
+              >
+              <div class="checkbox-group mx-3" style="display: flex; gap: 20px">
+                <label style="display: flex; align-items: center">
+                  <input
+                    type="checkbox"
+                    v-model="productStore.product.showinputfield"
+                    :true-value="'Yes'"
+                    :false-value="null"
+                    :checked="
+                      productStore.product.showinputfield == 'Yes' ||
+                      productStore.product.showinputfield == null
+                    "
+                    @change="
+                      productStore.product.showinputfield =
+                        productStore.product.showinputfield === 'Yes'
+                          ? 'Yes'
+                          : 'Yes'
+                    "
+                    :class="{ 'is-invalid': errors.color }"
+                  />
+                  Yes
+                </label>
+                <label style="display: flex; align-items: center">
+                  <input
+                    type="checkbox"
+                    v-model="productStore.product.showinputfield"
+                    :true-value="'No'"
+                    :false-value="null"
+                    @change="
+                      productStore.product.showinputfield =
+                        productStore.product.showinputfield == 'No'
+                          ? 'No'
+                          : null
+                    "
+                  />
+                  No
+                </label>
               </div>
             </div>
 
@@ -311,7 +404,7 @@
                 Submit
                 <BtnLoader
                   :show="H.isPendingAnyApi('Product:create')"
-                   color="black"
+                  color="black"
                 ></BtnLoader>
               </button>
               <button
@@ -343,7 +436,7 @@
               v-model="productStore.product.thumbnail_image"
               :singleImage="true"
             />
-          </div> 
+          </div>
           <div class="form-group">
             <label for="Upload File"
               >Upload product image<span class="required-star">*</span></label
@@ -419,7 +512,6 @@ import { useCategorystore } from "~/store/Category";
 import { useBrandStore } from "~/store/Brand";
 import { useColorStore } from "~/store/Color";
 import Editor from "@tinymce/tinymce-vue";
-
 
 const colorStore = useColorStore();
 const brandStore = useBrandStore();
