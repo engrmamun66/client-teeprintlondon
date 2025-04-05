@@ -207,6 +207,8 @@ let paypalStore = usePaypalStore()
             }
             additionalData[key] = value
           })
+          additionalData.brands = additionalData.brands.filter(brand => brand.name !== "Default");
+
           
           useCookie('delivery_types').value = additionalData.delivery_types
         

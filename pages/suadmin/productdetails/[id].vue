@@ -3,14 +3,19 @@
     <div class="position-relative">
       <div class="d-flex justify-content-between">
         <page-content-header
-        :title="'Product Details'"
-        :links="[]"
-        :buttons="[]"
+          :title="'Product Details'"
+          :links="[]"
+          :buttons="[]"
         />
         <div>
-          <a href="#" @click.prevent="navigateTo({name: 'admin_product_list'})" class="btn btn-success"> Back </a>
+          <a
+            href="#"
+            @click.prevent="navigateTo({ name: 'admin_product_list' })"
+            class="btn btn-success"
+          >
+            Back
+          </a>
         </div>
-       
       </div>
       <div class="cards-container">
         <!-- Product Details Card -->
@@ -310,10 +315,15 @@
                 Update
                 <BtnLoader
                   :show="H.isPendingAnyApi('Product:update')"
-                  color = "black"
+                  color="black"
                 ></BtnLoader>
               </button>
-              <button type="button" class="leap-btn leap-cancel-btn m-1">
+              <button
+                type="button"
+                style="background-color: red"
+                class="leap-btn leap-cancel-btn m-1"
+                @click="navigateToProducts"
+              >
                 Cancel
               </button>
             </div>
@@ -440,6 +450,10 @@ const errors = ref({
   thumbnail_image: "",
   images: "",
 });
+
+const navigateToProducts = () => {
+  navigateTo("/suadmin/product");
+};
 
 const setContent = (editorRef, content) => {
   if (editorRef.value?.editor) {
@@ -570,7 +584,7 @@ const isAllSelected = computed(() => {
   try {
     return selectedSizes.value.length === productStore.product.sizes.length;
   } catch (error) {
-    return false
+    return false;
   }
 });
 
