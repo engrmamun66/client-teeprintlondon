@@ -3,7 +3,7 @@
     <div class="sidebar-header">
       <div class="logo-area-inner">
         <div class="logo-area-middle">
-          <nuxt-link :to="'/'">
+          <nuxt-link :to="'/suadmin'">
             <img src="/img/logon_fina.png" />
           </nuxt-link>
         </div>
