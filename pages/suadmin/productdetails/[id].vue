@@ -420,6 +420,16 @@ const colorStore = useColorStore();
 const brandStore = useBrandStore();
 const productStore = useProductStore();
 const categoryStore = useCategorystore();
+
+
+definePageMeta({
+    keepalive: false,
+    middleware: ["auth"],
+    key: (route) => route.fullPath,
+    name: 'product_details',
+  });
+
+
 // Use ref for the product object
 const route = useRoute();
 const selectedSizes = ref([]);

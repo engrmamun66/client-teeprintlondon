@@ -18,8 +18,10 @@ export const useAuthStore = defineStore("auth", () => {
             if (response.status == 200) { 
                 useCookie('access_token').value = response?.data?.data?.access_token 
                 localStorage.setItem('user', JSON.stringify(response?.data?.data?.user));
-
-                navigateTo({name: 'dashboard'});
+                
+                // useCookie('expires_in').value = moment().add(86400, 'seconds').valueOf(); // default: 86400 secods = 24h
+                useCookie('expires_in').value = moment().add(120, 'seconds').valueOf();  
+                reloadNuxtApp({path: '/suadmin'});
             }
         } catch (err) {
             loading.value = false;
@@ -59,11 +61,7 @@ export const useAuthStore = defineStore("auth", () => {
             loading.value = true;
             let response = await Auth.logout();
             if (response.status == 200) {
-                loading.value = false;
-                setTimeout(() => {
-                    localStorage.removeItem("access_token"); 
-                    navigateTo({name: 'login'});
-                }, 500);
+                loading.value = false; 
             }
         } catch (error) {
             loading.value = false;
@@ -71,23 +69,9 @@ export const useAuthStore = defineStore("auth", () => {
         }
     }
 
-    async function checkAccessToken(payload = {}) {
-        payload = { access_token: localStorage.getItem('access_token') };
-        try {
-            let response = await Auth.checkAuthentication(payload);
-            if (response.status == 200 && response.data.message === true) {
-                window.open('/' + localStorage.getItem('slug'), '_blank');
-            }
-        } catch (error) {
-            if (error != 'Access token has expired') {
-                commonStore.toaster('error', error.response?.data?.message || 'Authentication failed');
-            }
-        } finally {
-            loading.value = false;
-        }
-    }
+   
 
-    return { login, logout, registration, checkAccessToken, loginFormError, registrationFormError, loading, lang, switchedToInstituteDashboard };
+    return { login, logout, registration, loginFormError, registrationFormError, loading, lang, switchedToInstituteDashboard };
 });
 
 if (import.meta.hot) {

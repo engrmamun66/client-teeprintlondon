@@ -183,6 +183,13 @@ let showConfirmation = ref(false);
 let editMode = ref(false);
 let brandId = ref(null);
 
+definePageMeta({
+    keepalive: false,
+    middleware: ["auth"],
+    key: (route) => route.fullPath,
+    name: 'colors',
+  });
+
 let clearImage = ref(false);
 
 async function showColor(id) {

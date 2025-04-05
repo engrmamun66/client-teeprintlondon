@@ -273,6 +273,14 @@
 import { useOrderStore } from "~/store/Order.js";
 const orderStore = useOrderStore();
 
+
+definePageMeta({
+    keepalive: false,
+    middleware: ["auth"],
+    key: (route) => route.fullPath,
+    name: 'order_details',
+  });
+
 let { order_number } = useRoute().params
  
 onMounted(async() => {

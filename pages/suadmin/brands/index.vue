@@ -181,6 +181,14 @@ let brandId = ref(null);
 let editor = ref(null);
 let clearImage = ref(false);
 
+
+definePageMeta({
+    keepalive: false,
+    middleware: ["auth"],
+    key: (route) => route.fullPath,
+    name: 'add_products',
+  });
+
 async function showBrand(id) {
   await brandStore.showBrand(id);
   // editor.value.setContent(brandStore.brandAttribute.description);

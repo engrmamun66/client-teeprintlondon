@@ -110,6 +110,13 @@ let editMode = ref(false);
 let brandId = ref(null);
 let clearImage = ref(false);
 
+definePageMeta({
+    keepalive: false,
+    middleware: ["auth"],
+    key: (route) => route.fullPath,
+    name: 'discount',
+});
+
 import { useHomeStore } from '~/store/web/Home'; 
 const homeStore = useHomeStore(); 
 

@@ -39,7 +39,14 @@ function createApiHandler({accessToken}) {
                 config.headers = { ...config.headers, ...{ "Content-Type": "multipart/form-data" }}
             }
             if (config.url != 'auth/logout') {
-                // authMethods.logoutIfExpireToken()
+                if(accessToken){
+                    // authMethods.logoutIfExpireToken()
+                    if(!useCookie('expires_in').value || useCookie('expires_in').value <= moment().valueOf()){
+                        useCookie('access_token').value = null
+                        useCookie('expires_in').value = null
+                        reloadNuxtApp({path: '/suadmin/login'})
+                    }
+                }
             }
              
             /* -------------------------------------------------------------- */
@@ -70,8 +77,7 @@ function createApiHandler({accessToken}) {
             return response
         }, (error) => {
             if(error.response?.data?.message === "Unauthenticated."){
-                useCookie('token_expire').value = null
-                useCookie('token_expire_duration').value = null
+                useCookie('token_expire').value = null 
                 reloadNuxtApp({path: '/suadmin/login'})
             }
             delete State('response').pendings[fullURL(error.config)];

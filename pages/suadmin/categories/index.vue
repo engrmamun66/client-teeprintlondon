@@ -254,6 +254,14 @@ let Sub_category = [
 ];
 
 
+
+definePageMeta({
+    keepalive: false,
+    middleware: ["auth"],
+    key: (route) => route.fullPath,
+    name: 'categories',
+  });
+
 async function showCategory(id) {
   Categorystore.resetCategoryAttribute();
   await Categorystore.showCategory(id);

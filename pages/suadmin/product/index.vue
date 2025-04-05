@@ -201,12 +201,12 @@ let productId = ref(null);
 import { useHomeStore } from '~/store/web/Home'; 
 const homeStore = useHomeStore(); 
  
-
-
-
 definePageMeta({
-  name: 'admin_product_list'
-})
+    keepalive: false,
+    middleware: ["auth"],
+    key: (route) => route.fullPath,
+    name: 'admin_product_list',
+  });
 
 
 let params = reactive({

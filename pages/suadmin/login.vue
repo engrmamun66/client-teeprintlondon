@@ -102,7 +102,6 @@ const togglePasswordVisibility = () => {
 
 definePageMeta({
   keepalive: false,
-  middleware: ["auth"],
   key: (route) => route.fullPath,
   layout: "auth",
   name: "login",

@@ -131,6 +131,13 @@ import { useQuatationStore } from "~/store/Quatation.js";
 import { ref, onMounted } from "vue";
 const quatationStore = useQuatationStore();
 
+definePageMeta({
+    keepalive: false,
+    middleware: ["auth"],
+    key: (route) => route.fullPath,
+    name: 'single-quotation',
+  });
+
 let editMode = ref(false);
 let clearImage = ref(false);
 let fileUrls = ref([]);
