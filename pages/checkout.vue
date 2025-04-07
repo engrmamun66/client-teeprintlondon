@@ -276,7 +276,7 @@ async function placeOrder(){
                                         <template v-for="(item, i) in cartStore.cart">
                                             <div class="teeprint-order-list-box">
                                                 <div class="teeprint-order-img">
-                                                    <img :src="item.thumbnail_image_url" />
+                                                    <img :src="item.thumbnail_image_url"  alt="Alternative Image"/>
                                                 </div>
                                                 <div class="teeprint-order-product-details">
                                                     <div class="teeprint-order-product-name">

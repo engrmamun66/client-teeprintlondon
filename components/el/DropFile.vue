@@ -28,7 +28,7 @@ accepts="jpg,jpeg,png,pdf"
 				<template v-if="!multiple">  
 					<!-- <span v-if="isUploading()" class="loader"></span> -->
 					<template v-if="upoadedFiles[0]?.type.startsWith('image/') && !isDragovering">
-						<img :src="upoadedFiles[0]?.base64 || ''" :class="{removingFile: upoadedFiles[0].isRemoving}" style="height:calc(100% - 30px);border-radius:4px;margin-bottom:1rem" />
+						<img :src="upoadedFiles[0]?.base64 || ''" :class="{removingFile: upoadedFiles[0].isRemoving}" style="height:calc(100% - 30px);border-radius:4px;margin-bottom:1rem" alt="Alternative Image"/>
 					</template>
 					<!-- <template v-else-if="upoadedFiles[0]?.type.startsWith('video/')">
 						<video :class="{removingFile: upoadedFiles[0].isRemoving}" class="video-js" controls preload="auto" :poster="poster" data-setup='' :loop="false">

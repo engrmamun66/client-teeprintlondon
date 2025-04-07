@@ -54,7 +54,7 @@ onMounted(() => {
                             <ul v-if="cartStore.cart?.length">
                                 <li v-for="(item, i) in cartStore.cart">
                                     <div class="teeprint-list-item">
-                                        <img @auxclick="log(item)" class="teeprint-product-image" :src="item.thumbnail_image_url || PLACEHOLDER_IMAGE" />
+                                        <img @auxclick="log(item)" class="teeprint-product-image" :src="item.thumbnail_image_url || PLACEHOLDER_IMAGE" alt="Alternative Image" />
                                         <div class="teeprint-cart-line">
                                             <div class="teeprint-product-name teeprint-large">{{ item?.name }}</div>
                                             <div class="teeprint-modal-quantity">

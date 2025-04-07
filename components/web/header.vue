@@ -240,8 +240,8 @@ let { staticPagesByParentCat } = globalData;
               </div>
               <div class="teeprint-text-body">
                 <span class="teeprint-title">Email Us</span>
-                <a href="mailto:contact@teeprint.com" class="teeprint-number"
-                  >contact@teeprint.com</a
+                <a href="mailto:support@teeprintlondon.co.uk" class="teeprint-number"
+                  >support@teeprintlondon.co.uk</a
                 >
               </div>
             </div>

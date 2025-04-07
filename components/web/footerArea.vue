@@ -77,7 +77,7 @@
                 </li>
               </ul>
               <h4>Payment</h4>
-              <img src="/img/card_image1.jpg" />
+              <img src="/img/card_image1.jpg" alt="Alternative Image"/>
             </div>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-4">

@@ -224,7 +224,7 @@
               <template v-for="(item, index) in orderStore.orderDetails?.order_items || []">
                 <tr>
                   <td>
-                     <img :src="item.product.thumbnail_image_url" /> 
+                     <img :src="item.product.thumbnail_image_url"  alt="Alternative Image"/> 
                   </td>
                   <td>
                      <div class="d-flex flex-column">
