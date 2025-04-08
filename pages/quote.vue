@@ -1,7 +1,7 @@
 <script setup>
 import FrontendApi from "~/apis/web/Frontend";
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('quote', 'quote'))
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("quote", "quote"));
 definePageMeta({
   titleTemplate: "% :: Home",
   name: "quote",
@@ -100,10 +100,11 @@ async function sendQuotation() {
                     </div>
                     <h5>Address</h5>
                     <div class="branch-address">
-                      <span>38 Worland Road,<br>
-                            City - London,<br>
-                            County - England,<br>
-                            Postcode - E15 4EY
+                      <span
+                        >38 Worland Road,<br />
+                        City - London,<br />
+                        County - England,<br />
+                        Postcode - E15 4EY
                       </span>
                     </div>
                   </div>
@@ -119,7 +120,9 @@ async function sendQuotation() {
                       <i class="la la-phone"></i>
                     </div>
                     <h5>Phone</h5>
-                    <span>+44 7888 185120</span>
+                    <a href="tel:+447888185120" class="phone-link"
+                      >+44 7888 185120</a
+                    >
                   </div>
                 </div>
               </div>
@@ -296,20 +299,18 @@ async function sendQuotation() {
           ></iframe>
         </div>
         <div class="container mt-5">
-      <web-DuelCard
-        img_left="/img/quote-page-card-image-1.jpeg"
-        img_right="/img/quote-page-card-image-2.jpeg"
-        paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
-      />
-    </div>
+          <web-DuelCard
+            img_left="/img/quote-page-card-image-1.jpeg"
+            img_right="/img/quote-page-card-image-2.jpeg"
+            paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
+          />
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <style>
-
-
 .bg_animation {
   --bcolor: #00000015;
   --bspeed: 7s;
