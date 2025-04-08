@@ -8,7 +8,7 @@
         <i-las t="times-circle" class="text-white"/>
       </span>
       <span v-if="!modelValue" class="filename"> {{ defaultText }} </span>
-      <img :class="{removingFile: isRemoving}" :src="modelValue" />
+      <img :class="{removingFile: isRemoving}" :src="modelValue" alt="Alternative Image"/>
       <div v-if="modelValue">
         <div class="d-flex justify-content-between w-100 position-relative mt-2">
           <span class="filename">{{ fileName }}</span>
@@ -23,7 +23,7 @@
         <i-las t="times-circle" style="font-size:1.2rem" class="text-white"/>
       </span>
       <span v-if="!modelValue" class="filename"> {{ defaultText }} </span>
-      <img :class="{removingFile: isRemoving}" :src="modelValue" style="height: 30px; width:auto; margin:-17px 0px -16px -3px;border-radius:3px;" />
+      <img :class="{removingFile: isRemoving}" :src="modelValue" style="height: 30px; width:auto; margin:-17px 0px -16px -3px;border-radius:3px;" alt="Alternative Image"/>
     </div>
   </div>
 </template>

@@ -4,7 +4,7 @@
       <div class="logo-area-inner">
         <div class="logo-area-middle">
           <nuxt-link :to="'/suadmin'">
-            <img src="/img/logon_fina.png" />
+            <img src="/img/logon_fina.png" alt="Alternative Image"/>
           </nuxt-link>
         </div>
         <div class="leap-admin-collapes-area">

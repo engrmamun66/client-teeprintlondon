@@ -20,7 +20,7 @@ export const useAuthStore = defineStore("auth", () => {
                 localStorage.setItem('user', JSON.stringify(response?.data?.data?.user));
                 
                 // useCookie('expires_in').value = moment().add(86400, 'seconds').valueOf(); // default: 86400 secods = 24h
-                useCookie('expires_in').value = moment().add(120, 'seconds').valueOf();  
+                useCookie('expires_in').value = moment().add(7200, 'seconds').valueOf();
                 reloadNuxtApp({path: '/suadmin'});
             }
         } catch (err) {

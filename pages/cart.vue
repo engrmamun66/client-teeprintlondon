@@ -50,7 +50,7 @@ watch(deliveryCost, (a) => {
                                         <template v-for="(item, i) in cartStore.cart">
                                             <tr>
                                                 <td><i @click="cartStore.deleteItem(i)" class="la la-trash cart-remove"></i></td>
-                                                <td><img @auxclick="log(item)" :src="item.thumbnail_image_url" /></td>
+                                                <td><img @auxclick="log(item)" :src="item.thumbnail_image_url" alt="Alternative Image" /></td>
                                                 <td>
                                                     <b>{{ item.name }}</b>
                                                     <br>

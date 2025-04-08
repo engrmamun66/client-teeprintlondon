@@ -12,7 +12,7 @@
             <div class="login-container">
               <div class="login-container-body">
                 <div class="text-center">
-                  <img src="/img/logon_fina.png" class="img-fluid login-logo" style="border-radius: 20%;" />
+                  <img src="/img/logon_fina.png" alt="Alternative Image" class="img-fluid login-logo" style="border-radius: 20%;" />
                 </div>
                 <div class="login-heading">Welcome to the Admin Panel!</div>
                 <div class="login-subheading">Sign in to continue</div>

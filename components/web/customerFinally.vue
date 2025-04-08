@@ -20,7 +20,7 @@
                         <div class="teeprintservice-box">
                             <div class="teeprintservice-box-inner">
                                 <div class="teeprint-service-img">
-                                    <img src="/img/Own-Wirehouse-150x150.png.webp" class="img-fluid">
+                                    <img src="/img/Own-Wirehouse-150x150.png.webp" class="img-fluid"alt="Alternative Image">
                                 </div>
                                 <h5>Custom Garments Printed Locally in Our London Facility</h5>
                             </div>
@@ -30,7 +30,7 @@
                         <div class="teeprintservice-box">
                             <div class="teeprintservice-box-inner">
                                 <div class="teeprint-service-img">
-                                    <img src="/img/Fastest-Turnaround-150x150.png.webp" class="img-fluid">
+                                    <img src="/img/Fastest-Turnaround-150x150.png.webp" class="img-fluid" alt="Alternative Image">
                                 </div>
                                 <h5>Fast Service, Same-Day Delivery, and Free Pickup Options</h5>
                             </div>
@@ -40,7 +40,7 @@
                         <div class="teeprintservice-box">
                             <div class="teeprintservice-box-inner">
                                 <div class="teeprint-service-img">
-                                    <img src="/img/24-7-Open-150x150.png.webp" class="img-fluid">
+                                    <img src="/img/24-7-Open-150x150.png.webp" class="img-fluid" alt="Alternative Image">
                                 </div>
                                 <h5>Operating Nonstop, Bank Holidays Included</h5>
                             </div>
@@ -50,7 +50,7 @@
                         <div class="teeprintservice-box">
                             <div class="teeprintservice-box-inner">
                                 <div class="teeprint-service-img">
-                                    <img src="/img/Quality-150x150.png.webp" class="img-fluid">
+                                    <img src="/img/Quality-150x150.png.webp" class="img-fluid" alt="Alternative Image">
                                 </div>
                                 <h5>High-Quality Prints and Fabrics Built for Style and Longevity</h5>
                             </div>
@@ -60,7 +60,7 @@
                         <div class="teeprintservice-box">
                             <div class="teeprintservice-box-inner">
                                 <div class="teeprint-service-img">
-                                    <img src="/img/Refund-Policy-150x150.png.webp" class="img-fluid">
+                                    <img src="/img/Refund-Policy-150x150.png.webp" class="img-fluid" alt="Alternative Image">
                                 </div>
                                 <h5>
                                     Hassle-Free Refund Policy for Your Peace of Mind
