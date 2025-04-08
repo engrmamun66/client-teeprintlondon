@@ -1239,6 +1239,38 @@ let META_BOX = {
     "competitive printing quotes"
   ].concat(KEYWORDS.common)
 }
+      },
+      Design_Service:{
+        "custom_apparel": {
+  "title": "Premium Custom Apparel Printing London | T-Shirts to Teamwear | Tee Print",
+  "description": "Complete custom apparel solutions in London - from school uniforms to sports teamwear. Advanced printing for t-shirts, hoodies, aprons & more. Get a free design consultation today.",
+  "keywords": [
+    "custom t-shirt printing London",
+    "school uniform printing",
+    "university merchandise",
+    "sports teamwear printing",
+    "promotional apparel UK",
+    "corporate clothing printing",
+    "moisture-wicking activewear",
+    "custom hoodies London",
+    "apron printing service",
+    "cap embroidery London",
+    "tote bag printing",
+    "fleece and knit printing",
+    "AI apparel design",
+    "bulk custom clothing",
+    "no minimum order printing",
+    "breathable sportswear",
+    "durable school uniforms",
+    "stain-resistant workwear",
+    "multi-color garment printing",
+    "branded merchandise UK",
+    "team kit printing",
+    "event apparel printing",
+    "restaurant uniform printing",
+    "custom workwear London"
+  ].concat(KEYWORDS.common)
+}
       }
 
   

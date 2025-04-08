@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import getMeta from "~/seo-meta"; 
+useSeoMeta(getMeta('Design_Service', 'custom_apparel'))
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
