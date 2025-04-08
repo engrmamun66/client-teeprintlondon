@@ -1,15 +1,21 @@
 <script setup>
-import seoMeta from "~/seo-meta.json";
-import { ref, computed, inject, onMounted } from "vue";
-import { useRoute } from "vue-router";
-import { useSeoMeta } from "#imports";
+import getMeta from "~/seo-meta"; 
+let { product_slug } = useRoute().params;
+useSeoMeta(getMeta('pages', product_slug, true))  
+
+definePageMeta({
+  name: "product_details",
+  layout: "web",
+});
+
+
 
 let homeStore = inject("homeStore");
-let { product_slug } = useRoute().params;
+
+
 
 let isMounted = ref(false);
-let imageIndex = ref(0);
-let tab = ref(1);
+let imageIndex = ref(0); 
 let activeThumbnailIndex = ref(0); // Track the active thumbnail index
 let allImagesLoaded = ref(false); // Track if all images are loaded
 let loadedImagesCount = ref(0); // Track the number of images loaded
@@ -48,22 +54,8 @@ onMounted(async () => {
  
 });
 
-definePageMeta({
-  titleTemplate: `%s :: Product Details`,
-  name: "product_details",
-  layout: "web",
-});
 
-const { seo_title, seo_description, seo_image } = seoMeta?.[product_slug] || {};
-
-// Set SEO meta tags
-useSeoMeta({
-  title: `${APPNAME} :: ${seo_title}`,
-  ogTitle: seo_title,
-  description: seo_description,
-  ogDescription: seo_description,
-  ogImage: seo_image,
-});
+ 
 
 let showEffect = computed(
   () => H.isPendingAnyApi("Frontend:getProductDetails") || !isMounted.value

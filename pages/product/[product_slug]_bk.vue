@@ -50,7 +50,7 @@ onMounted(async () => {
 
 definePageMeta({
   titleTemplate: `%s :: Product Details`,
-  name: "product_details",
+  name: "product_details_admin",
   layout: "web",
 });
 

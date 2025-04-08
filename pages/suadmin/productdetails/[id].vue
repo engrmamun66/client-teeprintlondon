@@ -436,7 +436,7 @@ definePageMeta({
     keepalive: false,
     middleware: ["auth"],
     key: (route) => route.fullPath,
-    name: 'product_details',
+    name: 'product_details2',
   });
 
 
