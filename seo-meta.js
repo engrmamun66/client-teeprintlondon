@@ -17,7 +17,7 @@ const DESCRIPTIONS = {
   common: `Tee Print London provides the most affordable same day T-shirt printing services across London and the UK. We take great care with each order, ensuring prompt delivery. Our offerings go beyond custom T-shirts to include hoodies, tote bags, caps, sportswear, workwear`, 
 }
 const KEYWORDS = {
-  common: `hoodies, tote bags, caps, sportswear, workwear`, 
+  common: `t-shirt, shirt,hoodies, tote bags, caps, sportswear, workwear`, 
 }
 
 
