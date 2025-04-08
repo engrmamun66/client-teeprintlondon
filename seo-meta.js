@@ -1,6 +1,7 @@
 /**
  * We will use
- * useSeoMeta({
+ * 
+  useSeoMeta({
     title: 'My Amazing Site',
     ogTitle: 'My Amazing Site',
     description: 'This is my amazing site, let me tell you all about it.',
@@ -34,7 +35,7 @@ let META_BOX = {
     },
     "commodi-nemo-quidem": {
       "description": "Lorem ipsum description for comoodi",
-      "keywords": KEWORDS.common
+      "keywords": KEWORDS.common, 
     },
   },
   category_pages: {
@@ -42,10 +43,19 @@ let META_BOX = {
       "description": "Lorem ipsum description for comoodi",
       "keywords": KEWORDS.common
     },
-  }
+  },
+  same_day_pages: {
+    "active_ware": {
+      "description": "Lorem ipsum description for comoodi",
+      "keywords": KEWORDS.common
+    },
+  },
 }
 
-function getMeta(key1, key2='', titleFromKey2=false){
+
+
+
+function getMeta(key1, key2='', {titleFromKey2=true, image=''}={}){
   let meta = null
 
   if(META_BOX?.[key1]) meta = META_BOX?.[key1]
@@ -62,11 +72,13 @@ function getMeta(key1, key2='', titleFromKey2=false){
     }
   }
  
-  const constucfirstOfWords = (text, spliter='-') => { // upper case, first char of each words
+  const constucfirstOfWords = (text) => { // upper case, first char of each words
     if(!text) return '';
     text = String(text);
     const ucFirst = (str) => (str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
-    return text.split(spliter).map(ucFirst).join(' ');
+    text = text.replace(/_/g, '-')
+    let final_text = text.split('-').map(ucFirst).join(' ');
+    return final_text
   }
 
   let titleBySlug = null
@@ -81,6 +93,9 @@ function getMeta(key1, key2='', titleFromKey2=false){
   }
   if(!meta?.ogImage){
     meta['ogImage'] = LOGO_URL
+  }
+  if(image){
+    meta['ogImage'] = image 
   }
 
 

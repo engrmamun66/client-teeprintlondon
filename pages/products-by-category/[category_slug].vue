@@ -2,8 +2,7 @@
 <script setup>
 import getMeta from "~/seo-meta"; 
 const { category_slug } = useRoute().params
-
-useSeoMeta(getMeta('category_pages', category_slug, true))  
+useSeoMeta(getMeta('category_pages', category_slug))  
 
 definePageMeta({ 
   name: 'category-products',

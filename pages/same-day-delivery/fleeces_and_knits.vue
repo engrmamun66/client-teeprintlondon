@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import getMeta from "~/seo-meta"; 
+useSeoMeta(getMeta('same_day_pages', 'fleeces_and_knits'))  
+
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",

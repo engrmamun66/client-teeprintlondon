@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import getMeta from "~/seo-meta"; 
+useSeoMeta(getMeta('same_day_pages', 'dress_shirt'))  
+
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",

@@ -1,4 +1,8 @@
 <script setup>
+import getMeta from "~/seo-meta";  
+useSeoMeta(getMeta('root', 'home page')) 
+
+
 definePageMeta({
   titleTemplate: "% :: Home",
   name: "home",

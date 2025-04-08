@@ -1,6 +1,8 @@
 <script setup lang="ts">
-definePageMeta({
-  titleTemplate: "% :: details",
+import getMeta from "~/seo-meta"; 
+useSeoMeta(getMeta('same_day_pages', 'active_ware'))  
+
+definePageMeta({ 
   layout: "web",
 });
 

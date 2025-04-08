@@ -1,5 +1,7 @@
 <script setup lang="ts"> 
-
+import getMeta from "~/seo-meta"; 
+let { product_slug } = useRoute().params;
+useSeoMeta(getMeta('root', 'shop')) 
   
 definePageMeta({
   titleTemplate: '% :: shop',

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import getMeta from "~/seo-meta"; 
+useSeoMeta(getMeta('same_day_pages', 'tote_bag')) 
+
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",

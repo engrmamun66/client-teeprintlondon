@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import getMeta from "~/seo-meta"; 
+useSeoMeta(getMeta('same_day_pages', 'apron'))  
+
+
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",

@@ -1,7 +1,7 @@
 <script setup>
 import getMeta from "~/seo-meta"; 
 let { product_slug } = useRoute().params;
-useSeoMeta(getMeta('pages', product_slug, true))  
+useSeoMeta(getMeta('pages', product_slug))  
 
 definePageMeta({
   name: "product_details",
