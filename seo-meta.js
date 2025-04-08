@@ -47,7 +47,8 @@ let META_BOX = {
   same_day_pages: {
     "active_ware": {
       "description": "Lorem ipsum description for comoodi",
-      "keywords": KEWORDS.common
+      "keywords": KEWORDS.common,
+      ogImage:"https://teeprintlondon.co.uk/img/Active_wear/Leonardo_Phoenix_10_A_surreal_and_vibrant_cinematic_photograph_2.jpg"
     },
   },
 }
