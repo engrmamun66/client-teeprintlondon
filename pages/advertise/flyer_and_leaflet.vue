@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import getMeta from "~/seo-meta"; 
+useSeoMeta(getMeta('advertise', 'flyer_and_leaflet')) 
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import getMeta from "~/seo-meta"; 
+useSeoMeta(getMeta('cloth', 'promotion_t_shirts'))
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",

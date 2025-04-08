@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import getMeta from "~/seo-meta"; 
+useSeoMeta(getMeta('advertise', 'advertising_banner')) 
+
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",

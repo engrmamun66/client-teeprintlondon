@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import getMeta from "~/seo-meta"; 
+useSeoMeta(getMeta('advertise', 'folded_flyer_and_menu')) 
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",

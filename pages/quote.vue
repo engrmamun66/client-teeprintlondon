@@ -1,6 +1,7 @@
 <script setup>
 import FrontendApi from "~/apis/web/Frontend";
-
+import getMeta from "~/seo-meta"; 
+useSeoMeta(getMeta('quote', 'quote'))
 definePageMeta({
   titleTemplate: "% :: Home",
   name: "quote",
