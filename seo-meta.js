@@ -14,10 +14,33 @@
 const LOGO_URL = '/img/logon_fina.png'
 
 const DESCRIPTIONS = {
-  common: `Tee Print London provides the most affordable same day T-shirt printing services across London and the UK. We take great care with each order, ensuring prompt delivery. Our offerings go beyond custom T-shirts to include hoodies, tote bags, caps, sportswear, workwear`, 
+  common: `London's top custom printing service for t-shirts, hoodies & promotional wear. Same-day printing, no minimum orders & premium quality. Get a free quote today!`, 
 }
 const KEYWORDS = {
-  common: `t-shirt, shirt,hoodies, tote bags, caps, sportswear, workwear`, 
+  common: `    "custom t-shirt printing London",
+    "same day printing service",
+    "promotional wear printing",
+    "screen printing London",
+    "DTG printing UK",
+    "vinyl t-shirt printing",
+    "no minimum order printing",
+    "bulk t-shirt printing",
+    "school uniform printing",
+    "university merchandise",
+    "team sports kits printing",
+    "organic cotton t-shirts",
+    "custom hoodies London",
+    "personalized tote bags",
+    "corporate branding apparel",
+    "event merchandise printing",
+    "24/7 printing service",
+    "fast turnaround printing",
+    "high quality custom apparel",
+    "bespoke clothing London",
+    "design your own t-shirt",
+    "eco-friendly printing",
+    "washable custom prints",
+    "durable t-shirt designs"`, 
 }
 
 
