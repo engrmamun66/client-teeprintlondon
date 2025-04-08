@@ -131,13 +131,21 @@ const validatePassword = () => {
 
 // Submit form
 const submitLoginForm = async () => {
+  // Run validations first
   validateEmail();
   validatePassword();
-
+  
+  // Add a small delay to ensure Vue updates the errors object
+  await nextTick();
+  
+  // Check for errors after the state has been updated
   if (!errors.value.email && !errors.value.password) {
     isSubmitting.value = true;
-    await authStore.login(userData.value);
-    isSubmitting.value = false;
+    try {
+      await authStore.login(userData.value);
+    } finally {
+      isSubmitting.value = false;
+    }
   }
 };
 </script>
