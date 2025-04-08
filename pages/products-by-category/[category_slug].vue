@@ -1,14 +1,16 @@
 
 <script setup>
+import getMeta from "~/seo-meta"; 
+const { category_slug } = useRoute().params
 
-definePageMeta({
-  titleTemplate: '% :: Category Products',
+useSeoMeta(getMeta('category_pages', category_slug, true))  
+
+definePageMeta({ 
   name: 'category-products',
   layout: 'web',
 })
 
 
-const { category_slug } = useRoute().params
  
 </script>
 

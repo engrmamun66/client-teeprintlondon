@@ -37,6 +37,12 @@ let META_BOX = {
       "keywords": KEWORDS.common
     },
   },
+  category_pages: {
+    "commodi-nemo-quidem": {
+      "description": "Lorem ipsum description for comoodi",
+      "keywords": KEWORDS.common
+    },
+  }
 }
 
 function getMeta(key1, key2='', titleFromKey2=false){
