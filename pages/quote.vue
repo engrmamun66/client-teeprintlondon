@@ -113,11 +113,17 @@ async function sendQuotation() {
                       <i class="la la-envelope-open"></i>
                     </div>
                     <h5>Email</h5>
-                    <span> support@teeprintlondon.co.uk</span>
+                    <a
+                      href="mailto:support@teeprintlondon.co.uk"
+                      class="teeprint-number"
+                      ><span> support@teeprintlondon.co.uk</span></a
+                    >
                   </div>
                   <div class="col-md-12 text-center contact-info">
                     <div class="contact-circle">
-                      <i class="la la-phone"></i>
+                      <a href="tel:+447888185120" class="phone-link">
+                        <i class="la la-phone"></i
+                      ></a>
                     </div>
                     <h5>Phone</h5>
                     <a href="tel:+447888185120" class="phone-link"

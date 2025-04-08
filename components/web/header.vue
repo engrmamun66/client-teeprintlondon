@@ -253,7 +253,7 @@ let { staticPagesByParentCat } = globalData;
               </div>
               <div class="teeprint-text-body">
                 <span class="teeprint-title">Call Us Now</span>
-                <a href="tel:+123 5678 890" class="teeprint-number"
+                <a href="tel:+447888185120" class="teeprint-number"
                   >+44 7888 185120</a
                 >
               </div>
