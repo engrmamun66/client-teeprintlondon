@@ -16,8 +16,8 @@ import { useCommonStore } from '~/store/Common';
 const commonStore = useCommonStore();
 
 useHead({
-  title: "Talibun",
-  titleTemplate: '%s | Dashboard',
+  title: "Teeprint London",
+  titleTemplate: '%s | Login',
   meta: [{ name: "description", content: "My amazing site434." }],
   bodyAttrs: [{"class": `leap-admin-body`},],
   link:[
