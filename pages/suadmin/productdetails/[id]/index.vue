@@ -686,9 +686,15 @@ async function handleSubmit() {
       productStore.product;
     productStore.product = productWithoutSubcategory; // Update the product object
   }
-  productStore.product.min_unit_price = Math.min(
-    ...productStore.product.sizes.map((size) => size.unit_price)
-  );
+
+  const validPrices = productStore.product.sizes
+  .map((size) => size.unit_price)
+  .filter((price) => price > 0);
+
+  productStore.product.min_unit_price = validPrices.length
+  ? Math.min(...validPrices)
+  : 0; // or handle the case differently if no valid price exists
+   
 
   // Create the payload
   const productPayload = createProductPayload(productStore.product);
