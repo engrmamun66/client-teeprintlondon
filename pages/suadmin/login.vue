@@ -12,13 +12,18 @@
             <div class="login-container">
               <div class="login-container-body">
                 <div class="text-center">
-                  <img src="/img/logon_fina.png" alt="Alternative Image" class="img-fluid login-logo" style="border-radius: 20%;" />
+                  <img
+                    src="/img/logon_fina.png"
+                    alt="Alternative Image"
+                    class="img-fluid login-logo"
+                    style="border-radius: 20%"
+                  />
                 </div>
                 <div class="login-heading">Welcome to the Admin Panel!</div>
                 <div class="login-subheading">Sign in to continue</div>
 
                 <div class="login-form">
-                  <form class="login">
+                  <form class="login" @submit.prevent="submitLoginForm">
                     <div class="form-group">
                       <label>Email</label>
                       <input
@@ -62,9 +67,8 @@
 
                     <div class="form-group mt-4 mb-0">
                       <button
-                        type="button"
+                        type="submit"
                         class="btn sub-btn"
-                        @click.prevent="submitLoginForm"
                         :disabled="isSubmitting"
                       >
                         Sign In
@@ -130,23 +134,23 @@ const validatePassword = () => {
 };
 
 // Submit form
-const submitLoginForm = async () => {
+const submitLoginForm = async (event) => {
+  if (event) event.preventDefault();
   // Run validations first
   validateEmail();
   validatePassword();
-  
-  // Add a small delay to ensure Vue updates the errors object
-  await nextTick();
-  
-  // Check for errors after the state has been updated
-  if (!errors.value.email && !errors.value.password) {
-    isSubmitting.value = true;
-    try {
-      await authStore.login(userData.value);
-    } finally {
-      isSubmitting.value = false;
+
+  setTimeout(async () => {
+    // Check for errors after the state has been updated
+    if (!errors.value.email && !errors.value.password) {
+      isSubmitting.value = true;
+      try {
+        await authStore.login(userData.value);
+      } finally {
+        isSubmitting.value = false;
+      }
     }
-  }
+  }, 200);
 };
 </script>
 

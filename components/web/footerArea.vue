@@ -43,7 +43,7 @@
               <h4>Discover</h4>
               <ul>
                 <li><nuxt-link to="/question">FAQ’s</nuxt-link></li>
-                <li><nuxt-link to="/quote">Contact Us</nuxt-link></li>
+                <li><nuxt-link to="/contact">Contact Us</nuxt-link></li>
                 <li><nuxt-link to="/privacy">Privacy Policy</nuxt-link></li>
                 <li>
                   <nuxt-link to="/refund">Refund and Returns Policy</nuxt-link>

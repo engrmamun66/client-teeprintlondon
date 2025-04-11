@@ -15,8 +15,8 @@ export const useProductStore = defineStore("product", () => {
   let bulkPrice = ref(null);
   let bulkQuantity = ref(null);
   let product = ref({
-    showsizetable: "Yes",
-    showinputfield: "Yes",
+    show_size_table: "Yes",
+    show_personalized: "Yes",
     name: "",
     price: 0,
     brand_id: null, // New property
@@ -91,8 +91,8 @@ export const useProductStore = defineStore("product", () => {
       (bulkPrice.value = null),
       (bulkQuantity.value = null);
     product.value = {
-      showsizetable: "Yes",
-      showinputfield:"Yes",
+      show_size_table: "Yes",
+      show_personalized:"Yes",
       name: null,
       price: 25,
       brand_id: null,

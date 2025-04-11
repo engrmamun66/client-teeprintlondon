@@ -157,16 +157,16 @@
                 <label style="display: flex; align-items: center">
                   <input
                     type="checkbox"
-                    v-model="productStore.product.showsizetable"
+                    v-model="productStore.product.show_size_table"
                     :true-value="'Yes'"
                     :false-value="null"
                     :checked="
-                      productStore.product.showsizetable == 'Yes' ||
-                      productStore.product.showsizetable == null
+                      productStore.product.show_size_table == 'Yes' ||
+                      productStore.product.show_size_table == null
                     "
                     @change="
-                      productStore.product.showsizetable =
-                        productStore.product.showsizetable === 'Yes'
+                      productStore.product.show_size_table =
+                        productStore.product.show_size_table === 'Yes'
                           ? 'Yes'
                           : 'Yes'
                     "
@@ -177,12 +177,12 @@
                 <label style="display: flex; align-items: center">
                   <input
                     type="checkbox"
-                    v-model="productStore.product.showsizetable"
+                    v-model="productStore.product.show_size_table"
                     :true-value="'No'"
                     :false-value="null"
                     @change="
-                      productStore.product.showsizetable =
-                        productStore.product.showsizetable == 'No' ? 'No' : null
+                      productStore.product.show_size_table =
+                        productStore.product.show_size_table == 'No' ? 'No' : null
                     "
                   />
                   No
@@ -199,16 +199,16 @@
                 <label style="display: flex; align-items: center">
                   <input
                     type="checkbox"
-                    v-model="productStore.product.showinputfield"
+                    v-model="productStore.product.show_personalized"
                     :true-value="'Yes'"
                     :false-value="null"
                     :checked="
-                      productStore.product.showinputfield == 'Yes' ||
-                      productStore.product.showinputfield == null
+                      productStore.product.show_personalized == 'Yes' ||
+                      productStore.product.show_personalized == null
                     "
                     @change="
-                      productStore.product.showinputfield =
-                        productStore.product.showinputfield === 'Yes'
+                      productStore.product.show_personalized =
+                        productStore.product.show_personalized === 'Yes'
                           ? 'Yes'
                           : 'Yes'
                     "
@@ -219,12 +219,12 @@
                 <label style="display: flex; align-items: center">
                   <input
                     type="checkbox"
-                    v-model="productStore.product.showinputfield"
+                    v-model="productStore.product.show_personalized"
                     :true-value="'No'"
                     :false-value="null"
                     @change="
-                      productStore.product.showinputfield =
-                        productStore.product.showinputfield == 'No'
+                      productStore.product.show_personalized =
+                        productStore.product.show_personalized == 'No'
                           ? 'No'
                           : null
                     "
@@ -644,6 +644,9 @@ async function handleSubmit() {
     sizes: JSON.stringify(product.sizes), // Custom serialization for sizes
     genders: JSON.stringify(product.genders), // Stringify genders
     colors: JSON.stringify(product.colors), // Stringify colors
+    show_size_table : product.show_size_table == "Yes" ? 1: 0,
+    show_personalized : product.show_personalized == "Yes" ? 1: 0
+
   });
 
   // Destructure and modify the product if subcategory_id exists
