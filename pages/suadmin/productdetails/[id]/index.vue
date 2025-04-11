@@ -145,6 +145,91 @@
               </div>
             </div>
 
+            <div class="form-group d-flex">
+              <label class="form-label"
+                >Show Size Table <span class="required-star">*</span></label
+              >
+              <div class="checkbox-group mx-3" style="display: flex; gap: 20px">
+                <label style="display: flex; align-items: center">
+                  <input
+                    type="checkbox"
+                    v-model="productStore.product.show_size_table"
+                    :true-value="'Yes'"
+                    :false-value="null"
+                    :checked="
+                      productStore.product.show_size_table == 'Yes' ||
+                      productStore.product.show_size_table == null
+                    "
+                    @change="
+                      productStore.product.show_size_table =
+                        productStore.product.show_size_table === 'Yes'
+                          ? 'Yes'
+                          : 'Yes'
+                    "
+                    :class="{ 'is-invalid': errors.color }"
+                  />
+                  Yes
+                </label>
+                <label style="display: flex; align-items: center">
+                  <input
+                    type="checkbox"
+                    v-model="productStore.product.show_size_table"
+                    :true-value="'No'"
+                    :false-value="null"
+                    @change="
+                      productStore.product.show_size_table =
+                        productStore.product.show_size_table == 'No' ? 'No' : null
+                    "
+                  />
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group d-flex">
+              <label class="form-label"
+                >Show Personalize field 
+                <span class="required-star">*</span></label
+              >
+              <div class="checkbox-group mx-3" style="display: flex; gap: 20px">
+                <label style="display: flex; align-items: center">
+                  <input
+                    type="checkbox"
+                    v-model="productStore.product.show_personalized"
+                    :true-value="'Yes'"
+                    :false-value="null"
+                    :checked="
+                      productStore.product.show_personalized == 'Yes' ||
+                      productStore.product.show_personalized == null
+                    "
+                    @change="
+                      productStore.product.show_personalized =
+                        productStore.product.show_personalized === 'Yes'
+                          ? 'Yes'
+                          : 'Yes'
+                    "
+                    :class="{ 'is-invalid': errors.color }"
+                  />
+                  Yes
+                </label>
+                <label style="display: flex; align-items: center">
+                  <input
+                    type="checkbox"
+                    v-model="productStore.product.show_personalized"
+                    :true-value="'No'"
+                    :false-value="null"
+                    @change="
+                      productStore.product.show_personalized =
+                        productStore.product.show_personalized == 'No'
+                          ? 'No'
+                          : null
+                    "
+                  />
+                  No
+                </label>
+              </div>
+            </div>
+
             <!-- Short Description -->
             <div class="form-group">
               <label class="form-label"
