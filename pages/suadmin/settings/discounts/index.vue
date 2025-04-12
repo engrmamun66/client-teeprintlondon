@@ -159,6 +159,7 @@ async function createDiscount() {
   let data = H.clone(payload)
   if(data.category_id){
     data.type = 'category'
+    data.category_id = String(data.category_id).replace('child-', '')
   } else {
     data.type = 'all'
   }
