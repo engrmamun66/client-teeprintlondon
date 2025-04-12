@@ -55,10 +55,10 @@
   let cards = ref({
     "totalBrands": 4,
     "totalOrders": 69,
+    "recentOrders": 28,
+    "completedOrders": 5,
     "totalQuotations": 5,
     "totalProducts": 1,
-    "completedOrders": 5,
-    "recentOrders": 28,
     "recentQuotations": 0
 })
 
