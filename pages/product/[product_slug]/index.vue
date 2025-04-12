@@ -282,6 +282,12 @@ let showEffect = computed(
                     </template>
                   </ul>
                 </div>
+
+                <div v-if="!homeStore.product?.show_personalized" class="note-field select-size">
+                    <h5>Add your personal note</h5> 
+                    <textarea rows="4" cols="50" style="min-height: 100px;" @input="(e) => homeStore.product.note = e.target.value" v-html="homeStore.product.note" ></textarea>
+                </div>
+
                 <div class="teeprint-quantity">
                   <template v-if="showEffect">
                     <ShimmerEffect
@@ -382,7 +388,7 @@ let showEffect = computed(
                   </template>
                   <template v-else>
                     <div v-html="homeStore.product.short_description"></div>
-                    <web-priceTable></web-priceTable>
+                    <web-priceTable v-if="homeStore.product?.show_size_table"></web-priceTable>
                   </template>
                 </div>
               </div>
@@ -397,7 +403,7 @@ let showEffect = computed(
             class="mb-1"
           ></ShimmerEffect>
         </template>
-        <template v-else>
+        <template v-else> 
           <div class="row pd-description">
             <div class="col-md-12">
               <div class="pd-tab">
@@ -478,7 +484,7 @@ let showEffect = computed(
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
         </template>
       </div>
     </section>

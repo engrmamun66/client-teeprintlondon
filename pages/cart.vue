@@ -39,6 +39,7 @@ watch(deliveryCost, (a) => {
                                     <th></th>
                                     <th></th>
                                     <th>Product</th>
+                                    <th>Note</th>
                                     <th>Unit Price</th>
                                     <th>Quantity</th>
                                     <th>Subtotal</th>
@@ -62,6 +63,7 @@ watch(deliveryCost, (a) => {
                                                         Color: {{ item.colors?.[0]?.name }} 
                                                     </template>
                                                 </td>
+                                                <td>{{ item?.note }}</td>
                                                 <td>{{ H.formatPrice(item.sizes?.[0].pivot?.discounted_unit_price) }}</td>
                                                 <td>
                                                     <div class="teeprint-num-in d-flex">
@@ -89,7 +91,7 @@ watch(deliveryCost, (a) => {
                                         <td colspan="0">
                                             <ShimmerEffect></ShimmerEffect>
                                         </td>
-                                        <td colspan="4">
+                                        <td colspan="5">
                                             <ShimmerEffect></ShimmerEffect>
                                         </td>
                                         <td colspan="0">

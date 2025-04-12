@@ -65,6 +65,7 @@ function processCartItems(){
             unit_price: item.sizes[0].pivot.unit_price,
             discounted_unit_price: item.sizes[0].pivot.discounted_unit_price,
             discount: item.discount,
+            note: item?.note || null,
         })
     })
 }
@@ -93,8 +94,8 @@ onMounted(() => {
 
 let orderCreating = ref(false)
 
-async function placeOrder(){  
-
+async function placeOrder(){   
+    
     if(!H.localStorage('cart').value?.length){
         Toaster.error('Your cart is emtpy')
         return
@@ -111,7 +112,7 @@ async function placeOrder(){
 
     orderCreating.value = true
 
-    H.delay(()=> orderCreating.value = true, 30 * 1000)
+    H.delay(()=> orderCreating.value = true, 30 * 1000) 
 
     await homeStore.placeOrder(payload, {cartStore, resetPayload})
 }
