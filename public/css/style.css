@@ -3938,6 +3938,7 @@ Product list css
   display: block;
   margin-left: auto;
   margin-right: auto;
+  min-height: 220px;
 }
 .teeprint-product-inner .teeprint-product-overlow {
   position: absolute;
