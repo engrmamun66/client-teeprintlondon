@@ -283,7 +283,7 @@ let showEffect = computed(
                   </ul>
                 </div>
 
-                <div v-if="!homeStore.product?.show_personalized" class="note-field select-size">
+                <div v-if="homeStore.product?.show_personalized != 0 " class="note-field select-size">
                     <h5>Add your personal note</h5> 
                     <textarea rows="4" cols="50" style="min-height: 100px;" @input="(e) => homeStore.product.note = e.target.value" v-html="homeStore.product.note" ></textarea>
                 </div>

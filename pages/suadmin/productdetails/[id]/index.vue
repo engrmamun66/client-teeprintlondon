@@ -193,7 +193,7 @@
               >
               <div class="checkbox-group mx-3" style="display: flex; gap: 20px">
                 <label style="display: flex; align-items: center">
-                  {{ productStore.product.show_personalized }}
+                  <!-- {{ productStore.product.show_personalized }} -->
                   <input
                     type="checkbox"
                     v-model="productStore.product.show_personalized"

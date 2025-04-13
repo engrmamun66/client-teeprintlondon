@@ -122,7 +122,7 @@ export const useProductStore = defineStore("product", () => {
 
   async function create(payload = {}) {
     try {
-      console.log("payload", payload);
+
       let response = await Product.create(payload);
       if (response.data.success) {
         await getColorList();
@@ -134,6 +134,12 @@ export const useProductStore = defineStore("product", () => {
         navigateTo({ name: "admin_product_list" });
       }
     } catch (error) {
+      if(error.response.data.errors.name[0] != null){
+        Toaster.error(error.response.data.errors.name[0])
+      }else{
+        Toaster.error("There was an error")
+      }
+
       //   if (error.response.status == 401) {
       //     registrationFormError.value.type = 401;
       //     registrationFormError.value.message = error.response.data.error;

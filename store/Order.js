@@ -33,12 +33,25 @@ export const useOrderStore = defineStore("paypal", () => {
       }
     } 
 
+    async function updateOrderStatus(payload) {
+      try { 
+        let response = await OrderApi.updateOrderStatus(payload)
+        if(Response.isOk(response, {toaster: false})){
+          Toaster.success(" Order Status Changed")
+        }
+       
+      } catch (error) {
+        console.log('error---', error);
+      }
+    }
+
   return {
     paginateData,
     orders,
     getOrderList,
     orderDetails,
     getOrderDetails,
+    updateOrderStatus
   };
 });
 

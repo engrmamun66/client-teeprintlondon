@@ -3,22 +3,30 @@
     <LoaderApi v-if="false" />
     <page-content-header
       :title="'Dashboard'"
-      :links="[{ title: 'Orders', href: '/suadmin/orders' }, { title: `Order: #${useRoute().params.order_number}`}]"
+      :links="[
+        { title: 'Orders', href: '/suadmin/orders' },
+        { title: `Order: #${useRoute().params.order_number}` },
+      ]"
       :buttons="[]"
     />
-   
 
     <!-- <button @click="log(orderStore.orderDetails)">TEST</button> -->
-    
+
     <div class="quotation-container">
       <!-- Left Card: Quotation Details -->
-      <div class="card quotation-details-card"> 
+      <div class="card quotation-details-card">
         <div class="d-flex justify-content-between align-content-center mb-3">
           <h3 class="additional-details-heading m-0">Order Details</h3>
           <template v-if="orderStore.orderDetails?.order_status_id">
-            <el-BaseSelect v-model="orderStore.orderDetails.order_status_id" :data="globalData.orderStatusList" :option1="false">
+            <el-BaseSelect
+              v-model="orderStore.orderDetails.order_status_id"
+              :data="globalData.orderStatusList"
+              :option1="false"
+              @change="orderStatusChange()"
+               
+            >
             </el-BaseSelect>
-          </template> 
+          </template>
         </div>
 
         <form v-if="orderStore.orderDetails">
@@ -55,7 +63,13 @@
             label="Delivery Date"
             style="margin-top: 10px"
             :disabled="true"
-            :value="orderStore.orderDetails.deleted_at ? moment(new Date(orderStore.orderDetails.deleted_at)).format('MMM DD YYYY') : 'N/A'"
+            :value="
+              orderStore.orderDetails.deleted_at
+                ? moment(new Date(orderStore.orderDetails.deleted_at)).format(
+                    'MMM DD YYYY'
+                  )
+                : 'N/A'
+            "
           />
           <el-BaseInput
             type="text"
@@ -64,7 +78,7 @@
             :disabled="true"
             v-model="orderStore.orderDetails.created_at"
           />
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>Customer Requirement</label>
             <textarea
               class="form-control"
@@ -73,8 +87,8 @@
               rows="3"
               placeholder="Write your requirements E.g. product type, quantity, size, artwork placement area etc."
             ></textarea>
-          </div>
-          <div class="form-group">
+          </div> -->
+          <!-- <div class="form-group">
             <label class="form-label">Status</label>
             <div class="select-optionbox">
               <select
@@ -89,8 +103,8 @@
                 <option value="4">Canceled</option>
               </select>
             </div>
-          </div>
-          <div class="form-group">
+          </div> -->
+          <!-- <div class="form-group">
             <label>Admin Notes</label>
             <textarea
               class="form-control"
@@ -98,12 +112,12 @@
               rows="3"
               placeholder="Write your requirements E.g. product type, quantity, size, artwork placement area etc."
             ></textarea>
-          </div>
+          </div> -->
           <div class="ionic-card-footer justify-content-end">
             <button
               type="button"
               class="leap-btn leap-cancel-btn m-1 px-4"
-              @click="navigateTo({path: '/suadmin/orders'})"
+              @click="navigateTo({ path: '/suadmin/orders' })"
             >
               Back
             </button>
@@ -165,11 +179,7 @@
           <div class="form-group">
             <label class="form-label">Status</label>
             <div class="select-optionbox">
-              <select
-                class="form-control"
-                :value="'loading...'"
-                required
-              >
+              <select class="form-control" :value="'loading...'" required>
                 <option disabled value="null">- Select Status -</option>
                 <option value="1">Pending</option>
                 <option value="2">Processing</option>
@@ -214,58 +224,90 @@
       <div class="card additional-details-card">
         <div class="d-flex justify-content-between align-content-center mb-3">
           <h3 class="additional-details-heading m-0">Order Items</h3>
-          <button v-if="orderStore.orderDetails" type="button" class="leap-btn leap-submit-btn me-2 m-1" tooltip="Payment Status"> 
-            {{ $ucfirst(orderStore.orderDetails?.payment_status) }} 
+          <button
+            v-if="orderStore.orderDetails"
+            type="button"
+            class="leap-btn leap-submit-btn me-2 m-1"
+            tooltip="Payment Status"
+          >
+            {{ $ucfirst(orderStore.orderDetails?.payment_status) }}
           </button>
         </div>
         <div>
           <table class="table">
             <tbody>
-              <template v-for="(item, index) in orderStore.orderDetails?.order_items || []">
+              <template
+                v-for="(item, index) in orderStore.orderDetails?.order_items ||
+                []"
+              >
                 <tr>
                   <td>
-                     <img :src="item.product.thumbnail_image_url"  alt="Alternative Image"/> 
+                    <img
+                      :src="item.product.thumbnail_image_url"
+                      alt="Alternative Image"
+                    />
                   </td>
                   <td>
-                     <div class="d-flex flex-column">
+                    <div class="d-flex flex-column">
                       <div>{{ item.product?.name }}</div>
-                      <div> 
+                      <div>
                         <small>
-                          {{ [item.product?.brand?.name, item.product?.colors?.[0]?.name, item.product?.sizes?.[0]?.name ].filter(Boolean).join(', ') }}
+                          {{
+                            [
+                              item.product?.brand?.name,
+                              item.product?.colors?.[0]?.name,
+                              item.product?.sizes?.[0]?.name,
+                            ]
+                              .filter(Boolean)
+                              .join(", ")
+                          }}
                         </small>
-
                       </div>
-                     </div>
+                    </div>
                   </td>
+                  <td>{{ item.quantity }}&nbsp;x&nbsp;{{ item.discounted_unit_price?? item.unit_price }}</td>
                   <td>
-                     {{ item.quantity }}&nbsp;x&nbsp;{{ item.unit_price }}
+                    {{ H.formatPrice(item.total_price) }}
                   </td>
+                </tr>
+                <tr v-if="item?.note != null">
                   <td>
-                     {{ H.formatPrice(item.total_price) }}
+                    <textarea
+                      :value="item?.note"
+                      disabled
+                      style="
+                        height: 100px;
+                        position: relative;
+
+                        width: 200px;
+                        overflow-y: auto;
+                        resize: none;
+                        font-family: inherit;
+                      "
+                    />
                   </td>
                 </tr>
               </template>
 
               <tr>
-                <td colspan="3">Subtotal</td> 
+                <td colspan="3">Subtotal</td>
                 <td>{{ H.formatPrice(orderStore.orderDetails?.subtotal) }}</td>
               </tr>
               <tr>
-                <td colspan="3">Shipping Cost</td> 
-                <td>{{ H.formatPrice(orderStore.orderDetails?.shipping_cost) }}</td>
+                <td colspan="3">Shipping Cost</td>
+                <td>
+                  {{ H.formatPrice(orderStore.orderDetails?.shipping_cost) }}
+                </td>
               </tr>
               <tr>
-                <th colspan="3">Total Amount</th> 
+                <th colspan="3">Total Amount</th>
                 <td>{{ H.formatPrice(orderStore.orderDetails?.total) }}</td>
               </tr>
             </tbody>
           </table>
         </div>
-         
       </div>
     </div>
-
-
   </div>
 </template>
 
@@ -273,22 +315,33 @@
 import { useOrderStore } from "~/store/Order.js";
 const orderStore = useOrderStore();
 
-
 definePageMeta({
-    keepalive: false,
-    middleware: ["auth"],
-    key: (route) => route.fullPath,
-    name: 'order_details',
-  });
+  keepalive: false,
+  middleware: ["auth"],
+  key: (route) => route.fullPath,
+  name: "order_details",
+});
 
-let { order_number } = useRoute().params
- 
-onMounted(async() => {
-  await orderStore.getOrderDetails(order_number)
-  console.log('orderDetails', orderStore.orderDetails);
-})
+let { order_number } = useRoute().params;
 
+async function orderStatusChange() {
+  // console.log("8888", orderStore.orderDetails.order_status_id)
+  console.log("000", orderStore.orderDetails.id)
+  let payload=ref({
+    order_id : orderStore.orderDetails?.id,
+    order_status_id : orderStore.orderDetails.order_status_id
+  })
+  await orderStore.updateOrderStatus(payload.value)
+  await orderStore.getOrderDetails(order_number);
+}
+onBeforeMount
+onBeforeMount(async () => {
+  await orderStore.getOrderDetails(order_number);
+});
 
+onMounted(async () => {
+  await orderStore.getOrderDetails(order_number);
+});
 </script>
 <style scoped>
 fieldset {
@@ -302,7 +355,7 @@ fieldset {
   letter-spacing: 1px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
- 
+
 fieldset {
   border: 1px solid #9c9393 !important;
 }
@@ -336,4 +389,3 @@ fieldset {
   margin-bottom: 20px;
 }
 </style>
-

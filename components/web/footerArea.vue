@@ -55,11 +55,11 @@
             <div class="teeprint-footer-location">
               <h4>Connect with us</h4>
               <ul class="teeprint-social-icon">
-                <li>
+                <!-- <li>
                   <a href="#" class="teeprint-google-onlyicon"
                     ><i class="la la-google"></i
                   ></a>
-                </li>
+                </li> -->
                 <li>
                   <a href="#" class="teeprint-facebook-onlyicon"
                     ><i class="la la-facebook"></i

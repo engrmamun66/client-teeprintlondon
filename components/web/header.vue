@@ -1,145 +1,139 @@
 <script setup>
-let homeStore = inject("homeStore"); 
+let homeStore = inject("homeStore");
 homeStore.getTypewiseCategoryList();
 
 let search = ref("");
 let isFocused = ref(false);
 
-let dbounceSearch = H.debounce(homeStore.searchProduct, 300 );
-let dbounceGetProducts = H.debounce(homeStore.getProducts, 300 );
+let dbounceSearch = H.debounce(homeStore.searchProduct, 300);
+let dbounceGetProducts = H.debounce(homeStore.getProducts, 300);
 
 watch(search, (a) => {
-  if(a) a = String(a).trimStart().trimEnd()
+  if (a) a = String(a).trimStart().trimEnd();
   dbounceSearch(a || null);
   if (!a) {
     homeStore.searchedProducts = [];
   }
 });
 
- function getProductByEnterOrSerchClick(){
-  homeStore.payload.search = a
-  dbounceGetProducts()
-  H.delay(() => homeStore.payload.search = null)
-  navigateTo({path: '/shop'})
- }
+function getProductByEnterOrSerchClick() {
+  homeStore.payload.search = a;
+  dbounceGetProducts();
+  H.delay(() => (homeStore.payload.search = null));
+  navigateTo({ path: "/shop" });
+}
 
-
- let sameDayMenus = ref([
+let sameDayMenus = ref([
   {
-    name: 'Same Day Printing',
-    slug: '/same-day-delivery/shirt',
+    name: "Same Day Printing",
+    slug: "/same-day-delivery/shirt",
     isShow: false,
     childs: [
-    {
-        name: 'Same Day T-Shirt Printing',
-        slug: '/same-day-delivery/shirt',
-      },
-      
       {
-        name: 'Same Day Cotton T-Shirt Printing',
-        slug: '/same-day-delivery/cotton_t_shirt',
+        name: "Same Day T-Shirt Printing",
+        slug: "/same-day-delivery/shirt",
       },
 
       {
-        name: 'Same Day Football Team T-Shirt Printing',
-        slug: '/same-day-delivery/football_shirt',
+        name: "Same Day Cotton T-Shirt Printing",
+        slug: "/same-day-delivery/cotton_t_shirt",
       },
-      {
-        name: 'Same Day Promotion Shirt Printing',
-        slug: '/same-day-delivery/promotion_shirts',
-      },
-      {
-        name: 'Same Day Promotion T-Shirt Printing',
-        slug: '/same-day-delivery/promotion_t_shirts',
-      },
-      {
-        name: 'Same Day Sports Shirt Printing',
-        slug: '/same-day-delivery/sports_shirt',
-      },
-      {
-        name: 'Same Day University and School Shirt Printing',
-        slug: '/same-day-delivery/university_shirt',
-      },
-      {
-        name: 'Same Day University and School T-Shirt Printing',
-        slug: '/same-day-delivery/university_t_shirt',
-      },
-      {
-        name: 'Same Day Hoodie Printing',
-        slug: '/same-day-delivery/hoodie',
-      },
-      {
-        name: 'Same Day Sweat Shirt Printing',
-        slug: '/same-day-delivery/sweatshirt',
-      },
-      {
-        name: 'Same Day Cap Printing',
-        slug: '/same-day-delivery/cap',
-      },
-      {
-        name: 'Same Day Tote bag Printing',
-        slug: '/same-day-delivery/tote_bag',
-      },
-      {
-        name: 'Same Day Apron Printing',
-        slug: '/same-day-delivery/apron',
-      },
-      {
-        name: 'Same Day Fleeces & Knits Printing',
-        slug: '/same-day-delivery/fleeces_and_knits',
-      },
-      {
-        name: 'Same Day Active Wear Printing',
-        slug: '/same-day-delivery/active_wear',
-      },
-      {
-        name: 'Same Day Dress Shirt Printing',
-        slug: '/same-day-delivery/dress_shirt',
-      },
-    ]
-  }
- ])
 
- function hideAllFirst(_for=1){
+      {
+        name: "Same Day Football Team T-Shirt Printing",
+        slug: "/same-day-delivery/football_shirt",
+      },
+      {
+        name: "Same Day Promotion Shirt Printing",
+        slug: "/same-day-delivery/promotion_shirts",
+      },
+      {
+        name: "Same Day Promotion T-Shirt Printing",
+        slug: "/same-day-delivery/promotion_t_shirts",
+      },
+      {
+        name: "Same Day Sports Shirt Printing",
+        slug: "/same-day-delivery/sports_shirt",
+      },
+      {
+        name: "Same Day University and School Shirt Printing",
+        slug: "/same-day-delivery/university_shirt",
+      },
+      {
+        name: "Same Day University and School T-Shirt Printing",
+        slug: "/same-day-delivery/university_t_shirt",
+      },
+      {
+        name: "Same Day Hoodie Printing",
+        slug: "/same-day-delivery/hoodie",
+      },
+      {
+        name: "Same Day Sweat Shirt Printing",
+        slug: "/same-day-delivery/sweatshirt",
+      },
+      {
+        name: "Same Day Cap Printing",
+        slug: "/same-day-delivery/cap",
+      },
+      {
+        name: "Same Day Tote bag Printing",
+        slug: "/same-day-delivery/tote_bag",
+      },
+      {
+        name: "Same Day Apron Printing",
+        slug: "/same-day-delivery/apron",
+      },
+      {
+        name: "Same Day Fleeces & Knits Printing",
+        slug: "/same-day-delivery/fleeces_and_knits",
+      },
+      {
+        name: "Same Day Active Wear Printing",
+        slug: "/same-day-delivery/active_wear",
+      },
+      {
+        name: "Same Day Dress Shirt Printing",
+        slug: "/same-day-delivery/dress_shirt",
+      },
+    ],
+  },
+]);
+
+function hideAllFirst(_for = 1) {
   try {
-    if(_for === 1){
-      H.toggleLoopItem(homeStore.menus, -1, 'isShow')
-      homeStore.menus.forEach(item => {
-        item['isShow'] = false
-        if(!item?.categories || !Array.isArray(item?.categories)) item.categories = []
-        (item?.categories || []).forEach(child2 => {
-          child2['isShow'] = false
-        })
-      }) 
-    } 
-    else if(_for === 2) {
-      sameDayMenus.value.forEach(item => {
-        item['isShow'] = false
-        item.childs.forEach(child => child['isShow'] = false)
-      }) 
-    } 
-
+    if (_for === 1) {
+      H.toggleLoopItem(homeStore.menus, -1, "isShow");
+      homeStore.menus.forEach((item) => {
+        item["isShow"] = false;
+        if (!item?.categories || !Array.isArray(item?.categories))
+          item.categories = [](item?.categories || []).forEach((child2) => {
+            child2["isShow"] = false;
+          });
+      });
+    } else if (_for === 2) {
+      sameDayMenus.value.forEach((item) => {
+        item["isShow"] = false;
+        item.childs.forEach((child) => (child["isShow"] = false));
+      });
+    }
   } catch (error) {
-    console.log('hideAllFirst:error', error, {_for});
-    
+    console.log("hideAllFirst:error", error, { _for });
   }
- }
+}
 
-
- function onclickMenuItem(event, n, index){
-  event.stopImmediatePropagation() 
-  hideAllFirst(n); 
-  if(n == 2){
-    H.toggleLoopItem(homeStore.menus, [-1, index], 'isShow')
+function onclickMenuItem(event, n, index) {
+  event.stopImmediatePropagation();
+  hideAllFirst(n);
+  if (n == 2) {
+    H.toggleLoopItem(homeStore.menus, [-1, index], "isShow");
   } else {
-    H.toggleLoopItem(sameDayMenus.value, [-1, index], 'isShow')
+    H.toggleLoopItem(sameDayMenus.value, [-1, index], "isShow");
   }
- }
+}
 
 onMounted(() => {
   homeStore.getAdditionalData();
 });
- 
 
 let { staticPagesByParentCat } = globalData;
 </script>
@@ -178,7 +172,8 @@ let { staticPagesByParentCat } = globalData;
                   />
                 </div>
                 <div class="teeprint-category-search-button">
-                  <button @click.stop="getProductByEnterOrSerchClick()"
+                  <button
+                    @click.stop="getProductByEnterOrSerchClick()"
                     type="button"
                     class="btn theme-btn teeprint-category-search-btn"
                   >
@@ -213,18 +208,21 @@ let { staticPagesByParentCat } = globalData;
                   >
                     <div role="listbox" class="dropdown-menu show">
                       <div role="option" class="dropdown-item">
-                        <nuxt-link :to="`/product/${product.slug}`" class="text-black" @click="search=null">
+                        <nuxt-link
+                          :to="`/product/${product.slug}`"
+                          class="text-black"
+                          @click="search = null"
+                        >
                           <div class="inner-serch cp">
-                              <img
-                                :src="
-                                  product.thumbnail_image_url ||
-                                  `/img/placeholder-image.jpg`
-                                "
-                                @mouseover="log(homeStore.searchedProducts)"
-                              />
-                              {{ product.name }}
-
-                            </div>
+                            <img
+                              :src="
+                                product.thumbnail_image_url ||
+                                `/img/placeholder-image.jpg`
+                              "
+                              @mouseover="log(homeStore.searchedProducts)"
+                            />
+                            {{ product.name }}
+                          </div>
                         </nuxt-link>
                       </div>
                     </div>
@@ -236,11 +234,18 @@ let { staticPagesByParentCat } = globalData;
           <div class="teeprint-header-usercart">
             <div class="teeprint-desktop-contact-bar">
               <div class="teeprint-icon">
-                <i class="las la-envelope"></i>
+                <a
+                  href="mailto:support@teeprintlondon.co.uk"
+                  class="teeprint-number"
+                >
+                  <i class="las la-envelope"></i
+                ></a>
               </div>
               <div class="teeprint-text-body">
                 <span class="teeprint-title">Email Us</span>
-                <a href="mailto:support@teeprintlondon.co.uk" class="teeprint-number"
+                <a
+                  href="mailto:support@teeprintlondon.co.uk"
+                  class="teeprint-number"
                   >support@teeprintlondon.co.uk</a
                 >
               </div>
@@ -249,7 +254,9 @@ let { staticPagesByParentCat } = globalData;
           <div class="teeprint-header-usercart">
             <div class="teeprint-desktop-contact-bar">
               <div class="teeprint-icon">
-                <i class="lni lni-phone"></i>
+                <a href="tel:+447888185120" class="teeprint-number">
+                  <i class="lni lni-phone"></i
+                ></a>
               </div>
               <div class="teeprint-text-body">
                 <span class="teeprint-title">Call Us Now</span>
@@ -276,33 +283,33 @@ let { staticPagesByParentCat } = globalData;
                     <i class="bx bx-menu"></i>
                   </a>
                 </li>
-                
-                
+
                 <!-- <li class="me-2">
                   <nuxt-link class="p-1 text-white size-1p4">
                     <i class="bx bx-search"></i>
                   </nuxt-link>
                 </li> -->
-                
+
                 <li>
                   <nuxt-link
-                    :to="{ name: 'quote' }" 
+                    :to="{ name: 'quote' }"
                     class="teeprint-button teeprint-theme-btn quote-btn zoomInOut ms-3"
                     >Instant Quote <i class="la la-arrow-right ml-2"></i
                   ></nuxt-link>
-                </li> 
-                
+                </li>
+
                 <!-- <li>
                   <nuxt-link to="/cart" class="p-1 text-white size-1p4" id="header_cart">
                     <i class="bx bx-shopping-bag"></i>
                   </nuxt-link>
                 </li> -->
-                
-                
               </ul>
 
               <!-- Main menu  -->
-              <nav class="teeprint-nav-manu m-teeprint-navemenu-active" @click.stop="false">
+              <nav
+                class="teeprint-nav-manu m-teeprint-navemenu-active"
+                @click.stop="false"
+              >
                 <ul>
                   <li>
                     <a
@@ -314,30 +321,82 @@ let { staticPagesByParentCat } = globalData;
                     >
                   </li>
                   <template v-if="homeStore.menus?.length">
-                    <template v-for="(item, index) in homeStore.menus" :key="index" > 
-                      <li @click="onclickMenuItem($event, 2, index)" @mouseenter="onclickMenuItem($event, 2, index)">
+                    <template
+                      v-for="(item, index) in homeStore.menus"
+                      :key="index"
+                    >
+                      <li
+                        @click="onclickMenuItem($event, 2, index)"
+                        @mouseenter="onclickMenuItem($event, 2, index)"
+                      >
                         <nuxt-link :to="`/shop`">
                           {{ item?.name }}
                           <i
-                            class="lni lni-chevron-down" 
-                            :_class="{'lni-chevron-down': !item?.isShow, 'lni-chevron-right': item?.isShow, 'teeprint-active-menu': item?.isShow}"
+                            class="lni lni-chevron-down"
+                            :_class="{
+                              'lni-chevron-down': !item?.isShow,
+                              'lni-chevron-right': item?.isShow,
+                              'teeprint-active-menu': item?.isShow,
+                            }"
                             v-if="item?.categories?.length"
                           ></i
                         ></nuxt-link>
-                        <template v-if="item?.categories?.length && item?.isShow === true">
-                          <div class="teeprint-submenu m-teeprint-submenu-active">
+                        <template
+                          v-if="
+                            item?.categories?.length && item?.isShow === true
+                          "
+                        >
+                          <div
+                            class="teeprint-submenu m-teeprint-submenu-active"
+                          >
                             <ul @click.stop="false">
-                              <template v-for="(child2, index2) in item?.categories" :key="index2" >
-                                <li @click.stop="hideAllFirst(2);  H.toggleLoopItem(item?.categories, [-1, index2], 'isShow')" @mouseover="hideAllFirst(2);  H.toggleLoopItem(item?.categories, [-1, index2], 'isShow')">
-                                  <nuxt-link :to="staticPagesByParentCat?.[child2.name] || `/products-by-category/${ child2?.slug || 'not-found' }`" >
+                              <template
+                                v-for="(child2, index2) in item?.categories"
+                                :key="index2"
+                              >
+                                <li
+                                  @click.stop="
+                                    hideAllFirst(2);
+                                    H.toggleLoopItem(
+                                      item?.categories,
+                                      [-1, index2],
+                                      'isShow'
+                                    );
+                                  "
+                                  @mouseover="
+                                    hideAllFirst(2);
+                                    H.toggleLoopItem(
+                                      item?.categories,
+                                      [-1, index2],
+                                      'isShow'
+                                    );
+                                  "
+                                >
+                                  <nuxt-link
+                                    :to="
+                                      staticPagesByParentCat?.[child2.name] ||
+                                      `/products-by-category/${
+                                        child2?.slug || 'not-found'
+                                      }`
+                                    "
+                                  >
                                     {{ child2.name }}
                                     <i
                                       v-if="child2.children?.length"
                                       class="lni lni-chevron-down"
-                                      :class="{'lni-chevron-down': child2?.isShow, 'lni-chevron-right': !child2?.isShow, 'teeprint-active-menu': child2?.isShow}"
+                                      :class="{
+                                        'lni-chevron-down': child2?.isShow,
+                                        'lni-chevron-right': !child2?.isShow,
+                                        'teeprint-active-menu': child2?.isShow,
+                                      }"
                                     ></i
                                   ></nuxt-link>
-                                  <template v-if="child2.children?.length && child2?.isShow === true">
+                                  <template
+                                    v-if="
+                                      child2.children?.length &&
+                                      child2?.isShow === true
+                                    "
+                                  >
                                     <div class="teeprint-sub-submenu">
                                       <ul>
                                         <template
@@ -368,26 +427,34 @@ let { staticPagesByParentCat } = globalData;
                   </template>
 
                   <template v-for="(item, index) in sameDayMenus">
-                    <li @click="onclickMenuItem($event, 1, index)" @mouseenter="onclickMenuItem($event, 1, index)">
+                    <li
+                      @click="onclickMenuItem($event, 1, index)"
+                      @mouseenter="onclickMenuItem($event, 1, index)"
+                    >
                       <nuxt-link to="#">
-                        {{ item.name }}<i class="lni lni-chevron-down teeprint-active-menu"></i>
+                        {{ item.name
+                        }}<i
+                          class="lni lni-chevron-down teeprint-active-menu"
+                        ></i>
                       </nuxt-link>
                       <div v-if="item?.isShow" class="teeprint-submenu">
-                        <ul >
+                        <ul>
                           <template v-for="(child, i) in item.childs">
                             <li>
                               <nuxt-link :to="child.slug">
                                 {{ child.name }}
                               </nuxt-link>
                             </li>
-                          </template> 
+                          </template>
                         </ul>
                       </div>
-                    </li> 
+                    </li>
                   </template>
 
                   <li>
-                    <nuxt-link to="/designandservice">Design and services</nuxt-link>
+                    <nuxt-link to="/designandservice"
+                      >Design and services</nuxt-link
+                    >
                   </li>
                 </ul>
               </nav>
@@ -404,8 +471,7 @@ let { staticPagesByParentCat } = globalData;
               </div>
             </div>
           </div>
-          
-          
+
           <!-- Desktop quote button -->
           <div class="quote-btn-area">
             <nuxt-link
