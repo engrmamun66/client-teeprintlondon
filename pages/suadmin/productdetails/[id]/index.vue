@@ -193,6 +193,7 @@
               >
               <div class="checkbox-group mx-3" style="display: flex; gap: 20px">
                 <label style="display: flex; align-items: center">
+                  {{ productStore.product.show_personalized }}
                   <input
                     type="checkbox"
                     v-model="productStore.product.show_personalized"
@@ -762,6 +763,8 @@ async function handleSubmit() {
     sizes: JSON.stringify(product.sizes), // Custom serialization for sizes
     genders: JSON.stringify(product.genders), // Stringify genders
     colors: JSON.stringify(product.colors), // Stringify colors
+    show_size_table : product.show_size_table == "Yes" ? 1: 0,
+    show_personalized : product.show_personalized == "Yes" ? 1: 0
   });
 
   // Destructure and modify the product if subcategory_id exists

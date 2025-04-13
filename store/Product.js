@@ -237,6 +237,8 @@ export const useProductStore = defineStore("product", () => {
   function mapProductFromResponse(response) {
     return {
       id: response.data.data.id,
+      show_size_table:response.data.data.show_size_table == 1 ? "Yes" :"No",
+      show_personalized:response.data.data.show_personalized == 1 ? "Yes" :"No",
       name: response.data.data.name,
       price: 25, // Default or fetch from response
       brand_id: response.data.data.brand_id,
