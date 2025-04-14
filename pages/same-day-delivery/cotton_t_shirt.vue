@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'cotton_t_shirt'))  
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "cotton_t_shirt"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -93,10 +93,9 @@ function addToCart() {
                 width="100%"
               >
                 <source
-                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1741532964/a4b9eeb3-a7e0-49b3-879d-f0cc73a4cd09_video_bknu45.mp4"
+                  src="https://res.cloudinary.com/dyfnpakfq/video/upload/v1744656065/a4b9eeb3-a7e0-49b3-879d-f0cc73a4cd09_video_bknu45_online-video-cutter.com_ajqzgl.mp4"
                   type="video/mp4"
                 />
-                Your browser does not support the video tag.
               </video>
             </div>
           </div>
@@ -196,8 +195,8 @@ function addToCart() {
                   when you can have them printed today? At Tee Print London, we
                   offer **same-day printing services** to ensure you get your
                   custom designs exactly when you need them. Whether it’s for
-                  corporate branding, team uniforms, events, or personal use,
-                  we provide a seamless and hassle-free printing experience with
+                  corporate branding, team uniforms, events, or personal use, we
+                  provide a seamless and hassle-free printing experience with
                   top-notch results. Our process is designed for speed and
                   convenience—simply select your T-shirts, upload your design,
                   and let us handle the rest. Using advanced printing
