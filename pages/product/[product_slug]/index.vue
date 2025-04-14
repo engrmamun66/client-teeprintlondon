@@ -8,6 +8,11 @@ definePageMeta({
   layout: "web",
 });
 
+const truncateTitle = (title) => {
+  if (!title) return '';
+  return title.length > 60 ? title.slice(0, 60) + '...' : title;
+};
+
 
 
 let homeStore = inject("homeStore");
@@ -284,7 +289,7 @@ let showEffect = computed(
                 </div>
 
                 <div v-if="homeStore.product?.show_personalized != 0 " class="note-field select-size">
-                    <h5>Add your personal note</h5> 
+                    <h5>Add your personalisation</h5> 
                     <textarea rows="4" cols="50" style="min-height: 100px;" @input="(e) => homeStore.product.note = e.target.value" v-html="homeStore.product.note" ></textarea>
                 </div>
 
@@ -428,6 +433,7 @@ let showEffect = computed(
                           <template
                             v-for="relatedItem in homeStore.related_products"
                           >
+                  
                             <div
                               class="col-xl-3 col-lg-3 col-md-6 col-sm-4 col-6"
                             >
@@ -462,9 +468,11 @@ let showEffect = computed(
                                   </div>
                                   <div class="teeprint-product-body">
                                     <h5 class="teeprint-product-title">
-                                      Anthem Unisex Hoodie
+                                      {{ truncateTitle(relatedItem?.name) }}
+
+                                      
                                     </h5>
-                                    <span class="teeprint-price">£18.36</span>
+                                    <span class="teeprint-price">{{ H.formatPrice(relatedItem?.discounted_min_unit_price  ?? relatedItem?.min_unit_price)}}</span>
                                   </div>
                                 </div>
                               </div>
