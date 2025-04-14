@@ -240,7 +240,7 @@
               <Editor
                 ref="editorShort"
                 v-model="productStore.product.short_description"
-                api-key="raz47c045ba5lv073s9m9i3psszrg7mhu8qlspsh6do9h3we"
+                api-key="gcvrg3hggtzhh90lq4180cnaco5tpvofl31o5ekpyg2i1lmj"
                 :init="{
                   height: 300,
                   menubar: false,
@@ -261,7 +261,7 @@
                 <Editor
                   ref="editorLong"
                   v-model="productStore.product.long_description"
-                  api-key="raz47c045ba5lv073s9m9i3psszrg7mhu8qlspsh6do9h3we"
+                  api-key="gcvrg3hggtzhh90lq4180cnaco5tpvofl31o5ekpyg2i1lmj"
                   :init="{
                     height: 300,
                     menubar: false,

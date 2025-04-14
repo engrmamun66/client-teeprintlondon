@@ -23,7 +23,6 @@
               :data="globalData.orderStatusList"
               :option1="false"
               @change="orderStatusChange()"
-               
             >
             </el-BaseSelect>
           </template>
@@ -58,18 +57,13 @@
             :disabled="true"
             v-model="orderStore.orderDetails.customer_phone"
           />
+
           <el-BaseInput
             type="text"
-            label="Delivery Date"
+            label="Delivery Type"
             style="margin-top: 10px"
             :disabled="true"
-            :value="
-              orderStore.orderDetails.deleted_at
-                ? moment(new Date(orderStore.orderDetails.deleted_at)).format(
-                    'MMM DD YYYY'
-                  )
-                : 'N/A'
-            "
+            :value="orderStore.orderDetails?.delivery_type?.name"
           />
           <el-BaseInput
             type="text"
@@ -265,7 +259,11 @@
                       </div>
                     </div>
                   </td>
-                  <td>{{ item.quantity }}&nbsp;x&nbsp;{{ item.discounted_unit_price?? item.unit_price }}</td>
+                  <td>
+                    {{ item.quantity }}&nbsp;x&nbsp;{{
+                      item.discounted_unit_price ?? item.unit_price
+                    }}
+                  </td>
                   <td>
                     {{ H.formatPrice(item.total_price) }}
                   </td>
@@ -325,19 +323,14 @@ definePageMeta({
 let { order_number } = useRoute().params;
 
 async function orderStatusChange() {
-  // console.log("8888", orderStore.orderDetails.order_status_id)
-  console.log("000", orderStore.orderDetails.id)
-  let payload=ref({
-    order_id : orderStore.orderDetails?.id,
-    order_status_id : orderStore.orderDetails.order_status_id
-  })
-  await orderStore.updateOrderStatus(payload.value)
+
+  let payload = ref({
+    order_id: orderStore.orderDetails?.id,
+    order_status_id: orderStore.orderDetails.order_status_id,
+  });
+  await orderStore.updateOrderStatus(payload.value);
   await orderStore.getOrderDetails(order_number);
 }
-onBeforeMount
-onBeforeMount(async () => {
-  await orderStore.getOrderDetails(order_number);
-});
 
 onMounted(async () => {
   await orderStore.getOrderDetails(order_number);

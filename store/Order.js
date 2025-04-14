@@ -41,7 +41,7 @@ export const useOrderStore = defineStore("paypal", () => {
         }
        
       } catch (error) {
-        console.log('error---', error);
+        Toaster.error("There was an Error in updating the status")
       }
     }
 

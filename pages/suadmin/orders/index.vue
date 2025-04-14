@@ -143,7 +143,10 @@ definePageMeta({
 
 let showConfirmation = ref(false)
  
- 
+onBeforeMount(async () => {
+  await orderStore.getOrderList() 
+}); 
+
 onMounted(async() => {
   await orderStore.getOrderList() 
 })
