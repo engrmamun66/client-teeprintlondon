@@ -211,7 +211,7 @@ function addToCart() {
     <div class="container mt-5">
       <web-DuelCard
         img_left="/img/Tote_bag/Leonardo_Phoenix_10_a_worn_natural_canvas_tote_bag_with_a_rela_2.jpg"
-        img_right="/img/Tote_bag/WhatsApp Image 2025-04-18 at 17.59.00_22c425a1_magicstudio_q2lo0rivhdp.jpg"
+        img_right="/img/Tote_bag/WhatsApp Image 2025-04-18 at 17.57.44_b1d34e77_magicstudio_obivmghbf3.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
