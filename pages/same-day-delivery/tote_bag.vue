@@ -27,7 +27,7 @@ function addToCart() {
             :right="true"
             title="Same-Day Printing for Tote Bags"
             :images="[
-              '/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_tote_bag_image_featuring_a_highq_0.jpg',
+              '/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_casual_tote_bag_with_a_playf_0.jpg',
               '/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_0.jpg',
               '/img/Tote_bag/Leonardo_Phoenix_10_a_worn_natural_canvas_tote_bag_with_a_rela_0.jpg',
             ]"
@@ -82,7 +82,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_colorful_tote_bag_image_with_0.jpg" alt="about iamge" />
+              <img src="/img/Tote_bag/il_1140xN.1899584604_j7fg.jpg" alt="about iamge" />
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_casual_tote_bag_with_a_playf_0.jpg" alt="about iamge" />
+              <img src="/img/Tote_bag/WhatsApp Image 2025-04-18 at 17.58.14_69003ea2_magicstudio_9bj1l4lafn.jpg" alt="about iamge" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -202,7 +202,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_colorful_tote_bag_image_with_2.jpg" alt="about iamge" />
+              <img src="/img/Tote_bag/WhatsApp Image 2025-04-18 at 17.59.00_22c425a1_magicstudio_q2lo0rivhdp.jpg" alt="about iamge" />
             </div>
           </div>
         </div>
@@ -211,7 +211,7 @@ function addToCart() {
     <div class="container mt-5">
       <web-DuelCard
         img_left="/img/Tote_bag/Leonardo_Phoenix_10_a_worn_natural_canvas_tote_bag_with_a_rela_2.jpg"
-        img_right="/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_recta_3.jpg"
+        img_right="/img/Tote_bag/WhatsApp Image 2025-04-18 at 17.59.00_22c425a1_magicstudio_q2lo0rivhdp.jpg"
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
