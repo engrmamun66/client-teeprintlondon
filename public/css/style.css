@@ -3907,27 +3907,28 @@ Product list css
   }
 }
 
-.productlist-rightside .productlist-itemrow {
+/* .productlist-rightside .productlist-itemrow {
   margin-left: 0;
   margin-right: 0;
   border-left: 1px solid #eee;
   border-top: 1px solid #eee;
-}  
-.productlist-itemrow .col-lg-3,
+}   */
+/* .productlist-itemrow .col-lg-3,
 .productlist-itemrow .col-lg-4 {
   padding-left: 0;
   padding-right: 0;
-}  
+}   */
 .teeprint-product {
   position: relative;
-  border-right: 1px solid #eee;
+  /* border-right: 1px solid #eee;
   border-bottom: 1px solid #eee;
-  margin-bottom: 0px;
+  margin-bottom: 0px; */
 }  
 .teeprint-product-inner {
   background-color: #fff;
   cursor: pointer;
   transition: all .5s;
+  margin-bottom: 20px;
 }
 .teeprint-product-image {
   overflow: hidden;
@@ -3939,6 +3940,9 @@ Product list css
   margin-left: auto;
   margin-right: auto;
   min-height: 220px;
+  height: 350px;
+  padding-top: 20px;
+  object-fit: contain;
 }
 .teeprint-product-inner .teeprint-product-overlow {
   position: absolute;
@@ -3994,7 +3998,7 @@ Product list css
   padding: 20px 15px 15px;
   min-height: 77px;
   text-align: center;
-  height: 98px;
+  /* height: 98px; */
   overflow: hidden;
 }
 .teeprint-product-body .teeprint-product-title {
@@ -4074,6 +4078,13 @@ Product list css
 .teeprint-button.parts-btn::before {
   background-color: var(--bgcolor-primary);
 }
+.teeprint-pt-desktop {
+  display: block;
+}
+.teeprint-pt-mobile {
+  display: none;
+}
+
 
 @media (max-width: 1199px) {
   .productlist-leftside {
@@ -4132,6 +4143,17 @@ Product list css
   .teeprint-product-title {
       font-size: 25px;
   }
+  .teeprint-pt-desktop {
+    display: none;
+  }
+  .teeprint-pt-mobile {
+    display: block;
+  }
+  .teeprint-product-image img {
+    min-height: 210px;
+    height: 210px;
+    padding-top: 12px;
+}
 }
 
 @media (max-width:767px) {

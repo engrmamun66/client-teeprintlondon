@@ -358,7 +358,10 @@ onBeforeUnmount(() => {
                                                 </div>
                                             </div>
                                             <div class="teeprint-product-body">
-                                                <h5 class="teeprint-product-title">
+                                                <h5 class="teeprint-product-title teeprint-pt-desktop">
+                                                    {{product.name}}
+                                                </h5>
+                                                <h5 class="teeprint-product-title teeprint-pt-mobile">
                                                     {{product.name}}
                                                 </h5>
                                                 <template v-if="product?.discounted_min_unit_price">
