@@ -359,10 +359,10 @@ onBeforeUnmount(() => {
                                             </div>
                                             <div class="teeprint-product-body">
                                                 <h5 class="teeprint-product-title teeprint-pt-desktop">
-                                                    {{product.name}}
+                                                    {{ product.name.length > 50 ? product.name.substring(0, 50) + '...' : product.name }}
                                                 </h5>
                                                 <h5 class="teeprint-product-title teeprint-pt-mobile">
-                                                    {{product.name}}
+                                                    {{ product.name.length > 50 ? product.name.substring(0, 50) + '...' : product.name }}
                                                 </h5>
                                                 <template v-if="product?.discounted_min_unit_price">
                                                     <span class="teeprint-price"> {{ H.formatPrice(product?.discounted_min_unit_price) }} </span>
