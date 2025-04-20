@@ -22,7 +22,7 @@
         >
           <Loader />
         </div>
-        <button class="btn btn-danger me-3" @click="orderStore.getOrderList()">
+        <button class="btn btn-danger me-3" @click="resetOrderList">
           Reset
         </button>
       </div>
@@ -173,6 +173,12 @@ definePageMeta({
 });
 
 let showConfirmation = ref(false);
+
+function resetOrderList(){
+  order_status_id.value = 1
+  orderStore.getOrderList()
+}
+
 
 async function orderStatusChange() {
   // let payload = ref({
