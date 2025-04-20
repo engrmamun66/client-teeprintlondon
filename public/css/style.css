@@ -3939,9 +3939,9 @@ Product list css
   display: block;
   margin-left: auto;
   margin-right: auto;
-  min-height: 220px;
-  height: 350px;
-  padding-top: 20px;
+  min-height: 300px;
+  /* height: 330px; */
+  padding-top: 0px;
   object-fit: contain;
 }
 .teeprint-product-inner .teeprint-product-overlow {
@@ -4150,9 +4150,8 @@ Product list css
     display: block;
   }
   .teeprint-product-image img {
-    min-height: 210px;
-    height: 210px;
-    padding-top: 12px;
+    min-height: 160px;
+    padding-top: 0px;
 }
 }
 
