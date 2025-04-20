@@ -79,21 +79,22 @@
               <td>
                 <ul class="d-flex justify-content-evenly td-actions">
                   <li class="d-flex justify-content-evenly">
-                    <!-- <p tooltip="Delete" flow="up">
-                      <i-las
-                        t="trash"
-                        class="size-sm cp"
-                        @click="
-                          showConfirmation = true;
-                          brandId = order.id;
-                        "
-                      />
-                    </p> -->
+
                     <nuxt-link :to="`/suadmin/orders/${order.order_number}`">
                       <p tooltip="View" flow="up">
                         <i class="las la-eye size-sm cp"></i>
                       </p>
                     </nuxt-link>
+                    <p tooltip="Delete" flow="up">
+                      <i-las
+                        t="trash"
+                        class="size-sm cp"
+                        @click="
+                          showConfirmation = true;
+                          orderId = order.id;
+                        "
+                      />
+                    </p>
                   </li>
                 </ul>
               </td>
@@ -112,10 +113,10 @@
           :skipAutoClose="false"
           @yes="
             async () => {
-              let isDeleted = await quatationStore.deleteQuatation(brandId);
+              let isDeleted = await orderStore.orderDelete(orderId);
               if (isDeleted) {
                 showConfirmation = false;
-                brandId = null;
+                orderId = null;
               }
             }
           "

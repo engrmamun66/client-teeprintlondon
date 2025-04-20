@@ -45,13 +45,28 @@ export const useOrderStore = defineStore("paypal", () => {
       }
     }
 
+    async function orderDelete(id) {
+      try { 
+        let response = await OrderApi.orderDelete(id)
+        if(Response.isOk(response, {toaster: false})){
+          
+          Toaster.success(" Order Deleted Successfully")
+          getOrderList()
+        }
+       
+      } catch (error) {
+        Toaster.error("There was an Error in updating the status")
+      }
+    }
+
   return {
     paginateData,
     orders,
     getOrderList,
     orderDetails,
     getOrderDetails,
-    updateOrderStatus
+    updateOrderStatus,
+    orderDelete
   };
 });
 

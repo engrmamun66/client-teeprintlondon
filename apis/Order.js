@@ -15,5 +15,9 @@ export default {
   async updateOrderStatus( payload, config = {}) {
     return await ApiAuth().post(`/update-order-status`, payload, config);
   }, 
+  
+  async orderDelete(id){
+    return await ApiAuth().delete(`${prefix}/${id}`);
+  }
 
 };
