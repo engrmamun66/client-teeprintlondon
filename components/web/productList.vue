@@ -327,7 +327,7 @@ onBeforeUnmount(() => {
                                     <div class="teeprint-product" @click.stop="navigateTo('/details')">
                                         <div class="teeprint-product-inner">
                                             <div class="teeprint-product-image d-flex justify-content-center">
-                                                <ShimmerEffect width="calc(100% - 30px)" height="200px" radius="0px"></ShimmerEffect> 
+                                                <ShimmerEffect width="calc(100% - 30px)" height="300px" radius="0px"></ShimmerEffect> 
                                             </div>
                                             <div class="teeprint-product-body">
                                                 <ShimmerEffect width="100%" height="20px" class="mb-2"></ShimmerEffect>
