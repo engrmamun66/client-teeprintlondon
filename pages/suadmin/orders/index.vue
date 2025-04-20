@@ -7,6 +7,26 @@
       :buttons="[]"
     />
     <admin-card :showHeader="true" :title="'Order List'">
+      <div class="d-flex justify-content-between">
+        <el-BaseSelect
+          v-model="order_status_id"
+          :data="globalData.orderStatusList"
+          :option1="false"
+          @change="orderStatusChange()"
+        >
+        </el-BaseSelect>
+
+        <div
+          class="d-flex align-items-center"
+          v-if="H.isPendingAnyApi('Orders:getOrderList')"
+        >
+          <Loader />
+        </div>
+        <button class="btn btn-danger me-3" @click="orderStore.getOrderList()">
+          Reset
+        </button>
+      </div>
+
       <template v-slot:header-buttons> </template>
 
       <div class="row">
@@ -27,10 +47,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="odd" v-for="(order, index) in orderStore.orders" :key="index" >
+            <tr
+              class="odd"
+              v-for="(order, index) in orderStore.orders"
+              :key="index"
+            >
               <td>
                 <div class="px-2">
-                  <nuxt-link :to="`/suadmin/orders/${order.order_number}`">{{ order?.order_number }}</nuxt-link> 
+                  <nuxt-link :to="`/suadmin/orders/${order.order_number}`">{{
+                    order?.order_number
+                  }}</nuxt-link>
                 </div>
               </td>
 
@@ -38,8 +64,12 @@
                 <div class="px-2">
                   <p>
                     <nuxt-link :to="`/suadmin/orders/${order.order_number}`">
-                      {{ [order?.customer_first_name, order?.customer_last_name].filter(Boolean).join(' ') }}
-                    </nuxt-link> 
+                      {{
+                        [order?.customer_first_name, order?.customer_last_name]
+                          .filter(Boolean)
+                          .join(" ")
+                      }}
+                    </nuxt-link>
                   </p>
                 </div>
               </td>
@@ -79,7 +109,6 @@
               <td>
                 <ul class="d-flex justify-content-evenly td-actions">
                   <li class="d-flex justify-content-evenly">
-
                     <nuxt-link :to="`/suadmin/orders/${order.order_number}`">
                       <p tooltip="View" flow="up">
                         <i class="las la-eye size-sm cp"></i>
@@ -103,9 +132,11 @@
         </table>
 
         <div class="d-flex justify-content-center">
-            <Pagination v-model="orderStore.paginateData" @jumpToPage="(page) => orderStore.getOrderList({page})" ></Pagination>
-          </div>
-
+          <Pagination
+            v-model="orderStore.paginateData"
+            @jumpToPage="(page) => orderStore.getOrderList({ page })"
+          ></Pagination>
+        </div>
 
         <Modal-Confirm
           v-if="showConfirmation"
@@ -133,26 +164,52 @@
 <script setup>
 import { useOrderStore } from "~/store/Order.js";
 const orderStore = useOrderStore();
-
+let order_status_id = ref(1);
 definePageMeta({
-    keepalive: false,
-    middleware: ["auth"],
-    key: (route) => route.fullPath,
-    name: 'order_list',
+  keepalive: false,
+  middleware: ["auth"],
+  key: (route) => route.fullPath,
+  name: "order_list",
+});
+
+let showConfirmation = ref(false);
+
+async function orderStatusChange() {
+  // let payload = ref({
+  //   order_id: orderStore.orderDetails?.id,
+  //   order_status_id: orderStore.orderDetails.order_status_id,
+  // });
+  // await orderStore.updateOrderStatus(payload.value);
+  // await orderStore.getOrderDetails(order_number);
+  console.log(order_status_id.value);
+  let payload = ref({
+    order_status_id: order_status_id.value,
   });
+  let params = { ...payload.value };
+  await orderStore.getOrderList(params);
+}
 
-
-let showConfirmation = ref(false)
- 
-onBeforeMount(async () => {
-  await orderStore.getOrderList() 
-}); 
-
-onMounted(async() => {
-  await orderStore.getOrderList() 
-})
-
-
+onMounted(async () => {
+  useNuxtApp().$off("cardSelected");
+  useNuxtApp().$on("cardSelected", async (card) => {
+    // cameraStore.getCameraListBySiteId(selectedSiteId)
+    if (card == "recentOrders") {
+      let payload = ref({
+        is_recent: 1,
+      });
+      let params = { ...payload.value };
+      orderStore.getOrderList(params);
+    } else if (card == "completedOrders") {
+      let payload = ref({
+        payment_status: "completed ",
+      });
+      let params = { ...payload.value };
+      orderStore.getOrderList(params);
+    } else {
+      await orderStore.getOrderList();
+    }
+  });
+});
 </script>
 <style scoped>
 fieldset {

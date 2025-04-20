@@ -27,7 +27,7 @@
 
       <!-- Card 2 -->
       <div class="col-md-4">
-        <nuxt-link to="suadmin/product">
+        <nuxt-link to="suadmin/orders">
           <admin-card :show-header="false" :footer="false">
             <div style="min-height: 60px">
               <template v-if="isMounted">
@@ -42,9 +42,13 @@
           </admin-card>
         </nuxt-link>
       </div>
-
+      <!-- useNuxtApp().$emit('cardSelected', siteId) -->
       <!-- Card 3 -->
-      <div class="col-md-4">
+      <div
+        class="col-md-4"
+        @click="handleCardClick('recentOrders')"
+        style="cursor: pointer"
+      >
         <admin-card :show-header="false" :footer="false">
           <div style="min-height: 60px">
             <template v-if="isMounted">
@@ -59,7 +63,11 @@
         </admin-card>
       </div>
       <!-- Card 4 -->
-      <div class="col-md-4">
+      <div
+        class="col-md-4"
+        @click="handleCardClick('completedOrders')"
+        style="cursor: pointer"
+      >
         <admin-card :show-header="false" :footer="false">
           <div style="min-height: 60px">
             <template v-if="isMounted">
@@ -138,6 +146,21 @@ definePageMeta({
 useHead({
   titleTemplate: "%s | Dashboard",
 });
+
+function handleCardClick(card) {
+  console.log(card);
+  if (card == "recentOrders") {
+    useNuxtApp().$emit("cardSelected", card);
+    setTimeout(() => {
+      navigateTo("/suadmin/orders");
+    }, 200);
+  } else if (card == "completedOrders") {
+    useNuxtApp().$emit("cardSelected", card);
+    setTimeout(() => {
+      navigateTo("/suadmin/orders");
+    }, 200);
+  }
+}
 
 function labelToTitle(label = "") {
   if (!label) return "";

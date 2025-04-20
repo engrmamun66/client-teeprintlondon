@@ -122,8 +122,8 @@
     </nuxt-link>
   </li>
   <li>
-    <nuxt-link @click="activeMenu('orders')" :to="'/suadmin/orders'" class="leftsidebar-link menu-tooltip">
-      <i class="las la-file-invoice"></i> <!-- Changed to an invoice icon for quotations -->
+    <nuxt-link @click="     orderStore.getOrderList();" :to="'/suadmin/orders'" class="leftsidebar-link menu-tooltip">
+      <i class="las la-shopping-bag"></i><!-- Changed to an invoice icon for quotations -->
       <span class="menu-text">Orders</span>
       <span class="tooltip__text tooltip__text--right"> Orders </span>
     </nuxt-link>
@@ -164,7 +164,8 @@ import { useAuthStore } from '~/store/Auth';
 const authStore = useAuthStore();
 import { useMenuState } from '@/composables/useMenuState';
 const { state, toggleSidebar, toggleProfilePopup, isCollapse, activeMenu, isCurrent, activeSubMenu } = useMenuState();
-
+import { useOrderStore } from "~/store/Order.js";
+const orderStore = useOrderStore();
 
 </script>
 <style scoped>

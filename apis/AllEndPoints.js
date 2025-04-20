@@ -7,6 +7,7 @@ import { DiscountEndpoints } from './Discount';
 import { BrandEndpoints } from './Brand'; 
 import { QuatationEndpoints } from './Quotation'; 
 import { DashboardEndpoints } from './Dashboard'; 
+import { OrderEndpoints } from './Order'; 
 /**
  * This file will help to show 
  * loader or loading... text bease on current API calling
@@ -22,6 +23,7 @@ export const AllDeveloperDefinedEndPoints = {
     Brand:{...BrandEndpoints},
     Quatation:{...QuatationEndpoints},
     Dashboard:{...DashboardEndpoints},
+    Orders:{...OrderEndpoints},
 }
 
 /**

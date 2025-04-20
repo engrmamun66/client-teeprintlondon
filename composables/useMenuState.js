@@ -32,6 +32,7 @@ export function useMenuState() {
     } else {
       state.isCollapseMenu = true;
     }
+  
     state.menu = menu;
     state.subMenu = subMenu;
   };
