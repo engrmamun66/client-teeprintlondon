@@ -340,12 +340,14 @@ onBeforeUnmount(() => {
                             </template>  
                         </template>
                         <template v-else>
-                            <template v-for="product in homeStore.products">
+                            <template v-for="(product, index) in homeStore.products">
                                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-4 col-6">
                                     <div class="teeprint-product" @auxclick="log(product)" @click.stop="navigateTo(`/product/${product.slug}`)">
                                         <div class="teeprint-product-inner">
                                             <div class="teeprint-product-image">
-                                                <img :src="product.thumbnail_image_url || `/img/placeholder-image.jpg`" alt="Img" />
+                                                <!-- <img v-if="index == 8" :src="'/sample.jpeg'" alt="Img" />
+                                                <img v-else :src="product.thumbnail_image_url || `/img/placeholder-image.jpg`" alt="Img" /> -->
+                                                <img :src="product.thumbnail_image_url || `/img/placeholder-image.jpg`" alt="Img" /> 
                                                 <div class="teeprint-product-overlow">
                                                     <div class="teeprint-product-overlow-inner" @click.stop="false">
                                                         <nuxt-link :to="`/product/${product.slug}`" class="teeprint-view-btn" title="Hello from speech bubble!">
