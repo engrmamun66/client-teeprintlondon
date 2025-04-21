@@ -115,7 +115,7 @@
     </nuxt-link>
   </li>
   <li>
-    <nuxt-link @click="activeMenu('quotation')" :to="'/suadmin/quotations'" class="leftsidebar-link menu-tooltip">
+    <nuxt-link @click="quatationStore.getQuatationList()" :to="'/suadmin/quotations'" class="leftsidebar-link menu-tooltip">
       <i class="las la-file-invoice"></i> <!-- Changed to an invoice icon for quotations -->
       <span class="menu-text">Quotation</span>
       <span class="tooltip__text tooltip__text--right"> Quotation </span>
@@ -166,6 +166,8 @@ import { useMenuState } from '@/composables/useMenuState';
 const { state, toggleSidebar, toggleProfilePopup, isCollapse, activeMenu, isCurrent, activeSubMenu } = useMenuState();
 import { useOrderStore } from "~/store/Order.js";
 const orderStore = useOrderStore();
+import { useQuatationStore } from "~/store/Quatation.js";
+const quatationStore = useQuatationStore();
 
 </script>
 <style scoped>

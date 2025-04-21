@@ -28,6 +28,11 @@ export const useColorStore = defineStore("color", () => {
         Toaster.success("Color created succsfully");
       }
     } catch (error) {
+      if(error.response.data.errors.name[0] != null){
+        Toaster.error(error.response.data.errors.name[0])
+      }else{
+        Toaster.error("There was an error")
+      }
       //   if (error.response.status == 401) {
       //     registrationFormError.value.type = 401;
       //     registrationFormError.value.message = error.response.data.error;

@@ -116,19 +116,25 @@
         </nuxt-link>
       </div>
       <!-- Card 7 -->
-      <div class="col-md-4">
-        <admin-card :show-header="false" :footer="false">
-          <div style="min-height: 60px">
-            <template v-if="isMounted">
-              <h5>{{ labelToTitle("recentQuotations") }}</h5>
-              <!-- Changed metric -->
-              <h2 class="text-left mt-3">{{ cards["recentQuotations"] }}</h2>
-            </template>
-            <template v-else>
-              <ShimmerEffect height="60px" />
-            </template>
-          </div>
-        </admin-card>
+      <div
+        class="col-md-4"
+        @click="handleCardClick('recentQuotations')"
+        style="cursor: pointer"
+      >
+
+          <admin-card :show-header="false" :footer="false">
+            <div style="min-height: 60px">
+              <template v-if="isMounted">
+                <h5>{{ labelToTitle("recentQuotations") }}</h5>
+                <!-- Changed metric -->
+                <h2 class="text-left mt-3">{{ cards["recentQuotations"] }}</h2>
+              </template>
+              <template v-else>
+                <ShimmerEffect height="60px" />
+              </template>
+            </div>
+          </admin-card>
+
       </div>
     </div>
   </div>
@@ -158,6 +164,11 @@ function handleCardClick(card) {
     useNuxtApp().$emit("cardSelected", card);
     setTimeout(() => {
       navigateTo("/suadmin/orders");
+    }, 200);
+  }else if (card == "recentQuotations") {
+    useNuxtApp().$emit("cardSelected", card);
+    setTimeout(() => {
+      navigateTo("/suadmin/quotations");
     }, 200);
   }
 }

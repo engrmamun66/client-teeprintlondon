@@ -17,6 +17,9 @@ export default {
   async list(config = {}) {
     return await ApiAuth().get(`${prefix}`, config);
   },
+  async recetQutation(params={}, config= {}) {
+    return await ApiAuth().get(`${prefix}`,{ params },config );
+  },
   async delete(id) {
     return await ApiAuth().delete(`${prefix}/${id}`);
   },

@@ -29,7 +29,7 @@
           </thead>
           <tbody>
             <tr class="odd" v-for="(item, index) in dicountList" :key="index" >
-               <td> {{ item?.category?.name }} {{ item.applied_to }} </td>
+               <td> {{ item?.category?.name ?? item.applied_to}}  </td>
                <td> {{ moment(item.applied_at).format('MMM DD YYYY hh:mm A') }} </td>
                <td> {{ Number(item?.discount).toFixed(0) }}% </td>
             </tr>

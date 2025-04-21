@@ -7,6 +7,9 @@
           :links="[]"
           :buttons="[]"
         />
+        <div class="d-flex align-items-center" v-if="loader">
+            <Loader />
+          </div>
         <div>
           <a
             href="#"
@@ -23,6 +26,8 @@
           <h3 class="product-details-heading" style="color: black">
             Product Details
           </h3>
+          <!-- v-if="H.isPendingAnyApi('Orders:getOrderList')" -->
+
           <form @submit.prevent>
             <!-- Name Field -->
             <div class="form-group">
@@ -178,7 +183,9 @@
                     :false-value="null"
                     @change="
                       productStore.product.show_size_table =
-                        productStore.product.show_size_table == 'No' ? 'No' : null
+                        productStore.product.show_size_table == 'No'
+                          ? 'No'
+                          : null
                     "
                   />
                   No
@@ -188,7 +195,7 @@
 
             <div class="form-group d-flex">
               <label class="form-label"
-                >Show Personalize field 
+                >Show Personalize field
                 <span class="required-star">*</span></label
               >
               <div class="checkbox-group mx-3" style="display: flex; gap: 20px">
@@ -517,14 +524,12 @@ const brandStore = useBrandStore();
 const productStore = useProductStore();
 const categoryStore = useCategorystore();
 
-
 definePageMeta({
-    keepalive: false,
-    middleware: ["auth"],
-    key: (route) => route.fullPath,
-    name: 'product_details2',
-  });
-
+  keepalive: false,
+  middleware: ["auth"],
+  key: (route) => route.fullPath,
+  name: "product_details2",
+});
 
 // Use ref for the product object
 const route = useRoute();
@@ -639,7 +644,11 @@ const hideElement = (selector) => {
     element.style.display = "none";
   }
 };
+
+let loader = ref(false)
+
 onMounted(async () => {
+  loader.value = true
   await productStore.getGenders();
   // Usage
 
@@ -647,12 +656,13 @@ onMounted(async () => {
   await brandStore.getBrandList();
   await productStore.getColorList();
   await productStore.showProduct(id);
-
+  loader.value = false
   if (productStore.product.subcategory_id) {
     checkSubCategory();
   }
   setContent(editorLong, productStore.product.long_description);
   setContent(editorShort, productStore.product.short_description);
+
 
   // productStore.selectedGender = productStore.product.genders
 });
@@ -763,8 +773,8 @@ async function handleSubmit() {
     sizes: JSON.stringify(product.sizes), // Custom serialization for sizes
     genders: JSON.stringify(product.genders), // Stringify genders
     colors: JSON.stringify(product.colors), // Stringify colors
-    show_size_table : product.show_size_table == "Yes" ? 1: 0,
-    show_personalized : product.show_personalized == "Yes" ? 1: 0
+    show_size_table: product.show_size_table == "Yes" ? 1 : 0,
+    show_personalized: product.show_personalized == "Yes" ? 1 : 0,
   });
 
   // Destructure and modify the product if subcategory_id exists
@@ -776,13 +786,12 @@ async function handleSubmit() {
   }
 
   const validPrices = productStore.product.sizes
-  .map((size) => size.unit_price)
-  .filter((price) => price > 0);
+    .map((size) => size.unit_price)
+    .filter((price) => price > 0);
 
   productStore.product.min_unit_price = validPrices.length
-  ? Math.min(...validPrices)
-  : 0; // or handle the case differently if no valid price exists
-   
+    ? Math.min(...validPrices)
+    : 0; // or handle the case differently if no valid price exists
 
   // Create the payload
   const productPayload = createProductPayload(productStore.product);

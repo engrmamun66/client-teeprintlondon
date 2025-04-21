@@ -106,11 +106,13 @@
             </tr>
           </tbody>
         </table>
-
+        <!-- @jumpToPage="quatationStore.getQuatationList" -->
         <div class="d-flex justify-content-center">
-            <Pagination v-model="quatationStore.paginateData" @jumpToPage="quatationStore.getQuatationList" ></Pagination>
-          </div>
-
+          <Pagination
+            v-model="quatationStore.paginateData"
+             @jumpToPage="quatationStore.getQuatationList" 
+          ></Pagination>
+        </div>
 
         <Modal-Confirm
           v-if="showConfirmation"
@@ -143,11 +145,11 @@ let editMode = ref(false);
 let brandId = ref(null);
 
 definePageMeta({
-    keepalive: false,
-    middleware: ["auth"],
-    key: (route) => route.fullPath,
-    name: 'quotations',
-  });
+  keepalive: false,
+  middleware: ["auth"],
+  key: (route) => route.fullPath,
+  name: "quotations",
+});
 
 let clearImage = ref(false);
 
@@ -193,7 +195,25 @@ function OpenModal() {
 }
 
 onMounted(async () => {
-  await quatationStore.getQuatationList();
+    // await quatationStore.getQuatationList();
+  useNuxtApp().$off("cardSelected");
+  useNuxtApp().$on("cardSelected", async (card) => {
+    // cameraStore.getCameraListBySiteId(selectedSiteId)
+    if (card == "recentQuotations") {
+      let payload = ref({
+        is_recent: 1,
+        page:1, 
+        per_page: 50
+      });
+
+      await quatationStore.getRecentQuatationList(payload.value);
+    } else {
+      await quatationStore.getQuatationList();
+    }
+
+  });
+
+
   // await quatationStore.update(1);
 });
 </script>

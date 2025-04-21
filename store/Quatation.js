@@ -57,6 +57,17 @@ export const useQuatationStore = defineStore("quatation", () => {
     } catch (error) {}
   }
 
+  async function getRecentQuatationList(payload) {
+    try {
+      console.log(payload)
+      let response = await Quatation.recetQutation(payload);
+      if (response.status == 200) {
+        paginateData.value = response.data.data;
+        quatationList.value = response.data.data.data;
+      }
+    } catch (error) {}
+  }
+
   async function deleteQuatation(id) {
     try {
       let response = await Quatation.delete(id);
@@ -164,6 +175,7 @@ export const useQuatationStore = defineStore("quatation", () => {
     quatationList,
     quatationAttribute,
     showModal,
+    getRecentQuatationList
   };
 });
 
