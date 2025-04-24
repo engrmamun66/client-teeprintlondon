@@ -152,6 +152,15 @@
           <span class="tooltip__text tooltip__text--right"> Discounts </span>
         </nuxt-link>
       </li>
+
+      <li @click="activeSubMenu('settings', 'coupon')">
+        <nuxt-link :to="'/suadmin/settings/coupon'" class="leftsidebar-link" :class="{'active': isCurrent('settings', 'coupon')}">
+          <i class="las la-percent"></i> <!-- Changed to a percent icon for discounts -->
+          <span class="menu-text">Coupon</span>
+          <span class="tooltip__text tooltip__text--right"> Coupon </span>
+        </nuxt-link>
+      </li>
+
     </ul>
   </li>
 </ul>
