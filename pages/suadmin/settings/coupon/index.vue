@@ -229,7 +229,7 @@ definePageMeta({
   keepalive: false,
   middleware: ["auth"],
   key: (route) => route.fullPath,
-  name: "colors",
+  name: "coupon",
 });
 
 let clearImage = ref(false);
