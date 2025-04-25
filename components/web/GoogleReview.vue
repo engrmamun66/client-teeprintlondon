@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-const widgetId = "d0b99e741d5c5237cc365589e66";
+const widgetId = "df144db4563d267c1f36926cbe5";
 const isLoaded = ref(false);
 let goggleReviewArea = ref(null);
 
