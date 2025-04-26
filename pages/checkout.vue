@@ -553,6 +553,11 @@ async function placeOrder() {
                               class="teeprint-button teeprint-theme-btn teeprint-placeorder-btn mb-1"
                             >
                               Apply
+                          <BtnLoader
+                            v-if="H.isPendingAnyApi('Orders:checkCoupon')"
+                            color="white"
+                            class="text-white"
+                          ></BtnLoader>
                             </button>
                           </div>
                         </template>

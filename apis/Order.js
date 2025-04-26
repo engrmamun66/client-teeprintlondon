@@ -8,6 +8,7 @@ export const OrderEndpoints = {
   createOrder: `${prefix}/create`,
   exportOrders: `${prefix}/export`,
   searchOrders: `${prefix}/search`,
+  checkCoupon: `/apply-coupon`,
 };
 
 export default { 
