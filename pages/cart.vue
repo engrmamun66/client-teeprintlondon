@@ -126,12 +126,12 @@ watch(deliveryCost, (a) => {
                                         Delivery will by tomorrow
                                     </div>
                                 </template>
-                                <template v-else-if="i == 2">
+                                <!-- <template v-else-if="i == 2">
                                     <h6 class="mb-1">{{opt.name}} ({{CURRENCY}} {{ opt.cost }})</h6>
                                     <div class="alert alert-success" role="alert">
                                         If you order before 03:00 PM
                                     </div>
-                                </template>
+                                </template> -->
                             </template> 
                             
                         </div>
@@ -156,8 +156,8 @@ watch(deliveryCost, (a) => {
         
                                                 <select v-model="deliveryCost" class="px-0 ps-1">
                                                     <template v-for="(opt, i) in H.getDeliveryOptions()">
-                                                        <option v-if="i ==2" :value="opt.cost">{{opt.name}}</option> 
-                                                        <option v-else :value="opt.cost">{{opt.name}} ({{CURRENCY}} {{ opt.cost }})</option> 
+                                                       
+                                                        <option v-if="opt.name != 'Same Day pickup'"  :value="opt.cost">{{opt.name}} ({{CURRENCY}} {{ opt.cost }})</option> 
                                                     </template>
                                                 </select>
                                             

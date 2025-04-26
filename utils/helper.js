@@ -171,14 +171,14 @@ export const H = {
           "created_at": "2025-03-08T09:45:37.000000Z",
           "updated_at": "2025-03-08T09:45:37.000000Z"
       },
-      {
-          "id": 3,
-          "name": "Same Day pickup",
-          "cost": "0.00",
-          "status": 1,
-          "created_at": "2025-03-08T09:45:37.000000Z",
-          "updated_at": "2025-03-08T09:45:37.000000Z"
-      }
+      // {
+      //     "id": 3,
+      //     "name": "Same Day pickup",
+      //     "cost": "0.00",
+      //     "status": 1,
+      //     "created_at": "2025-03-08T09:45:37.000000Z",
+      //     "updated_at": "2025-03-08T09:45:37.000000Z"
+      // }
     ]
 
     let options = useCookie('delivery_types').value || defaultCharges
