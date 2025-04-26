@@ -27,6 +27,10 @@ export default {
   
   async orderDelete(id){
     return await ApiAuth().delete(`${prefix}/${id}`);
-  }
+  },
+
+  async checkCoupon(payload) {
+    return await Api().post(`/apply-coupon`, payload);
+  }, 
 
 };

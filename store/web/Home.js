@@ -360,10 +360,11 @@ export const useHomeStore = defineStore("homeStore", () => {
       let succeess = Response.isOk(response);
       if (succeess) {
         let { total: amount, id: order_id } = response.data?.data || {};
-
+ 
         H.localStorage("cart").value = null;
         cartStore.cart = [];
         resetPayload();
+       
         paypalStore.createPayment({ amount, order_id });
 
         return true;

@@ -19,6 +19,10 @@ provide('homeStore', homeStore)
 const cartStore = useCartStore();
 provide('cartStore', cartStore)
 
+import { useOrderStore } from "~/store/Order.js";
+const orderStore = useOrderStore();
+provide('orderStore', orderStore)
+
 useHead({
   title: APPNAME,
   // titleTemplate: '%s | Home',

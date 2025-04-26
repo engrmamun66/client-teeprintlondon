@@ -1,7 +1,7 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
 
 import OrderApi from "../apis/Order.js";
-export const useOrderStore = defineStore("paypal", () => {
+export const useOrderStore = defineStore("orderStore", () => {
   let paginateData = ref(null);
   let orders = ref([]);
 
@@ -55,14 +55,38 @@ export const useOrderStore = defineStore("paypal", () => {
     }
   }
 
+  let coupon = ref(null)
+  let discount = ref(0)
+  let couponSuccess = ref(false)
+  async function checkCoupon(payload) {
+
+    try {
+      let response = await OrderApi.checkCoupon(payload);
+      console.log("-------*(*(*", response.data.data.coupon)
+      coupon.value = response.data.data.coupon
+      discount.value = response.data.data.discount
+      if (Response.isOk(response, { toaster: false })) {
+        couponSuccess.value = true
+        Toaster.success(" Copon Applied");
+      }
+    } catch (error) {
+      couponSuccess.value = false
+      Toaster.error("Invalid or expired coupon code");
+    }
+  }
+
   return {
     paginateData,
     orders,
     getOrderList,
     orderDetails,
+    coupon,
+    couponSuccess,
     getOrderDetails,
     updateOrderStatus,
     orderDelete,
+    checkCoupon,
+    discount
   };
 });
 
