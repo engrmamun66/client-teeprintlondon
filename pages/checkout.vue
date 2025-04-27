@@ -669,7 +669,7 @@ async function placeOrder() {
 /* If you need responsive behavior */
 @media (max-width: 576px) {
   .coupon-row {
-    flex-direction: column;
+    flex-direction: row;
   }
   .coupon-input {
     width: 100%;
