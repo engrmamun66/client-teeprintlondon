@@ -7,6 +7,12 @@
       :buttons="[]"
     />
     <admin-card :showHeader="true" :title="'Quotation List'">
+      <div
+          class="d-flex align-items-center"
+          v-if="loading"
+        >
+          <Loader />
+        </div>
       <template v-slot:header-buttons> </template>
 
       <div class="row">
@@ -193,9 +199,10 @@ function OpenModal() {
   editMode.value = false;
   quatationStore.showModal = !quatationStore.showModal;
 }
-
+let loading = ref(false)
 onMounted(async () => {
     // await quatationStore.getQuatationList();
+  loading.value = true
   useNuxtApp().$off("cardSelected");
   useNuxtApp().$on("cardSelected", async (card) => {
     // cameraStore.getCameraListBySiteId(selectedSiteId)
@@ -212,6 +219,8 @@ onMounted(async () => {
     }
 
   });
+
+  loading.value = false
 
 
   // await quatationStore.update(1);

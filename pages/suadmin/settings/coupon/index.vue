@@ -8,12 +8,19 @@
     />
     <admin-card :showHeader="true" :title="'Coupon List'">
       <template v-slot:header-buttons>
+
         <button class="btn btn-success m-3" @click="OpenModal()">
           <i-las t="plus" /> Add Coupon
         </button>
       </template>
 
       <div class="row">
+        <div
+          class="d-flex align-items-center"
+          v-if="loading"
+        >
+          <Loader />
+        </div>
         <table
           id="example"
           class="table table-striped dataTable"
@@ -110,109 +117,6 @@
       </div>
     </admin-card>
 
-    <!-- <modal-global
-      v-model="couponStore.showModal"
-      :footer="false"
-      :title="editMode ? 'Update Coupon' : 'Add Coupon'"
-    >
-      <template #modalbody>
-        <div class="row">
-
-
-          <div class="col-12">
-            <div class="row">
-              <div class="col-12">
-                <div class="form-group">
-                  <div class="date-box">
-                    <div class="date-box-input">
-                      <el-BaseInput
-                        type="text"
-                        label="Coupon Name"
-                        v-model="couponStore.couponAttribute.code"
-                      />
-                    </div>
-                  </div>
-                  <div class="date-box">
-                    <div class="date-box-input">
-                      <el-BaseInput
-                        type="number"
-                        label="Coupon Value"
-                        v-model="couponStore.couponAttribute.discount_value"
-                      />
-                    </div>
-                  </div>
-                  <div class="mx-5 d-flex justify-content-around">
-                    <div class="date-box-input">
-                      <el-BaseInput
-                        type="date"
-                        label="Start Date"
-                        v-model="couponStore.couponAttribute.start_date"
-                      />
-                    </div>
-
-                    <div class="date-box-input">
-                      <el-BaseInput
-                        type="date"
-                        label="End Date"
-                        v-model="couponStore.couponAttribute.end_date"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="form-group col-6">
-                  <div class="time-box-input">
-                    <div style="display: flex; gap: 1rem; align-items: center">
-                      <p class="mt-3">Status</p>
-                      <el-Radio
-                        name="status"
-                        :value="1"
-                        label="Active"
-                        v-model="couponStore.couponAttribute.is_active"
-                        @click="changeColor(1)"
-                      >
-                        Active
-                      </el-Radio>
-                      <el-Radio
-                        name="status"
-                        :value="0"
-                        label="Inactive"
-                        v-model="couponStore.couponAttribute.is_active"
-                        @click="changeColor(0)"
-                      >
-                        Inactive
-                      </el-Radio>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="ionic-card-footer justify-content-end">
-            <button
-              type="button"
-              class="leap-btn leap-submit-btn me-2 m-1"
-              @click="handleSubmit"
-            >
-              Submit
-              <BtnLoader
-                :show="H.isPendingAnyApi('Color:create|Color:update')"
-                color="black"
-              />
-            </button>
-            <button
-              type="button"
-              class="leap-btn leap-cancel-btn m-1"
-              @click="couponStore.showModal = !couponStore.showModal"
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      </template>
-    </modal-global> -->
 
     <modal-global
   v-model="couponStore.showModal"
@@ -449,9 +353,11 @@ function OpenModal() {
   editMode.value = false;
   couponStore.showModal = !couponStore.showModal;
 }
-
+let loading = ref(false)
 onMounted(async () => {
+  loading.value = true
   await couponStore.getCouponList();
+  loading.value = false
 });
 </script>
 <style scoped>

@@ -3,12 +3,21 @@
     <div class="position-relative">
       <LoaderApi v-if="false" />
       <page-content-header :title="'Categories'" :links="[]" :buttons="[]" />
+      
       <admin-card :showHeader="true" :title="'Category List'">
+        <div
+          class="d-flex align-items-center"
+          v-if="loading"
+        >
+          <Loader />
+        </div>
         <template v-slot:header-buttons>
           <button class="btn btn-success m-3" @click="OpenModal()">
             <i-las t="plus" /> Add Category
           </button>
+
         </template>
+
 
         <div class="row">
           <table
@@ -313,12 +322,14 @@ function OpenModal() {
   Categorystore.showCategoryModal = !Categorystore.showCategoryModal;
 }
 const categories = ref([]);
-
+let loading  = ref(false)
 async function asMounted(){
+  loading.value = true
   await Categorystore.getCategories();
   await Categorystore.getParentcategorylist();
   await Categorystore.getTypes();
   categories.value = [...Categorystore.types]
+  loading.value = false
 
 }
 

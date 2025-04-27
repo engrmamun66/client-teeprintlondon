@@ -45,6 +45,12 @@
         </div>
       </admin-card>
       <admin-card :showHeader="true" :title="'Product List'">
+        <div
+          class="d-flex align-items-center"
+          v-if="loading"
+        >
+          <Loader />
+        </div>
         <template v-slot:header-buttons>
           <nuxt-link to="/suadmin/addproduct" class="btn btn-success m-3">
             <i-las t="plus" /> Add Product
@@ -243,10 +249,12 @@ function handleSubmit() {
  
   productStore.getProductList(queryParams);
 }
-
+let loading = ref(false)
 onMounted(async () => {
+  loading.value = true
   homeStore.getTypewiseCategoryList();
   await productStore.getProductList();
+  loading.value = false
   // Categorystore.getParentcategorylist();
   // try {
   //   const response = await axios.get('http://client-treeprintlondon-api.test/api/type-wise-category-list');

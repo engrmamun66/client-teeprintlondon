@@ -7,6 +7,12 @@
       :buttons="[]"
     />
     <admin-card :showHeader="true" :title="'Color List'">
+      <div
+          class="d-flex align-items-center"
+          v-if="loading"
+        >
+          <Loader />
+        </div>
       <template v-slot:header-buttons>
         <button class="btn btn-success m-3" @click="OpenModal()">
           <i-las t="plus" /> Add Color
@@ -228,9 +234,11 @@ function OpenModal() {
   editMode.value = false;
   colorStore.showModal = !colorStore.showModal;
 }
-
+let loading = ref(false)
 onMounted(async () => {
+  loading.value = true
   await colorStore.getColorList();
+  loading.value = false
 });
 </script>
 <style scoped>

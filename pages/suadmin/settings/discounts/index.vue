@@ -7,6 +7,12 @@
       :buttons="[]"
     />
     <admin-card :showHeader="true" :title="'Discount List'">
+      <div
+          class="d-flex align-items-center"
+          v-if="loading"
+        >
+          <Loader />
+        </div>
       <template v-slot:header-buttons>
         <button class="btn btn-success m-3" @click="OpenModal()">
           <i-las t="plus" /> Add Discount
@@ -167,11 +173,14 @@ async function createDiscount() {
   Toaster.success('Discount applied')
 }
 
+let loading = ref(false)
 
 onMounted(async () => {
+  loading.value = true
   homeStore.getTypewiseCategoryList();
   await brandStore.getBrandList();
   getDiscountLogs()
+  loading.value = false
 });
 </script>
 <style scoped>

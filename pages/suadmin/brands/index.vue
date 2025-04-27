@@ -7,6 +7,12 @@
       :buttons="[]"
     />
     <admin-card :showHeader="true" :title="'Brand List'">
+      <div
+          class="d-flex align-items-center"
+          v-if="loading"
+        >
+          <Loader />
+        </div>
       <template v-slot:header-buttons>
         <button class="btn btn-success m-3" @click="OpenModal()">
           <i-las t="plus" /> Add Brand
@@ -219,9 +225,11 @@ function OpenModal() {
   editMode.value = false;
   brandStore.showModal = !brandStore.showModal;
 }
-
+let loading = ref(false)
 onMounted(async () => {
+  loading.value = true
   await brandStore.getBrandList();
+  loading.value = false
 });
 </script>
 <style scoped>
