@@ -16,7 +16,11 @@
                 </li>
                 <li>
                   <i class="la la-envelope"></i>
-                  <b>support@teeprintlondon.co.uk</b>
+                  <!-- <b>support@teeprintlondon.co.uk</b> -->
+                  <a
+                  href="mailto:support@teeprintlondon.co.uk"
+                  class="teeprint-number"
+                  >support@teeprintlondon.co.uk</a>
                 </li>
                 <li><i class="la la-phone"></i> <b>+44 7888 185120</b></li>
                 <!-- <li>
