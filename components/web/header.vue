@@ -329,7 +329,7 @@ let { staticPagesByParentCat } = globalData;
                         @click="onclickMenuItem($event, 2, index)"
                         @mouseenter="onclickMenuItem($event, 2, index)"
                       >
-                        <nuxt-link :to="`/shop`">
+                        <nuxt-link :to="item?.name == 'Advertising Materials' ? '#' : `/shop`">
                           {{ item?.name }}
                           <i
                             class="lni lni-chevron-down"
