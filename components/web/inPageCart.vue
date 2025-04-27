@@ -56,7 +56,7 @@ onMounted(() => {
                                     <div class="teeprint-list-item">
                                         <img @auxclick="log(item)" class="teeprint-product-image" :src="item.thumbnail_image_url || PLACEHOLDER_IMAGE" alt="Alternative Image" />
                                         <div class="teeprint-cart-line">
-                                            <div class="teeprint-product-name teeprint-large">{{ item?.name }}</div>
+                                            <div class="teeprint-product-name teeprint-large">{{ $textTail(item?.name, 22) }}</div>
                                             <div class="teeprint-modal-quantity">
                                                 <div class="teeprint-number-block">
                                                     <div class="teeprint-num-in">
