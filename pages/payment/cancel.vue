@@ -33,7 +33,7 @@ definePageMeta({
                    <div class="block">
                         <p>For Order ID #{{ useRoute().query?.order_id || '000' }} </p>
                         <h5>Somehow payment not completed </h5>
-                        <p> Please contact via email: contact@teeprint.com
+                        <p> Please contact via email: support@teeprintlondon.co.uk
                         </p>
 
                    </div>
