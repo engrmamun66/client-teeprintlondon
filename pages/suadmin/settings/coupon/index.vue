@@ -110,14 +110,14 @@
       </div>
     </admin-card>
 
-    <modal-global
+    <!-- <modal-global
       v-model="couponStore.showModal"
       :footer="false"
       :title="editMode ? 'Update Coupon' : 'Add Coupon'"
     >
       <template #modalbody>
         <div class="row">
-          <!-- Pickup -->
+
 
           <div class="col-12">
             <div class="row">
@@ -212,7 +212,119 @@
           </div>
         </div>
       </template>
-    </modal-global>
+    </modal-global> -->
+
+    <modal-global
+  v-model="couponStore.showModal"
+  :footer="false"
+  :title="editMode ? 'Update Coupon' : 'Add Coupon'"
+>
+  <template #modalbody>
+    <div class="row">
+      <!-- Pickup -->
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <div class="date-box">
+                <div class="date-box-input" style="position: relative;">
+                  <el-BaseInput
+                    type="text"
+                    label="Coupon Name"
+                    v-model="couponStore.couponAttribute.code"
+                  />
+                  <button 
+                    type="button" 
+                    class="leap-btn leap-generate-btn"
+                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); padding: 0.25rem 0.5rem; font-size: 0.8rem;"
+                    @click="generateCouponCode"
+                  >
+                    Generate
+                  </button>
+                </div>
+              </div>
+              <div class="date-box">
+                <div class="date-box-input">
+                  <el-BaseInput
+                    type="number"
+                    label="Coupon Value"
+                    v-model="couponStore.couponAttribute.discount_value"
+                  />
+                </div>
+              </div>
+              <div class="mx-5 d-flex justify-content-around">
+                <div class="date-box-input">
+                  <el-BaseInput
+                    type="date"
+                    label="Start Date"
+                    v-model="couponStore.couponAttribute.start_date"
+                  />
+                </div>
+
+                <div class="date-box-input">
+                  <el-BaseInput
+                    type="date"
+                    label="End Date"
+                    v-model="couponStore.couponAttribute.end_date"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="form-group col-6">
+              <div class="time-box-input">
+                <div style="display: flex; gap: 1rem; align-items: center">
+                  <p class="mt-3">Status</p>
+                  <el-Radio
+                    name="status"
+                    :value="1"
+                    label="Active"
+                    v-model="couponStore.couponAttribute.is_active"
+                    @click="changeColor(1)"
+                  >
+                    Active
+                  </el-Radio>
+                  <el-Radio
+                    name="status"
+                    :value="0"
+                    label="Inactive"
+                    v-model="couponStore.couponAttribute.is_active"
+                    @click="changeColor(0)"
+                  >
+                    Inactive
+                  </el-Radio>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ionic-card-footer justify-content-end">
+        <button
+          type="button"
+          class="leap-btn leap-submit-btn me-2 m-1"
+          @click="handleSubmit"
+        >
+          Submit
+          <BtnLoader
+            :show="H.isPendingAnyApi('Color:create|Color:update')"
+            color="black"
+          />
+        </button>
+        <button
+          type="button"
+          class="leap-btn leap-cancel-btn m-1"
+          @click="couponStore.showModal = !couponStore.showModal"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </template>
+</modal-global>
+
   </div>
 </template>
 
@@ -247,6 +359,63 @@ async function showCoupon(id) {
 
   editMode.value = true;
 }
+
+
+
+const generateCouponCode = () => {
+  // Fashion coupon components
+  const components = {
+    prefixes: ['STYLE', 'CHIC', 'DENIM', 'LUXE', 'SNEAK', 'CASUAL', 'BOUTIQUE'],
+    flash: ['FLASH', 'QUICK', 'HOTDEAL'],
+    clearance: ['CLEAR', 'LASTCHANCE'],
+    loyalty: ['VIP', 'LOYAL', 'PREMIUM'],
+    seasons: ['SUMMER', 'WINTER', 'SPRING']
+  };
+
+  // Combine all prefixes and calculate length dynamically
+  const allPrefixes = [
+    ...components.prefixes,
+    ...components.flash,
+    ...components.clearance,
+    ...components.loyalty,
+    ...components.seasons
+  ];
+  
+  // Get random prefix (now using actual array length)
+  const prefix = allPrefixes[Math.floor(Math.random() * allPrefixes.length)];
+
+  // Generate code parts
+  const numbers = Math.floor(1000 + Math.random() * 9000); // 4-digit number
+  const letters = Math.random().toString(36).substring(2, 4).toUpperCase(); // 2 letters
+  
+  // Create base code
+  const baseCode = `${prefix}${numbers}${letters}`;
+  
+  // Add season suffix 50% of the time (with dynamic array length)
+  couponStore.couponAttribute.code = Math.random() > 0.5
+    ? `${baseCode}-${components.seasons[Math.floor(Math.random() * components.seasons.length)]}`
+    : baseCode;
+
+  // Set smart discount if empty
+  if (!couponStore.couponAttribute.discount_value) {
+    const discountRanges = {
+      flash: [20, 50],
+      clearance: [15, 30],
+      loyalty: [10, 20],
+      seasons: [15, 40],
+      default: [10, 25]
+    };
+    
+    const [min, max] = 
+      components.flash.includes(prefix) ? discountRanges.flash :
+      components.clearance.includes(prefix) ? discountRanges.clearance :
+      components.loyalty.includes(prefix) ? discountRanges.loyalty :
+      components.seasons.includes(prefix) ? discountRanges.seasons :
+      discountRanges.default;
+    
+    couponStore.couponAttribute.discount_value = Math.floor(min + Math.random() * (max - min));
+  }
+};
 
 function handleSubmit() {
   if (!couponStore.couponAttribute.code) {
