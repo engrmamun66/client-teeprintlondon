@@ -112,6 +112,20 @@ onMounted(() => {
 });
 
 async function couponValidate() {
+
+  if (!H.localStorage("cart").value?.length) {
+    Toaster.error("Your cart is emtpy");
+    return;
+  }
+
+  if (H.isPendingAnyApi("Frontend:placeOrder")) return;
+
+  if (!payload.customer_first_name)
+    return Toaster.error("First name is required");
+  if (!payload.customer_last_name)
+    return Toaster.error("Last name is required");
+  if (!payload.customer_phone) return Toaster.error("Phone number is required");
+  if (!payload.customer_email) return Toaster.error("Email is required");
     
   const data = {
     coupon_code: coupon_code.value,
@@ -165,7 +179,7 @@ async function placeOrder() {
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label>First Name*</label>
+                    <label>First Name<span style="color: red; font-weight: bold;">*</span></label>
                     <template v-if="!isMounted">
                       <ShimmerEffect
                         height="40px"
@@ -182,7 +196,7 @@ async function placeOrder() {
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label>Last Name*</label>
+                    <label>Last Name<span style="color: red; font-weight: bold;">*</span></label>
                     <template v-if="!isMounted">
                       <ShimmerEffect
                         height="40px"
@@ -196,7 +210,7 @@ async function placeOrder() {
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label>Mobile Number*</label>
+                    <label>Mobile Number<span style="color: red; font-weight: bold;">*</span></label>
                     <template v-if="!isMounted">
                       <ShimmerEffect
                         height="40px"
@@ -210,7 +224,7 @@ async function placeOrder() {
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label>Email Name*</label>
+                    <label>Email Name<span style="color: red; font-weight: bold;">*</span></label>
                     <template v-if="!isMounted">
                       <ShimmerEffect
                         height="40px"

@@ -45,7 +45,7 @@
           />
           <el-BaseInput
             type="text"
-            label="Email"
+            label="Customer Email"
             style="margin-top: 10px"
             :disabled="true"
             v-model="orderStore.orderDetails.customer_email"
@@ -56,6 +56,22 @@
             style="margin-top: 10px"
             :disabled="true"
             v-model="orderStore.orderDetails.customer_phone"
+          />
+
+          <el-BaseInput
+            v-if="couponCode!='Not Applied'"
+            type="text"
+            label="Coupon Code"
+            style="margin-top: 10px"
+            :disabled="true"
+            v-model="couponCode"
+          />
+          <el-BaseInput
+            type="text"
+            label="Discount Percentage"
+            style="margin-top: 10px"
+            :disabled="true"
+            v-model="couponDiscount"
           />
 
           <el-BaseInput
@@ -134,7 +150,7 @@
           />
           <el-BaseInput
             type="text"
-            label="Email"
+            label="Customer Email"
             style="margin-top: 10px"
             :disabled="true"
             :value="'loading...'"
@@ -297,6 +313,10 @@
                   {{ H.formatPrice(orderStore.orderDetails?.shipping_cost) }}
                 </td>
               </tr>
+              <tr v-if="orderStore.orderDetails?.discount_amount != 0">
+                <th colspan="3" >Discount</th>
+                <td>{{ H.formatPrice(orderStore.orderDetails?.discount_amount) }}</td>
+              </tr>
               <tr>
                 <th colspan="3">Total Amount</th>
                 <td>{{ H.formatPrice(orderStore.orderDetails?.total) }}</td>
@@ -321,7 +341,8 @@ definePageMeta({
 });
 
 let { order_number } = useRoute().params;
-
+let couponCode = ref("Not Applied")
+let couponDiscount = ref(0.00)
 async function orderStatusChange() {
 
   let payload = ref({
@@ -330,6 +351,10 @@ async function orderStatusChange() {
   });
   await orderStore.updateOrderStatus(payload.value);
   await orderStore.getOrderDetails(order_number);
+  couponCode.value = orderStore.orderDetails.order_coupon.coupon.code ? orderStore.orderDetails.order_coupon.coupon.code : couponCode.value
+  couponDiscount.value = orderStore.orderDetails.order_coupon.coupon.discount_value ? orderStore.orderDetails.order_coupon.coupon.discount_value : couponDiscount.value
+
+
 }
 
 onMounted(async () => {

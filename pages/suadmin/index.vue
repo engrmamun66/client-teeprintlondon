@@ -134,7 +134,26 @@
               </template>
             </div>
           </admin-card>
+      </div>
+            <!-- Card 8 -->
+            <div
+        class="col-md-4"
+        @click="handleCardClick('coupons')"
+        style="cursor: pointer"
+      >
 
+          <admin-card :show-header="false" :footer="false">
+            <div style="min-height: 60px">
+              <template v-if="isMounted">
+                <h5>{{ labelToTitle("Coupons") }}</h5>
+                <!-- Changed metric -->
+                <h2 class="text-left mt-3">{{ couponStore?.couponList?.length }}</h2>
+              </template>
+              <template v-else>
+                <ShimmerEffect height="60px" />
+              </template>
+            </div>
+          </admin-card>
       </div>
     </div>
   </div>
@@ -142,7 +161,9 @@
 
 <script setup>
 import DashboardApi from "~/apis/Dashboard.js";
+import { useCouponStore } from "~/store/Coupon";
 
+const couponStore = useCouponStore();
 definePageMeta({
   keepalive: false,
   middleware: ["auth"],
@@ -169,6 +190,11 @@ function handleCardClick(card) {
     useNuxtApp().$emit("cardSelected", card);
     setTimeout(() => {
       navigateTo("/suadmin/quotations");
+    }, 200);
+  }
+  else if (card == "coupons") {
+    setTimeout(() => {
+      navigateTo("/suadmin/settings/coupon");
     }, 200);
   }
 }
@@ -200,6 +226,8 @@ onMounted(async () => {
     let data = Response.parseData(response);
     cards.value = { ...cards.value, ...(data || {}) };
   }
+  await couponStore.getCouponList();
+
   isMounted.value = true;
 });
 </script>
