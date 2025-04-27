@@ -309,7 +309,7 @@
         >
           Submit
           <BtnLoader
-            :show="H.isPendingAnyApi('Color:create|Color:update')"
+            :show="H.isPendingAnyApi('Coupons:create|Coupons:update')"
             color="black"
           />
         </button>
