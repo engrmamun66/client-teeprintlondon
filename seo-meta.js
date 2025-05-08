@@ -69,8 +69,8 @@ let META_BOX = {
   },
   same_day_pages: {
     "active_ware": {
-      "title": "Same-Day Custom Active Wear Printing London | Tee Print London",
-      "description": "Need same-day active wear printing in London? Tee Print London offers fast, high-quality custom gym wear, sports team kits & fitness apparel with DTG, screen & vinyl printing. Get your order printed TODAY!",
+      "title": "Same-Day Printing for Active Wear in London | Tee Print London",
+      "description": "Get high-quality, same-day printing services for your active wear in London at Tee Print London. Fast, reliable, and perfect for your fitness brand or personal designs.",
       "keywords": [
         "same-day active wear printing",
         "custom gym wear London",
@@ -85,8 +85,8 @@ let META_BOX = {
       ].concat(KEYWORDS.common)
     },
     "apron": {
-  "title": "Same-Day Custom Apron Printing London | Fast Turnaround | Tee Print London",
-  "description": "Need custom aprons printed same-day in London? Tee Print London offers high-quality apron printing for businesses, kitchens & events with DTG, screen & vinyl techniques. Order by noon, get it TODAY!",
+  "title": "Same-Day Printing for Aprons in London | Tee Print London",
+  "description": "Get high-quality, same-day apron printing services in London at Tee Print London. Perfect for events, gifts, or business branding. Quick turnaround and premium results!",
   "keywords": [
     "same-day apron printing",
     "custom aprons London",
@@ -104,8 +104,8 @@ let META_BOX = {
 },
 
 "cap": {
-  "title": "Same-Day Custom Cap Printing London | Fast Turnaround | Tee Print London",
-  "description": "Need custom caps printed same-day in London? Tee Print London offers high-quality cap printing for businesses, sports teams & events with DTG, embroidery & vinyl techniques. Order by noon, get it TODAY!",
+  "title": "Same-Day Cap Printing in London | Custom Caps at Tee Print London",
+  "description": "Get custom caps printed the same day at Tee Print London. High-quality printing, fast turnaround, and stylish designs, perfect for events, teams, and promotions.",
   "keywords": [
     "same-day cap printing",
     "custom caps London",
@@ -126,8 +126,8 @@ let META_BOX = {
 },
 
 "cotton_t_shirt": {
-  "title": "Same-Day Custom T-Shirt Printing London | Fast Turnaround | Tee Print London",
-  "description": "Need custom cotton t-shirts printed same-day in London? Tee Print London offers high-quality DTG, screen & vinyl printing for businesses, teams & events. Order by noon, get it TODAY!",
+  "title": "Same-Day Custom Cotton T-Shirt Printing in London | Tee Print London",
+  "description": "Get your custom cotton t-shirts printed the same day in London with Tee Print London. High-quality prints, fast turnaround, and personalized service for every order.",
   "keywords": [
     "same-day t-shirt printing",
     "custom cotton t-shirts London",
@@ -148,8 +148,8 @@ let META_BOX = {
   ].concat(KEYWORDS.common)
 },
 "dress_shirt": {
-  "title": "Same-Day Custom Dress Shirt Printing London | Corporate & Industrial Workwear | Tee Print",
-  "description": "Need professional dress shirts printed same-day in London? Tee Print offers high-quality custom printing for corporate, industrial & hospitality uniforms. Fast turnaround & premium fabrics. Order today!",
+  "title": "Professional Dress Shirts for Industrial Employees in London",
+  "description": "Discover high-quality, durable, and comfortable professional dress shirts for industrial employees in London at Tee Print London. Perfect for maintaining a sharp look while working on-site.",
   "keywords": [
     "same-day dress shirt printing",
     "custom corporate shirts London",
@@ -170,8 +170,8 @@ let META_BOX = {
   ].concat(KEYWORDS.common)
 },
 "fleeces_and_knits": {
-  "title": "Same-Day Fleece & Knitwear Printing London | Fast Custom Embroidery & Printing | Tee Print",
-  "description": "Need custom fleeces or knits printed same-day in London? Tee Print offers high-quality embroidery, DTG & screen printing for teams, corporate & personal wear. Order by 12pm for same-day service!",
+  "title": "Same-Day Printing for Fleeces & Knits in London",
+  "description": "Get high-quality same-day printing on fleeces and knits at Tee Print London. Fast, reliable service with custom designs tailored to your needs. Perfect for events, teams, or promotions!",
   "keywords": [
     "same-day fleece printing",
     "custom knitwear London",
@@ -192,8 +192,8 @@ let META_BOX = {
   ].concat(KEYWORDS.common)
 },
 "football_shirt": {
-  "title": "Same-Day Football Kit Printing London | Custom Team Shirts | Tee Print",
-  "description": "Need football shirts printed same-day in London? Tee Print offers professional team kit printing with player names, numbers & logos. Fast turnaround for clubs & schools. Order by 12pm!",
+  "title": "Same-Day Custom Football Team T-Shirts in London | Tee Print London",
+  "description": "Get your custom football team t-shirts printed the same day in London with Tee Print London. Fast service, quality prints, and personalized designs to match your team spirit.",
   "keywords": [
     "same-day football shirt printing",
     "custom team kits London",
@@ -263,8 +263,8 @@ let META_BOX = {
   ].concat(KEYWORDS.common)
 },
 "promotion_shirts": {
-  "title": "Same-Day Promotional Shirt Printing London | Custom Branded Tees | Tee Print",
-  "description": "Need custom promotional shirts printed same-day in London? Tee Print offers fast DTG, screen & embroidery printing for corporate, team & event shirts. Order by noon for same-day delivery!",
+  "title": "Same-Day Custom Promotional Shirts in London | Tee Print London",
+  "description": "Get custom promotional shirts printed the same day in London with Tee Print London. High-quality, fast service for businesses, events, and teams. Order now!",
   "keywords": [
     "same-day promotional shirt printing",
     "custom branded shirts London",
@@ -290,8 +290,8 @@ let META_BOX = {
 },
 
 "promotion_t_shirts": {
-  "title": "Same-Day Promotional T-Shirt Printing London | Custom Branded Tees | Tee Print",
-  "description": "Need custom promotional t-shirts printed same-day in London? Tee Print offers fast DTG, screen & embroidery printing for corporate, team & event t-shirts. Order by noon for same-day delivery!",
+  "title": "Same-Day Promotional T-Shirts in London | Tee Print London",
+  "description": "Get high-quality same-day promotional T-shirts in London with Tee Print London. Fast turnaround, vibrant prints, and reliable service for your events, teams, or campaigns.",
   "keywords": [
     "same-day t-shirt printing",
     "promotional t-shirts London",
@@ -318,8 +318,8 @@ let META_BOX = {
   ].concat(KEYWORDS.common)
 },
 "shirt": {
-  "title": "Same-Day T-Shirt Printing London | Custom T-Shirts Printed Today | Tee Print",
-  "description": "Need custom t-shirts printed same-day in London? Tee Print offers fast DTG, screen & vinyl printing for businesses, teams & events. Get premium quality t-shirts printed in 24 hours. Order by noon!",
+  "title": "Same-Day T-Shirt Printing in London | Tee Print London",
+  "description": "Get high-quality same-day T-shirt printing in London with Tee Print London. Fast service, vibrant designs, and top-quality materials. Order your custom shirts today!",
   "keywords": [
     "same-day t-shirt printing",
     "custom t-shirts London",
@@ -345,7 +345,7 @@ let META_BOX = {
 },
 "sports_shirt": {
   "title": "Same-Day Sports Shirt Printing London | Custom Team Kits | Tee Print",
-  "description": "Need custom sports shirts printed same-day in London? Tee Print offers fast DTG, screen & sublimation printing for teams, clubs & events. Get professional-quality sports shirts in 24 hours. Order by noon!",
+  "description": "Get high-quality, same-day custom sports t-shirts in London at Tee Print London. Fast service, premium materials, and vibrant prints for teams, events, and more.",
   "keywords": [
     "same-day sports shirt printing",
     "custom team kits London",
@@ -372,8 +372,8 @@ let META_BOX = {
   ].concat(KEYWORDS.common)
 },
 "sweatshirt": {
-  "title": "Custom Sweatshirt Printing London | Same-Day Printing | Tee Print",
-  "description": "Premium custom sweatshirt printing in London with same-day service. High-quality DTG & screen printing for businesses, teams & personal wear. Get your custom sweatshirts printed fast!",
+  "title": "Premium Custom Sweatshirts Printing in London | Tee Print London",
+  "description": "Design your perfect custom sweatshirts with Tee Print London. We offer premium sweatshirt printing services in London with fast turnaround and outstanding quality",
   "keywords": [
     "custom sweatshirt printing",
     "personalized sweatshirts London",
@@ -398,8 +398,8 @@ let META_BOX = {
   ].concat(KEYWORDS.common)
 },
 "tote_bag": {
-  "title": "Same-Day Tote Bag Printing London | Custom Printed Totes | Tee Print",
-  "description": "Need custom tote bags printed same-day in London? Tee Print offers fast screen & DTG printing for promotional, branded & personal tote bags. Get premium quality printed totes in 24 hours!",
+  "title": "Same-Day Printing for Tote Bags in London | Tee Print London",
+  "description": "Need custom tote bags fast? Get same-day printing for high-quality tote bags at Tee Print London. Perfect for events, promotions, and gifts. Order today and get your tote bags in no time!",
   "keywords": [
     "same-day tote bag printing",
     "custom printed tote bags London",
@@ -425,8 +425,8 @@ let META_BOX = {
 },
 
 "university_shirt": {
-  "title": "Same-Day University Shirt Printing London | Custom School T-Shirts | Tee Print",
-  "description": "Need custom university or school shirts printed same-day in London? Tee Print offers fast DTG & screen printing for student groups, sports teams & school events. Get premium quality printed shirts in 24 hours!",
+  "title": "Same-Day Custom University & School Shirts in London",
+  "description": "Get high-quality custom university and school shirts with same-day printing in London at Tee Print London. Fast service, premium materials, and expert designs!",
   "keywords": [
     "university shirt printing",
     "custom school t-shirts London",
@@ -454,8 +454,8 @@ let META_BOX = {
 },
 
 "university_t_shirt": {
-  "title": "Same-Day University T-Shirt Printing London | Custom School Tees | Tee Print",
-  "description": "Need custom university or school t-shirts printed same-day in London? Tee Print offers fast DTG & screen printing for student societies, sports teams & school events. Get premium quality printed tees in 24 hours!",
+  "title": "Same-Day Hoodie & Sweatshirt Printing in London | Tee Print London",
+  "description": "Get your custom hoodies and sweatshirts printed the same day in London with Tee Print London. High-quality prints, fast service, and personalized designs to suit your needs.",
   "keywords": [
     "university t-shirt printing",
     "custom school t-shirts London",
@@ -1279,60 +1279,119 @@ let META_BOX = {
 
 
 
-function getMeta(key1, key2='', {titleFromKey2=true, image=''}={}){
-  let meta = null
+// function getMeta(key1, key2='', {titleFromKey2=true, image=''}={}){
+//   let meta = null
 
-  if(META_BOX?.[key1]) meta = META_BOX?.[key1]
-  if(meta){
-    if(meta?.[key2]){
-      meta = meta?.[key2]
-    } else { 
-      meta = {
-        title: 'Teeprint', 
-        description: '', 
-        ogImage: LOGO_URL,
-        keywords: 'no-keywords',
-      }
-    }
-  }
+//   if(META_BOX?.[key1]) meta = META_BOX?.[key1]
+//   if(meta){
+//     if(meta?.[key2]){
+//       meta = meta?.[key2]
+//     } else { 
+//       meta = {
+//         title: 'Teeprint', 
+//         description: '', 
+//         ogImage: LOGO_URL,
+//         keywords: 'no-keywords',
+//       }
+//     }
+//   }
  
-  const constucfirstOfWords = (text) => { // upper case, first char of each words
-    if(!text) return '';
-    text = String(text);
-    const ucFirst = (str) => (str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
-    text = text.replace(/_/g, '-')
-    let final_text = text.split('-').map(ucFirst).join(' ');
-    return final_text
-  }
+//   const constucfirstOfWords = (text) => { // upper case, first char of each words
+//     if(!text) return '';
+//     text = String(text);
+//     const ucFirst = (str) => (str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
+//     text = text.replace(/_/g, '-')
+//     let final_text = text.split('-').map(ucFirst).join(' ');
+//     return final_text
+//   }
 
-  let titleBySlug = null
+//   let titleBySlug = null
 
   
-  if(!meta || !(typeof meta == 'object')){ 
+//   if(!meta || !(typeof meta == 'object')){ 
+//     meta = META_BOX['root']
+//   }
+
+//   if(titleFromKey2){
+//     meta['title'] = constucfirstOfWords(key2)
+//   }
+//   if(!meta?.ogImage){
+//     meta['ogImage'] = LOGO_URL
+//   }
+//   if(image){
+//     meta['ogImage'] = image 
+//   }
+
+
+//   if(meta){
+//     if(meta?.['title'] !== 'Teeprint'){
+//       meta['title'] = `Teeprint :: ${meta['title']}`
+//     } 
+//     meta['ogTitle'] = titleBySlug || meta?.['title']
+//     meta['ogDescription'] = meta?.['description']
+//   }
+  
+//   return meta
+// }
+
+
+function getMeta(key1, key2='', {titleFromKey2=false, image=''}={}) {
+  let meta = null
+
+  // Get the base meta object
+  if(META_BOX?.[key1]) meta = META_BOX?.[key1]
+  
+  // If we have a nested object for key2, use that
+  if(meta && meta?.[key2]) {
+    meta = meta?.[key2]
+  } else if (!meta) {
+    // Fallback to root if no meta found
     meta = META_BOX['root']
   }
 
-  if(titleFromKey2){
+  // Only generate title from key2 if explicitly requested
+  if(titleFromKey2 && key2) {
+    const constucfirstOfWords = (text) => {
+      if(!text) return '';
+      text = String(text);
+      const ucFirst = (str) => (str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
+      text = text.replace(/_/g, '-')
+      return text.split('-').map(ucFirst).join(' ');
+    }
     meta['title'] = constucfirstOfWords(key2)
   }
-  if(!meta?.ogImage){
+
+  // Set default image if none provided
+  if(!meta?.ogImage) {
     meta['ogImage'] = LOGO_URL
   }
-  if(image){
+  
+  // Override image if specified
+  if(image) {
     meta['ogImage'] = image 
   }
 
-
-  if(meta){
-    if(meta?.['title'] !== 'Teeprint'){
-      meta['title'] = `Teeprint :: ${meta['title']}`
-    } 
-    meta['ogTitle'] = titleBySlug || meta?.['title']
-    meta['ogDescription'] = meta?.['description']
+  // Process title and og fields
+  if(meta) {
+    // Only add prefix if title exists and isn't already prefixed
+    if(meta.title && !meta.title.startsWith('Teeprint ::')) {
+      meta['title'] = `Teeprint :: ${meta.title}`
+    }
+    
+    // Use the title for ogTitle if not specifically set
+    if(!meta.ogTitle) {
+      meta['ogTitle'] = meta.title
+    }
+    
+    // Use description for ogDescription if not specifically set
+    if(!meta.ogDescription) {
+      meta['ogDescription'] = meta.description
+    }
   }
   
   return meta
 }
+
 
 
 export default getMeta
