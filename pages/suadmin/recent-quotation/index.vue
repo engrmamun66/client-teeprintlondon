@@ -7,12 +7,9 @@
       :buttons="[]"
     />
     <admin-card :showHeader="true" :title="'Quotation List'">
-      <div
-          class="d-flex align-items-center"
-          v-if="loading"
-        >
-          <Loader />
-        </div>
+      <div class="d-flex align-items-center" v-if="loading">
+        <Loader />
+      </div>
       <template v-slot:header-buttons> </template>
 
       <div class="row">
@@ -67,7 +64,7 @@
                 </div>
               </td>
               <td>
-                {{ formatDateTime(quatation?.created_at)  }}
+                {{formatDateTime(quatation.created_at)  }}
               </td>
               <td>
                 <div class="px-2">
@@ -120,7 +117,7 @@
         <div class="d-flex justify-content-center">
           <Pagination
             v-model="quatationStore.paginateData"
-             @jumpToPage="quatationStore.getQuatationList" 
+            @jumpToPage="quatationStore.getQuatationList"
           ></Pagination>
         </div>
 
@@ -154,28 +151,11 @@ let showConfirmation = ref(false);
 let editMode = ref(false);
 let brandId = ref(null);
 
-
-function formatDateTime(isoString) {
-  const date = new Date(isoString);
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  };
-  return date.toLocaleString("en-US", options);
-}
-
-
-
-
 definePageMeta({
   keepalive: false,
   middleware: ["auth"],
   key: (route) => route.fullPath,
-  name: "quotations",
+  name: "recent-quotations",
 });
 
 let clearImage = ref(false);
@@ -213,6 +193,21 @@ function changeColor(status) {
   }, 10);
 }
 
+function formatDateTime(isoString) {
+  const date = new Date(isoString);
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+  return date.toLocaleString("en-US", options);
+}
+
+
+
 function OpenModal() {
   quatationStore.resetBrandAttribute();
 
@@ -220,15 +215,20 @@ function OpenModal() {
   editMode.value = false;
   quatationStore.showModal = !quatationStore.showModal;
 }
-let loading = ref(false)
+let loading = ref(false);
 onMounted(async () => {
-    // await quatationStore.getQuatationList();
-  loading.value = true
+  // await quatationStore.getQuatationList();
+  loading.value = true;
 
-  await quatationStore.getQuatationList();
+  let payload = ref({
+    is_recent: 1,
+    page: 1,
+    per_page: 50,
+  });
 
-  loading.value = false
+  await quatationStore.getRecentQuatationList(payload.value);
 
+  loading.value = false;
 
   // await quatationStore.update(1);
 });

@@ -187,9 +187,9 @@ function handleCardClick(card) {
       navigateTo("/suadmin/orders");
     }, 200);
   }else if (card == "recentQuotations") {
-    useNuxtApp().$emit("cardSelected", card);
+  
     setTimeout(() => {
-      navigateTo("/suadmin/quotations");
+      navigateTo("/suadmin/recent-quotation");
     }, 200);
   }
   else if (card == "coupons") {
