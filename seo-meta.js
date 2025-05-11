@@ -14,7 +14,7 @@
 const LOGO_URL = '/img/logon_fina.png'
 
 const DESCRIPTIONS = {
-  common: `London's top custom printing service for t-shirts, hoodies & promotional wear. Same-day printing, no minimum orders & premium quality. Get a free quote today!`, 
+  common: `Tee Print London offers affordable same-day printing services for T-shirts, hoodies, sweatshirts, tote bags, and promotional apparel. we provide fast, reliable delivery London, UK.`, 
 }
 const KEYWORDS = {
   common: `    "custom t-shirt printing London",
@@ -46,7 +46,7 @@ const KEYWORDS = {
 
 let META_BOX = {
   root: { 
-    title: 'Teeprint', 
+    title: 'Tee Print London | Same-Day T-Shirt & Garment Printing in London', 
     description: DESCRIPTIONS.common, 
     ogImage: LOGO_URL,
     keywords: KEYWORDS.common,
