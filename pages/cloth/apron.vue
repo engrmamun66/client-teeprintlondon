@@ -90,7 +90,15 @@ function addToCart() {
                   <li>Home chefs, BBQ lovers & craft makers</li>
                 </ul>
                 <h1>Why Choose Us?</h1>
-                <ul>
+<ul>
+  <li>Premium quality aprons available in various colours and styles</li>
+  <li>Custom apron printing & embroidery services in London</li>
+  <li>Fast, reliable same-day and next-day printing options</li>
+  <li>Eco-friendly print-on-demand production</li>
+  <li>No minimum order – from one piece to bulk orders</li>
+  <li>Friendly, local support team based in London</li>
+</ul>
+                <!-- <ul>
                   <li>
                     <strong style="font-weight: bold;">Premium quality aprons </strong>&nbsp; available in various colours and
                     styles
@@ -100,7 +108,7 @@ function addToCart() {
                   <li>Eco-friendly &nbsp;<strong style="font-weight: bold;">print-on-demand production</strong> </li>
                   <li> &nbsp;<strong style="font-weight: bold;">No minimum order</strong> – from one piece to bulk orders</li>
                   <li>Friendly, local support team based in London</li>
-                </ul>
+                </ul> -->
                 <p>
                   Whether you're showcasing your brand in a busy kitchen or giving your team a professional, polished look, our &nbsp;<strong style="font-weight: bold;">personalized aprons</strong>   are the perfect choice. You can add your &nbsp;<strong style="font-weight: bold;">company logo, name, tagline</strong> , or even fun custom designs for gifts or special occasions.
                 </p>
