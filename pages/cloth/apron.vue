@@ -31,7 +31,7 @@ function addToCart() {
               '/img/Apron/Leonardo_Phoenix_10_A_young_man_in_his_early_twenties_with_a_c_1.jpg',
             ]"
           >
-            Looking for high-quality custom apron printing in London? At Tee
+            <!-- Looking for high-quality custom apron printing in London? At Tee
             Print London, we specialize in premium personalized aprons for
             businesses, events, restaurants, cafes, salons, and home use.
             Whether you need a single printed apron or a bulk order, we deliver
@@ -39,7 +39,23 @@ function addToCart() {
             requirement. Our custom aprons are printed in London using the
             latest direct-to-garment (DTG) and embroidery technology, ensuring
             your logo, design, or message stands out with crisp detail and
-            long-lasting durability.
+            long-lasting durability. -->
+
+                <p>
+        Looking for <strong style="font-weight: bold;">high-quality custom apron printing in London</strong>? 
+        At <strong style="font-weight: bold;">Tee Print London</strong>, we specialize in 
+        <strong style="font-weight: bold;">premium personalized aprons</strong> for businesses, events, restaurants, cafes, salons, and home use. 
+        Whether you need a single printed apron or a bulk order, we deliver 
+        <strong style="font-weight: bold;">exceptional print quality</strong>, 
+        <strong style="font-weight: bold;">fast turnaround</strong>, and 
+        <strong style="font-weight: bold;">no minimum order requirement</strong>.
+    </p>
+    
+    <p>
+        Our custom aprons are printed in London using the latest 
+        <strong style="font-weight: bold;">direct-to-garment (DTG)</strong> and 
+        <strong style="font-weight: bold;">embroidery technology</strong>, ensuring your logo, design, or message stands out with crisp detail and long-lasting durability.
+    </p>
 
             <template #link>
               <nuxt-link
@@ -76,17 +92,17 @@ function addToCart() {
                 <h1>Why Choose Us?</h1>
                 <ul>
                   <li>
-                    Premium quality aprons available in various colours and
+                    <strong style="font-weight: bold;">Premium quality aprons </strong>&nbsp; available in various colours and
                     styles
                   </li>
-                  <li>Custom apron printing & embroidery services in London</li>
-                  <li>Fast, reliable same-day and next-day printing options</li>
-                  <li>Eco-friendly print-on-demand production</li>
-                  <li>No minimum order – from one piece to bulk orders</li>
+                  <li> <strong style="font-weight: bold;">Custom apron printing & embroidery</strong> &nbsp; services in London</li>
+                  <li>Fast, reliable &nbsp;<strong style="font-weight: bold;">same-day and next-day printing options</strong> </li>
+                  <li>Eco-friendly &nbsp;<strong style="font-weight: bold;">print-on-demand production</strong> </li>
+                  <li> &nbsp;<strong style="font-weight: bold;">No minimum order</strong> – from one piece to bulk orders</li>
                   <li>Friendly, local support team based in London</li>
                 </ul>
                 <p>
-                  Whether you're showcasing your brand in a busy kitchen or giving your team a professional, polished look, our personalized aprons are the perfect choice. You can add your company logo, name, tagline, or even fun custom designs for gifts or special occasions.
+                  Whether you're showcasing your brand in a busy kitchen or giving your team a professional, polished look, our &nbsp;<strong style="font-weight: bold;">personalized aprons</strong>   are the perfect choice. You can add your &nbsp;<strong style="font-weight: bold;">company logo, name, tagline</strong> , or even fun custom designs for gifts or special occasions.
                 </p>
               </div>
             </div>
@@ -143,7 +159,7 @@ function addToCart() {
                 </h2>
               </div>
               <p>
-At Tee Print London, we’re proud to be a trusted name in custom printing and embroidery in London. With years of experience serving businesses, creatives, and individuals, we offer not only high-quality garment printing but also fast, reliable service with quick turnaround times. Our commitment to excellence, attention to detail, and ability to deliver even same-day orders make us a go-to choice for anyone looking for professional print solutions in London. Whether it's one item or a bulk order, your satisfaction is always our priority.
+                      At Tee Print London, we’re proud to be a trusted name in <strong style="font-weight: bold;">custom printing and embroidery in London.</strong>   With years of experience serving businesses, creatives, and individuals, we offer not only &nbsp;<strong style="font-weight: bold;">high-quality garment printing</strong>  but also <strong style="font-weight: bold;">fast, reliable service with quick turnaround times</strong> . Our commitment to excellence, attention to detail, and ability to deliver even <strong style="font-weight: bold;">same-day orders</strong>   make us a go-to choice for anyone looking for <strong style="font-weight: bold;">professional print solutions in London</strong>. Whether it's one item or a bulk order, your satisfaction is always our priority.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -162,68 +178,7 @@ At Tee Print London, we’re proud to be a trusted name in custom printing and e
       <Cloth />
     </div>
 
-    <section class="teeprint-about-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-6 col-lg-6">
-            <div class="teeprint-about-content">
-              <div class="section-main-heading">
-                <h2 class="section-heading-title-big">
-Our Order Process – From Design to Print Finish
-                </h2>
-              </div>
-              <div class="aboutus-list">
-                <p>
-<div class="intro">
-        At <span class="highlight">Tee Print London</span>, we make custom apparel and promotional product ordering easy, fast, and reliable. Here's how we bring your idea to life—from concept to completion:
-    </div>
     
-    <ol class="process">
-        <li class="process-step">
-            <span class="step-title">Design & Concept</span>
-            Share your idea or upload your artwork. No design? No problem! Our creative team can help you develop a design from scratch that reflects your brand, event, or personal style.
-        </li>
-        
-        <li class="process-step">
-            <span class="step-title">Review & Approval</span>
-            Once your design is ready, we'll send you a digital mock-up for approval. You can request changes until you're 100% satisfied.
-        </li>
-        
-        <li class="process-step">
-            <span class="step-title">Print or Embroidery in <span class="location">London</span></span>
-            After approval, we begin high-quality printing in <span class="location">London</span> using advanced DTG, screen printing, or embroidery in <span class="location">London</span>—depending on your product and preference. Our team ensures precise detailing and vibrant results.
-        </li>
-        
-        <li class="process-step">
-            <span class="step-title">Finishing & Quality Check</span>
-            Each item is carefully checked for quality to ensure it meets our standards before leaving our production facility.
-        </li>
-        
-        <li class="process-step">
-            <span class="step-title">Quick Turnaround & Same-Day Delivery</span>
-            Need it fast? We offer quick turnaround on most orders and same-day delivery in <span class="location">London</span>, so you can count on us even for last-minute needs.
-        </li>
-        
-        <li class="process-step">
-            <span class="step-title">Delivery or Collection</span>
-            Once complete, your order is either shipped or available for collection from our <span class="location">London</span> location.
-        </li>
-    </ol>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-6 col-lg-6">
-            <div class="teeprint-about-img">
-              <img
-                src="/img/Apron/Leonardo_Phoenix_10_a_young_man_in_his_early_twenties_with_a_r_3.jpg"
-                alt="about image"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <div class="container mt-5">
       <web-DuelCard
         img_left="/img/Apron/Leonardo_Phoenix_10_A_young_man_in_his_early_twenties_with_a_c_2.jpg"
