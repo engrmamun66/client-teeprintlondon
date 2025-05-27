@@ -49,7 +49,7 @@ let sameDayMenus = ref([
       },
       {
         name: "Same Day Promotion T-Shirt Printing",
-        slug: "/same-day/promotion_t_shirts",
+        slug: "/same-day/promotion-t-shirts-printing-london",
       },
       {
         name: "Same Day Sports Shirt Printing",
