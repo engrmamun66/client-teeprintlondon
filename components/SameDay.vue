@@ -52,55 +52,55 @@ const items = [
     title: "Same Day T shirt Print",
     image:
       "/img/Cotton_T_shirt/Leonardo_Phoenix_10_A_fit_middleaged_man_with_short_dark_hair_1.jpg",
-    link: "same-day-delivery/shirt",
+    link: "same-day/shirt-printing-london",
   },
   {
     title: "Same Day Polo Shirt Print",
     image:
       "/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_1.jpg",
-    link: "same-day-delivery/polo_shirt_printing",
+    link: "same-day/polo-shirt-printing-london",
   },
   {
     title: "Same Day Hoodie Print",
     image:
       "/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_3.jpg",
-    link: "same-day-delivery/hoodie",
+    link: "same-day/hoodie-printing-london",
   },
   {
     title: "Same Day Cap Print",
     image:
       "https://res.cloudinary.com/dyfnpakfq/image/upload/v1740849802/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2_jlwcmk.jpg",
-    link: "same-day-delivery/cap",
+    link: "same-day/cap-printing-london",
   },
   {
     title: "Same Day Tote Bag Print",
     image:
       "/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg",
-    link: "same-day-delivery/tote_bag",
+    link: "same-day/tote-bag-printing-london",
   },
   {
     title: "Same Day Apron Print",
     image:
       "/img/Apron/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_3.jpg",
-    link: "same-day-delivery/apron",
+    link: "same-day/apron-printing-london",
   },
   {
     title: "Same Day Fleeces & Knits Print",
     image:
       "/img/Fleeces_and_Knits/Leonardo_Phoenix_10_A_single_young_man_likely_in_his_early_twe_0.jpg",
-    link: "same-day-delivery/fleeces_and_knits",
+    link: "same-day/fleeces-and-knits-printing-london",
   },
   {
     title: "Same Day Active Wear Print",
     image:
       "/img/Active_wear/Leonardo_Phoenix_10_a_surreal_and_vibrant_cinematic_photo_of_a_1.jpg",
-    link: "same-day-delivery/active_wear",
+    link: "same-day/active-wear-printing-london",
   },
   {
     title: "Same Day Dress Shirt Print",
     image:
       "/img/Dress_Shirts/Leonardo_Phoenix_10_a_men_wearing_dress_black_shirt_in_london_0.jpg",
-      link: "same-day-delivery/dress_shirt",
+      link: "same-day/dress-shirt-printing-london",
   },
 ];
 </script>

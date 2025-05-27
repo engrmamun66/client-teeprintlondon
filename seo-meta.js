@@ -729,7 +729,7 @@ let META_BOX = {
     
   },
   cloth: {
-    "active_wear": {
+    "active-wear-printing-london": {
   "title": "Custom Active Wear Printing London | Gym & Sports Apparel | Tee Print",
   "description": "Premium custom active wear printing in London. High-performance gym wear, sports team uniforms & fitness apparel with durable prints. Fast turnaround & free quote available!",
   "keywords": [

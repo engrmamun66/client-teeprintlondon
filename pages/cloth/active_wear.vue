@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('cloth', 'active_wear'))
+useSeoMeta(getMeta('cloth', 'active-wear-printing-london'))
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",

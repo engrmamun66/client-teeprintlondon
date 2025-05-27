@@ -82,12 +82,12 @@ const items = [
     title: "Apron Print",
     image:
       "/img/Apron/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_3.jpg",
-    link: "cloth/apron",
+    link: "cloth/apron-printing-london",
   },
   {
     title: "Football Team T- Shirts",
     image: "/img/Football_team_t_shirt/6.jpg",
-    link: "same-day-delivery/football_shirt",
+    link: "same-day/football-shirt-printing-london",
   },
   {
     title: "Active Wear Print",

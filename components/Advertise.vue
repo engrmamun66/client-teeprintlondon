@@ -100,7 +100,7 @@ const items = [
     title: "Same Day T shirt Print",
     image:
       "/img/Cotton_T_shirt/Leonardo_Phoenix_10_A_fit_middleaged_man_with_short_dark_hair_1.jpg",
-    link: "same-day-delivery/shirt",
+    link: "same-day/shirt-printing-london",
   },
 ];
 </script>

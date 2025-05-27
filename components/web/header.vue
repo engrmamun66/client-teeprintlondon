@@ -26,74 +26,74 @@ function getProductByEnterOrSerchClick() {
 let sameDayMenus = ref([
   {
     name: "Same Day Printing",
-    slug: "/same-day-delivery/shirt",
+    slug: "/same-day/shirt-printing-london",
     isShow: false,
     childs: [
       {
         name: "Same Day T-Shirt Printing",
-        slug: "/same-day-delivery/shirt",
+        slug: "/same-day/shirt-printing-london",
       },
 
       {
         name: "Same Day Cotton T-Shirt Printing",
-        slug: "/same-day-delivery/cotton_t_shirt",
+        slug: "/same-day/cotton-t-shirt-printing-london",
       },
 
       {
         name: "Same Day Football Team T-Shirt Printing",
-        slug: "/same-day-delivery/football_shirt",
+        slug: "/same-day/football-shirt-printing-london",
       },
       {
         name: "Same Day Promotion Shirt Printing",
-        slug: "/same-day-delivery/promotion_shirts",
+        slug: "/same-day/promotion-shirts-printing-london",
       },
       {
         name: "Same Day Promotion T-Shirt Printing",
-        slug: "/same-day-delivery/promotion_t_shirts",
+        slug: "/same-day/promotion_t_shirts",
       },
       {
         name: "Same Day Sports Shirt Printing",
-        slug: "/same-day-delivery/sports_shirt",
+        slug: "/same-day/sports-shirt-printing-london",
       },
       {
         name: "Same Day University and School Shirt Printing",
-        slug: "/same-day-delivery/university_shirt",
+        slug: "/same-day/university-shirt-printing-london",
       },
       {
         name: "Same Day University and School T-Shirt Printing",
-        slug: "/same-day-delivery/university_t_shirt",
+        slug: "/same-day/university-t-shirt-printing-london",
       },
       {
         name: "Same Day Hoodie Printing",
-        slug: "/same-day-delivery/hoodie",
+        slug: "/same-day/hoodie-printing-london",
       },
       {
         name: "Same Day Sweat Shirt Printing",
-        slug: "/same-day-delivery/sweatshirt",
+        slug: "/same-day/sweatshirt-printing-london",
       },
       {
         name: "Same Day Cap Printing",
-        slug: "/same-day-delivery/cap",
+        slug: "/same-day/cap-printing-london",
       },
       {
         name: "Same Day Tote bag Printing",
-        slug: "/same-day-delivery/tote_bag",
+        slug: "/same-day/tote-bag-printing-london",
       },
       {
         name: "Same Day Apron Printing",
-        slug: "/same-day-delivery/apron",
+        slug: "/same-day/apron-printing-london",
       },
       {
         name: "Same Day Fleeces & Knits Printing",
-        slug: "/same-day-delivery/fleeces_and_knits",
+        slug: "/same-day/fleeces-and-knits-printing-london",
       },
       {
         name: "Same Day Active Wear Printing",
-        slug: "/same-day-delivery/active_wear",
+        slug: "/same-day/active-wear-printing-london",
       },
       {
         name: "Same Day Dress Shirt Printing",
-        slug: "/same-day-delivery/dress_shirt",
+        slug: "/same-day/dress-shirt-printing-london",
       },
     ],
   },
