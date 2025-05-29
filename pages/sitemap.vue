@@ -63,7 +63,7 @@
     </section>
 
     <section class="sitemap-section">
-      <h2>Clothing Products</h2>
+      <h2>Custom Clothing Products</h2>
       <ul>
         <li v-for="(url, name) in clothingItems" :key="name">
           <NuxtLink :to="url">{{ name }}</NuxtLink>

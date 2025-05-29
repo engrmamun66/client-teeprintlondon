@@ -11,12 +11,28 @@
               <div class="sitemap-section">
                 <h5>Clothing</h5>
                 <div class="sitemap-columns">
-                  <template v-for="(type, typeIndex) in homeStore.siteMapMenus" :key="typeIndex">
-                    <template v-if="type.categories && type.categories.length > 0">
-                      <div class="sitemap-column" v-for="(colIndex) in Math.ceil(type.categories.length / 5)" :key="'col-'+colIndex">
-                        <div 
-                          class="category-group" 
-                          v-for="(category, categoryIndex) in type.categories.slice((colIndex - 1) * 5, colIndex * 5)"
+                  <template
+                    v-for="(type, typeIndex) in homeStore.siteMapMenus"
+                    :key="typeIndex"
+                  >
+                    <template
+                      v-if="type.categories && type.categories.length > 0"
+                    >
+                      <div
+                        class="sitemap-column"
+                        v-for="colIndex in Math.ceil(
+                          type.categories.length / 5
+                        )"
+                        :key="'col-' + colIndex"
+                      >
+                        <div
+                          class="category-group"
+                          v-for="(
+                            category, categoryIndex
+                          ) in type.categories.slice(
+                            (colIndex - 1) * 5,
+                            colIndex * 5
+                          )"
                           :key="categoryIndex"
                         >
                           <NuxtLink
@@ -26,7 +42,9 @@
                             {{ category.name }}
                           </NuxtLink>
                           <ul
-                            v-if="category.children && category.children.length > 0"
+                            v-if="
+                              category.children && category.children.length > 0
+                            "
                             class="subcategories"
                           >
                             <li
@@ -47,15 +65,17 @@
                 </div>
               </div>
 
-<div class="sitemap-section">
-  <h5>Same Day Delivery</h5>
-  <ul class="subcategories">
-    <li v-for="(item, index) in sameDayMenus[0].childs" :key="index">
-      <NuxtLink :to="item.slug">{{ item.name }}</NuxtLink>
-    </li>
-  </ul>
-</div>
-
+              <div class="sitemap-section">
+                <h5>Same Day Delivery</h5>
+                <ul class="subcategories">
+                  <li
+                    v-for="(item, index) in sameDayMenus[0].childs"
+                    :key="index"
+                  >
+                    <NuxtLink :to="item.slug">{{ item.name }}</NuxtLink>
+                  </li>
+                </ul>
+              </div>
 
               <!-- Advertising Products -->
               <div class="sitemap-section">
@@ -76,9 +96,17 @@
                   </li>
                 </ul>
               </div>
+              <div class="sitemap-section">
+                
+                
+                    <NuxtLink to="/sitemap"><h5 >Sitemap</h5></NuxtLink>
+
+              </div>
+        
             </div>
           </div>
         </div>
+              <hr/>
 
         <!-- Contact and Info Section -->
         <div class="row footer-main-content">
@@ -94,7 +122,10 @@
                 </li>
                 <li>
                   <i class="la la-envelope"></i>
-                  <a href="mailto:support@teeprintlondon.co.uk" class="teeprint-number">
+                  <a
+                    href="mailto:support@teeprintlondon.co.uk"
+                    class="teeprint-number"
+                  >
                     support@teeprintlondon.co.uk
                   </a>
                 </li>
@@ -110,7 +141,9 @@
                 <li><nuxt-link to="/question">FAQ's</nuxt-link></li>
                 <li><nuxt-link to="/contact">Contact Us</nuxt-link></li>
                 <li><nuxt-link to="/privacy">Privacy Policy</nuxt-link></li>
-                <li><nuxt-link to="/refund">Refund and Returns Policy</nuxt-link></li>
+                <li>
+                  <nuxt-link to="/refund">Refund and Returns Policy</nuxt-link>
+                </li>
               </ul>
             </div>
           </div>
@@ -120,17 +153,27 @@
               <h4>Connect with us</h4>
               <ul class="teeprint-social-icon">
                 <li>
-                  <a href="#" class="teeprint-facebook-onlyicon"><i class="la la-facebook"></i></a>
+                  <a href="#" class="teeprint-facebook-onlyicon"
+                    ><i class="la la-facebook"></i
+                  ></a>
                 </li>
                 <li>
-                  <a href="#" class="teeprint-instagram-onlyicon"><i class="la la-instagram"></i></a>
+                  <a href="#" class="teeprint-instagram-onlyicon"
+                    ><i class="la la-instagram"></i
+                  ></a>
                 </li>
                 <li>
-                  <a href="#" class="teeprint-twitter-onlyicon"><i class="la la-twitter"></i></a>
+                  <a href="#" class="teeprint-twitter-onlyicon"
+                    ><i class="la la-twitter"></i
+                  ></a>
                 </li>
               </ul>
               <h4>Payment</h4>
-              <img src="/img/card_image1.jpg" alt="Payment Methods" class="payment-methods" />
+              <img
+                src="/img/card_image1.jpg"
+                alt="Payment Methods"
+                class="payment-methods"
+              />
             </div>
           </div>
 
@@ -152,9 +195,12 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-4 col-12 order-md-1 order-1 mt-3 mt-md-0">
-            <div class="teeprint-bottom-footer-content text-center text-md-start">
+            <div
+              class="teeprint-bottom-footer-content text-center text-md-start"
+            >
               <p class="mb-0">
-                <strong>Stirling Apparel Ltd</strong> Trading as TeePrint London<br />
+                <strong>Stirling Apparel Ltd</strong> Trading as TeePrint
+                London<br />
                 Reg No: 12317296 (England & Wales)
               </p>
             </div>
@@ -184,7 +230,6 @@
     </div>
   </footer>
 </template>
-
 
 <script setup>
 import { useHomeStore } from "~/store/web/Home";
@@ -476,7 +521,7 @@ onMounted(async () => {
   .footer-sitemap-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .footer-main-content {
     gap: 30px 0;
   }
@@ -486,15 +531,15 @@ onMounted(async () => {
   .footer-sitemap-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .sitemap-columns {
     flex-direction: column;
   }
-  
+
   .sitemap-column {
     min-width: 100%;
   }
-  
+
   .teeprint-footer-links,
   .teeprint-footer-location {
     margin-bottom: 30px;
@@ -505,7 +550,7 @@ onMounted(async () => {
   .teeprint-bottom-footer-content {
     text-align: center !important;
   }
-  
+
   .teeprint-bottom-footer .row > div {
     order: initial !important;
   }
