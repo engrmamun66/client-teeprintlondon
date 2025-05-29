@@ -7,7 +7,7 @@ export const useHomeStore = defineStore("homeStore", () => {
   let paypalStore = usePaypalStore();
 
   let cartStore = useCartStore();
-
+  let siteMapMenus = ref([])
   let menus = ref(useCookie("menus").value || []);
   async function getTypewiseCategoryList() {
     try {
@@ -15,6 +15,9 @@ export const useHomeStore = defineStore("homeStore", () => {
         if (response.data.success) {
           // menus.value = response.data.data || []
           // useCookie('menus').value = menus.value
+          siteMapMenus.value = (response.data.data || []).filter(
+            item => item.name == "Best Seller" || item.name == "Clothing"
+          );
           menus.value = response.data.data || [];
           // First, sort all categories by created_at (newest first)
           menus.value[0].categories.sort((a, b) => {
@@ -76,9 +79,11 @@ export const useHomeStore = defineStore("homeStore", () => {
 
           // Reassign the organized array back to menus.value
           menus.value[1].categories = organizedCategories;
+          console.log("Neaz", menus.value)
 
           // Store the organized array in a cookie
           useCookie("menus").value = menus.value;
+
         }
       });
     } catch (error) {}
@@ -403,6 +408,7 @@ export const useHomeStore = defineStore("homeStore", () => {
 
     addToCartNow,
     placeOrder,
+    siteMapMenus
   };
 });
 
