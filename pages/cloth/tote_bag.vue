@@ -24,26 +24,25 @@ function addToCart() {
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="Premium Custom Tote Bag Printing"
+            title="Tote Bag Printing in London"
             :images="[
               '/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_0.jpg',
               '/img/Tote_bag/Leonardo_Phoenix_10_a_worn_natural_canvas_tote_bag_with_a_rela_0.jpg',
               '/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_casual_tote_bag_with_a_playf_0.jpg',
             ]"
           >
-            Elevate your tote bags with Tee Print London’s premium custom
-            printing services. Whether it’s for businesses, events, promotions,
-            or personal use, we deliver exceptional quality and craftsmanship.
-            Our advanced printing techniques ensure vibrant, long-lasting
-            designs that stand up to daily use. Trust Tee Print London to bring
-            your vision to life with precision and style.
+            Print custom tote bags for your businesses, events, and individual
+            use. We simplify the process, help you pick the right design, and
+            get your order ready on time. Each bag offers sharp results and a
+            personal touch. Friendly service, no minimum order rule. Get your
+            personalised tote bag in London today to carry your unique message.
 
             <template #link>
               <nuxt-link
                 :to="{ name: 'quote' }"
                 class="teeprint-button teeprint-theme-btn zoomInOut mt-5"
               >
-                Get A Free Quote <i class="la la-arrow-right ml-1"></i>
+                Print Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </template>
           </MultipleImageCard>
@@ -58,22 +57,22 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Your Tote Bag Printing?
+                  Same Day Tote Bag Printing in London
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  At Tee Print London, we pride ourselves on delivering
-                  top-quality tote bag printing that combines style, durability,
-                  and functionality. Whether you’re creating custom tote bags
-                  for your brand, event, or personal use, we use only the finest
-                  materials and cutting-edge technology to bring your ideas to
-                  life. Our state-of-the-art printing techniques, including
-                  Direct-to-Garment (DTG), screen printing, and vinyl printing,
-                  ensure your designs are vibrant, sharp, and built to last.
-                  With unbeatable customer service and a commitment to
-                  excellence, Tee Print London is your trusted partner for all
-                  your tote bag printing needs.
+                  For a last-minute event, urgent promo, or a sudden change in
+                  plans, TeePrintLondon is the team that can help. Need custom
+                  tote bags in hours or the first hours tomorrow? We are ready
+                  to print them quickly without compromising the quality.
+                </p>
+                <p>
+                  Our same-day tote bag printing service gets your order done
+                  fast, without the stress. Just send us your design, approve
+                  the proof, and we'll handle the rest. One bag to one hundred,
+                  it does not matter to us. We deliver sharp and clean prints
+                  that are ready to go the very same day.
                 </p>
               </div>
             </div>
@@ -82,7 +81,7 @@ function addToCart() {
             <div class="teeprint-about-img">
               <img
                 src="/img/Tote_bag/il_1140xN.1899584604_j7fg.jpg"
-                alt="about iamge"
+                alt="about image"
               />
             </div>
           </div>
@@ -97,9 +96,9 @@ function addToCart() {
             <div class="col-md-5">
               <div class="section-main-heading text-right pr-5">
                 <h4 class="section-heading-title-small">
-                  <span class="line-decoration"></span>What Our
+                  <span class="line-decoration"></span>Why People
                 </h4>
-                <h2 class="section-heading-title-big">Customers Say</h2>
+                <h2 class="section-heading-title-big">Love Printing With Us</h2>
               </div>
             </div>
           </div>
@@ -116,7 +115,6 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              
               <img
                 src="/img/Tote_bag/WhatsApp Image 2025-04-18 at 17.58.14_69003ea2_magicstudio_9bj1l4lafn.jpg"
                 alt="about image"
@@ -127,27 +125,28 @@ function addToCart() {
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  High-Quality Tote Bag Printing You Can Trust
+                  Premium Designs, Exceptional Craftsmanship
                 </h2>
               </div>
               <p>
-                When it comes to custom tote bags, quality matters. At Tee Print
-                London, we specialize in creating durable, stylish, and
-                functional tote bags that meet your exact needs. Our expert team
-                uses advanced printing methods to ensure your designs are
-                vibrant, precise, and long-lasting. From intricate logos to bold
-                graphics, we handle every detail with care, ensuring your tote
-                bags look great and perform even better. Whether you need a
-                single tote bag or a bulk order, Tee Print London is dedicated
-                to delivering exceptional results every time. Choose us for tote
-                bags that combine quality, comfort, and style.
+                Superior materials and advanced printing are the signature of
+                our craftsmanship. We craft tote bags that combine style with
+                durability. Canvas or another style, our high-quality tote bag
+                printing ensures your design won't fade or peel, even after lots
+                of use!
+              </p>
+              <p>
+                We pay close attention to every detail from the design to the
+                finishing touches. You get a product that always makes an
+                impression. When you want tote bags that combine exceptional
+                design with outstanding craftsmanship, just let us know!
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
                 class="teeprint-button teeprint-theme-btn zoomInOut"
                 href="#"
               >
-                Get A Free Quote <i class="la la-arrow-right ml-1"></i>
+                Start Design <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </div>
           </div>
@@ -166,43 +165,200 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Order Your Custom Tote Bags from Tee Print London
+                  Custom And Personalised Tote Bags For Any Occasion
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Ready to elevate your tote bag game? Tee Print London is here
-                  to help you create custom tote bags that are as unique as you
-                  are. Whether you’re designing tote bags for a business, event,
-                  promotion, or personal use, we provide premium printing
-                  services that deliver unmatched quality and style. Our easy
-                  ordering process makes it simple to bring your ideas to
-                  life—just choose your tote bag, upload your design, and let us
-                  handle the rest. With Tee Print London, you can trust that
-                  every piece is crafted with precision, durability, and care.
-                  Don’t settle for ordinary—order your custom tote bags from Tee
-                  Print London today and experience the difference quality
-                  makes.
+                  Our personalised tote bags' designs match your style, message,
+                  and event. Is the bag for a birthday, wedding, market stall,
+                  or business giveaway? Our team helps you bring your idea to
+                  life.
+                </p>
+                <p>
+                  You can choose your colours, add logos, names, or others, and
+                  make your tote bag truly yours. Each order brings something
+                  different that keeps us inspired. Be confident with
+                  high-quality prints and careful attention to detail. Your
+                  tote, your way, every time.
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
-            <div class="teeprint-about-img">
-              <img src="/img/Tote_bag/WhatsApp Image 2025-04-18 at 17.57.44_b1d34e77_magicstudio_obivmghbf3.jpg" alt="about iamge" />
+            <div class="teeprint-about-content">
+              <div class="section-main-heading">
+                <h2 class="section-heading-title-big">
+                  Don't Just Carry Things, Carry Your Message
+                </h2>
+              </div>
+              <div class="aboutus-list">
+                <p>
+                  A tote bag can be more than just something to hold your stuff.
+                  It's a way to show who you are. With the right design, your
+                  bag can speak for your brand, event, or big idea.
+                </p>
+                <p>
+                  We turn simple bags into bold statements. Fun artwork for
+                  company logos, every detail is printed with care and quality.
+                  Your unique tote bag can do the talking. Let your message
+                  travel far on a bag made just for you.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <section class="teeprint-about-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6">
+            <div class="teeprint-about-content">
+              <div class="section-main-heading">
+                <h2 class="section-heading-title-big">
+                  How to Order Your Tote Bag
+                </h2>
+              </div>
+              <div class="aboutus-list">
+                <p>
+                  Ordering your custom tote bags with us is simple and quick.
+                  Just follow these steps to get your personalised tote bags
+                  printed and ready to use in hours:
+                </p>
+                <ul class="dotted-list">
+                  <li>
+                    <span class="dot"></span>Choose a tote bag style and size
+                    that you prefer
+                  </li>
+                  <li>
+                    <span class="dot"></span>Upload your design or create one
+                    with our drag-and-drop system
+                  </li>
+                  <li>
+                    <span class="dot"></span>Review and approve the digital
+                    proof we send you
+                  </li>
+                  <li>
+                    <span class="dot"></span>Select your quantity, including
+                    options for bulk tote bag printing
+                  </li>
+                  <li>
+                    <span class="dot"></span>Choose a delivery option or
+                    same-day pickup in London
+                  </li>
+                  <li>
+                    <span class="dot"></span>Receive your personalised tote bags
+                    and carry your creativity!
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6">
+            <div class="teeprint-about-img">
+              <img
+                src="/img/Tote_bag/WhatsApp Image 2025-04-18 at 17.57.44_b1d34e77_magicstudio_obivmghbf3.jpg"
+                alt="about image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="teeprint-about-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="teeprint-about-content text-center">
+              <div class="section-main-heading">
+                <h2 class="section-heading-title-big">
+                  Why Choose Us for Tote Bag Printing in London?
+                </h2>
+              </div>
+              <div class="aboutus-list">
+                <p>
+                  TeePrintLondon believes custom bags shouldn't cost a fortune.
+                  We offer competitive prices for every budget. You will always
+                  get affordable and reliable tote bag printing at a cheap price
+                  without sacrificing quality.
+                </p>
+                <p>
+                  We offer high-quality prints and durable custom bags for
+                  businesses, events, and personal use because it's more than
+                  just a bag! With fast delivery and great customer support, we
+                  have made the order process quick and easy!
+                </p>
+                <p>
+                  If you want value, quality, and speed all in one place, we're
+                  the best choice for tote bag printing in London.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="teeprint-makes-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <div class="section-main-heading">
+              <h2 class="section-heading-title-big">
+                Request a Quote or Place an Order
+              </h2>
+            </div>
+            <p class="mb-5">
+              Ready to get started? Our print-on-demand tote bags are
+              affordable, made with care, and delivered fast! Send us your idea
+              now, and we'll handle the rest. Place your order now and receive
+              your unique tote bags in hours.
+            </p>
+            <nuxt-link
+              :to="{ name: 'quote' }"
+              class="teeprint-button teeprint-theme-btn zoomInOut"
+            >
+              Start Design <i class="la la-arrow-right ml-1"></i>
+            </nuxt-link>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="container mt-5">
       <web-DuelCard
         img_left="/img/Tote_bag/Leonardo_Phoenix_10_a_worn_natural_canvas_tote_bag_with_a_rela_2.jpg"
         img_right="/img/Tote_bag/WhatsApp Image 2025-04-18 at 17.59.00_22c425a1_magicstudio_q2lo0rivhdp.jpg"
-        paragraph="At Tee Print London, we bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
+        paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
-
     </div>
-    <web-questions></web-questions>
+    <web-questions name="totebag"/>
   </div>
 </template>
+
+<style scoped>
+.dotted-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.dotted-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+.dot {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: currentColor;
+  border-radius: 50%;
+}
+</style>

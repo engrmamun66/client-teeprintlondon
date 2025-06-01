@@ -79,7 +79,7 @@ export const useHomeStore = defineStore("homeStore", () => {
 
           // Reassign the organized array back to menus.value
           menus.value[1].categories = organizedCategories;
-          console.log("Neaz", menus.value)
+
 
           // Store the organized array in a cookie
           useCookie("menus").value = menus.value;

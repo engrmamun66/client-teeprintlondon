@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'hoodie'))  
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "hoodie"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -25,27 +25,25 @@ function addToCart() {
         <div class="row">
           <MultipleImageCard
             :right="true"
-            title="Same-Day Printing for Hoodies & Sweatshirts"
+            title="Hoodie Printing in London"
             :images="[
               '/img/Hoodie/Leonardo_Kino_XL_a_men_wearing_hoodie_Teeprint_London_written_2.jpg',
               '/img/Hoodie/Leonardo_Kino_XL_a_men_wearing_hoodieStay_Cozy_Stay_Cool_writt_0.jpg',
               '/img/Hoodie/Flux_Dev_a_highquality_photorealistic_image_of_a_trendy_hoodie_0.jpeg',
             ]"
           >
-            Need high-quality custom hoodies or sweatshirts in a hurry? Tee
-            Print London provides same-day printing services, ensuring fast and
-            reliable results. Whether it’s for businesses, events, sports teams,
-            or personal use, our efficient process guarantees stylish and
-            professional apparel without delays. Serving clients across London
-            and the UK, we specialize in delivering premium printing solutions
-            with a quick turnaround to meet your urgent needs.
+            Add your favorite quote, logo, name, and fun picture on hoodies. If
+            you need custom hoodies for branding, team, school, and more, we
+            craft them for all needs. Searching for printed hoodies near me in
+            London? Let us create one that has your unique style. Order your
+            hoodie and get it delivered without delay.
 
             <template #link>
               <nuxt-link
                 :to="{ name: 'quote' }"
                 class="teeprint-button teeprint-theme-btn zoomInOut mt-5"
               >
-                Get A Free Quote <i class="la la-arrow-right ml-1"></i>
+                Get A Quote <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </template>
           </MultipleImageCard>
@@ -60,35 +58,47 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Your Hoodies & Sweatshirts
-                  Printing
+                  Premium Quality Custom Hoodies You Can Trust
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Tee Print London is your go-to destination for high-quality
-                  hoodie and sweatshirt printing, offering premium designs,
-                  exceptional craftsmanship, and unbeatable customer service.
-                  Whether you're looking for custom prints for your brand, team,
-                  or personal style, we provide vibrant, long-lasting prints on
-                  comfortable, high-quality fabrics. Our advanced printing
-                  techniques ensure sharp details and rich colors that won’t
-                  fade over time. Plus, with fast turnaround times and
-                  competitive pricing, we make customization effortless and
-                  affordable. Choose Tee Print London for stylish, durable, and
-                  uniquely crafted hoodies and sweatshirts that make a
-                  statement!
+                  In a question of good quality hoodies, TeePrintLondon shows no
+                  compromise. We offer high-quality hoodies that are great to
+                  look at and awesome to wear! They feel soft and are crafted
+                  with premium fabric. Plus, the print won't fade or crack. We
+                  ensure you have an amazing experience, not just the product.
+                  People in London admire us due to our uniqueness in custom
+                  hoodie printing.
                 </p>
+                <div class="col mt-4">
+                  <div class="col-md-12">
+                    <h4><strong>Strong Fabric</strong></h4>
+                    <p>
+                      Our hoodies are soft and comfortable. The quality remains
+                      the same even after lots of washes.
+                    </p>
+                  </div>
+                  <div class="col-md-12">
+                    <h4><strong>Bright Prints</strong></h4>
+                    <p>
+                      We use special printing. Your design stays sharp and clear
+                      for months. It doesn't peel off.
+                    </p>
+                  </div>
+                  <div class="col-md-12">
+                    <h4><strong>Cool Style</strong></h4>
+                    <p>
+                      Simple or bold, choose colors and designs that fit you
+                      perfectly. Your hoodie, your choice.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <!-- <img
-                src="https://teeprint.london/wp-content/uploads/2022/11/t-shirt-printing-cover-1024x694.jpg"
-                alt="about iamge"
-              /> -->
-
               <video
                 class="rounded-video"
                 autoplay
@@ -116,9 +126,9 @@ function addToCart() {
             <div class="col-md-5">
               <div class="section-main-heading text-right pr-5">
                 <h4 class="section-heading-title-small">
-                  <span class="line-decoration"></span>What Our
+                  <span class="line-decoration"></span>Customer Thoughts
                 </h4>
-                <h2 class="section-heading-title-big">Customers Say</h2>
+                <h2 class="section-heading-title-big">On Our Hoodies</h2>
               </div>
             </div>
           </div>
@@ -144,45 +154,29 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
-                <!-- <h4 class="section-heading-title-small">
-                                <span class="line-decoration"></span> About Us
-                            </h4> -->
                 <h2 class="section-heading-title-big">
-                  Same-Day Hoodie & Sweatshirt Printing – Fast, Reliable, and
-                  High-Quality
+                  Personalised Hoodies in Multiple Styles, Colours & Fits
                 </h2>
               </div>
               <p>
-                When time is of the essence, and you need custom-printed hoodies
-                or sweatshirts without delays, Tee Print London is here to help.
-                We specialize in same-day printing services, allowing you to
-                receive professionally printed apparel on the very same day you
-                place your order. Whether you're preparing for a corporate
-                event, sports competition, promotional campaign, or simply want
-                a unique design for personal use, our service ensures you get
-                premium-quality prints with a fast turnaround. At Tee Print
-                London, we use state-of-the-art printing techniques such as
-                Direct-to-Garment (DTG), screen printing, and vinyl printing to
-                produce vibrant, long-lasting designs that withstand multiple
-                washes. No matter the complexity of your design—whether it's a
-                logo, slogan, graphic, or personalized text—we bring your vision
-                to life with precision and care. Our commitment to quality means
-                that speed does not compromise the excellence of our work. We
-                understand that urgent orders require not only quick processing
-                but also high standards, which is why our printing process
-                ensures crisp, clear, and professional results. Whether you need
-                a single hoodie or a bulk order, our team is dedicated to
-                providing the best service in London and across the UK. Why wait
-                for days? Get your custom hoodies and sweatshirts printed today
-                with Tee Print London and enjoy fast, reliable, and high-quality
-                printing tailored to your needs.
+                We believe you should design your own hoodie. Personalization is
+                easy with us. Add your text, logo, or image, and make it
+                special. We have multiple colours, sizes, and styles so everyone
+                can find an option. To make the design more polished and
+                lasting, we apply various printing methods like DTG, screen
+                printing, and vinyl printing.
+              </p>
+              <p>
+                It does not matter if you prefer bold, simple, and fun; our
+                personalised hoodies are available in your way. Pick your style
+                and start designing.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
                 class="teeprint-button teeprint-theme-btn zoomInOut"
                 href="#"
               >
-                Get A Free Quote <i class="la la-arrow-right ml-1"></i>
+                Design Your Hoodie <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </div>
           </div>
@@ -201,33 +195,69 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Get Your Custom Hoodies & Sweatshirts Printed Today!
+                  Same-Day Hoodie Printing in London
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait days or even weeks for your custom apparel when you
-                  can have it printed today? At Tee Print London, we offer
-                  same-day hoodie and sweatshirt printing to ensure you get your
-                  custom designs exactly when you need them. Whether it’s for a
-                  corporate event, business promotion, sports team, charity
-                  fundraiser, or personal use, we provide a seamless and
-                  hassle-free printing experience with top-notch results. Our
-                  process is designed for speed and convenience—simply select
-                  your hoodie or sweatshirt, upload your design, and let us
-                  handle the rest. Using advanced printing techniques, including
-                  Direct-to-Garment (DTG), screen printing, and vinyl printing,
-                  we guarantee sharp, vibrant, and long-lasting prints that
-                  won’t fade after just a few washes. We understand the urgency
-                  of last-minute orders, which is why our same-day printing
-                  service is tailored to meet your deadlines without
-                  compromising on quality. Whether you need a single hoodie or a
-                  bulk order, we ensure every piece is printed with precision,
-                  durability, and style. Don’t let long wait times slow you
-                  down—place your order now with Tee Print London and get your
-                  custom hoodies and sweatshirts printed on the same day with
-                  professional service and unmatched quality.
+                  If you need a custom hoodie printed and delivered on the same
+                  day, knock us. We offer hoodie printing in London for those
+                  who are in a hurry. Our quick service is perfect for
+                  last-minute events or urgent gifts. Don't worry about losing
+                  quality because we follow strict quality standards.
                 </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6">
+            <div class="teeprint-about-content">
+              <div class="section-main-heading">
+                <h2 class="section-heading-title-big">
+                  Custom Order, No Minimum Quantity
+                </h2>
+              </div>
+              <div class="aboutus-list">
+                <p>
+                  For print-on-demand hoodies, we have no minimum quantity
+                  restriction. You can order as much as you need. This
+                  flexibility lets you order one for personal use or even
+                  hundreds for big events. We want to make custom hoodies
+                  affordable to everyone. So, there is no limit.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="teeprint-about-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6">
+            <div class="teeprint-about-content">
+              <div class="section-main-heading">
+                <h2 class="section-heading-title-big">
+                  Design Your Hoodie for Events, Teams & Businesses
+                </h2>
+              </div>
+              <div class="aboutus-list">
+                <p>
+                  Why do you need personalised hoodies in the UK? We craft
+                  hoodies for many purposes. You can design them for events,
+                  teams, or businesses. Some examples of variation of our custom
+                  hoodies are:
+                </p>
+                <ul class="dotted-list">
+                  <li><span class="dot"></span>Event hoodies</li>
+                  <li><span class="dot"></span>Team hoodies</li>
+                  <li><span class="dot"></span>Business hoodies</li>
+                  <li><span class="dot"></span>School hoodies</li>
+                  <li><span class="dot"></span>Fundraiser hoodies</li>
+                  <li><span class="dot"></span>Sports hoodies</li>
+                  <li><span class="dot"></span>Club hoodies</li>
+                  <li><span class="dot"></span>Work hoodies</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -242,6 +272,105 @@ function addToCart() {
         </div>
       </div>
     </section>
+
+    <section class="teeprint-about-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6">
+            <div class="teeprint-about-content">
+              <div class="section-main-heading">
+                <h2 class="section-heading-title-big">
+                  How to Customise and Order Your Hoodie Online
+                </h2>
+              </div>
+              <div class="aboutus-list">
+                <p>
+                  If you want fully customizable hoodies, you can design yours
+                  and place an order. We have simplified the self-designing
+                  process. Follow these steps to make a unique hoodie that no
+                  one has:
+                </p>
+                <ul class="dotted-list">
+                  <li>
+                    <span class="dot"></span>Choose your hoodie style and color
+                    from our vast options.
+                  </li>
+                  <li>
+                    <span class="dot"></span>Upload your design to our system or
+                    add text and other elements.
+                  </li>
+                  <li>
+                    <span class="dot"></span>Pick the accurate size and
+                    quantity.
+                  </li>
+                  <li>
+                    <span class="dot"></span>Review your order to ensure that
+                    everything is okay.
+                  </li>
+                  <li>
+                    <span class="dot"></span>Place your order and wait for
+                    delivery.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6">
+            <div class="teeprint-about-content">
+              <div class="section-main-heading">
+                <h2 class="section-heading-title-big">
+                  Why Choose Us for Personalised Hoodies?
+                </h2>
+              </div>
+              <div class="aboutus-list">
+                <p>
+                  Our mission is to craft full custom hoodies just how you want
+                  them! We believe in simplicity and have set our system
+                  accordingly. Anyone can choose a style, design, and size, we
+                  handle the rest.
+                </p>
+                <p>
+                  We are also serious about the fabric quality, along with
+                  printing. Our hoodies not only look great, but they last
+                  longer. We always wish to deliver you a custom hoodie that
+                  will make you confident in public.
+                </p>
+                <p>
+                  For these reasons, TeePrintLondon is a well-known name for
+                  hoodie printing in London.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="teeprint-makes-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <div class="section-main-heading">
+              <h2 class="section-heading-title-big">
+                Order Your Fully Customisable Hoodie Today
+              </h2>
+            </div>
+            <p class="mb-5">
+              Craft your special hoodie with the help of our custom hoodie
+              printing service. It's easier than you think! Start designing
+              today and get it delivered today.
+            </p>
+            <nuxt-link
+              :to="{ name: 'quote' }"
+              class="teeprint-button teeprint-theme-btn zoomInOut"
+            >
+              Design Your Hoodie <i class="la la-arrow-right ml-1"></i>
+            </nuxt-link>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="container mt-5">
       <web-DuelCard
         img_left="/img/Hoodie/Leonardo_Phoenix_10_a_surreal_and_vibrant_cinematic_photograph_3.jpg"
@@ -249,6 +378,30 @@ function addToCart() {
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
-    <web-questions></web-questions>
+    <web-questions name="hoodie"/>
   </div>
 </template>
+
+<style scoped>
+.dotted-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.dotted-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+.dot {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: currentColor;
+  border-radius: 50%;
+}
+</style>
