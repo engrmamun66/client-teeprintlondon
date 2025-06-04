@@ -144,6 +144,9 @@
                 <li>
                   <nuxt-link to="/refund">Refund and Returns Policy</nuxt-link>
                 </li>
+                <li>
+                  <nuxt-link to="/about-us">About Us</nuxt-link>
+                </li>
               </ul>
             </div>
           </div>
