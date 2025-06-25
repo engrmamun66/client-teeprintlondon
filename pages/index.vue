@@ -1,7 +1,6 @@
 <script setup>
-import getMeta from "~/seo-meta";  
-useSeoMeta(getMeta('root', 'home page')) 
-
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("root", "home page"));
 
 definePageMeta({
   titleTemplate: "% :: Home",
@@ -101,6 +100,23 @@ onMounted(() => {
       </div>
     </section>
 
+    <!-- <section class="teeprint-about-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6">
+            <div class="teeprint-about-content">
+              <div class="section-main-heading">
+                <h2 class="section-heading-title-big">
+                  Our Recent Work
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <Slider/>
     <section class="teeprint-makes-section">
       <div class="container">
         <div class="row">
