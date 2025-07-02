@@ -116,7 +116,7 @@ onMounted(() => {
       </div>
     </section> -->
 
-    <Slider/>
+    <Slider />
     <section class="teeprint-makes-section">
       <div class="container">
         <div class="row">
