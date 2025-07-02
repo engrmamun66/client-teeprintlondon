@@ -23,7 +23,7 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-content">
               <div class="section-main-heading">
-                <h2 class="section-heading-title-big">Refund Policy</h2>
+                <h2 class="section-heading-title-big">Refund Policy test</h2>
               </div>
               <div class="aboutus-list">
                 <p>
