@@ -41,22 +41,19 @@ onMounted(() => {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Elevate Your Style with Premium Custom Apparel
+                  Show Off Your Style With Freedom Of Customization
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  At Tee Print London, we craft premium custom apparel tailored
-                  to your unique vision. Our extensive collection features
-                  everything from cozy hoodies and eco-friendly organic tees to
-                  professional school uniforms, eye-catching promotional wear,
-                  and high-performance team kits. Beyond the basics, we
-                  specialize in activewear, chef-ready aprons, sleek polo
-                  shirts, trendy caps, and versatile tote bags - all
-                  customizable to perfection. Every piece is designed with
-                  precision to transform your concepts into wearable statements.
-                  Explore our range today and discover bespoke solutions that
-                  elevate your personal style or brand identity.
+                  TeePrintLondon believes you know your style best! So, we are
+                  happy to give you the freedom to customize your wearables. Get
+                  complete control over every detail and customization without a
+                  few template limitations. Are you a fan of streetwear, bold,
+                  minimalist, clean, retro & vintage, or corporate smart style?
+                  We have all the options for different preferences. Let's
+                  design, get delivered through same-day printing in London, and
+                  wear it to express yourself!
                 </p>
               </div>
               <nuxt-link
@@ -134,36 +131,34 @@ onMounted(() => {
         <div class="row">
           <web-postCard
             :right="false"
-            title="Same-Day Delivery for Custom T-Shirt Printing in London, Available 24/7"
+            title="Premium Apparel That Feels And Looks Good"
           >
-            Need custom t-shirts in a hurry for your campaign, event, or
-            festival? Tee Print London is your go-to for fast, reliable
-            solutions. We offer same day t-shirt printing with delivery across
-            London, and next day t-shirt printing for customers throughout the
-            UK. Our 24/7 service ensures you can place your order anytime and
-            receive high-quality, custom printed t-shirts when you need them
-            most. Whether it’s a last-minute request or a planned order, we
-            deliver fast and affordable printing without compromising on
-            quality. Count on Tee Print London to meet your urgent t-shirt
-            printing needs.
+            We offer custom-made T-shirts in London that look great and feel
+            incredible. Each piece is crafted with premium and safe materials,
+            like organic cotton. They are soft, breathable, and long-lasting.
+            Our T-shirts, polo shirts, hoodies, and activewear are gentle on the
+            skin and strong in style. Printing is not the only thing we are
+            serious about. We ensure our products make you smile and feel
+            confident. Choose the style, fit, and design, we will handle the
+            rest. We apply various printing techniques for the best printing
+            texture and sharp lines. You won't receive any t-shirts, hoodies,
+            polo shirts, or aprons until it is 100% compatible with our quality
+            standard.
           </web-postCard>
 
           <web-postCard
             :right="true"
-            title="Order Any Quantity You Need"
+            title="Any Quantity Available For Individuals, Businesses, Or Events "
             image-url="/img/Home/Leonardo_Phoenix_10_A_highquality_crisp_image_of_a_crisp_white_1.jpg"
           >
-            We understand that every customer has unique needs, which is why we
-            proudly offer no minimum order quantity on all our custom t-shirt
-            printing services. Whether you need a single t-shirt for a personal
-            project or hundreds for a corporate event, we’ve got you covered.
-            Our flexible printing service allows you to order exactly what you
-            need, without restrictions. From small orders to bulk printing, our
-            high-quality, affordable t-shirt print ensures every order meets
-            your exact specifications. With the added benefit of same-day
-            delivery available in London, you can count on us for fast, reliable
-            service, regardless of order size. Perfect for individuals,
-            businesses, or events.
+            Need one piece or thousands of t-shirts? We are able to design,
+            print, and deliver. If you need tees for a birthday, wedding, or
+            family trip, we will print a personalized design just for you. For
+            brand promotion and business events, our polo shirts, tees, and
+            hoodies will look sharp and feel great. Our tee shirt printing in
+            London is fast, high-quality, and made for everyone. We are equally
+            attentive to each item. The order size does not affect our quality
+            of work. We treat every job with care and emotion.
           </web-postCard>
         </div>
       </div>
@@ -176,19 +171,19 @@ onMounted(() => {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Discover Creativity in London
+                  Experience Your Creativity In Reality
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Teeprint London is where creativity meets precision,
-                  delivering high-quality custom printing with speed and style.
-                  From bold streetwear to professional branding, we bring your
-                  designs to life with vibrant prints and flawless execution.
-                  Trusted by top London brands, our same-day printing service
-                  ensures you never have to wait to make a statement. Whether
-                  it’s t-shirts, hoodies, or tote bags, we craft each piece with
-                  care, turning your ideas into wearable art.
+                  Let's turn your thoughts into something real. Send your design
+                  or let us help create an exclusive one from scratch. Bring
+                  your imagination to life now. We print high-quality
+                  personalized t-shirts in London for all kinds of people. No
+                  matter the purpose, tell us your requirements, and we will
+                  craft each piece accordingly. Get a proper combination of
+                  professional printing and creativity. Proudly wear your style,
+                  your message, your shirt.
                 </p>
               </div>
               <nuxt-link
@@ -250,25 +245,16 @@ onMounted(() => {
                     alt=""
                     class="img-fluid"
                   />
-                  <h5 class="pt-4">
-                    Get High Quality T shirt Print – Permanent & Washable
-                  </h5>
+                  <h5 class="pt-4">Durable and Washable Prints Guaranteed</h5>
                   <p class="flex-grow-1">
-                    Printed artwork on custom T-shirts can fade over time,
-                    especially with frequent washing, but the longevity of the
-                    design is influenced by factors like the printing method,
-                    ink quality, fabric type, and how the garment is cared for.
-                    At Tee Print London, we use advanced printing techniques,
-                    durable inks, and premium fabrics to ensure that your custom
-                    designs remain vibrant and long-lasting. To help maintain
-                    the quality of your printed T-shirts, we recommend washing
-                    them inside out with cold water, avoiding harsh detergents,
-                    and air drying. By following these simple care instructions,
-                    you can minimize fading and keep your custom T-shirts
-                    looking fresh for a longer time. Proper garment care is key
-                    to extending the life of your printed T-shirts. For example,
-                    washing your T-shirts inside out in cold water, avoiding
-                    harsh detergents.
+                    We ensure each item lasts. Our team uses long-lasting
+                    materials and quality ink so your washable t-shirt, hoodie,
+                    polo shirts, tote bag, etc., stay looking great, even after
+                    many washes. Your design won't crack or fade. You can wash,
+                    wear, and repeat with full confidence. The colors stay
+                    bright, and the fabric stays soft. We promise a print that
+                    holds up. Our wearables are great for busy lives, events,
+                    and teams that need a reliable style, every time.
                   </p>
                 </div>
               </div>
@@ -281,26 +267,17 @@ onMounted(() => {
                     alt=""
                     class="img-fluid"
                   />
-                  <h5 class="pt-4">
-                    You Can Provide Your Own Design or We Customize T shirts For
-                    You
-                  </h5>
+                  <h5 class="pt-4">Sizes for All – Kids, Teens, and Adults</h5>
                   <p class="flex-grow-1">
-                    There’s no fixed rule when it comes to printing your custom
-                    t-shirts at our t-shirt print shop. We offer complete
-                    flexibility, allowing you to provide your own logo, photo,
-                    design, artwork, or pattern, and we’ll print it exactly as
-                    you envision. Whether it’s for personal use, a special
-                    event, or promotional purposes, you have full liberty to
-                    personalize your t-shirts to suit your needs. We’re always
-                    ready to accept your orders, no matter the size or
-                    complexity, ensuring a hassle-free experience. If you have
-                    design ideas but need assistance to bring them to life, our
-                    t-shirt designing service is here to help. Simply share your
-                    ideas and requirements, and our expert designers will create
-                    exclusive mockups tailored to your vision. From concept to
-                    creation, we’re committed to delivering high-quality, custom
-                    t-shirts that reflect your unique style.
+                    Finding the right fit is easy with us. We offer custom
+                    t-shirt size options for everyone. If you're shopping for a
+                    family event, school team, or business, we ensure no one is
+                    left out. From small to plus sizes, we have all variations.
+                    Each shirt is printed with care and made to fit comfortably.
+                    You can bring your design or let us help you create
+                    something fun, bold, or professional. The size limit is a
+                    headache no more. Everyone gets something from our extensive
+                    options that fits well and feels great.
                   </p>
                 </div>
               </div>
@@ -320,15 +297,15 @@ onMounted(() => {
                 <!-- <h4 class="section-heading-title-small">
                                 <span class="line-decoration"></span> About Us
                             </h4> -->
-                <h2 class="section-heading-title-big">Why Tee Print?</h2>
+                <h2 class="section-heading-title-big">
+                  What People Say About Our Custom Printing in London
+                </h2>
               </div>
               <p>
-                Experience the best in London with Tee Print London. Our
-                affordable same-day T-shirt printing delivers fast, reliable
-                results, 24/7. We customize each garment with meticulous care,
-                ensuring top quality that trusted by leading London brands. Our
-                apparel printing services also cover hoodies, sweatshirts, and
-                tote bags, meeting all your needs efficiently.
+                People love our quality of work and quick delivery. Our
+                t-shirts, polo shirts, tote bags, caps, and hoodies have been
+                praised by many in London and its surroundings. Read their true
+                opinions and the reasons they are coming back.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -353,23 +330,52 @@ onMounted(() => {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-content">
-              <div class="section-main-heading">
-                <h2 class="section-heading-title-big">
-                  Explore Our Premium Custom Products
-                </h2>
-              </div>
+              <div class="section-main-heading"></div>
               <div class="aboutus-list">
-                <p>
-                  At Tee Print London, we specialize in creating high-quality,
-                  personalized items to suit your needs. From stylish hoodies
-                  and organic cotton T-shirts to school and university apparel,
-                  promotional wear, and sports team gear, we offer a wide range
-                  of customizable products. Whether you're looking for
-                  activewear, aprons, polo shirts, caps, or tote bags, our
-                  designs are crafted to bring your ideas to life. Discover our
-                  collection and find the perfect items to express your style or
-                  promote your brand!
-                </p>
+                <div class="who-we-make-for-section">
+                  <h2 class="section-heading">Who We Make Custom Items For</h2>
+                  <p class="intro-text">
+                    Our custom-printed items are prepared for multi-purpose use.
+                    Do you need them for fun, branding, or a special event? We
+                    are your trusted supplier.
+                  </p>
+
+                  <div class="purpose-category">
+                    <h3 class="category-title">Corporate & Workwear</h3>
+                    <p class="category-description">
+                      Make your team feel proud and look great. Our printed polo
+                      shirts, tees, aprons, and hoodies are perfect for a
+                      professional squad.
+                    </p>
+                  </div>
+
+                  <div class="purpose-category">
+                    <h3 class="category-title">Fashion & Retail</h3>
+                    <p class="category-description">
+                      Want to start your clothing brand? We do private-label
+                      printing and ensure premium-quality finishing. All items
+                      are ready for your customers.
+                    </p>
+                  </div>
+
+                  <div class="purpose-category">
+                    <h3 class="category-title">Events & Promotions</h3>
+                    <p class="category-description">
+                      Uniquely plan your next event. Spread your message in an
+                      eye-catching way with our custom polo shirts, tees,
+                      hoodies, tote bags, and caps.
+                    </p>
+                  </div>
+
+                  <div class="purpose-category">
+                    <h3 class="category-title">Personalized Gifts</h3>
+                    <p class="category-description">
+                      Give a custom gift and be special to someone special. We
+                      can create a unique and exclusive design and item for you
+                      to remember forever.
+                    </p>
+                  </div>
+                </div>
               </div>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -409,6 +415,76 @@ onMounted(() => {
     <div class="container">
       <lazy-web-GoogleReview class="mb-5"></lazy-web-GoogleReview>
     </div>
+
+    <section class="teeprint-benefits-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6">
+            <div class="teeprint-benefits-content">
+              <div class="section-main-heading">
+                <h2 class="section-heading">
+                  Why People Love Printing with TeePrintLondon
+                </h2>
+              </div>
+
+              <div class="benefits-grid">
+                <div class="benefit-card">
+                  <h3 class="benefit-title">Fast Delivery</h3>
+                  <p class="benefit-description">
+                    Our same-day printing ensures you never miss a deadline.
+                  </p>
+                </div>
+
+                <div class="benefit-card">
+                  <h3 class="benefit-title">Custom Designs</h3>
+                  <p class="benefit-description">
+                    You have the highest freedom for design and customization.
+                  </p>
+                </div>
+
+                <div class="benefit-card">
+                  <h3 class="benefit-title">Trusted Quality</h3>
+                  <p class="benefit-description">
+                    Premium material and sharp printing are our key standards.
+                  </p>
+                </div>
+
+                <div class="benefit-card">
+                  <h3 class="benefit-title">Flexible Orders</h3>
+                  <p class="benefit-description">
+                    Big or small order, you are always welcome and served
+                    equally.
+                  </p>
+                </div>
+              </div>
+
+              <div class="benefits-cta">
+                <p class="cta-text">
+                  Place your order now for a high-quality, custom, same-day
+                  garment printing in London. Polo shirts, tees, hoodies, caps,
+                  and more - make it personalized. Start creating today with
+                  TeePrintLondon!
+                </p>
+                <nuxt-link
+                  :to="{ name: 'quote' }"
+                  class="teeprint-button teeprint-theme-btn zoomInOut"
+                >
+                  Customize Now <i class="la la-arrow-right ml-1"></i>
+                </nuxt-link>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6">
+            <div class="teeprint-benefits-img">
+              <img
+                src="/img/sweatshirt/6.jpg"
+                alt="Fast printing process at TeePrintLondon"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <web-questions></web-questions>
   </div>
@@ -473,5 +549,141 @@ iframe {
 
 .teeprint-info-box p {
   flex-grow: 1;
+}
+
+.who-we-make-for-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: "Arial", sans-serif;
+}
+
+.section-heading {
+  font-size: 2rem;
+  color: #222;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.purpose-category {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border-left: 4px solid #0066cc;
+}
+
+.category-title {
+  font-size: 1.3rem;
+  color: #0066cc;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.category-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 1.75rem;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+  }
+
+  .category-title {
+    font-size: 1.1rem;
+  }
+}
+
+.teeprint-benefits-section {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.benefit-card {
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+}
+
+.benefit-title {
+  color: #0066cc;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.benefit-title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #0066cc;
+}
+
+.benefit-description {
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.benefits-cta {
+  margin-top: 2rem;
+}
+
+.cta-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.teeprint-benefits-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 992px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .teeprint-benefits-img {
+    margin-top: 2rem;
+  }
 }
 </style>

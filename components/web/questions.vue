@@ -30,204 +30,255 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue';
-import { defineProps } from 'vue';
+import { computed, onMounted } from "vue";
+import { defineProps } from "vue";
 
 const props = defineProps({
   name: {
     type: String,
-    default: ''
-  }
+    default: "",
+  },
 });
 
 const generalFAQs = [
   {
-    question: "Can you create a design if I don’t have existing artwork?",
-    answer: "Yes! Our design team can create a custom design based on your vision and requirements. We’ll work closely with you to ensure the final product meets your expectations.",
+    question: "How do I place an order?",
+    answer:
+      "You can choose an item, upload your design, and check out. It's quick and easy.",
+  },
+  {
+    question: "How fast can I get my order?",
+    answer:
+      "If you order early in the day, we offer same-day printing in London. For other areas, we offer next-day delivery across the UK.",
+  },
+  {
+    question: "What items can I print on?",
+    answer:
+      "We print on t-shirts, polo shirts, hoodies, caps, tote bags, aprons, fleeces, activewear, dress shirts, and more.",
+  },
+  {
+    question: "Do you accept single and bulk orders?",
+    answer:
+      "Yes! We print small to large orders for personal use, gifts, events, branding, and more. There's no minimum order requirement.",
+  },
+  {
+    question: "Can I choose any size?",
+    answer:
+      "Yes! We offer custom sizes for kids, teens, and adults. We ensure everyone gets the perfect fit.",
+  },
+  {
+    question: "Can you create a design if I don't have existing artwork?",
+    answer:
+      "Yes! Our design team can create a custom design based on your vision. We'll work closely with you to ensure it meets your expectations.",
   },
   {
     question: "Can I review the design before finalizing?",
-    answer: "Absolutely. We provide a digital proof for your review, allowing you to request any changes before proceeding.",
-  },
-  {
-    question: "Is there a minimum order requirement?",
-    answer: "No, there’s no minimum order requirement. We cater to both small and large orders with the same level of care.",
-  },
-  {
-    question: "What sizes are available?",
-    answer: "We offer a variety of standard sizes, as well as custom dimensions to suit your specific needs. Let us know your requirements!",
-  },
-  {
-    question: "Do you offer same-day delivery?",
-    answer: "Yes, we provide same-day delivery in certain areas. Delivery fees depend on your location, and we can arrange for your order to be delivered directly to you.",
+    answer:
+      "Absolutely. We provide a digital proof for your review, allowing you to request any changes before we proceed with printing.",
   },
   {
     question: "How can I ensure the best quality for my order?",
-    answer: "For optimal results, provide your files in high resolution (300 dpi or higher) in formats like PDF, AI, or JPEG. Including a bleed is also recommended to avoid cropping issues.",
+    answer:
+      "For optimal results, provide files in high resolution (300 dpi or higher) in formats like PDF, AI, or JPEG. Including a bleed is also recommended.",
   },
   {
-    question: "Are your products suitable for outdoor use?",
-    answer: "Yes, we offer durable, weather-resistant options that are perfect for outdoor applications.",
+    question: "What printing methods do you use?",
+    answer:
+      "We use various techniques including DTG (Direct-to-Garment), screen printing, vinyl heat transfer, and embroidery - we'll recommend the best method for your design.",
+  },
+  {
+    question: "Can I reorder the same design later?",
+    answer:
+      "Yes! Our system keeps your designs saved so you can easily reorder anytime without re-uploading.",
   },
   {
     question: "What material options are available?",
-    answer: "We provide a range of high-quality materials, including matte, gloss, and satin finishes. For outdoor use, we also offer robust, weatherproof options.",
+    answer:
+      "We provide a range of high-quality materials including 100% cotton, polyester blends, and performance fabrics with matte, gloss, or satin finishes.",
   },
   {
-    question: "What’s the deadline for same-day service?",
-    answer: "To ensure same-day service, we recommend placing your order early in the day. This gives us enough time to deliver a high-quality product on time.",
+    question: "Are your products suitable for outdoor use?",
+    answer:
+      "Yes, we offer durable, weather-resistant options that are perfect for outdoor applications and active wear.",
   },
   {
-    question: "Can I get large-format items on the same day?",
-    answer: "Yes, we offer same-day service for large-format items, making them ideal for events, displays, and promotions.",
+    question: "What's the deadline for same-day service?",
+    answer:
+      "We recommend placing your order by 12pm for same-day service. This gives us enough time to deliver a high-quality product.",
   },
   {
-    question: "Do you provide same-day delivery for posters?",
-    answer: "Yes, we offer same-day delivery in London. Delivery charges vary depending on location, and we can arrange for courier service to bring your posters directly to you.",
+    question: "Do you provide same-day delivery for all products?",
+    answer:
+      "We offer same-day delivery in London for most products including t-shirts, posters, and large-format items. Delivery charges vary by location.",
   },
 ];
 
 const tshirtFAQs = [
   {
     question: "What types of printing do you use?",
-    answer: "We use high-quality digital printing so you get bright colors and long-lasting prints."
+    answer:
+      "We use high-quality digital printing so you get bright colors and long-lasting prints.",
   },
   {
     question: "What materials are your t-shirts made of?",
-    answer: "We offer soft cotton, cotton blends, and other comfortable fabrics that feel great to wear."
+    answer:
+      "We offer soft cotton, cotton blends, and other comfortable fabrics that feel great to wear.",
   },
   {
     question: "Can I print on both the front and back of my t-shirt?",
-    answer: "Yes. You can pick the option to print on the front or back separately. Both-sided print is possible for an extra cost."
+    answer:
+      "Yes. You can pick the option to print on the front or back separately. Both-sided print is possible for an extra cost.",
   },
   {
     question: "Do you offer a discount on large orders?",
-    answer: "We offer bulk pricing for large orders. The bigger your order is, the more you save."
+    answer:
+      "We offer bulk pricing for large orders. The bigger your order is, the more you save.",
   },
   {
     question: "Can I re-order the same design later?",
-    answer: "Yes. Our system saves your design so you can re-order anytime. It requires no repeated process."
+    answer:
+      "Yes. Our system saves your design so you can re-order anytime. It requires no repeated process.",
   },
   {
     question: "What happens if my design has a mistake?",
-    answer: "Whenever you notice a mistake, contact us fast. We'll do our best to fix it before printing."
+    answer:
+      "Whenever you notice a mistake, contact us fast. We'll do our best to fix it before printing.",
   },
   {
     question: "Can I preview my design before placing the order?",
-    answer: "Always. Our tool will show you a live preview of your shirt. You can see how it will look after printing."
+    answer:
+      "Always. Our tool will show you a live preview of your shirt. You can see how it will look after printing.",
   },
   {
     question: "Do you print designs on hoodies and other clothing?",
-    answer: "Yes. We print on hoodies, polo shirts, tote bags, caps, and more, along with t-shirts. Ask us to confirm if you want to print on different items."
-  }
+    answer:
+      "Yes. We print on hoodies, polo shirts, tote bags, caps, and more, along with t-shirts. Ask us to confirm if you want to print on different items.",
+  },
 ];
 
 const hoodieFAQs = [
   {
     question: "What types of hoodies can I customize?",
-    answer: "You can choose from vast styles, colors, and sizes, and make your perfect hoodie."
+    answer:
+      "You can choose from vast styles, colors, and sizes, and make your perfect hoodie.",
   },
   {
     question: "How do I know which size to order?",
-    answer: "Check our hoodie size chart in the UK above to find the best fit for you."
+    answer:
+      "Check our hoodie size chart in the UK above to find the best fit for you.",
   },
   {
     question: "Will the print fade or peel after washing?",
-    answer: "No. Strong printing methods are used to keep designs bright and clear, even after washing."
+    answer:
+      "No. Strong printing methods are used to keep designs bright and clear, even after washing.",
   },
   {
     question: "Can I get a hoodie for a special event?",
-    answer: "Definitely! We print hoodies for special events, teams, branding, and more."
+    answer:
+      "Definitely! We print hoodies for special events, teams, branding, and more.",
   },
   {
     question: "Can I change my design after ordering?",
-    answer: "In such a case, contact us right away. We can change the design before printing."
+    answer:
+      "In such a case, contact us right away. We can change the design before printing.",
   },
   {
     question: "Can I return or exchange my hoodie?",
-    answer: "Please check our return policy. Usually, custom hoodies can’t be returned unless damaged."
+    answer:
+      "Please check our return policy. Usually, custom hoodies can’t be returned unless damaged.",
   },
   {
     question: "Do you offer discounts for large orders?",
-    answer: "For large orders or wholesale, contact us for special prices."
+    answer: "For large orders or wholesale, contact us for special prices.",
   },
   {
     question: "Are your hoodies unisex?",
-    answer: "Yes. Most hoodies we deliver fit both men and women comfortably."
-  }
+    answer: "Yes. Most hoodies we deliver fit both men and women comfortably.",
+  },
 ];
 
 const poloFAQs = [
   {
     question: "Where do you deliver polo shirts in London?",
-    answer: "We deliver across all areas of London on the same day or the next day."
+    answer:
+      "We deliver across all areas of London on the same day or the next day.",
   },
   {
     question: "How do I know which size to order?",
-    answer: "Our size chart above will help you find the perfect fit. Please check and let us know the size."
+    answer:
+      "Our size chart above will help you find the perfect fit. Please check and let us know the size.",
   },
   {
     question: "What printing methods do you use?",
-    answer: "We use (DTG), screen printing, and vinyl printing to keep your design bright and clear."
+    answer:
+      "We use (DTG), screen printing, and vinyl printing to keep your design bright and clear.",
   },
   {
     question: "How do I design my own polo shirt?",
-    answer: "You can use our drag-and-drop online design tool to choose colours and add logos, text, and images."
+    answer:
+      "You can use our drag-and-drop online design tool to choose colours and add logos, text, and images.",
   },
   {
     question: "What are the materials for your polo shirts?",
-    answer: "We always choose soft, durable, and high-quality fabrics. They feel comfortable and last long."
+    answer:
+      "We always choose soft, durable, and high-quality fabrics. They feel comfortable and last long.",
   },
   {
     question: "Do you offer wholesale pricing?",
-    answer: "For bulk orders, we offer wholesale pricing. You will get the best quality at an affordable rate."
+    answer:
+      "For bulk orders, we offer wholesale pricing. You will get the best quality at an affordable rate.",
   },
   {
     question: "Can I review the design before finalising it?",
-    answer: "You can always review before ordering and request any changes before proceeding."
+    answer:
+      "You can always review before ordering and request any changes before proceeding.",
   },
   {
     question: "Can you create a design if I don't have one?",
-    answer: "Yes. We can create a unique design depending on your vision and requirements. You can request revisions until it meets your expectations."
-  }
+    answer:
+      "Yes. We can create a unique design depending on your vision and requirements. You can request revisions until it meets your expectations.",
+  },
 ];
 
 const toteFAQs = [
   {
     question: "Do you have a minimum order quantity?",
-    answer: "No! We have a no-minimum order rule. You can order just one tote bag or hundreds if you like!"
+    answer:
+      "No! We have a no-minimum order rule. You can order just one tote bag or hundreds if you like!",
   },
   {
     question: "Can you make custom tote bags with my own design?",
-    answer: "Of course! We are able to print custom tote bags using your logo, artwork, or personal message. Just upload your design to our system and choose a bag to print on."
+    answer:
+      "Of course! We are able to print custom tote bags using your logo, artwork, or personal message. Just upload your design to our system and choose a bag to print on.",
   },
   {
     question: "What file format should my personal design be in?",
-    answer: "We recommend high-resolution PNG, JPG, or PDF for best print results."
+    answer:
+      "We recommend high-resolution PNG, JPG, or PDF for best print results.",
   },
   {
     question: "Are those tote bags machine washable?",
-    answer: "Yes. Most of our bags are machine washable. But we advise a cold wash to preserve the print."
+    answer:
+      "Yes. Most of our bags are machine washable. But we advise a cold wash to preserve the print.",
   },
   {
     question: "Are these tote bags suitable for resale?",
-    answer: "Definitely. Many of our clients order for resale. Please contact us if you need them in bulk."
+    answer:
+      "Definitely. Many of our clients order for resale. Please contact us if you need them in bulk.",
   },
   {
     question: "What size are those tote bags?",
-    answer: "We offer various sizes, from standard shopping totes to larger and foldable bags. You can choose your preferred size before placing the order."
-  }
+    answer:
+      "We offer various sizes, from standard shopping totes to larger and foldable bags. You can choose your preferred size before placing the order.",
+  },
 ];
-
-
-
 
 // Dynamically choose FAQs based on `name` prop
 const productFAQsMap = {
   tshirt: tshirtFAQs,
   hoodie: hoodieFAQs,
   polotshirt: poloFAQs,
-  totebag: toteFAQs
+  totebag: toteFAQs,
 };
 
 const selectedFaqs = computed(() => {
@@ -252,9 +303,6 @@ onMounted(() => {
   items.forEach((item) => item.addEventListener("click", toggleAccordion));
 });
 </script>
-
-
-
 
 <style scoped>
 .container {

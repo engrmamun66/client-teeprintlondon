@@ -7,40 +7,38 @@
             <span class="line-decoration"></span> Other Items
           </h4>
           <h2 class="section-heading-title-big">
-            with Guaranteed Same-Day Printing and Delivery in London & Next Day
-            for UK
+            Extensive Collection And Variation In One Place
           </h2>
+          <p class="section-description mt-3">
+            Find everything you need in one spot. A wide range of styles,
+            colors, and sizes is ready for fast T-shirt printing and shipping in
+            London, UK.
+          </p>
         </div>
       </div>
     </div>
+
     <div class="row">
       <div
         class="col-md-4 col-6 mb-4 cp"
         v-for="(item, index) in items"
         :key="index"
       >
-        <template v-if="item.link">
-          <nuxt-link :to="`/${item.link}`">
-            <div class="card">
-              <img
-                class="card-img-top"
-                :src="item.image"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title">{{ item.title }}</h5>
-              </div>
-            </div>
-          </nuxt-link>
-        </template>
-        <template v-else>
+        <component
+          :is="item.link ? 'nuxt-link' : 'div'"
+          :to="item.link ? `/${item.link}` : null"
+          class="card-link"
+        >
           <div class="card">
-            <img class="card-img-top" :src="item.image" alt="Card image cap" />
+            <div class="image-wrapper">
+              <img class="card-img" :src="item.image" :alt="item.title" />
+            </div>
             <div class="card-body">
               <h5 class="card-title">{{ item.title }}</h5>
+              <p class="card-text">{{ item.description }}</p>
             </div>
           </div>
-        </template>
+        </component>
       </div>
     </div>
   </section>
@@ -49,117 +47,175 @@
 <script setup>
 const items = [
   {
-    title: "Same Day T shirt Print",
-    image:
-      "/img/Cotton_T_shirt/Leonardo_Phoenix_10_A_fit_middleaged_man_with_short_dark_hair_1.jpg",
+    title: "T-shirt Printing",
+    image: "/img/Cotton_T_shirt/Leonardo_Phoenix_10_A_fit_middleaged_man_with_short_dark_hair_1.jpg",
     link: "same-day/shirt-printing-london",
+    description: "Soft, comfortable, and perfect for daily wear. Excellent for events, teams, and businesses. Select your color, add your design, and get fast, high-quality printing."
   },
   {
-    title: "Same Day Polo Shirt Print",
-    image:
-      "/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_1.jpg",
+    title: "Polo Shirt Printing",
+    image: "/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_1.jpg",
     link: "same-day/polo-shirt-printing-london",
+    description: "Look smart with custom polo shirts. Great for work, events, or uniforms. Pick your style and color. We'll print your logo or design with clean, sharp results that last."
   },
   {
-    title: "Same Day Hoodie Print",
-    image:
-      "/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_3.jpg",
+    title: "Hoodie Printing",
+    image: "/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_3.jpg",
     link: "same-day/hoodie-printing-london",
+    description: "Stay warm and stylish. Our custom hoodies are soft and perfect for cool days. Add your logo or artwork and get high-quality printing that looks great and feels better."
   },
   {
-    title: "Same Day Cap Print",
-    image:
-      "https://res.cloudinary.com/dyfnpakfq/image/upload/v1740849802/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2_jlwcmk.jpg",
+    title: "Cap Printing",
+    image: "https://res.cloudinary.com/dyfnpakfq/image/upload/v1740849802/Leonardo_Phoenix_10_A_highresolution_professionalgrade_photogr_2_jlwcmk.jpg",
     link: "same-day/cap-printing-london",
+    description: "Accomplish your look with personalized caps. Perfect for sunny days, teams, and brand promo. We print your design or logo on durable, stylish caps that people will love to wear."
   },
   {
-    title: "Same Day Tote Bag Print",
-    image:
-      "/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg",
+    title: "Tote Bag Printing",
+    image: "/img/Tote_bag/Leonardo_Phoenix_10_a_vibrant_and_sturdy_tote_bag_with_a_bold_3.jpg",
     link: "same-day/tote-bag-printing-london",
+    description: "Go eco-friendly with custom tote bags. Strong, reusable, and perfect for daily use. We print your design on high-quality fabric for shops and giveaways."
   },
   {
-    title: "Same Day Apron Print",
-    image:
-      "/img/Apron/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_3.jpg",
+    title: "Apron Printing",
+    image: "/img/Apron/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_3.jpg",
     link: "same-day/apron-printing-london",
+    description: "Print your logo or name on high-quality aprons. Perfect for chefs, bakers, cafés, and events. Our aprons are durable and stylish, made to handle spills and look sharp."
   },
   {
-    title: "Same Day Fleeces & Knits Print",
-    image:
-      "/img/Fleeces_and_Knits/Leonardo_Phoenix_10_A_single_young_man_likely_in_his_early_twe_0.jpg",
+    title: "Fleeces & Knits Printing",
+    image: "/img/Fleeces_and_Knits/Leonardo_Phoenix_10_A_single_young_man_likely_in_his_early_twe_0.jpg",
     link: "same-day/fleeces-and-knits-printing-london",
+    description: "Stay comfortable with custom fleeces and knits. Warm, soft, and perfect for outdoor events or teams. We print your design so it stands out even in the cold."
   },
   {
-    title: "Same Day Active Wear Print",
-    image:
-      "/img/Active_wear/Leonardo_Phoenix_10_a_surreal_and_vibrant_cinematic_photo_of_a_1.jpg",
+    title: "Activewear Printing",
+    image: "/img/Active_wear/Leonardo_Phoenix_10_a_surreal_and_vibrant_cinematic_photo_of_a_1.jpg",
     link: "same-day/active-wear-printing-london",
+    description: "Custom activewear that moves with you. Great for gyms, teams, and workouts. Breathable, stretchy, and built to last. With your logo or message printed in high quality."
   },
   {
-    title: "Same Day Dress Shirt Print",
-    image:
-      "/img/Dress_Shirts/Leonardo_Phoenix_10_a_men_wearing_dress_black_shirt_in_london_0.jpg",
-      link: "same-day/dress-shirt-printing-london",
+    title: "Shirt Printing",
+    image: "/img/Dress_Shirts/Leonardo_Phoenix_10_a_men_wearing_dress_black_shirt_in_london_0.jpg",
+    link: "same-day/dress-shirt-printing-london",
+    description: "Create custom shirts for any occasion. Formal or casual, we print your design on stylish and comfortable shirts that fit well. Look great at work, events, or everyday wear."
   },
 ];
 </script>
-
 <style scoped>
-.card-img-top {
+/* === IMAGE FIXES === */
+.image-wrapper {
   width: 100%;
-  height: auto; /* Let the height adjust based on the image aspect ratio */
-  object-fit: contain; /* Ensures the entire image is visible without cropping */
+  aspect-ratio: 4 / 3; /* Maintain consistent aspect ratio */
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Show full image without cropping */
+  display: block;
+}
+
+/* === CARD === */
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 1.25rem;
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* === LINK WRAPPER === */
 .card-link {
   display: block;
   text-decoration: none;
   color: inherit;
 }
 
-.card {
-  height: 100%; /* Ensure all cards have the same height */
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
-  border: 1px solid #e0e0e0; /* Optional: Add a subtle border */
-  border-radius: 8px; /* Optional: Rounded corners */
-  overflow: hidden; /* Ensure content stays within the card */
+/* === SECTION HEADINGS === */
+.section-description {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.card:hover {
-  transform: scale(1.05); /* Slightly scale up the card */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow for the "pop out" effect */
+.section-heading-title-big {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1rem;
 }
 
-.card-body {
-  flex: 1; /* Ensures the card body takes up remaining space */
+.section-heading-title-small {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #666;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center; /* Center-align the title */
-  padding: 1rem; /* Consistent padding */
+  gap: 10px;
 }
 
-.card-title {
-  margin: 0; /* Remove default margin */
-  font-size: 1rem; /* Consistent font size */
-
-  line-height: 1.4; /* Improve line spacing */
+.line-decoration {
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background-color: #666;
 }
 
-/* Responsive adjustments */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
-  .card-img-top {
-    height: 180px; /* Fixed height for smaller screens */
-    object-fit: cover; /* Crop images to fit the fixed height */
+  .section-heading-title-big {
+    font-size: 1.75rem;
+  }
+  .image-wrapper {
+    aspect-ratio: 1 / 1; /* Square image on small screens */
   }
 }
 
 @media (max-width: 576px) {
-  .card-img-top {
-    height: 160px; /* Further adjust height for very small screens */
+  .section-heading-title-big {
+    font-size: 1.5rem;
+  }
+
+  .col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }
 </style>
