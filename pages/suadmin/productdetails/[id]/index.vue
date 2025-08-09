@@ -620,9 +620,9 @@ function validateForm() {
   }
 
   if (!productStore.product.thumbnail_image) {
-    console.log("=-=-", productStore.product.thumbnail_image);
+    // console.log("=-=-", productStore.product.thumbnail_image);
     errors.value.thumbnail_image = "Thumbnail image is required";
-    console.log("=-=-", errors.value.thumbnail_image);
+    // console.log("=-=-", errors.value.thumbnail_image);
     isValid = false;
   }
   if (
@@ -714,7 +714,7 @@ const handleFileRemoval = (removedFile) => {
   if (removedFile[0] instanceof File) {
     // console.log("This is a File object:", removedFile[0]);
   } else {
-    console.log("This is a regular object:", removedFile[0]);
+    // console.log("This is a regular object:", removedFile[0]);
     productStore.deleteImage(removedFile[0].id);
   }
   // Handle the removed file as needed, e.g., updating the uploadedFiles list
@@ -741,7 +741,7 @@ async function handleSubmit() {
   let uploadedFiles = ref([]);
   productStore.product.images.forEach((image) => {
     if (image instanceof File) {
-      console.log("This is a File object:", image);
+      // console.log("This is a File object:", image);
       uploadedFiles.value.push(image);
     }
   });
@@ -803,7 +803,7 @@ async function handleSubmit() {
 async function checkSubCategory() {
   // console.log("+====", productStore.product.category);
   await categoryStore.showCategory(productStore.product.category_id);
-  console.log("*(*(*(*)))", categoryStore.category.children?.length);
+  // console.log("*(*(*(*)))", categoryStore.category.children?.length);
   if (categoryStore.category.children?.length != 0) {
     productStore.showSubCategory = true;
   } else {

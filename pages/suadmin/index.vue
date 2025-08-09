@@ -175,7 +175,7 @@ useHead({
 });
 
 function handleCardClick(card) {
-  console.log(card);
+  // console.log(card);
   if (card == "recentOrders") {
     useNuxtApp().$emit("cardSelected", card);
     setTimeout(() => {

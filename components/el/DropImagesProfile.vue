@@ -233,7 +233,7 @@ const updateModelValue = (selectedFiles = []) => {
 };
 
 const onChangeFile = (event) => {
-  console.log(event.target.files[0].name);
+  // console.log(event.target.files[0].name);
   fileName.value = event.target.files[0].name;
   let selectedFiles = Array.from(event.target.files);
   updateModelValue(selectedFiles);

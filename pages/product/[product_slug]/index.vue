@@ -33,7 +33,7 @@ let image_url = ref([]);
 
 // Function to set active thumbnail and update Carousel
 const setActiveThumbnail = (index) => {
-  console.log("Setting active thumbnail:", index);
+  // console.log("Setting active thumbnail:", index);
   activeThumbnailIndex.value = index;
 };
 

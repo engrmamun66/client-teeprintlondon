@@ -320,7 +320,7 @@ function fileChanged(e) {
 		} catch (error) {}
       });
       reader.addEventListener("error", function (e) {
-		console.log('e.target.error', e.target.error);
+		// console.log('e.target.error', e.target.error);
         error.value = e.target.error
 		isDragovering.value = false
 		showProgress.value = false

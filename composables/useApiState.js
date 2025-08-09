@@ -11,7 +11,7 @@ function endPoint(config) {
         // console.warn('endPoint', {config});
         // navigateTo({name: 'login'});
         // return '/not-found';
-        console.log('userApiState__endPoint()__error::', {error, config});
+        // console.log('userApiState__endPoint()__error::', {error, config});
     }
 }
 

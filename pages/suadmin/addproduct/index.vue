@@ -602,7 +602,7 @@ const calculatePercentageChange = () => {
 let showSubCategory = ref(false);
 
 const handleFileRemoval = (removedFile) => {
-  console.log("Removed File:", removedFile);
+  // console.log("Removed File:", removedFile);
 };
 
 // Function to calculate the discounted price
@@ -655,7 +655,7 @@ async function handleSubmit() {
       productStore.product;
     productStore.product.category_id = subcategory_id;
   }
-  console.log("payload", productStore.product);
+  // console.log("payload", productStore.product);
 
   productStore.product.min_unit_price = Math.min(
     ...productStore.product.sizes.map((size) => size.unit_price)
@@ -727,9 +727,9 @@ function validateForm() {
   }
 
   if (!productStore.product.thumbnail_image) {
-    console.log("=-=-", productStore.product.thumbnail_image);
+    // console.log("=-=-", productStore.product.thumbnail_image);
     errors.value.thumbnail_image = "Thumbnail image is required";
-    console.log("=-=-", errors.value.thumbnail_image);
+    // console.log("=-=-", errors.value.thumbnail_image);
     isValid = false;
   }
   if (

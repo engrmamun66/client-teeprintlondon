@@ -212,7 +212,7 @@ function handleSubmit() {
 }
 
 function changeBrand(status) {
-  console.log(status);
+  // console.log(status);
   setTimeout(() => {
     brandStore.brandAttribute.status = status;
   }, 10);
