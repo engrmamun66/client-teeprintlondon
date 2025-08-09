@@ -97,16 +97,12 @@
                 </ul>
               </div>
               <div class="sitemap-section">
-                
-                
-                    <NuxtLink to="/sitemap"><h5 >Sitemap</h5></NuxtLink>
-
+                <NuxtLink to="/sitemap"><h5>Sitemap</h5></NuxtLink>
               </div>
-        
             </div>
           </div>
         </div>
-              <hr/>
+        <hr />
 
         <!-- Contact and Info Section -->
         <div class="row footer-main-content">
@@ -155,11 +151,16 @@
             <div class="teeprint-footer-location">
               <h4>Connect with us</h4>
               <ul class="teeprint-social-icon">
-                  <li>
-                    <a href="https://www.facebook.com/Stirlingstyle" class="teeprint-facebook-onlyicon" target="_blank" rel="noopener noreferrer">
-                      <i class="la la-facebook"></i>
-                    </a>
-                  </li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/Stirlingstyle"
+                    class="teeprint-facebook-onlyicon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="la la-facebook"></i>
+                  </a>
+                </li>
                 <li>
                   <a href="#" class="teeprint-instagram-onlyicon"
                     ><i class="la la-instagram"></i
