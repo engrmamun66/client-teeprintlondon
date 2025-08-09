@@ -155,11 +155,11 @@
             <div class="teeprint-footer-location">
               <h4>Connect with us</h4>
               <ul class="teeprint-social-icon">
-                <li>
-                  <a href="#" class="teeprint-facebook-onlyicon"
-                    ><i class="la la-facebook"></i
-                  ></a>
-                </li>
+                  <li>
+                    <a href="https://www.facebook.com/Stirlingstyle" class="teeprint-facebook-onlyicon" target="_blank" rel="noopener noreferrer">
+                      <i class="la la-facebook"></i>
+                    </a>
+                  </li>
                 <li>
                   <a href="#" class="teeprint-instagram-onlyicon"
                     ><i class="la la-instagram"></i
