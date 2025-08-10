@@ -117,7 +117,7 @@ function hideAllFirst(_for = 1) {
       });
     }
   } catch (error) {
-    // console.log("hideAllFirst:error", error, { _for });
+
   }
 }
 

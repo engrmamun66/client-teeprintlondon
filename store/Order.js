@@ -62,7 +62,6 @@ export const useOrderStore = defineStore("orderStore", () => {
 
     try {
       let response = await OrderApi.checkCoupon(payload);
-      // console.log("-------*(*(*", response.data.data.coupon)
       coupon.value = response.data.data.coupon
       discount.value = response.data.data.discount
       if (Response.isOk(response, { toaster: false })) {

@@ -221,7 +221,6 @@ function handleSubmit() {
 }
 
 function changeColor(status) {
-  // console.log(status);
   setTimeout(() => {
     colorStore.colorAttribute.status = status;
   }, 10);

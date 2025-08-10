@@ -19,7 +19,7 @@ const loadTrustIndexScript = () => {
     script.defer = true;
 
     script.onload = () => {
-      // console.log("✅ TrustIndex script loaded.");
+ 
       resolve();
     };
 
@@ -35,7 +35,7 @@ const loadTrustIndexScript = () => {
 const initTrustIndex = () => {
   if (typeof Trustindex !== "undefined" && Trustindex.initWidgetsFromDom) {
     Trustindex.initWidgetsFromDom();
-    // console.log("✅ TrustIndex widget initialized.");
+
     isLoaded.value = true;
   } else {
     console.error("❌ TrustIndex failed to load. Retrying...");

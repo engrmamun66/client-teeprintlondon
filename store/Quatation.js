@@ -59,7 +59,6 @@ export const useQuatationStore = defineStore("quatation", () => {
 
   async function getRecentQuatationList(payload) {
     try {
-      console.log(payload)
       let response = await Quatation.recetQutation(payload);
       if (response.status == 200) {
         paginateData.value = response.data.data;
@@ -127,7 +126,6 @@ export const useQuatationStore = defineStore("quatation", () => {
   async function update(id, payload = {}) {
     try {
       let response = await Quatation.update(id, payload);
-      console.log(response.data.success)
       if (response.data.success) {
         Toaster.success("Quatation updated successfully");
       }

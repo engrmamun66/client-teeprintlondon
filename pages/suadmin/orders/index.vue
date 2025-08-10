@@ -181,13 +181,6 @@ function resetOrderList(){
 
 
 async function orderStatusChange() {
-  // let payload = ref({
-  //   order_id: orderStore.orderDetails?.id,
-  //   order_status_id: orderStore.orderDetails.order_status_id,
-  // });
-  // await orderStore.updateOrderStatus(payload.value);
-  // await orderStore.getOrderDetails(order_number);
-  console.log(order_status_id.value);
   let payload = ref({
     order_status_id: order_status_id.value,
   });

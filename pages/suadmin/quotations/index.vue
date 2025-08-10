@@ -207,7 +207,6 @@ function handleSubmit() {
 }
 
 function changeColor(status) {
-  // console.log(status);
   setTimeout(() => {
     quatationStore.quatationAttribute.status = status;
   }, 10);

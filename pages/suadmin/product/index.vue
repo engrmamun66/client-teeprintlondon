@@ -244,7 +244,6 @@ function handleSubmit() {
     }
   }
 
-  // console.log(queryParams);
   delete queryParams.category 
  
   productStore.getProductList(queryParams);
@@ -255,12 +254,6 @@ onMounted(async () => {
   homeStore.getTypewiseCategoryList();
   await productStore.getProductList();
   loading.value = false
-  // Categorystore.getParentcategorylist();
-  // try {
-  //   const response = await axios.get('http://client-treeprintlondon-api.test/api/type-wise-category-list');
-  // } catch (error) {
-  //   console.error('Error fetching category list:', error);
-  // }
 });
 </script>
 <style scoped>

@@ -80,7 +80,6 @@ export const useProductStore = defineStore("product", () => {
       let response = await Product.gender();
       if (response.status == 200) {
         genderList.value = response.data.data;
-        console.log("*)(*&(&(*&", genderList.value);
       }
     } catch (error) {}
   }
@@ -174,7 +173,6 @@ export const useProductStore = defineStore("product", () => {
       let response = await Color.delete(id);
 
       if (response.status == 201 || 200) {
-        // console.log(response.data.data.data);
         getColorList();
         Toaster.success("Color deleted successfully");
         return true;
@@ -295,11 +293,8 @@ export const useProductStore = defineStore("product", () => {
     try {
       selectedGender.value = null;
       let response = await Product.show(id);
-      // console.log("==========>>>>>>", response.data.data);
-
       if (response.status === 200) {
         product.value = mapProductFromResponse(response); // Use the helper function
-
         selectedGender.value = product.value.genders
           .map((gender) => genderList.value.find((g) => g.id === gender.id))
           .filter((gender) => gender !== undefined); // Filtering out unmatched genders

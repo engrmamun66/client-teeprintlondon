@@ -202,7 +202,6 @@ async function showBrand(id) {
 }
 
 function handleSubmit() {
-  // console.log( brandStore.brandAttribute.image )
   brandStore.brandAttribute.status = brandStore.brandAttribute.status ? 1 : 0;
   if (editMode.value) {
     brandStore.update(brandStore.brandAttribute.id, brandStore.brandAttribute);
@@ -212,7 +211,6 @@ function handleSubmit() {
 }
 
 function changeBrand(status) {
-  // console.log(status);
   setTimeout(() => {
     brandStore.brandAttribute.status = status;
   }, 10);

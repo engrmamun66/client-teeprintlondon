@@ -9,22 +9,7 @@ definePageMeta({
   layout: "web",
 });
 
-// watch(
-//   () => orderStore.coupon, // What to watch
-//   (newCoupon, oldCoupon) => {
-//     // This runs whenever orderStore.coupon changes
-//     if (newCoupon) {
-//       console.log("Coupon updated:", newCoupon);
-//     } else if (oldCoupon && !newCoupon) {
-//       console.log("Coupon was removed");
-//       Toaster.info("Coupon removed");
-//     }
-//   },
-//   {
-//     deep: true, // Watch nested object changes
-//     immediate: true, // Run immediately on component mount
-//   }
-// );
+
 let isMounted = ref(false);
 let coupon_code = ref(null);
 let payload = reactive({
@@ -102,7 +87,6 @@ onMounted(() => {
     H.getDeliveryOptions().filter((item) => item.cost == deliveryCost)?.[0]?.[
       "id"
     ] || H.getDeliveryOptions()[0]["id"];
-  // console.log('888--', payload.delivery_type_id);
   checkDeliveryType();
 
   H.delay(() => {
