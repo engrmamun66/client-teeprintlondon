@@ -1,3 +1,4 @@
+
 <template>
   <div class="position-relative">
     <section class="login-register">
@@ -6,9 +7,7 @@
           <Teleport to="body">
             <Toaster></Toaster>
           </Teleport>
-          <div
-            class="row align-items-center justify-content-center fullheight-100"
-          >
+          <div class="row align-items-center justify-content-center fullheight-100">
             <div class="login-container">
               <div class="login-container-body">
                 <div class="text-center">
@@ -23,7 +22,7 @@
                 <div class="login-subheading">Sign in to continue</div>
 
                 <div class="login-form">
-                  <form class="login" @submit.prevent="submitLoginForm">
+                  <form class="login" @submit.prevent="handleSubmit">
                     <div class="form-group">
                       <label>Email</label>
                       <input
@@ -32,10 +31,9 @@
                         class="form-control"
                         placeholder="Enter your email"
                         @blur="validateEmail"
+                        :disabled="isLocked"
                       />
-                      <small v-if="errors.email" class="text-danger">{{
-                        errors.email
-                      }}</small>
+                      <small v-if="errors.email" class="text-danger">{{ errors.email }}</small>
                     </div>
 
                     <div class="form-group">
@@ -47,35 +45,37 @@
                           class="form-control"
                           placeholder="Enter your password"
                           @blur="validatePassword"
+                          :disabled="isLocked"
                         />
                         <span
                           class="password-toggle-icon"
                           @click="togglePasswordVisibility"
                         >
                           <i
-                            :class="
-                              showPassword ? 'las la-eye' : 'las la-eye-slash'
-                            "
+                            :class="showPassword ? 'las la-eye' : 'las la-eye-slash'"
                             style="font-size: 20px; color: #666"
                           ></i>
                         </span>
                       </div>
-                      <small v-if="errors.password" class="text-danger">{{
-                        errors.password
-                      }}</small>
+                      <small v-if="errors.password" class="text-danger">{{ errors.password }}</small>
                     </div>
 
                     <div class="form-group mt-4 mb-0">
                       <button
                         type="submit"
                         class="btn sub-btn"
-                        :disabled="isSubmitting"
+                        :disabled="isSubmitting || isLocked"
                       >
-                        Sign In
-                        <BtnLoader
-                          :show="H.isPendingAnyApi('Auth:login')"
-                          :color="'white'"
-                        ></BtnLoader>
+                        <template v-if="isLocked">
+                          Please wait {{ lockTime }} seconds
+                        </template>
+                        <template v-else>
+                          Sign In
+                          <BtnLoader
+                            :show="isSubmitting"
+                            :color="'white'"
+                          ></BtnLoader>
+                        </template>
                       </button>
                     </div>
                   </form>
@@ -90,7 +90,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useAuthStore } from "~/store/Auth";
 
 const authStore = useAuthStore();
@@ -98,6 +98,20 @@ const userData = ref({ email: "", password: "" });
 const showPassword = ref(false);
 const errors = ref({ email: null, password: null });
 const isSubmitting = ref(false);
+const isLocked = ref(false);
+const lockTime = ref(0);
+const attemptCount = ref(0);
+const MAX_ATTEMPTS = 5;
+const LOCK_TIME = 30; // seconds
+
+// Check for existing lock on component mount
+onMounted(() => {
+  const lockUntil = localStorage.getItem('loginLockUntil');
+  if (lockUntil && new Date().getTime() < parseInt(lockUntil)) {
+    const remainingTime = Math.ceil((parseInt(lockUntil) - new Date().getTime()) / 1000);
+    startLockTimer(remainingTime);
+  }
+});
 
 // Toggle password visibility
 const togglePasswordVisibility = () => {
@@ -133,24 +147,60 @@ const validatePassword = () => {
   }
 };
 
-// Submit form
-const submitLoginForm = async (event) => {
-  if (event) event.preventDefault();
-  // Run validations first
+// Lock system for brute force protection
+const startLockTimer = (seconds) => {
+  isLocked.value = true;
+  lockTime.value = seconds;
+  
+  const timer = setInterval(() => {
+    lockTime.value -= 1;
+    if (lockTime.value <= 0) {
+      clearInterval(timer);
+      isLocked.value = false;
+      localStorage.removeItem('loginLockUntil');
+    }
+  }, 1000);
+};
+
+const handleSubmit = async () => {
+  // Run validations
   validateEmail();
   validatePassword();
 
-  setTimeout(async () => {
-    // Check for errors after the state has been updated
-    if (!errors.value.email && !errors.value.password) {
-      isSubmitting.value = true;
-      try {
-        await authStore.login(userData.value);
-      } finally {
-        isSubmitting.value = false;
-      }
+  // Check if locked
+  if (isLocked.value) {
+    return;
+  }
+
+  // Only proceed if no validation errors
+  if (errors.value.email || errors.value.password) {
+    return;
+  }
+
+  if (isSubmitting.value) return;
+  isSubmitting.value = true;
+
+  try {
+    await authStore.login(userData.value);
+    // Reset attempt count on successful login
+    attemptCount.value = 0;
+  } catch (error) {
+    attemptCount.value += 1;
+    
+    // Implement brute force protection
+    if (attemptCount.value >= MAX_ATTEMPTS) {
+      const lockUntil = new Date().getTime() + (LOCK_TIME * 1000);
+      localStorage.setItem('loginLockUntil', lockUntil.toString());
+      startLockTimer(LOCK_TIME);
+      
+      // Show error message
+      Toaster.error(`Too many attempts. Please wait ${LOCK_TIME} seconds before trying again.`);
+    } else {
+      Toaster.error(error.message || "Login failed. Please try again.");
     }
-  }, 200);
+  } finally {
+    isSubmitting.value = false;
+  }
 };
 </script>
 
