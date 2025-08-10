@@ -135,7 +135,8 @@ onMounted(()=>{
 function logoutNow(){
   useCookie('access_token').value = null
   useCookie('expires_in').value = null
-  reloadNuxtApp({path: '/suadmin/login'})
+  // reloadNuxtApp({path: '/suadmin/login'})
+  navigateTo('/suadmin/login')
 }
 
 </script>

@@ -44,7 +44,9 @@ function createApiHandler({accessToken}) {
                     if(!useCookie('expires_in').value || useCookie('expires_in').value <= moment().valueOf()){
                         useCookie('access_token').value = null
                         useCookie('expires_in').value = null
-                        reloadNuxtApp({path: '/suadmin/login'})
+                        navigateTo
+                        // reloadNuxtApp({path: '/suadmin/login'})
+                         navigateTo('/suadmin/login')
                     }
                 }
             }
@@ -78,7 +80,8 @@ function createApiHandler({accessToken}) {
         }, (error) => {
             if(error.response?.data?.message === "Unauthenticated."){
                 useCookie('token_expire').value = null 
-                reloadNuxtApp({path: '/suadmin/login'})
+                // reloadNuxtApp({path: '/suadmin/login'})
+                 navigateTo('/suadmin/login')
             }
             delete State('response').pendings[fullURL(error.config)];
             delete State('response').endPoints[endPoint(error.config)];
