@@ -335,7 +335,7 @@ async function getCurrentLocation(e) {
   if (navigator.geolocation) {
 		await navigator.geolocation.getCurrentPosition(showPosition);
 	} else {
-		// console.log("Geolocation is not supported by this browser.");
+		// ("Geolocation is not supported by this browser.");
 	}
 
 	function showPosition(position) {
@@ -413,7 +413,7 @@ async function fileChanged(e) {
 		myEmit('update:modelValue', getUploadedFiles())
       });
       reader.addEventListener("abort", function (e) {
-		// console.log('abort');
+		// ('abort');
       });
       reader.addEventListener("progress", function (e) {
         try {

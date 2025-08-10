@@ -82,7 +82,7 @@ const myEmit = defineEmits(["update:modelValue", "delete-file"]);
 function fileChanged(e) {
   let files = e.target.files; 
   var filesTotal = files.length;
-  // console.log(e.target.files);
+  // (e.target.files);
 
   for (var i = 0; i < filesTotal; ++i) {
     removeTracker.value[i] = {isRemoving: false}

@@ -13,7 +13,7 @@ let props = defineProps({name: String})
 
 async function changeName(){
   props.name = 'Abdullah Al Mamun'
-  // console.log('props', props);
+  // ('props', props);
 }
 
 </script>

@@ -73,10 +73,10 @@ let timeoutId = null;
 // Image load handler
 const onImageLoad = () => {
   loaded.value++;
-  // console.log(`Image loaded. Current loaded count: ${loaded.value}`);
+  // (`Image loaded. Current loaded count: ${loaded.value}`);
 
   if (loaded.value >= 1) {
-    // console.log("At least one image loaded. Hiding shimmer.");
+    // ("At least one image loaded. Hiding shimmer.");
     clearTimeout(timeoutId); // Clear the timeout if at least one image loads
     loading.value = false;
   }
@@ -88,7 +88,7 @@ const onImageError = () => {
   // console.error(`Failed to load an image. Current loaded count: ${loaded.value}`);
 
   if (loaded.value >= 1) {
-    // console.log("At least one image loaded (or errored). Hiding shimmer.");
+    // ("At least one image loaded (or errored). Hiding shimmer.");
     clearTimeout(timeoutId); // Clear the timeout if at least one image loads or errors
     loading.value = false;
   }
@@ -97,7 +97,7 @@ const onImageError = () => {
 // Timeout to handle cases where no images load
 const startTimeout = () => {
   timeoutId = setTimeout(() => {
-    // console.log("Timeout reached. Hiding shimmer.");
+    // ("Timeout reached. Hiding shimmer.");
     loading.value = false;
   }, 500); // 0.5-second timeout
 };
@@ -120,7 +120,7 @@ watch(
 // Start the timeout when the component mounts
 onMounted(() => {
   if (props.images.length === 0) {
-    // console.log("No images provided. Hiding shimmer.");
+    // ("No images provided. Hiding shimmer.");
     loading.value = false;
   } else {
     startTimeout();

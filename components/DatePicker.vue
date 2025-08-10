@@ -178,7 +178,7 @@ onMounted(() => {
 function clearDate(event){
     event.preventDefault();
     
-    // console.log('fired cleaDate');
+    // ('fired cleaDate');
     pickDate.value = ''
     myEmit('update:modelValue', pickDate.value)
     myEmit('change', pickDate.value)

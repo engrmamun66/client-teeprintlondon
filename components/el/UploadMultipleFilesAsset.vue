@@ -155,7 +155,7 @@ function removeFile(index) {
   removeTracker.value[index].isRemoving = true;
   setTimeout(() => {
     removeFileFromFileList("files_3454454", index);
-    // console.log(props.modelValue[index].binary.size);
+    // (props.modelValue[index].binary.size);
     totalSize.value -= props.modelValue[index].binary.size; // Subtract the size of the removed file
     removeTracker.value[index].isRemoving = false;
     props.modelValue.splice(index, 1);

@@ -146,7 +146,7 @@ const isImage = (file) => {
     try {
       return file.type.startsWith('image/')
     } catch (error) {
-      // console.log('sss', file);
+      // ('sss', file);
       return false
     } 
 };

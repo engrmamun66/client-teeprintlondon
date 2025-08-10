@@ -19,7 +19,7 @@ const loadTrustIndexScript = () => {
     script.defer = true;
 
     script.onload = () => {
-      // console.log("✅ TrustIndex script loaded.");
+      // ("✅ TrustIndex script loaded.");
       resolve();
     };
 
