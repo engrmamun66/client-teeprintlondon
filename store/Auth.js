@@ -23,7 +23,6 @@ export const useAuthStore = defineStore("auth", () => {
                 useCookie('expires_in').value = moment().add(7200, 'seconds').valueOf();
                 // reloadNuxtApp({path: '/suadmin'});
                 navigateTo('/suadmin')
-                console.log("Neaz")
             }
         } catch (err) {
             loading.value = false;
