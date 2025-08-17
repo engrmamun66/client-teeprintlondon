@@ -391,7 +391,7 @@
                       :value="calculateDiscountedPrice(size.unit_price)"
                       min="0"
                     />
-                  </td>
+                </td>
                 </tr>
               </tbody>
             </table>
@@ -405,7 +405,7 @@
               >
                 Submit
                 <BtnLoader
-                  :show="H.isPendingAnyApi('Product:create')"
+                  :show="productStore.productCreateLoader"
                   color="black"
                 ></BtnLoader>
               </button>

@@ -119,12 +119,15 @@ export const useProductStore = defineStore("product", () => {
     };
   };
 
+  let productCreateLoader = ref(false)
+
   async function create(payload = {}) {
     try {
-
+      productCreateLoader.value = true
       let response = await Product.create(payload);
       if (response.data.success) {
         await getColorList();
+        productCreateLoader.value = false
         showModal.value = false;
         resetProduct();
         resetBrandAttribute();
@@ -133,6 +136,7 @@ export const useProductStore = defineStore("product", () => {
         navigateTo({ name: "admin_product_list" });
       }
     } catch (error) {
+       productCreateLoader.value = false
       if(error.response.data.errors.name[0] != null){
         Toaster.error(error.response.data.errors.name[0])
       }else{
@@ -319,8 +323,11 @@ export const useProductStore = defineStore("product", () => {
     } catch (error) {}
   }
 
+  let productUpdateLoader = ref(false)
+
   async function update(id, payload = {}) {
     try {
+      productUpdateLoader.value = true
       payload = {
         ...payload,
         _method: "PUT",
@@ -330,9 +337,11 @@ export const useProductStore = defineStore("product", () => {
         showModal.value = false;
         await showProduct(id);
         Toaster.success("Product updated successfully");
+        productUpdateLoader.value = false
       }
     } catch (error) {
       if (error.response.status == 422) {
+        productUpdateLoader.value = true
         // registrationFormError.value.type = 422;
         // registrationFormError.value.messages = error.response.data.errors;
       }
@@ -387,6 +396,8 @@ export const useProductStore = defineStore("product", () => {
     productList,
     bulkPrice,
     bulkQuantity,
+    productCreateLoader,
+    productUpdateLoader
   };
 });
 

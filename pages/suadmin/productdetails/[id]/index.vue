@@ -407,7 +407,7 @@
               >
                 Update
                 <BtnLoader
-                  :show="H.isPendingAnyApi('Product:update')"
+                  :show="productStore.productUpdateLoader"
                   color="black"
                 ></BtnLoader>
               </button>
@@ -561,6 +561,7 @@ const setContent = (editorRef, content) => {
     editorRef.value.editor.setContent(content);
   }
 };
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB in bytes
 function validateForm() {
   let isValid = true;
 
@@ -625,6 +626,33 @@ function validateForm() {
 
     isValid = false;
   }
+
+    if (productStore?.product?.thumbnail_image?.length) {
+    // Access the actual file from the Proxy/Array
+    const imageFile = productStore?.product?.thumbnail_image[0];
+
+    if (imageFile.size > MAX_FILE_SIZE) {
+      // commonStore.toaster('error', 'Image can not be more than 10 mb');
+      Toaster.error("Image can not be more than 10 mb");
+      // You might also want to clear the invalid file here
+      isValid = false;
+    }
+  }
+
+  if (productStore?.product?.images?.length) {
+    // Find the first image that exceeds the size limit
+    const oversizedImage = productStore.product.images.find(
+      (image) => image?.size > MAX_FILE_SIZE
+    );
+
+    if (oversizedImage) {
+      Toaster.error(
+        `product image "${oversizedImage.name}" exceeds 10MB limit. Please choose a smaller file.`
+      );
+      isValid = false;
+    }
+  }
+
   if (
     !productStore.product.images ||
     productStore.product.images.length === 0
@@ -734,7 +762,8 @@ async function handleSubmit() {
   }
   // Validate fields
   if (!validateForm()) {
-    Toaster.error("Please fill all the required field");
+    // Toaster.error("Please fill all the required field");
+    return;
   }
   if (!validateForm()) return;
   let uploadedFiles = ref([]);
