@@ -632,8 +632,8 @@ function validateForm() {
     const imageFile = productStore?.product?.thumbnail_image[0];
 
     if (imageFile.size > MAX_FILE_SIZE) {
-      // commonStore.toaster('error', 'Image can not be more than 10 mb');
-      Toaster.error("Image can not be more than 10 mb");
+      // commonStore.toaster('error', 'Thumbnail Image can not be more than 10 mb');
+      Toaster.error("Thumbnail Image can not be more than 10 mb");
       // You might also want to clear the invalid file here
       isValid = false;
     }
