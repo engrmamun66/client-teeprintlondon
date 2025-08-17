@@ -182,7 +182,9 @@
                     :false-value="null"
                     @change="
                       productStore.product.show_size_table =
-                        productStore.product.show_size_table == 'No' ? 'No' : null
+                        productStore.product.show_size_table == 'No'
+                          ? 'No'
+                          : null
                     "
                   />
                   No
@@ -192,7 +194,7 @@
 
             <div class="form-group d-flex">
               <label class="form-label"
-                >Show Personalize field 
+                >Show Personalize field
                 <span class="required-star">*</span></label
               >
               <div class="checkbox-group mx-3" style="display: flex; gap: 20px">
@@ -512,7 +514,8 @@ import { useCategorystore } from "~/store/Category";
 import { useBrandStore } from "~/store/Brand";
 import { useColorStore } from "~/store/Color";
 import Editor from "@tinymce/tinymce-vue";
-
+import { useCommonStore } from "~/store/Common";
+const commonStore = useCommonStore();
 const colorStore = useColorStore();
 const brandStore = useBrandStore();
 const productStore = useProductStore();
@@ -601,8 +604,7 @@ const calculatePercentageChange = () => {
 
 let showSubCategory = ref(false);
 
-const handleFileRemoval = (removedFile) => {
-};
+const handleFileRemoval = (removedFile) => {};
 
 // Function to calculate the discounted price
 const calculateDiscountedPrice = (price) => {
@@ -615,17 +617,17 @@ function validateSizes() {
   );
 }
 async function handleSubmit() {
+  // Validate fields
+  if (!validateForm()) {
+    // Toaster.error("Please fill all the required field");
+    return;
+  }
   if (!validateSizes()) {
     Toaster.error(
       "At least one size must have a unit price or quantity greater than 0."
     );
     return;
   }
-  // Validate fields
-  if (!validateForm()) {
-    Toaster.error("Please fill all the required field");
-  }
-  if (!validateForm()) return;
 
   // Map selected genders and colors to their IDs
   productStore.product.thumbnail_image =
@@ -643,9 +645,8 @@ async function handleSubmit() {
     sizes: JSON.stringify(product.sizes), // Custom serialization for sizes
     genders: JSON.stringify(product.genders), // Stringify genders
     colors: JSON.stringify(product.colors), // Stringify colors
-    show_size_table : product.show_size_table == "Yes" ? 1: 0,
-    show_personalized : product.show_personalized == "Yes" ? 1: 0
-
+    show_size_table: product.show_size_table == "Yes" ? 1 : 0,
+    show_personalized: product.show_personalized == "Yes" ? 1 : 0,
   });
 
   // Destructure and modify the product if subcategory_id exists
@@ -664,7 +665,7 @@ async function handleSubmit() {
   // Submit the payload
   await productStore.create(productPayload);
 }
-
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB in bytes
 function validateForm() {
   let isValid = true;
 
@@ -727,6 +728,32 @@ function validateForm() {
     errors.value.thumbnail_image = "Thumbnail image is required";
     isValid = false;
   }
+  if (productStore?.product?.thumbnail_image?.length) {
+    // Access the actual file from the Proxy/Array
+    const imageFile = productStore?.product?.thumbnail_image[0];
+
+    if (imageFile.size > MAX_FILE_SIZE) {
+      // commonStore.toaster('error', 'Image can not be more than 10 mb');
+      Toaster.error("Image can not be more than 10 mb");
+      // You might also want to clear the invalid file here
+      isValid = false;
+    }
+  }
+
+  if (productStore?.product?.images?.length) {
+    // Find the first image that exceeds the size limit
+    const oversizedImage = productStore.product.images.find(
+      (image) => image?.size > MAX_FILE_SIZE
+    );
+
+    if (oversizedImage) {
+      Toaster.error(
+        `product image "${oversizedImage.name}" exceeds 10MB limit. Please choose a smaller file.`
+      );
+      isValid = false;
+    }
+  }
+
   if (
     !productStore.product.images ||
     productStore.product.images.length === 0

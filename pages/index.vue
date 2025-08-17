@@ -76,8 +76,9 @@ onMounted(() => {
 
     <!-- <web-trusted /> -->
     <!-- <web-customerFinally></web-customerFinally> -->
+     <!-- Youtube section starts -->
 
-    <section class="teeprint-makes-section">
+    <!-- <section class="teeprint-makes-section">
       <div class="container">
         <h2 class="text-center m-2">Our Printing Environment</h2>
         <div class="video-container">
@@ -95,7 +96,8 @@ onMounted(() => {
           <div ref="videoOverlay" class="video-overlay"></div>
         </div>
       </div>
-    </section>
+    </section> -->
+    <!-- Youtube section ends -->
 
     <!-- <section class="teeprint-about-section">
       <div class="container">
