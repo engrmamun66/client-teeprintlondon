@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'football_shirt'))  
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "football_shirt"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -63,7 +63,8 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Same-Day Football Team T-shirt?
+                  Why Choose Tee Print London for Same-Day Football Team
+                  T-shirt?
                 </h2>
               </div>
               <div class="aboutus-list">
@@ -74,12 +75,12 @@ function addToCart() {
                   sports events, or personal use, we use advanced printing
                   techniques like Direct-to-Garment (DTG), screen printing, and
                   vinyl printing to deliver vibrant, long-lasting designs. Our
-                  state-of-the-art technology and expert team ensure your
-                  shirts are printed with precision and care, even on tight
-                  deadlines. With **same-day delivery** options, we make it
-                  easy to get your custom shirts when you need them most. Trust
-                  Tee Print London for fast, professional, and high-quality
-                  printing services.
+                  state-of-the-art technology and expert team ensure your shirts
+                  are printed with precision and care, even on tight deadlines.
+                  With **same-day delivery** options, we make it easy to get
+                  your custom shirts when you need them most. Trust Tee Print
+                  London for fast, professional, and high-quality printing
+                  services.
                 </p>
               </div>
             </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('advertise', 'advertising_banner')) 
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("advertise", "advertising_banner"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -8,7 +8,9 @@ definePageMeta({
 });
 
 function addToCart() {
-  let imgElement = document.querySelector(".teeprint-product-view-image img") as HTMLElement;
+  let imgElement = document.querySelector(
+    ".teeprint-product-view-image img"
+  ) as HTMLElement;
   cartAnimation({ element: imgElement }, () => {
     useNuxtApp().$emit("openInPageCart", true);
   });
@@ -29,10 +31,21 @@ function addToCart() {
               '/img/banners/10.jpg',
             ]"
           >
-            Make a bold statement with Tee Print London’s premium banner printing services. Whether you need Advertising Banners, PVC Banners, Vinyl Banners, or Roller Banners, we deliver high-quality prints that grab attention and leave a lasting impression. Perfect for events, promotions, trade shows, or storefront displays, our banners are designed to stand out with vibrant colors, sharp details, and durable materials. Let us help you create banners that effectively communicate your message and enhance your brand visibility.
+            Make a bold statement with Tee Print London’s premium banner
+            printing services. Whether you need Advertising Banners, PVC
+            Banners, Vinyl Banners, or Roller Banners, we deliver high-quality
+            prints that grab attention and leave a lasting impression. Perfect
+            for events, promotions, trade shows, or storefront displays, our
+            banners are designed to stand out with vibrant colors, sharp
+            details, and durable materials. Let us help you create banners that
+            effectively communicate your message and enhance your brand
+            visibility.
 
             <template #link>
-              <nuxt-link :to="{ name: 'quote' }" class="teeprint-button teeprint-theme-btn zoomInOut mt-5">
+              <nuxt-link
+                :to="{ name: 'quote' }"
+                class="teeprint-button teeprint-theme-btn zoomInOut mt-5"
+              >
                 Get A Free Quote <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </template>
@@ -47,11 +60,22 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-content">
               <div class="section-main-heading">
-                <h2 class="section-heading-title-big">Why Choose Tee Print London for Banner Printing?</h2>
+                <h2 class="section-heading-title-big">
+                  Why Choose Tee Print London for Banner Printing?
+                </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  At Tee Print London, we specialize in creating banners that are both visually stunning and highly functional. Our state-of-the-art printing technology ensures vibrant colors, sharp details, and professional finishes. Whether you need Advertising Banners for outdoor promotions, PVC Banners for durability, Vinyl Banners for versatility, or Roller Banners for portability, we offer a wide range of customization options to suit your needs. With fast turnaround times, competitive pricing, and a commitment to quality, we are your trusted partner for all your banner printing needs.
+                  At Tee Print London, we specialize in creating banners that
+                  are both visually stunning and highly functional. Our
+                  state-of-the-art printing technology ensures vibrant colors,
+                  sharp details, and professional finishes. Whether you need
+                  Advertising Banners for outdoor promotions, PVC Banners for
+                  durability, Vinyl Banners for versatility, or Roller Banners
+                  for portability, we offer a wide range of customization
+                  options to suit your needs. With fast turnaround times,
+                  competitive pricing, and a commitment to quality, we are your
+                  trusted partner for all your banner printing needs.
                 </p>
               </div>
             </div>
@@ -71,7 +95,9 @@ function addToCart() {
           <div class="row">
             <div class="col-md-5">
               <div class="section-main-heading text-right pr-5">
-                <h4 class="section-heading-title-small"><span class="line-decoration"></span>What Our</h4>
+                <h4 class="section-heading-title-small">
+                  <span class="line-decoration"></span>What Our
+                </h4>
                 <h2 class="section-heading-title-big">Customers Say</h2>
               </div>
             </div>
@@ -95,12 +121,25 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
-                <h2 class="section-heading-title-big">Premium Banners – Designed to Impress</h2>
+                <h2 class="section-heading-title-big">
+                  Premium Banners – Designed to Impress
+                </h2>
               </div>
               <p>
-                Our banners are more than just promotional tools – they are powerful ways to communicate your brand’s message. Whether you’re advertising a sale, promoting an event, or enhancing your storefront, our designs are tailored to grab attention and leave a lasting impression. With options for custom sizes, materials, and finishes, we ensure your banners are both functional and visually appealing. Combined with fast printing services and high-quality finishes, we make it easy to create professional-grade banners that stand out.
+                Our banners are more than just promotional tools – they are
+                powerful ways to communicate your brand’s message. Whether
+                you’re advertising a sale, promoting an event, or enhancing your
+                storefront, our designs are tailored to grab attention and leave
+                a lasting impression. With options for custom sizes, materials,
+                and finishes, we ensure your banners are both functional and
+                visually appealing. Combined with fast printing services and
+                high-quality finishes, we make it easy to create
+                professional-grade banners that stand out.
               </p>
-              <nuxt-link :to="{ name: 'quote' }" class="teeprint-button teeprint-theme-btn zoomInOut">
+              <nuxt-link
+                :to="{ name: 'quote' }"
+                class="teeprint-button teeprint-theme-btn zoomInOut"
+              >
                 Get A Free Quote <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </div>
@@ -119,11 +158,20 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-content">
               <div class="section-main-heading">
-                <h2 class="section-heading-title-big">Get Your Banners Printed Today!</h2>
+                <h2 class="section-heading-title-big">
+                  Get Your Banners Printed Today!
+                </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Don’t wait to make an impact – get your banners printed today with Tee Print London. Our streamlined process ensures quick turnaround times without compromising on quality. Whether you need a single banner for a local event or a large order for a nationwide campaign, we’ve got you covered. With our advanced printing techniques and attention to detail, we guarantee vibrant, durable, and professional results. Place your order now and experience the best in banner printing.
+                  Don’t wait to make an impact – get your banners printed today
+                  with Tee Print London. Our streamlined process ensures quick
+                  turnaround times without compromising on quality. Whether you
+                  need a single banner for a local event or a large order for a
+                  nationwide campaign, we’ve got you covered. With our advanced
+                  printing techniques and attention to detail, we guarantee
+                  vibrant, durable, and professional results. Place your order
+                  now and experience the best in banner printing.
                 </p>
               </div>
             </div>

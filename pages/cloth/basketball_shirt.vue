@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('cloth', 'basketball_shirt'))
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("cloth", "basketball_shirt"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -32,15 +32,15 @@ function addToCart() {
             ]"
           >
             At Tee Print London, we specialize in delivering **premium-quality
-            Basketball Team Tank** that combine style, durability, and
-            comfort. Whether you're outfitting a basketball team, creating
-            uniforms for players, or designing Tank for a sports event, we
-            provide vibrant, long-lasting prints on high-quality fabrics. Our
-            advanced printing techniques ensure sharp details and rich colors
-            that won’t fade over time. With fast turnaround times and
-            competitive pricing, we make customization effortless and
-            affordable. Choose Tee Print London for stylish, durable, and
-            uniquely crafted Basketball Team Tank that make a statement!
+            Basketball Team Tank** that combine style, durability, and comfort.
+            Whether you're outfitting a basketball team, creating uniforms for
+            players, or designing Tank for a sports event, we provide vibrant,
+            long-lasting prints on high-quality fabrics. Our advanced printing
+            techniques ensure sharp details and rich colors that won’t fade over
+            time. With fast turnaround times and competitive pricing, we make
+            customization effortless and affordable. Choose Tee Print London for
+            stylish, durable, and uniquely crafted Basketball Team Tank that
+            make a statement!
 
             <template #link>
               <nuxt-link
@@ -75,9 +75,9 @@ function addToCart() {
                   ensure your designs are vibrant, sharp, and built to last.
                   With unbeatable customer service and a commitment to
                   excellence, we make it easy to create custom Basketball Team
-                  Tank that stand out. Whether you need a single shirt or a
-                  bulk order, Tee Print London delivers premium quality every
-                  time. **Purchase from us** and experience the difference that
+                  Tank that stand out. Whether you need a single shirt or a bulk
+                  order, Tee Print London delivers premium quality every time.
+                  **Purchase from us** and experience the difference that
                   quality and professionalism make!
                 </p>
               </div>
@@ -148,11 +148,11 @@ function addToCart() {
                 needs. Our expert team uses advanced printing methods to ensure
                 your designs are vibrant, precise, and long-lasting. From
                 intricate logos to bold graphics, we handle every detail with
-                care, ensuring your Basketball Team Tank look great and
-                perform even better. Whether you need a single shirt or a bulk
-                order, Tee Print London is dedicated to delivering exceptional
-                results every time. **Purchase from us** and experience the
-                perfect blend of quality, comfort, and style!
+                care, ensuring your Basketball Team Tank look great and perform
+                even better. Whether you need a single shirt or a bulk order,
+                Tee Print London is dedicated to delivering exceptional results
+                every time. **Purchase from us** and experience the perfect
+                blend of quality, comfort, and style!
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -168,7 +168,7 @@ function addToCart() {
     </section>
 
     <div>
-    <Cloth />
+      <Cloth />
     </div>
 
     <section class="teeprint-about-section">

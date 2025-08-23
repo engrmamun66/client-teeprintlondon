@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'fleeces_and_knits'))  
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "fleeces_and_knits"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -85,7 +85,6 @@ function addToCart() {
             <div class="teeprint-about-img">
               <img
                 src="/img/Fleeces_and_Knits/Leonardo_Phoenix_10_A_solitary_young_man_in_his_early_twenties_1.jpg"
-                
                 alt="about image"
               />
             </div>

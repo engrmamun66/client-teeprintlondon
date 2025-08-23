@@ -391,7 +391,7 @@
                       :value="calculateDiscountedPrice(size.unit_price)"
                       min="0"
                     />
-                </td>
+                  </td>
                 </tr>
               </tbody>
             </table>

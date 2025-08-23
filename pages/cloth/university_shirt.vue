@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('cloth', 'university_shirt'))
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("cloth", "university_shirt"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -62,22 +62,24 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Your University & School Shirts?
+                  Why Choose Tee Print London for Your University & School
+                  Shirts?
                 </h2>
               </div>
               <div class="aboutus-list">
                 <p>
                   Tee Print London is your trusted partner for **high-quality
-                  University and School shirts**. We use only the finest materials
-                  and cutting-edge technology to bring your ideas to life. Our
-                  state-of-the-art printing techniques, including
+                  University and School shirts**. We use only the finest
+                  materials and cutting-edge technology to bring your ideas to
+                  life. Our state-of-the-art printing techniques, including
                   Direct-to-Garment (DTG), screen printing, and vinyl printing,
-                  ensure your designs are vibrant, sharp, and built to last. With
-                  unbeatable customer service and a commitment to excellence, we
-                  make it easy to create custom shirts that stand out. Whether you
-                  need a single shirt or a bulk order, Tee Print London delivers
-                  premium quality every time. **Purchase from us** and experience
-                  the difference that quality and professionalism make!
+                  ensure your designs are vibrant, sharp, and built to last.
+                  With unbeatable customer service and a commitment to
+                  excellence, we make it easy to create custom shirts that stand
+                  out. Whether you need a single shirt or a bulk order, Tee
+                  Print London delivers premium quality every time. **Purchase
+                  from us** and experience the difference that quality and
+                  professionalism make!
                 </p>
               </div>
             </div>
@@ -134,10 +136,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img
-                src="/img/Universit_T_Shirt/8.jpg"
-                alt="about image"
-              />
+              <img src="/img/Universit_T_Shirt/8.jpg" alt="about image" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -149,15 +148,16 @@ function addToCart() {
               </div>
               <p>
                 When it comes to custom University and School shirts, **quality
-                matters**. At Tee Print London, we specialize in creating durable,
-                stylish, and comfortable shirts that meet your exact needs. Our
-                expert team uses advanced printing methods to ensure your designs
-                are vibrant, precise, and long-lasting. From intricate logos to
-                bold graphics, we handle every detail with care, ensuring your
-                shirts look great and perform even better. Whether you need a
-                single shirt or a bulk order, Tee Print London is dedicated to
-                delivering exceptional results every time. **Purchase from us**
-                and experience the perfect blend of quality, comfort, and style!
+                matters**. At Tee Print London, we specialize in creating
+                durable, stylish, and comfortable shirts that meet your exact
+                needs. Our expert team uses advanced printing methods to ensure
+                your designs are vibrant, precise, and long-lasting. From
+                intricate logos to bold graphics, we handle every detail with
+                care, ensuring your shirts look great and perform even better.
+                Whether you need a single shirt or a bulk order, Tee Print
+                London is dedicated to delivering exceptional results every
+                time. **Purchase from us** and experience the perfect blend of
+                quality, comfort, and style!
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -173,7 +173,7 @@ function addToCart() {
     </section>
 
     <div>
-    <Cloth />
+      <Cloth />
     </div>
 
     <section class="teeprint-about-section">
@@ -188,34 +188,33 @@ function addToCart() {
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait days or even weeks for your custom University and School
-                  shirts when you can have them printed today? At Tee Print London,
-                  we offer same-day printing to ensure you get your custom designs
-                  exactly when you need them. Whether it’s for a school event,
-                  university promotion, sports team, or personal use, we provide a
-                  seamless and hassle-free printing experience with top-notch
-                  results. Our process is designed for speed and convenience—simply
-                  select your shirt, upload your design, and let us handle the rest.
-                  Using advanced printing techniques, including Direct-to-Garment
-                  (DTG), screen printing, and vinyl printing, we guarantee sharp,
-                  vibrant, and long-lasting prints that won’t fade after just a few
-                  washes. We understand the urgency of last-minute orders, which is
-                  why our same-day printing service is tailored to meet your
+                  Why wait days or even weeks for your custom University and
+                  School shirts when you can have them printed today? At Tee
+                  Print London, we offer same-day printing to ensure you get
+                  your custom designs exactly when you need them. Whether it’s
+                  for a school event, university promotion, sports team, or
+                  personal use, we provide a seamless and hassle-free printing
+                  experience with top-notch results. Our process is designed for
+                  speed and convenience—simply select your shirt, upload your
+                  design, and let us handle the rest. Using advanced printing
+                  techniques, including Direct-to-Garment (DTG), screen
+                  printing, and vinyl printing, we guarantee sharp, vibrant, and
+                  long-lasting prints that won’t fade after just a few washes.
+                  We understand the urgency of last-minute orders, which is why
+                  our same-day printing service is tailored to meet your
                   deadlines without compromising on quality. Whether you need a
                   single shirt or a bulk order, we ensure every piece is printed
-                  with precision, durability, and style. **Purchase from Tee Print
-                  London** and get your custom University and School shirts printed
-                  on the same day with professional service and unmatched quality.
+                  with precision, durability, and style. **Purchase from Tee
+                  Print London** and get your custom University and School
+                  shirts printed on the same day with professional service and
+                  unmatched quality.
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img
-                src="/img/Universit_T_Shirt/4.jpg"
-                alt="about image"
-              />
+              <img src="/img/Universit_T_Shirt/4.jpg" alt="about image" />
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('cloth', 'sweatshirt'))
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("cloth", "sweatshirt"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -31,14 +31,23 @@ function addToCart() {
               '/img/sweatshirt/3.jpg',
             ]"
           >
-            Experience the TeePrint London difference with our premium custom sweatshirts, crafted with meticulous attention to detail. We use only the finest 100% premium cotton blends and industry-leading printing techniques to create sweatshirts that look exceptional and stand the test of time. Every garment undergoes our rigorous 12-point quality inspection before leaving our London workshop. Whether you're ordering for your business, team, or personal wardrobe, you'll enjoy vibrant, long-lasting prints on sweatshirts that maintain their shape, color, and softness wash after wash.
+            Experience the TeePrint London difference with our premium custom
+            sweatshirts, crafted with meticulous attention to detail. We use
+            only the finest 100% premium cotton blends and industry-leading
+            printing techniques to create sweatshirts that look exceptional and
+            stand the test of time. Every garment undergoes our rigorous
+            12-point quality inspection before leaving our London workshop.
+            Whether you're ordering for your business, team, or personal
+            wardrobe, you'll enjoy vibrant, long-lasting prints on sweatshirts
+            that maintain their shape, color, and softness wash after wash.
 
             <template #link>
               <nuxt-link
                 :to="{ name: 'quote' }"
                 class="teeprint-button teeprint-theme-btn zoomInOut mt-5"
               >
-                Design Your Premium Sweatshirt <i class="la la-arrow-right ml-1"></i>
+                Design Your Premium Sweatshirt
+                <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </template>
           </MultipleImageCard>
@@ -58,7 +67,20 @@ function addToCart() {
               </div>
               <div class="aboutus-list">
                 <p>
-                  At TeePrint London, we've redefined quality in custom sweatshirt printing. Our secret lies in three uncompromising principles: superior fabrics, precision printing, and craftsmanship. We source our sweatshirts from ethical suppliers, using only heavyweight 300gsm cotton blends that offer exceptional durability without sacrificing comfort. Our proprietary printing process ensures colors remain vibrant through 50+ washes, with no cracking or peeling. Each design is individually inspected for perfect registration and color matching. Unlike mass-produced alternatives, every TeePrint sweatshirt receives personal attention from our skilled London-based artisans. From the precision of our stitching to the quality of our inks, we obsess over every detail so you receive a product that exceeds expectations.
+                  At TeePrint London, we've redefined quality in custom
+                  sweatshirt printing. Our secret lies in three uncompromising
+                  principles: superior fabrics, precision printing, and
+                  craftsmanship. We source our sweatshirts from ethical
+                  suppliers, using only heavyweight 300gsm cotton blends that
+                  offer exceptional durability without sacrificing comfort. Our
+                  proprietary printing process ensures colors remain vibrant
+                  through 50+ washes, with no cracking or peeling. Each design
+                  is individually inspected for perfect registration and color
+                  matching. Unlike mass-produced alternatives, every TeePrint
+                  sweatshirt receives personal attention from our skilled
+                  London-based artisans. From the precision of our stitching to
+                  the quality of our inks, we obsess over every detail so you
+                  receive a product that exceeds expectations.
                 </p>
               </div>
             </div>
@@ -115,7 +137,21 @@ function addToCart() {
                 </h2>
               </div>
               <p>
-                When you need premium custom sweatshirts fast, TeePrint London delivers without compromise. Our express same-day service combines speed with our signature quality standards. We achieve this through our vertically integrated London facility, where we control every step from fabric selection to final packaging. Our advanced Kornit DTG printers produce museum-quality prints in hours, not days, using eco-friendly inks that are softer and more durable than conventional methods. For bulk orders, our automated screen printing line ensures perfect consistency across hundreds of garments. Every sweatshirt undergoes our quality triage: pre-treatment inspection, print verification, and final curing check. This meticulous process means your urgent order receives the same attention to detail as our standard production. Whether you need 1 or 1000 sweatshirts, we guarantee premium results delivered with London efficiency.
+                When you need premium custom sweatshirts fast, TeePrint London
+                delivers without compromise. Our express same-day service
+                combines speed with our signature quality standards. We achieve
+                this through our vertically integrated London facility, where we
+                control every step from fabric selection to final packaging. Our
+                advanced Kornit DTG printers produce museum-quality prints in
+                hours, not days, using eco-friendly inks that are softer and
+                more durable than conventional methods. For bulk orders, our
+                automated screen printing line ensures perfect consistency
+                across hundreds of garments. Every sweatshirt undergoes our
+                quality triage: pre-treatment inspection, print verification,
+                and final curing check. This meticulous process means your
+                urgent order receives the same attention to detail as our
+                standard production. Whether you need 1 or 1000 sweatshirts, we
+                guarantee premium results delivered with London efficiency.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -146,7 +182,22 @@ function addToCart() {
               </div>
               <div class="aboutus-list">
                 <p>
-                  When you purchase from TeePrint London, you're investing in more than just a sweatshirt - you're getting our ironclad quality guarantee. We stand behind every garment with a 100% satisfaction promise. Our sweatshirts feature reinforced double-stitched seams, premium ribbed cuffs that retain their shape, and industry-leading colorfast printing. We use only OEKO-TEX certified fabrics and eco-solvent inks that are kinder to your skin and the environment. Each order includes complimentary quality enhancements like pre-shrunk fabrics and color-lock treatment. Our London-based customer service team provides expert guidance from design consultation to aftercare advice. Whether you're a fashion brand needing boutique-quality merchandise or a corporation requiring premium staff uniforms, we deliver sweatshirts that perform as impressively as they look. Discover why London's most discerning clients trust us for their custom apparel needs.
+                  When you purchase from TeePrint London, you're investing in
+                  more than just a sweatshirt - you're getting our ironclad
+                  quality guarantee. We stand behind every garment with a 100%
+                  satisfaction promise. Our sweatshirts feature reinforced
+                  double-stitched seams, premium ribbed cuffs that retain their
+                  shape, and industry-leading colorfast printing. We use only
+                  OEKO-TEX certified fabrics and eco-solvent inks that are
+                  kinder to your skin and the environment. Each order includes
+                  complimentary quality enhancements like pre-shrunk fabrics and
+                  color-lock treatment. Our London-based customer service team
+                  provides expert guidance from design consultation to aftercare
+                  advice. Whether you're a fashion brand needing
+                  boutique-quality merchandise or a corporation requiring
+                  premium staff uniforms, we deliver sweatshirts that perform as
+                  impressively as they look. Discover why London's most
+                  discerning clients trust us for their custom apparel needs.
                 </p>
               </div>
             </div>

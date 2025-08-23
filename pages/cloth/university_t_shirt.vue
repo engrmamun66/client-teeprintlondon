@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('cloth', 'university_t_shirt'))
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("cloth", "university_t_shirt"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -32,16 +32,16 @@ function addToCart() {
               '/img/school_and_college_t_shirt/6.jpg',
             ]"
           >
-            Looking for high-quality university and school T-shirts? Tee
-            Print London specializes in creating vibrant, durable, and
-            professional T-shirts that make your school or university stand out.
-            Whether it’s for school events, university promotions, sports teams,
-            or personal use, we deliver premium-quality T-shirts that exceed
-            expectations. Our commitment to quality ensures every shirt is
-            crafted with precision, using advanced printing techniques like
-            Direct-to-Garment (DTG), screen printing, and vinyl printing.
-            Serving clients across London and the UK, we’re your trusted partner
-            for top-notch university and school T-shirts.
+            Looking for high-quality university and school T-shirts? Tee Print
+            London specializes in creating vibrant, durable, and professional
+            T-shirts that make your school or university stand out. Whether it’s
+            for school events, university promotions, sports teams, or personal
+            use, we deliver premium-quality T-shirts that exceed expectations.
+            Our commitment to quality ensures every shirt is crafted with
+            precision, using advanced printing techniques like Direct-to-Garment
+            (DTG), screen printing, and vinyl printing. Serving clients across
+            London and the UK, we’re your trusted partner for top-notch
+            university and school T-shirts.
 
             <template #link>
               <nuxt-link
@@ -88,7 +88,10 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/school_and_college_t_shirt/1.jpg" alt="university T-shirts" />
+              <img
+                src="/img/school_and_college_t_shirt/1.jpg"
+                alt="university T-shirts"
+              />
             </div>
           </div>
         </div>
@@ -123,32 +126,36 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/school_and_college_t_shirt/8.jpg" alt="university T-shirts" />
+              <img
+                src="/img/school_and_college_t_shirt/8.jpg"
+                alt="university T-shirts"
+              />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big mt-5">
-                  Premium-Quality University & School T-Shirts – Durable and Professional
+                  Premium-Quality University & School T-Shirts – Durable and
+                  Professional
                 </h2>
               </div>
               <p>
-                When you choose Tee Print London for your university and
-                school T-shirts, you’re choosing quality, durability, and
+                When you choose Tee Print London for your university and school
+                T-shirts, you’re choosing quality, durability, and
                 professionalism. Our T-shirts are crafted to withstand daily
-                wear and multiple washes, ensuring your designs stay vibrant
-                and sharp for years to come. Using state-of-the-art printing
+                wear and multiple washes, ensuring your designs stay vibrant and
+                sharp for years to come. Using state-of-the-art printing
                 techniques like Direct-to-Garment (DTG), screen printing, and
                 vinyl printing, we produce long-lasting designs that reflect
                 your school or university’s identity. No matter the complexity
-                of your design—logos, slogans, graphics, or personalized
-                text—we bring your vision to life with precision and care. Our
+                of your design—logos, slogans, graphics, or personalized text—we
+                bring your vision to life with precision and care. Our
                 commitment to quality means every shirt is made to impress.
                 Whether you need a single T-shirt or a bulk order, our team is
-                dedicated to providing the best university and school
-                T-shirts in London and across the UK. Choose Tee Print London
-                for T-shirts that combine style, durability, and professionalism.
+                dedicated to providing the best university and school T-shirts
+                in London and across the UK. Choose Tee Print London for
+                T-shirts that combine style, durability, and professionalism.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -182,27 +189,31 @@ function addToCart() {
               <div class="aboutus-list">
                 <p>
                   Why settle for ordinary when you can have premium-quality
-                  university and school T-shirts? At Tee Print London, we
-                  offer top-notch T-shirts that combine durability, comfort, and
-                  professional design. Whether it’s for school events, university
-                  promotions, sports teams, or personal use, we provide a
-                  seamless and hassle-free printing experience with exceptional
-                  results. Our process is designed for convenience—simply select
-                  your T-shirt, upload your design, and let us handle the rest.
-                  Using advanced printing techniques, we guarantee sharp,
-                  vibrant, and long-lasting prints that won’t fade after daily
-                  use. When you purchase from Tee Print London, you’re investing
-                  in a product that reflects your school or university’s
-                  excellence. Don’t compromise on quality—place your order now
-                  with Tee Print London and get high-quality university and
-                  school T-shirts that leave a lasting impression.
+                  university and school T-shirts? At Tee Print London, we offer
+                  top-notch T-shirts that combine durability, comfort, and
+                  professional design. Whether it’s for school events,
+                  university promotions, sports teams, or personal use, we
+                  provide a seamless and hassle-free printing experience with
+                  exceptional results. Our process is designed for
+                  convenience—simply select your T-shirt, upload your design,
+                  and let us handle the rest. Using advanced printing
+                  techniques, we guarantee sharp, vibrant, and long-lasting
+                  prints that won’t fade after daily use. When you purchase from
+                  Tee Print London, you’re investing in a product that reflects
+                  your school or university’s excellence. Don’t compromise on
+                  quality—place your order now with Tee Print London and get
+                  high-quality university and school T-shirts that leave a
+                  lasting impression.
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/school_and_college_t_shirt/4.jpg" alt="university T-shirts" />
+              <img
+                src="/img/school_and_college_t_shirt/4.jpg"
+                alt="university T-shirts"
+              />
             </div>
           </div>
         </div>

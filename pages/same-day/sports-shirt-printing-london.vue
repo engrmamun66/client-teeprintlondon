@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'sports_shirt')) 
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "sports_shirt"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -27,10 +27,7 @@ function addToCart() {
           <MultipleImageCard
             :right="true"
             title="Same-Day Custom Sports T-shirt"
-            :images="[
-              '/img/Sports_Shirts/1.jpg',
-              '/img/Sports_Shirts/2.jpg',
-            ]"
+            :images="['/img/Sports_Shirts/1.jpg', '/img/Sports_Shirts/2.jpg']"
           >
             Need custom sports shirts in a hurry? Tee Print London offers
             **same-day printing services** to meet your urgent needs. Whether
@@ -69,16 +66,16 @@ function addToCart() {
                 <p>
                   At Tee Print London, we specialize in **same-day custom sports
                   shirt printing** that combines speed, quality, and
-                  performance. Whether you need shirts for team uniforms,
-                  sports events, or personal use, we use advanced printing
-                  techniques like Direct-to-Garment (DTG), screen printing, and
-                  vinyl printing to deliver vibrant, long-lasting designs. Our
-                  state-of-the-art technology and expert team ensure your
-                  shirts are printed with precision and care, even on tight
-                  deadlines. With **same-day delivery** options, we make it
-                  easy to get your custom shirts when you need them most. Trust
-                  Tee Print London for fast, professional, and high-quality
-                  printing services.
+                  performance. Whether you need shirts for team uniforms, sports
+                  events, or personal use, we use advanced printing techniques
+                  like Direct-to-Garment (DTG), screen printing, and vinyl
+                  printing to deliver vibrant, long-lasting designs. Our
+                  state-of-the-art technology and expert team ensure your shirts
+                  are printed with precision and care, even on tight deadlines.
+                  With **same-day delivery** options, we make it easy to get
+                  your custom shirts when you need them most. Trust Tee Print
+                  London for fast, professional, and high-quality printing
+                  services.
                 </p>
               </div>
             </div>
@@ -195,14 +192,14 @@ function addToCart() {
               <div class="aboutus-list">
                 <p>
                   Why wait days or even weeks for your custom sports shirts when
-                  you can have them printed today? At Tee Print London, we
-                  offer **same-day printing services** to ensure you get your
-                  custom designs exactly when you need them. Whether it’s for a
-                  sports team, event, or personal use, we provide a seamless
-                  and hassle-free printing experience with top-notch results.
-                  Our process is designed for speed and convenience—simply
-                  select your shirt, upload your design, and let us handle the
-                  rest. Using advanced printing techniques, we guarantee sharp,
+                  you can have them printed today? At Tee Print London, we offer
+                  **same-day printing services** to ensure you get your custom
+                  designs exactly when you need them. Whether it’s for a sports
+                  team, event, or personal use, we provide a seamless and
+                  hassle-free printing experience with top-notch results. Our
+                  process is designed for speed and convenience—simply select
+                  your shirt, upload your design, and let us handle the rest.
+                  Using advanced printing techniques, we guarantee sharp,
                   vibrant, and long-lasting prints that won’t fade after daily
                   use. We understand the urgency of last-minute orders, which is
                   why our **same-day printing service** is tailored to meet your

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('cloth', 'hoodie'))
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("cloth", "hoodie"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -144,8 +144,8 @@ function addToCart() {
                 London, we specialize in creating durable, stylish, and
                 comfortable hoodies that meet your exact needs. Our expert team
                 uses advanced printing methods to ensure your designs are
-                vibrant, precise, and long-lasting. From intricate logos to
-                bold graphics, we handle every detail with care, ensuring your
+                vibrant, precise, and long-lasting. From intricate logos to bold
+                graphics, we handle every detail with care, ensuring your
                 hoodies look great and perform even better. Whether you need a
                 single hoodie or a bulk order, Tee Print London is dedicated to
                 delivering exceptional results every time. Choose us for hoodies
@@ -165,7 +165,7 @@ function addToCart() {
     </section>
 
     <div>
-    <Cloth />
+      <Cloth />
     </div>
 
     <section class="teeprint-about-section">
@@ -180,17 +180,17 @@ function addToCart() {
               </div>
               <div class="aboutus-list">
                 <p>
-                  Ready to elevate your hoodie game? Tee Print London is here
-                  to help you create custom hoodies that are as unique as you
-                  are. Whether you’re designing hoodies for a business, team,
-                  event, or personal use, we provide premium printing services
-                  that deliver unmatched quality and style. Our easy ordering
-                  process makes it simple to bring your ideas to life—just
-                  choose your hoodie, upload your design, and let us handle the
-                  rest. With Tee Print London, you can trust that every piece
-                  is crafted with precision, durability, and care. Don’t settle
-                  for ordinary—order your custom hoodies from Tee Print London
-                  today and experience the difference quality makes.
+                  Ready to elevate your hoodie game? Tee Print London is here to
+                  help you create custom hoodies that are as unique as you are.
+                  Whether you’re designing hoodies for a business, team, event,
+                  or personal use, we provide premium printing services that
+                  deliver unmatched quality and style. Our easy ordering process
+                  makes it simple to bring your ideas to life—just choose your
+                  hoodie, upload your design, and let us handle the rest. With
+                  Tee Print London, you can trust that every piece is crafted
+                  with precision, durability, and care. Don’t settle for
+                  ordinary—order your custom hoodies from Tee Print London today
+                  and experience the difference quality makes.
                 </p>
               </div>
             </div>

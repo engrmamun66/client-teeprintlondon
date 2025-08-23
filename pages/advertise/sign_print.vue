@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('advertise', 'sign_print')) 
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("advertise", "sign_print"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -78,7 +78,10 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/sign_print/Leonardo_Phoenix_10_a_rectangular_business.jpg" alt="about image" />
+              <img
+                src="/img/sign_print/Leonardo_Phoenix_10_a_rectangular_business.jpg"
+                alt="about image"
+              />
             </div>
           </div>
         </div>
@@ -111,7 +114,10 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/sign_print/Leonardo_Phoenix_10_Design_a_versatile_and_customizable_door_s_3.jpg" alt="about image" />
+              <img
+                src="/img/sign_print/Leonardo_Phoenix_10_Design_a_versatile_and_customizable_door_s_3.jpg"
+                alt="about image"
+              />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -173,7 +179,10 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/sign_print/Leonardo_Phoenix_10_A_sleek_modern_business_sign_suspended_in_1.jpg" alt="about image" />
+              <img
+                src="/img/sign_print/Leonardo_Phoenix_10_A_sleek_modern_business_sign_suspended_in_1.jpg"
+                alt="about image"
+              />
             </div>
           </div>
         </div>

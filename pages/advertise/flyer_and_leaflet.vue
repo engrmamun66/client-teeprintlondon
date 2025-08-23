@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('advertise', 'flyer_and_leaflet')) 
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("advertise", "flyer_and_leaflet"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
 });
 
 function addToCart() {
-  let imgElement = document.querySelector(".teeprint-product-view-image img") as HTMLElement;
+  let imgElement = document.querySelector(
+    ".teeprint-product-view-image img"
+  ) as HTMLElement;
   cartAnimation({ element: imgElement }, () => {
     useNuxtApp().$emit("openInPageCart", true);
   });
@@ -27,7 +29,13 @@ function addToCart() {
               '/img/flyer_and_leaflet/Leonardo_Kino_XL_a_flyer_related_to_a_restaurant_2.jpg',
             ]"
           >
-            Need professional flyers or leaflets for your business, event, or personal project? Tee Print London offers premium printing services with a focus on quality and precision. Whether you're promoting a product, announcing an event, or sharing information, our flyers and leaflets are designed to make a lasting impression. With customizable sizes, materials, and finishes, we ensure your prints stand out.
+            Need professional flyers or leaflets for your business, event, or
+            personal project? Tee Print London offers premium printing services
+            with a focus on quality and precision. Whether you're promoting a
+            product, announcing an event, or sharing information, our flyers and
+            leaflets are designed to make a lasting impression. With
+            customizable sizes, materials, and finishes, we ensure your prints
+            stand out.
 
             <template #link>
               <nuxt-link
@@ -54,7 +62,15 @@ function addToCart() {
               </div>
               <div class="aboutus-list">
                 <p>
-                  At Tee Print London, we combine cutting-edge printing technology with exceptional craftsmanship to deliver flyers and leaflets that exceed expectations. Our services are perfect for businesses, events, and personal projects, offering vibrant colors, sharp details, and durable finishes. Whether you need a small batch or a large order, we provide competitive pricing and fast turnaround times without compromising on quality. Choose us for professional, eye-catching prints that leave a lasting impression.
+                  At Tee Print London, we combine cutting-edge printing
+                  technology with exceptional craftsmanship to deliver flyers
+                  and leaflets that exceed expectations. Our services are
+                  perfect for businesses, events, and personal projects,
+                  offering vibrant colors, sharp details, and durable finishes.
+                  Whether you need a small batch or a large order, we provide
+                  competitive pricing and fast turnaround times without
+                  compromising on quality. Choose us for professional,
+                  eye-catching prints that leave a lasting impression.
                 </p>
               </div>
             </div>
@@ -97,21 +113,27 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img
-                src="/img/flyer_and_leaflet/2190.jpg"
-                alt="about iamge"
-              />
+              <img src="/img/flyer_and_leaflet/2190.jpg" alt="about iamge" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Premium Flyer and Leaflet Printing – Fast, Reliable, and High-Quality
+                  Premium Flyer and Leaflet Printing – Fast, Reliable, and
+                  High-Quality
                 </h2>
               </div>
               <p>
-                At Tee Print London, we understand the importance of timely and high-quality printing. Our flyer and leaflet printing services are designed to meet your deadlines without compromising on quality. Whether you need promotional materials for a business, event, or personal project, we use state-of-the-art printing techniques to ensure vibrant colors, sharp details, and professional finishes. With customizable options and fast turnaround times, we make it easy to get the prints you need when you need them.
+                At Tee Print London, we understand the importance of timely and
+                high-quality printing. Our flyer and leaflet printing services
+                are designed to meet your deadlines without compromising on
+                quality. Whether you need promotional materials for a business,
+                event, or personal project, we use state-of-the-art printing
+                techniques to ensure vibrant colors, sharp details, and
+                professional finishes. With customizable options and fast
+                turnaround times, we make it easy to get the prints you need
+                when you need them.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -127,7 +149,7 @@ function addToCart() {
     </section>
 
     <div>
-      <Advertise /> 
+      <Advertise />
     </div>
 
     <section class="teeprint-about-section">
@@ -142,7 +164,15 @@ function addToCart() {
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait for days when you can have your flyers and leaflets printed today? At Tee Print London, we offer fast and reliable printing services to ensure your promotional materials are ready when you need them. Whether it's for a business campaign, event, or personal project, we provide seamless printing solutions with top-notch results. Our advanced printing techniques guarantee vibrant, long-lasting prints that make an impact. Place your order now and experience the best in flyer and leaflet printing.
+                  Why wait for days when you can have your flyers and leaflets
+                  printed today? At Tee Print London, we offer fast and reliable
+                  printing services to ensure your promotional materials are
+                  ready when you need them. Whether it's for a business
+                  campaign, event, or personal project, we provide seamless
+                  printing solutions with top-notch results. Our advanced
+                  printing techniques guarantee vibrant, long-lasting prints
+                  that make an impact. Place your order now and experience the
+                  best in flyer and leaflet printing.
                 </p>
               </div>
             </div>

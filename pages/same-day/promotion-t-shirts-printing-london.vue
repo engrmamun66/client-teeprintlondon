@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'promotion_t_shirts'))  
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "promotion_t_shirts"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -35,11 +35,12 @@ function addToCart() {
           >
             Need promotional T-shirts in a hurry? Tee Print London specializes
             in same-day printing to meet your urgent needs. Whether it’s for
-            corporate branding, team events, or promotional campaigns, we deliver
-            vibrant, high-quality T-shirts on the same day you place your order.
-            Our streamlined process ensures fast, reliable results without
-            compromising on quality. Serving clients across London and the UK,
-            we’re your trusted partner for premium, same-day promotional T-shirts.
+            corporate branding, team events, or promotional campaigns, we
+            deliver vibrant, high-quality T-shirts on the same day you place
+            your order. Our streamlined process ensures fast, reliable results
+            without compromising on quality. Serving clients across London and
+            the UK, we’re your trusted partner for premium, same-day promotional
+            T-shirts.
 
             <template #link>
               <nuxt-link
@@ -85,7 +86,10 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/promotional_t_shirt/9.jpg" alt="promotional T-shirts" />
+              <img
+                src="/img/promotional_t_shirt/9.jpg"
+                alt="promotional T-shirts"
+              />
             </div>
           </div>
         </div>
@@ -120,7 +124,10 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/promotional_t_shirt/6.jpg" alt="promotional T-shirts" />
+              <img
+                src="/img/promotional_t_shirt/6.jpg"
+                alt="promotional T-shirts"
+              />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -132,24 +139,23 @@ function addToCart() {
                 </h2>
               </div>
               <p>
-                When you need promotional T-shirts in a hurry, Tee Print
-                London is here to help. Our same-day printing service
-                ensures you get professionally printed T-shirts on the very same
-                day you place your order. Whether it’s for a corporate event,
-                team activity, or promotional campaign, we deliver
-                premium-quality prints with a fast turnaround. Using
-                state-of-the-art printing techniques like Direct-to-Garment
-                (DTG), screen printing, and vinyl printing, we produce vibrant,
-                long-lasting designs that withstand daily wear and multiple
-                washes. No matter the complexity of your design—logos, slogans,
-                graphics, or personalized text—we bring your vision to life with
-                precision and care. Our commitment to quality means that speed
-                never compromises excellence. Whether you need a single T-shirt
-                or a bulk order, our team is dedicated to providing the best
-                same-day printing service in London and across the UK. Why
-                wait for days? Get your promotional T-shirts printed today
-                with Tee Print London and enjoy fast, reliable, and
-                high-quality results.
+                When you need promotional T-shirts in a hurry, Tee Print London
+                is here to help. Our same-day printing service ensures you get
+                professionally printed T-shirts on the very same day you place
+                your order. Whether it’s for a corporate event, team activity,
+                or promotional campaign, we deliver premium-quality prints with
+                a fast turnaround. Using state-of-the-art printing techniques
+                like Direct-to-Garment (DTG), screen printing, and vinyl
+                printing, we produce vibrant, long-lasting designs that
+                withstand daily wear and multiple washes. No matter the
+                complexity of your design—logos, slogans, graphics, or
+                personalized text—we bring your vision to life with precision
+                and care. Our commitment to quality means that speed never
+                compromises excellence. Whether you need a single T-shirt or a
+                bulk order, our team is dedicated to providing the best same-day
+                printing service in London and across the UK. Why wait for days?
+                Get your promotional T-shirts printed today with Tee Print
+                London and enjoy fast, reliable, and high-quality results.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -182,13 +188,13 @@ function addToCart() {
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait days or even weeks for your promotional T-shirts
-                  when you can have them printed today? At Tee Print London, we
-                  offer same-day printing services to ensure you get your
-                  custom designs exactly when you need them. Whether it’s for
-                  corporate branding, team uniforms, or promotional campaigns,
-                  we provide a seamless and hassle-free printing experience with
-                  top-notch results. Our process is designed for speed and
+                  Why wait days or even weeks for your promotional T-shirts when
+                  you can have them printed today? At Tee Print London, we offer
+                  same-day printing services to ensure you get your custom
+                  designs exactly when you need them. Whether it’s for corporate
+                  branding, team uniforms, or promotional campaigns, we provide
+                  a seamless and hassle-free printing experience with top-notch
+                  results. Our process is designed for speed and
                   convenience—simply select your T-shirts, upload your design,
                   and let us handle the rest. Using advanced printing
                   techniques, we guarantee sharp, vibrant, and long-lasting
@@ -199,15 +205,18 @@ function addToCart() {
                   bulk order, we ensure every item is printed with precision,
                   durability, and style. Don’t let long wait times slow you
                   down—place your order now with Tee Print London and get your
-                  promotional T-shirts printed on the same day with
-                  professional service and unmatched quality.
+                  promotional T-shirts printed on the same day with professional
+                  service and unmatched quality.
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/promotional_t_shirt/2.jpg" alt="promotional T-shirts" />
+              <img
+                src="/img/promotional_t_shirt/2.jpg"
+                alt="promotional T-shirts"
+              />
             </div>
           </div>
         </div>

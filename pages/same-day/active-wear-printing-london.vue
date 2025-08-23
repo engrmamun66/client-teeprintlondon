@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'active_ware'))  
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "active_ware"));
 
-definePageMeta({ 
+definePageMeta({
   layout: "web",
 });
 

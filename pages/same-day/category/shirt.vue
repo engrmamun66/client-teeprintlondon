@@ -125,10 +125,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img
-                src="/img/Home/AHIGH.jpg"
-                alt="about iamge"
-              />
+              <img src="/img/Home/AHIGH.jpg" alt="about iamge" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -219,10 +216,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img
-                src="/img/Home/personalized-t-shirt.jpg"
-                alt="about iamge"
-              />
+              <img src="/img/Home/personalized-t-shirt.jpg" alt="about iamge" />
             </div>
           </div>
         </div>

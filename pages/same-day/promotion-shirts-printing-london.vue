@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'promotion_shirts'))  
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "promotion_shirts"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -34,13 +34,13 @@ function addToCart() {
             ]"
           >
             Need custom promotional shirts in a hurry? Tee Print London offers
-            same-day printing services to meet your urgent needs. Whether
-            it’s for company programs, anniversaries, promotions, or events, we
+            same-day printing services to meet your urgent needs. Whether it’s
+            for company programs, anniversaries, promotions, or events, we
             deliver vibrant, high-quality shirts on the same day you place your
-            order. Our streamlined process ensures fast, reliable results without
-            compromising on quality. Serving clients across London and the UK,
-            we’re your trusted partner for premium, same-day custom promotional
-            shirts.
+            order. Our streamlined process ensures fast, reliable results
+            without compromising on quality. Serving clients across London and
+            the UK, we’re your trusted partner for premium, same-day custom
+            promotional shirts.
 
             <template #link>
               <nuxt-link
@@ -149,8 +149,8 @@ function addToCart() {
                 a bulk order, our team is dedicated to providing the best
                 **same-day printing service** in London and across the UK. Why
                 wait for days? Get your custom promotional shirts printed today
-                with Tee Print London and enjoy fast, reliable, and
-                high-quality results.
+                with Tee Print London and enjoy fast, reliable, and high-quality
+                results.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"

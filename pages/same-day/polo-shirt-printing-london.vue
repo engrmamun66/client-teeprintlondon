@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'polo_shirt_printing'))  
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "polo_shirt_printing"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -32,13 +32,13 @@ function addToCart() {
               '/img/Polo_T_shirt/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_1.jpg',
             ]"
           >
-            Need high-quality custom Polo Shirts in a hurry? Tee Print London provides
-            same-day printing services, ensuring fast and reliable results.
-            Whether it’s for businesses, events, promotions, or personal use,
-            our efficient process guarantees stylish and professional Polo Shirts
-            without delays. Serving clients across London and the UK, we
-            specialize in delivering premium printing solutions with a quick
-            turnaround to meet your urgent needs.
+            Need high-quality custom Polo Shirts in a hurry? Tee Print London
+            provides same-day printing services, ensuring fast and reliable
+            results. Whether it’s for businesses, events, promotions, or
+            personal use, our efficient process guarantees stylish and
+            professional Polo Shirts without delays. Serving clients across
+            London and the UK, we specialize in delivering premium printing
+            solutions with a quick turnaround to meet your urgent needs.
 
             <template #link>
               <nuxt-link
@@ -74,8 +74,8 @@ function addToCart() {
                   sharp details and rich colors that won’t fade over time. Plus,
                   with fast turnaround times and competitive pricing, we make
                   customization effortless and affordable. Choose Tee Print
-                  London for stylish, durable, and uniquely crafted Polo Shirts that
-                  make a statement!
+                  London for stylish, durable, and uniquely crafted Polo Shirts
+                  that make a statement!
                 </p>
               </div>
             </div>
@@ -123,31 +123,34 @@ function addToCart() {
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Same-Day Polo Shirt Printing – Fast, Reliable, and High-Quality
+                  Same-Day Polo Shirt Printing – Fast, Reliable, and
+                  High-Quality
                 </h2>
               </div>
               <p>
-                When time is of the essence, and you need custom-printed Polo Shirts
-                without delays, Tee Print London is here to help. We specialize
-                in same-day printing services, allowing you to receive
-                professionally printed Polo Shirts on the very same day you place
-                your order. Whether you're preparing for a corporate event,
-                promotional campaign, or simply want a unique design for personal
-                use, our service ensures you get premium-quality prints with a fast
-                turnaround. At Tee Print London, we use state-of-the-art printing
-                techniques such as Direct-to-Garment (DTG), screen printing, and
-                vinyl printing to produce vibrant, long-lasting designs that
-                withstand daily use. No matter the complexity of your design—whether
-                it's a logo, slogan, graphic, or personalized text—we bring your
-                vision to life with precision and care. Our commitment to quality
-                means that speed does not compromise the excellence of our work. We
-                understand that urgent orders require not only quick processing but
-                also high standards, which is why our printing process ensures
-                crisp, clear, and professional results. Whether you need a single
-                Polo Shirt or a bulk order, our team is dedicated to providing the
+                When time is of the essence, and you need custom-printed Polo
+                Shirts without delays, Tee Print London is here to help. We
+                specialize in same-day printing services, allowing you to
+                receive professionally printed Polo Shirts on the very same day
+                you place your order. Whether you're preparing for a corporate
+                event, promotional campaign, or simply want a unique design for
+                personal use, our service ensures you get premium-quality prints
+                with a fast turnaround. At Tee Print London, we use
+                state-of-the-art printing techniques such as Direct-to-Garment
+                (DTG), screen printing, and vinyl printing to produce vibrant,
+                long-lasting designs that withstand daily use. No matter the
+                complexity of your design—whether it's a logo, slogan, graphic,
+                or personalized text—we bring your vision to life with precision
+                and care. Our commitment to quality means that speed does not
+                compromise the excellence of our work. We understand that urgent
+                orders require not only quick processing but also high
+                standards, which is why our printing process ensures crisp,
+                clear, and professional results. Whether you need a single Polo
+                Shirt or a bulk order, our team is dedicated to providing the
                 best service in London and across the UK. Why wait for days? Get
-                your custom Polo Shirts printed today with Tee Print London and enjoy
-                fast, reliable, and high-quality printing tailored to your needs.
+                your custom Polo Shirts printed today with Tee Print London and
+                enjoy fast, reliable, and high-quality printing tailored to your
+                needs.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -178,25 +181,26 @@ function addToCart() {
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait days or even weeks for your custom Polo Shirts when you
-                  can have them printed today? At Tee Print London, we offer
-                  same-day Polo Shirt printing to ensure you get your custom designs
-                  exactly when you need them. Whether it’s for a corporate event,
-                  business promotion, charity fundraiser, or personal use, we
-                  provide a seamless and hassle-free printing experience with
-                  top-notch results. Our process is designed for speed and
-                  convenience—simply select your Polo Shirt, upload your design, and
-                  let us handle the rest. Using advanced printing techniques,
-                  including Direct-to-Garment (DTG), screen printing, and vinyl
-                  printing, we guarantee sharp, vibrant, and long-lasting prints
-                  that won’t fade after just a few washes. We understand the urgency
-                  of last-minute orders, which is why our same-day printing service
-                  is tailored to meet your deadlines without compromising on
-                  quality. Whether you need a single Polo Shirt or a bulk order, we
-                  ensure every piece is printed with precision, durability, and
-                  style. Don’t let long wait times slow you down—place your order
-                  now with Tee Print London and get your custom Polo Shirts printed
-                  on the same day with professional service and unmatched quality.
+                  Why wait days or even weeks for your custom Polo Shirts when
+                  you can have them printed today? At Tee Print London, we offer
+                  same-day Polo Shirt printing to ensure you get your custom
+                  designs exactly when you need them. Whether it’s for a
+                  corporate event, business promotion, charity fundraiser, or
+                  personal use, we provide a seamless and hassle-free printing
+                  experience with top-notch results. Our process is designed for
+                  speed and convenience—simply select your Polo Shirt, upload
+                  your design, and let us handle the rest. Using advanced
+                  printing techniques, including Direct-to-Garment (DTG), screen
+                  printing, and vinyl printing, we guarantee sharp, vibrant, and
+                  long-lasting prints that won’t fade after just a few washes.
+                  We understand the urgency of last-minute orders, which is why
+                  our same-day printing service is tailored to meet your
+                  deadlines without compromising on quality. Whether you need a
+                  single Polo Shirt or a bulk order, we ensure every piece is
+                  printed with precision, durability, and style. Don’t let long
+                  wait times slow you down—place your order now with Tee Print
+                  London and get your custom Polo Shirts printed on the same day
+                  with professional service and unmatched quality.
                 </p>
               </div>
             </div>

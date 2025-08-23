@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('advertise', 'business_card')) 
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("advertise", "business_card"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
 });
 
 function addToCart() {
-  let imgElement = document.querySelector(".teeprint-product-view-image img") as HTMLElement;
+  let imgElement = document.querySelector(
+    ".teeprint-product-view-image img"
+  ) as HTMLElement;
   cartAnimation({ element: imgElement }, () => {
     useNuxtApp().$emit("openInPageCart", true);
   });
@@ -27,10 +29,19 @@ function addToCart() {
               '/img/business_card/1213.jpg',
             ]"
           >
-            Make a lasting impression with Tee Print London’s premium business card printing services. Whether you’re a professional, entrepreneur, or business owner, our business cards are designed to reflect your brand’s identity. With customizable designs, premium materials, and professional finishes, we ensure your business cards are both functional and visually stunning. Let us help you create business cards that leave a lasting impression on your clients and partners.
+            Make a lasting impression with Tee Print London’s premium business
+            card printing services. Whether you’re a professional, entrepreneur,
+            or business owner, our business cards are designed to reflect your
+            brand’s identity. With customizable designs, premium materials, and
+            professional finishes, we ensure your business cards are both
+            functional and visually stunning. Let us help you create business
+            cards that leave a lasting impression on your clients and partners.
 
             <template #link>
-              <nuxt-link :to="{ name: 'quote' }" class="teeprint-button teeprint-theme-btn zoomInOut mt-5">
+              <nuxt-link
+                :to="{ name: 'quote' }"
+                class="teeprint-button teeprint-theme-btn zoomInOut mt-5"
+              >
                 Get A Free Quote <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </template>
@@ -45,11 +56,21 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-content">
               <div class="section-main-heading">
-                <h2 class="section-heading-title-big">Why Choose Tee Print London for Business Cards?</h2>
+                <h2 class="section-heading-title-big">
+                  Why Choose Tee Print London for Business Cards?
+                </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  At Tee Print London, we understand the importance of creating business cards that not only look great but also serve their purpose effectively. Our state-of-the-art printing technology ensures vibrant colors, sharp details, and professional finishes. Whether you need classic, modern, or creative designs, we offer a wide range of customization options to suit your brand. With fast turnaround times, competitive pricing, and a commitment to quality, we are your trusted partner for all your business card printing needs.
+                  At Tee Print London, we understand the importance of creating
+                  business cards that not only look great but also serve their
+                  purpose effectively. Our state-of-the-art printing technology
+                  ensures vibrant colors, sharp details, and professional
+                  finishes. Whether you need classic, modern, or creative
+                  designs, we offer a wide range of customization options to
+                  suit your brand. With fast turnaround times, competitive
+                  pricing, and a commitment to quality, we are your trusted
+                  partner for all your business card printing needs.
                 </p>
               </div>
             </div>
@@ -69,7 +90,9 @@ function addToCart() {
           <div class="row">
             <div class="col-md-5">
               <div class="section-main-heading text-right pr-5">
-                <h4 class="section-heading-title-small"><span class="line-decoration"></span>What Our</h4>
+                <h4 class="section-heading-title-small">
+                  <span class="line-decoration"></span>What Our
+                </h4>
                 <h2 class="section-heading-title-big">Customers Say</h2>
               </div>
             </div>
@@ -93,12 +116,25 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
-                <h2 class="section-heading-title-big">Premium Business Cards – Designed to Impress</h2>
+                <h2 class="section-heading-title-big">
+                  Premium Business Cards – Designed to Impress
+                </h2>
               </div>
               <p>
-                Our business cards are more than just pieces of paper – they are powerful tools to communicate your brand’s identity. Whether you’re networking, attending meetings, or promoting your business, our designs are tailored to grab attention and leave a lasting impression. With options for custom shapes, sizes, and finishes, we ensure your business cards are both functional and visually appealing. Combined with fast printing services and high-quality finishes, we make it easy to create professional-grade business cards that stand out.
+                Our business cards are more than just pieces of paper – they are
+                powerful tools to communicate your brand’s identity. Whether
+                you’re networking, attending meetings, or promoting your
+                business, our designs are tailored to grab attention and leave a
+                lasting impression. With options for custom shapes, sizes, and
+                finishes, we ensure your business cards are both functional and
+                visually appealing. Combined with fast printing services and
+                high-quality finishes, we make it easy to create
+                professional-grade business cards that stand out.
               </p>
-              <nuxt-link :to="{ name: 'quote' }" class="teeprint-button teeprint-theme-btn zoomInOut">
+              <nuxt-link
+                :to="{ name: 'quote' }"
+                class="teeprint-button teeprint-theme-btn zoomInOut"
+              >
                 Get A Free Quote <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </div>
@@ -108,7 +144,7 @@ function addToCart() {
     </section>
 
     <div>
-      <Advertise /> 
+      <Advertise />
     </div>
 
     <section class="teeprint-about-section">
@@ -117,11 +153,20 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-content">
               <div class="section-main-heading">
-                <h2 class="section-heading-title-big">Get Your Business Cards Printed Today!</h2>
+                <h2 class="section-heading-title-big">
+                  Get Your Business Cards Printed Today!
+                </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Don’t wait to make an impact – get your business cards printed today with Tee Print London. Our streamlined process ensures quick turnaround times without compromising on quality. Whether you need a small batch for personal use or a large order for your team, we’ve got you covered. With our advanced printing techniques and attention to detail, we guarantee vibrant, durable, and professional results. Place your order now and experience the best in business card printing.
+                  Don’t wait to make an impact – get your business cards printed
+                  today with Tee Print London. Our streamlined process ensures
+                  quick turnaround times without compromising on quality.
+                  Whether you need a small batch for personal use or a large
+                  order for your team, we’ve got you covered. With our advanced
+                  printing techniques and attention to detail, we guarantee
+                  vibrant, durable, and professional results. Place your order
+                  now and experience the best in business card printing.
                 </p>
               </div>
             </div>
@@ -136,7 +181,6 @@ function addToCart() {
     </section>
 
     <div class="container mt-5">
-
       <web-DuelCard
         img_left="/img/business_card/OJZ24D0.jpg"
         img_right="/img/business_card/123458.jpg"

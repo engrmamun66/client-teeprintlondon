@@ -1,7 +1,7 @@
 <script setup>
-import getMeta from "~/seo-meta"; 
+import getMeta from "~/seo-meta";
 let { product_slug } = useRoute().params;
-useSeoMeta(getMeta('pages', product_slug))  
+useSeoMeta(getMeta("pages", product_slug));
 
 definePageMeta({
   name: "product_details",
@@ -9,18 +9,14 @@ definePageMeta({
 });
 
 const truncateTitle = (title) => {
-  if (!title) return '';
-  return title.length > 60 ? title.slice(0, 60) + '...' : title;
+  if (!title) return "";
+  return title.length > 60 ? title.slice(0, 60) + "..." : title;
 };
-
-
 
 let homeStore = inject("homeStore");
 
-
-
 let isMounted = ref(false);
-let imageIndex = ref(0); 
+let imageIndex = ref(0);
 let activeThumbnailIndex = ref(0); // Track the active thumbnail index
 let allImagesLoaded = ref(false); // Track if all images are loaded
 let loadedImagesCount = ref(0); // Track the number of images loaded
@@ -48,18 +44,13 @@ onMounted(async () => {
   await homeStore.getProductDetails(product_slug);
 
   H.delay(() => (isMounted.value = true), 500);
- 
+
   // image_url.value.push(homeStore.product.thumbnail_image_url );
 
   homeStore.product.images?.forEach((image) => {
     image_url.value.push(image.image_url);
-  }); 
-
- 
+  });
 });
-
-
- 
 
 let showEffect = computed(
   () => H.isPendingAnyApi("Frontend:getProductDetails") || !isMounted.value
@@ -78,7 +69,6 @@ let showEffect = computed(
                   <div
                     class="teeprint-product-view-image"
                     @click="log(homeStore.product)"
- 
                   >
                     <template v-if="showEffect || !allImagesLoaded">
                       <ShimmerEffect height="600px"></ShimmerEffect>
@@ -128,10 +118,7 @@ let showEffect = computed(
                   </div>
                   <div class="teeprint-product-multipleimage">
                     <template v-if="showEffect">
-                      <div
-                        v-for="x in 4"
-                        class="teeprint-product-thumb-item"
-                      >
+                      <div v-for="x in 4" class="teeprint-product-thumb-item">
                         <ShimmerEffect width="100%"></ShimmerEffect>
                       </div>
                     </template>
@@ -287,9 +274,18 @@ let showEffect = computed(
                   </ul>
                 </div>
 
-                <div v-if="homeStore.product?.show_personalized != 0 " class="note-field select-size">
-                    <h5>Add your personalisation</h5> 
-                    <textarea rows="4" cols="50" style="min-height: 100px;" @input="(e) => homeStore.product.note = e.target.value" v-html="homeStore.product.note" ></textarea>
+                <div
+                  v-if="homeStore.product?.show_personalized != 0"
+                  class="note-field select-size"
+                >
+                  <h5>Add your personalisation</h5>
+                  <textarea
+                    rows="4"
+                    cols="50"
+                    style="min-height: 100px"
+                    @input="(e) => (homeStore.product.note = e.target.value)"
+                    v-html="homeStore.product.note"
+                  ></textarea>
                 </div>
 
                 <div class="teeprint-quantity">
@@ -392,7 +388,9 @@ let showEffect = computed(
                   </template>
                   <template v-else>
                     <div v-html="homeStore.product.short_description"></div>
-                    <web-priceTable v-if="homeStore.product?.show_size_table"></web-priceTable>
+                    <web-priceTable
+                      v-if="homeStore.product?.show_size_table"
+                    ></web-priceTable>
                   </template>
                 </div>
               </div>
@@ -407,7 +405,7 @@ let showEffect = computed(
             class="mb-1"
           ></ShimmerEffect>
         </template>
-        <template v-else> 
+        <template v-else>
           <div class="row pd-description">
             <div class="col-md-12">
               <div class="pd-tab">
@@ -432,7 +430,6 @@ let showEffect = computed(
                           <template
                             v-for="relatedItem in homeStore.related_products"
                           >
-                  
                             <div
                               class="col-xl-3 col-lg-3 col-md-6 col-sm-4 col-6"
                             >
@@ -468,10 +465,13 @@ let showEffect = computed(
                                   <div class="teeprint-product-body">
                                     <h5 class="teeprint-product-title">
                                       {{ truncateTitle(relatedItem?.name) }}
-
-                                      
                                     </h5>
-                                    <span class="teeprint-price">{{ H.formatPrice(relatedItem?.discounted_min_unit_price  ?? relatedItem?.min_unit_price)}}</span>
+                                    <span class="teeprint-price">{{
+                                      H.formatPrice(
+                                        relatedItem?.discounted_min_unit_price ??
+                                          relatedItem?.min_unit_price
+                                      )
+                                    }}</span>
                                   </div>
                                 </div>
                               </div>
@@ -491,7 +491,7 @@ let showEffect = computed(
                 </div>
               </div>
             </div>
-          </div> 
+          </div>
         </template>
       </div>
     </section>
@@ -590,5 +590,4 @@ let showEffect = computed(
 .teeprint-product-view-image {
   transition: width 0.3s, height 0.3s; /* Smooth transition when dimensions change */
 }
-
 </style>

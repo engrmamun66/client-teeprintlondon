@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('cloth', 'promotion_t_shirts'))
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("cloth", "promotion_t_shirts"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -39,8 +39,8 @@ function addToCart() {
             T-shirts that exceed expectations. Our commitment to quality ensures
             every shirt is crafted with precision, using advanced printing
             techniques like Direct-to-Garment (DTG), screen printing, and vinyl
-            printing. Serving clients across London and the UK, we’re your trusted
-            partner for top-notch promotional T-shirts.
+            printing. Serving clients across London and the UK, we’re your
+            trusted partner for top-notch promotional T-shirts.
 
             <template #link>
               <nuxt-link
@@ -70,10 +70,10 @@ function addToCart() {
                 <p>
                   At Tee Print London, we pride ourselves on delivering
                   high-quality promotional T-shirts that combine durability,
-                  comfort, and professional design. Whether you need T-shirts for
-                  corporate branding, team events, or promotional campaigns, we
-                  use advanced printing techniques like Direct-to-Garment (DTG),
-                  screen printing, and vinyl printing to create vibrant,
+                  comfort, and professional design. Whether you need T-shirts
+                  for corporate branding, team events, or promotional campaigns,
+                  we use advanced printing techniques like Direct-to-Garment
+                  (DTG), screen printing, and vinyl printing to create vibrant,
                   long-lasting designs. Our state-of-the-art technology and
                   expert team ensure every shirt is printed with precision and
                   care. When you purchase from Tee Print London, you’re not just
@@ -86,7 +86,10 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/promotional_t_shirt/9.jpg" alt="promotional T-shirts" />
+              <img
+                src="/img/promotional_t_shirt/9.jpg"
+                alt="promotional T-shirts"
+              />
             </div>
           </div>
         </div>
@@ -121,31 +124,36 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/promotional_t_shirt/6.jpg" alt="promotional T-shirts" />
+              <img
+                src="/img/promotional_t_shirt/6.jpg"
+                alt="promotional T-shirts"
+              />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big mt-5">
-                  Premium-Quality Promotional T-Shirts – Durable and Professional
+                  Premium-Quality Promotional T-Shirts – Durable and
+                  Professional
                 </h2>
               </div>
               <p>
                 When you choose Tee Print London for your promotional T-shirts,
                 you’re choosing quality, durability, and professionalism. Our
-                T-shirts are crafted to withstand daily wear and multiple washes,
-                ensuring your designs stay vibrant and sharp for years to come.
-                Using state-of-the-art printing techniques like Direct-to-Garment
-                (DTG), screen printing, and vinyl printing, we produce
-                long-lasting designs that reflect your brand’s identity. No matter
-                the complexity of your design—logos, slogans, graphics, or
-                personalized text—we bring your vision to life with precision and
-                care. Our commitment to quality means every shirt is made to
-                impress. Whether you need a single T-shirt or a bulk order, our
-                team is dedicated to providing the best promotional T-shirts in
-                London and across the UK. Choose Tee Print London for T-shirts that
-                combine style, durability, and professionalism.
+                T-shirts are crafted to withstand daily wear and multiple
+                washes, ensuring your designs stay vibrant and sharp for years
+                to come. Using state-of-the-art printing techniques like
+                Direct-to-Garment (DTG), screen printing, and vinyl printing, we
+                produce long-lasting designs that reflect your brand’s identity.
+                No matter the complexity of your design—logos, slogans,
+                graphics, or personalized text—we bring your vision to life with
+                precision and care. Our commitment to quality means every shirt
+                is made to impress. Whether you need a single T-shirt or a bulk
+                order, our team is dedicated to providing the best promotional
+                T-shirts in London and across the UK. Choose Tee Print London
+                for T-shirts that combine style, durability, and
+                professionalism.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -179,14 +187,14 @@ function addToCart() {
               <div class="aboutus-list">
                 <p>
                   Why settle for ordinary when you can have premium-quality
-                  promotional T-shirts? At Tee Print London, we offer
-                  top-notch T-shirts that combine durability, comfort, and
-                  professional design. Whether it’s for corporate branding,
-                  team uniforms, or promotional campaigns, we provide a seamless
-                  and hassle-free printing experience with exceptional results.
-                  Our process is designed for convenience—simply select your
-                  T-shirt, upload your design, and let us handle the rest. Using
-                  advanced printing techniques, we guarantee sharp, vibrant, and
+                  promotional T-shirts? At Tee Print London, we offer top-notch
+                  T-shirts that combine durability, comfort, and professional
+                  design. Whether it’s for corporate branding, team uniforms, or
+                  promotional campaigns, we provide a seamless and hassle-free
+                  printing experience with exceptional results. Our process is
+                  designed for convenience—simply select your T-shirt, upload
+                  your design, and let us handle the rest. Using advanced
+                  printing techniques, we guarantee sharp, vibrant, and
                   long-lasting prints that won’t fade after daily use. When you
                   purchase from Tee Print London, you’re investing in a product
                   that reflects your brand’s excellence. Don’t compromise on
@@ -199,7 +207,10 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/promotional_t_shirt/2.jpg" alt="promotional T-shirts" />
+              <img
+                src="/img/promotional_t_shirt/2.jpg"
+                alt="promotional T-shirts"
+              />
             </div>
           </div>
         </div>

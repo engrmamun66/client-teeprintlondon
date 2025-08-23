@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('cloth', 'cap'))
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("cloth", "cap"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -165,7 +165,7 @@ function addToCart() {
     </section>
 
     <div>
-    <Cloth />
+      <Cloth />
     </div>
 
     <section class="teeprint-about-section">

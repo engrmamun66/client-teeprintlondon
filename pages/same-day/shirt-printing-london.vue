@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'shirt')) 
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "shirt"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -32,7 +32,10 @@ function addToCart() {
               '/img/Cotton_T_shirt/Leonardo_Phoenix_10_A_stylish_man_in_his_mid30s_with_a_strong_1.jpg',
             ]"
           >
-            When you need tees printed and delivered fast, we are your best option for T-shirt printing in London, UK. No need to wait days to get your custom t-shirt. Enjoy our express t-shirt printing to get yours in hours. You get high-quality and quick service together.
+            When you need tees printed and delivered fast, we are your best
+            option for T-shirt printing in London, UK. No need to wait days to
+            get your custom t-shirt. Enjoy our express t-shirt printing to get
+            yours in hours. You get high-quality and quick service together.
 
             <template #link>
               <nuxt-link
@@ -59,7 +62,15 @@ function addToCart() {
               </div>
               <div class="aboutus-list">
                 <p>
-                  Gorgeous design on t-shirts is not everything. The quality of fabrics also matters. We choose soft and long-lasting cotton fabric for printing that looks and feels excellent. Clarity of print is a big issue for t-shirt lovers. We ensure quality t-shirt printing in London using the latest and advanced machinery. Enjoy sharp and bright colors always! TeePrintLondon is proud of the t-shirt materials and the quality of production. You can wash your tee and stay confident that the print remains the same.
+                  Gorgeous design on t-shirts is not everything. The quality of
+                  fabrics also matters. We choose soft and long-lasting cotton
+                  fabric for printing that looks and feels excellent. Clarity of
+                  print is a big issue for t-shirt lovers. We ensure quality
+                  t-shirt printing in London using the latest and advanced
+                  machinery. Enjoy sharp and bright colors always!
+                  TeePrintLondon is proud of the t-shirt materials and the
+                  quality of production. You can wash your tee and stay
+                  confident that the print remains the same.
                 </p>
               </div>
             </div>
@@ -112,10 +123,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img
-                src="/img/Home/AHIGH.jpg"
-                alt="about iamge"
-              />
+              <img src="/img/Home/AHIGH.jpg" alt="about iamge" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -126,7 +134,17 @@ function addToCart() {
                 </h2>
               </div>
               <p>
-                Get your t-shirt before the event begins! Did you forget to order on time? This is where we emphasize. Our same-day option ensures the t-shirt's quick delivery. Also, note that fast work doesn't mean ruining the quality. We approve and deliver when your t-shirt matches all our quality standards. No minimum order, affordable for all. No force for a bulk order. Order as much as you wish, even one with no extra cost. Our custom t-shirt print service is open to all. If you need a hundred pieces for a special event or your team, we can confidently print and deliver. Need one piece for personal use? You are still welcome.
+                Get your t-shirt before the event begins! Did you forget to
+                order on time? This is where we emphasize. Our same-day option
+                ensures the t-shirt's quick delivery. Also, note that fast work
+                doesn't mean ruining the quality. We approve and deliver when
+                your t-shirt matches all our quality standards. No minimum
+                order, affordable for all. No force for a bulk order. Order as
+                much as you wish, even one with no extra cost. Our custom
+                t-shirt print service is open to all. If you need a hundred
+                pieces for a special event or your team, we can confidently
+                print and deliver. Need one piece for personal use? You are
+                still welcome.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -157,17 +175,24 @@ function addToCart() {
               </div>
               <div class="aboutus-list">
                 <p>
-                  We help people, groups, and businesses by offering their desired t-shirts. No matter what your requirements are, we can print them! We are a top name for custom t-shirt printing in London for branding, events, fun, and more. Simply choose a design and get it printed on your t-shirt. Design your personalized t-shirt with ease. Do you have a unique design idea? Let's turn it into a great-looking t-shirt. Our digital t-shirt printing in London encourages your creativity and allows for personalized design. You can simply design it with no professional skills. Choose the color, pictures, and text you want on the tee. That's it!
+                  We help people, groups, and businesses by offering their
+                  desired t-shirts. No matter what your requirements are, we can
+                  print them! We are a top name for custom t-shirt printing in
+                  London for branding, events, fun, and more. Simply choose a
+                  design and get it printed on your t-shirt. Design your
+                  personalized t-shirt with ease. Do you have a unique design
+                  idea? Let's turn it into a great-looking t-shirt. Our digital
+                  t-shirt printing in London encourages your creativity and
+                  allows for personalized design. You can simply design it with
+                  no professional skills. Choose the color, pictures, and text
+                  you want on the tee. That's it!
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img
-                src="/img/Home/personalized-t-shirt.jpg"
-                alt="about iamge"
-              />
+              <img src="/img/Home/personalized-t-shirt.jpg" alt="about iamge" />
             </div>
           </div>
         </div>
@@ -180,6 +205,6 @@ function addToCart() {
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
-    <web-questions name="tshirt"/>
+    <web-questions name="tshirt" />
   </div>
 </template>

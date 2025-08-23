@@ -8,8 +8,8 @@
           :buttons="[]"
         />
         <div class="d-flex align-items-center" v-if="loader">
-            <Loader />
-          </div>
+          <Loader />
+        </div>
         <div>
           <a
             href="#"
@@ -621,13 +621,12 @@ function validateForm() {
   }
 
   if (!productStore.product.thumbnail_image) {
-
     errors.value.thumbnail_image = "Thumbnail image is required";
 
     isValid = false;
   }
 
-    if (productStore?.product?.thumbnail_image?.length) {
+  if (productStore?.product?.thumbnail_image?.length) {
     // Access the actual file from the Proxy/Array
     const imageFile = productStore?.product?.thumbnail_image[0];
 
@@ -673,10 +672,10 @@ const hideElement = (selector) => {
   }
 };
 
-let loader = ref(false)
+let loader = ref(false);
 
 onMounted(async () => {
-  loader.value = true
+  loader.value = true;
   await productStore.getGenders();
   // Usage
 
@@ -684,13 +683,12 @@ onMounted(async () => {
   await brandStore.getBrandList();
   await productStore.getColorList();
   await productStore.showProduct(id);
-  loader.value = false
+  loader.value = false;
   if (productStore.product.subcategory_id) {
     checkSubCategory();
   }
   setContent(editorLong, productStore.product.long_description);
   setContent(editorShort, productStore.product.short_description);
-
 
   // productStore.selectedGender = productStore.product.genders
 });
@@ -737,11 +735,8 @@ const calculateDiscountedPrice = (price) => {
 };
 
 const handleFileRemoval = (removedFile) => {
-
   if (removedFile[0] instanceof File) {
-
   } else {
-
     productStore.deleteImage(removedFile[0].id);
   }
   // Handle the removed file as needed, e.g., updating the uploadedFiles list
@@ -769,7 +764,6 @@ async function handleSubmit() {
   let uploadedFiles = ref([]);
   productStore.product.images.forEach((image) => {
     if (image instanceof File) {
- 
       uploadedFiles.value.push(image);
     }
   });

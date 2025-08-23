@@ -1,29 +1,18 @@
-
 <script setup>
-import getMeta from "~/seo-meta"; 
-const { category_slug } = useRoute().params
-useSeoMeta(getMeta('category_pages', category_slug))  
+import getMeta from "~/seo-meta";
+const { category_slug } = useRoute().params;
+useSeoMeta(getMeta("category_pages", category_slug));
 
-definePageMeta({ 
-  name: 'category-products',
-  layout: 'web',
-})
-
-
- 
+definePageMeta({
+  name: "category-products",
+  layout: "web",
+});
 </script>
 
-
 <template>
-  <div>  
-    <web-productList :category-slug="category_slug" ></web-productList>
-   
+  <div>
+    <web-productList :category-slug="category_slug"></web-productList>
   </div>
 </template>
 
-
-
-
-<style scoped>
-
-</style>
+<style scoped></style>

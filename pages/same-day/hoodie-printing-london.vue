@@ -378,7 +378,7 @@ function addToCart() {
         paragraph="We bring your vision to life with creative designs that leave a lasting impression. Your dream is our mission, your satisfaction is our commitment, and delivering excellence is our promise."
       />
     </div>
-    <web-questions name="hoodie"/>
+    <web-questions name="hoodie" />
   </div>
 </template>
 

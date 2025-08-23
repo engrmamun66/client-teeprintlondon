@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'university_shirt')) 
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "university_shirt"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -63,7 +63,8 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Same-Day University & School Shirts?
+                  Why Choose Tee Print London for Same-Day University & School
+                  Shirts?
                 </h2>
               </div>
               <div class="aboutus-list">
@@ -141,29 +142,29 @@ function addToCart() {
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big mt-5">
-                  Same-Day University & School Shirt Printing – Fast, Reliable, and
-                  High-Quality
+                  Same-Day University & School Shirt Printing – Fast, Reliable,
+                  and High-Quality
                 </h2>
               </div>
               <p>
                 When you need custom university or school shirts in a hurry, Tee
                 Print London is here to help. Our **same-day printing service**
-                ensures you get professionally printed shirts on the very same day
-                you place your order. Whether it’s for a school event, university
-                promotion, sports team, or personal use, we deliver
+                ensures you get professionally printed shirts on the very same
+                day you place your order. Whether it’s for a school event,
+                university promotion, sports team, or personal use, we deliver
                 premium-quality prints with a fast turnaround. Using
-                state-of-the-art printing techniques like Direct-to-Garment (DTG),
-                screen printing, and vinyl printing, we produce vibrant,
-                long-lasting designs that withstand daily wear and multiple washes.
-                No matter the complexity of your design—logos, slogans, graphics,
-                or personalized text—we bring your vision to life with precision
-                and care. Our commitment to quality means that speed never
-                compromises excellence. Whether you need a single shirt or a bulk
-                order, our team is dedicated to providing the best **same-day
-                printing service** in London and across the UK. Why wait for days?
-                Get your custom university and school shirts printed today with
-                Tee Print London and enjoy fast, reliable, and high-quality
-                results.
+                state-of-the-art printing techniques like Direct-to-Garment
+                (DTG), screen printing, and vinyl printing, we produce vibrant,
+                long-lasting designs that withstand daily wear and multiple
+                washes. No matter the complexity of your design—logos, slogans,
+                graphics, or personalized text—we bring your vision to life with
+                precision and care. Our commitment to quality means that speed
+                never compromises excellence. Whether you need a single shirt or
+                a bulk order, our team is dedicated to providing the best
+                **same-day printing service** in London and across the UK. Why
+                wait for days? Get your custom university and school shirts
+                printed today with Tee Print London and enjoy fast, reliable,
+                and high-quality results.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -197,24 +198,24 @@ function addToCart() {
               <div class="aboutus-list">
                 <p>
                   Why wait days or even weeks for your custom university and
-                  school shirts when you can have them printed today? At Tee Print
-                  London, we offer **same-day printing services** to ensure you
-                  get your custom designs exactly when you need them. Whether
-                  it’s for a school event, university promotion, sports team, or
-                  personal use, we provide a seamless and hassle-free printing
-                  experience with top-notch results. Our process is designed for
-                  speed and convenience—simply select your shirt, upload your
-                  design, and let us handle the rest. Using advanced printing
-                  techniques, we guarantee sharp, vibrant, and long-lasting
-                  prints that won’t fade after daily use. We understand the
-                  urgency of last-minute orders, which is why our **same-day
-                  printing service** is tailored to meet your deadlines without
-                  compromising on quality. Whether you need a single piece or a
-                  bulk order, we ensure every item is printed with precision,
-                  durability, and style. Don’t let long wait times slow you
-                  down—place your order now with Tee Print London and get your
-                  custom university and school shirts printed on the same day with
-                  professional service and unmatched quality.
+                  school shirts when you can have them printed today? At Tee
+                  Print London, we offer **same-day printing services** to
+                  ensure you get your custom designs exactly when you need them.
+                  Whether it’s for a school event, university promotion, sports
+                  team, or personal use, we provide a seamless and hassle-free
+                  printing experience with top-notch results. Our process is
+                  designed for speed and convenience—simply select your shirt,
+                  upload your design, and let us handle the rest. Using advanced
+                  printing techniques, we guarantee sharp, vibrant, and
+                  long-lasting prints that won’t fade after daily use. We
+                  understand the urgency of last-minute orders, which is why our
+                  **same-day printing service** is tailored to meet your
+                  deadlines without compromising on quality. Whether you need a
+                  single piece or a bulk order, we ensure every item is printed
+                  with precision, durability, and style. Don’t let long wait
+                  times slow you down—place your order now with Tee Print London
+                  and get your custom university and school shirts printed on
+                  the same day with professional service and unmatched quality.
                 </p>
               </div>
             </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'sweatshirt')) 
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "sweatshirt"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -83,10 +83,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img
-                src="/img/sweatshirt/2.jpg"
-                alt="about iamge"
-              />
+              <img src="/img/sweatshirt/2.jpg" alt="about iamge" />
             </div>
           </div>
         </div>
@@ -119,10 +116,7 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img
-                src="/img/sweatshirt/5.jpg"
-                alt="about iamge"
-              />
+              <img src="/img/sweatshirt/5.jpg" alt="about iamge" />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -201,10 +195,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img
-                src="/img/sweatshirt/6.jpg"
-                alt="about iamge"
-              />
+              <img src="/img/sweatshirt/6.jpg" alt="about iamge" />
             </div>
           </div>
         </div>

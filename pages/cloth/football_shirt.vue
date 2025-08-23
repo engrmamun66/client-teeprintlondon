@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('cloth', 'football_shirt'))
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("cloth", "football_shirt"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -32,15 +32,15 @@ function addToCart() {
             ]"
           >
             At Tee Print London, we specialize in delivering **premium-quality
-            Football Team T-Shirts** that combine style, durability, and comfort.
-            Whether you're outfitting a football team, creating uniforms for
-            players, or designing shirts for a sports event, we provide vibrant,
-            long-lasting prints on high-quality fabrics. Our advanced printing
-            techniques ensure sharp details and rich colors that won’t fade over
-            time. With fast turnaround times and competitive pricing, we make
-            customization effortless and affordable. Choose Tee Print London for
-            stylish, durable, and uniquely crafted Football Team T-Shirts that
-            make a statement!
+            Football Team T-Shirts** that combine style, durability, and
+            comfort. Whether you're outfitting a football team, creating
+            uniforms for players, or designing shirts for a sports event, we
+            provide vibrant, long-lasting prints on high-quality fabrics. Our
+            advanced printing techniques ensure sharp details and rich colors
+            that won’t fade over time. With fast turnaround times and
+            competitive pricing, we make customization effortless and
+            affordable. Choose Tee Print London for stylish, durable, and
+            uniquely crafted Football Team T-Shirts that make a statement!
 
             <template #link>
               <nuxt-link
@@ -148,11 +148,11 @@ function addToCart() {
                 needs. Our expert team uses advanced printing methods to ensure
                 your designs are vibrant, precise, and long-lasting. From
                 intricate logos to bold graphics, we handle every detail with
-                care, ensuring your Football Team T-Shirts look great and perform
-                even better. Whether you need a single shirt or a bulk order,
-                Tee Print London is dedicated to delivering exceptional results
-                every time. **Purchase from us** and experience the perfect
-                blend of quality, comfort, and style!
+                care, ensuring your Football Team T-Shirts look great and
+                perform even better. Whether you need a single shirt or a bulk
+                order, Tee Print London is dedicated to delivering exceptional
+                results every time. **Purchase from us** and experience the
+                perfect blend of quality, comfort, and style!
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -168,7 +168,7 @@ function addToCart() {
     </section>
 
     <div>
-    <Cloth />
+      <Cloth />
     </div>
 
     <section class="teeprint-about-section">

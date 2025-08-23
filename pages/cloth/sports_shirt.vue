@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('cloth', 'sports_shirt'))
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("cloth", "sports_shirt"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -25,15 +25,12 @@ function addToCart() {
           <MultipleImageCard
             :right="true"
             title="Premium Quality Sports T-Shirts"
-            :images="[
-              '/img/Sports_Shirts/1.jpg',
-              '/img/Sports_Shirts/2.jpg',
-            ]"
+            :images="['/img/Sports_Shirts/1.jpg', '/img/Sports_Shirts/2.jpg']"
           >
             At Tee Print London, we specialize in delivering **premium-quality
-            Sports T-Shirts** that combine style, durability, and comfort. Whether
-            you're outfitting a sports team, creating uniforms for players, or
-            designing shirts for a sports event, we provide vibrant,
+            Sports T-Shirts** that combine style, durability, and comfort.
+            Whether you're outfitting a sports team, creating uniforms for
+            players, or designing shirts for a sports event, we provide vibrant,
             long-lasting prints on high-quality fabrics. Our advanced printing
             techniques ensure sharp details and rich colors that won’t fade over
             time. With fast turnaround times and competitive pricing, we make
@@ -166,7 +163,7 @@ function addToCart() {
     </section>
 
     <div>
-    <Cloth />
+      <Cloth />
     </div>
 
     <section class="teeprint-about-section">
@@ -181,9 +178,9 @@ function addToCart() {
               </div>
               <div class="aboutus-list">
                 <p>
-                  Why wait days or even weeks for your custom Sports T-Shirts when
-                  you can have them printed today? At Tee Print London, we offer
-                  same-day printing to ensure you get your custom designs
+                  Why wait days or even weeks for your custom Sports T-Shirts
+                  when you can have them printed today? At Tee Print London, we
+                  offer same-day printing to ensure you get your custom designs
                   exactly when you need them. Whether it’s for a sports team,
                   event, or personal use, we provide a seamless and hassle-free
                   printing experience with top-notch results. Our process is

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('advertise', 'ticket_and_voucher')) 
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("advertise", "ticket_and_voucher"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",

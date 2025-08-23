@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'cap'))  
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "cap"));
 
 definePageMeta({
   titleTemplate: "% :: details",

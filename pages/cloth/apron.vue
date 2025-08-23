@@ -41,21 +41,34 @@ function addToCart() {
             your logo, design, or message stands out with crisp detail and
             long-lasting durability. -->
 
-                <p>
-        Looking for <strong style="font-weight: bold;">high-quality custom apron printing in London</strong>? 
-        At <strong style="font-weight: bold;">Tee Print London</strong>, we specialize in 
-        <strong style="font-weight: bold;">premium personalized aprons</strong> for businesses, events, restaurants, cafes, salons, and home use. 
-        Whether you need a single printed apron or a bulk order, we deliver 
-        <strong style="font-weight: bold;">exceptional print quality</strong>, 
-        <strong style="font-weight: bold;">fast turnaround</strong>, and 
-        <strong style="font-weight: bold;">no minimum order requirement</strong>.
-    </p>
-    
-    <p>
-        Our custom aprons are printed in London using the latest 
-        <strong style="font-weight: bold;">direct-to-garment (DTG)</strong> and 
-        <strong style="font-weight: bold;">embroidery technology</strong>, ensuring your logo, design, or message stands out with crisp detail and long-lasting durability.
-    </p>
+            <p>
+              Looking for
+              <strong style="font-weight: bold"
+                >high-quality custom apron printing in London</strong
+              >? At <strong style="font-weight: bold">Tee Print London</strong>,
+              we specialize in
+              <strong style="font-weight: bold"
+                >premium personalized aprons</strong
+              >
+              for businesses, events, restaurants, cafes, salons, and home use.
+              Whether you need a single printed apron or a bulk order, we
+              deliver
+              <strong style="font-weight: bold"
+                >exceptional print quality</strong
+              >, <strong style="font-weight: bold">fast turnaround</strong>, and
+              <strong style="font-weight: bold"
+                >no minimum order requirement</strong
+              >.
+            </p>
+
+            <p>
+              Our custom aprons are printed in London using the latest
+              <strong style="font-weight: bold">direct-to-garment (DTG)</strong>
+              and
+              <strong style="font-weight: bold">embroidery technology</strong>,
+              ensuring your logo, design, or message stands out with crisp
+              detail and long-lasting durability.
+            </p>
 
             <template #link>
               <nuxt-link
@@ -90,14 +103,17 @@ function addToCart() {
                   <li>Home chefs, BBQ lovers & craft makers</li>
                 </ul>
                 <h1>Why Choose Us?</h1>
-<ul>
-  <li>Premium quality aprons available in various colours and styles</li>
-  <li>Custom apron printing & embroidery services in London</li>
-  <li>Fast, reliable same-day and next-day printing options</li>
-  <li>Eco-friendly print-on-demand production</li>
-  <li>No minimum order – from one piece to bulk orders</li>
-  <li>Friendly, local support team based in London</li>
-</ul>
+                <ul>
+                  <li>
+                    Premium quality aprons available in various colours and
+                    styles
+                  </li>
+                  <li>Custom apron printing & embroidery services in London</li>
+                  <li>Fast, reliable same-day and next-day printing options</li>
+                  <li>Eco-friendly print-on-demand production</li>
+                  <li>No minimum order – from one piece to bulk orders</li>
+                  <li>Friendly, local support team based in London</li>
+                </ul>
                 <!-- <ul>
                   <li>
                     <strong style="font-weight: bold;">Premium quality aprons </strong>&nbsp; available in various colours and
@@ -110,7 +126,16 @@ function addToCart() {
                   <li>Friendly, local support team based in London</li>
                 </ul> -->
                 <p>
-                  Whether you're showcasing your brand in a busy kitchen or giving your team a professional, polished look, our &nbsp;<strong style="font-weight: bold;">personalized aprons</strong>   are the perfect choice. You can add your &nbsp;<strong style="font-weight: bold;">company logo, name, tagline</strong> , or even fun custom designs for gifts or special occasions.
+                  Whether you're showcasing your brand in a busy kitchen or
+                  giving your team a professional, polished look, our
+                  &nbsp;<strong style="font-weight: bold"
+                    >personalized aprons</strong
+                  >
+                  are the perfect choice. You can add your &nbsp;<strong
+                    style="font-weight: bold"
+                    >company logo, name, tagline</strong
+                  >
+                  , or even fun custom designs for gifts or special occasions.
                 </p>
               </div>
             </div>
@@ -167,7 +192,27 @@ function addToCart() {
                 </h2>
               </div>
               <p>
-                      At Tee Print London, we’re proud to be a trusted name in <strong style="font-weight: bold;">custom printing and embroidery in London.</strong>   With years of experience serving businesses, creatives, and individuals, we offer not only &nbsp;<strong style="font-weight: bold;">high-quality garment printing</strong>  but also <strong style="font-weight: bold;">fast, reliable service with quick turnaround times</strong> . Our commitment to excellence, attention to detail, and ability to deliver even <strong style="font-weight: bold;">same-day orders</strong>   make us a go-to choice for anyone looking for <strong style="font-weight: bold;">professional print solutions in London</strong>. Whether it's one item or a bulk order, your satisfaction is always our priority.
+                At Tee Print London, we’re proud to be a trusted name in
+                <strong style="font-weight: bold"
+                  >custom printing and embroidery in London.</strong
+                >
+                With years of experience serving businesses, creatives, and
+                individuals, we offer not only &nbsp;<strong
+                  style="font-weight: bold"
+                  >high-quality garment printing</strong
+                >
+                but also
+                <strong style="font-weight: bold"
+                  >fast, reliable service with quick turnaround times</strong
+                >
+                . Our commitment to excellence, attention to detail, and ability
+                to deliver even
+                <strong style="font-weight: bold">same-day orders</strong> make
+                us a go-to choice for anyone looking for
+                <strong style="font-weight: bold"
+                  >professional print solutions in London</strong
+                >. Whether it's one item or a bulk order, your satisfaction is
+                always our priority.
               </p>
               <nuxt-link
                 :to="{ name: 'quote' }"
@@ -186,7 +231,6 @@ function addToCart() {
       <Cloth />
     </div>
 
-    
     <div class="container mt-5">
       <web-DuelCard
         img_left="/img/Apron/Leonardo_Phoenix_10_A_young_man_in_his_early_twenties_with_a_c_2.jpg"
@@ -221,58 +265,55 @@ li:before {
   top: -2px;
 }
 
-        .intro {
-            margin-bottom: 30px;
-            font-size: 1.1em;
-        }
-        
-        .process {
-            list-style-type: none;
-            padding: 0;
-            counter-reset: process-counter;
-        }
-        
-        .process-step {
-            margin-bottom: 25px;
-            padding-left: 60px;
-            position: relative;
-        }
-        
-        .process-step:before {
-            counter-increment: process-counter;
-            content: counter(process-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #2e8b57;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-        
-        .step-title {
-            font-weight: bold;
-            color: #2e8b57;
-            font-size: 1.1em;
-            margin-bottom: 5px;
-            display: block;
-        }
-        
-        .highlight {
-            font-weight: bold;
-        }
-        
-        .location {
-            font-weight: bold;
-            color: #2e8b57;
-        }
+.intro {
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
 
+.process {
+  list-style-type: none;
+  padding: 0;
+  counter-reset: process-counter;
+}
 
+.process-step {
+  margin-bottom: 25px;
+  padding-left: 60px;
+  position: relative;
+}
 
+.process-step:before {
+  counter-increment: process-counter;
+  content: counter(process-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #2e8b57;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.step-title {
+  font-weight: bold;
+  color: #2e8b57;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.highlight {
+  font-weight: bold;
+}
+
+.location {
+  font-weight: bold;
+  color: #2e8b57;
+}
 </style>

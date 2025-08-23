@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'apron'))  
-
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "apron"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -83,7 +82,6 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-
               <img
                 src="/img/Apron/Leonardo_Phoenix_10_a_young_man_in_his_early_twenties_with_a_r_2.jpg"
                 alt="about iamge"
