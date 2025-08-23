@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('same_day_pages', 'university_t_shirt')) 
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("same_day_pages", "university_t_shirt"));
 
 definePageMeta({
   titleTemplate: "% :: details",
@@ -34,13 +34,13 @@ function addToCart() {
             ]"
           >
             Need custom university or school T-shirts in a hurry? Tee Print
-            London offers same-day printing services to meet your urgent
-            needs. Whether it’s for school events, university promotions, sports
-            teams, or personal use, we deliver vibrant, high-quality T-shirts on
-            the same day you place your order. Our streamlined process ensures
-            fast, reliable results without compromising on quality. Serving
-            clients across London and the UK, we’re your trusted partner for
-            premium, same-day custom university and school T-shirts.
+            London offers same-day printing services to meet your urgent needs.
+            Whether it’s for school events, university promotions, sports teams,
+            or personal use, we deliver vibrant, high-quality T-shirts on the
+            same day you place your order. Our streamlined process ensures fast,
+            reliable results without compromising on quality. Serving clients
+            across London and the UK, we’re your trusted partner for premium,
+            same-day custom university and school T-shirts.
 
             <template #link>
               <nuxt-link
@@ -63,7 +63,8 @@ function addToCart() {
             <div class="teeprint-about-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big">
-                  Why Choose Tee Print London for Same-Day University & School T-Shirts?
+                  Why Choose Tee Print London for Same-Day University & School
+                  T-Shirts?
                 </h2>
               </div>
               <div class="aboutus-list">
@@ -77,10 +78,9 @@ function addToCart() {
                   to deliver vibrant, long-lasting designs. Our state-of-the-art
                   technology and expert team ensure your T-shirts are printed
                   with precision and care, even on tight deadlines. With
-                  same-day delivery options, we make it easy to get your
-                  custom T-shirts when you need them most. Trust Tee Print
-                  London for fast, professional, and high-quality printing
-                  services.
+                  same-day delivery options, we make it easy to get your custom
+                  T-shirts when you need them most. Trust Tee Print London for
+                  fast, professional, and high-quality printing services.
                 </p>
               </div>
             </div>
@@ -101,7 +101,10 @@ function addToCart() {
                 />
                 Your browser does not support the video tag.
               </video> -->
-              <img src="/img/school_and_college_t_shirt/1.jpg" alt="university T-shirts" />
+              <img
+                src="/img/school_and_college_t_shirt/1.jpg"
+                alt="university T-shirts"
+              />
             </div>
           </div>
         </div>
@@ -136,24 +139,27 @@ function addToCart() {
         <div class="row">
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-img">
-              <img src="/img/school_and_college_t_shirt/8.jpg" alt="university T-shirts" />
+              <img
+                src="/img/school_and_college_t_shirt/8.jpg"
+                alt="university T-shirts"
+              />
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-homewhychoose-content">
               <div class="section-main-heading">
                 <h2 class="section-heading-title-big mt-5">
-                  Same-Day University & School T-Shirt Printing – Fast, Reliable, and
-                  High-Quality
+                  Same-Day University & School T-Shirt Printing – Fast,
+                  Reliable, and High-Quality
                 </h2>
               </div>
               <p>
-                When you need custom university or school T-shirts in a
-                hurry, Tee Print London is here to help. Our same-day printing
-                service ensures you get professionally printed T-shirts on the
-                very same day you place your order. Whether it’s for a school
-                event, university promotion, sports team, or personal use, we
-                deliver premium-quality prints with a fast turnaround. Using
+                When you need custom university or school T-shirts in a hurry,
+                Tee Print London is here to help. Our same-day printing service
+                ensures you get professionally printed T-shirts on the very same
+                day you place your order. Whether it’s for a school event,
+                university promotion, sports team, or personal use, we deliver
+                premium-quality prints with a fast turnaround. Using
                 state-of-the-art printing techniques like Direct-to-Garment
                 (DTG), screen printing, and vinyl printing, we produce vibrant,
                 long-lasting designs that withstand daily wear and multiple
@@ -162,9 +168,9 @@ function addToCart() {
                 precision and care. Our commitment to quality means that speed
                 never compromises excellence. Whether you need a single T-shirt
                 or a bulk order, our team is dedicated to providing the best
-                same-day printing service in London and across the UK. Why
-                wait for days? Get your custom university and school T-shirts
-                printed today with Tee Print London and enjoy fast, reliable, and
+                same-day printing service in London and across the UK. Why wait
+                for days? Get your custom university and school T-shirts printed
+                today with Tee Print London and enjoy fast, reliable, and
                 high-quality results.
               </p>
               <nuxt-link
@@ -201,29 +207,32 @@ function addToCart() {
                   Why wait days or even weeks for your custom university and
                   school T-shirts when you can have them printed today? At Tee
                   Print London, we offer same-day printing services to ensure
-                  you get your custom designs exactly when you need them. Whether
-                  it’s for a school event, university promotion, sports team, or
-                  personal use, we provide a seamless and hassle-free printing
-                  experience with top-notch results. Our process is designed for
-                  speed and convenience—simply select your T-shirt, upload your
-                  design, and let us handle the rest. Using advanced printing
-                  techniques, we guarantee sharp, vibrant, and long-lasting
-                  prints that won’t fade after daily use. We understand the
-                  urgency of last-minute orders, which is why our same-day
-                  printing service is tailored to meet your deadlines without
-                  compromising on quality. Whether you need a single piece or a
-                  bulk order, we ensure every item is printed with precision,
-                  durability, and style. Don’t let long wait times slow you
-                  down—place your order now with Tee Print London and get your
-                  custom university and school T-shirts printed on the same day
-                  with professional service and unmatched quality.
+                  you get your custom designs exactly when you need them.
+                  Whether it’s for a school event, university promotion, sports
+                  team, or personal use, we provide a seamless and hassle-free
+                  printing experience with top-notch results. Our process is
+                  designed for speed and convenience—simply select your T-shirt,
+                  upload your design, and let us handle the rest. Using advanced
+                  printing techniques, we guarantee sharp, vibrant, and
+                  long-lasting prints that won’t fade after daily use. We
+                  understand the urgency of last-minute orders, which is why our
+                  same-day printing service is tailored to meet your deadlines
+                  without compromising on quality. Whether you need a single
+                  piece or a bulk order, we ensure every item is printed with
+                  precision, durability, and style. Don’t let long wait times
+                  slow you down—place your order now with Tee Print London and
+                  get your custom university and school T-shirts printed on the
+                  same day with professional service and unmatched quality.
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img src="/img/school_and_college_t_shirt/4.jpg" alt="university T-shirts" />
+              <img
+                src="/img/school_and_college_t_shirt/4.jpg"
+                alt="university T-shirts"
+              />
             </div>
           </div>
         </div>
