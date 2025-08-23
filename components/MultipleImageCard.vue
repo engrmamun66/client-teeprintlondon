@@ -118,7 +118,7 @@ const onImageError = () => {
 const startTimeout = () => {
   timeoutId = setTimeout(() => {
     loading.value = false;
-  }, 500);
+  }, 200);
 };
 
 watch(
