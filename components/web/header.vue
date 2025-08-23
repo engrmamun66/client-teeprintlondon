@@ -5,8 +5,8 @@ homeStore.getTypewiseCategoryList();
 let search = ref("");
 let isFocused = ref(false);
 
-let dbounceSearch = H.debounce(homeStore.searchProduct, 300);
-let dbounceGetProducts = H.debounce(homeStore.getProducts, 300);
+let dbounceSearch = H.debounce(homeStore.searchProduct, 150);
+let dbounceGetProducts = H.debounce(homeStore.getProducts, 160);
 
 watch(search, (a) => {
   if (a) a = String(a).trimStart().trimEnd();
@@ -15,6 +15,12 @@ watch(search, (a) => {
     homeStore.searchedProducts = [];
   }
 });
+
+function truncateTo48Chars(input) {
+    if (typeof input !== 'string') return input;
+    if (input.length <= 48) return input;
+    return input.substring(0, 48) + '...'; // First 48 chars + ellipsis
+}
 
 function getProductByEnterOrSerchClick() {
   homeStore.payload.search = a;
@@ -221,7 +227,7 @@ let { staticPagesByParentCat } = globalData;
                               "
                               @mouseover="log(homeStore.searchedProducts)"
                             />
-                            {{ product.name }}
+                            {{ truncateTo48Chars(product.name)  }}
                           </div>
                         </nuxt-link>
                       </div>
