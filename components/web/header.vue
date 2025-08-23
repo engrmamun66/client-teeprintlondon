@@ -17,22 +17,22 @@ watch(search, (a) => {
 });
 
 function truncateTo48Chars(input) {
-    if (typeof input !== 'string') return input;
-    
-    // Check if window object exists (for SSR compatibility)
-    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-    const maxLength = isMobile ? 35 : 48;
-    
-    if (input.length <= maxLength) return input;
-    return input.substring(0, maxLength) + '...';
+  if (typeof input !== "string") return input;
+
+  // Check if window object exists (for SSR compatibility)
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+  const maxLength = isMobile ? 35 : 48;
+
+  if (input.length <= maxLength) return input;
+  return input.substring(0, maxLength) + "...";
 }
 
 // Optional: Add resize listener if you need dynamic updates
-if (typeof window !== 'undefined') {
-    window.addEventListener('resize', () => {
-        // You might want to re-render your components here
-        console.log('Window resized - consider re-rendering truncated text');
-    });
+if (typeof window !== "undefined") {
+  window.addEventListener("resize", () => {
+    // You might want to re-render your components here
+    console.log("Window resized - consider re-rendering truncated text");
+  });
 }
 
 function getProductByEnterOrSerchClick() {
@@ -135,9 +135,7 @@ function hideAllFirst(_for = 1) {
         item.childs.forEach((child) => (child["isShow"] = false));
       });
     }
-  } catch (error) {
-
-  }
+  } catch (error) {}
 }
 
 function onclickMenuItem(event, n, index) {
@@ -225,13 +223,13 @@ let { staticPagesByParentCat } = globalData;
                     v-for="(product, i) in homeStore.searchedProducts"
                     :key="i"
                   >
-                    <div role="listbox" class="dropdown-menu show">
-                      <div role="option" class="dropdown-item">
-                        <nuxt-link
-                          :to="`/product/${product.slug}`"
-                          class="text-black"
-                          @click="search = null"
-                        >
+                    <nuxt-link
+                      :to="`/product/${product.slug}`"
+                      class="text-black"
+                      @click="search = null"
+                    >
+                      <div role="listbox" class="dropdown-menu show">
+                        <div role="option" class="dropdown-item">
                           <div class="inner-serch cp">
                             <img
                               :src="
@@ -240,11 +238,11 @@ let { staticPagesByParentCat } = globalData;
                               "
                               @mouseover="log(homeStore.searchedProducts)"
                             />
-                            {{ truncateTo48Chars(product.name)  }}
+                            {{ truncateTo48Chars(product.name) }}
                           </div>
-                        </nuxt-link>
+                        </div>
                       </div>
-                    </div>
+                    </nuxt-link>
                   </template>
                 </template>
               </template>
@@ -348,7 +346,13 @@ let { staticPagesByParentCat } = globalData;
                         @click="onclickMenuItem($event, 2, index)"
                         @mouseenter="onclickMenuItem($event, 2, index)"
                       >
-                        <nuxt-link :to="item?.name == 'Advertising Materials' ? '#' : `/shop`">
+                        <nuxt-link
+                          :to="
+                            item?.name == 'Advertising Materials'
+                              ? '#'
+                              : `/shop`
+                          "
+                        >
                           {{ item?.name }}
                           <i
                             class="lni lni-chevron-down"
