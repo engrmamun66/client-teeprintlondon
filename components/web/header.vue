@@ -18,8 +18,21 @@ watch(search, (a) => {
 
 function truncateTo48Chars(input) {
     if (typeof input !== 'string') return input;
-    if (input.length <= 48) return input;
-    return input.substring(0, 48) + '...'; // First 48 chars + ellipsis
+    
+    // Check if window object exists (for SSR compatibility)
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const maxLength = isMobile ? 35 : 48;
+    
+    if (input.length <= maxLength) return input;
+    return input.substring(0, maxLength) + '...';
+}
+
+// Optional: Add resize listener if you need dynamic updates
+if (typeof window !== 'undefined') {
+    window.addEventListener('resize', () => {
+        // You might want to re-render your components here
+        console.log('Window resized - consider re-rendering truncated text');
+    });
 }
 
 function getProductByEnterOrSerchClick() {
