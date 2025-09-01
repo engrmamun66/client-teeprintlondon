@@ -32,6 +32,7 @@
                 </div>
                 <div class="teeprint-column-6">
                   <img
+                    style="border-radius: 10%"
                     src="/img/Home/Leonardo_Phoenix_10_A_gorgeously_styled_highquality_illustrati_1.jpg"
                     alt="slider img"
                   />
@@ -69,6 +70,7 @@
                 </div>
                 <div class="teeprint-column-6">
                   <img
+                    style="border-radius: 10%"
                     src="/img/Hoodie/Leonardo_Phoenix_10_A_stylish_highquality_hoodie_from_Teeprint_2.jpg"
                     alt="slider img"
                   />
@@ -105,6 +107,7 @@
                 </div>
                 <div class="teeprint-column-6">
                   <img
+                    style="border-radius: 10%"
                     src="/img/cap/Leonardo_Kino_XL_a_cap_image_written_teeprintlondon_on_that_ca_0.jpg"
                     alt="slider img"
                   />
