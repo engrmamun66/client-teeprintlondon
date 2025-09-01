@@ -8,6 +8,18 @@ definePageMeta({
   layout: "web",
 });
 
+let isTotebag = ref(false);
+
+function checkToteBag(str) {
+  if (!str) {
+    isTotebag.value = false;
+    return;
+  }
+
+  // Case-insensitive check
+  isTotebag.value = str.toLowerCase().includes("tote bag");
+}
+
 const truncateTitle = (title) => {
   if (!title) return "";
   return title.length > 60 ? title.slice(0, 60) + "..." : title;
@@ -42,7 +54,7 @@ const onImageLoad = () => {
 
 onMounted(async () => {
   await homeStore.getProductDetails(product_slug);
-
+  checkToteBag(homeStore.product?.long_description);
   H.delay(() => (isMounted.value = true), 500);
 
   // image_url.value.push(homeStore.product.thumbnail_image_url );
@@ -198,7 +210,7 @@ let showEffect = computed(
                   </web-discountCard>
                 </div>
 
-                <div class="select-size">
+                <div :hidden="isTotebag" class="select-size">
                   <h5>Select Size</h5>
                   <template v-if="showEffect">
                     <ul>
