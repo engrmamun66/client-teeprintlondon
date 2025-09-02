@@ -288,12 +288,14 @@ export const useProductStore = defineStore("product", () => {
   }
   let productList = ref([]);
   let paginateData = ref(null);
+  let numberOfProduct = ref(null)
   async function getProductList(query={}) {
     try { 
       let response = await Product.list({ params: { ...query, per_page: 20 } });
       if (response.status == 200) {
         paginateData.value = response.data.data;
         productList.value = response.data.data.data;
+        numberOfProduct.value = response.data.data.total
       }
     } catch (error) {}
   }
@@ -336,7 +338,8 @@ export const useProductStore = defineStore("product", () => {
     bulkPrice,
     bulkQuantity,
     productCreateLoader,
-    productUpdateLoader
+    productUpdateLoader,
+    numberOfProduct
   };
 });
 
