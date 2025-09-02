@@ -143,13 +143,6 @@ export const useProductStore = defineStore("product", () => {
         Toaster.error("There was an error")
       }
 
-      //   if (error.response.status == 401) {
-      //     registrationFormError.value.type = 401;
-      //     registrationFormError.value.message = error.response.data.error;
-      //   } else {
-      //     registrationFormError.value.type = 422;
-      //     registrationFormError.value.messages = error.response.data.errors;
-      //   }
     }
   }
   let colorList = ref([]);
@@ -182,65 +175,11 @@ export const useProductStore = defineStore("product", () => {
         return true;
       }
     } catch (error) {
-      //   if (error.response.status == 401) {
-      //     registrationFormError.value.type = 401;
-      //     registrationFormError.value.message = error.response.data.error;
-      //   } else {
-      //     registrationFormError.value.type = 422;
-      //     registrationFormError.value.messages = error.response.data.errors;
-      //   }
       return false;
     }
   }
 
-  // function mapProductFromResponse(response) {
-  //   return {
-  //     id: response.data.data.id,
-  //     name: response.data.data.name,
-  //     price: 25, // Default or fetch from response
-  //     brand_id: response.data.data.brand_id,
-  //     genders: response.data.data.genders,
-  //     images: response.data.data.images,
-  //     thumbnail_image: response.data.data.thumbnail_image_url,
-  //     short_description: response.data.data.short_description,
-  //     long_description: response.data.data.long_description,
-  //     colors: response.data.data.colors,
-  //     sku: response.data.data.sku,
-  //     status: response.data.data.status,
-  //     sizes: response.data.data.sizes.map((responseSize) => {
-  //       // Find the corresponding size in the product's sizes array
-  //       const existingSize = product.value.sizes.find(
-  //         (size) => size.id == responseSize.pivot.size_id
-  //       );
 
-  //       // If a matching size is found, update its properties
-  //       if (existingSize) {
-  //         return {
-  //           ...existingSize,
-  //           unit_price: parseFloat(responseSize.unit_price), // Convert string to number
-  //           quantity: responseSize.quantity,
-  //         };
-  //       }
-
-  //       // If no matching size is found, return the response size as-is
-  //       return {
-  //         id: responseSize.size_id,
-  //         name: responseSize.name || `Size ${responseSize.size_id}`, // Default name if not provided
-  //         unit_price: parseFloat(responseSize.unit_price),
-  //         quantity: responseSize.quantity,
-  //       };
-  //     }),
-  //     category_id:
-  //       response.data.data.category.parent != null
-  //         ? response.data.data.category.parent.id
-  //         : response.data.data.category.id,
-  //     subcategory_id:
-  //       response.data.data.category.parent != null
-  //         ? response.data.data.category.id
-  //         : null,
-  //     discount: response.data.data.discount,
-  //   };
-  // }
 
   function mapProductFromResponse(response) {
     return {

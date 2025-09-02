@@ -31,6 +31,13 @@ const handleError = () => {
 </script>
 
 <style scoped>
+/* Remove all default margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .error-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
@@ -40,32 +47,44 @@ const handleError = () => {
   position: relative;
   overflow: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* Ensure no white borders */
+  border: none;
+  outline: none;
+}
+
+/* Ensure html and body elements also have no margin */
+:deep(html), 
+:deep(body) {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
 }
 
 /* Fixed stars background */
 .stars {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
   background-image: 
-    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 130px 80px, #ddd, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 160px 30px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 200px 60px, #eee, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 250px 90px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 280px 20px, #ddd, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 320px 70px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 350px 40px, #eee, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 380px 80px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 420px 30px, #ddd, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 460px 60px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 500px 90px, #eee, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 540px 20px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 580px 70px, #ddd, rgba(0,0,0,0));
+    radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(2px 2px at 130px 80px, #ddd, transparent),
+    radial-gradient(1px 1px at 160px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 200px 60px, #eee, transparent),
+    radial-gradient(1px 1px at 250px 90px, #fff, transparent),
+    radial-gradient(2px 2px at 280px 20px, #ddd, transparent),
+    radial-gradient(1px 1px at 320px 70px, #fff, transparent),
+    radial-gradient(2px 2px at 350px 40px, #eee, transparent),
+    radial-gradient(1px 1px at 380px 80px, #fff, transparent),
+    radial-gradient(2px 2px at 420px 30px, #ddd, transparent),
+    radial-gradient(1px 1px at 460px 60px, #fff, transparent),
+    radial-gradient(2px 2px at 500px 90px, #eee, transparent),
+    radial-gradient(1px 1px at 540px 20px, #fff, transparent),
+    radial-gradient(2px 2px at 580px 70px, #ddd, transparent);
   background-repeat: repeat;
   background-size: 600px 600px;
   z-index: 0;
@@ -74,24 +93,24 @@ const handleError = () => {
 
 .twinkling {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
   background-image: 
-    radial-gradient(1px 1px at 50px 160px, #fff, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 90px 120px, #eee, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 140px 200px, #fff, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 190px 160px, #ddd, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 230px 180px, #fff, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 270px 220px, #eee, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 320px 150px, #fff, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 360px 190px, #ddd, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 410px 170px, #fff, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 450px 210px, #eee, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 500px 180px, #fff, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 540px 140px, #ddd, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 590px 200px, #fff, rgba(0,0,0,0));
+    radial-gradient(1px 1px at 50px 160px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 120px, #eee, transparent),
+    radial-gradient(1px 1px at 140px 200px, #fff, transparent),
+    radial-gradient(1px 1px at 190px 160px, #ddd, transparent),
+    radial-gradient(1px 1px at 230px 180px, #fff, transparent),
+    radial-gradient(1px 1px at 270px 220px, #eee, transparent),
+    radial-gradient(1px 1px at 320px 150px, #fff, transparent),
+    radial-gradient(1px 1px at 360px 190px, #ddd, transparent),
+    radial-gradient(1px 1px at 410px 170px, #fff, transparent),
+    radial-gradient(1px 1px at 450px 210px, #eee, transparent),
+    radial-gradient(1px 1px at 500px 180px, #fff, transparent),
+    radial-gradient(1px 1px at 540px 140px, #ddd, transparent),
+    radial-gradient(1px 1px at 590px 200px, #fff, transparent);
   background-repeat: repeat;
   background-size: 600px 600px;
   z-index: 1;
@@ -100,8 +119,12 @@ const handleError = () => {
 }
 
 @keyframes twinkle {
-  from { background-position: 0 0; }
-  to { background-position: 600px 600px; }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 600px 600px;
+  }
 }
 
 .error-content {
@@ -116,6 +139,7 @@ const handleError = () => {
   max-width: 500px;
   width: 90%;
   animation: fadeIn 0.8s ease-out;
+  margin: 0; /* Ensure no margin */
 }
 
 @keyframes fadeIn {
