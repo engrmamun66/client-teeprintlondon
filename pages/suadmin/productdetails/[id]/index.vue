@@ -675,6 +675,7 @@ const hideElement = (selector) => {
 let loader = ref(false);
 
 onMounted(async () => {
+  productStore.resetProduct()
   loader.value = true;
   await productStore.getGenders();
   // Usage
