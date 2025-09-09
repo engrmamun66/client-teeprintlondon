@@ -23,23 +23,25 @@ function addToCart() {
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-content">
               <div class="section-main-heading">
-                <h2 class="section-heading-title-big">About Tee Print London</h2>
+                <h2 class="section-heading-title-big">
+                  About Tee Print London
+                </h2>
               </div>
               <div class="aboutus-list">
                 <p>
-                  Tee Print London is your trusted custom printing partner in London,
-                  offering high-quality, same-day garment and promotional printing with
-                  24/7 availability. We bring your ideas to life — whether it's for a
-                  business launch, birthday celebration, holiday event, or personalized
-                  family gifts.
+                  Tee Print London is your trusted custom printing partner in
+                  London, offering high-quality, same-day garment and
+                  promotional printing with 24/7 availability. We bring your
+                  ideas to life — whether it's for a business launch, birthday
+                  celebration, holiday event, or personalized family gifts.
                 </p>
 
                 <h6>Our Mission</h6>
                 <p>
-                  To deliver top-quality custom printing that empowers individuals and
-                  organizations to express their identity, promote their cause, and
-                  celebrate their moments — with creativity, professionalism, and
-                  precision.
+                  To deliver top-quality custom printing that empowers
+                  individuals and organizations to express their identity,
+                  promote their cause, and celebrate their moments — with
+                  creativity, professionalism, and precision.
                 </p>
 
                 <h6>What We Offer</h6>
@@ -47,10 +49,15 @@ function addToCart() {
                   <table class="privacy-table">
                     <tbody>
                       <tr>
-                        <td>Custom T-Shirts (Men, Women, Kids — Unisex & Fitted)</td>
+                        <td>
+                          Custom T-Shirts (Men, Women, Kids — Unisex & Fitted)
+                        </td>
                       </tr>
                       <tr>
-                        <td>Hoodies, Sweatshirts & Workwear (With Embroidery Option)</td>
+                        <td>
+                          Hoodies, Sweatshirts & Workwear (With Embroidery
+                          Option)
+                        </td>
                       </tr>
                       <tr>
                         <td>Tote Bags, Aprons & Caps</td>
@@ -62,7 +69,10 @@ function addToCart() {
                         <td>Mugs, Stickers & Gift Items</td>
                       </tr>
                       <tr>
-                        <td>Large Format Printing — Banners, Roll-Ups, Posters, Menus, Flyers, and Business Cards</td>
+                        <td>
+                          Large Format Printing — Banners, Roll-Ups, Posters,
+                          Menus, Flyers, and Business Cards
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -94,7 +104,10 @@ function addToCart() {
                         <td>Birthday Tees & Celebration Banners</td>
                       </tr>
                       <tr>
-                        <td>Father's Day, Mother's Day & Family Holiday Collections</td>
+                        <td>
+                          Father's Day, Mother's Day & Family Holiday
+                          Collections
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -105,7 +118,9 @@ function addToCart() {
                   <table class="privacy-table">
                     <tbody>
                       <tr>
-                        <td>Open 24/7 — Order Anytime, Collect or Deliver Same Day</td>
+                        <td>
+                          Open 24/7 — Order Anytime, Collect or Deliver Same Day
+                        </td>
                       </tr>
                       <tr>
                         <td>Same-Day UK Delivery Available</td>
@@ -123,7 +138,10 @@ function addToCart() {
                         <td>No Minimum Order — Print What You Need</td>
                       </tr>
                       <tr>
-                        <td>Convenient Central London Location — 38 Worland Road, London E15 4EY</td>
+                        <td>
+                          Convenient Central London Location — 38 Worland Road,
+                          London E15 4EY
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -131,14 +149,15 @@ function addToCart() {
 
                 <h6>Our Commitment to You</h6>
                 <p>
-                  At Tee Print London, we don't just print — we empower. From a single
-                  custom shirt to full event merchandise kits, our goal is to provide you
-                  with products that look great, feel great, and reflect your message with
-                  impact.
+                  At Tee Print London, we don't just print — we empower. From a
+                  single custom shirt to full event merchandise kits, our goal
+                  is to provide you with products that look great, feel great,
+                  and reflect your message with impact.
                 </p>
                 <p>
-                  We combine the latest printing technology with hands-on customer care to
-                  ensure your order is delivered accurately, quickly, and beautifully.
+                  We combine the latest printing technology with hands-on
+                  customer care to ensure your order is delivered accurately,
+                  quickly, and beautifully.
                 </p>
 
                 <h6>Contact Us</h6>
@@ -228,18 +247,18 @@ function addToCart() {
   .teeprint-about-img-container {
     display: none;
   }
-  
+
   .section-heading-title-big {
     font-size: 1.8rem; /* Adjust as needed */
     margin-top: 5rem;
     margin-bottom: 1rem;
     display: block; /* Ensure it's visible */
   }
-  
+
   .teeprint-about-content {
     padding: 0 15px; /* Add some padding on mobile */
   }
-  
+
   .privacy-table th,
   .privacy-table td {
     padding: 6px; /* Slightly smaller padding on mobile */
