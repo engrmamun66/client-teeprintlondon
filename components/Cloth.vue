@@ -82,7 +82,7 @@ const items = [
     title: "Apron Print",
     image:
       "/img/Apron/Leonardo_Phoenix_10_A_young_adult_male_likely_in_his_early_twe_3.jpg",
-    link: "cloth/apron-printing-london",
+    link: "cloth/apron",
   },
   {
     title: "Football Team T- Shirts",
