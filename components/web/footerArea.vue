@@ -162,16 +162,47 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="teeprint-instagram-onlyicon"
-                    ><i class="la la-instagram"></i
-                  ></a>
+                  <a
+                    href="https://www.instagram.com/teeprintlondon1/"
+                    class="teeprint-instagram-onlyicon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="la la-instagram"></i>
+                  </a>
                 </li>
                 <li>
-                  <a href="#" class="teeprint-twitter-onlyicon"
-                    ><i class="la la-twitter"></i
-                  ></a>
+                  <a
+                    href="https://uk.pinterest.com/teeprintlondon1/"
+                    class="teeprint-pinterest-onlyicon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="la la-pinterest"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.tiktok.com/@teeprintlondon"
+                    class="teeprint-tiktok-onlyicon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="la la-music"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://x.com/teeprintlondon"
+                    class="teeprint-twitter-onlyicon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="la la-twitter"></i>
+                  </a>
                 </li>
               </ul>
+
               <h4>Payment</h4>
               <img
                 src="/img/card_image1.jpg"
