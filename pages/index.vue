@@ -2,30 +2,46 @@
 import getMeta from "~/seo-meta";
 useSeoMeta(getMeta("root", "home page"));
 
+// ✅ Add Google Tag Manager in <head>
+useHead({
+  script: [
+    {
+      innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5CZHG8VR');`,
+      type: "text/javascript",
+    },
+  ],
+  __dangerouslyDisableSanitizersByTagID: {
+    gtm: ["innerHTML"], // prevent Nuxt from escaping GTM script
+  },
+});
+
+// ✅ Page meta
 definePageMeta({
   titleTemplate: "% :: Home",
   name: "home",
   layout: "web",
 });
 
+// ✅ Youtube overlay logic
 const youtubeIframe = ref(null);
 const videoOverlay = ref(null);
 
-// Initialize video play functionality
 onMounted(() => {
   if (!youtubeIframe.value || !videoOverlay.value) {
     console.error("Iframe or overlay element not found!");
     return;
   }
 
-  // Add click event listener to the overlay
   videoOverlay.value.addEventListener("click", () => {
-    // Send a play command to the iframe
     youtubeIframe.value.contentWindow.postMessage(
       '{"event":"command","func":"playVideo","args":""}',
       "*"
     );
-    videoOverlay.value.style.display = "none"; // Hide the overlay after clicking
+    videoOverlay.value.style.display = "none";
   });
 });
 </script>
@@ -33,6 +49,14 @@ onMounted(() => {
 <template>
   <div>
     <web-slider />
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5CZHG8VR"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
 
     <section class="teeprint-about-section">
       <div class="container">
@@ -76,7 +100,7 @@ onMounted(() => {
 
     <!-- <web-trusted /> -->
     <!-- <web-customerFinally></web-customerFinally> -->
-     <!-- Youtube section starts -->
+    <!-- Youtube section starts -->
 
     <!-- <section class="teeprint-makes-section">
       <div class="container">
