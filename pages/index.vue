@@ -19,6 +19,13 @@ useHead({
   },
 });
 
+function reloadPage() {
+  // Wait briefly to let the route change, then reload
+  setTimeout(() => {
+    window.location.reload();
+  }, 200);
+}
+
 // ✅ Page meta
 definePageMeta({
   titleTemplate: "% :: Home",
@@ -49,14 +56,16 @@ onMounted(() => {
 <template>
   <div>
     <web-slider />
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CZHG8VR"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
-    </noscript>
+    <ClientOnly>
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-5CZHG8VR"
+          height="0"
+          width="0"
+          style="display: none; visibility: hidden"
+        ></iframe>
+      </noscript>
+    </ClientOnly>
 
     <section class="teeprint-about-section">
       <div class="container">
@@ -86,6 +95,15 @@ onMounted(() => {
                 href="/Products-list"
               >
                 Get My Design Done <i class="la la-arrow-right ml-1"></i>
+              </nuxt-link>
+              <nuxt-link
+                :to="{ name: 'shop' }"
+                class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
+                style="background-color: #eead04"
+                href="/Products-list"
+                @click.native="reloadPage"
+              >
+                Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </div>
           </div>
@@ -219,6 +237,16 @@ onMounted(() => {
               >
                 Get My Design Done <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
+
+              <nuxt-link
+                :to="{ name: 'shop' }"
+                class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
+                style="background-color: #eead04"
+                href="/Products-list"
+                @click.native="reloadPage"
+              >
+                Buy Now <i class="la la-arrow-right ml-1"></i>
+              </nuxt-link>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -340,6 +368,16 @@ onMounted(() => {
               >
                 Get A Free Quote <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
+
+              <nuxt-link
+                :to="{ name: 'shop' }"
+                class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
+                style="background-color: #eead04"
+                href="/Products-list"
+                @click.native="reloadPage"
+              >
+                Buy Now <i class="la la-arrow-right ml-1"></i>
+              </nuxt-link>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6">
@@ -409,6 +447,16 @@ onMounted(() => {
                 href="/Products-list"
               >
                 Get My Design Done <i class="la la-arrow-right ml-1"></i>
+              </nuxt-link>
+
+              <nuxt-link
+                :to="{ name: 'shop' }"
+                class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
+                style="background-color: #eead04"
+                href="/Products-list"
+                @click.native="reloadPage"
+              >
+                Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </div>
           </div>
@@ -496,6 +544,16 @@ onMounted(() => {
                   class="teeprint-button teeprint-theme-btn zoomInOut"
                 >
                   Customize Now <i class="la la-arrow-right ml-1"></i>
+                </nuxt-link>
+
+                <nuxt-link
+                  :to="{ name: 'shop' }"
+                  class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
+                  style="background-color: #eead04"
+                  href="/Products-list"
+                  @click.native="reloadPage"
+                >
+                  Buy Now <i class="la la-arrow-right ml-1"></i>
                 </nuxt-link>
               </div>
             </div>

@@ -8,7 +8,7 @@ export const REVIEW_ELEMENT = `
   <script async custom-element='amp-iframe' src='https://cdn.ampproject.org/v0/amp-iframe-0.1.js'></script>   
 `
 export const APPNAME = 'Teeprint'
-export const log = (...args) => console.log(...args);
+export const log = (...args) => console.log();
 export const dir = (data) => console.dir(data);
 export const warn = (data) => console.warn(data); 
 export const PLACEHOLDER_IMAGE = '/img/placeholder-image.jpg'

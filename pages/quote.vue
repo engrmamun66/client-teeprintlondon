@@ -296,6 +296,7 @@ async function sendQuotation() {
           </div>
         </div>
         <div class="col-lg-12 col-md-12 map">
+          <ClientOnly>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1240.7230805709628!2d0.00641884389052932!3d51.54171735688286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603218eac813d%3A0x48df07ec18e11c6c!2sStirling%20Apparel%20Ltd!5e0!3m2!1sen!2sbd!4v1741951227623!5m2!1sen!2sbd"
             height="200"
@@ -303,6 +304,7 @@ async function sendQuotation() {
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
+          </ClientOnly>
         </div>
         <div class="container mt-5">
           <web-DuelCard

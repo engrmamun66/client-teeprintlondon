@@ -4,6 +4,7 @@
       class="teeprint-owl-carousel owl-carousel owl-theme"
       id="teeprint-owl-carousel"
     >
+      <!-- Slide 1 -->
       <div class="teeprint-owl-carousel-item">
         <div class="teeprint-owl-intro-slide">
           <div class="teeprint-owl-intro-slide-overley">
@@ -29,6 +30,14 @@
                   >
                     Get A Free Quote<i class="la la-arrow-right"></i>
                   </button>
+                  <button
+                    data-navigateto="/shop"
+                    class="teeprint-button teeprint-theme-btn teeprint-sl-button"
+                    style="background-color: #eead04"
+                    data-reload="true"
+                  >
+                    Buy Now<i class="la la-arrow-right"></i>
+                  </button>
                 </div>
                 <div class="teeprint-column-6">
                   <img
@@ -42,6 +51,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Slide 2 -->
       <div class="teeprint-owl-carousel-item">
         <div class="teeprint-owl-intro-slide">
           <div class="teeprint-owl-intro-slide-overley">
@@ -67,6 +78,14 @@
                   >
                     Get A Free Quote<i class="la la-arrow-right"></i>
                   </button>
+                  <button
+                    data-navigateto="/shop"
+                    class="teeprint-button teeprint-theme-btn teeprint-sl-button"
+                    style="background-color: #eead04"
+                    data-reload="true"
+                  >
+                    Buy Now<i class="la la-arrow-right"></i>
+                  </button>
                 </div>
                 <div class="teeprint-column-6">
                   <img
@@ -80,6 +99,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Slide 3 -->
       <div class="teeprint-owl-carousel-item">
         <div class="teeprint-owl-intro-slide">
           <div class="teeprint-owl-intro-slide-overley">
@@ -104,6 +125,14 @@
                   >
                     Get A Free Quote<i class="la la-arrow-right"></i>
                   </button>
+                  <button
+                    data-navigateto="/shop"
+                    class="teeprint-button teeprint-theme-btn teeprint-sl-button"
+                    style="background-color: #eead04"
+                    data-reload="true"
+                  >
+                    Buy Now<i class="la la-arrow-right"></i>
+                  </button>
                 </div>
                 <div class="teeprint-column-6">
                   <img
@@ -122,13 +151,24 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+import { navigateTo } from '#app' // ✅ Nuxt’s built-in navigation method
+
 onMounted(() => {
-  document.addEventListener("click", function (event) {
-    const target = event.target;
-    if (target.hasAttribute("data-navigateto")) {
-      const to = target.getAttribute("data-navigateto");
-      navigateTo(to);
+  document.addEventListener('click', async (event) => {
+    const button = event.target.closest('[data-navigateto]')
+    if (!button) return
+
+    const to = button.getAttribute('data-navigateto')
+    const shouldReload = button.hasAttribute('data-reload')
+
+    if (to) {
+      // ✅ Use Nuxt’s native navigation helper (works outside component context)
+      await navigateTo(to)
+      if (shouldReload) {
+        setTimeout(() => window.location.reload(), 200)
+      }
     }
-  });
-});
+  })
+})
 </script>
