@@ -34,7 +34,7 @@
                     data-navigateto="/shop"
                     class="teeprint-button teeprint-theme-btn teeprint-sl-button"
                     style="background-color: #eead04"
-                    data-reload="true"
+                    
                   >
                     Buy Now<i class="la la-arrow-right"></i>
                   </button>
@@ -82,7 +82,7 @@
                     data-navigateto="/shop"
                     class="teeprint-button teeprint-theme-btn teeprint-sl-button"
                     style="background-color: #eead04"
-                    data-reload="true"
+                    
                   >
                     Buy Now<i class="la la-arrow-right"></i>
                   </button>
@@ -129,7 +129,7 @@
                     data-navigateto="/shop"
                     class="teeprint-button teeprint-theme-btn teeprint-sl-button"
                     style="background-color: #eead04"
-                    data-reload="true"
+                    
                   >
                     Buy Now<i class="la la-arrow-right"></i>
                   </button>

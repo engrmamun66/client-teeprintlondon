@@ -101,7 +101,7 @@ onMounted(() => {
                 class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
                 style="background-color: #eead04"
                 href="/Products-list"
-                @click.native="reloadPage"
+               
               >
                 Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
@@ -243,7 +243,7 @@ onMounted(() => {
                 class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
                 style="background-color: #eead04"
                 href="/Products-list"
-                @click.native="reloadPage"
+               
               >
                 Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
@@ -374,7 +374,7 @@ onMounted(() => {
                 class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
                 style="background-color: #eead04"
                 href="/Products-list"
-                @click.native="reloadPage"
+               
               >
                 Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
@@ -454,7 +454,7 @@ onMounted(() => {
                 class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
                 style="background-color: #eead04"
                 href="/Products-list"
-                @click.native="reloadPage"
+               
               >
                 Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
@@ -551,7 +551,7 @@ onMounted(() => {
                   class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
                   style="background-color: #eead04"
                   href="/Products-list"
-                  @click.native="reloadPage"
+                 
                 >
                   Buy Now <i class="la la-arrow-right ml-1"></i>
                 </nuxt-link>
