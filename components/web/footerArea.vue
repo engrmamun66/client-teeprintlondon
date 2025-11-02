@@ -187,10 +187,32 @@
                     class="teeprint-tiktok-onlyicon"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="TikTok"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 448 512"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M448,209.9a210,210,0,0,1-122.3-39.3V338.5a173.9,173.9,0,1,1-146.3-171V244A85.7,85.7,0,1,0,238,328.5V0h87.7A122.3,122.3,0,0,0,448,122.3Z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+
+                <!-- <li>
+                  <a
+                    href="https://www.tiktok.com/@teeprintlondon"
+                    class="teeprint-tiktok-onlyicon"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <i class="la la-music"></i>
                   </a>
-                </li>
+                </li> -->
                 <li>
                   <a
                     href="https://x.com/teeprintlondon"
