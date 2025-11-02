@@ -44,6 +44,13 @@ function addToCart() {
               >
                 Print Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
+              <nuxt-link
+                to="/products-by-category/tote-bags"
+                style="background-color: #eead04"
+                class="teeprint-button teeprint-theme-btn zoomInOut mt-5 mx-4"
+              >
+                Buy Now <i class="la la-arrow-right ml-1"></i>
+              </nuxt-link>
             </template>
           </MultipleImageCard>
         </div>
@@ -147,6 +154,13 @@ function addToCart() {
                 href="#"
               >
                 Start Design <i class="la la-arrow-right ml-1"></i>
+              </nuxt-link>
+              <nuxt-link
+                to="/products-by-category/tote-bags"
+                style="background-color: #eead04"
+                class="teeprint-button teeprint-theme-btn zoomInOut mt-5 mx-4"
+              >
+                Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </div>
           </div>

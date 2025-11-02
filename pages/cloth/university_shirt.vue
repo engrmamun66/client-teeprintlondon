@@ -31,8 +31,8 @@ function addToCart() {
               '/img/Universit_T_Shirt/6.jpg',
             ]"
           >
-            At Tee Print London, we specialize in delivering **premium-quality
-            University and School shirts** that combine style, durability, and
+            At Tee Print London, we specialize in delivering premium-quality
+            University and School shirts that combine style, durability, and
             comfort. Whether you're outfitting a sports team, creating uniforms
             for students, or designing shirts for a university event, we provide
             vibrant, long-lasting prints on high-quality fabrics. Our advanced
