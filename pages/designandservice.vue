@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import getMeta from "~/seo-meta"; 
-useSeoMeta(getMeta('Design_Service', 'custom_apparel'))
+import getMeta from "~/seo-meta";
+useSeoMeta(getMeta("Design_Service", "custom_apparel"));
 definePageMeta({
   titleTemplate: "% :: details",
   layout: "web",
@@ -51,6 +51,13 @@ function addToCart() {
                 class="teeprint-button teeprint-theme-btn zoomInOut mt-5"
               >
                 Start Your Design Journey <i class="la la-arrow-right ml-1"></i>
+              </nuxt-link>
+              <nuxt-link
+                :to="{ name: 'shop' }"
+                style="background-color: #eead04"
+                class="teeprint-button teeprint-theme-btn zoomInOut mt-5 mx-4"
+              >
+                Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </template>
           </MultipleImageCard>
@@ -182,6 +189,13 @@ function addToCart() {
               >
                 Explore Our Techniques <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
+              <nuxt-link
+                :to="{ name: 'shop' }"
+                style="background-color: #eead04"
+                class="teeprint-button teeprint-theme-btn zoomInOut mt-5 mx-4"
+              >
+                Buy Now <i class="la la-arrow-right ml-1"></i>
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -232,10 +246,7 @@ function addToCart() {
           </div>
           <div class="col-xl-6 col-lg-6">
             <div class="teeprint-about-img">
-              <img
-                src="/img/sweatshirt/6.jpg"
-                alt="design service image"
-              />
+              <img src="/img/sweatshirt/6.jpg" alt="design service image" />
             </div>
           </div>
         </div>

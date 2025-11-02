@@ -45,6 +45,13 @@ function addToCart() {
               >
                 Get A Quote <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
+              <nuxt-link
+                :to="{ name: 'shop' }"
+                style="background-color: #eead04"
+                class="teeprint-button teeprint-theme-btn zoomInOut mt-5 mx-4"
+              >
+                Buy Now <i class="la la-arrow-right ml-1"></i>
+              </nuxt-link>
             </template>
           </MultipleImageCard>
         </div>
@@ -177,6 +184,13 @@ function addToCart() {
                 href="#"
               >
                 Design Your Hoodie <i class="la la-arrow-right ml-1"></i>
+              </nuxt-link>
+              <nuxt-link
+                :to="{ name: 'shop' }"
+                style="background-color: #eead04"
+                class="teeprint-button teeprint-theme-btn zoomInOut mt-5 mx-4"
+              >
+                Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
             </div>
           </div>
@@ -365,6 +379,13 @@ function addToCart() {
               class="teeprint-button teeprint-theme-btn zoomInOut"
             >
               Design Your Hoodie <i class="la la-arrow-right ml-1"></i>
+            </nuxt-link>
+            <nuxt-link
+              :to="{ name: 'shop' }"
+              style="background-color: #eead04"
+              class="teeprint-button teeprint-theme-btn zoomInOut mt-5 mx-4"
+            >
+              Buy Now <i class="la la-arrow-right ml-1"></i>
             </nuxt-link>
           </div>
         </div>
