@@ -101,7 +101,6 @@ onMounted(() => {
                 class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
                 style="background-color: #eead04"
                 href="/Products-list"
-               
               >
                 Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
@@ -243,7 +242,6 @@ onMounted(() => {
                 class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
                 style="background-color: #eead04"
                 href="/Products-list"
-               
               >
                 Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
@@ -368,20 +366,10 @@ onMounted(() => {
               >
                 Get A Free Quote <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
-                              <nuxt-link
-                 :to="{ name: 'shop' }"
-                style="background-color: #eead04"
-                class="teeprint-button teeprint-theme-btn zoomInOut mt-5 mx-4"
-              >
-                Buy Now <i class="la la-arrow-right ml-1"></i>
-              </nuxt-link>
-
               <nuxt-link
                 :to="{ name: 'shop' }"
-                class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
                 style="background-color: #eead04"
-                href="/Products-list"
-               
+                class="teeprint-button teeprint-theme-btn zoomInOut mt-5 mx-4"
               >
                 Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
@@ -461,7 +449,6 @@ onMounted(() => {
                 class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
                 style="background-color: #eead04"
                 href="/Products-list"
-               
               >
                 Buy Now <i class="la la-arrow-right ml-1"></i>
               </nuxt-link>
@@ -558,7 +545,6 @@ onMounted(() => {
                   class="teeprint-button teeprint-theme-btn zoomInOut mx-4"
                   style="background-color: #eead04"
                   href="/Products-list"
-                 
                 >
                   Buy Now <i class="la la-arrow-right ml-1"></i>
                 </nuxt-link>
