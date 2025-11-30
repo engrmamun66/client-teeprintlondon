@@ -3,12 +3,30 @@
     <div class="container">
       <div class="row mb-5">
         <div class="col-12 text-center">
+
+        <!-- 🎅 Animated Santa -->
+        <div class="santa-wrapper">
+          <img
+            src="/img/christmas/1-removebg-preview.png"
+            alt="Santa Dancing"
+            class="santa-img"
+          />
+        </div>
+
           <div class="section-main-heading">
-            <h2 class="section-heading-title-big">
-              🎅 Jingle All The Way in Exclusive Holiday Apparel from
-              TeePrintLondon
+
+            <!-- ⭐ Christmas Glow Heading -->
+            <h2 class="section-heading-title-big christmas-glow">
+              🎅 Jingle All The Way in Exclusive Holiday Apparel from TeePrintLondon
             </h2>
+
+            <!-- ❤️ Added Christmas-themed line -->
+            <p class="christmas-line">
+              🎄 Celebrate the magic of Christmas with cozy, festive styles made just for you! 🎁
+            </p>
+
           </div>
+
           <p class="promo-subtitle">Get your cozy holiday apparel today!</p>
 
           <!-- ⭐ Updated Promo Section -->
@@ -81,7 +99,8 @@ const products = [
     name: "Red Truck Christmas Tree Sweatshirt",
     image:
       "https://londonteeprint.com/storage/product/thumbnail/68a49fe48d6fe.jpg",
-    link: "https://teeprintlondon.co.uk/product/red-truck-christmas-tree-sweatshirt-farm-fresh-holiday-crewneck-ch-58",
+    link:
+      "https://teeprintlondon.co.uk/product/red-truck-christmas-tree-sweatshirt-farm-fresh-holiday-crewneck-ch-58",
   },
   {
     name: "Merry Christmas Reindeer Horn Sweatshirt",
@@ -102,10 +121,60 @@ const products = [
   margin-bottom: 20px;
 }
 
-.section-heading-title-big {
+/* 🎅 Santa Animation Wrapper */
+.santa-wrapper {
+  width: 150px;
+  margin: 0 auto 20px auto;
+  animation: santaBounce 3s infinite ease-in-out;
+}
+
+/* Santa Image */
+.santa-img {
+  width: 100%;
+  animation: santaWave 2s infinite ease-in-out;
+}
+
+/* Santa up-down bounce */
+@keyframes santaBounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+/* Santa waving (slight tilt) */
+@keyframes santaWave {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(6deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ⭐ Glow Effect */
+.christmas-glow {
   font-size: 2.5rem;
   font-weight: 700;
   color: #333;
+  text-shadow: 0 0 8px #ff2f2f, 0 0 15px #ffc400;
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 5px #ff2f2f;
+  }
+  50% {
+    text-shadow: 0 0 20px #ffc400;
+  }
+  100% {
+    text-shadow: 0 0 5px #ff2f2f;
+  }
+}
+
+/* ⭐ Christmas Line */
+.christmas-line {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #b30000;
+  margin-top: 10px;
 }
 
 .promo-subtitle {
