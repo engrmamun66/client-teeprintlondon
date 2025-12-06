@@ -77,6 +77,10 @@ function clearPayload() {
   showFileUploader.value = false;
   H.delay(() => (showFileUploader.value = true));
 }
+let showCelebration = ref(false);
+const closeCelebration = () => {
+  showCelebration.value = false;
+};
 async function sendQuotation() {
   try {
     if (!payload.full_name) return Toaster.error("Full name is required");
@@ -89,6 +93,7 @@ async function sendQuotation() {
         if (respoonse.data.success) {
           clearPayload();
           Toaster.success("Quatation submit successful");
+          showCelebration.value = true;
         }
       })
       .catch((error) => {
@@ -105,6 +110,7 @@ async function sendQuotation() {
 
 <template>
   <section class="contact">
+    <Success :show="showCelebration" @close="closeCelebration" />
     <div class="container">
       <div class="row">
         <div class="col-lg-12 col-md-12">
