@@ -21,6 +21,25 @@ let payload = reactive({
 let showPicker = ref(true);
 let minDate = ref(moment().subtract(1, "day").format(FORMATS.DB_DATE));
 
+// --- Start of new/modified code for button text animation ---
+const BUTTON_TEXT_1 = "Submit Quotation Request";
+const BUTTON_TEXT_2 = "Let's Create Together";
+let buttonText = ref(BUTTON_TEXT_1);
+
+onMounted(() => {
+  // Start the interval when the component is mounted
+  const intervalId = setInterval(() => {
+    buttonText.value =
+      buttonText.value === BUTTON_TEXT_1 ? BUTTON_TEXT_2 : BUTTON_TEXT_1;
+  }, 1000); // Toggle every 1000 milliseconds (1 second)
+
+  // Clear the interval when the component is unmounted to prevent memory leaks
+  onUnmounted(() => {
+    clearInterval(intervalId);
+  });
+});
+// --- End of new/modified code for button text animation ---
+
 watch(
   () => payload.type_of_service,
   (a, b) => {
@@ -91,7 +110,6 @@ async function sendQuotation() {
         <div class="col-lg-12 col-md-12">
           <div class="contact-infoinquery">
             <div class="row">
-              <!-- Contact Information -->
               <div class="col-lg-3 col-md-4 contact-leftside">
                 <div class="row">
                   <div class="col-md-12 text-center contact-info">
@@ -133,7 +151,6 @@ async function sendQuotation() {
                 </div>
               </div>
 
-              <!-- Contact Query -->
               <div class="col-lg-9 col-md-8 contact-form">
                 <h3 class="text-center mb-2 mt-3">3 Min Quote Form</h3>
                 <div class="contact-linbar"></div>
@@ -192,9 +209,6 @@ async function sendQuotation() {
                       </div>
                     </div>
 
-                    <!-- Fields -->
-                    <!-- Fields -->
-                    <!-- Fields -->
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Maximum Delivery Date</label>
@@ -284,9 +298,9 @@ async function sendQuotation() {
                     <button
                       @click.prevent.stop="sendQuotation"
                       type="submit"
-                      class="teeprint-button teeprint-theme-btn query-submit-btn"
+                      class="teeprint-button teeprint-theme-btn query-submit-btn animated-send-btn fixed-size-btn"
                     >
-                      Send Message
+                      <span class="button-text">{{ buttonText }}</span>
                       <BtnLoader v-if="loading" color="white"></BtnLoader>
                     </button>
                   </div>
@@ -297,13 +311,13 @@ async function sendQuotation() {
         </div>
         <div class="col-lg-12 col-md-12 map">
           <ClientOnly>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1240.7230805709628!2d0.00641884389052932!3d51.54171735688286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603218eac813d%3A0x48df07ec18e11c6c!2sStirling%20Apparel%20Ltd!5e0!3m2!1sen!2sbd!4v1741951227623!5m2!1sen!2sbd"
-            height="200"
-            style="border: 0; width: 100%; border-radius: 10px"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1240.7230805709628!2d0.00641884389052932!3d51.54171735688286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603218eac813d%3A0x48df07ec18e11c6c!2sStirling%20Apparel%20Ltd!5e0!3m2!1sen!2sbd!4v1741951227623!5m2!1sen!2sbd"
+              height="200"
+              style="border: 0; width: 100%; border-radius: 10px"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </ClientOnly>
         </div>
         <div class="container mt-5">
@@ -355,5 +369,99 @@ async function sendQuotation() {
 .required-star {
   color: red;
   font-weight: bold; /* Optional: Make it bold for emphasis */
+}
+
+/* Send Message Button Animation */
+.animated-send-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.animated-send-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.animated-send-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.animated-send-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.animated-send-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--theme-color-rgb, 0, 123, 255), 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--theme-color-rgb, 0, 123, 255), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--theme-color-rgb, 0, 123, 255), 0);
+  }
+}
+
+.animated-send-btn {
+  animation: pulse 1s infinite;
+}
+
+/* Fixed button size with smooth text transition */
+.fixed-size-btn {
+  min-width: 280px; /* Adjust this value based on your longest text */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-text {
+  display: inline-block;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+/* FIX: Force button text always visible */
+.animated-send-btn span {
+  opacity: 1 !important;
+  color: inherit !important;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  55% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
