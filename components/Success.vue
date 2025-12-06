@@ -48,7 +48,7 @@
             </div>
             <div class="detail-item">
               <span class="icon">⏰</span>
-              <span class="text">We'll get back to you within 24 hours</span>
+              <span class="text">We’ll get in touch with you very soon.</span>
             </div>
             <div class="detail-item">
               <span class="icon">💼</span>
