@@ -11,7 +11,7 @@
                   <el-BaseInput
                     type="text"
                     label="Post Title"
-                    v-model="blogStore.postData.title"
+                    v-model="postData.title"
                   />
                 </div>
               </div>
@@ -24,7 +24,7 @@
                 <div class="date-box-input">
                   <label>Post Description</label>
                   <Editor
-                    v-model="blogStore.postData.content"
+                    v-model="postData.content"
                     api-key="gcvrg3hggtzhh90lq4180cnaco5tpvofl31o5ekpyg2i1lmj"
                     :init="{
                       height: 300,
@@ -59,8 +59,8 @@
                   <small v-if="featuredImageFile"
                     >{{ featuredImageFile.name }} selected</small
                   >
-                  <small v-else-if="blogStore.postData.featured_image">
-                    Current Image: {{ blogStore.postData.featured_image }}
+                  <small v-else-if="postData.featured_image">
+                    Current Image: {{ postData.featured_image }}
                   </small>
 
                   <!-- Image Preview Thumbnail -->
@@ -97,7 +97,7 @@
                   <el-BaseInput
                     type="text"
                     label="Meta Title"
-                    v-model="blogStore.postData.meta_title"
+                    v-model="postData.meta_title"
                   />
                 </div>
               </div>
@@ -110,7 +110,7 @@
                 <div class="date-box-input">
                   <label>Meta Description</label>
                   <Editor
-                    v-model="blogStore.postData.meta_description"
+                    v-model="postData.meta_description"
                     api-key="gcvrg3hggtzhh90lq4180cnaco5tpvofl31o5ekpyg2i1lmj"
                     :init="{
                       height: 300,
@@ -135,7 +135,7 @@
                   <el-BaseInput
                     type="text"
                     label="Meta Keywords"
-                    v-model="blogStore.postData.meta_keywords"
+                    v-model="postData.meta_keywords"
                   />
                 </div>
               </div>
@@ -173,6 +173,37 @@ import Editor from "@tinymce/tinymce-vue";
 
 const blogStore = useBlogStore();
 
+let postData = ref({
+  title: "",
+  content: "",
+  excerpt: "",
+  featured_image: "",
+  meta_title: "",
+  meta_description: "",
+  meta_keywords: "",
+  meta_image: "",
+  canonical_url: "",
+});
+function resetPostData() {
+  postData.value = {
+    title: "",
+    content: "",
+    excerpt: "",
+    featured_image: "",
+    meta_title: "",
+    meta_description: "",
+    meta_keywords: "",
+    meta_image: "",
+    canonical_url: "",
+  };
+}
+
+onMounted(async()=>{
+   const route = useRoute()
+   const postId = route.params.id;
+   await blogStore.showPost(postId)
+
+})
 
 
 const errors = ref({});
@@ -188,14 +219,14 @@ async function handleSubmit() {
   const formData = new FormData();
 
   // Append all text fields
-  formData.append("title", blogStore.postData.title);
-  formData.append("content", blogStore.postData.content);
-  formData.append("excerpt", blogStore.postData.excerpt);
-  formData.append("meta_title", blogStore.postData.meta_title);
-  formData.append("meta_description", blogStore.postData.meta_description);
-  formData.append("meta_keywords", blogStore.postData.meta_keywords);
-  formData.append("meta_image", blogStore.postData.meta_image);
-  formData.append("canonical_url", blogStore.postData.canonical_url);
+  formData.append("title", postData.value.title);
+  formData.append("content", postData.value.content);
+  formData.append("excerpt", postData.value.excerpt);
+  formData.append("meta_title", postData.value.meta_title);
+  formData.append("meta_description", postData.value.meta_description);
+  formData.append("meta_keywords", postData.value.meta_keywords);
+  formData.append("meta_image", postData.value.meta_image);
+  formData.append("canonical_url", postData.value.canonical_url);
 
   // Append the file if one was selected
   if (featuredImageFile.value) {
@@ -204,7 +235,7 @@ async function handleSubmit() {
 
   // Send FormData to the store/API
   await blogStore.create(formData);
-
+  resetPostData();
 }
 
 /**

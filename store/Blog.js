@@ -1,9 +1,9 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
 import { useCommonStore } from "~/store/Common";
-import Blog from "../apis/B";
+import Blog from "../apis/Blog";
 
-export const useBrandStore = defineStore("blog", () => {
-  let brandList = ref([]);
+export const useBlogStore = defineStore("blog", () => {
+  let postList = ref([]);
   let brandAttribute = ref({
     id: null,
     name: null,
@@ -13,25 +13,43 @@ export const useBrandStore = defineStore("blog", () => {
     status: 1,
   });
 
-  let showModal = ref(false);
-  function resetBrandAttribute() {
-    brandAttribute.value = {
-      id: null,
-      name: null,
-      image: null,
-      image_url: null,
-      description: null,
-      status: 1,
+  let postData = ref({
+    title: "",
+    content: "",
+    excerpt: "",
+    featured_image: "",
+    meta_title: "",
+    meta_description: "",
+    meta_keywords: "",
+    meta_image: "",
+    canonical_url: "",
+  });
+
+  function resetPostData() {
+    postData.value = {
+      // <-- Assign a new object to the .value
+      title: "",
+      content: "",
+      excerpt: "",
+      featured_image: "",
+      meta_title: "",
+      meta_description: "",
+      meta_keywords: "",
+      meta_image: "",
+      canonical_url: "",
     };
   }
+
+  let showModal = ref(false);
+
   async function create(payload = {}) {
     try {
-      let response = await Brand.create(payload);
+      let response = await Blog.create(payload);
       if (response.data.success) {
-        await getBrandList();
+        await getPosts();
         showModal.value = false;
-        resetBrandAttribute();
-        Toaster.success("Brand created succsfully");
+        resetPostData();
+        Toaster.success("Blog created succsfully");
       }
     } catch (error) {
       //   if (error.response.status == 401) {
@@ -44,25 +62,21 @@ export const useBrandStore = defineStore("blog", () => {
     }
   }
 
-  async function getBrandList() {
+  async function getPosts() {
     try {
-      let response = await Brand.list();
-      if (response.status == 200) {
-         brandList.value = response.data.data;
-      }
-    } catch (error) {
-     
-    }
+      let response = await Blog.list();
+
+      postList.value = response.data.data.data;
+    } catch (error) {}
   }
 
   async function deleteBrand(id) {
     try {
-      let response = await Brand.delete(id);
+      let response = await Blog.delete(id);
 
       if (response.status == 201 || 200) {
-        // console.log(response.data.data.data);
-        getBrandList();
-        Toaster.success("Brand deleted successfully");
+        getPosts();
+        Toaster.success("Blog deleted successfully");
         return true;
       }
     } catch (error) {
@@ -78,18 +92,18 @@ export const useBrandStore = defineStore("blog", () => {
   }
 
   let brand = ref(null);
-  async function showBrand(id) {
+  async function showPost(id) {
     try {
-      let response = await Brand.show(id);
+      let response = await Blog.show(id);
 
       if (response.status == 200) {
-        Brand.value = response.data.data;
-        brandAttribute.value.name = Brand.value.name;
-        brandAttribute.value.status = Brand.value.status;
+        Blog.value = response.data.data;
+        brandAttribute.value.name = Blog.value.name;
+        brandAttribute.value.status = Blog.value.status;
 
-        brandAttribute.value.image_url = Brand.value.image_url;
-        brandAttribute.value.description = Brand.value.description;
-        brandAttribute.value.id = Brand.value.id;
+        brandAttribute.value.image_url = Blog.value.image_url;
+        brandAttribute.value.description = Blog.value.description;
+        brandAttribute.value.id = Blog.value.id;
         showModal.value = true;
       }
     } catch (error) {
@@ -103,35 +117,36 @@ export const useBrandStore = defineStore("blog", () => {
         ...payload,
         _method: "PUT",
       };
-      let response = await Brand.update(id, payload);
+      let response = await Blog.update(id, payload);
       if (response.status == 200) {
-        await getBrandList();
+        await getPosts();
         showModal.value = false;
-        resetBrandAttribute();
+        resetPostData();
         Toaster.success("Category updated successfully");
       }
     } catch (error) {
-        if (error.response.status == 422) {
-          // registrationFormError.value.type = 422;
-          // registrationFormError.value.messages = error.response.data.errors;
-        }
+      if (error.response.status == 422) {
+        // registrationFormError.value.type = 422;
+        // registrationFormError.value.messages = error.response.data.errors;
+      }
     }
   }
 
   return {
     create,
-    getBrandList,
+    getPosts,
     deleteBrand,
-    showBrand,
+    showPost,
     update,
-    resetBrandAttribute,
+    resetPostData,
     brand,
-    brandList,
+    postList,
     brandAttribute,
     showModal,
+    postData,
   };
 });
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useBrandStore, import.meta.hot));
+  import.meta.hot.accept(acceptHMRUpdate(useBlogStore, import.meta.hot));
 }
