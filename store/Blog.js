@@ -92,19 +92,7 @@ export const useBlogStore = defineStore("blog", () => {
   }
 
   let brand = ref(null);
-  // Assuming postData is defined earlier in your script setup:
-  /* let postData = ref({
-  title: "",
-  content: "",
-  excerpt: "",
-  featured_image: "",
-  meta_title: "",
-  meta_description: "",
-  meta_keywords: "",
-  meta_image: "",
-  canonical_url: "",
-});
-*/
+
 
   async function showPost(id) {
     try {
@@ -113,7 +101,6 @@ export const useBlogStore = defineStore("blog", () => {
       // Extract the data object
       const postDataFromApi = response.data.data;
 
-      console.log("(*(*", postDataFromApi);
 
       // Check if data exists and populate postData
       if (postDataFromApi) {

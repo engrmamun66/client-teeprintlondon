@@ -98,7 +98,7 @@ const stripHtmlTags = (htmlString) => {
 
 onMounted(async () => {
   await blogStore.getPosts();
-  console.log(blogStore.postList);
+
 });
 </script>
 
