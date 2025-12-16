@@ -92,31 +92,60 @@ export const useBlogStore = defineStore("blog", () => {
   }
 
   let brand = ref(null);
+  // Assuming postData is defined earlier in your script setup:
+  /* let postData = ref({
+  title: "",
+  content: "",
+  excerpt: "",
+  featured_image: "",
+  meta_title: "",
+  meta_description: "",
+  meta_keywords: "",
+  meta_image: "",
+  canonical_url: "",
+});
+*/
+
   async function showPost(id) {
     try {
       let response = await Blog.show(id);
 
-      if (response.status == 200) {
-        Blog.value = response.data.data;
-        brandAttribute.value.name = Blog.value.name;
-        brandAttribute.value.status = Blog.value.status;
+      // Extract the data object
+      const postDataFromApi = response.data.data;
 
-        brandAttribute.value.image_url = Blog.value.image_url;
-        brandAttribute.value.description = Blog.value.description;
-        brandAttribute.value.id = Blog.value.id;
-        showModal.value = true;
+      console.log("(*(*", postDataFromApi);
+
+      // Check if data exists and populate postData
+      if (postDataFromApi) {
+        postData.value.title = postDataFromApi.title || "";
+        postData.value.content = postDataFromApi.content || "";
+        postData.value.excerpt = postDataFromApi.excerpt || "";
+        postData.value.featured_image = postDataFromApi.featured_image || "";
+        postData.value.meta_title = postDataFromApi.meta_title || "";
+        postData.value.meta_description =
+          postDataFromApi.meta_description || "";
+        postData.value.meta_keywords = postDataFromApi.meta_keywords || "";
+        postData.value.meta_image = postDataFromApi.meta_image || null; // Use null for image
+        postData.value.canonical_url = postDataFromApi.canonical_url || "";
+
+        // Note: I've added '|| ""' (or '|| null' for meta_image) as a simple
+        // safeguard in case a property is missing or null in the response.
       }
+
+      // Return true or the populated post data if needed
+      return postData.value;
     } catch (error) {
+      console.error("Error fetching post data:", error);
       return false;
     }
   }
 
   async function update(id, payload = {}) {
     try {
-      payload = {
-        ...payload,
-        _method: "PUT",
-      };
+      // payload = {
+      //   ...payload,
+      //   _method: "PUT",
+      // };
       let response = await Blog.update(id, payload);
       if (response.status == 200) {
         await getPosts();

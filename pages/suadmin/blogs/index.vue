@@ -93,7 +93,7 @@ const blogStore = useBlogStore();
  */
 const stripHtmlTags = (htmlString) => {
   // Regex to match anything between < and > (including the tags themselves)
-  return htmlString ? String(htmlString).replace(/<[^>]*>/g, '') : '';
+  return htmlString ? String(htmlString).replace(/<[^>]*>/g, "") : "";
 };
 
 onMounted(async () => {
