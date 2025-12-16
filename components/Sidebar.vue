@@ -128,6 +128,13 @@
       <span class="tooltip__text tooltip__text--right"> Orders </span>
     </nuxt-link>
   </li>
+    <li>
+    <nuxt-link @click="orderStore.getOrderList();" :to="'/suadmin/blogs'" class="leftsidebar-link menu-tooltip">
+      <i class="las la-shopping-bag"></i><!-- Changed to an invoice icon for quotations -->
+      <span class="menu-text">Blogs</span>
+      <span class="tooltip__text tooltip__text--right"> Orders </span>
+    </nuxt-link>
+  </li>
   <li>
     <a @click="activeMenu('settings')" 
       class="collaps-togglelink menu-tooltip" :class="{active: isCurrent('settings')}">
