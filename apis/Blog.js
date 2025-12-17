@@ -24,6 +24,6 @@ export default {
     return await ApiAuth().get(`${prefix}/${id}`);
   },
   async update(id, payload = {}) {
-    return await ApiAuth().put(`${prefix}/${id}`, payload, { formData: true });
+    return await ApiAuth().post(`${prefix}/${id}`, payload, { formData: true });
   },
 };

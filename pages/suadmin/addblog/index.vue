@@ -173,8 +173,6 @@ import Editor from "@tinymce/tinymce-vue";
 
 const blogStore = useBlogStore();
 
-
-
 const errors = ref({});
 const featuredImageFile = ref(null);
 const imagePreviewUrl = ref(null);
@@ -204,7 +202,6 @@ async function handleSubmit() {
 
   // Send FormData to the store/API
   await blogStore.create(formData);
-
 }
 
 /**

@@ -202,7 +202,7 @@ async function handleSubmit() {
   }
 
   // Send FormData to the store/API
-  await blogStore.update(postId,formData);
+  await blogStore.update(postId, formData);
 }
 
 /**

@@ -93,14 +93,12 @@ export const useBlogStore = defineStore("blog", () => {
 
   let brand = ref(null);
 
-
   async function showPost(id) {
     try {
       let response = await Blog.show(id);
 
       // Extract the data object
       const postDataFromApi = response.data.data;
-
 
       // Check if data exists and populate postData
       if (postDataFromApi) {
@@ -129,19 +127,35 @@ export const useBlogStore = defineStore("blog", () => {
 
   async function update(id, payload = {}) {
     try {
-      // payload = {
-      //   ...payload,
-      //   _method: "PUT",
-      // };
-      let response = await Blog.update(id, payload);
-      if (response.status == 200) {
-        await getPosts();
-        showModal.value = false;
-        resetPostData();
-        Toaster.success("Category updated successfully");
+      // Check if payload is FormData
+      if (payload instanceof FormData) {
+        // For FormData, append _method directly
+        payload.append("_method", "PUT");
+
+        // Debug FormData contents
+        console.log("FormData contents:");
+        for (let [key, value] of payload.entries()) {
+          console.log(`${key}:`, value);
+        }
+
+        let response = await Blog.update(id, payload);
+      } else {
+        // For regular objects, spread as before
+        let payloads = {
+          ...payload,
+          _method: "PUT",
+        };
+        console.log("*&^", payloads);
+
+        let response = await Blog.update(id, payloads);
       }
+
+      await getPosts();
+      showModal.value = false;
+      resetPostData();
+      Toaster.success("Post updated successfully");
     } catch (error) {
-      if (error.response.status == 422) {
+      if (error.response?.status == 422) {
         // registrationFormError.value.type = 422;
         // registrationFormError.value.messages = error.response.data.errors;
       }
