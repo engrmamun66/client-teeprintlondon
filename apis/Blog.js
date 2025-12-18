@@ -26,4 +26,9 @@ export default {
   async update(id, payload = {}) {
     return await ApiAuth().post(`${prefix}/${id}`, payload, { formData: true });
   },
+  async publishedBlogs(payload = {}) {
+    return await ApiAuth().get(`${prefix}/published/list`, payload, {
+      formData: true,
+    });
+  },
 };

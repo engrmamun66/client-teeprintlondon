@@ -139,6 +139,29 @@ export const useBlogStore = defineStore("blog", () => {
     }
   }
 
+  let publishedBlogs = ref(null);
+
+  async function getPublishedBlogs() {
+    try {
+      let response = await Blog.publishedBlogs();
+      // console.log("*&*&", response.data.data.data)
+
+      publishedBlogs.value = response.data.data.data;
+    } catch (error) {}
+  }
+
+  async function deletePost(id) {
+    try {
+      let response = await Blog.delete(id);
+
+      getPosts();
+      Toaster.success("Blog deleted successfully");
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
   return {
     create,
     getPosts,
@@ -151,6 +174,8 @@ export const useBlogStore = defineStore("blog", () => {
     brandAttribute,
     showModal,
     postData,
+    getPublishedBlogs,
+    publishedBlogs
   };
 });
 

@@ -479,6 +479,9 @@ let { staticPagesByParentCat } = globalData;
                       >Design and services</nuxt-link
                     >
                   </li>
+                  <li>
+                    <nuxt-link to="/blogs">Blogs</nuxt-link>
+                  </li>
                 </ul>
               </nav>
             </div>
