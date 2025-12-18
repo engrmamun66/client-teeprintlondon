@@ -14,14 +14,17 @@ onMounted(async () => {
 
 // Helper function to strip HTML tags from content
 const stripHtml = (html) => {
-  return html.replace(/<[^>]*>/g, '');
+  return html.replace(/<[^>]*>/g, "");
 };
 
-// Helper function to truncate text
-const truncateText = (text, maxLength = 200) => {
+// Helper function to truncate text by word count
+const truncateByWords = (text, maxWords = 200) => {
   const stripped = stripHtml(text);
-  if (stripped.length <= maxLength) return stripped;
-  return stripped.substring(0, maxLength) + '...';
+  const words = stripped.trim().split(/\s+/);
+
+  if (words.length <= maxWords) return stripped;
+
+  return words.slice(0, maxWords).join(" ") + "...";
 };
 </script>
 
@@ -29,20 +32,13 @@ const truncateText = (text, maxLength = 200) => {
   <div>
     <!-- Loop through all blog posts -->
     <template v-for="(blog, index) in blogStore.publishedBlogs" :key="blog.id">
-      
       <!-- Odd index: Image on LEFT (like first section) -->
-      <section 
-        v-if="index % 2 === 0" 
-        class="teeprint-homewhychoose-section"
-      >
+      <section v-if="index % 2 === 0" class="teeprint-homewhychoose-section">
         <div class="container">
           <div class="row">
             <div class="col-xl-6 col-lg-6">
               <div class="teeprint-homewhychoose-img">
-                <img 
-                  :src="blog.image_url" 
-                  :alt="blog.title" 
-                />
+                <img :src="blog.image_url" :alt="blog.title" />
               </div>
             </div>
             <div class="col-xl-6 col-lg-6">
@@ -52,12 +48,12 @@ const truncateText = (text, maxLength = 200) => {
                     {{ blog.title }}
                   </h2>
                 </div>
-                <div v-html="blog.content"></div>
+                <div v-html="truncateByWords(blog.content, 200)"></div>
                 <nuxt-link
                   :to="{ name: 'quote' }"
                   class="teeprint-button teeprint-theme-btn zoomInOut"
                 >
-                  Get A Free Quote <i class="la la-arrow-right ml-1"></i>
+                  Read More <i class="la la-arrow-right ml-1"></i>
                 </nuxt-link>
                 <nuxt-link
                   :to="{ name: 'shop' }"
@@ -73,10 +69,7 @@ const truncateText = (text, maxLength = 200) => {
       </section>
 
       <!-- Even index: Image on RIGHT (like second section) -->
-      <section 
-        v-else 
-        class="teeprint-about-section"
-      >
+      <section v-else class="teeprint-about-section">
         <div class="container">
           <div class="row">
             <div class="col-xl-6 col-lg-6">
@@ -87,22 +80,31 @@ const truncateText = (text, maxLength = 200) => {
                   </h2>
                 </div>
                 <div class="aboutus-list">
-                  <div v-html="blog.content"></div>
+                  <div v-html="truncateByWords(blog.content, 200)"></div>
                 </div>
+                <nuxt-link
+                  :to="{ name: 'quote' }"
+                  class="teeprint-button teeprint-theme-btn zoomInOut"
+                >
+                  Read More <i class="la la-arrow-right ml-1"></i>
+                </nuxt-link>
+                <nuxt-link
+                  :to="{ name: 'shop' }"
+                  style="background-color: #eead04"
+                  class="teeprint-button teeprint-theme-btn zoomInOut mt-5 mx-4"
+                >
+                  Buy Now <i class="la la-arrow-right ml-1"></i>
+                </nuxt-link>
               </div>
             </div>
             <div class="col-xl-6 col-lg-6">
               <div class="teeprint-about-img">
-                <img 
-                  :src="blog.image_url" 
-                  :alt="blog.title" 
-                />
+                <img :src="blog.image_url" :alt="blog.title" />
               </div>
             </div>
           </div>
         </div>
       </section>
-
     </template>
 
     <div class="container mt-5">
