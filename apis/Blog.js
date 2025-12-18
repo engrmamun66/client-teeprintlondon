@@ -5,7 +5,7 @@ export const BrandEndpoints = {
   getBrandList: `${prefix}`,
   deleteBrand: `${prefix}/\\d+`,
   showBrand: `${prefix}/\\d+`,
-  update: `${prefix}/\\d+`
+  update: `${prefix}/\\d+`,
 };
 
 export default {

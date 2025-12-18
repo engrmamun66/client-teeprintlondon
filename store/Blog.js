@@ -36,7 +36,6 @@ export const useBlogStore = defineStore("blog", () => {
       meta_title: "",
       meta_description: "",
       meta_keywords: "",
-
       canonical_url: "",
       image_url: "",
     };
@@ -53,15 +52,7 @@ export const useBlogStore = defineStore("blog", () => {
         resetPostData();
         Toaster.success("Blog created succsfully");
       }
-    } catch (error) {
-      //   if (error.response.status == 401) {
-      //     registrationFormError.value.type = 401;
-      //     registrationFormError.value.message = error.response.data.error;
-      //   } else {
-      //     registrationFormError.value.type = 422;
-      //     registrationFormError.value.messages = error.response.data.errors;
-      //   }
-    }
+    } catch (error) {}
   }
 
   async function getPosts() {
@@ -80,13 +71,6 @@ export const useBlogStore = defineStore("blog", () => {
       Toaster.success("Blog deleted successfully");
       return true;
     } catch (error) {
-      //   if (error.response.status == 401) {
-      //     registrationFormError.value.type = 401;
-      //     registrationFormError.value.message = error.response.data.error;
-      //   } else {
-      //     registrationFormError.value.type = 422;
-      //     registrationFormError.value.messages = error.response.data.errors;
-      //   }
       return false;
     }
   }

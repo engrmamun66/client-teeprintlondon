@@ -260,7 +260,7 @@ const removeImage = () => {
 onMounted(async () => {
   postId = route.params.id;
   await blogStore.showPost(postId);
-  imagePreviewUrl.value = blogStore.postData.image_url
+  imagePreviewUrl.value = blogStore.postData.image_url;
 });
 </script>
 

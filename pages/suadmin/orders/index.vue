@@ -174,11 +174,10 @@ definePageMeta({
 
 let showConfirmation = ref(false);
 
-function resetOrderList(){
-  order_status_id.value = 1
-  orderStore.getOrderList()
+function resetOrderList() {
+  order_status_id.value = 1;
+  orderStore.getOrderList();
 }
-
 
 async function orderStatusChange() {
   let payload = ref({
