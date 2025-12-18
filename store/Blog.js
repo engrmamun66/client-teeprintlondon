@@ -23,6 +23,7 @@ export const useBlogStore = defineStore("blog", () => {
     meta_keywords: "",
     meta_image: "",
     canonical_url: "",
+    image_url:""
   });
 
   function resetPostData() {
@@ -37,6 +38,7 @@ export const useBlogStore = defineStore("blog", () => {
       meta_keywords: "",
       meta_image: "",
       canonical_url: "",
+      image_url:""
     };
   }
 
@@ -112,6 +114,7 @@ export const useBlogStore = defineStore("blog", () => {
         postData.value.meta_keywords = postDataFromApi.meta_keywords || "";
         postData.value.meta_image = postDataFromApi.meta_image || null; // Use null for image
         postData.value.canonical_url = postDataFromApi.canonical_url || "";
+        postData.value.image_url = postDataFromApi.image_url || "";
 
         // Note: I've added '|| ""' (or '|| null' for meta_image) as a simple
         // safeguard in case a property is missing or null in the response.

@@ -23,17 +23,15 @@
           <tbody>
             <tr v-for="post in blogStore.postList" :key="post.id">
               <td>
-                <!-- <div class="px-2">
+                <div class="px-2">
                   <img
                     :src="
-                      post.featured_image
-                        ? `/storage/${post.featured_image}`
-                        : 'https://via.placeholder.com/50'
+                      post.image_url
                     "
                     :alt="post.title"
                     class="product-img"
                   />
-                </div> -->
+                </div> 
               </td>
               <td>
                 <div class="px-2">

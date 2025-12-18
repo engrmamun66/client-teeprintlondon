@@ -56,12 +56,12 @@
                     @change="handleFeaturedImageUpload"
                     class="form-control"
                   />
-                  <small v-if="featuredImageFile"
-                    >{{ featuredImageFile.name }} selected</small
+                  <!-- <small v-if="featuredImageFile"
+                    ></small
                   >
                   <small v-else-if="blogStore.postData.featured_image">
                     Current Image: {{ blogStore.postData.featured_image }}
-                  </small>
+                  </small> -->
 
                   <!-- Image Preview Thumbnail -->
                   <div v-if="imagePreviewUrl" class="image-preview-container">
@@ -260,6 +260,7 @@ const removeImage = () => {
 onMounted(async () => {
   postId = route.params.id;
   await blogStore.showPost(postId);
+  imagePreviewUrl.value = blogStore.postData.image_url
 });
 </script>
 
