@@ -81,10 +81,8 @@ export const useBlogStore = defineStore("blog", () => {
     try {
       let response = await Blog.show(id);
 
-      // Extract the data object
       const postDataFromApi = response.data.data;
 
-      // Check if data exists and populate postData
       if (postDataFromApi) {
         postData.value.title = postDataFromApi.title || "";
         postData.value.content = postDataFromApi.content || "";
@@ -97,11 +95,8 @@ export const useBlogStore = defineStore("blog", () => {
 
         postData.value.canonical_url = postDataFromApi.canonical_url || "";
         postData.value.image_url = postDataFromApi.image_url || "";
-
-        // safeguard in case a property is missing or null in the response.
       }
 
-      // Return true or the populated post data if needed
       return postData.value;
     } catch (error) {
       console.error("Error fetching post data:", error);
@@ -144,9 +139,17 @@ export const useBlogStore = defineStore("blog", () => {
   async function getPublishedBlogs() {
     try {
       let response = await Blog.publishedBlogs();
-      // console.log("*&*&", response.data.data.data)
-
       publishedBlogs.value = response.data.data.data;
+    } catch (error) {}
+  }
+
+  let blogBySlug = ref(null);
+
+  async function getBlogBySlug(slug) {
+    try {
+      let response = await Blog.getBlogBySlug(slug);
+      // console.log("&^", response.data.data)
+      blogBySlug.value = response.data.data;
     } catch (error) {}
   }
 
@@ -175,7 +178,9 @@ export const useBlogStore = defineStore("blog", () => {
     showModal,
     postData,
     getPublishedBlogs,
-    publishedBlogs
+    publishedBlogs,
+    blogBySlug,
+    getBlogBySlug,
   };
 });
 

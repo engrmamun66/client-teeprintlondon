@@ -43,7 +43,7 @@
               </td>
               <td>
                 <div class="px-2">
-                  <span>{{ stripHtmlTags(post.content) }}</span>
+                  <span>{{ truncateByWords(stripHtmlTags(post.content), 150) }}</span>
                 </div>
               </td>
 
@@ -106,6 +106,7 @@ import { useBlogStore } from "~/store/Blog.js";
 const blogStore = useBlogStore();
 let showConfirmation = ref(false);
 let postId = ref(null);
+
 /**
  * Utility function to strip HTML tags from a string.
  * Uses a regular expression to match and replace tags with an empty string.
@@ -115,6 +116,22 @@ let postId = ref(null);
 const stripHtmlTags = (htmlString) => {
   // Regex to match anything between < and > (including the tags themselves)
   return htmlString ? String(htmlString).replace(/<[^>]*>/g, "") : "";
+};
+
+/**
+ * Truncate text by word count
+ * @param {string} text - The text to truncate
+ * @param {number} maxWords - Maximum number of words (default 150)
+ * @returns {string} Truncated text with ... if exceeds limit
+ */
+const truncateByWords = (text, maxWords = 150) => {
+  if (!text) return "";
+  
+  const words = text.trim().split(/\s+/);
+  
+  if (words.length <= maxWords) return text;
+  
+  return words.slice(0, maxWords).join(" ") + "...";
 };
 
 onMounted(async () => {

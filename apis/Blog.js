@@ -31,4 +31,8 @@ export default {
       formData: true,
     });
   },
+
+  async getBlogBySlug(slug) {
+    return await ApiAuth().get(`${prefix}/slug/${slug}`);
+  },
 };
