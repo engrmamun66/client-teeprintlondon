@@ -25,13 +25,11 @@
               <td>
                 <div class="px-2">
                   <img
-                    :src="
-                      post.image_url
-                    "
+                    :src="post.image_url"
                     :alt="post.title"
                     class="product-img"
                   />
-                </div> 
+                </div>
               </td>
               <td>
                 <div class="px-2">
@@ -65,7 +63,14 @@
                   >
                     <i class="las la-edit"></i>
                   </nuxt-link>
-                  <button class="btn btn-sm btn-outline-danger" title="Delete">
+                  <button
+                    class="btn btn-sm btn-outline-danger"
+                    title="Delete"
+                    @click="
+                      showConfirmation = true;
+                      postId = post.id;
+                    "
+                  >
                     <i class="las la-trash"></i>
                   </button>
                 </div>
@@ -75,6 +80,23 @@
         </table>
       </div>
     </div>
+
+    <Modal-Confirm
+      v-if="showConfirmation"
+      v-model="showConfirmation"
+      :skipAutoClose="false"
+      @yes="
+        async () => {
+          let isDeleted = await blogStore.deletePost(postId);
+          if (isDeleted) {
+            showConfirmation = false;
+            productId = null;
+          }
+        }
+      "
+    >
+      <template v-if="showConfirmation"> Are you sure? </template>
+    </Modal-Confirm>
   </div>
 </template>
 
@@ -82,7 +104,8 @@
 import { useBlogStore } from "~/store/Blog.js";
 
 const blogStore = useBlogStore();
-
+let showConfirmation = ref(false);
+let postId = ref(null);
 /**
  * Utility function to strip HTML tags from a string.
  * Uses a regular expression to match and replace tags with an empty string.

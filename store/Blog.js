@@ -21,9 +21,9 @@ export const useBlogStore = defineStore("blog", () => {
     meta_title: "",
     meta_description: "",
     meta_keywords: "",
-    meta_image: "",
+
     canonical_url: "",
-    image_url:""
+    image_url: "",
   });
 
   function resetPostData() {
@@ -36,9 +36,9 @@ export const useBlogStore = defineStore("blog", () => {
       meta_title: "",
       meta_description: "",
       meta_keywords: "",
-      meta_image: "",
+
       canonical_url: "",
-      image_url:""
+      image_url: "",
     };
   }
 
@@ -72,15 +72,13 @@ export const useBlogStore = defineStore("blog", () => {
     } catch (error) {}
   }
 
-  async function deleteBrand(id) {
+  async function deletePost(id) {
     try {
       let response = await Blog.delete(id);
 
-      if (response.status == 201 || 200) {
-        getPosts();
-        Toaster.success("Blog deleted successfully");
-        return true;
-      }
+      getPosts();
+      Toaster.success("Blog deleted successfully");
+      return true;
     } catch (error) {
       //   if (error.response.status == 401) {
       //     registrationFormError.value.type = 401;
@@ -112,11 +110,10 @@ export const useBlogStore = defineStore("blog", () => {
         postData.value.meta_description =
           postDataFromApi.meta_description || "";
         postData.value.meta_keywords = postDataFromApi.meta_keywords || "";
-        postData.value.meta_image = postDataFromApi.meta_image || null; // Use null for image
+
         postData.value.canonical_url = postDataFromApi.canonical_url || "";
         postData.value.image_url = postDataFromApi.image_url || "";
 
-        // Note: I've added '|| ""' (or '|| null' for meta_image) as a simple
         // safeguard in case a property is missing or null in the response.
       }
 
@@ -135,12 +132,6 @@ export const useBlogStore = defineStore("blog", () => {
         // For FormData, append _method directly
         payload.append("_method", "PUT");
 
-        // Debug FormData contents
-        console.log("FormData contents:");
-        for (let [key, value] of payload.entries()) {
-          console.log(`${key}:`, value);
-        }
-
         let response = await Blog.update(id, payload);
       } else {
         // For regular objects, spread as before
@@ -148,14 +139,13 @@ export const useBlogStore = defineStore("blog", () => {
           ...payload,
           _method: "PUT",
         };
-        console.log("*&^", payloads);
 
         let response = await Blog.update(id, payloads);
       }
 
       await getPosts();
       showModal.value = false;
-      resetPostData();
+      // resetPostData();
       Toaster.success("Post updated successfully");
     } catch (error) {
       if (error.response?.status == 422) {
@@ -168,7 +158,7 @@ export const useBlogStore = defineStore("blog", () => {
   return {
     create,
     getPosts,
-    deleteBrand,
+    deletePost,
     showPost,
     update,
     resetPostData,

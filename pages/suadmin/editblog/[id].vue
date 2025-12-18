@@ -193,7 +193,7 @@ async function handleSubmit() {
   formData.append("meta_title", blogStore.postData.meta_title);
   formData.append("meta_description", blogStore.postData.meta_description);
   formData.append("meta_keywords", blogStore.postData.meta_keywords);
-  formData.append("meta_image", blogStore.postData.meta_image);
+
   formData.append("canonical_url", blogStore.postData.canonical_url);
 
   // Append the file if one was selected
