@@ -23,14 +23,11 @@ onMounted(async () => {
 
 const loadMore = async () => {
   isLoadingMore.value = true;
-  // Increase the count to fetch current + 5 more
   perPage.value += 5;
-
   let payload = {
     page: currentPage.value,
     per_page: perPage.value,
   };
-
   await blogStore.getPublishedBlogs(payload);
   isLoadingMore.value = false;
 };
@@ -56,24 +53,18 @@ const hasMoreWords = (text, maxWords = 200) => {
   <div>
     <template v-if="isLoading">
       <div v-for="i in 4" :key="'init-shimmer-' + i">
-        <div
-          :class="i % 2 === 0 ? 'shimmer-layout-right' : 'shimmer-layout-left'"
-        >
+        <div :class="i % 2 === 0 ? 'shimmer-layout-right' : 'shimmer-layout-left'">
           <div class="container py-5">
-            <div
-              class="row align-items-center"
-              :class="{ 'flex-row-reverse': i % 2 === 0 }"
-            >
+            <div class="row align-items-center" :class="{ 'flex-row-reverse': i % 2 === 0 }">
               <div class="col-xl-6 col-lg-6">
                 <div class="shimmer-wrapper">
                   <div class="shimmer shimmer-image"></div>
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6">
-                <div class="shimmer shimmer-title"></div>
-                <div class="shimmer shimmer-text"></div>
-                <div class="shimmer shimmer-text"></div>
-                <div class="shimmer shimmer-text" style="width: 70%"></div>
+                <div class="shimmer-title shimmer"></div>
+                <div class="shimmer-text shimmer"></div>
+                <div class="shimmer-text shimmer"></div>
                 <div class="shimmer-buttons">
                   <div class="shimmer shimmer-button"></div>
                   <div class="shimmer shimmer-button"></div>
@@ -87,46 +78,40 @@ const hasMoreWords = (text, maxWords = 200) => {
 
     <template v-else>
       <div v-for="(blog, index) in blogStore.publishedBlogs" :key="blog.id">
-        <section v-if="index % 2 === 0" class="teeprint-homewhychoose-section">
+        <section :class="index % 2 === 0 ? 'teeprint-homewhychoose-section' : 'teeprint-about-section'">
           <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center" :class="{ 'flex-row-reverse': index % 2 !== 0 }">
               <div class="col-xl-6 col-lg-6">
-                <div class="teeprint-homewhychoose-img">
-                  <img
-                    :src="blog.image_url"
-                    :alt="blog.title"
-                    class="img-fluid"
-                  />
+                <div :class="index % 2 === 0 ? 'teeprint-homewhychoose-img' : 'teeprint-about-img'">
+                  <img :src="blog.image_url" :alt="blog.title" class="img-fluid" />
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6">
-                <div class="teeprint-homewhychoose-content">
+                <div :class="index % 2 === 0 ? 'teeprint-homewhychoose-content' : 'teeprint-about-content'">
                   <div class="section-main-heading">
                     <h2 class="section-heading-title-big">{{ blog.title }}</h2>
                   </div>
                   <div v-html="truncateByWords(blog.content, 200)"></div>
-                  <div class="mt-4 d-flex flex-wrap align-items-center gap-3">
+                  
+                  <div class="blog-button-group mt-4">
                     <nuxt-link
                       v-if="hasMoreWords(blog.content, 200)"
                       :to="`/blogs/${blog.slug}`"
-                      class="read-more-btn"
+                      class="read-more-btn zoomInOut"
                     >
                       <span>Read More</span>
-                      <i class="la la-arrow-right"></i>
                     </nuxt-link>
                     <nuxt-link
-           
                       :to="`/quote`"
-                      class="teeprint-button teeprint-theme-btn zoomInOut"
+                      class="teeprint-button teeprint-theme-btn zoomInOut btn-quote"
                     >
-                      Get a Free Quote <i class="la la-arrow-right ml-1"></i>
+                      Get a Free Quote
                     </nuxt-link>
                     <nuxt-link
                       :to="{ name: 'shop' }"
-                      style="background-color: #eead04"
-                      class="teeprint-button teeprint-theme-btn zoomInOut"
+                      class="teeprint-button teeprint-theme-btn zoomInOut btn-buy"
                     >
-                      Buy Now <i class="la la-arrow-right ml-1"></i>
+                      Buy Now
                     </nuxt-link>
                   </div>
                 </div>
@@ -134,107 +119,12 @@ const hasMoreWords = (text, maxWords = 200) => {
             </div>
           </div>
         </section>
-
-        <section v-else class="teeprint-about-section">
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col-xl-6 col-lg-6">
-                <div class="teeprint-about-content">
-                  <div class="section-main-heading">
-                    <h2 class="section-heading-title-big">{{ blog.title }}</h2>
-                  </div>
-                  <div class="aboutus-list">
-                    <div v-html="truncateByWords(blog.content, 200)"></div>
-                  </div>
-                  <div class="mt-4 d-flex flex-wrap align-items-center gap-3">
-                    <nuxt-link
-                      v-if="hasMoreWords(blog.content, 200)"
-                      :to="`/blogs/${blog.slug}`"
-                      class="read-more-btn"
-                    >
-                      <span>Read More</span>
-                      <i class="la la-arrow-right"></i>
-                    </nuxt-link>
-                    <nuxt-link
-                      :to="`/quote`"
-                      class="teeprint-button teeprint-theme-btn zoomInOut"
-                    >
-                      Get a Free Quote <i class="la la-arrow-right ml-1"></i>
-                    </nuxt-link>
-                    <nuxt-link
-                      :to="{ name: 'shop' }"
-                      style="background-color: #eead04"
-                      class="teeprint-button teeprint-theme-btn zoomInOut"
-                    >
-                      Buy Now <i class="la la-arrow-right ml-1"></i>
-                    </nuxt-link>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6">
-                <div class="teeprint-about-img">
-                  <img
-                    :src="blog.image_url"
-                    :alt="blog.title"
-                    class="img-fluid"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
 
-      <div v-if="isLoadingMore">
-        <div v-for="i in 2" :key="'more-shimmer-' + i">
-          <div
-            :class="
-              (blogStore.publishedBlogs.length + i) % 2 === 0
-                ? 'shimmer-layout-right'
-                : 'shimmer-layout-left'
-            "
-          >
-            <div class="container py-5">
-              <div
-                class="row align-items-center"
-                :class="{
-                  'flex-row-reverse':
-                    (blogStore.publishedBlogs.length + i) % 2 === 0,
-                }"
-              >
-                <div class="col-xl-6 col-lg-6">
-                  <div class="shimmer-wrapper">
-                    <div class="shimmer shimmer-image"></div>
-                  </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                  <div class="shimmer-title shimmer"></div>
-                  <div class="shimmer-text shimmer"></div>
-                  <div class="shimmer-text shimmer"></div>
-                  <div class="shimmer-text shimmer" style="width: 70%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <section
-        class="load-more-section"
-        v-if="!isLoadingMore"
-        :hidden="blogStore.totalBlogs <= perPage"
-      >
-        <div class="container">
-          <div class="row">
-            <div class="col-12 text-center">
-              <button @click="loadMore" class="read-more-btn zoomInOut">
-                <span style="color: white"
-                  >Load More <i class="la la-arrow-down ml-1"></i
-                ></span>
-              </button>
-            </div>
-          </div>
-        </div>
+      <section class="load-more-section text-center py-5" v-if="!isLoadingMore" :hidden="blogStore.totalBlogs <= perPage">
+        <button @click="loadMore" class="read-more-btn zoomInOut">
+          <span>Load More <i class="la la-arrow-down ml-1"></i></span>
+        </button>
       </section>
     </template>
 
@@ -250,149 +140,80 @@ const hasMoreWords = (text, maxWords = 200) => {
 </template>
 
 <style scoped>
-/* Shimmer Animation */
-.shimmer-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.shimmer {
-  background: linear-gradient(
-    90deg,
-    #f0f0f0 0%,
-    #e8e8e8 20%,
-    #f0f0f0 40%,
-    #f0f0f0 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer-anim 1.5s infinite linear;
-  border-radius: 4px;
-}
-
-@keyframes shimmer-anim {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-/* Shimmer Elements */
-.shimmer-image {
-  width: 100%;
-  height: 350px;
-}
-.shimmer-title {
-  height: 40px;
-  width: 80%;
-  margin-bottom: 20px;
-}
-.shimmer-text {
-  height: 14px;
-  width: 100%;
-  margin-bottom: 12px;
-}
-.shimmer-buttons {
+/* Unified Button Group Logic */
+.blog-button-group {
   display: flex;
-  gap: 15px;
-  margin-top: 25px;
-}
-.shimmer-button {
-  height: 45px;
-  width: 140px;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px; 
+  width: 100%;
 }
 
-/* Read More Button - New Design */
-.read-more-btn {
-  display: inline-flex;
+.blog-button-group .read-more-btn,
+.blog-button-group .teeprint-button {
+  flex: 0 0 auto;
+  margin: 0 !important;
+  white-space: nowrap;
+  font-size: 14px;
+  padding: 10px 20px;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white !important;
-  text-decoration: none;
+  justify-content: center;
   border-radius: 50px;
+  height: 45px;
+  text-decoration: none;
+}
+
+/* Color Overrides */
+.btn-buy {
+  background-color: #eead04 !important;
+  color: white !important;
+}
+.btn-quote {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* Read More Style - Fixed Text Color */
+.read-more-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white !important; /* Forces button text to white */
   font-weight: 600;
-  font-size: 15px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
-.read-more-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-  transition: left 0.4s ease;
-  z-index: 0;
+.read-more-btn span {
+  color: white !important; /* Double-check for nested span */
 }
 
-.read-more-btn:hover::before {
-  left: 0;
-}
-
-.read-more-btn span,
-.read-more-btn i {
-  position: relative;
-  z-index: 1;
-  color: white;
-}
-
-.read-more-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-  color: white !important;
-  text-decoration: none;
-}
-
-.read-more-btn i {
-  transition: transform 0.3s ease;
-}
-
-.read-more-btn:hover i {
-  transform: translateX(4px);
-}
-
-/* Layout adjustments */
-.load-more-section {
-  padding: 50px 0;
-}
-.load-more-btn {
-  min-width: 220px;
-}
-
-@media (max-width: 991px) {
-  .shimmer-image {
-    height: 250px;
-    margin-bottom: 20px;
+/* Ensure consistent spacing during zoom/mobile */
+@media (max-width: 768px) {
+  .blog-button-group {
+    gap: 10px;
   }
-
-  .read-more-btn {
-    margin-bottom: 10px;
+  
+  .blog-button-group .read-more-btn,
+  .blog-button-group .teeprint-button {
+    font-size: 11px;
+    padding: 8px 12px;
+    flex: 1; 
   }
 }
 
-/* Button alignment styles */
-.d-flex {
-  display: flex;
+/* Shimmer Styles */
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 0%, #e8e8e8 20%, #f0f0f0 40%, #f0f0f0 100%);
+  background-size: 200% 100%;
+  animation: shimmer-anim 1.5s infinite linear;
 }
-
-.flex-wrap {
-  flex-wrap: wrap;
+@keyframes shimmer-anim {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
-
-.align-items-center {
-  align-items: center;
-}
-
-.gap-3 {
-  gap: 15px;
-}
+.shimmer-image { width: 100%; height: 350px; border-radius: 8px; }
+.shimmer-title { height: 30px; width: 70%; margin-bottom: 20px; border-radius: 4px; }
+.shimmer-text { height: 12px; width: 100%; margin-bottom: 10px; border-radius: 4px; }
+.shimmer-buttons { display: flex; gap: 15px; margin-top: 20px; }
+.shimmer-button { height: 40px; width: 120px; border-radius: 50px; }
 </style>

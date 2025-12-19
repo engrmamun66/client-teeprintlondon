@@ -139,13 +139,16 @@ useSeoMeta({
                 :to="{ name: 'shop' }"
                 class="teeprint-button teeprint-theme-btn zoomInOut btn-buy"
               >
-                Buy Now <i class="la la-arrow-right ml-1"></i>
+                Buy Now
               </nuxt-link>
               <nuxt-link
-                :to="{ name: 'blogs' }"
+                :to="{ name: 'quote' }"
                 class="teeprint-button teeprint-theme-btn zoomInOut btn-back"
               >
-                <i class="la la-arrow-left mr-1"></i> Back to Blogs
+                Get a Free Quote
+              </nuxt-link>
+              <nuxt-link :to="`/blogs`" class="read-more-btn zoomInOut">
+                <span> Read More Blogs</span>
               </nuxt-link>
             </div>
           </div>
@@ -169,7 +172,6 @@ useSeoMeta({
   padding: 80px 0;
 }
 
-/* Centered Header Styles */
 .blog-header {
   margin-bottom: 50px;
   max-width: 1000px;
@@ -195,7 +197,6 @@ useSeoMeta({
   margin-right: 8px;
 }
 
-/* Image */
 .blog-image-wrapper.full-width {
   width: 100%;
   max-width: 1300px;
@@ -212,7 +213,6 @@ useSeoMeta({
   display: block;
 }
 
-/* Content */
 .blog-content-container {
   max-width: 1050px;
   margin: 0 auto;
@@ -242,7 +242,6 @@ useSeoMeta({
   margin: 30px 0;
 }
 
-/* Actions */
 .blog-actions {
   display: flex;
   justify-content: center;
@@ -262,6 +261,53 @@ useSeoMeta({
   min-width: 200px;
 }
 
+/* ========== READ MORE BUTTON FIX ========== */
+.read-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; /* Added to center text horizontally */
+  gap: 8px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white !important;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  text-align: center; /* Ensures text alignment */
+}
+
+.read-more-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transition: left 0.4s ease;
+  z-index: 0;
+}
+
+.read-more-btn:hover::before {
+  left: 0;
+}
+
+.read-more-btn span {
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+.read-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
 /* ========== SHIMMER STYLES ========== */
 .shimmer-wrapper {
   position: relative;
@@ -270,13 +316,7 @@ useSeoMeta({
 }
 
 .shimmer {
-  background: linear-gradient(
-    90deg,
-    #f0f0f0 0%,
-    #e0e0e0 20%,
-    #f0f0f0 40%,
-    #f0f0f0 100%
-  );
+  background: linear-gradient(90deg, #f0f0f0 0%, #e0e0e0 20%, #f0f0f0 40%, #f0f0f0 100%);
   background-size: 200% 100%;
   animation: shimmerAnimation 1.5s infinite;
   border-radius: 8px;
@@ -295,70 +335,20 @@ useSeoMeta({
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 992px) {
-  .blog-title {
-    font-size: 38px;
-  }
+  .blog-title { font-size: 38px; }
 }
 
 @media (max-width: 768px) {
-  .blog-detail-section {
-    padding: 40px 0;
-  }
-
-  .blog-header {
-    margin-bottom: 30px;
-    padding: 0 15px; /* Ensures text doesn't touch screen edges */
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .blog-title {
-    font-size: 28px; /* Adjusted size for mobile */
-    line-height: 1.3;
-    display: block; /* Ensures it treats as block for visibility */
-    word-wrap: break-word; /* Prevents long words from overflowing */
-    margin-bottom: 15px;
-  }
-
-  .blog-meta {
-    font-size: 14px;
-  }
-
-  .blog-image-wrapper.full-width {
-    margin-bottom: 40px;
-    border-radius: 0;
-    margin-left: -15px;
-    margin-right: -15px;
-    width: calc(100% + 30px);
-  }
-
-  .shimmer-image {
-    height: 300px;
-    border-radius: 0;
-  }
-
-  .shimmer-title {
-    height: 45px;
-    width: 90%;
-  }
-
-  .blog-content {
-    font-size: 17px;
-  }
-
-  .blog-actions {
-    flex-direction: column;
-    margin-top: 40px;
-    padding-top: 30px;
-  }
-
-  .btn-buy,
-  .btn-back {
-    width: 100%;
-  }
-
-  .shimmer-button {
-    width: 100%;
-  }
+  .blog-detail-section { padding: 40px 0; }
+  .blog-header { margin-bottom: 30px; padding: 0 15px; width: 100%; max-width: 100%; }
+  .blog-title { font-size: 28px; line-height: 1.3; display: block; word-wrap: break-word; margin-bottom: 15px; }
+  .blog-meta { font-size: 14px; }
+  .blog-image-wrapper.full-width { margin-bottom: 40px; border-radius: 0; margin-left: -15px; margin-right: -15px; width: calc(100% + 30px); }
+  .shimmer-image { height: 300px; border-radius: 0; }
+  .shimmer-title { height: 45px; width: 90%; }
+  .blog-content { font-size: 17px; }
+  .blog-actions { flex-direction: column; margin-top: 40px; padding-top: 30px; }
+  .btn-buy, .btn-back, .read-more-btn { width: 100%; } /* Added .read-more-btn here */
+  .shimmer-button { width: 100%; }
 }
 </style>
