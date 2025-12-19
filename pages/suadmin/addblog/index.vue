@@ -144,6 +144,10 @@
       @click="handleSubmit"
     >
       Submit
+      <BtnLoader
+        :show="H.isPendingAnyApi('Blog:create')"
+        color="white"
+      />
     </button>
 
     <!-- Image Modal for Full Size View -->

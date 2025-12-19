@@ -21,61 +21,101 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="post in blogStore.postList" :key="post.id">
-              <td>
-                <div class="px-2">
-                  <img
-                    :src="post.image_url"
-                    :alt="post.title"
-                    class="product-img"
-                  />
-                </div>
-              </td>
-              <td>
-                <div class="px-2">
-                  <span>{{ post.id }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="px-2">
-                  <span>{{ post.title }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="px-2">
-                  <span>{{ truncateByWords(stripHtmlTags(post.content), 150) }}</span>
-                </div>
-              </td>
+            <!-- Shimmer Loading State -->
+            <template v-if="isLoading">
+              <tr v-for="n in 5" :key="`shimmer-${n}`">
+                <td>
+                  <div class="px-2">
+                    <div class="shimmer shimmer-img"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="px-2">
+                    <div class="shimmer shimmer-text shimmer-text-short"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="px-2">
+                    <div class="shimmer shimmer-text"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="px-2">
+                    <div class="shimmer shimmer-text shimmer-text-long"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="px-2">
+                    <div class="shimmer shimmer-text"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex gap-2 justify-content-center">
+                    <div class="shimmer shimmer-btn"></div>
+                    <div class="shimmer shimmer-btn"></div>
+                  </div>
+                </td>
+              </tr>
+            </template>
 
-              <td>
-                <div class="px-2">
-                  <span>{{
-                    new Date(post.created_at).toLocaleDateString()
-                  }}</span>
-                </div>
-              </td>
-              <td>
-                <div class="d-flex gap-2 justify-content-center">
-                  <nuxt-link
-                    :to="`/suadmin/editblog/${post.id}`"
-                    class="btn btn-sm btn-outline-primary"
-                    title="Edit"
-                  >
-                    <i class="las la-edit"></i>
-                  </nuxt-link>
-                  <button
-                    class="btn btn-sm btn-outline-danger"
-                    title="Delete"
-                    @click="
-                      showConfirmation = true;
-                      postId = post.id;
-                    "
-                  >
-                    <i class="las la-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
+            <!-- Actual Data -->
+            <template v-else>
+              <tr v-for="post in blogStore.postList" :key="post.id">
+                <td>
+                  <div class="px-2">
+                    <img
+                      :src="post.image_url"
+                      :alt="post.title"
+                      class="product-img"
+                    />
+                  </div>
+                </td>
+                <td>
+                  <div class="px-2">
+                    <span>{{ post.id }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="px-2">
+                    <span>{{ post.title }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="px-2">
+                    <span>{{ truncateByWords(stripHtmlTags(post.content), 150) }}</span>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="px-2">
+                    <span>{{
+                      new Date(post.created_at).toLocaleDateString()
+                    }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex gap-2 justify-content-center">
+                    <nuxt-link
+                      :to="`/suadmin/editblog/${post.id}`"
+                      class="btn btn-sm btn-outline-primary"
+                      title="Edit"
+                    >
+                      <i class="las la-edit"></i>
+                    </nuxt-link>
+                    <button
+                      class="btn btn-sm btn-outline-danger"
+                      title="Delete"
+                      @click="
+                        showConfirmation = true;
+                        postId = post.id;
+                      "
+                    >
+                      <i class="las la-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -106,6 +146,7 @@ import { useBlogStore } from "~/store/Blog.js";
 const blogStore = useBlogStore();
 let showConfirmation = ref(false);
 let postId = ref(null);
+let isLoading = ref(true);
 
 /**
  * Utility function to strip HTML tags from a string.
@@ -135,7 +176,9 @@ const truncateByWords = (text, maxWords = 150) => {
 };
 
 onMounted(async () => {
+  isLoading.value = true;
   await blogStore.getPosts();
+  isLoading.value = false;
 });
 </script>
 
@@ -159,5 +202,52 @@ onMounted(async () => {
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+/* Shimmer Effect Styles */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.shimmer-img {
+  width: 50px;
+  height: 50px;
+}
+
+.shimmer-text {
+  height: 16px;
+  width: 120px;
+}
+
+.shimmer-text-short {
+  width: 60px;
+}
+
+.shimmer-text-long {
+  width: 250px;
+}
+
+.shimmer-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
 }
 </style>

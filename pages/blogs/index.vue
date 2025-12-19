@@ -56,11 +56,18 @@ const hasMoreWords = (text, maxWords = 200) => {
   <div>
     <template v-if="isLoading">
       <div v-for="i in 4" :key="'init-shimmer-' + i">
-        <div :class="i % 2 === 0 ? 'shimmer-layout-right' : 'shimmer-layout-left'">
+        <div
+          :class="i % 2 === 0 ? 'shimmer-layout-right' : 'shimmer-layout-left'"
+        >
           <div class="container py-5">
-            <div class="row align-items-center" :class="{'flex-row-reverse': i % 2 === 0}">
+            <div
+              class="row align-items-center"
+              :class="{ 'flex-row-reverse': i % 2 === 0 }"
+            >
               <div class="col-xl-6 col-lg-6">
-                <div class="shimmer-wrapper"><div class="shimmer shimmer-image"></div></div>
+                <div class="shimmer-wrapper">
+                  <div class="shimmer shimmer-image"></div>
+                </div>
               </div>
               <div class="col-xl-6 col-lg-6">
                 <div class="shimmer shimmer-title"></div>
@@ -85,7 +92,11 @@ const hasMoreWords = (text, maxWords = 200) => {
             <div class="row align-items-center">
               <div class="col-xl-6 col-lg-6">
                 <div class="teeprint-homewhychoose-img">
-                  <img :src="blog.image_url" :alt="blog.title" class="img-fluid" />
+                  <img
+                    :src="blog.image_url"
+                    :alt="blog.title"
+                    class="img-fluid"
+                  />
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6">
@@ -95,10 +106,18 @@ const hasMoreWords = (text, maxWords = 200) => {
                   </div>
                   <div v-html="truncateByWords(blog.content, 200)"></div>
                   <div class="mt-4">
-                    <nuxt-link v-if="hasMoreWords(blog.content, 200)" :to="`/blogs/${blog.slug}`" class="teeprint-button teeprint-theme-btn zoomInOut">
+                    <nuxt-link
+                      v-if="hasMoreWords(blog.content, 200)"
+                      :to="`/blogs/${blog.slug}`"
+                      class="teeprint-button teeprint-theme-btn zoomInOut"
+                    >
                       Read More <i class="la la-arrow-right ml-1"></i>
                     </nuxt-link>
-                    <nuxt-link :to="{ name: 'shop' }" style="background-color: #eead04" class="teeprint-button teeprint-theme-btn zoomInOut mx-2">
+                    <nuxt-link
+                      :to="{ name: 'shop' }"
+                      style="background-color: #eead04"
+                      class="teeprint-button teeprint-theme-btn zoomInOut mx-2"
+                    >
                       Buy Now <i class="la la-arrow-right ml-1"></i>
                     </nuxt-link>
                   </div>
@@ -120,10 +139,18 @@ const hasMoreWords = (text, maxWords = 200) => {
                     <div v-html="truncateByWords(blog.content, 200)"></div>
                   </div>
                   <div class="mt-4">
-                    <nuxt-link v-if="hasMoreWords(blog.content, 200)" :to="`/blogs/${blog.slug}`" class="teeprint-button teeprint-theme-btn zoomInOut">
+                    <nuxt-link
+                      v-if="hasMoreWords(blog.content, 200)"
+                      :to="`/blogs/${blog.slug}`"
+                      class="teeprint-button teeprint-theme-btn zoomInOut"
+                    >
                       Read More <i class="la la-arrow-right ml-1"></i>
                     </nuxt-link>
-                    <nuxt-link :to="{ name: 'shop' }" style="background-color: #eead04" class="teeprint-button teeprint-theme-btn zoomInOut mx-2">
+                    <nuxt-link
+                      :to="{ name: 'shop' }"
+                      style="background-color: #eead04"
+                      class="teeprint-button teeprint-theme-btn zoomInOut mx-2"
+                    >
                       Buy Now <i class="la la-arrow-right ml-1"></i>
                     </nuxt-link>
                   </div>
@@ -131,7 +158,11 @@ const hasMoreWords = (text, maxWords = 200) => {
               </div>
               <div class="col-xl-6 col-lg-6">
                 <div class="teeprint-about-img">
-                  <img :src="blog.image_url" :alt="blog.title" class="img-fluid" />
+                  <img
+                    :src="blog.image_url"
+                    :alt="blog.title"
+                    class="img-fluid"
+                  />
                 </div>
               </div>
             </div>
@@ -141,11 +172,25 @@ const hasMoreWords = (text, maxWords = 200) => {
 
       <div v-if="isLoadingMore">
         <div v-for="i in 2" :key="'more-shimmer-' + i">
-          <div :class="(blogStore.publishedBlogs.length + i) % 2 === 0 ? 'shimmer-layout-right' : 'shimmer-layout-left'">
+          <div
+            :class="
+              (blogStore.publishedBlogs.length + i) % 2 === 0
+                ? 'shimmer-layout-right'
+                : 'shimmer-layout-left'
+            "
+          >
             <div class="container py-5">
-              <div class="row align-items-center" :class="{'flex-row-reverse': (blogStore.publishedBlogs.length + i) % 2 === 0}">
+              <div
+                class="row align-items-center"
+                :class="{
+                  'flex-row-reverse':
+                    (blogStore.publishedBlogs.length + i) % 2 === 0,
+                }"
+              >
                 <div class="col-xl-6 col-lg-6">
-                  <div class="shimmer-wrapper"><div class="shimmer shimmer-image"></div></div>
+                  <div class="shimmer-wrapper">
+                    <div class="shimmer shimmer-image"></div>
+                  </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
                   <div class="shimmer-title shimmer"></div>
@@ -159,12 +204,21 @@ const hasMoreWords = (text, maxWords = 200) => {
         </div>
       </div>
 
-      <section class="load-more-section" v-if="!isLoadingMore">
+      <section
+        class="load-more-section"
+        v-if="!isLoadingMore"
+        :hidden="blogStore.totalBlogs <= perPage"
+      >
         <div class="container">
           <div class="row">
             <div class="col-12 text-center">
-              <button @click="loadMore" class="teeprint-button teeprint-theme-btn zoomInOut load-more-btn">
-                <span style="color: white">Load More <i class="la la-arrow-down ml-1"></i></span>
+              <button
+                @click="loadMore"
+                class="teeprint-button teeprint-theme-btn zoomInOut load-more-btn"
+              >
+                <span style="color: white"
+                  >Load More <i class="la la-arrow-down ml-1"></i
+                ></span>
               </button>
             </div>
           </div>
@@ -205,22 +259,51 @@ const hasMoreWords = (text, maxWords = 200) => {
 }
 
 @keyframes shimmer-anim {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 /* Shimmer Elements */
-.shimmer-image { width: 100%; height: 350px; }
-.shimmer-title { height: 40px; width: 80%; margin-bottom: 20px; }
-.shimmer-text { height: 14px; width: 100%; margin-bottom: 12px; }
-.shimmer-buttons { display: flex; gap: 15px; margin-top: 25px; }
-.shimmer-button { height: 45px; width: 140px; }
+.shimmer-image {
+  width: 100%;
+  height: 350px;
+}
+.shimmer-title {
+  height: 40px;
+  width: 80%;
+  margin-bottom: 20px;
+}
+.shimmer-text {
+  height: 14px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+.shimmer-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+.shimmer-button {
+  height: 45px;
+  width: 140px;
+}
 
 /* Layout adjustments */
-.load-more-section { padding: 50px 0; }
-.load-more-btn { min-width: 220px; }
+.load-more-section {
+  padding: 50px 0;
+}
+.load-more-btn {
+  min-width: 220px;
+}
 
 @media (max-width: 991px) {
-  .shimmer-image { height: 250px; margin-bottom: 20px; }
+  .shimmer-image {
+    height: 250px;
+    margin-bottom: 20px;
+  }
 }
 </style>

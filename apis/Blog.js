@@ -1,10 +1,10 @@
 const prefix = "posts";
 
-export const BrandEndpoints = {
+export const BlogEndpoints = {
   create: `${prefix}`,
-  getBrandList: `${prefix}`,
-  deleteBrand: `${prefix}/\\d+`,
-  showBrand: `${prefix}/\\d+`,
+  getBlogList: `${prefix}`,
+  deleteBlog: `${prefix}/\\d+`,
+  showBlog: `${prefix}/\\d+`,
   update: `${prefix}/\\d+`,
 };
 

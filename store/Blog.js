@@ -135,13 +135,13 @@ export const useBlogStore = defineStore("blog", () => {
   }
 
   let publishedBlogs = ref(null);
-
+  let totalBlogs =  ref(null)
   async function getPublishedBlogs(payload) {
     try {
 
       let response = await Blog.publishedBlogs({params:payload});
-      console.log("&^&^&^&",response.data.data.data)
       publishedBlogs.value = response.data.data.data;
+      totalBlogs.value = response.data.data.total
     } catch (error) {}
   }
 
@@ -182,6 +182,7 @@ export const useBlogStore = defineStore("blog", () => {
     publishedBlogs,
     blogBySlug,
     getBlogBySlug,
+    totalBlogs
   };
 });
 

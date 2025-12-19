@@ -150,6 +150,10 @@
       @click="handleSubmit"
     >
       Submit
+      <BtnLoader
+        :show="H.isPendingAnyApi('Blog:create|Brand:update')"
+        color="white"
+      />
     </button>
 
     <!-- Image Modal for Full Size View -->
