@@ -27,12 +27,12 @@ export default {
     return await ApiAuth().post(`${prefix}/${id}`, payload, { formData: true });
   },
   async publishedBlogs(payload = {}) {
-    return await ApiAuth().get(`${prefix}/published/list`, payload, {
+    return await Api().get(`${prefix}/published/list`, payload, {
       formData: true,
     });
   },
 
   async getBlogBySlug(slug) {
-    return await ApiAuth().get(`${prefix}/slug/${slug}`);
+    return await Api().get(`${prefix}/slug/${slug}`);
   },
 };

@@ -138,7 +138,8 @@ export const useBlogStore = defineStore("blog", () => {
 
   async function getPublishedBlogs() {
     try {
-      let response = await Blog.publishedBlogs();
+
+      let response = await Blog.publishedBlogs({params:payload});
       publishedBlogs.value = response.data.data.data;
     } catch (error) {}
   }
@@ -148,7 +149,6 @@ export const useBlogStore = defineStore("blog", () => {
   async function getBlogBySlug(slug) {
     try {
       let response = await Blog.getBlogBySlug(slug);
-      // console.log("&^", response.data.data)
       blogBySlug.value = response.data.data;
     } catch (error) {}
   }

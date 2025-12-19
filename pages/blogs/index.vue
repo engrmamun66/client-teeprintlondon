@@ -10,7 +10,11 @@ definePageMeta({
 
 onMounted(async () => {
   isLoading.value = true;
-  await blogStore.getPublishedBlogs();
+  let payload = {
+    page: 1,
+    per_page: 5,
+  };
+  await blogStore.getPublishedBlogs(payload);
   console.log("*&&*&", blogStore.publishedBlogs);
   isLoading.value = false;
 });
@@ -160,7 +164,7 @@ const hasMoreWords = (text, maxWords = 200) => {
                   </div>
                   <nuxt-link
                     v-if="hasMoreWords(blog.content, 200)"
-                            :to="`/blogs/${blog.slug}`"
+                    :to="`/blogs/${blog.slug}`"
                     class="teeprint-button teeprint-theme-btn zoomInOut"
                   >
                     Read More <i class="la la-arrow-right ml-1"></i>
