@@ -46,22 +46,18 @@ useSeoMeta({
 
 <template>
   <div>
-    <!-- Loading State - Show Shimmer -->
     <template v-if="loading">
       <section class="blog-detail-section">
         <div class="container">
-          <!-- Header Shimmer -->
           <div class="blog-header text-center">
             <div class="shimmer shimmer-title"></div>
             <div class="shimmer shimmer-meta"></div>
           </div>
 
-          <!-- Image Shimmer -->
           <div class="blog-image-wrapper full-width shimmer-wrapper">
             <div class="shimmer shimmer-image"></div>
           </div>
 
-          <!-- Content Shimmer -->
           <div class="blog-content-container">
             <div class="shimmer shimmer-text"></div>
             <div class="shimmer shimmer-text"></div>
@@ -78,7 +74,6 @@ useSeoMeta({
             <div class="shimmer shimmer-text" style="width: 80%"></div>
             <div class="shimmer shimmer-text" style="width: 95%"></div>
 
-            <!-- Button Shimmer -->
             <div class="blog-actions">
               <div class="shimmer shimmer-button"></div>
               <div class="shimmer shimmer-button"></div>
@@ -88,7 +83,6 @@ useSeoMeta({
       </section>
     </template>
 
-    <!-- Error State - Show only if there's an error -->
     <template v-else-if="error">
       <section class="blog-detail-section">
         <div class="container text-center py-5">
@@ -110,7 +104,6 @@ useSeoMeta({
       </section>
     </template>
 
-    <!-- Success State - Show Blog Content -->
     <template v-else-if="blogStore.blogBySlug">
       <section class="blog-detail-section">
         <div class="container">
@@ -188,7 +181,7 @@ useSeoMeta({
   font-size: 52px;
   font-weight: 800;
   color: #1a1a1a;
-  margin-bottom: 20px;
+  margin-top: 40px;
   line-height: 1.1;
 }
 
@@ -202,7 +195,7 @@ useSeoMeta({
   margin-right: 8px;
 }
 
-/* Image - Now takes more space */
+/* Image */
 .blog-image-wrapper.full-width {
   width: 100%;
   max-width: 1300px;
@@ -219,7 +212,7 @@ useSeoMeta({
   display: block;
 }
 
-/* Content - Readable but not narrow */
+/* Content */
 .blog-content-container {
   max-width: 1050px;
   margin: 0 auto;
@@ -242,27 +235,11 @@ useSeoMeta({
   margin-bottom: 25px;
 }
 
-.blog-content :deep(h3) {
-  font-size: 28px;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-
 .blog-content :deep(img) {
   max-width: 100%;
   height: auto;
   border-radius: 12px;
   margin: 30px 0;
-}
-
-.blog-content :deep(ul),
-.blog-content :deep(ol) {
-  margin-bottom: 25px;
-  padding-left: 30px;
-}
-
-.blog-content :deep(li) {
-  margin-bottom: 12px;
 }
 
 /* Actions */
@@ -307,73 +284,19 @@ useSeoMeta({
 }
 
 @keyframes shimmerAnimation {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-/* Title Shimmer */
-.shimmer-title {
-  height: 60px;
-  width: 70%;
-  margin: 0 auto 20px;
-  border-radius: 12px;
-}
-
-/* Meta Shimmer */
-.shimmer-meta {
-  height: 20px;
-  width: 180px;
-  margin: 0 auto;
-}
-
-/* Image Shimmer */
-.shimmer-image {
-  height: 600px;
-  width: 100%;
-  border-radius: 16px;
-  margin-bottom: 0;
-}
-
-/* Text Content Shimmer */
-.shimmer-text {
-  height: 18px;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-/* Spacing between paragraphs */
-.shimmer-spacing {
-  height: 30px;
-  background: transparent;
-  margin-bottom: 15px;
-}
-
-/* Button Shimmer */
-.shimmer-button {
-  height: 50px;
-  width: 200px;
-  border-radius: 6px;
-}
+.shimmer-title { height: 60px; width: 70%; margin: 0 auto 20px; }
+.shimmer-meta { height: 20px; width: 180px; margin: 0 auto; }
+.shimmer-image { height: 600px; width: 100%; }
+.shimmer-text { height: 18px; width: 100%; }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 992px) {
   .blog-title {
     font-size: 38px;
-  }
-
-  .blog-image-wrapper.full-width {
-    border-radius: 0;
-    margin-left: -15px;
-    margin-right: -15px;
-    width: calc(100% + 30px);
-  }
-
-  .shimmer-image {
-    border-radius: 0;
   }
 }
 
@@ -384,10 +307,17 @@ useSeoMeta({
 
   .blog-header {
     margin-bottom: 30px;
+    padding: 0 15px; /* Ensures text doesn't touch screen edges */
+    width: 100%;
+    max-width: 100%;
   }
 
   .blog-title {
-    font-size: 32px;
+    font-size: 28px; /* Adjusted size for mobile */
+    line-height: 1.3;
+    display: block; /* Ensures it treats as block for visibility */
+    word-wrap: break-word; /* Prevents long words from overflowing */
+    margin-bottom: 15px;
   }
 
   .blog-meta {
@@ -396,10 +326,15 @@ useSeoMeta({
 
   .blog-image-wrapper.full-width {
     margin-bottom: 40px;
+    border-radius: 0;
+    margin-left: -15px;
+    margin-right: -15px;
+    width: calc(100% + 30px);
   }
 
   .shimmer-image {
     height: 300px;
+    border-radius: 0;
   }
 
   .shimmer-title {

@@ -105,18 +105,26 @@ const hasMoreWords = (text, maxWords = 200) => {
                     <h2 class="section-heading-title-big">{{ blog.title }}</h2>
                   </div>
                   <div v-html="truncateByWords(blog.content, 200)"></div>
-                  <div class="mt-4">
+                  <div class="mt-4 d-flex flex-wrap align-items-center gap-3">
                     <nuxt-link
                       v-if="hasMoreWords(blog.content, 200)"
                       :to="`/blogs/${blog.slug}`"
+                      class="read-more-btn"
+                    >
+                      <span>Read More</span>
+                      <i class="la la-arrow-right"></i>
+                    </nuxt-link>
+                    <nuxt-link
+           
+                      :to="`/quote`"
                       class="teeprint-button teeprint-theme-btn zoomInOut"
                     >
-                      Read More <i class="la la-arrow-right ml-1"></i>
+                      Get a Free Quote <i class="la la-arrow-right ml-1"></i>
                     </nuxt-link>
                     <nuxt-link
                       :to="{ name: 'shop' }"
                       style="background-color: #eead04"
-                      class="teeprint-button teeprint-theme-btn zoomInOut mx-2"
+                      class="teeprint-button teeprint-theme-btn zoomInOut"
                     >
                       Buy Now <i class="la la-arrow-right ml-1"></i>
                     </nuxt-link>
@@ -138,18 +146,25 @@ const hasMoreWords = (text, maxWords = 200) => {
                   <div class="aboutus-list">
                     <div v-html="truncateByWords(blog.content, 200)"></div>
                   </div>
-                  <div class="mt-4">
+                  <div class="mt-4 d-flex flex-wrap align-items-center gap-3">
                     <nuxt-link
                       v-if="hasMoreWords(blog.content, 200)"
                       :to="`/blogs/${blog.slug}`"
+                      class="read-more-btn"
+                    >
+                      <span>Read More</span>
+                      <i class="la la-arrow-right"></i>
+                    </nuxt-link>
+                    <nuxt-link
+                      :to="`/quote`"
                       class="teeprint-button teeprint-theme-btn zoomInOut"
                     >
-                      Read More <i class="la la-arrow-right ml-1"></i>
+                      Get a Free Quote <i class="la la-arrow-right ml-1"></i>
                     </nuxt-link>
                     <nuxt-link
                       :to="{ name: 'shop' }"
                       style="background-color: #eead04"
-                      class="teeprint-button teeprint-theme-btn zoomInOut mx-2"
+                      class="teeprint-button teeprint-theme-btn zoomInOut"
                     >
                       Buy Now <i class="la la-arrow-right ml-1"></i>
                     </nuxt-link>
@@ -212,10 +227,7 @@ const hasMoreWords = (text, maxWords = 200) => {
         <div class="container">
           <div class="row">
             <div class="col-12 text-center">
-              <button
-                @click="loadMore"
-                class="teeprint-button teeprint-theme-btn zoomInOut load-more-btn"
-              >
+              <button @click="loadMore" class="read-more-btn zoomInOut">
                 <span style="color: white"
                   >Load More <i class="la la-arrow-down ml-1"></i
                 ></span>
@@ -292,6 +304,62 @@ const hasMoreWords = (text, maxWords = 200) => {
   width: 140px;
 }
 
+/* Read More Button - New Design */
+.read-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white !important;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.read-more-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transition: left 0.4s ease;
+  z-index: 0;
+}
+
+.read-more-btn:hover::before {
+  left: 0;
+}
+
+.read-more-btn span,
+.read-more-btn i {
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+.read-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  color: white !important;
+  text-decoration: none;
+}
+
+.read-more-btn i {
+  transition: transform 0.3s ease;
+}
+
+.read-more-btn:hover i {
+  transform: translateX(4px);
+}
+
 /* Layout adjustments */
 .load-more-section {
   padding: 50px 0;
@@ -305,5 +373,26 @@ const hasMoreWords = (text, maxWords = 200) => {
     height: 250px;
     margin-bottom: 20px;
   }
+
+  .read-more-btn {
+    margin-bottom: 10px;
+  }
+}
+
+/* Button alignment styles */
+.d-flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.gap-3 {
+  gap: 15px;
 }
 </style>
