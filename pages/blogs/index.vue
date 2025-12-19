@@ -3,6 +3,9 @@ import { useBlogStore } from "~/store/Blog.js";
 
 const blogStore = useBlogStore();
 const isLoading = ref(true);
+const isLoadingMore = ref(false);
+const currentPage = ref(1);
+const perPage = ref(5);
 
 definePageMeta({
   layout: "web",
@@ -11,13 +14,26 @@ definePageMeta({
 onMounted(async () => {
   isLoading.value = true;
   let payload = {
-    page: 1,
-    per_page: 5,
+    page: currentPage.value,
+    per_page: perPage.value,
   };
   await blogStore.getPublishedBlogs(payload);
-  console.log("*&&*&", blogStore.publishedBlogs);
+
   isLoading.value = false;
 });
+
+const loadMore = async () => {
+  isLoadingMore.value = true;
+  perPage.value += 5;
+
+  let payload = {
+    page: currentPage.value,
+    per_page: perPage.value,
+  };
+
+  await blogStore.getPublishedBlogs(payload);
+  isLoadingMore.value = false;
+};
 
 // Helper function to strip HTML tags from content
 const stripHtml = (html) => {
@@ -187,6 +203,26 @@ const hasMoreWords = (text, maxWords = 200) => {
           </div>
         </section>
       </template>
+
+      <!-- Load More Button -->
+      <section class="load-more-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <button
+                @click="loadMore"
+                :disabled="isLoadingMore"
+                class="teeprint-button teeprint-theme-btn zoomInOut load-more-btn"
+              >
+                <span v-if="!isLoadingMore" style="color: white">
+                  Load More <i class="la la-arrow-down ml-1"></i>
+                </span>
+                <span v-else> Loading... </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </template>
 
     <div class="container mt-5">
@@ -259,6 +295,20 @@ const hasMoreWords = (text, maxWords = 200) => {
   border-radius: 4px;
 }
 
+.load-more-section {
+  padding: 40px 0;
+}
+
+.load-more-btn {
+  min-width: 200px;
+  color: #ffffff !important;
+}
+
+.load-more-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 @media (max-width: 768px) {
   .shimmer-image {
     height: 250px;
@@ -273,6 +323,10 @@ const hasMoreWords = (text, maxWords = 200) => {
   }
 
   .shimmer-button {
+    width: 100%;
+  }
+
+  .load-more-btn {
     width: 100%;
   }
 }

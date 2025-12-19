@@ -136,10 +136,11 @@ export const useBlogStore = defineStore("blog", () => {
 
   let publishedBlogs = ref(null);
 
-  async function getPublishedBlogs() {
+  async function getPublishedBlogs(payload) {
     try {
 
       let response = await Blog.publishedBlogs({params:payload});
+      console.log("&^&^&^&",response.data.data.data)
       publishedBlogs.value = response.data.data.data;
     } catch (error) {}
   }
