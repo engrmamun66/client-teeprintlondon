@@ -32,18 +32,18 @@ const loadMore = async () => {
   isLoadingMore.value = false;
 };
 
-// Helper functions
-const stripHtml = (html) => html.replace(/<[^>]*>/g, "");
-
+// HELPER FUNCTIONS - FIXED TO KEEP HTML TAGS
 const truncateByWords = (text, maxWords = 200) => {
-  const stripped = stripHtml(text);
-  const words = stripped.trim().split(/\s+/);
-  if (words.length <= maxWords) return stripped;
+  if (!text) return "";
+  const words = text.split(/\s+/);
+  if (words.length <= maxWords) return text;
+  // Truncate but keep the HTML structure intact
   return words.slice(0, maxWords).join(" ") + "...";
 };
 
 const hasMoreWords = (text, maxWords = 200) => {
-  const stripped = stripHtml(text);
+  if (!text) return false;
+  const stripped = text.replace(/<[^>]*>/g, ""); // Only strip for counting
   const words = stripped.trim().split(/\s+/);
   return words.length > maxWords;
 };
@@ -63,7 +63,6 @@ const hasMoreWords = (text, maxWords = 200) => {
               </div>
               <div class="col-xl-6 col-lg-6">
                 <div class="shimmer-title shimmer"></div>
-                <div class="shimmer-text shimmer"></div>
                 <div class="shimmer-text shimmer"></div>
                 <div class="shimmer-buttons">
                   <div class="shimmer shimmer-button"></div>
@@ -91,26 +90,18 @@ const hasMoreWords = (text, maxWords = 200) => {
                   <div class="section-main-heading">
                     <h2 class="section-heading-title-big">{{ blog.title }}</h2>
                   </div>
-                  <div v-html="truncateByWords(blog.content, 200)"></div>
                   
+                  <div class="blog-content" v-html="truncateByWords(blog.content, 200)"></div>
+
                   <div class="blog-button-group mt-4">
-                    <nuxt-link
-                      v-if="hasMoreWords(blog.content, 200)"
-                      :to="`/blogs/${blog.slug}`"
-                      class="read-more-btn zoomInOut"
-                    >
+                    <nuxt-link v-if="hasMoreWords(blog.content, 200)" :to="`/blogs/${blog.slug}`"
+                      class="read-more-btn zoomInOut">
                       <span>Read More</span>
                     </nuxt-link>
-                    <nuxt-link
-                      :to="`/quote`"
-                      class="teeprint-button teeprint-theme-btn zoomInOut btn-quote"
-                    >
+                    <nuxt-link :to="`/quote`" class="teeprint-button teeprint-theme-btn zoomInOut btn-quote">
                       Get a Free Quote
                     </nuxt-link>
-                    <nuxt-link
-                      :to="{ name: 'shop' }"
-                      class="teeprint-button teeprint-theme-btn zoomInOut btn-buy"
-                    >
+                    <nuxt-link :to="{ name: 'shop' }" class="teeprint-button teeprint-theme-btn zoomInOut btn-buy">
                       Buy Now
                     </nuxt-link>
                   </div>
@@ -121,87 +112,102 @@ const hasMoreWords = (text, maxWords = 200) => {
         </section>
       </div>
 
-      <section class="load-more-section text-center py-5" v-if="!isLoadingMore" :hidden="blogStore.totalBlogs <= perPage">
-        <button @click="loadMore" class="read-more-btn zoomInOut">
+      <div class="load-more-wrapper">
+        <button 
+          v-if="blogStore.totalBlogs > perPage && !isLoadingMore" 
+          @click="loadMore" 
+          class="read-more-btn zoomInOut" 
+          type="button"
+        >
           <span>Load More <i class="la la-arrow-down ml-1"></i></span>
         </button>
-      </section>
+        
+        <div v-if="isLoadingMore" class="text-center p-4">
+          <div class="spinner-border text-primary" role="status"></div>
+        </div>
+      </div>
     </template>
 
     <div class="container mt-5">
-      <web-DuelCard
-        img_left="/img/quote-page-card-image-1.jpeg"
-        img_right="/img/quote-page-card-image-2.jpeg"
-        paragraph="We bring your vision to life with creative designs..."
-      />
+      <web-DuelCard img_left="/img/quote-page-card-image-1.jpeg" img_right="/img/quote-page-card-image-2.jpeg"
+        paragraph="We bring your vision to life with creative designs..." />
     </div>
     <web-questions name="tshirt" />
   </div>
 </template>
 
 <style scoped>
-/* Unified Button Group Logic */
+/* Center the Load More wrapper */
+.load-more-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 50px 0;
+  padding-bottom: 30px;
+}
+
+/* Force links inside blog content to be blue */
+.blog-content :deep(a) {
+  color: #007bff !important;
+  text-decoration: underline !important;
+  font-weight: 600;
+}
+
+.blog-content :deep(a:hover) {
+  color: #0056b3 !important;
+}
+
+/* Shared Button Style for Read More and Load More */
+.read-more-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 12px 30px !important;
+  border-radius: 50px !important;
+  font-size: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  height: 45px !important;
+  transition: transform 0.3s ease !important;
+}
+
+.read-more-btn:hover {
+  transform: scale(1.05) !important;
+}
+
+.read-more-btn span, .read-more-btn i {
+  color: white !important;
+}
+
+/* Existing button group styles */
 .blog-button-group {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  gap: 15px; 
-  width: 100%;
+  gap: 15px;
 }
 
-.blog-button-group .read-more-btn,
-.blog-button-group .teeprint-button {
-  flex: 0 0 auto;
-  margin: 0 !important;
-  white-space: nowrap;
-  font-size: 14px;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.teeprint-button {
   border-radius: 50px;
   height: 45px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 14px;
   text-decoration: none;
 }
 
-/* Color Overrides */
-.btn-buy {
-  background-color: #eead04 !important;
-  color: white !important;
-}
-.btn-quote {
-  background-color: #000 !important;
-  color: #fff !important;
-}
+.btn-buy { background-color: #eead04 !important; color: white !important; }
+.btn-quote { background-color: #000 !important; color: #fff !important; }
 
-/* Read More Style - Fixed Text Color */
-.read-more-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white !important; /* Forces button text to white */
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-}
-
-.read-more-btn span {
-  color: white !important; /* Double-check for nested span */
-}
-
-/* Ensure consistent spacing during zoom/mobile */
-@media (max-width: 768px) {
-  .blog-button-group {
-    gap: 10px;
-  }
-  
-  .blog-button-group .read-more-btn,
-  .blog-button-group .teeprint-button {
-    font-size: 11px;
-    padding: 8px 12px;
-    flex: 1; 
-  }
-}
-
-/* Shimmer Styles */
+/* Shimmer animations */
 .shimmer {
   background: linear-gradient(90deg, #f0f0f0 0%, #e8e8e8 20%, #f0f0f0 40%, #f0f0f0 100%);
   background-size: 200% 100%;
@@ -212,8 +218,7 @@ const hasMoreWords = (text, maxWords = 200) => {
   100% { background-position: 200% 0; }
 }
 .shimmer-image { width: 100%; height: 350px; border-radius: 8px; }
-.shimmer-title { height: 30px; width: 70%; margin-bottom: 20px; border-radius: 4px; }
-.shimmer-text { height: 12px; width: 100%; margin-bottom: 10px; border-radius: 4px; }
-.shimmer-buttons { display: flex; gap: 15px; margin-top: 20px; }
-.shimmer-button { height: 40px; width: 120px; border-radius: 50px; }
+.shimmer-title { height: 30px; width: 70%; margin-bottom: 20px; }
+.shimmer-text { height: 12px; width: 100%; margin-bottom: 10px; }
+.shimmer-button { height: 40px; width: 120px; border-radius: 50px; margin-right: 10px; }
 </style>

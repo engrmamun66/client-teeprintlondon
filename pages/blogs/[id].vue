@@ -242,6 +242,22 @@ useSeoMeta({
   margin: 30px 0;
 }
 
+/* ========== HYPERLINK STYLES ========== */
+.blog-content :deep(a) {
+  color: #1e90ff;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.blog-content :deep(a:hover) {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.blog-content :deep(a:visited) {
+  color: #551a8b;
+}
+
 .blog-actions {
   display: flex;
   justify-content: center;
@@ -265,7 +281,7 @@ useSeoMeta({
 .read-more-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center; /* Added to center text horizontally */
+  justify-content: center;
   gap: 8px;
   padding: 12px 28px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -278,7 +294,7 @@ useSeoMeta({
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  text-align: center; /* Ensures text alignment */
+  text-align: center;
 }
 
 .read-more-btn::before {
@@ -348,7 +364,7 @@ useSeoMeta({
   .shimmer-title { height: 45px; width: 90%; }
   .blog-content { font-size: 17px; }
   .blog-actions { flex-direction: column; margin-top: 40px; padding-top: 30px; }
-  .btn-buy, .btn-back, .read-more-btn { width: 100%; } /* Added .read-more-btn here */
+  .btn-buy, .btn-back, .read-more-btn { width: 100%; }
   .shimmer-button { width: 100%; }
 }
 </style>
