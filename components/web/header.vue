@@ -505,7 +505,7 @@ let { staticPagesByParentCat } = globalData;
               class="teeprint-button teeprint-theme-btn quote-btn zoomInOut"
             >
               <span class=""> Instant Quote </span>
-              <i class="la la-arrow-right ml-2"></i>
+              <i class="la la-arrow-right"></i>
             </nuxt-link>
           </div>
         </div>
@@ -513,3 +513,23 @@ let { staticPagesByParentCat } = globalData;
     </div>
   </header>
 </template>
+
+<style scoped>
+/* Force navigation menu items to display in one line - DESKTOP ONLY */
+@media (min-width: 992px) {
+  .teeprint-nav-manu > ul {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  .teeprint-nav-manu > ul > li {
+    flex-shrink: 0;
+  }
+
+  .teeprint-nav-manu > ul > li > a {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+</style>
