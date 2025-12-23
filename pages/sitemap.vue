@@ -71,7 +71,14 @@
       </ul>
     </section>
 
-
+    <section class="sitemap-section">
+      <h2>Blogs</h2>
+      <ul>
+        <li v-for="(url, name) in blogItems" :key="name">
+          <NuxtLink :to="url">{{ name }}</NuxtLink>
+        </li>
+      </ul>
+    </section>
   </div>
 </template>
 
@@ -181,6 +188,10 @@ const clothingItems = {
   "Promotion T-Shirts": "/cloth/promotion_t_shirts",
   "School and University T-shirts": "/cloth/university_t_shirt",
   Sweatshirt: "/cloth/sweatshirt",
+};
+
+const blogItems = {
+  "Blogs": "/blogs"
 };
 
 onMounted(async () => {
