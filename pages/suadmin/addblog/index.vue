@@ -8,11 +8,13 @@
             <div class="form-group">
               <div class="date-box">
                 <div class="date-box-input">
+                  <label>Post Title <span class="required-star">*</span></label>
                   <el-BaseInput
                     type="text"
-                    label="Post Title"
                     v-model="blogStore.postData.title"
+                    placeholder="Enter post title"
                   />
+                  <div v-if="errors.title" class="error-message">{{ errors.title }}</div>
                 </div>
               </div>
             </div>
@@ -22,7 +24,7 @@
             <div class="form-group">
               <div class="date-box">
                 <div class="date-box-input">
-                  <label>Post Description</label>
+                  <label>Post Description <span class="required-star">*</span></label>
                   <Editor
                     v-model="blogStore.postData.content"
                     api-key="gcvrg3hggtzhh90lq4180cnaco5tpvofl31o5ekpyg2i1lmj"
@@ -30,13 +32,10 @@
                       height: 300,
                       menubar: false,
                       plugins: 'lists link image table code help',
-                      toolbar:
-                        'undo redo | formatselect | bold italic | bullist numlist',
+                      toolbar: 'undo redo | formatselect | bold italic | bullist numlist',
                     }"
                   />
-                  <div v-if="errors.short_description" class="invalid-feedback">
-                    {{ errors.short_description }}
-                  </div>
+                  <div v-if="errors.content" class="error-message">{{ errors.content }}</div>
                 </div>
               </div>
             </div>
@@ -44,9 +43,9 @@
 
           <div class="col-12">
             <div class="form-group">
-              <label for="featured-image-upload"
-                >Featured Image (JPG, PNG, JPEG)</label
-              >
+              <label for="featured-image-upload">
+                Featured Image (JPG, PNG, JPEG) <span class="required-star">*</span>
+              </label>
               <div class="date-box">
                 <div class="date-box-input">
                   <input
@@ -55,9 +54,10 @@
                     accept=".jpg, .jpeg, .png"
                     @change="handleFeaturedImageUpload"
                     class="form-control"
+                    :class="{ 'is-invalid': errors.featured_image }"
                   />
+                  <div v-if="errors.featured_image" class="error-message">{{ errors.featured_image }}</div>
 
-                  <!-- Image Preview Thumbnail -->
                   <div v-if="imagePreviewUrl" class="image-preview-container">
                     <img
                       :src="imagePreviewUrl"
@@ -88,11 +88,12 @@
             <div class="form-group">
               <div class="date-box">
                 <div class="date-box-input">
+                  <label>Meta Title <span class="required-star">*</span></label>
                   <el-BaseInput
                     type="text"
-                    label="Meta Title"
                     v-model="blogStore.postData.meta_title"
                   />
+                  <div v-if="errors.meta_title" class="error-message">{{ errors.meta_title }}</div>
                 </div>
               </div>
             </div>
@@ -102,7 +103,7 @@
             <div class="form-group">
               <div class="date-box">
                 <div class="date-box-input">
-                  <label>Meta Description</label>
+                  <label>Meta Description <span class="required-star">*</span></label>
                   <Editor
                     v-model="blogStore.postData.meta_description"
                     api-key="gcvrg3hggtzhh90lq4180cnaco5tpvofl31o5ekpyg2i1lmj"
@@ -110,13 +111,10 @@
                       height: 300,
                       menubar: false,
                       plugins: 'lists link image table code help',
-                      toolbar:
-                        'undo redo | formatselect | bold italic | bullist numlist',
+                      toolbar: 'undo redo | formatselect | bold italic | bullist numlist',
                     }"
                   />
-                  <div v-if="errors.short_description" class="invalid-feedback">
-                    {{ errors.short_description }}
-                  </div>
+                  <div v-if="errors.meta_description" class="error-message">{{ errors.meta_description }}</div>
                 </div>
               </div>
             </div>
@@ -126,11 +124,12 @@
             <div class="form-group">
               <div class="date-box">
                 <div class="date-box-input">
+                  <label>Meta Keywords <span class="required-star">*</span></label>
                   <el-BaseInput
                     type="text"
-                    label="Meta Keywords"
                     v-model="blogStore.postData.meta_keywords"
                   />
+                  <div v-if="errors.meta_keywords" class="error-message">{{ errors.meta_keywords }}</div>
                 </div>
               </div>
             </div>
@@ -138,6 +137,7 @@
         </div>
       </div>
     </div>
+
     <button
       type="button"
       class="leap-btn leap-submit-btn me-2 m-1"
@@ -150,7 +150,6 @@
       />
     </button>
 
-    <!-- Image Modal for Full Size View -->
     <div v-if="showImageModal" class="image-modal" @click="closeImageModal">
       <div class="image-modal-content">
         <span class="close-modal" @click="closeImageModal">&times;</span>
@@ -165,7 +164,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useBlogStore } from "~/store/Blog.js";
 import Editor from "@tinymce/tinymce-vue";
 
@@ -177,34 +176,70 @@ const imagePreviewUrl = ref(null);
 const showImageModal = ref(false);
 
 /**
- * Handles form submission with file upload
+ * Validates form fields
+ * @returns {boolean}
+ */
+const validateForm = () => {
+  errors.value = {}; // Reset errors
+  let isValid = true;
+
+  if (!blogStore.postData.title) {
+    errors.value.title = "Post title is required.";
+    isValid = false;
+  }
+  if (!blogStore.postData.content) {
+    errors.value.content = "Post description is required.";
+    isValid = false;
+  }
+  if (!featuredImageFile.value) {
+    errors.value.featured_image = "Featured image is required.";
+    isValid = false;
+  }
+  if (!blogStore.postData.meta_title) {
+    errors.value.meta_title = "Meta title is required.";
+    isValid = false;
+  }
+  if (!blogStore.postData.meta_description) {
+    errors.value.meta_description = "Meta description is required.";
+    isValid = false;
+  }
+  if (!blogStore.postData.meta_keywords) {
+    errors.value.meta_keywords = "Meta keywords are required.";
+    isValid = false;
+  }
+
+  return isValid;
+};
+
+/**
+ * Handles form submission with validation
  */
 async function handleSubmit() {
-  // Create FormData to handle file upload
+  if (!validateForm()) {
+    // Scroll to the first error or show a toast message if preferred
+    return;
+  }
+
   const formData = new FormData();
 
-  // Append all text fields
   formData.append("title", blogStore.postData.title);
   formData.append("content", blogStore.postData.content);
-  formData.append("excerpt", blogStore.postData.excerpt);
   formData.append("meta_title", blogStore.postData.meta_title);
   formData.append("meta_description", blogStore.postData.meta_description);
   formData.append("meta_keywords", blogStore.postData.meta_keywords);
+  
+  if (blogStore.postData.excerpt) formData.append("excerpt", blogStore.postData.excerpt);
+  if (blogStore.postData.canonical_url) formData.append("canonical_url", blogStore.postData.canonical_url);
 
-  formData.append("canonical_url", blogStore.postData.canonical_url);
-
-  // Append the file if one was selected
   if (featuredImageFile.value) {
     formData.append("featured_image", featuredImageFile.value);
   }
 
-  // Send FormData to the store/API
   await blogStore.create(formData);
 }
 
 /**
- * Handles the file selection for the featured image input.
- * Creates a preview URL for the selected image.
+ * Handles the file selection
  */
 const handleFeaturedImageUpload = (event) => {
   const file = event.target.files[0];
@@ -212,8 +247,8 @@ const handleFeaturedImageUpload = (event) => {
     const validTypes = ["image/jpeg", "image/png", "image/jpg"];
     if (validTypes.includes(file.type)) {
       featuredImageFile.value = file;
+      errors.value.featured_image = null; // Clear error on valid upload
 
-      // Create preview URL
       if (imagePreviewUrl.value) {
         URL.revokeObjectURL(imagePreviewUrl.value);
       }
@@ -228,30 +263,17 @@ const handleFeaturedImageUpload = (event) => {
   }
 };
 
-/**
- * Opens the image modal to show full size preview
- */
-const openImageModal = () => {
-  showImageModal.value = true;
-};
+const openImageModal = () => (showImageModal.value = true);
+const closeImageModal = () => (showImageModal.value = false);
 
-/**
- * Closes the image modal
- */
-const closeImageModal = () => {
-  showImageModal.value = false;
-};
-
-/**
- * Removes the selected image and clears preview
- */
 const removeImage = () => {
   if (imagePreviewUrl.value) {
     URL.revokeObjectURL(imagePreviewUrl.value);
   }
   imagePreviewUrl.value = null;
   featuredImageFile.value = null;
-  document.getElementById("featured-image-upload").value = null;
+  const input = document.getElementById("featured-image-upload");
+  if (input) input.value = null;
 };
 
 onMounted(() => {
@@ -260,6 +282,22 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.required-star {
+  color: #ff0000;
+  margin-left: 4px;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 4px;
+  display: block;
+}
+
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+
 .form-control {
   display: block;
   width: 100%;
@@ -332,12 +370,8 @@ onMounted(() => {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .image-modal-content {
@@ -348,12 +382,8 @@ onMounted(() => {
 }
 
 @keyframes zoomIn {
-  from {
-    transform: scale(0.7);
-  }
-  to {
-    transform: scale(1);
-  }
+  from { transform: scale(0.7); }
+  to { transform: scale(1); }
 }
 
 .image-modal-img {
@@ -382,12 +412,5 @@ label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
-}
-
-.invalid-feedback {
-  display: block;
-  margin-top: 0.25rem;
-  font-size: 0.875em;
-  color: #dc3545;
 }
 </style>
