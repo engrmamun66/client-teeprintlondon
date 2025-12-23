@@ -33,7 +33,7 @@ const loadMore = async () => {
 };
 
 // HELPER FUNCTIONS - FIXED TO KEEP HTML TAGS
-const truncateByWords = (text, maxWords = 200) => {
+const truncateByWords = (text, maxWords = 50) => {
   if (!text) return "";
   const words = text.split(/\s+/);
   if (words.length <= maxWords) return text;
@@ -41,7 +41,7 @@ const truncateByWords = (text, maxWords = 200) => {
   return words.slice(0, maxWords).join(" ") + "...";
 };
 
-const hasMoreWords = (text, maxWords = 200) => {
+const hasMoreWords = (text, maxWords = 50) => {
   if (!text) return false;
   const stripped = text.replace(/<[^>]*>/g, ""); // Only strip for counting
   const words = stripped.trim().split(/\s+/);
@@ -91,10 +91,10 @@ const hasMoreWords = (text, maxWords = 200) => {
                     <h2 class="section-heading-title-big">{{ blog.title }}</h2>
                   </div>
                   
-                  <div class="blog-content" v-html="truncateByWords(blog.content, 200)"></div>
+                  <div class="blog-content" v-html="truncateByWords(blog.content, 50)"></div>
 
                   <div class="blog-button-group mt-4">
-                    <nuxt-link v-if="hasMoreWords(blog.content, 200)" :to="`/blogs/${blog.slug}`"
+                    <nuxt-link v-if="hasMoreWords(blog.content, 50)" :to="`/blogs/${blog.slug}`"
                       class="read-more-btn zoomInOut">
                       <span>Read More</span>
                     </nuxt-link>
