@@ -2,7 +2,7 @@
   <div>
     <div class="row">
       <div class="col-12">
-        <h3>Post Details</h3>
+        <h3>Post Details </h3>
         <div class="row">
           <div class="col-12">
             <div class="form-group">
@@ -10,9 +10,13 @@
                 <div class="date-box-input">
                   <el-BaseInput
                     type="text"
-                    label="Post Title"
+                    label="Post Title *"
                     v-model="blogStore.postData.title"
+                    :class="{ 'is-invalid': errors.title }"
                   />
+                  <div v-if="errors.title" class="text-danger mt-1 small">
+                    {{ errors.title }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -22,7 +26,7 @@
             <div class="form-group">
               <div class="date-box">
                 <div class="date-box-input">
-                  <label>Post Description</label>
+                  <label>Post Description    <span class="required-star">*</span></label>
                   <Editor
                     v-model="blogStore.postData.content"
                     api-key="gcvrg3hggtzhh90lq4180cnaco5tpvofl31o5ekpyg2i1lmj"
@@ -34,8 +38,8 @@
                         'undo redo | formatselect | bold italic | bullist numlist',
                     }"
                   />
-                  <div v-if="errors.short_description" class="invalid-feedback">
-                    {{ errors.short_description }}
+                  <div v-if="errors.content" class="text-danger mt-1 small">
+                    {{ errors.content }}
                   </div>
                 </div>
               </div>
@@ -44,9 +48,10 @@
 
           <div class="col-12">
             <div class="form-group">
-              <label for="featured-image-upload"
-                >Featured Image (JPG, PNG, JPEG)</label
-              >
+              <label for="featured-image-upload">
+                Featured Image (JPG, PNG, JPEG)
+                <span class="required-star">*</span>
+              </label>
               <div class="date-box">
                 <div class="date-box-input">
                   <input
@@ -55,16 +60,19 @@
                     accept=".jpg, .jpeg, .png"
                     @change="handleFeaturedImageUpload"
                     class="form-control"
+                    :class="{ 'is-invalid': errors.featured_image }"
                   />
-                  <!-- <small v-if="featuredImageFile"
-                    ></small
+                  <div
+                    v-if="errors.featured_image"
+                    class="text-danger mt-1 small"
                   >
-                  <small v-else-if="blogStore.postData.featured_image">
-                    Current Image: {{ blogStore.postData.featured_image }}
-                  </small> -->
+                    {{ errors.featured_image }}
+                  </div>
 
-                  <!-- Image Preview Thumbnail -->
-                  <div v-if="imagePreviewUrl" class="image-preview-container">
+                  <div
+                    v-if="imagePreviewUrl"
+                    class="image-preview-container mt-2"
+                  >
                     <img
                       :src="imagePreviewUrl"
                       alt="Preview"
@@ -112,17 +120,8 @@
                   <Editor
                     v-model="blogStore.postData.meta_description"
                     api-key="gcvrg3hggtzhh90lq4180cnaco5tpvofl31o5ekpyg2i1lmj"
-                    :init="{
-                      height: 300,
-                      menubar: false,
-                      plugins: 'lists link image table code help',
-                      toolbar:
-                        'undo redo | formatselect | bold italic | bullist numlist',
-                    }"
+                    :init="{ height: 300, menubar: false }"
                   />
-                  <div v-if="errors.short_description" class="invalid-feedback">
-                    {{ errors.short_description }}
-                  </div>
                 </div>
               </div>
             </div>
@@ -144,6 +143,7 @@
         </div>
       </div>
     </div>
+
     <button
       type="button"
       class="leap-btn leap-submit-btn me-2 m-1"
@@ -156,7 +156,6 @@
       />
     </button>
 
-    <!-- Image Modal for Full Size View -->
     <div v-if="showImageModal" class="image-modal" @click="closeImageModal">
       <div class="image-modal-content">
         <span class="close-modal" @click="closeImageModal">&times;</span>
@@ -171,9 +170,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useBlogStore } from "~/store/Blog.js";
 import Editor from "@tinymce/tinymce-vue";
+
 const route = useRoute();
 let postId = null;
 const blogStore = useBlogStore();
@@ -184,87 +184,93 @@ const imagePreviewUrl = ref(null);
 const showImageModal = ref(false);
 
 /**
- * Handles form submission with file upload
+ * Validates required fields
  */
-async function handleSubmit() {
-  // Create FormData to handle file upload
-  const formData = new FormData();
+const validateForm = () => {
+  errors.value = {};
+  let isValid = true;
 
-  // Append all text fields
+  if (!blogStore.postData.title) {
+    errors.value.title = "Post Title is required.";
+    isValid = false;
+  }
+
+  if (!blogStore.postData.content) {
+    errors.value.content = "Post Description is required.";
+    isValid = false;
+  }
+
+  // Check if there is a new file OR an existing image URL from the store
+  if (!featuredImageFile.value && !blogStore.postData.image_url) {
+    errors.value.featured_image = "Featured Image is required.";
+    isValid = false;
+  }
+
+  return isValid;
+};
+
+async function handleSubmit() {
+  if (!validateForm()) return;
+
+  const formData = new FormData();
   formData.append("title", blogStore.postData.title);
   formData.append("content", blogStore.postData.content);
-  formData.append("excerpt", blogStore.postData.excerpt);
-  formData.append("meta_title", blogStore.postData.meta_title);
-  formData.append("meta_description", blogStore.postData.meta_description);
-  formData.append("meta_keywords", blogStore.postData.meta_keywords);
+  formData.append("meta_title", blogStore.postData.meta_title || "");
+  formData.append(
+    "meta_description",
+    blogStore.postData.meta_description || ""
+  );
+  formData.append("meta_keywords", blogStore.postData.meta_keywords || "");
 
-  formData.append("canonical_url", blogStore.postData.canonical_url);
-
-  // Append the file if one was selected
   if (featuredImageFile.value) {
     formData.append("featured_image", featuredImageFile.value);
   }
 
-  // Send FormData to the store/API
-  await blogStore.update(postId, formData);
+  try {
+    await blogStore.update(postId, formData);
+  } catch (err) {
+    // Handle API errors if necessary
+    console.error(err);
+  }
 }
 
-/**
- * Handles the file selection for the featured image input.
- * Creates a preview URL for the selected image.
- */
 const handleFeaturedImageUpload = (event) => {
   const file = event.target.files[0];
+  errors.value.featured_image = null; // Clear error on change
+
   if (file) {
     const validTypes = ["image/jpeg", "image/png", "image/jpg"];
     if (validTypes.includes(file.type)) {
       featuredImageFile.value = file;
-
-      // Create preview URL
-      if (imagePreviewUrl.value) {
-        URL.revokeObjectURL(imagePreviewUrl.value);
-      }
+      if (imagePreviewUrl.value) URL.revokeObjectURL(imagePreviewUrl.value);
       imagePreviewUrl.value = URL.createObjectURL(file);
     } else {
-      alert("Invalid file type. Please select a JPG, JPEG, or PNG image.");
+      errors.value.featured_image =
+        "Invalid file type. Please select JPG, JPEG, or PNG.";
       event.target.value = null;
       featuredImageFile.value = null;
     }
-  } else {
-    featuredImageFile.value = null;
   }
 };
 
-/**
- * Opens the image modal to show full size preview
- */
-const openImageModal = () => {
-  showImageModal.value = true;
-};
+const openImageModal = () => (showImageModal.value = true);
+const closeImageModal = () => (showImageModal.value = false);
 
-/**
- * Closes the image modal
- */
-const closeImageModal = () => {
-  showImageModal.value = false;
-};
-
-/**
- * Removes the selected image and clears preview
- */
 const removeImage = () => {
-  if (imagePreviewUrl.value) {
-    URL.revokeObjectURL(imagePreviewUrl.value);
-  }
+  if (imagePreviewUrl.value) URL.revokeObjectURL(imagePreviewUrl.value);
   imagePreviewUrl.value = null;
   featuredImageFile.value = null;
-  document.getElementById("featured-image-upload").value = null;
+  // Also clear the actual file input
+  const input = document.getElementById("featured-image-upload");
+  if (input) input.value = "";
 };
 
 onMounted(async () => {
   postId = route.params.id;
   await blogStore.showPost(postId);
-  imagePreviewUrl.value = blogStore.postData.image_url;
+  if (blogStore.postData.image_url) {
+    imagePreviewUrl.value = blogStore.postData.image_url;
+  }
 });
 </script>
 
@@ -398,5 +404,18 @@ label {
   margin-top: 0.25rem;
   font-size: 0.875em;
   color: #dc3545;
+}
+
+.required-star {
+  color: #dc3545; /* Standard red color */
+  font-size: 1.2rem; /* Makes it larger than the text */
+  font-weight: bold;
+  margin-left: 4px;
+  vertical-align: middle; /* Aligns it better with the text */
+}
+
+/* Optional: Add to the other required labels for consistency */
+.text-danger {
+  font-size: 0.875rem; /* For the error messages below the inputs */
 }
 </style>

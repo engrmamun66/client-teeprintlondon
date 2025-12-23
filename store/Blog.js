@@ -43,17 +43,27 @@ export const useBlogStore = defineStore("blog", () => {
 
   let showModal = ref(false);
 
-  async function create(payload = {}) {
-    try {
-      let response = await Blog.create(payload);
-      if (response.data.success) {
-        await getPosts();
-        showModal.value = false;
-        resetPostData();
-        Toaster.success("Blog created succsfully");
-      }
-    } catch (error) {}
+async function create(payload = {}) {
+  try {
+    let response = await Blog.create(payload);
+    
+    if (response.data.success) {
+      await getPosts();
+      showModal.value = false;
+      resetPostData();
+      Toaster.success("Blog created successfully");
+    }
+  } catch (error) {
+    // 1. Extract the specific error message from the response
+    const errorMessage = error.response?.data?.message || "Something went wrong";
+    
+    // 2. Display it in the Toaster
+    Toaster.error(errorMessage);
+
+    // Optional: Log detailed errors for debugging
+    console.error("Validation Errors:", error.response?.data?.errors);
   }
+}
 
   async function getPosts() {
     try {
