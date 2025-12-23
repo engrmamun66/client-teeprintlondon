@@ -137,6 +137,20 @@ const hasMoreWords = (text, maxWords = 50) => {
 </template>
 
 <style scoped>
+/* Force Titles to be Dark Color */
+.section-heading-title-big {
+  color: #1a1a1a !important;
+}
+
+/* Force All Text in Blog Content to be Dark Color */
+.blog-content {
+  color: #1a1a1a !important;
+}
+
+.blog-content :deep(*) {
+  color: #1a1a1a !important;
+}
+
 /* Center the Load More wrapper */
 .load-more-wrapper {
   display: flex;
@@ -147,7 +161,7 @@ const hasMoreWords = (text, maxWords = 50) => {
   padding-bottom: 30px;
 }
 
-/* Force links inside blog content to be blue */
+/* Force links inside blog content to be blue (keeps them distinct from dark text) */
 .blog-content :deep(a) {
   color: #007bff !important;
   text-decoration: underline !important;
