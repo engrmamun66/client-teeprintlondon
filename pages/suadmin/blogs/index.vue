@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <h4>Neaz Morshed</h4>
+      <h4>Blog</h4>
       <nuxt-link to="/suadmin/addblog" class="btn btn-success">
         <i class="las la-plus"></i> Add Blog
       </nuxt-link>

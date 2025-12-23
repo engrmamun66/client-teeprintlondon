@@ -130,7 +130,7 @@
   </li>
     <li>
     <nuxt-link @click="orderStore.getOrderList();" :to="'/suadmin/blogs'" class="leftsidebar-link menu-tooltip">
-      <i class="las la-shopping-bag"></i><!-- Changed to an invoice icon for quotations -->
+      <i class="las la-blog"></i><!-- Changed to an invoice icon for quotations -->
       <span class="menu-text">Blogs</span>
       <span class="tooltip__text tooltip__text--right"> Orders </span>
     </nuxt-link>
