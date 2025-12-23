@@ -182,14 +182,14 @@ useSeoMeta({
 .blog-title {
   font-size: 52px;
   font-weight: 800;
-  color: #1a1a1a;
+  color: #1a1a1a; /* Dark Color */
   margin-top: 40px;
   line-height: 1.1;
 }
 
 .blog-meta {
   font-size: 16px;
-  color: #777;
+  color: #1a1a1a; /* Dark Color */
   font-weight: 500;
 }
 
@@ -222,17 +222,47 @@ useSeoMeta({
 .blog-content {
   font-size: 19px;
   line-height: 1.9;
-  color: #2c2c2c;
+  color: #1a1a1a; /* Dark Color */
 }
 
 .blog-content :deep(p) {
   margin-bottom: 25px;
+  color: #1a1a1a; /* Dark Color */
 }
+
+/* ========== LIST STYLES FIX ========== */
+.blog-content :deep(ul) {
+  list-style-type: disc;
+  margin-bottom: 25px;
+  padding-left: 40px;
+  color: #1a1a1a; /* Dark Color */
+}
+
+.blog-content :deep(ol) {
+  list-style-type: decimal;
+  margin-bottom: 25px;
+  padding-left: 40px;
+  color: #1a1a1a; /* Dark Color */
+}
+
+.blog-content :deep(li) {
+  margin-bottom: 10px;
+  display: list-item;
+  color: #1a1a1a; /* Dark Color */
+}
+
+.blog-content :deep(li p) {
+  margin-bottom: 0;
+  display: inline;
+  color: #1a1a1a; /* Dark Color */
+}
+/* ===================================== */
 
 .blog-content :deep(h2) {
   font-size: 36px;
   margin-top: 50px;
   margin-bottom: 25px;
+  color: #1a1a1a; /* Dark Color */
 }
 
 .blog-content :deep(img) {
