@@ -66,9 +66,9 @@ onMounted(() => {
         ></iframe>
       </noscript>
     </ClientOnly>
-    <div>
+    <!-- <div>
       <Christmas/>
-    </div>
+    </div> -->
 
     <section class="teeprint-about-section">
       <div class="container">
