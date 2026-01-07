@@ -96,8 +96,19 @@
                   </li>
                 </ul>
               </div>
+
               <div class="sitemap-section">
-                <NuxtLink to="/sitemap"><h5>Sitemap</h5></NuxtLink>
+                <div style="margin-bottom: 1.5rem; display: block">
+                  <NuxtLink to="/sitemap" style="text-decoration: none">
+                    <h5 style="margin-bottom: 0">Sitemap</h5>
+                  </NuxtLink>
+                </div>
+
+                <div style="display: block">
+                  <NuxtLink to="/blogs" style="text-decoration: none">
+                    <h5 style="margin-bottom: 0">Blogs</h5>
+                  </NuxtLink>
+                </div>
               </div>
             </div>
           </div>
