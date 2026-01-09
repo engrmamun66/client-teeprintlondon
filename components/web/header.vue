@@ -329,13 +329,14 @@ let { staticPagesByParentCat } = globalData;
               >
                 <ul>
                   <li>
-                    <a
-                      href="/"
+                    <nuxt-link
+                      to="/"
                       :class="{
                         'teeprint-active-menu': useRoute().name === 'home',
                       }"
-                      >Home</a
                     >
+                      Home
+                    </nuxt-link>
                   </li>
                   <template v-if="homeStore.menus?.length">
                     <template
