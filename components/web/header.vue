@@ -383,7 +383,7 @@ let { staticPagesByParentCat } = globalData;
                                     H.toggleLoopItem(
                                       item?.categories,
                                       [-1, index2],
-                                      'isShow'
+                                      'isShow',
                                     );
                                   "
                                   @mouseover="
@@ -391,7 +391,7 @@ let { staticPagesByParentCat } = globalData;
                                     H.toggleLoopItem(
                                       item?.categories,
                                       [-1, index2],
-                                      'isShow'
+                                      'isShow',
                                     );
                                   "
                                 >
