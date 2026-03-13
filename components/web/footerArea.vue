@@ -275,7 +275,7 @@
           </div>
           <div class="col-md-4 col-12 order-md-2 order-3 mt-3 mt-md-0">
             <div class="teeprint-bottom-footer-content text-center">
-              <p class="mb-0">©2025 TeePrint London. All rights reserved.</p>
+              <p class="mb-0">©2026 TeePrint London. All rights reserved.</p>
             </div>
           </div>
           <div class="col-md-4 col-12 order-md-3 order-2 mt-3 mt-md-0">
